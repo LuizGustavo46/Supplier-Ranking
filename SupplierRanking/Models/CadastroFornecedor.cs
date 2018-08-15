@@ -13,7 +13,7 @@ namespace SupplierRanking.Models
         private static SqlConnection con =
                new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
 
-        //---* DECLARAÇÃO DE VARIAVEIS *---
+        //---* DECLARAÇÃO DE VARIAVEIS *-
         private string cnpj;
         private string nome;
         private string email;
