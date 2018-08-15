@@ -31,7 +31,7 @@ namespace SupplierRanking.Models
         private string cep;
         private string media;
 
-        //---* PEGANDO E RETORNANDO VALORES INSERIDOS NAS VARIAVEIS *---
+        //---* PEGANDO E RETORNANDO VALORES INSERIDOS NAS VARIAVEIS *--
         public String Cnpj
         {
             get { return cnpj; }
