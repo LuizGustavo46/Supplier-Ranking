@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 
 namespace SupplierRanking.Models
@@ -440,6 +441,155 @@ namespace SupplierRanking.Models
 
             return res;
         }
+
+        //MÉTODO PARA EXCLUIR UM COMPRADOR - (COMPRADOR EXCLUIR SUA PRÓPRIA CONTA) - FALTA TESTAR
+        public bool ExcluirConta()
+        {
+            try
+            {
+                con.Open();
+
+                SqlCommand query =
+                    new SqlCommand("DELETE FROM comprador WHERE codigo = @codigo",
+                        con);
+                query.Parameters.AddWithValue("@codigo", codigo);
+                query.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            return true;
+        }
+
+        //MÉTODO PARA ALTERAR A SENHA (UPDATE SENHA) - FALTA TESTAR
+        public bool UpdateSenha(string senhaAntiga, string senhaNova, string confirmaSenhaNova)
+        {
+            string senhaUsada = ""; //VAR PARA GUARDAR A SENHA QUE VAI VIR DO BANCO
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+                SqlCommand query =
+                    new SqlCommand("SELECT senha FROM comprador WHERE codigo = @codigo", con);
+                query.Parameters.AddWithValue("@codigo", codigo);
+                SqlDataReader leitor = query.ExecuteReader(); //EXECUTA O COMANDO COM UM READER
+
+                while (leitor.Read()) //ENQUANTO O LEITOR CONSEGUIR LER 
+                {
+                    senhaUsada = leitor["senha"].ToString(); //GUARDA A SENHA QUE VEIO DO BANCO
+                }
+
+                //SE O COMPRADOR QUISER APENAS TROCAR A SENHA (UPDATE SENHA)
+                if (senhaAntiga == senhaUsada && senhaNova == confirmaSenhaNova && senhaNova != senhaAntiga) //CONDIÇÃO PARA EFETUAR O UPDATE SENHA
+                {
+                    SqlCommand querySenha =
+                    new SqlCommand("UPDATE comprador SET senha = @senha WHERE codigo = @codigo", con);
+                    querySenha.Parameters.AddWithValue("@senha", senhaNova);
+                    querySenha.Parameters.AddWithValue("@codigo", codigo);
+                    query.ExecuteNonQuery(); //EXECUTE
+                }
+
+                //SE O COMPRADOR ESQUECEU A SENHA (RESTAURAR SENHA)
+                if(senhaAntiga == "" && senhaNova == confirmaSenhaNova && senhaNova != senhaUsada)
+                {
+                    SqlCommand querySenha =
+                    new SqlCommand("UPDATE comprador SET senha = @senha WHERE codigo = @codigo", con);
+                    querySenha.Parameters.AddWithValue("@senha", senhaNova);
+                    querySenha.Parameters.AddWithValue("@codigo", codigo);
+                    query.ExecuteNonQuery(); //EXECUTE
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            return true; 
+        }
+
+        //MÉTODO PARA RESTAURAR SENHA (ESQUECEU SUA SENHA) - FALTA TESTAR
+        public bool RestaurarSenha(string cnpj, string cpf)
+        {
+            string email = "";
+
+            try
+            {
+                con.Open();
+
+                if (cpf != "") {
+                    SqlCommand query =
+                        new SqlCommand("SELECT email FROM comprador WHERE cpf = @cpf", con);
+                    query.Parameters.AddWithValue("@cpf", cpf);
+                    SqlDataReader leitor = query.ExecuteReader();
+                    while (leitor.Read())
+                    {
+                        email = leitor["email"].ToString();
+                    }
+                }
+                else
+                {
+                    SqlCommand query =
+                        new SqlCommand("SELECT email FROM comprador WHERE cnpj = @cnpj", con);
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    SqlDataReader leitor = query.ExecuteReader();
+                    while (leitor.Read())
+                    {
+                        email = leitor["email"].ToString();
+                    }
+                }
+
+                //Configurando a mensagem
+                MailMessage mail = new MailMessage();
+                //Origem
+                mail.From = new MailAddress("supplierranking@hotmail.com");
+                //Destinatário
+                mail.To.Add(email);
+                //Assunto
+                mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
+                //Corpo do e-mail
+                mail.Body = "NADA";//ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA;
+
+
+                //Configurar o smtp
+                SmtpClient smtpServer = new SmtpClient("smtp.live.com");
+                //configurar porta
+                smtpServer.Port = 25;
+                //Habilitar o TLS
+                smtpServer.EnableSsl = true;
+                //Configurar usuario e senha p/ logar
+                smtpServer.Credentials = new System.Net.NetworkCredential("supplierranking@hotmail.com", "Senai1234");
+                //Enviar
+                smtpServer.Send(mail);
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }//Final da Classe
 }//Namespace
