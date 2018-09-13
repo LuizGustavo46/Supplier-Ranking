@@ -1,0 +1,24 @@
+﻿/*@import "~/Content/config/css/bootstrap/bootstrap-datepicker.css";
+@import "~/Content/config/css/bootstrap/bootstrap-grid.css";
+@import "~/Content/config/css/bootstrap/bootstrap-reboot.css";
+@import "~/Content/config/css/bootstrap/bootstrap.min.css";
+@import "~/Content/config/css/mixins/_text-hide.css";
+
+@import "~/Content/config/css/animate.css";
+@import "~/Content/config/css/aos.css";
+@import "~/Content/config/css/flaticon.css";
+@import "~/Content/config/css/icomoon.css";
+@import "~/Content/config/css/ionicons.min.css";
+@import "~/Content/config/css/jquery.timepicker.css";
+@import "~/Content/config/css/magnific-popup.css";
+@import "~/Content/config/css/open-iconic-bootstrap.min.css";
+@import "~/Content/config/css/owl.carousel.min.css";
+@import "~/Content/config/css/owl.theme.default.min.css";*/
+
+
+@import "/Content/css/menu.css";
+
+.text-primary {
+    color: #0962EA !important; 
+}
+
