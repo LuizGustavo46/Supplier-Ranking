@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -105,6 +106,7 @@
     <Content Include="Content\config\js\main.js" />
     <Content Include="Content\config\js\owl.carousel.min.js" />
     <Content Include="Content\config\js\popper.min.js" />
+    <Content Include="Content\css\home_slider.css" />
     <Content Include="Content\images\bg_1.jpg" />
     <Content Include="Content\images\bg_2.jpg" />
     <Content Include="Content\images\bg_3.jpg" />
