@@ -7946,7 +7946,7 @@ textarea.form-control {
 .mfp-with-zoom.mfp-removing.mfp-bg {
   opacity: 0; }
 
-.ftco-counter {
+/*.ftco-counter {
   margin-top: -100px; }
   @media (max-width: 767.98px) {
     .ftco-counter {
@@ -7974,7 +7974,7 @@ textarea.form-control {
   .ftco-counter .ftco-label {
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: .1em; }
+    letter-spacing: .1em; }*/
 
 .block-20 {
   overflow: hidden;
