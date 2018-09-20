@@ -90,6 +90,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\config\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Content\config\fonts\svg\icone.svg" />
     <Content Include="Content\config\js\aos.js" />
     <Content Include="Content\config\js\bootstrap-datepicker.js" />
     <Content Include="Content\config\js\bootstrap.min.js" />
@@ -106,7 +108,11 @@
     <Content Include="Content\config\js\main.js" />
     <Content Include="Content\config\js\owl.carousel.min.js" />
     <Content Include="Content\config\js\popper.min.js" />
+    <Content Include="Content\css\footer.css" />
+    <Content Include="Content\css\ftco.css" />
     <Content Include="Content\css\home_slider.css" />
+    <Content Include="Content\css\cover_overlay.css" />
+    <Content Include="Content\css\pricing.css" />
     <Content Include="Content\images\bg_1.jpg" />
     <Content Include="Content\images\bg_2.jpg" />
     <Content Include="Content\images\bg_3.jpg" />
@@ -124,6 +130,7 @@
     <Content Include="Content\images\person_2.jpg" />
     <Content Include="Content\images\person_3.jpg" />
     <Content Include="Content\images\person_4.jpg" />
+    <Content Include="Content\images\planos.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -147,7 +154,6 @@
     <Content Include="Content\config\css\jquery.timepicker.css" />
     <Content Include="Content\config\fonts\flaticon\font\flaticon.css" />
     <Content Include="Content\config\fonts\flaticon\font\flaticon.html" />
-    <Content Include="Content\config\fonts\flaticon\font\Flaticon.svg" />
     <Content Include="Content\config\fonts\icomoon\icomoon.svg" />
     <Content Include="Content\config\fonts\ionicons\css\ionicons.min.css" />
     <Content Include="Content\config\fonts\ionicons\fonts\ionicons.svg" />
@@ -182,6 +188,7 @@
     <Content Include="Views\conteudo\html\services.html" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Views\conteudo\images\planos.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -320,7 +327,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\conteudo\images\" />
     <Folder Include="Views\conteudo\js\" />
   </ItemGroup>
   <PropertyGroup>

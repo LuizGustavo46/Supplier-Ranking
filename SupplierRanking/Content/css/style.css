@@ -1,6 +1,11 @@
 ﻿@import "/Content/css/menu.css";
 @import "/Content/css/home_carossel.css";
 
+@import "../css/footer.css";
+@import "../css/ftco.css";
+@import "../css/pricing.css";
+@import "../css/slider.css";
+
 
 /*
     Valores para substituir nos @media
