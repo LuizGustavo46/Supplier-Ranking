@@ -60,8 +60,9 @@ namespace SupplierRanking.Controllers
 
         public ActionResult CadastroPessoaFisica()
         {
-            Comprador c = Comprador.TelaCadastroComprador();
-            return View(c);
+            //Comprador c = Comprador.TelaCadastroComprador();     //NÃO SEI SE ESSA PARTE VAI PRECISAR - PRECISO TESTAR
+            //return View(c);
+            return View();
         }
 
         [HttpPost]
@@ -76,7 +77,7 @@ namespace SupplierRanking.Controllers
             c.Tipo_pessoa = tipo_pessoa;
             c.Cnpj = ""; //NÃO VAI SER USADO
             c.Nome_empresa = ""; //NÃO VAI SER USADO
-            c.Endereço = ""; //NÃO VAI SER USADO
+            c.Endereco = ""; //NÃO VAI SER USADO
             c.Bairro = ""; //NÃO VAI SER USADO
             c.Cidade = ""; //NÃO VAI SER USADO
             c.Uf = uf;
@@ -97,7 +98,7 @@ namespace SupplierRanking.Controllers
             Comprador c = Comprador.BuscaPessoa(codigo);
 
             if (c == null)
-            { 
+            {
                 TempData["Msg"] = "Erro ao encontrar dados";
                 return RedirectToAction("Index");
             }
@@ -116,7 +117,7 @@ namespace SupplierRanking.Controllers
             c.Tipo_pessoa = ""; //NÃO VAI SER USADO
             c.Cnpj = ""; //NÃO VAI SER USADO
             c.Nome_empresa = ""; //NÃO VAI SER USADO
-            c.Endereço = ""; //NÃO VAI SER USADO
+            c.Endereco = ""; //NÃO VAI SER USADO
             c.Bairro = ""; //NÃO VAI SER USADO
             c.Cidade = ""; //NÃO VAI SER USADO
             c.Uf = uf;
@@ -134,8 +135,9 @@ namespace SupplierRanking.Controllers
 
         public ActionResult CadastroPessoaJuridica()
         {
-            Comprador c = Comprador.TelaCadastroComprador();
-            return View(c);
+            //Comprador c = Comprador.TelaCadastroComprador();
+            //return View(c);
+            return View();
         }
 
         [HttpPost]
@@ -149,10 +151,10 @@ namespace SupplierRanking.Controllers
             c.Senha = senha;
             c.Tipo_pessoa = tipo_pessoa;
             c.Cnpj = cnpj;
-            c.Nome_empresa = nome_empresa; 
-            c.Endereço = endereco; 
-            c.Bairro = bairro; 
-            c.Cidade = cidade; 
+            c.Nome_empresa = nome_empresa;
+            c.Endereco = endereco;
+            c.Bairro = bairro;
+            c.Cidade = cidade;
             c.Uf = uf;
             c.Cep = cep;
             c.Telefone = telefone;
@@ -190,11 +192,11 @@ namespace SupplierRanking.Controllers
             c.Tipo_pessoa = ""; //NÃO VAI SER USADO
             c.Cnpj = ""; //NÃO VAI SER USADO
             c.Nome_empresa = nome_empresa;
-            c.Endereço = endereco;
+            c.Endereco = endereco;
             c.Bairro = bairro;
             c.Cidade = cidade;
             c.Uf = uf;
-            c.Cep = cep; 
+            c.Cep = cep;
             c.Telefone = telefone;
             c.Celular = celular;
 
@@ -205,6 +207,61 @@ namespace SupplierRanking.Controllers
 
             return RedirectToAction("UpdatePessoaJuridica");
         }
+
+        public ActionResult UpdateSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UpdateSenha(int codigo ,string senhaAntiga, string senhaNova, string confirmaSenhaNova)
+        {
+            Comprador c = new Comprador();
+            c.Codigo = codigo;
+            if(c.UpdateSenha(senhaAntiga, senhaNova, confirmaSenhaNova))
+                TempData["Msg"] = "Senha Alterada";
+            else
+                TempData["Msg"] = "Senhas não correspondem";
+
+            return RedirectToAction("UpdateSenha");
+        }
+
+        public ActionResult RestaurarSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RestaurarSenha(string cnpj, string cpf)
+        {
+            Comprador c = new Comprador();
+            if(c.RestaurarSenha(cnpj, cpf))
+                TempData["Msg"] = "Confirmação enviada para o e-mail cadastrado";
+            else
+                TempData["Msg"] = "Informação Inválida";
+
+            return RedirectToAction("RestaurarSenha");
+        }
+
+        public ActionResult ExcluirConta()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ExcluirConta(int codigo, string senha)
+        {
+            Comprador c = new Comprador();
+
+            if(c.ExcluirConta(codigo, senha))
+                TempData["Msg"] = "Sua conta foi excluída";
+            else
+                TempData["Msg"] = "Senha incorreta";
+
+            return RedirectToAction("Index","Home");
+        }
+
+
 
 
 

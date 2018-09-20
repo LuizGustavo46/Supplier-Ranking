@@ -84,7 +84,7 @@ namespace SupplierRanking.Models
             set { nome_empresa = value; }
         }
 
-        public string Endereço
+        public string Endereco
         {
             get { return endereco; }
             set { endereco = value; }
@@ -125,7 +125,7 @@ namespace SupplierRanking.Models
             get { return celular; }
             set { celular = value; }
         }
-        //-----INICIO DOS MÉTODOS -------------------------------------------------------------------------------------------------
+        //--------------------------------------------------INICIO DOS MÉTODOS-----------------------------------------------------------
 
         //MÉTODO DE LOGIN PESSOA FISICA
         public bool LoginPessoaFisica()
@@ -178,36 +178,36 @@ namespace SupplierRanking.Models
             return res; //RETORNA TRUE OR FALSE
         }
 
-        //CONTADOR DE CODIGO PARA CADASTRO DE PESSOAS FISICAS OU JURIDICAS
-        public static Comprador TelaCadastroComprador()
-        {
-            Comprador u = new Comprador();
-            try
-            {
-                u.cpf = "";
-                u.nome = "";
-                u.sobrenome = "";
-                u.email = "";
-                u.senha = "";
-                u.tipo_pessoa = "";   //F ou J (Fisica ou Juridica)
-                u.cnpj = "";
-                u.nome_empresa = "";
-                u.endereco = "";
-                u.bairro = "";
-                u.cidade = "";
-                u.uf = "";
-                u.cep = "";
-                u.telefone = "";
-                u.celular = "";
-            }
-            catch (Exception e)
-            {
-                u = null;
-            }
-            if (con.State == ConnectionState.Open)
-                con.Close();
-            return u;
-        }
+        //RETURN DOS CAMPOS PARA CADASTRO DE PESSOAS FISICAS OU JURIDICAS --- COMENTEI PQ NÃO SEI SE VAI PRECISAR
+        //public static Comprador TelaCadastroComprador()
+        //{
+        //    Comprador u = new Comprador();
+        //    try
+        //    {
+        //        u.cpf = "";
+        //        u.nome = "";
+        //        u.sobrenome = "";
+        //        u.email = "";
+        //        u.senha = "";
+        //        u.tipo_pessoa = "";   //F ou J (Fisica ou Juridica)
+        //        u.cnpj = "";
+        //        u.nome_empresa = "";
+        //        u.endereco = "";
+        //        u.bairro = "";
+        //        u.cidade = "";
+        //        u.uf = "";
+        //        u.cep = "";
+        //        u.telefone = "";
+        //        u.celular = "";
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        u = null;
+        //    }
+        //    if (con.State == ConnectionState.Open)
+        //        con.Close();
+        //    return u;
+        //}
 
         //CADASTRO DE PESSOA FISICA - VERIFICAR SE ESTA CORRETO
         public bool CadastroPessoaFisica()
@@ -258,7 +258,7 @@ namespace SupplierRanking.Models
             return res; //RETORNA RESPOSTA DE CONFIRMAÇÃO
         }
 
-        //Cadastro de usuario VERIFICAR SE ESTÁ CORRETO
+        //CADASTRO DE PESSOA JURIDICA VERIFICAR SE ESTÁ CORRETO
         public bool CadastroPessoaJuridica()
         {
             bool res = true;
@@ -358,9 +358,10 @@ namespace SupplierRanking.Models
             {
                 con.Open();
                 SqlCommand query =
-                    new SqlCommand("UPDATE comprador SET " +
-                    "nome = @nome, sobrenome = @sobrenome, email = @email, uf = @uf, fone = @fone, @celular = celular WHERE codigo = @codigo", con);
-                if (nome.Length >= 1 && sobrenome.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0))
+                    new SqlCommand("UPDATE comprador SET nome = @nome, sobrenome = @sobrenome, email = @email," +
+                    "uf = @uf, fone = @fone, @celular = celular WHERE codigo = @codigo", con);
+                if (nome.Length >= 1 && sobrenome.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0)
+                    && (celular.Length == 15 || celular.Length == 0))
                 {
                     query.Parameters.AddWithValue("@codigo", codigo);
                     query.Parameters.AddWithValue("@nome", nome);
@@ -393,13 +394,15 @@ namespace SupplierRanking.Models
             bool res = true;
             try
             {
-                con.Open();
+                con.Open(); //ABRE CONEXÃO
+                //CRIAÇÃO DE COMANDO
                 SqlCommand query =
-                    new SqlCommand("UPDATE comprador SET " +
-                    "nome_empresa = @nome_empresa, email = @email, endereco = @endereco, bairro = @bairro, cidade = @cidade," + 
-                    "@uf = uf, @cep = cep, @fone = fone, @celular = celular WHERE codigo = @codigo", con);
-                if (nome_empresa.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0)
-                    && endereco.Length > 1 && bairro.Length > 1 && cidade.Length > 1 && uf.Length == 2 && cep.Length == 9)
+                    new SqlCommand("UPDATE comprador SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
+                    "bairro = @bairro, cidade = @cidade, @uf = uf, @cep = cep, @fone = fone," + 
+                    "@celular = celular WHERE codigo = @codigo", con);
+                if (nome_empresa.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) &&
+                    (celular.Length == 15 || celular.Length == 0) && endereco.Length > 1 && bairro.Length > 1 &&
+                    cidade.Length > 1 && uf.Length == 2 && cep.Length == 9)
                 {
                     query.Parameters.AddWithValue("@codigo", codigo);
                     query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
@@ -421,6 +424,7 @@ namespace SupplierRanking.Models
             catch (Exception e)
             {
                 string exception = e.Message;
+                res = false;
             }
 
             if (con.State == System.Data.ConnectionState.Open)
@@ -430,16 +434,17 @@ namespace SupplierRanking.Models
         }
 
         //MÉTODO PARA EXCLUIR UM COMPRADOR - (COMPRADOR EXCLUIR SUA PRÓPRIA CONTA) - FALTA TESTAR
-        public bool ExcluirConta()
+        public bool ExcluirConta(int codigo, string senha)
         {
             try
             {
-                con.Open();
-
+                con.Open(); //ABRE CONEXÃO
+                //CRIAÇÃO DE COMANDO
                 SqlCommand query =
-                    new SqlCommand("DELETE FROM comprador WHERE codigo = @codigo",
+                    new SqlCommand("DELETE FROM comprador WHERE codigo = @codigo AND senha = @senha",
                         con);
                 query.Parameters.AddWithValue("@codigo", codigo);
+                query.Parameters.AddWithValue("@senha", senha);
                 query.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -508,7 +513,7 @@ namespace SupplierRanking.Models
 
             try
             {
-                con.Open();
+                con.Open(); //ABRE CONEXÃO
 
                 if (cpf != "") {
                     SqlCommand query =
@@ -551,7 +556,7 @@ namespace SupplierRanking.Models
                 //HABILITAR O TLS
                 smtpServer.EnableSsl = true;
                 //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                smtpServer.Credentials = new System.Net.NetworkCredential("supplierranking@hotmail.com", "Senai1234");
+                smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking@hotmail.com", "Senai1234");
                 //ENVIAR
                 smtpServer.Send(mail);
 
@@ -560,6 +565,9 @@ namespace SupplierRanking.Models
             {
                 return false;
             }
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
             return true;
         }
 
