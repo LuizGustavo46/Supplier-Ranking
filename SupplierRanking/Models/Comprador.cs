@@ -12,13 +12,13 @@ namespace SupplierRanking.Models
     {
         private static SqlConnection con =
                 new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
-
+        //CAMPOS DO BANCO DE DADOS (TODOS OS DADOS DE CADASTRO)
         private int codigo;
         private string cpf;
         private string nome;
         private string sobrenome;
         private string email;
-        private string tipo_usuario;
+        private string tipo_pessoa;
         private string senha;
         private string cnpj;
         private string nome_empresa;
@@ -27,7 +27,7 @@ namespace SupplierRanking.Models
         private string cidade;
         private string uf;
         private string cep;
-        private string fone;
+        private string telefone;
         private string celular;
 
         public int Codigo
@@ -60,10 +60,10 @@ namespace SupplierRanking.Models
             set { email = value; }
         }
 
-        public string Tipo_usuario
+        public string Tipo_pessoa
         {
-            get { return tipo_usuario; }
-            set { tipo_usuario = value; }
+            get { return tipo_pessoa; }
+            set { tipo_pessoa = value; }
         }
 
         public string Senha
@@ -114,10 +114,10 @@ namespace SupplierRanking.Models
             set { cep = value; }
         }
 
-        public string Fone
+        public string Telefone
         {
-            get { return fone; }
-            set { fone = value; }
+            get { return telefone; }
+            set { telefone = value; }
         }
 
         public string Celular
@@ -127,7 +127,7 @@ namespace SupplierRanking.Models
         }
         //-----INICIO DOS MÉTODOS -------------------------------------------------------------------------------------------------
 
-        //Método de login de pessoa fisica
+        //MÉTODO DE LOGIN PESSOA FISICA
         public bool LoginPessoaFisica()
         {
             bool res = false;
@@ -149,11 +149,11 @@ namespace SupplierRanking.Models
 
             if (con.State == ConnectionState.Open)
                 con.Close();
-            return res; //Retorna true or false
+            return res; //RETORNA TRUE OR FALSE
         }
 
 
-        //Método de login de pessoa juridica 
+        //MÉTODO DE LOGIN PESSOA JURIDICA
         public bool LoginPessoaJuridica()
         {
             bool res = false;
@@ -175,33 +175,21 @@ namespace SupplierRanking.Models
 
             if (con.State == ConnectionState.Open)
                 con.Close();
-            return res; //Retorna true or false
+            return res; //RETORNA TRUE OR FALSE
         }
 
-        //Contador de código para cadastro de pessoas fisicas ou juridicas
-        public static Comprador ContadorCadastroUsuario()
+        //CONTADOR DE CODIGO PARA CADASTRO DE PESSOAS FISICAS OU JURIDICAS
+        public static Comprador TelaCadastroComprador()
         {
             Comprador u = new Comprador();
             try
             {
-                con.Open();
-                SqlCommand query =
-                    new SqlCommand("select max(codigo) AS valor from comprador", con);
-
-                int codigo = 0;
-
-                try
-                {
-                    codigo = Convert.ToInt32(query.ExecuteScalar());
-                }
-                catch (Exception ex) { }
-
-                u.codigo = codigo + 1;
                 u.cpf = "";
                 u.nome = "";
                 u.sobrenome = "";
                 u.email = "";
                 u.senha = "";
+                u.tipo_pessoa = "";   //F ou J (Fisica ou Juridica)
                 u.cnpj = "";
                 u.nome_empresa = "";
                 u.endereco = "";
@@ -209,7 +197,7 @@ namespace SupplierRanking.Models
                 u.cidade = "";
                 u.uf = "";
                 u.cep = "";
-                u.fone = "";
+                u.telefone = "";
                 u.celular = "";
             }
             catch (Exception e)
@@ -221,28 +209,27 @@ namespace SupplierRanking.Models
             return u;
         }
 
-        //Cadastro de usuario VERIFICAR SE ESTÁ CORRETO
+        //CADASTRO DE PESSOA FISICA - VERIFICAR SE ESTA CORRETO
         public bool CadastroPessoaFisica()
         {
             bool res = true;
             try
             {
-                con.Open(); // abre conexão
-                // Criação de comando
+                con.Open(); //ABRE CONEXÃO
+                //CRIAÇÃO DE COMANDO
                 SqlCommand query =
-                    new SqlCommand("INSERT INTO comprador VALUES (@codigo,@cpf,@nome,@sobrenome,@email,@tipo_usuario,@senha," +
-                    "@cargo,@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@fone,@celular)",
+                    new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
+                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@fone,@celular)",
                         con);
                 if (cpf.Length == 14 && senha.Length >= 5 && nome.Length >= 3 && email.Length >= 8 && cep.Length == 9 &&
-                    (fone.Length == 14 || fone.Length == 0) && (celular.Length == 15 || celular.Length == 0)) //Condição para efetuar o cadastro
+                    (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0)) //CONDIÇÃO PARA EFETUAR O CADASTRO
                 {
-                    // Adiciona os parâmetros
-                    query.Parameters.AddWithValue("codigo", codigo);
+                    //ADICIONA OS PARÂMETROS --- NÃO PRECISA PASSAR O CAMPO CODIGO, ELE GERA AUTOMATICAMENTE NO BANCO
                     query.Parameters.AddWithValue("@cpf", cpf);
                     query.Parameters.AddWithValue("@nome", nome);
                     query.Parameters.AddWithValue("@sobrenome", sobrenome);
                     query.Parameters.AddWithValue("@email", email);
-                    query.Parameters.AddWithValue("@tipo_usuario", tipo_usuario);
+                    query.Parameters.AddWithValue("@tipo_pessoa", tipo_pessoa);
                     query.Parameters.AddWithValue("@senha", senha);
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
@@ -251,7 +238,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@cidade", cidade);
                     query.Parameters.AddWithValue("@uf", uf);
                     query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@fone", fone);
+                    query.Parameters.AddWithValue("@fone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
                     query.ExecuteNonQuery();
                 }
@@ -262,13 +249,13 @@ namespace SupplierRanking.Models
             }
             catch (Exception ex)
             {
-                string exception = ex.Message; // Caso der erro na inserção
+                string exception = ex.Message; //CASO DER ERRO NA INSERÇÃO
             }
 
             if (con.State == ConnectionState.Open)
-                con.Close(); // fecha conexão
+                con.Close(); //FECHA CONEXÃO
 
-            return res; // retorna resposta de confirmação
+            return res; //RETORNA RESPOSTA DE CONFIRMAÇÃO
         }
 
         //Cadastro de usuario VERIFICAR SE ESTÁ CORRETO
@@ -277,24 +264,23 @@ namespace SupplierRanking.Models
             bool res = true;
             try
             {
-                con.Open(); // abre conexão
-                // Criação de comando
+                con.Open(); //ABRE CONEXÃO
+                //CRIAÇÃO DE COMANDO
                 SqlCommand query =
-                    new SqlCommand("INSERT INTO comprador VALUES (@codigo,@cpf,@nome,@sobrenome,@email,@tipo_usuario,@senha," +
-                    "@cargo,@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@fone,@celular)",
+                    new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@tipo_usuario,@senha," +
+                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@fone,@celular)",
                         con);
                 if (cnpj.Length == 19 && senha.Length >= 5 && nome_empresa.Length >= 3 && email.Length >= 8 && cep.Length == 9 &&
-                    (fone.Length == 14 || fone.Length == 0) && (celular.Length == 15 || celular.Length == 0) && uf.Length == 2 &&
-                    endereco.Length > 1 && bairro.Length > 1 && cidade.Length > 1) //Condição para efetuar o cadastro
+                    (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0) && uf.Length == 2 &&
+                    endereco.Length > 1 && bairro.Length > 1 && cidade.Length > 1) //CONDIÇÃO PARA EFETUAR O CADASTRO
                 {
-                    // Adiciona os parâmetros
-                    query.Parameters.AddWithValue("codigo", codigo);
+                    //ADICIONA OS PARÂMETROS --- NÃO PRECISA PASSAR O CAMPO CODIGO, ELE GERA AUTOMATICAMENTE NO BANCO
                     query.Parameters.AddWithValue("@cpf", cpf);
                     query.Parameters.AddWithValue("@nome", nome);
                     query.Parameters.AddWithValue("@sobrenome", sobrenome);
                     query.Parameters.AddWithValue("@email", email);
-                    query.Parameters.AddWithValue("@tipo_usuario", tipo_usuario);
                     query.Parameters.AddWithValue("@senha", senha);
+                    query.Parameters.AddWithValue("@tipo_pessoa", tipo_pessoa);
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
                     query.Parameters.AddWithValue("endereco", endereco);
@@ -302,7 +288,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@cidade", cidade);
                     query.Parameters.AddWithValue("@uf", uf);
                     query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@fone", fone);
+                    query.Parameters.AddWithValue("@fone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
                     query.ExecuteNonQuery();
                 }
@@ -313,13 +299,13 @@ namespace SupplierRanking.Models
             }
             catch (Exception ex)
             {
-                string exception = ex.Message; // Caso der erro na inserção
+                string exception = ex.Message; //CASO DER ERRO NA INSERÇÃO
             }
 
             if (con.State == ConnectionState.Open)
-                con.Close(); // fecha conexão
+                con.Close(); //FECHA CONEXÃO
 
-            return res; // retorna resposta de confirmação
+            return res; //RETORNA RESPOSTA DE CONFIRMAÇÃO
         }
 
         //BUSCAR USUARIO PARA MOSTRAR NA PAGINA DE UPDATE
@@ -341,8 +327,8 @@ namespace SupplierRanking.Models
                     bp.nome = leitor["nome"].ToString();
                     bp.sobrenome = leitor["sobrenome"].ToString();
                     bp.email = leitor["email"].ToString();
-                    bp.tipo_usuario = leitor["tipo_usuario"].ToString();
                     bp.senha = leitor["senha"].ToString();
+                    bp.tipo_pessoa = leitor["tipo_pessoa"].ToString();
                     bp.cnpj = leitor["cnpj"].ToString();
                     bp.nome_empresa = leitor["nome_empresa"].ToString();
                     bp.endereco = leitor["endereco"].ToString();
@@ -350,7 +336,7 @@ namespace SupplierRanking.Models
                     bp.cidade = leitor["cidade"].ToString();
                     bp.uf = leitor["uf"].ToString();
                     bp.cep = leitor["cep"].ToString();
-                    bp.fone = leitor["fone"].ToString();
+                    bp.telefone = leitor["fone"].ToString();
                     bp.celular = leitor["celular"].ToString();
                 }
             }
@@ -373,16 +359,17 @@ namespace SupplierRanking.Models
                 con.Open();
                 SqlCommand query =
                     new SqlCommand("UPDATE comprador SET " +
-                    "nome = @nome, sobrenome = @sobrenome, email = @email, fone = @fone, @celular = celular WHERE codigo = @codigo", con);
-                if (nome.Length >= 1 && sobrenome.Length >= 1 && email.Length >= 8 && (fone.Length == 14 || fone.Length == 0) && (celular.Length == 15 || celular.Length == 0))
+                    "nome = @nome, sobrenome = @sobrenome, email = @email, uf = @uf, fone = @fone, @celular = celular WHERE codigo = @codigo", con);
+                if (nome.Length >= 1 && sobrenome.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0))
                 {
                     query.Parameters.AddWithValue("@codigo", codigo);
                     query.Parameters.AddWithValue("@nome", nome);
                     query.Parameters.AddWithValue("@sobrenome", sobrenome);
                     query.Parameters.AddWithValue("@email", email);
-                    query.Parameters.AddWithValue("@fone", fone);
+                    query.Parameters.AddWithValue("@uf", uf);
+                    query.Parameters.AddWithValue("@fone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
-                    query.ExecuteNonQuery(); // executa
+                    query.ExecuteNonQuery(); //EXECUTA
                 }
                 else
                 {
@@ -411,7 +398,7 @@ namespace SupplierRanking.Models
                     new SqlCommand("UPDATE comprador SET " +
                     "nome_empresa = @nome_empresa, email = @email, endereco = @endereco, bairro = @bairro, cidade = @cidade," + 
                     "@uf = uf, @cep = cep, @fone = fone, @celular = celular WHERE codigo = @codigo", con);
-                if (nome_empresa.Length >= 1 && email.Length >= 8 && (fone.Length == 14 || fone.Length == 0) && (celular.Length == 15 || celular.Length == 0)
+                if (nome_empresa.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0)
                     && endereco.Length > 1 && bairro.Length > 1 && cidade.Length > 1 && uf.Length == 2 && cep.Length == 9)
                 {
                     query.Parameters.AddWithValue("@codigo", codigo);
@@ -422,9 +409,9 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@cidade", cidade);
                     query.Parameters.AddWithValue("@uf", uf);
                     query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@fone", fone);
+                    query.Parameters.AddWithValue("@fone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
-                    query.ExecuteNonQuery(); // executa
+                    query.ExecuteNonQuery(); //EXECUTA
                 }
                 else
                 {
@@ -545,27 +532,27 @@ namespace SupplierRanking.Models
                     }
                 }
 
-                //Configurando a mensagem
+                //CONFIGURANDO A MENSAGEM
                 MailMessage mail = new MailMessage();
-                //Origem
+                //ORIGEM
                 mail.From = new MailAddress("supplierranking@hotmail.com");
-                //Destinatário
+                //DESTINATÁRIO
                 mail.To.Add(email);
-                //Assunto
+                //ASSUNTO
                 mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
-                //Corpo do e-mail
+                //CORPO DO E-MAIL
                 mail.Body = "NADA";//ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA;
 
 
-                //Configurar o smtp
+                //CONFIGURAR O SMTP
                 SmtpClient smtpServer = new SmtpClient("smtp.live.com");
-                //configurar porta
+                //CONFIGURAR PORTA
                 smtpServer.Port = 25;
-                //Habilitar o TLS
+                //HABILITAR O TLS
                 smtpServer.EnableSsl = true;
-                //Configurar usuario e senha p/ logar
+                //CONFIGURAR USUARIO E SENHA PARA LOGAR
                 smtpServer.Credentials = new System.Net.NetworkCredential("supplierranking@hotmail.com", "Senai1234");
-                //Enviar
+                //ENVIAR
                 smtpServer.Send(mail);
 
             }
@@ -591,5 +578,5 @@ namespace SupplierRanking.Models
 
 
 
-    }//Final da Classe
-}//Namespace
+    }//FINAL DA CLASSE
+}//NAMESPACE
