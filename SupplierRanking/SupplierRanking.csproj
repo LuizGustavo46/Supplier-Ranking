@@ -106,8 +106,10 @@
     <Content Include="Content\config\js\main.js" />
     <Content Include="Content\config\js\owl.carousel.min.js" />
     <Content Include="Content\config\js\popper.min.js" />
+    <Content Include="Content\css\about.css" />
+    <Content Include="Content\css\contact.css" />
     <Content Include="Content\css\contador.css" />
-    <Content Include="Content\css\home_carossel.css" />
+    <Content Include="Content\css\home_slider.css" />
     <Content Include="Content\images\bg_1.jpg" />
     <Content Include="Content\images\bg_2.jpg" />
     <Content Include="Content\images\bg_3.jpg" />
@@ -181,7 +183,7 @@
     <Content Include="Views\conteudo\html\pricing.html" />
     <Content Include="Views\conteudo\html\project.html" />
     <Content Include="Views\conteudo\html\services.html" />
-    <Content Include="Content\css\menu.css" />
+    <Content Include="Content\css\navbar.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
