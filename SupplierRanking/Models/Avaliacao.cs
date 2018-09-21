@@ -18,7 +18,7 @@ namespace SupplierRanking.Models
         private int preco;
         private int satisfacao;
         private string comentario;
-        private DateTime data_avaliacao;
+        private string data_avaliacao;
         private string cnpj_fornecedor;
         private int codigo_comprador;
 
@@ -58,7 +58,7 @@ namespace SupplierRanking.Models
             set { comentario = value; }
         }
 
-        public DateTime Data_avaliacao
+        public string Data_avaliacao
         {
             get { return data_avaliacao; }
             set { data_avaliacao = value; }
@@ -80,6 +80,11 @@ namespace SupplierRanking.Models
         //MÉTODO PARA INSERIR CADASTRO DE AVALIAÇÃO
         public bool CadastrarAvaliacao() //FALTA COLOCAR A RESTRIÇÃO DE TEMPO - SÓ PODERA AVALIAR A MESMA EMPRESA DEPOIS DE 7 DIAS
         {
+            Avaliacao a = new Avaliacao();
+            string data_agora = DateTime.Now.ToShortDateString(); //PEGA A DATA COMPLETA SEM A HORA DO DIA
+            //string dia = DateTime.Now.Day.ToString(); //PEGA O DIA - USAR SOMENTE SE PRECISAR
+            //string mes = DateTime.Now.Month.ToString(); //PEGA O MÊS - USAR SOMENTE SE PRECISAR
+            //string ano = DateTime.Now.Year.ToString(); //PEGA O ANO - USAR SOMENTE SE PRECISAR
             try
             {
                 con.Open();//ABRE CONEXÃO
@@ -91,9 +96,36 @@ namespace SupplierRanking.Models
                 query1.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
                 SqlDataReader leitor = query1.ExecuteReader();
 
-                //SE NÃO HOUVER NADA REGISTRADO NA TABELA DE AVALIACAO NO BANCO COM RELAÇÃO AO COMPRADOR E AO FORNECEDOR,
-                //SOMENTE ASSIM PODE OCORRER O REGISTRO DA AVALIAÇÃO
-                if (!leitor.Read())
+                //SE NÃO HOUVER NADA REGISTRADO NA TABELA DE AVALIACAO NO BANCO, COM RELAÇÃO AO COMPRADOR E AO FORNECEDOR,
+                //OU A ULTIMA AVALIAÇÃO JA PASSOU DE 7 DIAS, SOMENTE ASSIM PODE OCORRER O REGISTRO DA AVALIAÇÃO NOVAMENTE
+
+                if (leitor.Read())  //SE CAIR NO ELSE É PORQUE O COMPRADOR ESTA FAZENDO A PRIMEIRA AVALIAÇÃO DA EMPRESA
+                {
+                    a.data_avaliacao = leitor["data_avaliacao"].ToString();
+
+                    TimeSpan date = Convert.ToDateTime(data_agora) - Convert.ToDateTime(a.data_avaliacao);
+                    int diferenca = date.Days;
+
+                    if (diferenca >= 7)
+                    {
+                        //CRIAÇÃO DE COMANDO
+                        SqlCommand query =
+                        new SqlCommand("INSERT INTO avaliacao VALUES (@qualidade,@atendimento,@entrega,@preco," +
+                        "@satisfacao,@comentario,@data_avaliacao,@cnpj_fornecedor,@codigo_comprador)", con);
+
+                        query.Parameters.AddWithValue("@qualidade", qualidade);
+                        query.Parameters.AddWithValue("@atendimento", atendimento);
+                        query.Parameters.AddWithValue("@entrega", entrega);
+                        query.Parameters.AddWithValue("@preco", preco);
+                        query.Parameters.AddWithValue("@satisfcao", satisfacao);
+                        query.Parameters.AddWithValue("@comentario", comentario);
+                        query.Parameters.AddWithValue("@data_avaliacao", data_avaliacao);
+                        query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
+                        query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
+                        query.ExecuteNonQuery(); //EXECUTA
+                    } //FINAL  DA CONDIÇÃO DOS DIAS
+                }
+                else
                 {
                     //CRIAÇÃO DE COMANDO
                     SqlCommand query =
@@ -111,7 +143,6 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
                     query.ExecuteNonQuery(); //EXECUTA
                 }           
-
             }
             catch(Exception ex)
             {
