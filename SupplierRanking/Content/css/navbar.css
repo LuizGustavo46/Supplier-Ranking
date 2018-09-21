@@ -1,4 +1,7 @@
-﻿/***** MOBILE *****/
+﻿
+/***** CONFIGURAÇÃO DO MENU *****/
+
+/***** MOBILE *****/
 @media (max-width: 576px) {
     .ftco-navbar-light.scrolled .navbar-nav {
         background: none;

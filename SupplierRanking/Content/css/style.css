@@ -1,8 +1,11 @@
-﻿@import "/Content/css/about.css";
-@import "/Content/css/contact.css";
-@import "/Content/css/contador.css";
+﻿@import "/Content/css/menu.css";
 @import "/Content/css/home_slider.css";
 @import "/Content/css/navbar.css";
+
+@import "../css/footer.css";
+@import "../css/ftco.css";
+@import "../css/pricing.css";
+@import "../css/slider.css";
 
 
 
@@ -53,56 +56,56 @@
 
 /************** Botões ***************/
 .btn {
-	cursor: pointer;
-	border-radius: 0px;
-	-webkit-box-shadow: none !important;
-	box-shadow: none !important;
+    cursor: pointer;
+    border-radius: 0px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 .btn:hover,
 .btn:active,
 .btn:focus {
-	outline: none;
-}
+        outline: none;
+    }
 
-.btn.btn-primary {
-	background: #0962ea;
-	border: 2px solid #0962ea;
-	color: #fff;
-}
+    .btn.btn-primary {
+        background: #0962ea;
+        border: 2px solid #0962ea;
+        color: #fff;
+    }
 
-.btn.btn-primary:hover {
-	border: 2px solid #0962ea;
-	background: transparent;
-	color: #0962ea;
-}
+        .btn.btn-primary:hover {
+            border: 2px solid #0962ea;
+            background: transparent;
+            color: #0962ea;
+        }
 
-.btn.btn-primary.btn-outline-primary {
-	border: 2px solid #0962ea;
-	background: transparent;
-	color: #0962ea;
-}
+        .btn.btn-primary.btn-outline-primary {
+            border: 2px solid #0962ea;
+            background: transparent;
+            color: #0962ea;
+        }
 
-.btn.btn-primary.btn-outline-primary:hover {
-	border: 2px solid transparent;
-	background: #0962ea;
-	color: #000;
-}
+            .btn.btn-primary.btn-outline-primary:hover {
+                border: 2px solid transparent;
+                background: #0962ea;
+                color: #000;
+            }
 
-.btn.btn-outline-white {
-	border-color: rgba(255, 255, 255, 0.8);
-	background: none;
-	border-radius: 0px;
-	border-width: 2px;
-}
+    .btn.btn-outline-white {
+        border-color: rgba(255, 255, 255, 0.8);
+        background: none;
+        border-radius: 0px;
+        border-width: 2px;
+    }
 
 .btn.btn-outline-white:hover,
 .btn.btn-outline-white:focus,
 .btn.btn-outline-white:active {
-	background: #fff;
-	border-color: #fff;
-	color: #000;
-}
+            background: #fff;
+            border-color: #fff;
+            color: #000;
+        }
 
 /************** Cards ***************/
 .media {

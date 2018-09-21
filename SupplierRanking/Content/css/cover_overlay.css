@@ -1,0 +1,20 @@
+﻿.cover_1 {
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  position: relative; }
+  .cover_1 .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    background: #0962ea;
+    opacity: .5; }
+  .cover_1 .heading {
+    color: #fff;
+    font-weight: 500; }
+  .cover_1 .sub-heading {
+    color: #fff;
+    font-size: 20px; }
