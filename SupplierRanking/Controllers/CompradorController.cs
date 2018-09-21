@@ -66,7 +66,7 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroPessoaFisica(string cpf, string nome, string sobrenome, string email, string senha, string tipo_pessoa, string uf, string telefone, string celular)
+        public ActionResult CadastroPessoaFisica(string cpf, string nome, string sobrenome, string email, string senha, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Cpf = cpf;
@@ -74,7 +74,7 @@ namespace SupplierRanking.Controllers
             c.Sobrenome = sobrenome;
             c.Email = email;
             c.Senha = senha;
-            c.Tipo_pessoa = tipo_pessoa;
+            c.Tipo_pessoa = "F"; //F DE PESSOA FISICA, NÃO PRECISA SER PASSADO ATRAVÉS DA VIEW
             c.Cnpj = ""; //NÃO VAI SER USADO
             c.Nome_empresa = ""; //NÃO VAI SER USADO
             c.Endereco = ""; //NÃO VAI SER USADO
@@ -141,7 +141,7 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroPessoaJuridica(string tipo_pessoa, string cnpj, string nome_empresa, string email, string senha, string endereco, string bairro, string cidade, string cep, string uf, string telefone, string celular)
+        public ActionResult CadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string senha, string endereco, string bairro, string cidade, string cep, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Cpf = ""; //NÃO VAI SER USADO
@@ -149,7 +149,7 @@ namespace SupplierRanking.Controllers
             c.Sobrenome = ""; //NÃO VAI SER USADO
             c.Email = email;
             c.Senha = senha;
-            c.Tipo_pessoa = tipo_pessoa;
+            c.Tipo_pessoa = "J"; //J DE PESSOA JURIDICA, NÃO PRECISA SER PASSADO ATRAVÉS DA VIEW
             c.Cnpj = cnpj;
             c.Nome_empresa = nome_empresa;
             c.Endereco = endereco;
