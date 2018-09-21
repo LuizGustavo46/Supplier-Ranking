@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 
 namespace SupplierRanking.Models
@@ -31,7 +32,7 @@ namespace SupplierRanking.Models
         private string posicao;
         private string descricao;
         private string cep;
-        private string media;
+        private float media;
         private string slogan;
         private string plano;
         private string nome_categoria;
@@ -103,12 +104,12 @@ namespace SupplierRanking.Models
             get { return senha; }
             set { senha = value; }
         }
-        public String Numero_celular
+        public String Celular
         {
             get { return celular; }
             set { celular = value; }
         }
-        public String Numero_endereco
+        public String Endereco
         {
             get { return endereco; }
             set { endereco = value; }
@@ -128,7 +129,7 @@ namespace SupplierRanking.Models
             get { return cep; }
             set { cep = value; }
         }
-        public String Media
+        public float Media
         {
             get { return media; }
             set { media = value; }
@@ -164,89 +165,10 @@ namespace SupplierRanking.Models
             set { nome = value; }
         }
 
-        //MÉTODO PARA LOGAR COM O USUÁRIO
-        public bool Logar()
-        {
-            bool res = false;
-           
-            try
-            {
-                con.Open();
-                SqlCommand query =
-                    new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj AND senha = @senha", con);
-                query.Parameters.AddWithValue("@login", cnpj);
-                query.Parameters.AddWithValue("@senha", senha);
-                SqlDataReader leitor = query.ExecuteReader();
 
-                res = leitor.HasRows;
-                
-            }
-            catch (Exception e)
-            {
-                res = false;
-               
-            }
-
-            if (con.State == ConnectionState.Open)
-                con.Close();
-      
-                return res;
-        }
+        //----------------------------INICIO DOS MÉTODOS--------------------------------
 
         /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
-
-        // CADASTRAR NOVO FORNECEDOR
-        public string Cadastrar()
-        {
-            string res = "Inserido com sucesso!";
-            try
-            {
-                con.Open(); // abre conexão
-                // Criação de comando
-                SqlCommand query =
-                    new SqlCommand("INSERT INTO fornecedor VALUES (@cnpj,@nome_empresa,@email,@telefone@celular,@endereco,@bairro,@cidade,@uf,@cep,@senha,@slogan,@descricao,@media,@plano,@imagem,@nome_categoria)",
-                        con);
-                // Adiciona os parâmetros
-                if (telefone.Length == 14 || telefone.Length == 15)
-                {
-                    query.Parameters.AddWithValue("@cnpj", cnpj);
-                    query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
-                    query.Parameters.AddWithValue("@email", email);
-                    query.Parameters.AddWithValue("@telefone", telefone);
-                    query.Parameters.AddWithValue("@celular", celular);
-                    query.Parameters.AddWithValue("@endereco", endereco);
-                    query.Parameters.AddWithValue("@bairro", bairro);
-                    query.Parameters.AddWithValue("@cidade", cidade);
-                    query.Parameters.AddWithValue("@uf", uf);
-                    query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@senha", senha);                   
-                    query.Parameters.AddWithValue("@slogan", slogan);
-                    query.Parameters.AddWithValue("@descricao", descricao);
-                    query.Parameters.AddWithValue("@media", media);
-                    query.Parameters.AddWithValue("@plano", plano);
-                    query.Parameters.AddWithValue("@imagem", imagem);
-                    query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
-
-
-
-                    query.ExecuteNonQuery();
-                }
-                else
-                {
-                    res = "Preencha os campos corretamente";
-                }
-            }
-            catch (Exception ex)
-            {
-                res = ex.Message; // Caso der erro na inserção
-            }
-
-            if (con.State == ConnectionState.Open)
-                con.Close(); // fecha conexão
-
-            return res; // retorna resposta de confirmação
-        }
-
 
         //MÉTODO PARA LOGAR COM O FORNECEDOR
         public bool Login()
@@ -275,11 +197,231 @@ namespace SupplierRanking.Models
 
         }
 
-        public Boolean UpdateSenha (string senha, string novaSenha, string senhaDigitada)
+       
+
+        //(FUNCIONARIO DO FORNECEDOR)
+        public string CadastroFuncionario(string cnpj, string senha, string nome, int codigo)
+        {
+            string res = "Inserido com sucesso!";
+            try
+            {
+
+                con.Open(); // abre conexão
+                // Criação de comando
+                SqlCommand query =
+                    new SqlCommand("INSERT INTO funcionario VALUES (@nome,@codigo,@senha)", con);
+                // Adiciona os parâmetros
+
+                if (nome != "" && codigo.ToString() != "" && senha != "")
+                {
+                    query.Parameters.AddWithValue("@nome", nome);
+                    query.Parameters.AddWithValue("@codigo", codigo);
+                    query.Parameters.AddWithValue("@senha", senha);
+                    query.ExecuteNonQuery();
+                }
+                else
+                {
+                    res = "Preencha os campos corretamente";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message; // Caso der erro na inserção
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close(); // fecha conexão
+
+            return res; // retorna resposta de confirmação
+        }
+
+
+        public string CadastroPessoaJuridica()
+        {
+            string res = "Inserido com sucesso!";
+            try
+            {
+                con.Open(); // abre conexão
+                // Criação de comando
+                SqlCommand query =
+                    new SqlCommand("INSERT INTO fornecedor VALUES (@cnpj,@nome_empresa,@email,@telefone@celular,@endereco,@bairro,@cidade,@uf,@cep,@senha,@slogan,@descricao,@media,@plano,@imagem,@nome_categoria)",
+                        con);
+                // Adiciona os parâmetros
+                if (email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
+                    && cep != "" && slogan != "" && descricao != "" && descricao != "" && plano != "" && imagem != "" && nome_categoria != "")
+                {
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
+                    query.Parameters.AddWithValue("@email", email);
+                    query.Parameters.AddWithValue("@telefone", telefone);
+                    query.Parameters.AddWithValue("@celular", celular);
+                    query.Parameters.AddWithValue("@endereco", endereco);
+                    query.Parameters.AddWithValue("@bairro", bairro);
+                    query.Parameters.AddWithValue("@cidade", cidade);
+                    query.Parameters.AddWithValue("@uf", uf);
+                    query.Parameters.AddWithValue("@cep", cep);
+                    query.Parameters.AddWithValue("@senha", senha);
+                    query.Parameters.AddWithValue("@slogan", slogan);
+                    query.Parameters.AddWithValue("@descricao", descricao);
+                    query.Parameters.AddWithValue("@media", media);
+                    query.Parameters.AddWithValue("@plano", plano);
+                    query.Parameters.AddWithValue("@imagem", imagem);
+                    query.Parameters.AddWithValue("@nome_categoria", nome_categoria);            
+                    query.ExecuteNonQuery();               
+                }
+                else
+                {
+                    res = "Preencha os campos corretamente";
+                }
+            }
+            catch (Exception ex)
+            {
+                res = ex.Message; // Caso der erro na inserção
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close(); // fecha conexão
+
+            return res; // retorna resposta de confirmação
+        }
+
+        
+
+
+        
+        
+        public bool ExcluirFuncionario(string nome, int codigo, string nomeDigitado, int codigoDigitado)
+        {
+            try
+            {
+                con.Open();
+
+                SqlCommand query =
+                    new SqlCommand("DELETE FROM Funcionario WHERE codigo = @codigo AND nome = @nome",
+                        con);
+                if(codigo == codigoDigitado && nomeDigitado == nome)
+                query.Parameters.AddWithValue("@codigo", codigo);
+                query.Parameters.AddWithValue("@nome", nome);
+                query.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            return true;
+        }
+
+
+      
+
+        //BUSCA PESSOA JURIDICA 
+        public static List<Fornecedor> PesquisaFornecedor(string pesquisa)
+        {
+            List<Fornecedor> lista = new List<Fornecedor>();
+            try
+            {
+                con.Open(); // abre conexão
+                // Criação de comando
+                SqlCommand query =
+                    new SqlCommand("SELECT * FROM fornecedor WHERE nome_empresa = @texto", con);
+                query.Parameters.AddWithValue("@texto", pesquisa);
+
+                SqlDataReader leitor = query.ExecuteReader();
+
+                while (leitor.Read())
+                {
+                    Fornecedor f = new Fornecedor();
+
+                    f.nome_empresa = leitor["nome_empresa"].ToString();                 
+                    lista.Add(f); // adiciona os valores cadastrados no banco à lista
+                }
+            }
+            catch (Exception ex)
+            {
+                lista = null;
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            return lista;
+        }
+
+
+
+        public Boolean RestaurarSenha(string novaSenha, string confirmarSenha, string cnpjDigitado)
         {
             bool res = false;
             try
-               {
+            {
+                //se a nova senha for igual ao campo com a nova senha e o cnpj digitado for igual ao cnpj do banco
+                //a restauração é efetuada
+                if (novaSenha == confirmarSenha && cnpj == cnpjDigitado)
+                {
+                    SqlCommand query =
+                        new SqlCommand("SELECT email FROM fornecedor WHERE  cnpj = @cnpj", con);
+                    query.Parameters.AddWithValue("@senha", senha);
+                    SqlDataReader leitor = query.ExecuteReader();
+                    while(leitor.Read())
+                    {
+
+                        email = leitor["email"].ToString();
+                                
+                    }
+                    //CONFIGURANDO A MENSAGEM
+                    MailMessage mail = new MailMessage();
+                    //ORIGEM
+                    mail.From = new MailAddress("supplierranking@hotmail.com");
+                    //DESTINATÁRIO
+                    mail.To.Add(email);
+                    //ASSUNTO
+                    mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
+                    //CORPO DO E-MAIL
+                    mail.Body = "NADA";//ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA;
+
+
+                    //CONFIGURAR O SMTP
+                    SmtpClient smtpServer = new SmtpClient("smtp.live.com");
+                    //CONFIGURAR PORTA
+                    smtpServer.Port = 25;
+                    //HABILITAR O TLS
+                    smtpServer.EnableSsl = true;
+                    //CONFIGURAR USUARIO E SENHA PARA LOGAR
+                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking@hotmail.com", "Senai1234");
+                    //ENVIAR
+                    smtpServer.Send(mail);
+
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                res = false;
+            }
+
+            if (con.State == System.Data.ConnectionState.Open)
+                con.Close();
+
+            return res;
+
+        }
+
+       
+
+
+        /********MÉTODOS DE UPDATE********/
+
+        public Boolean UpdateSenha(string senha, string novaSenha, string senhaDigitada)
+        {
+            bool res = false;
+            try
+            {
                 con.Open();
 
                 /*--------------------------------------------------------------------------------------------------- 
@@ -290,16 +432,16 @@ namespace SupplierRanking.Models
                  --------------------------------------------------------------------------------------------------*/
                 /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 
-                if (novaSenha!=senha && senhaDigitada == senha)
-                {             
+                if (novaSenha != senha && senhaDigitada == senha)
+                {
                     SqlCommand query =
                         new SqlCommand("UPDATE fornecedor SET  SENHA = @senha Where LOGIN = @login", con);
-                    query.Parameters.AddWithValue("@senha", senha);               
+                    query.Parameters.AddWithValue("@senha", senha);
                     SqlDataReader leitor = query.ExecuteReader();
                     res = true;
 
                 }
-                
+
             }
             catch (Exception e)
             {
@@ -312,8 +454,9 @@ namespace SupplierRanking.Models
             return res;
         }
 
-        // Método para EDITAR um Funcionário - Bibliotecário
-        internal string EditarInfo(string confirmaSenha)
+        //-------------------
+
+        internal string UpdateCadastroPessoaJuridica(string confirmaSenha)
         {
             string res = "Salvo com sucesso!";
 
@@ -365,75 +508,6 @@ namespace SupplierRanking.Models
 
             return res;
         }
-
-
-        // MÉTODO PARA EXCLUIR UM FUNCIONÁRIO DO BANCO
-        public bool DeletarFuncionario()
-        {
-            try
-            {
-                con.Open();
-
-                SqlCommand query =
-                    new SqlCommand("DELETE FROM Funcionario WHERE codigo = @codigo AND nome = @nome",
-                        con);
-                query.Parameters.AddWithValue("@codigo", codigo);
-                query.Parameters.AddWithValue("@nome", nome);
-                query.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
-            if (con.State == ConnectionState.Open)
-                con.Close();
-
-            return true;
-        }
-
-        // Método para EDITAR um Funcionário - FORNECEDOR
-        internal string EditarFuncionario(string novoNome, string novaSenha)
-        {
-            string res = "Salvo com sucesso!";
-            try
-            {
-                con.Open();
-                SqlCommand query =
-                    new SqlCommand("UPDATE funcionario SET " +
-                    "senha = @senha, nome = @nome", con);
-
-                /*SE AS INFORMAÇÕES DIGITADAS PELO USUÁRIO FOREM IGUAIS AS QUE JA ESTÃO NO BANCO
-                O SISTEMA AVISA O USUARIO*/
-                /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
-
-                if (nome!=novoNome && senha!=novaSenha)
-                {                 
-                    query.Parameters.AddWithValue("@senha", senha);
-                    query.Parameters.AddWithValue("@nome", nome);
-               
-                    query.ExecuteNonQuery();
-                }
-                else
-                {
-                    res = "Informações ainda são iguais as antigas. Atualize as informações";
-                }
-            }
-            catch (Exception e)
-            {
-                res = e.Message;
-            }
-
-            if (con.State == System.Data.ConnectionState.Open)
-                con.Close();
-
-            return res;
-        }
-
-
-
-
-
 
 
     }
