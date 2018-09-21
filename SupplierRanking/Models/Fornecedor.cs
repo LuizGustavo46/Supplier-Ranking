@@ -170,7 +170,7 @@ namespace SupplierRanking.Models
 
         /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 
-        //MÉTODO PARA LOGAR COM O FORNECEDOR
+        /*==============================================================================LOGAR COM O FORNECEDOR==============================================================================*/
         public bool Login()
         {
             bool res = false;
@@ -196,10 +196,9 @@ namespace SupplierRanking.Models
             return res;// retorna resposta de confirmação
 
         }
+        /*=================================================================================================================================================================================*/
 
-       
-
-        //(FUNCIONARIO DO FORNECEDOR)
+        /*=========================================================================CADASTRO FUNCIONARIO FORNECEDOR=========================================================================*/
         public string CadastroFuncionario(string cnpj, string senha, string nome, int codigo)
         {
             string res = "Inserido com sucesso!";
@@ -235,8 +234,9 @@ namespace SupplierRanking.Models
 
             return res; // retorna resposta de confirmação
         }
+        /*==============================================================================================================================================================================*/
 
-
+        /*==============================================================================CADASTRO PESSOA JURIDICA========================================================================*/
         public string CadastroPessoaJuridica()
         {
             string res = "Inserido com sucesso!";
@@ -285,12 +285,9 @@ namespace SupplierRanking.Models
 
             return res; // retorna resposta de confirmação
         }
+        /*==============================================================================================================================================================================*/
 
-        
-
-
-        
-        
+        /*====================================================================EXCLUIR FUNCIONARIO DO FORNECEDOR=========================================================================*/
         public bool ExcluirFuncionario(string nome, int codigo, string nomeDigitado, int codigoDigitado)
         {
             try
@@ -315,11 +312,9 @@ namespace SupplierRanking.Models
 
             return true;
         }
+        /*==============================================================================================================================================================================*/
 
-
-      
-
-        //BUSCA PESSOA JURIDICA 
+        /*==============================================================================BUSCA PESSOA JURIDICA===========================================================================*/
         public static List<Fornecedor> PesquisaFornecedor(string pesquisa)
         {
             List<Fornecedor> lista = new List<Fornecedor>();
@@ -333,12 +328,24 @@ namespace SupplierRanking.Models
 
                 SqlDataReader leitor = query.ExecuteReader();
 
+                Fornecedor f = new Fornecedor();
                 while (leitor.Read())
                 {
-                    Fornecedor f = new Fornecedor();
 
-                    f.nome_empresa = leitor["nome_empresa"].ToString();                 
+                    f.nome_empresa = leitor["nome_empresa"].ToString();
+                    f.nome_categoria = leitor["nome_categoria"].ToString();
+                    //colocar campo de posiçõ de ranking
+
                     lista.Add(f); // adiciona os valores cadastrados no banco à lista
+
+                    if (pesquisa == f.nome_empresa)
+                    {
+
+                        f.Nome_empresa = f.nome_empresa;
+                        f.Nome_categoria = f.nome_categoria;
+                        lista.Add(f); // adiciona os valores cadastrados no banco à lista
+                        
+                    }
                 }
             }
             catch (Exception ex)
@@ -351,9 +358,9 @@ namespace SupplierRanking.Models
 
             return lista;
         }
+        /*==============================================================================================================================================================================*/
 
-
-
+        /*==============================================================================RESTAURAR SENHA=================================================================================*/
         public Boolean RestaurarSenha(string novaSenha, string confirmarSenha, string cnpjDigitado)
         {
             bool res = false;
@@ -411,12 +418,49 @@ namespace SupplierRanking.Models
             return res;
 
         }
+        /*==============================================================================================================================================================================*/
 
-       
+        /*==============================================================================LISTA FUNCIONARIO===============================================================================*/
+        public static List<Fornecedor> ListaFuncionario()
+        {
+            List<Fornecedor> listaFuncionario = new List<Fornecedor>();
+            try
+            {
+                con.Open(); // abre conexão
+
+                // Criação de comando
+                SqlCommand query =
+                    new SqlCommand("SELECT * FROM fornecedor", con);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                while (leitor.Read())
+                {
+                    Fornecedor f = new Fornecedor();
+
+                    f.Nome = leitor["Nome"].ToString();
+                    f.Codigo = leitor["Codigio"].ToString();
+                    f.Senha = leitor["Senha"].ToString();
+                    listaFuncionario.Add(f); // adiciona os valores cadastrados no banco à lista
+                 
+                }
+            }
+            catch (Exception ex)
+            {
+                listaFuncionario = null;
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            return listaFuncionario;
+        }
+        /*==============================================================================================================================================================================*/
 
 
-        /********MÉTODOS DE UPDATE********/
+        /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*MÉTODOS DE UPDATE-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+        
 
+        /*=================================================================================UPDATE SENHA=================================================================================*/
         public Boolean UpdateSenha(string senha, string novaSenha, string senhaDigitada)
         {
             bool res = false;
@@ -454,16 +498,19 @@ namespace SupplierRanking.Models
             return res;
         }
 
-        //-------------------
+        /*==============================================================================================================================================================================*/
 
-        internal string UpdateCadastroPessoaJuridica(string confirmaSenha)
+        /*==============================================================================UPDATE CADASTRO=================================================================================*/
+        internal string UpdateCadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string telefone, string bairro, string cidade, string rua, string uf,
+            string imagem, string senha, string celular, string endereco, string posicao, string descricao, string cep, float media, string slogan, string plano, string nome_categoria)
+        
         {
             string res = "Salvo com sucesso!";
 
             /*PEDE-SE UMA CONFIRMAÇÃO DE SENHA PARA EDITAR AS INFORMAÇÕES DO FORNCEDOR
             PARA QUE TENHA UMA SEGURANÇA MAIOR*/
 
-            if (confirmaSenha == senha)
+            //if (confirmaSenha == senha)
                 try
                 {
                     con.Open();
@@ -508,10 +555,10 @@ namespace SupplierRanking.Models
 
             return res;
         }
-
+        /*==============================================================================================================================================================================*/
 
     }
-    }
+}
 
 
     
