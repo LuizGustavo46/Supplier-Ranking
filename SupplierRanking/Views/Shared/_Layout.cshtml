@@ -1,40 +1,190 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>@ViewBag.Title - Supplier Ranking</title>
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/open-iconic-bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/animate.css">
+
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/owl.carousel.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/owl.theme.default.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/magnific-popup.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/aos.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/ionicons.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/bootstrap/bootstrap-datepicker.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/jquery.timepicker.css">
+
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/flaticon.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/icomoon.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/config/css/style.css">
+
+        <link rel="stylesheet" type="text/css" href="~/Content/css/style.css">
+        
+        <!-- Icone - PLANOS -->
+         <link rel="icon" href="~/Views/conteudo/images/payment.png type="image/x-icon"" />
+    </head>
+
+    <body>
+        <!-- INÍCIO - MENU -->
+        <nav id="ftco-navbar"
+             class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+             data-aos="fade-down" data-aos-delay="500">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Supplier Ranking</a>
+
+                <!-- INÍCIO - Menu Hamburguer -->
+                <button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#ftco-nav"
+                        aria-controls="ftco-nav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <!-- FIM - Menu Hamburguer -->
+
+                <div id="ftco-nav"
+                     class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Views/Home/Index.cshtml">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="~/Views/Home/SobreNos.cshtml">
+                                Sobre Nós
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Views/Home/Planos.cshtml">
+                                Planos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Views/Home/Contato.cshtml">
+                                Contato
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Views/Home/LoginFornecedorComprador.cshtml">
+                                Acessar
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
+        </nav>
+        <!-- FIM - MENU -->
+        
+        <!-- INÍCIO - CONTEÚDO -->
+        <div>
+            @RenderBody()
         </div>
-    </div>
+        <!-- FIM - CONTEÚDO -->
+        
+        <!-- INÍCIO - RODAPÉ -->
+      
+            <footer class="ftco-footer ftco-bg-dark ftco-section">
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+                <div class="container">
+                    
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+                        <div class="row mb-5">
+                            <div class="col-md">
+                                <div class="ftco-footer-widget mb-4">
+
+                                    <h2 class="ftco-heading-2">Suplier Ranking</h2>
+                                    <p>
+                                        O Website feito para você que é fornecedor ou comprador
+                                        de mercadorias para sua empresa.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="ftco-footer-widget mb-4">
+                                    <h2 class="ftco-heading-2">Páginas</h2>
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="py-2 d-block">Sobre nós</a></li>
+                                        <li><a href="#" class="py-2 d-block">Planos</a></li>
+                                        <li><a href="#" class="py-2 d-block">Contato</a></li>
+                                        <li><a href="#" class="py-2 d-block">Acesso</a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="ftco-footer-widget mb-4">
+                                    <h2 class="ftco-heading-2">Entre em contato por: </h2>
+                                    <ul class="list-unstyled">
+                                        <li><a href="#" class="py-2 d-block">Av. da Saudade , Campinas - SP</a></li>
+                                        <li><a href="#" class="py-2 d-block">+55 (19)97788-2233</a></li>
+                                        <li><a href="#" class="py-2 d-block">suportesuplierranking@hotmail.com</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="ftco-footer-widget mb-4">
+                                    <ul class="ftco-footer-social list-unstyled float-md-right float-lft">
+                                        <li class="ftco-animate"><a href="#"><span  class="icon-twitter"></span></a></li>
+                                        <li class="ftco-animate"><a href="#"><span style="margin-left:-76px;margin-top:164px" class="icon-facebook"></span></a></li>
+                                        <li class="ftco-animate"><a href="#"><span  class="icon-instagram"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+                <div style="marging-left:-1000px" class="row">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This site was made by <i class="icon-compass" aria-hidden="true">
+                            </i> by <a href="https://colorlib.com" target="_blank">Suplier Ranking</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+               
+
+                    
+                    
+                    
+                    
+                    
+            </footer>
+            <!-- FIM - RODAPÉ -->
+
+            <script src="~/Content/config/js/jquery.min.js"></script>
+            <script src="~/Content/config/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="~/Content/config/js/popper.min.js"></script>
+            <script src="~/Content/config/js/bootstrap.min.js"></script>
+            <script src="~/Content/config/js/jquery.easing.1.3.js"></script>
+            <script src="~/Content/config/js/jquery.waypoints.min.js"></script>
+            <script src="~/Content/config/js/jquery.stellar.min.js"></script>
+            <script src="~/Content/config/js/owl.carousel.min.js"></script>
+            <script src="~/Content/config/js/jquery.magnific-popup.min.js"></script>
+            <script src="~/Content/config/js/aos.js"></script>
+            <script src="~/Content/config/js/jquery.animateNumber.min.js"></script>
+            <script src="~/Content/config/js/bootstrap-datepicker.js"></script>
+            <script src="~/Content/config/js/jquery.timepicker.min.js"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+            <script src="~/Content/config/js/google-map.js"></script>
+            <script src="~/Content/config/js/main.js"></script>
 </body>
 </html>
