@@ -196,6 +196,7 @@ namespace SupplierRanking.Models
             return res;// retorna resposta de confirmação
 
         }
+
         /*=================================================================================================================================================================================*/
 
         /*=========================================================================CADASTRO FUNCIONARIO FORNECEDOR=========================================================================*/
@@ -247,7 +248,7 @@ namespace SupplierRanking.Models
                 SqlCommand query =
                     new SqlCommand("INSERT INTO fornecedor VALUES (@cnpj,@nome_empresa,@email,@telefone@celular,@endereco,@bairro,@cidade,@uf,@cep,@senha,@slogan,@descricao,@media,@plano,@imagem,@nome_categoria)",
                         con);
-                // Adiciona os parâmetros
+                // Compara se todos os campos estao preenchidos corretamente, caso não esteja retorna uma mensagem de erro para o usuario 
                 if (email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
                     && cep != "" && slogan != "" && descricao != "" && descricao != "" && plano != "" && imagem != "" && nome_categoria != "")
                 {
@@ -270,6 +271,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@nome_categoria", nome_categoria);            
                     query.ExecuteNonQuery();               
                 }
+                //Mensagem de erro
                 else
                 {
                     res = "Preencha os campos corretamente";
@@ -297,6 +299,7 @@ namespace SupplierRanking.Models
                 SqlCommand query =
                     new SqlCommand("DELETE FROM Funcionario WHERE codigo = @codigo AND nome = @nome",
                         con);
+                //Comparando se o código digitado pelo FORNECEDOR é igual ao do funcionario correspondente no banco, se sim ele exclui
                 if(codigo == codigoDigitado && nomeDigitado == nome)
                 query.Parameters.AddWithValue("@codigo", codigo);
                 query.Parameters.AddWithValue("@nome", nome);
@@ -322,6 +325,7 @@ namespace SupplierRanking.Models
             {
                 con.Open(); // abre conexão
                 // Criação de comando
+
                 SqlCommand query =
                     new SqlCommand("SELECT * FROM fornecedor WHERE nome_empresa = @texto", con);
                 query.Parameters.AddWithValue("@texto", pesquisa);
@@ -338,6 +342,7 @@ namespace SupplierRanking.Models
 
                     lista.Add(f); // adiciona os valores cadastrados no banco à lista
 
+                    //Compara se o nome digitado na barra de pesquisa é igual a alguma empresa (pessoa juridica) cadastrada no banco
                     if (pesquisa == f.nome_empresa)
                     {
 
@@ -510,7 +515,7 @@ namespace SupplierRanking.Models
             /*PEDE-SE UMA CONFIRMAÇÃO DE SENHA PARA EDITAR AS INFORMAÇÕES DO FORNCEDOR
             PARA QUE TENHA UMA SEGURANÇA MAIOR*/
 
-            //if (confirmaSenha == senha)
+            if (confirmaSenha == senha)
                 try
                 {
                     con.Open();
