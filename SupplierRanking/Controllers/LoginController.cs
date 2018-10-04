@@ -8,7 +8,7 @@ namespace SupplierRanking.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        // chama tela de login
         public ActionResult Login()
         {
             return View();

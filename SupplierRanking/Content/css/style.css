@@ -1,11 +1,14 @@
-﻿/***** IMPORT DOS CSS *****/
-@import "/Content/css/menu.css";
+﻿@import "/Content/css/menu.css";
 @import "/Content/css/home_slider.css";
+@import "/Content/css/navbar.css";
 
 @import "../css/footer.css";
 @import "../css/ftco.css";
 @import "../css/pricing.css";
 @import "../css/slider.css";
+
+
+
 
 
 /*
@@ -18,7 +21,7 @@
 
 */
 
-
+/***** Font-Color e Background-Color *****/
 .text-primary {
     color: #013B51 !important;
 }
@@ -29,6 +32,10 @@
 
 .text-white {
     color: #FFF !important;
+}
+
+.text-gray {
+    color: #5C5C5C !important;
 }
 
 .bg-light {
@@ -47,6 +54,7 @@
     background: #DAA520;
 }
 
+/************** Botões ***************/
 .btn {
     cursor: pointer;
     border-radius: 0px;
@@ -54,7 +62,9 @@
     box-shadow: none !important;
 }
 
-    .btn:hover, .btn:active, .btn:focus {
+.btn:hover,
+.btn:active,
+.btn:focus {
         outline: none;
     }
 
@@ -89,9 +99,43 @@
         border-width: 2px;
     }
 
-        .btn.btn-outline-white:hover, .btn.btn-outline-white:focus, .btn.btn-outline-white:active {
+.btn.btn-outline-white:hover,
+.btn.btn-outline-white:focus,
+.btn.btn-outline-white:active {
             background: #fff;
             border-color: #fff;
             color: #000;
         }
+
+/************** Cards ***************/
+.media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; 
+}
+
+.media-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; 
+}
+
+.media-custom {
+	background: #fff;
+}
+
+.media-custom .media-body .name {
+	font-weight: 500;
+	font-size: 16px;
+	margin-bottom: 0;
+	color: #0962ea;
+}
+
+.media-custom .media-body .position {
+	font-size: 13px;
+	color: #d9d9d9;
+}
 
