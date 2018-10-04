@@ -1,115 +1,79 @@
 ﻿
 @{ ViewBag.Title = "Planos"; }
-
-
    
-     <!-- START slider -->
-
-    <section class="home-slider owl-carousel">
-        <div class="slider-item" style="background-image: url('/Content/images/planos.jpg');" data-stellar-background-ratio="0.5">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row slider-text align-items-center">
-                    <div class="col-md-7 col-sm-12 ftco-animate">
-                        
-                        <h1 class="mb-3">Planos</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END slider -->
-
-    
-<!--PLANOS -->
-    <section class="ftco-section bg-light">
+<!-- INÍCIO - Carossel -->
+<section class="home-slider owl-carousel">
+    <div class="slider-item" 
+         style="background-image: url('/Content/images/planos.jpg');" 
+         data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 text-center ftco-animate">
-                    <div class="pricing p-4 py-5">
-                        <div class="icon mb-2">
-
-                            <img style="width:100px;heigth:100px;" src="~/Content/images/plano.png" />
-                        </div>
-                        <h3 class="mb-3">Free</h3>
-                        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                        <p class="price mb-4 py-3"><span class="mr-2 currency">R$0,00</span> <span class="per">por mês</span></p>
-                        <p><a href="#" class="btn btn-primary">Iniciar gratuitamente</a></p>
-
-                    </div>
+            <div class="row slider-text align-items-center">
+                <div class="col-md-7 col-sm-12 ftco-animate"> 
+                    <h1 class="mb-3">Planos</h1>
                 </div>
-                <div class="col-md-4 text-center ftco-animate">
-                    <div class="pricing p-4 py-5">
-                        <div class="icon mb-2">
-
-                            <img style="width:100px;heigth:100px;" src="~/Content/images/give-money.png" />   
-                        </div>
-                        <h3 class="mb-3">Premium</h3>
-                        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                        <p class="price mb-4 py-3"><span class="mr-2 currency">R$29,90</span> <span class="per">por mês</span></p>
-                        <p><a href="#" class="btn btn-primary">Assinar</a></p>
-                        <a href="#">Faça o teste por 30 dias!</a>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center ftco-animate">
-                   
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-   
-
-   
-    <!-- Modal -->
-    <div class="modal fade" id="modalRequest" tabindex="-1" role="dialog" aria-labelledby="modalAppointmentLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalAppointmentLabel">Request a Quote</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="#">
-                        <div class="form-group">
-                            <label for="appointment_name" class="text-black">Full Name</label>
-                            <input type="text" class="form-control" id="appointment_name">
-                        </div>
-                        <div class="form-group">
-                            <label for="appointment_email" class="text-black">Email</label>
-                            <input type="text" class="form-control" id="appointment_email">
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="appointment_date" class="text-black">Date</label>
-                                    <input type="text" class="form-control" id="appointment_date">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="appointment_time" class="text-black">Time</label>
-                                    <input type="text" class="form-control" id="appointment_time">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="appointment_message" class="text-black">Message</label>
-                            <textarea name="" id="appointment_message" class="form-control" cols="30" rows="10"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Send Message" class="btn btn-primary">
-                        </div>
-                    </form>
-                </div>
-
             </div>
         </div>
     </div>
+</section>
+<!-- FIM - Carossel -->
+
+<!-- INÍCIO - Planos -->
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+
+            <!-- INÍCIO - Plano Free -->
+            <div class="col-md-4 text-center ftco-animate">
+                <div class="pricing p-4 py-5">
+                    <div class="icon mb-2">
+                        <img style="width:100px; heigth:100px;" src="~/Content/images/plano.png" />
+                    </div>
+                    <h3 class="mb-3">Free</h3>
+                    <p class="mb-4">
+                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                    </p>
+                    <p class="price mb-4 py-3">
+                        <span class="mr-2 currency"> R$0,00 </span> 
+                        <span class="per"> por mês </span>
+                    </p>
+                    <p>
+                        <a href="#" class="btn btn-primary price-free">
+                            Iniciar gratuitamente
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <!-- FIM - Plano Free -->
+
+            <!-- INÍCIO - Plano Premium -->
+            <div class="col-md-4 text-center ftco-animate">
+                <div class="pricing p-4 py-5">
+                    <div class="icon mb-2">
+                        <img style="width:100px; heigth:100px;" src="~/Content/images/give-money.png" />   
+                    </div>
+                    <h3 class="mb-3">Premium</h3>
+                    <p class="mb-4">
+                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                    </p>
+                    <p class="price mb-4 py-3">
+                        <span class="mr-2 currency"> R$29,90 </span> 
+                        <span class="per"> por mês </span>
+                    </p>
+                    <p>
+                        <a href="#" class="btn btn-primary">
+                            Assinar
+                        </a>
+                    </p>
+                    <a href="#">
+                        Faça o teste por 30 dias!
+                    </a>
+                </div>
+            </div>
+            <!-- FIM - Plano Premium -->
+        </div>
+    </div>
+</section>
+<!-- FIM - Planos -->
 
    

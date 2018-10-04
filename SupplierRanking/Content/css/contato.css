@@ -1,0 +1,19 @@
+﻿@media (max-width: 768px) {
+	.contact-section .container {
+		padding: 70px;
+	}
+}
+
+.contact-section {
+	margin-top: -200px;
+}
+
+.contact-section .container {
+	z-index: 2;
+	position: relative;
+	padding: 30px;
+}
+
+.contact-section .contact-info p {
+	margin-bottom: 0;
+}

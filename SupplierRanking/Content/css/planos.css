@@ -1,6 +1,4 @@
-﻿
-/***** CONFIGURAÇÃO DOS PLANOS *****/
-.pricing {
+﻿.pricing {
 	border: 2px dashed #dbe9fe;
 	border-left: 2px solid #dbe9fe;
 	border-bottom: 2px solid #dbe9fe;
@@ -31,13 +29,15 @@
 	color: #b3b3b3;
 }
 
+.pricing .price-free {
+    margin-bottom: 1.7em;
+}
+
 .row {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
-	margin-right: -15px;
-	margin-left: 250px;
+    justify-content: center;
 }
-    
