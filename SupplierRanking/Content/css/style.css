@@ -1,10 +1,11 @@
 ﻿@import "/Content/css/menu.css";
-@import "/Content/css/home_slider.css";
-@import "/Content/css/navbar.css";
+@import "/Content/css/carossel.css";
+@import "/Content/css/contato.css";
+@import "/Content/css/menu.css";
 
 @import "../css/footer.css";
 @import "../css/ftco.css";
-@import "../css/pricing.css";
+@import "../css/planos.css";
 @import "../css/slider.css";
 
 
