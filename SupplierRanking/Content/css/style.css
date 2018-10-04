@@ -1,0 +1,142 @@
+﻿@import "/Content/css/menu.css";
+@import "/Content/css/carossel.css";
+@import "/Content/css/contato.css";
+@import "/Content/css/menu.css";
+
+@import "../css/footer.css";
+@import "../css/ftco.css";
+@import "../css/planos.css";
+@import "../css/slider.css";
+
+
+
+
+
+/*
+    Valores para substituir nos @media
+
+    767.98px = 576px    (sm)
+    991.98px = 768px    (md)
+             = 992px    (lg)
+             = 1200px   (xl)
+
+*/
+
+/***** Font-Color e Background-Color *****/
+.text-primary {
+    color: #013B51 !important;
+}
+
+.text-golden {
+    color: #DAA520 !important;
+}
+
+.text-white {
+    color: #FFF !important;
+}
+
+.text-gray {
+    color: #5C5C5C !important;
+}
+
+.bg-light {
+    background: #FAFAFA!important;
+}
+
+.bg-white {
+    background: #FFF;
+}
+
+.bg-primary {
+    background: #013B51;
+}
+
+.bg-golden {
+    background: #DAA520;
+}
+
+/************** Botões ***************/
+.btn {
+    cursor: pointer;
+    border-radius: 0px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+        outline: none;
+    }
+
+    .btn.btn-primary {
+        background: #0962ea;
+        border: 2px solid #0962ea;
+        color: #fff;
+    }
+
+        .btn.btn-primary:hover {
+            border: 2px solid #0962ea;
+            background: transparent;
+            color: #0962ea;
+        }
+
+        .btn.btn-primary.btn-outline-primary {
+            border: 2px solid #0962ea;
+            background: transparent;
+            color: #0962ea;
+        }
+
+            .btn.btn-primary.btn-outline-primary:hover {
+                border: 2px solid transparent;
+                background: #0962ea;
+                color: #000;
+            }
+
+    .btn.btn-outline-white {
+        border-color: rgba(255, 255, 255, 0.8);
+        background: none;
+        border-radius: 0px;
+        border-width: 2px;
+    }
+
+.btn.btn-outline-white:hover,
+.btn.btn-outline-white:focus,
+.btn.btn-outline-white:active {
+            background: #fff;
+            border-color: #fff;
+            color: #000;
+        }
+
+/************** Cards ***************/
+.media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; 
+}
+
+.media-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; 
+}
+
+.media-custom {
+	background: #fff;
+}
+
+.media-custom .media-body .name {
+	font-weight: 500;
+	font-size: 16px;
+	margin-bottom: 0;
+	color: #0962ea;
+}
+
+.media-custom .media-body .position {
+	font-size: 13px;
+	color: #d9d9d9;
+}
+
