@@ -515,7 +515,7 @@ namespace SupplierRanking.Models
             /*PEDE-SE UMA CONFIRMAÇÃO DE SENHA PARA EDITAR AS INFORMAÇÕES DO FORNCEDOR
             PARA QUE TENHA UMA SEGURANÇA MAIOR*/
 
-            if (confirmaSenha == senha)
+            //if (confirmaSenha == senha)
                 try
                 {
                     con.Open();
@@ -560,6 +560,8 @@ namespace SupplierRanking.Models
 
             return res;
         }
+
+      
         /*==============================================================================================================================================================================*/
 
     }
