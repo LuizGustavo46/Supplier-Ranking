@@ -58,7 +58,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: #57b846;
+  color: #0b96e8;
 }
 
 /*---------------------------------------------*/
@@ -176,9 +176,9 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 960px;
-  height: 1000px;
-  background: #0000004d;
+  width: 850px;
+  height: 859px;
+  background: #0a2f2c7d;
   border-radius: 10px;
   overflow: hidden;
 
@@ -195,8 +195,10 @@ iframe {
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-  width: 316px;
-  height: 316px;
+  width: 100px;
+  height: 100px;
+   margin-left: 66px;
+
 }
 
 .login100-pic img {
@@ -209,8 +211,8 @@ iframe {
 .login100-form {
   width: 290px;
   width: 310px;
-  margin-top: 300px;
-  margin-right: 108px;
+  margin-top: -247px;
+  margin-left: 187px;
 
 }
 
@@ -226,6 +228,14 @@ iframe {
   padding-bottom: 54px;
 }
 
+
+#txtlogin{
+font-family: Poppins-Bold;
+color: white;
+padding-bottom: 520px;
+margin-left: 93px;
+
+}
 /*.container-login100-form-btn{
     margin-top: 300px;
     margin-left: -150px;
@@ -265,7 +275,7 @@ iframe {
   width: 100%;
   height: 100%;
   box-shadow: 0px 0px 0px 0px;
-  color: rgba(87,184,70, 0.8);
+  color: #0b96e8
 }
 
 .input100:focus + .focus-input100 {
@@ -341,7 +351,7 @@ iframe {
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
+  background: #237d92;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -469,3 +479,64 @@ iframe {
     opacity: 1;
   }
 }
+
+
+
+/*-----------------------CSS DO SWITCH TOGGLE (LOGIN)------------------------------*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*----------------------------------------------------------------------------------------*/

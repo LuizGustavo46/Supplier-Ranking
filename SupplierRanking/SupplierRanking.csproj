@@ -123,7 +123,10 @@
     <Content Include="Content\images\bg_2.jpg" />
     <Content Include="Content\images\bg_3.jpg" />
     <Content Include="Content\images\bg_4.jpg" />
+    <Content Include="Content\images\comprador.png" />
     <Content Include="Content\images\give-money.png" />
+    <Content Include="Content\images\Login.png" />
+    <Content Include="Content\images\LoginFornecedor.png" />
     <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\plano.png" />
     <Content Include="Content\images\image_1.jpg" />
