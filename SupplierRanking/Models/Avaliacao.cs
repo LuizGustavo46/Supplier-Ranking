@@ -157,28 +157,28 @@ namespace SupplierRanking.Models
 
 
 
-        //Método para posicionamento dos fornecedores no ranking 
+       // Método para posicionamento dos fornecedores no ranking
         public String AvaliacaoRanking(float compara)
         {
 
-            CadastrarAvaliacao ca = new CadastrarAvaliacao();
+            
 
             try
             {
                 con.Open();
-               
+
                 SqlCommand query =
                    new SqlCommand("select posicao from avaliacao order by posicaRanking desc ", con);
 
                 SqlDataReader leitor = query.ExecuteReader();
-                res = true;
+               return "";
             }
             catch (Exception e)
             {
-                res = false;
+               return   "";
             }
         }
-            
+
 
 
 
