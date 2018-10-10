@@ -61,18 +61,17 @@ namespace SupplierRanking.Controllers
 
         /*==============================================================================Listar============================================================================================*/
 
-        //TALVEZ NAO SEJA NECESSARIO ESTE MÉTODO NO CONTROLER
-            public ActionResult RankingGeral()
+
+        public ActionResult RankingLista()
         {
             return View();
         }
 
-        /*[HttpPost]
-        public ActionResult RankingGeral(string categoria)
-        {   
-                                
-        }*/
-
+        [HttpPost]
+        public ActionResult RankingLista(string categoria)
+        {
+            return View("RankingLista", Avaliacao.RankingLista(categoria));
+        }
 
 
 
