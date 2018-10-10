@@ -1,12 +1,14 @@
-﻿@import "/Content/css/menu.css";
-@import "/Content/css/carossel.css";
-@import "/Content/css/contato.css";
-@import "/Content/css/menu.css";
-
+﻿
+@import "../css/carossel.css";
+@import "../css/contato.css";
+@import "../css/cover_overlay.css";
 @import "../css/footer.css";
 @import "../css/ftco.css";
+/*@import "../css/main.css";*/
+@import "../css/menu.css";
 @import "../css/planos.css";
-@import "../css/slider.css";
+@import "../css/sobre_nos.css";
+/*@import "../css/util.css";*/
 
 
 

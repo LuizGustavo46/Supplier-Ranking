@@ -118,6 +118,7 @@
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\planos.css" />
+    <Content Include="Content\css\sobre_nos.css" />
     <Content Include="Content\css\util.css" />
     <Content Include="Content\images\bg_1.jpg" />
     <Content Include="Content\images\bg_2.jpg" />
@@ -282,6 +283,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AvaliacaoController.cs" />
+    <Compile Include="Controllers\CompradorController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -418,6 +421,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Avaliacao\" />
     <Folder Include="Views\Fornecedor\" />
   </ItemGroup>
   <PropertyGroup>
