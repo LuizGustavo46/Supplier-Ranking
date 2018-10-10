@@ -118,6 +118,7 @@
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\planos.css" />
+    <Content Include="Content\css\sobre_nos.css" />
     <Content Include="Content\css\util.css" />
     <Content Include="Content\images\bg_1.jpg" />
     <Content Include="Content\images\bg_2.jpg" />
