@@ -2,38 +2,46 @@
      ViewBag.Title = "Login";
      Layout = "~/Views/Shared/LoginLayout.cshtml";
 }
+<script src="~/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="~/Content/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Content/vendor/bootstrap/js/popper.js"></script>
+<script src="~/Content/vendor/bootstrap/js/popper.min.js"></script>
+<script src="~/Content/vendor/bootstrap/js/tooltip.js"></script>
+<script src="~/Content/vendor/select2/select2.js"></script>
+<script src="~/Content/vendor/select2/select2.min.js"></script>
+<script src="~/Content/vendor/tilt/tilt.jquery.min.js"></script>
 
 <script>
-    //document.addEventListener('DOMContentLoaded', function () {
-    //    var checkbox = document.querySelector('input[type="checkbox"]');
-
-    //    checkbox.addEventListener('change', function () {
-    //        if (checkbox.checked) {
-    //            // do this
-    //            console.log('Checked');
-    //        } else {
-    //            // do that
-    //            alert('Not checked');
-    //        }
-    //    });
-    //});
-
-
-    //função para checarse o botao ta ativado ou não
-    function checkLogin() {
-        var checkbox = document.getElementById('swtichFornecedor');
-
-        if (checkbox.checked == true) {
-            alert('teste');
-        } else {
-            text.style.display = "block";
-        }
+   
+    $(document).ready(function () {
+        $('#funcionario').hide();
+        $('#switchFuncionario').hide();
+        $('#labelCheckFuncionario').hide();
        
-     
-            
-    }
+
+        $('#switchFornecedor').change(function () {
+           
+            if (this.checked) {
+                
+               
+                $('#switchFuncionario').show();
+                $("#funcionario").show();
+                 $('#labelCheckFuncionario').show();
 
 
+
+
+            } else {
+                //alert('erro');
+                $('#funcionario').hide();
+                $('#swtichFuncionario').hide();
+                $('#labelCheckFuncionario').hide();
+
+            }
+        });
+
+    });
 
 </script>
 
@@ -43,28 +51,80 @@
     <div class="wrap-login100">
 
 
-
+        <!---Switch Comprador-->
         <div class="login100-pic js-tilt" data-tilt>
             <img style="width:80px;heigth:80px;" src="~/Content/images/comprador.png" IMG" />
             <h1 style="color:white;font-size:13px;">Comprador</h1>
         </div>
-        <label id="labelCheck" class="switch">
-            <input id="swtichFornecedor" type="checkbox" checked>
+       
+        <!---Switch -->
+         <label id="labelCheck" class="switch">
+            <input id="switchFornecedor" type="checkbox" >
             <span class="slider round"></span>
         </label>
 
 
 
-
+        <!---- Fornecedor-->
         <div class="login100-pic js-tilt" data-tilt>
          
                <img style="width:80px;heigth:80px;" src="~/Content/images/Login.png" IMG" />
             <h1 style="color:white;font-size:13px;">Fornecedor</h1>
         </div>
 
-        <form class="login100-form validate-form">
-            <h1 id="txtlogin">Login</h1>
+       
+        
+        
+         @*<!---Pessoa Juridica-->
+        <div class="login100-pic js-tilt" data-tilt>
+            <img style="width:80px;heigth:80px;" src="~/Content/images/comprador.png" IMG" />
+            <h1 style="color:white;font-size:13px;">Comprador</h1>
+        </div>
 
+        <!---Switch -->
+        <label id="labelCheck" class="switch">
+            <input id="switchFornecedor" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+
+
+
+        <!----Pessoa Física-->
+        <div class="login100-pic js-tilt" data-tilt>
+
+            <img style="width:80px;heigth:80px;" src="~/Content/images/Login.png" IMG" />
+            <h1 style="color:white;font-size:13px;">Fornecedor</h1>
+        </div>*@
+
+       
+
+
+
+
+
+        <!-----Formulario de login-->
+         <form class="login100-form validate-form">
+             <h1 id="txtlogin">
+                 Login
+             </h1>
+
+
+             <!--Aparece  Funcionario -->
+
+             <div style="margin-top: -224px;will-change: transform;transform: perspective(300px) rotateX(0deg) rotateY(0deg);margin-left: -125px;width: 14px;margin-bottom: -39px;" id="funcionario" data-tilt="">
+                 <img style="width:80px;heigth:80px;" src="/Content/images/comprador.png" img"="">
+                 <h1 style="color:white;font-size:13px;width: 24px;">Funcionario</h1>
+             </div>
+
+             <!--Aparece  Switch -->
+             <label id="labelCheckFuncionario" class="switch" style="margin-bottom: 78px;margin-left: 96px;">
+
+                 <input id="switchFuncionario" type="checkbox" style="margin-left: 4px; display: inline-block;">
+                 <span class="slider round"></span>
+             </label>
+
+
+  
             <div class="wrap-input100 validate-input"
                  data-validate="Valid email is required: ex@abc.xyz">
                 <input class="input100" type="text" name="email" placeholder="CNPJ">
