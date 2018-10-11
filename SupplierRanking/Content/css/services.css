@@ -1,0 +1,39 @@
+﻿
+.services {
+	border: 2px dashed #dbe9fe;
+	border-left: 2px solid #dbe9fe;
+	border-bottom: 2px solid #dbe9fe;
+	position: relative;
+	border-radius: 2px;
+}
+
+.services:before,
+.services:after {
+	position: absolute;
+	content: "";
+	background: #dbe9fe;
+}
+
+.services:before {
+	width: 80px;
+	height: 2px;
+	top: -2px;
+	left: 0;
+}
+
+.services:after {
+	bottom: 0;
+	right: -2px;
+	width: 2px;
+	height: 80px;
+}
+
+.services .icon span {
+	font-size: 40px;
+}
+
+.services .media-body .heading {
+	font-size: 18px;
+	font-weight: 500;
+	text-transform: uppercase;
+}

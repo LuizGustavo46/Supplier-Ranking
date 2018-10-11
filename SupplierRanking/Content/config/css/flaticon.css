@@ -18,7 +18,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "Flaticon";
-    src: url("../fonts/flaticon/font/Flaticon.svg") format("svg");
+    src: url("../fonts/flaticon/font/Flaticon.svg#Flaticon") format("svg");
   }
 }
 
@@ -36,11 +36,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/*.flaticon-construction:before { content: "\f100"; }
+.flaticon-construction:before { content: "\f100"; }
 .flaticon-engineer-1:before { content: "\f101"; }
 .flaticon-engineer:before { content: "\f102"; }
 .flaticon-conveyor:before { content: "\f103"; }
 .flaticon-maintenance:before { content: "\f104"; }
 .flaticon-sketch:before { content: "\f105"; }
-.flaticon-skyline:before { content: "\f106"; }*/
+.flaticon-skyline:before { content: "\f106"; }
 

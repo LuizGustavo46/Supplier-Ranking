@@ -5,6 +5,18 @@
 		padding-left: 0 !important;
 		padding-right: 0 !important;
 	}
+
+	.ftco-tab-nav {
+		display: block !important;
+		margin-bottom: 10px;
+		width: 100% !important;
+	}
+
+    .ftco-tab-nav li {
+		display: block !important;
+		margin-bottom: 10px;
+		width: 100% !important;
+	}
 }
 
 /***** TABLET *****/
@@ -121,7 +133,8 @@
 }
 
 .ftco-navbar-light.scrolled .nav-item.active>a {
-	color: #0962ea !important;
+	color: #DAA520 !important;
+    border-bottom: 1px solid;
 }
 
 .ftco-navbar-light.scrolled .navbar-toggler {
@@ -168,4 +181,37 @@
 
 .navbar-brand span {
 	font-size: 28px;
+}
+
+.ftco-tab-nav {
+	padding: 0;
+	margin: 0;
+	display: inline-block !important;
+}
+
+
+.ftco-tab-nav li {
+	padding: 0;
+	margin: 0 5px;
+	display: inline-block !important;
+}
+
+.ftco-tab-nav li a {
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: .2em;
+	color: #ccc;
+	border: 2px solid #ccc;
+	border-radius: 0 !important;
+}
+
+.ftco-tab-nav li a.active {
+	background: none !important;
+	color: black !important;
+	border: 2px solid #000;
+}
+
+.ftco-animate {
+	opacity: 0;
+	visibility: hidden;
 }

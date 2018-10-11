@@ -7489,7 +7489,7 @@ h1, h2, h3, h4, h5,
 textarea.form-control {
   height: inherit !important; }
 
-.ftco-vh-100 {
+/*.ftco-vh-100 {
   height: 100vh; }
   @media (max-width: 1199.98px) {
     .ftco-vh-100 {
@@ -7505,9 +7505,9 @@ textarea.form-control {
       min-height: 700px;
       height: inherit;
       padding-top: 5em;
-      padding-bottom: 5em; } }
+      padding-bottom: 5em; } }*/
 
-.ftco-tab-nav {
+/*.ftco-tab-nav {
   padding: 0;
   margin: 0;
   display: inline-block !important; }
@@ -7539,12 +7539,12 @@ textarea.form-control {
 
 .ftco-animate {
   opacity: 0;
-  visibility: hidden; }
+  visibility: hidden; }*/
 
 .bg-primary {
   background: #0962ea !important; }
 
-.ftco-section .ftco-sub-title {
+/*.ftco-section .ftco-sub-title {
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: .5em;
@@ -7554,7 +7554,7 @@ textarea.form-control {
 
 .ftco-section .ftco-primary-title {
   margin-top: 0;
-  margin-bottom: 30px; }
+  margin-bottom: 30px; }*/
 
 /*.media-custom {
   background: #fff; }
@@ -7570,11 +7570,11 @@ textarea.form-control {
 .about-author img {
   border-radius: 50%; }
 
-.ftco-section {
+/*.ftco-section {
   padding: 7em 0; }
 
 .ftco-bg-dark {
-  background: #3c312e; }
+  background: #3c312e; }*/
 
 /*.ftco-footer {
   font-size: 16px;
@@ -8402,7 +8402,7 @@ textarea.form-control {
     color: #000;
     font-style: italic; }
 
-#ftco-loader {
+/*#ftco-loader {
   position: fixed;
   width: 96px;
   height: 96px;
@@ -8491,4 +8491,4 @@ textarea.form-control {
     stroke-dashoffset: -35px; }
   100% {
     stroke-dasharray: 89, 200;
-    stroke-dashoffset: -136px; } }
+    stroke-dashoffset: -136px; } }*/

@@ -29,10 +29,10 @@ font-style: normal;
 margin-left: 20px;
 }
 
-/*.flaticon-construction:before { content: "\f100"; }
+.flaticon-construction:before { content: "\f100"; }
 .flaticon-engineer-1:before { content: "\f101"; }
 .flaticon-engineer:before { content: "\f102"; }
 .flaticon-conveyor:before { content: "\f103"; }
 .flaticon-maintenance:before { content: "\f104"; }
 .flaticon-sketch:before { content: "\f105"; }
-.flaticon-skyline:before { content: "\f106"; }*/
+.flaticon-skyline:before { content: "\f106"; }

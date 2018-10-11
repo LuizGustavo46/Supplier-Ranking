@@ -54,20 +54,21 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================CADASTRO FORNECEDOR===============================================================================*/
-        public ActionResult CadastroPessoaJuridica()
+        public ActionResult CadastroFornecedor()
         {
             return View();
         }
        
         [HttpPost]
-        public ActionResult CadastroPessoaJuridica(string cnpj, string nome_empresa, string telefone, string celular, string endereco, string bairro, 
-            string cidade, string uf, string cep, string senha, string slogan, string descricao, string plano, string imagem, string nome_categoria)
+        public ActionResult CadastroFornecedor(string cnpj, string nome_empresa, string email, string telefone, string celular, string endereco, string bairro, 
+            string cidade, string uf, string cep, string senha, string slogan, string descricao, /*string plano, */string nome_categoria)
         {
 
             Fornecedor f = new Fornecedor();
 
             f.Cnpj = cnpj;
             f.Nome_empresa = nome_empresa;
+            f.Email = email;
             f.Telefone = telefone;
             f.Celular = celular;
             f.Endereco = endereco;
@@ -79,11 +80,32 @@ namespace SupplierRanking.Controllers
             f.Slogan = slogan;
             f.Descricao = descricao;
             f.Media = 0;
-            f.Plano = plano;
-            f.Imagem = imagem;
+            f.Plano = "F";
             f.Nome_categoria = nome_categoria;
 
-            return RedirectToAction("CadastroPessoaJuridica");
+            foreach (string imagem in Request.Files)
+            {
+                HttpPostedFileBase arqPostado = Request.Files[imagem];
+                int tamConteudo = arqPostado.ContentLength; //PEGA O TAMANHO DO CONTEÚDO
+                string tipoArq = arqPostado.ContentType; //PEGA O TIPO DO CONTEÚDO
+
+                if (tamConteudo == 0)
+                {
+
+                }
+
+                //TESTAR SE A IMAGEM É JPEG
+                if (tipoArq.IndexOf("jpeg") > 0)
+                {
+                    //CONVERTER PARA BYTES
+                    byte[] imgBytes = new byte[tamConteudo];
+                    arqPostado.InputStream.Read(imgBytes, 0, tamConteudo);
+                    f.Imagem = imgBytes;
+                }
+            }
+
+            TempData["Msg"] = f.CadastroFornecedor();
+            return RedirectToAction("CadastroFornecedor");
         }
 
         /*================================================================================================================================================================================*/
@@ -201,16 +223,15 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================UPDATE DE CADASTRO================================================================================*/
-        public ActionResult UpdateCadastroPessoaJuridica(string login)
+        public ActionResult UpdateFornecedor(string cnpj)
         {
-         
-            return View();
+            return View(Fornecedor.Perfil(cnpj)); //PASSAR O CNPJ PARA RETORNAR O PERFIL PARA PODER EDITAR
         }
       
 
         [HttpPost]
-        public ActionResult UpdateCadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string telefone, string bairro,string cidade, string rua, string uf,
-            string imagem, string senha, string celular, string endereco, string posicao, string descricao, string cep, float media, string slogan, string plano, string nome_categoria)
+        public ActionResult UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro,string cidade, string endereco, string uf,
+            string celular, string descricao, string cep, string slogan, string nome_categoria)
         {
             Fornecedor f = new Fornecedor();
             f.Cnpj = cnpj;
@@ -219,29 +240,40 @@ namespace SupplierRanking.Controllers
             f.Telefone = telefone;
             f.Bairro = bairro;
             f.Cidade = cidade;
-            f.Rua = rua;
-            f.Uf = uf;
-            f.Imagem = imagem;
-            f.Senha = senha;
-            f.Celular = celular;
             f.Endereco = endereco;
-            f.Posicao = posicao;
+            f.Uf = uf;       
+            f.Celular = celular;
             f.Descricao = descricao;
             f.Cep = cep;
-            f.Media = 0;
             f.Slogan = slogan;
-            f.Plano = plano;
+            
             f.Nome_categoria = nome_categoria;
 
-           
+            foreach (string imagem in Request.Files)
+            {
+                HttpPostedFileBase arqPostado = Request.Files[imagem];
+                int tamConteudo = arqPostado.ContentLength; //PEGA O TAMANHO DO CONTEÚDO
+                string tipoArq = arqPostado.ContentType; //PEGA O TIPO DO CONTEÚDO
 
-            string res = f.UpdateCadastroPessoaJuridica( cnpj,  nome_empresa,  email,  telefone,  bairro,  cidade,  rua,  uf,
-             imagem,  senha,  celular,  endereco,  posicao,  descricao,  cep,  media,  slogan,  plano,  nome_categoria);
-            TempData["Msg"] = res;
-            if (res == "Salvo com sucesso!")
-                return RedirectToAction("Listar");
-            else
-                return View();
+                if (tamConteudo == 0)
+                {
+
+                }
+
+                //TESTAR SE A IMAGEM É JPEG
+                if (tipoArq.IndexOf("jpeg") > 0)
+                {
+                    //CONVERTER PARA BYTES
+                    byte[] imgBytes = new byte[tamConteudo];
+                    arqPostado.InputStream.Read(imgBytes, 0, tamConteudo);
+                    f.Imagem = imgBytes;
+                }
+            }
+
+
+            TempData["Msg"] = f.UpdateFornecedor();
+            
+                return RedirectToAction("UpdateFornecedor");
         }
         /*==============================================================================================================================================================================*/
 

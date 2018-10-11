@@ -5,26 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>@ViewBag.Title - Supplier Ranking</title>
 
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/open-iconic-bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/animate.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700">
+        <link rel="stylesheet" href="~/Content/config/css/open-iconic-bootstrap.min.css">
+        <link rel="stylesheet" href="~/Content/config/css/animate.css">
 
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/owl.carousel.min.css">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/owl.theme.default.min.css">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/magnific-popup.css">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/aos.css">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/ionicons.min.css">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/bootstrap/bootstrap-datepicker.css">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/jquery.timepicker.css">
+        <link rel="stylesheet" href="~/Content/config/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="~/Content/config/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="~/Content/config/css/magnific-popup.css">
+        <link rel="stylesheet" href="~/Content/config/css/aos.css">
+        <link rel="stylesheet" href="~/Content/config/css/ionicons.min.css">
+        <link rel="stylesheet" href="~/Content/config/css/bootstrap/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="~/Content/config/css/jquery.timepicker.css">
 
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/flaticon.css">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/icomoon.css">
-        <link rel="stylesheet" type="text/css" href="~/Content/config/css/style.css">
+        <link rel="stylesheet" href="~/Content/config/css/flaticon.css">
+        <link rel="stylesheet" href="~/Content/config/css/icomoon.css">
+        <link rel="stylesheet" href="~/Content/config/css/style.css">
 
-        <link rel="stylesheet" type="text/css" href="~/Content/css/style.css">
+        <link rel="stylesheet" href="~/Content/css/style.css">
         
         <!-- Logo da Aba -->
-         <link rel="icon" href="~/Content/images/payment.png" type="image/x-icon" />
+         <link rel="icon" href="~/Content/images/logo.png" type="image/x-icon" />
     </head>
 
     <body>
@@ -34,7 +34,8 @@
              data-aos="fade-down" data-aos-delay="500">
             <div class="container">
                 <a class="navbar-brand" href="/Home/Index">
-                    Supplier Ranking
+                   <img style="width:60px;" src="~/Content/images/logo.png" />
+                     Supplier Ranking
                 </a>
 
                 <!-- INÍCIO - Menu Hamburguer -->
@@ -57,7 +58,7 @@
                                 Home
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/Home/SobreNos">
                                 Sobre Nós
                             </a>
@@ -143,6 +144,14 @@
         </footer>
         <!-- FIM - RODAPÉ -->
 
+        <!-- loader -->
+        <div id="ftco-loader" class="show fullscreen">
+            <svg class="circular" width="48px" height="48px">
+                <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+                <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#0C496BE6" />
+            </svg>
+        </div>
+
         <script src="~/Content/config/js/jquery.min.js"></script>
         <script src="~/Content/config/js/jquery-migrate-3.0.1.min.js"></script>
         <script src="~/Content/config/js/popper.min.js"></script>
@@ -158,6 +167,6 @@
         <script src="~/Content/config/js/jquery.timepicker.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="~/Content/config/js/google-map.js"></script>
-        <script src="~/Content/config/js/main.js"></script>
+        <script src="~/Content/js/main.js"></script>
     </body>
 </html>

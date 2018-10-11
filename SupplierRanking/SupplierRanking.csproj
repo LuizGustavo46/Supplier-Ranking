@@ -107,7 +107,7 @@
     <Content Include="Content\config\js\jquery.stellar.min.js" />
     <Content Include="Content\config\js\jquery.timepicker.min.js" />
     <Content Include="Content\config\js\jquery.waypoints.min.js" />
-    <Content Include="Content\config\js\main.js" />
+    <Content Include="Content\js\main.js" />
     <Content Include="Content\config\js\owl.carousel.min.js" />
     <Content Include="Content\config\js\popper.min.js" />
     <Content Include="Content\css\contato.css" />
@@ -115,9 +115,12 @@
     <Content Include="Content\css\ftco.css" />
     <Content Include="Content\css\carossel.css" />
     <Content Include="Content\css\cover_overlay.css" />
+    <Content Include="Content\css\loader.css" />
     <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\media.css" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\planos.css" />
+    <Content Include="Content\css\services.css" />
     <Content Include="Content\css\sobre_nos.css" />
     <Content Include="Content\css\util.css" />
     <Content Include="Content\images\bg_1.jpg" />
@@ -128,6 +131,7 @@
     <Content Include="Content\images\give-money.png" />
     <Content Include="Content\images\Login.png" />
     <Content Include="Content\images\LoginFornecedor.png" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\plano.png" />
     <Content Include="Content\images\image_1.jpg" />
