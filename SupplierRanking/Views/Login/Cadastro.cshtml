@@ -1,0 +1,243 @@
+﻿@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+
+<script>
+   //Função para o switch
+    $(document).ready(function () {
+        $('#funcionario').hide();
+        $('#switchFuncionario').hide();
+        $('#labelCheckFuncionario').hide();
+        $('#inputFornecedor').hide();
+
+
+        //Função para o switch Fornecedor
+        $('#switchFornecedor').change(function () {
+
+            if (this.checked) {
+                //input
+                $('#inputFornecedor').show();
+                $('#inputFisica').hide();
+
+
+                //switch
+                $('#switchFuncionario').show();
+                $("#funcionario").show();
+                 $('#labelCheckFuncionario').show();
+                 $('#switchJuridica').hide();
+                 $("#fisica").hide();
+                 $('#juridica').hide();
+                 $('#labelCheckJuri').hide();
+
+
+            } else {
+                //Switch
+                $('#funcionario').hide();
+                $('#swtichFuncionario').hide();
+                $('#labelCheckFuncionario').hide();
+                $('#switchJuridica').show();
+                $("#fisica").show();
+                $('#juridica').show();
+                $('#labelCheckJuri').show();
+
+                //input
+                $('#inputFuncionario').hide();
+                $('#inputFornecedor').hide();
+                $('#inputFisica').show();
+
+
+            }
+        });
+
+        $('#inputFuncionario').hide();
+
+        //Função para switch funcionario
+        $('#switchFuncionario').change(function () {
+
+            if (this.checked) {
+
+                //input
+                $('#inputFuncionario').show();
+                $('#inputFornecedor').hide();
+
+            } else {
+                 //input
+                $('#inputFuncionario').hide();
+                $('#inputFornecedor').show();
+
+            }
+        });
+
+        $('#inputJuridica').hide();
+        $('#inputFisica').show();
+
+        //Função para o switch Juridica ou física
+        $('#switchJuridica').change(function () {
+
+            if (this.checked) {
+
+                //input
+                $('#inputJuridica').show();
+                $('#inputFisica').hide();
+
+            } else {
+                //input
+                $('#inputJuridica').hide();
+                $('#inputFisica').show();
+
+
+            }
+        });
+
+
+    });
+
+</script>
+
+<div class="container-login100">
+    
+
+    <div class="wrap-login100">
+
+
+        <!---Switch Comprador-->
+        <div class="login100-pic js-tilt" data-tilt>
+            <img style="width:80px;heigth:80px;" src="~/Content/images/comprador.png" IMG" />
+            <h1 style="color:white;font-size:13px;">Comprador</h1>
+        </div>
+
+        <!---Switch -->
+        <label id="labelCheck" class="switch" style="
+            margin-top: 38px;
+            margin-left: 44px; ">
+
+            <input id="switchFornecedor" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+
+
+
+        <!---- Fornecedor-->
+        <div class="login100-pic js-tilt" data-tilt>
+
+            <img style="width:80px;heigth:80px;" src="~/Content/images/Login.png" IMG" />
+            <h1 style="color:white;font-size:13px;">Fornecedor</h1>
+        </div>
+
+
+
+
+        <!---Pessoa fisica-->
+        <div id="fisica" data-tilt="" style="will-change: transform; transform: perspective(300px) rotateX(0deg) rotateY(0deg); float: left;
+                margin: 0px 74px 10px;margin-left: 15px;padding-bottom: 51px;">
+
+            <img style="width:80px;heigth:80px;" src="/Content/images/comprador.png" img"="">
+            <h1 style="color:white;font-size:13px;">Física</h1>
+        </div>
+
+        <!---Switch -->
+        <label id="labelCheckJuri" class="switch" style="
+
+                 margin-left: -149px;
+                 margin-top: 29px;">
+
+            <input style="margin-left: 31px;" id="switchJuridica" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+
+
+
+        <!----Pessoa juridica-->
+        <div id="juridica" data-tilt="" style="will-change: transform; transform: perspective(300px) rotateX(0deg) rotateY(0deg); float: left;
+                    margin-left: 14px;"></div>
+
+
+
+        <h2 class="text-center heading-section" style="margin-top: -510px;
+            margin-left: 228px;color: white;">
+
+            Crie sua Conta
+
+        </h2>
+
+
+        <!-----Formulario de login-->
+        <form class="login100-form validate-form">
+           
+            @*<div class="text-center heading-section">
+                
+
+            </div>*@
+
+
+
+          
+
+                @*<img style="width:80px;heigth:80px;" src="/Content/images/Login.png" img"="">
+                <h1 style="color:white;font-size:13px;">Jurídica</h1>
+            </div>
+
+            <!---input CNPJ JURIDICA-->
+            <div id="inputJuridica" class="wrap-input100 validate-input"
+                 data-validate="Valid email is required: ex@abc.xyz">
+                <input class="input100" type="text" name="email" placeholder="CNPJ">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>
+
+
+
+            <!--Aparece  Funcionario -->
+
+            <div style="margin-top: -224px;will-change: transform;transform: perspective(300px) rotateX(0deg) rotateY(0deg);margin-left: -125px;width: 14px;margin-bottom: -39px;" id="funcionario" data-tilt="">
+                <img style="width:80px;heigth:80px;" src="/Content/images/comprador.png" img"="">
+                <h1 style="color:white;font-size:13px;width: 24px;">Funcionario</h1>
+            </div>
+
+            <!--Aparece  Switch -->
+            <label id="labelCheckFuncionario" class="switch" style="margin-bottom: 87px;margin-left: 118px;">
+
+                <input id="switchFuncionario" type="checkbox" style="margin-left: 4px; display: inline-block;">
+                <span class="slider round"></span>
+            </label>
+
+            <!---input CPF FISICA-->
+            <div id="inputFisica" class="wrap-input100 validate-input"
+                 data-validate="Valid email is required: ex@abc.xyz">
+                <input class="input100" type="text" name="email" placeholder="CPF">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <!---input CNPJ Fornecedor-->
+            <div id="inputFornecedor" class="wrap-input100 validate-input"
+                 data-validate="Valid email is required: ex@abc.xyz">
+                <input class="input100" type="text" name="email" placeholder="CNPJ">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <!---input Funcionario -->
+            <div id="inputFuncionario" class="wrap-input100 validate-input"
+                 data-validate="Valid email is required: ex@abc.xyz">
+                <input class="input100" type="text" name="email" placeholder="CPF">
+                <span class="focus-input100"></span>
+                <span class="symbol-input100">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>*@
+
+
+       
+        </form>
+    </div>
+</div>
+

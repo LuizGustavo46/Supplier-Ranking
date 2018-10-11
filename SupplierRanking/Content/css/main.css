@@ -177,8 +177,8 @@ iframe {
 
 .wrap-login100 {
   width: 850px;
-  height: 859px;
-  background: #0a2f2c7d;
+  height: 972px;
+  background: #00000054;
   border-radius: 10px;
   overflow: hidden;
 
@@ -232,7 +232,7 @@ iframe {
 #txtlogin{
 font-family: Poppins-Bold;
 color: white;
-padding-bottom: 520px;
+padding-bottom: 469px;
 margin-left: 93px;
 
 }
