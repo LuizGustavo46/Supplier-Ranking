@@ -23,12 +23,10 @@ namespace SupplierRanking.Models
         private string telefone;
         private string cidade;
         private string bairro;
-        private string rua;
         private string uf;
         private string senha;
         private string celular;
         private string endereco;
-        private string posicao;
         private string descricao;
         private string cep;
         private float media;
@@ -83,12 +81,6 @@ namespace SupplierRanking.Models
 
         }
 
-        public String Rua
-        {
-            get { return rua; }
-            set { rua = value; }
-        }
-
         public String Uf
         {
             get { return uf; }
@@ -120,11 +112,6 @@ namespace SupplierRanking.Models
         {
             get { return endereco; }
             set { endereco = value; }
-        }
-        public String Posicao
-        {
-            get { return posicao; }
-            set { posicao = value; }
         }
         public String Descricao
         {
@@ -244,10 +231,10 @@ namespace SupplierRanking.Models
         }
         /*==============================================================================================================================================================================*/
 
-        /*==============================================================================CADASTRO PESSOA JURIDICA========================================================================*/
-        public string CadastroPessoaJuridica() // FALTA ARRUMAR O NEGÓCIO DA IMAGEM <<<<<<<<<<<<<<<<<<<<<<<<<
+        /*==============================================================================CADASTRO FORNECEDOR========================================================================*/
+        public string CadastroFornecedor()
         {
-            string res = "Inserido com sucesso!";
+            string res = "Cadastro realizado.";
             try
             {
                 con.Open(); // abre conexão
@@ -334,7 +321,7 @@ namespace SupplierRanking.Models
                 // Criação de comando
 
                 SqlCommand query =
-                    new SqlCommand("SELECT * FROM fornecedor WHERE nome_empresa = @texto", con);
+                    new SqlCommand("SELECT * FROM fornecedor WHERE nome_empresa like @texto", con);
                 query.Parameters.AddWithValue("@texto", pesquisa);
 
                 SqlDataReader leitor = query.ExecuteReader();
@@ -442,7 +429,7 @@ namespace SupplierRanking.Models
 
                 // Criação de comando
                 SqlCommand query =
-                    new SqlCommand("SELECT * FROM fornecedor", con);
+                    new SqlCommand("SELECT * FROM funcionario", con);
                 SqlDataReader leitor = query.ExecuteReader();
 
                 while (leitor.Read())
@@ -491,8 +478,9 @@ namespace SupplierRanking.Models
                 if (novaSenha != senha && senhaDigitada == senha)
                 {
                     SqlCommand query =
-                        new SqlCommand("UPDATE fornecedor SET  SENHA = @senha Where LOGIN = @login", con);
+                        new SqlCommand("UPDATE fornecedor SET  senha = @senha Where cnpj = @cnpj", con);
                     query.Parameters.AddWithValue("@senha", senha);
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
                     SqlDataReader leitor = query.ExecuteReader();
                     res = true;
 
@@ -513,11 +501,10 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================UPDATE CADASTRO=================================================================================*/
-        internal string UpdateCadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string telefone, string bairro, string cidade, string rua, string uf,
-            string imagem, string senha, string celular, string endereco, string posicao, string descricao, string cep, float media, string slogan, string plano, string nome_categoria)
+        internal string UpdateFornecedor() //NÃO PRECISA DE PARÂMETROS
         
         {
-            string res = "Salvo com sucesso!";
+            string res = "Salvo com sucesso.";
 
             /*PEDE-SE UMA CONFIRMAÇÃO DE SENHA PARA EDITAR AS INFORMAÇÕES DO FORNCEDOR
             PARA QUE TENHA UMA SEGURANÇA MAIOR*/
@@ -527,14 +514,15 @@ namespace SupplierRanking.Models
                 {
                     con.Open();
                     SqlCommand query =
-                        new SqlCommand("UPDATE fornecedor SET " +
-                        "@email,@telefone@celular,@endereco,@bairro,@cidade,@uf,@cep,@slogan,@descricao,@plano,@imagem,@nome_categoria)", con);
+                        new SqlCommand("UPDATE fornecedor SET email = @email, telefone = @telefone, celular = @celular, endereco = @endereco, " +
+                        "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, slogan = @slogan, descricao = @descricao, imagem = @imagem, " +
+                        "nome_categorias = @nome_categorias WHERE cnpj = @cnpj", con);
 
                     /*SE ALGUMA INFORMAÇÃO ESTIVER VAZIA O SISTEMA RETORNA UMA MENSAGEM DE AVISO PARA PREENCHER OS CAMPOS
                     CORRETAMENTE*/
 
                     if (email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
-                    && cep != "" && slogan != "" && descricao != "" && descricao != "" && plano != "" && imagem != "" && nome_categoria != "")
+                    && cep != "" && slogan != "" && descricao != "" && descricao != "" && imagem != null && nome_categoria != "")
                     {
                         query.Parameters.AddWithValue("@email", email);
                         query.Parameters.AddWithValue("@telefone", telefone);
@@ -553,7 +541,7 @@ namespace SupplierRanking.Models
                     }
                     else
                     {
-                        return "Preencha as informações corretamente ";
+                        return "Preencha as informações corretamente.";
                     }
                 }
 
@@ -585,21 +573,21 @@ namespace SupplierRanking.Models
                 if (leitor.Read())
                 {
                     f.cnpj = leitor["Cnpj"].ToString();
-                    f.cnpj = leitor["Nome_empresa"].ToString();
-                    f.cnpj = leitor["Email"].ToString();
-                    f.cnpj = leitor["Telefone"].ToString();
-                    f.cnpj = leitor["Celular"].ToString();
-                    f.cnpj = leitor["Endereco"].ToString();
-                    f.cnpj = leitor["Bairro"].ToString();
-                    f.cnpj = leitor["Cidade"].ToString();
-                    f.cnpj = leitor["Uf"].ToString();
-                    f.cnpj = leitor["Cep"].ToString();
-                    f.cnpj = leitor["Slogan"].ToString();
-                    f.cnpj = leitor["Descricao"].ToString();
-                    f.cnpj = leitor["Media"].ToString();
-                    f.cnpj = leitor["Plano"].ToString();
-                    f.cnpj = leitor["Imagem"].ToString();
-                    f.cnpj = leitor["Nome_categorias"].ToString();
+                    f.nome_empresa = leitor["Nome_empresa"].ToString();
+                    f.email = leitor["Email"].ToString();
+                    f.telefone = leitor["Telefone"].ToString();
+                    f.celular = leitor["Celular"].ToString();
+                    f.endereco = leitor["Endereco"].ToString();
+                    f.bairro = leitor["Bairro"].ToString();
+                    f.cidade = leitor["Cidade"].ToString();
+                    f.uf = leitor["Uf"].ToString();
+                    f.cep = leitor["Cep"].ToString();
+                    f.slogan = leitor["Slogan"].ToString();
+                    f.descricao = leitor["Descricao"].ToString();
+                    f.media = float.Parse(leitor["Media"].ToString());
+                    f.plano = leitor["Plano"].ToString();
+                    f.imagem = (byte[])leitor["Imagem"];
+                    f.nome_categoria = leitor["Nome_categorias"].ToString();
                 }
 
             }

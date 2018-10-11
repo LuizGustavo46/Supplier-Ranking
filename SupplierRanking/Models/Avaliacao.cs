@@ -269,36 +269,6 @@ namespace SupplierRanking.Models
             return true;
         }
 
-        //MÉTODO PARA GUARDAR POSIÇÃO NO RANKING DE CADA FORNECEDOR --- TALVEZ NEM PRECISE DISSO AQUI
-        public bool GuardarPosicao(string categoria) //TALVES NÃO PRECISAMOS USAR ESSE MÉTODO, POIS O ORDER BY JA ORGANIZA O RANKING POR MÉDIA
-        {
-            List<Fornecedor> lista = new List<Fornecedor>();
-            Fornecedor f = new Fornecedor();
-            try {
-                con.Open();
-                SqlCommand query = new SqlCommand("SELECT media, cnpj FROM fornecedor WHERE categoria = @categoria ORDER BY media DESC", con);
-                query.Parameters.AddWithValue("@categoria", categoria);
-
-                SqlDataReader leitor = query.ExecuteReader();
-
-                while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
-                {
-                    f.Media = float.Parse(leitor["Media"].ToString());
-                    f.Cnpj = leitor["Cnpj"].ToString();
-
-                    lista.Add(f);
-                }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            if (con.State == ConnectionState.Open)
-                con.Close();
-
-            return true;
-        }
-
         // MÉTODO PARA LISTAR RANKING DE CERTA CATEGORIA
         public static List<Fornecedor> RankingLista(string categoria)
         {
@@ -331,7 +301,7 @@ namespace SupplierRanking.Models
                     f.Descricao = leitor["Descricao"].ToString();
                     f.Media = float.Parse(leitor["Media"].ToString());
                     f.Plano = leitor["Plano"].ToString();
-                    f.Imagem = leitor["Imagem"].ToString();
+                    f.Imagem = (byte[])leitor["Imagem"];
                     f.Nome_categoria = leitor["Nome_categorias"].ToString();
                     
                     ranking.Add(f);
@@ -378,7 +348,7 @@ namespace SupplierRanking.Models
                     f.Descricao = leitor["Descricao"].ToString();
                     f.Media = float.Parse(leitor["Media"].ToString());
                     f.Plano = leitor["Plano"].ToString();
-                    f.Imagem = leitor["Imagem"].ToString();
+                    f.Imagem = (byte[])leitor["Imagem"];
                     f.Nome_categoria = leitor["Nome_categorias"].ToString();
 
                     ranking.Add(f);

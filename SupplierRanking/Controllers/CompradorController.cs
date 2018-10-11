@@ -60,8 +60,6 @@ namespace SupplierRanking.Controllers
 
         public ActionResult CadastroPessoaFisica()
         {
-            //Comprador c = Comprador.TelaCadastroComprador();     //NÃO SEI SE ESSA PARTE VAI PRECISAR - PRECISO TESTAR
-            //return View(c);
             return View();
         }
 

@@ -33,6 +33,11 @@ namespace SupplierRanking.Controllers
             av.Cnpj_fornecedor = cnpj_fornecedor;
             av.Codigo_comprador = codigo_comprador;
 
+            if(av.CadastrarAvaliacao())
+                TempData["Msg"] = "Avaliação realizada.";
+            else
+                TempData["Msg"] = "Opss, algo deu errado.";
+
 
             return RedirectToAction("CadastrarAvaliacao");
         }
