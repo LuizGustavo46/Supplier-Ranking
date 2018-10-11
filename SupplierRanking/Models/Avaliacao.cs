@@ -205,6 +205,40 @@ namespace SupplierRanking.Models
             return true;
         }
 
+        //MÉTODO QUE PUXA O COMENTÁRIO DA AVALIAÇÃO PARA FAZER O UPDATE DE AVALIAÇÃO (COMENTÁRIO)
+        public static Avaliacao ReturnUpdateAvaliacao(string cnpj_fornecedor, string codigo_comprador)
+        {
+            Avaliacao a = new Avaliacao();
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+                SqlCommand query = new SqlCommand("SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor " +
+                    "AND codigo_comprador = @codigo_comprador", con);
+                query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
+                query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
+                SqlDataReader leitor = query.ExecuteReader();
+                if (leitor.Read())
+                {
+                    a.qualidade = int.Parse(leitor["Qualidade"].ToString());
+                    a.atendimento = int.Parse(leitor["Atendimento"].ToString());
+                    a.entrega = int.Parse(leitor["Entrega"].ToString());
+                    a.preco = int.Parse(leitor["Preco"].ToString());
+                    a.satisfacao = int.Parse(leitor["Satisfacao"].ToString());
+                    a.comentario = leitor["Comentario"].ToString();
+                    a.data_avaliacao = leitor["Data_avaliacao"].ToString();
+                }
+
+            }
+            catch (Exception e)
+            {
+                a = null;
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+
+            return a;
+        }
+
         //MÉTODO UPDATE DE AVALIAÇÃO (COMENTÁRIO)
         public bool UpdateAvaliacao()
         {

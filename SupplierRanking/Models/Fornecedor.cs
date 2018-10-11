@@ -25,7 +25,6 @@ namespace SupplierRanking.Models
         private string bairro;
         private string rua;
         private string uf;
-        private string imagem;
         private string senha;
         private string celular;
         private string endereco;
@@ -35,6 +34,8 @@ namespace SupplierRanking.Models
         private float media;
         private string slogan;
         private string plano;
+        private byte[] imagem;
+        private string imagem64;
         private string nome_categoria;
 
         /*Variavel do funcionário*/
@@ -94,10 +95,16 @@ namespace SupplierRanking.Models
             set { uf = value; }
         }
 
-        public String Imagem
+        public byte[] Imagem
         {
             get { return imagem; }
             set { imagem = value; }
+        }
+
+        public String Imagem64
+        {
+            get { return imagem64; }
+            set { imagem64 = value; }
         }
         public String Senha
         {
@@ -238,7 +245,7 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================CADASTRO PESSOA JURIDICA========================================================================*/
-        public string CadastroPessoaJuridica()
+        public string CadastroPessoaJuridica() // FALTA ARRUMAR O NEGÓCIO DA IMAGEM <<<<<<<<<<<<<<<<<<<<<<<<<
         {
             string res = "Inserido com sucesso!";
             try
@@ -250,7 +257,7 @@ namespace SupplierRanking.Models
                         con);
                 // Compara se todos os campos estao preenchidos corretamente, caso não esteja retorna uma mensagem de erro para o usuario 
                 if (email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
-                    && cep != "" && slogan != "" && descricao != "" && descricao != "" && plano != "" && imagem != "" && nome_categoria != "")
+                    && cep != "" && slogan != "" && descricao != "" && descricao != "" && plano != "" && imagem != null && nome_categoria != "")
                 {
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
@@ -561,11 +568,53 @@ namespace SupplierRanking.Models
             return res;
         }
 
-      
+
         /*==============================================================================================================================================================================*/
 
-    }
-}
+        /*======================================== MÉTODO PARA RETORNAR DADOS DO FORNECEDOR (PERFIL) =====================================================================================================*/
+        public static Fornecedor Perfil(string cnpj)
+        {
+            Fornecedor f = new Fornecedor();
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj", con);
+                query.Parameters.AddWithValue("@cnpj", cnpj);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                if (leitor.Read())
+                {
+                    f.cnpj = leitor["Cnpj"].ToString();
+                    f.cnpj = leitor["Nome_empresa"].ToString();
+                    f.cnpj = leitor["Email"].ToString();
+                    f.cnpj = leitor["Telefone"].ToString();
+                    f.cnpj = leitor["Celular"].ToString();
+                    f.cnpj = leitor["Endereco"].ToString();
+                    f.cnpj = leitor["Bairro"].ToString();
+                    f.cnpj = leitor["Cidade"].ToString();
+                    f.cnpj = leitor["Uf"].ToString();
+                    f.cnpj = leitor["Cep"].ToString();
+                    f.cnpj = leitor["Slogan"].ToString();
+                    f.cnpj = leitor["Descricao"].ToString();
+                    f.cnpj = leitor["Media"].ToString();
+                    f.cnpj = leitor["Plano"].ToString();
+                    f.cnpj = leitor["Imagem"].ToString();
+                    f.cnpj = leitor["Nome_categorias"].ToString();
+                }
+
+            }
+            catch (Exception e)
+            {
+                f = null;
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+
+            return f;
+        }
+
+    }//FIM DA CLASSE
+}//FIM DO NAMESPACE
 
 
-    
+
