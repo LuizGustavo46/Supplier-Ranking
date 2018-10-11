@@ -33,6 +33,11 @@ namespace SupplierRanking.Controllers
             av.Cnpj_fornecedor = cnpj_fornecedor;
             av.Codigo_comprador = codigo_comprador;
 
+            if(av.CadastrarAvaliacao())
+                TempData["Msg"] = "Avaliação realizada.";
+            else
+                TempData["Msg"] = "Opss, algo deu errado.";
+
 
             return RedirectToAction("CadastrarAvaliacao");
         }
@@ -41,9 +46,15 @@ namespace SupplierRanking.Controllers
 
         /*==============================================================================Update avaliação==================================================================================*/
 
-        public ActionResult UpdateAvaliacao()
+        public ActionResult UpdateAvaliacao(string cnpj_fornecedor, string codigo_comprador)
         {
-            return View();
+            Avaliacao a = Avaliacao.ReturnUpdateAvaliacao(cnpj_fornecedor, codigo_comprador);
+            if (a == null)
+            {
+                TempData["Msg"] = "Avaliação não encontrada.";
+                return RedirectToAction("RankingGeral"); // VERIFICAR A VIEW QUE VAI RETORNAR 
+            }
+            return View(a);
         }
 
         [HttpPost]
@@ -55,7 +66,17 @@ namespace SupplierRanking.Controllers
             avUP.Cnpj_fornecedor = cnpj_fornecedor;
             avUP.Codigo_comprador = codigo_comprador;
 
-            return View("Avaliacao");
+            if (avUP.UpdateAvaliacao()) //SE CONSEGUIR ATUALIZAR
+            {
+                TempData["Msg"] = "Comentário atualizado.";
+            }
+            else //SENÃO CONSEGUIR
+            {
+                TempData["Msg"] = "Comentário não apropriado.";
+                return RedirectToAction("UpdateAvaliacao");
+            }
+
+            return View("UpdateAvaliacao");
         }
         /*================================================================================================================================================================================*/
 
@@ -73,7 +94,10 @@ namespace SupplierRanking.Controllers
             return View("RankingLista", Avaliacao.RankingLista(categoria));
         }
 
-
+        public ActionResult RankingGeral()
+        {
+            return View("RankingGeral", Avaliacao.RankingGeral());
+        }
 
 
 
