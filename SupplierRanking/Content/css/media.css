@@ -1,0 +1,38 @@
+﻿.media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; 
+}
+
+.media-body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; 
+}
+
+.media-custom {
+	background: #fff;
+}
+
+.media-custom .media-body .name {
+	font-weight: 500;
+	font-size: 16px;
+	margin-bottom: 0;
+	color: #0962ea;
+}
+
+.media-custom .media-body .position {
+	font-size: 13px;
+	color: #d9d9d9;
+}
+
+.divider-wrapper {
+    justify-content: center;
+}
+
+.divider {
+    border: 2px dotted;
+}

@@ -1,5 +1,4 @@
 ﻿
-/**CONFIGURAÇÃO DE RODAPÉ**/
 .ftco-footer {
 	font-size: 16px;
 	background:#134e74;
@@ -12,7 +11,6 @@
 }
 
 .ftco-footer .ftco-footer-widget h2 {
-	/*font-weight: normal;*/
 	color: #fff;
 }
 
@@ -67,7 +65,6 @@
 .ftco-footer-social li a:hover {
 	color: #fff;
 }
-
 
  .ftco-footer table {
     font-family: arial, sans-serif;
