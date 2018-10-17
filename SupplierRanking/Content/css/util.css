@@ -2236,7 +2236,7 @@
 .text-up {text-transform: uppercase;}
 
 /* ------------------------------------ */
-.text-center {text-align: center;margin-left: 8px;}
+.text-center {text-align: center;}
 .text-left {text-align: left;}
 .text-right {text-align: right;}
 .text-middle {vertical-align: middle;}

@@ -118,7 +118,6 @@
     <Content Include="Content\css\carossel.css" />
     <Content Include="Content\css\cover_overlay.css" />
     <Content Include="Content\css\loader.css" />
-    <Content Include="Content\css\main.css" />
     <Content Include="Content\css\media.css" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\planos.css" />
