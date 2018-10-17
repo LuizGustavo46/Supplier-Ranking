@@ -19,7 +19,7 @@
         $('#switchFuncionario').hide();
         $('#labelCheckFuncionario').hide();
         $('#inputFornecedor').hide();
-
+        
 
         //Função para o switch Fornecedor
         $('#switchFornecedor').change(function () {
@@ -28,6 +28,7 @@
                 //input
                 $('#inputFornecedor').show();
                 $('#inputFisica').hide();
+                $('#inputJuridica').hide();
 
 
                 //switch
@@ -49,6 +50,7 @@
                 $("#fisica").show();
                 $('#juridica').show();
                 $('#labelCheckJuri').show();
+
               
                 //input
                 $('#inputFuncionario').hide();
@@ -219,7 +221,7 @@
              <!---input CNPJ Fornecedor-->
              <div id="inputFornecedor" class="wrap-input100 validate-input"
                   data-validate="Valid email is required: ex@abc.xyz">
-                 <input class="input100" type="text" name="email" placeholder="CNPJ">
+                 <input class="input100" type="text" name="cnpj" placeholder="CNPJ">
                  <span class="focus-input100"></span>
                  <span class="symbol-input100">
                      <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -229,7 +231,7 @@
              <!---input Funcionario -->
              <div id="inputFuncionario" class="wrap-input100 validate-input"
                   data-validate="Valid email is required: ex@abc.xyz">
-                 <input class="input100" type="text" name="email" placeholder="CPF">
+                 <input class="input100" type="text" name="cpf" placeholder="CPF">
                  <span class="focus-input100"></span>
                  <span class="symbol-input100">
                      <i class="fa fa-envelope" aria-hidden="true"></i>
