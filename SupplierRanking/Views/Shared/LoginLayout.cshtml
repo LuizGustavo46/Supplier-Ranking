@@ -6,26 +6,28 @@
         <title>@ViewBag.Title - Supplier Ranking</title>
 
         <!-- INÍCIO - CSS de Configuração -->
-        <link href="~/Content/vendor/animate/animate.css" rel="stylesheet" />
-        <link href="~/Content/vendor/bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
-        <link href="~/Content/vendor/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet" />
-        <link href="~/Content/vendor/bootstrap/css/bootstrap-reboot.css" rel="stylesheet" />
-        <link href="~/Content/vendor/bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet" />
-        <link href="~/Content/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
-        <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="~/Content/vendor/css-hamburgers/hamburgers.css" rel="stylesheet" />
-        <link href="~/Content/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" />
-        <link href="~/Content/vendor/select2/select2.css" rel="stylesheet" />
-        <link href="~/Content/vendor/select2/select2.min.css" rel="stylesheet" />
+        @*<link rel="stylesheet" href="~/Content/vendor/animate/animate.css" />*@
+        @*<link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap-grid.css" />
+        <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap-grid.min.css" />
+        <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap-reboot.css" />
+        <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap-reboot.min.css"  />
+        <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/Content/vendor/css-hamburgers/hamburgers.css" />
+        <link rel="stylesheet" href="~/Content/vendor/css-hamburgers/hamburgers.min.css" />
+        <link rel="stylesheet" href="~/Content/vendor/select2/select2.css" />
+        <link rel="stylesheet" href="~/Content/vendor/select2/select2.min.css" />*@
         <!-- FIM - CSS de Configuração -->
 
         <!-- INÍCIO - Nossos CSS -->
-        <link href="~/Content/css/main.css" rel="stylesheet" />
-        <link href="~/Content/css/util.css" rel="stylesheet" />
+        @*<link rel="stylesheet" href="~/Content/css/main.css"  />*@
+        <link rel="stylesheet" href="~/Content/css/util.css"  />
+
+        <link rel="stylesheet" href="~/Content/css/login.css" />
         <!-- FIM - Nossos CSS -->
         
         <!-- Logo da Aba -->
-        <link rel="icon" href="~/Content/images/payment.png" type="image/x-icon" />
+        <link rel="icon" href="~/Content/images/logo.png" type="image/x-icon" />
     </head>
     <body>
         <div class="limiter">
@@ -99,7 +101,7 @@
 
         <!-- INÍCIO - Conteúdo -->
         <div>
-            @RenderBody();
+            @RenderBody()
         </div>
         <!-- FIM - Conteúdo -->
 
@@ -115,7 +117,6 @@
         <script src="~/Content/vendor/select2/select2.js"></script>
         <script src="~/Content/vendor/select2/select2.min.js"></script>
       
-
         <script>
             $('.js-tilt').tilt({
                 scale: 1.1
