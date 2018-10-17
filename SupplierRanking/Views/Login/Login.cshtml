@@ -44,7 +44,7 @@
 
 
         <!-----Formulario de login-->
-         <form class="login100-form validate-form">
+         <form action="../Login/Login" method="post" class="login100-form validate-form">
              <h1 id="txtlogin">
                  Login
              </h1>
@@ -82,7 +82,7 @@
              <!---input CNPJ JURIDICA-->
              <div id="inputJuridica" class="wrap-input100 validate-input"
                   data-validate="Valid email is required: ex@abc.xyz">
-                 <input class="input100" type="text" name="email" placeholder="CNPJ">
+                 <input class="input100" type="text" name="cnpj" placeholder="CNPJ">
                  <span class="focus-input100"></span>
                  <span class="symbol-input100">
                      <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -108,7 +108,7 @@
             <!---input CPF FISICA-->
             <div id="inputFisica" class="wrap-input100 validate-input"
                  data-validate="Valid email is required: ex@abc.xyz">
-                <input class="input100" type="text" name="email" placeholder="CPF">
+                <input class="input100" type="text" name="cpf" placeholder="CPF">
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
                     <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -118,7 +118,7 @@
              <!---input CNPJ Fornecedor-->
              <div id="inputFornecedor" class="wrap-input100 validate-input"
                   data-validate="Valid email is required: ex@abc.xyz">
-                 <input class="input100" type="text" name="email" placeholder="CNPJ">
+                 <input class="input100" type="text" name="cnpj" placeholder="CNPJ">
                  <span class="focus-input100"></span>
                  <span class="symbol-input100">
                      <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -128,7 +128,7 @@
              <!---input Funcionario -->
              <div id="inputFuncionario" class="wrap-input100 validate-input"
                   data-validate="Valid email is required: ex@abc.xyz">
-                 <input class="input100" type="text" name="email" placeholder="CPF">
+                 <input class="input100" type="text" name="cnpj" placeholder="CPF">
                  <span class="focus-input100"></span>
                  <span class="symbol-input100">
                      <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -138,18 +138,19 @@
 
             <div class="wrap-input100 validate-input"
                  data-validate="Password is required">
-                <input class="input100" type="password" name="pass" placeholder="Senha">
+                <input class="input100" type="password" name="senha" placeholder="Senha">
                 <span class="focus-input100"></span>
                 <span class="symbol-input100">
                     <i class="fa fa-lock" aria-hidden="true"></i>
                 </span>
             </div>
 
-            <div class="container-login100-form-btn">
-                <button class="login100-form-btn">
-                    Login
-                </button>
-            </div>
+             
+                 @*<div id="btlogin" onclick="btlogin" class="container-login100-form-btn">*@
+                     <input type="submit" class="login100-form-btn" value="ENTRAR"/>
+
+                 @*</div>*@
+             
 
             <div class="text-center p-t-12">
                 <span class="txt1">
@@ -166,7 +167,19 @@
                     <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                 </a>
             </div>
+
+             <div class="wrap-input100">
+                 <input class="inputHidden" id="inputHidden" type="text" name="inputHidden" placeholder="">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-lock" aria-hidden="true"></i>
+                 </span>
+             </div>
+             
         </form>
+        @*<form action="~\Login\Login\" method="post">
+            <input type="submit" value="entrar" />
+        </form>*@
     </div>
 </div>
 

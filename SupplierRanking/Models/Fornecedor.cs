@@ -98,31 +98,37 @@ namespace SupplierRanking.Models
             get { return imagem64; }
             set { imagem64 = value; }
         }
+
         public String Senha
         {
             get { return senha; }
             set { senha = value; }
         }
+
         public String Celular
         {
             get { return celular; }
             set { celular = value; }
         }
+
         public String Endereco
         {
             get { return endereco; }
             set { endereco = value; }
         }
+
         public String Descricao
         {
             get { return descricao; }
             set { descricao = value; }
         }
+
         public String Cep
         {
             get { return cep; }
             set { cep = value; }
         }
+
         public float Media
         {
             get { return media; }
@@ -158,7 +164,6 @@ namespace SupplierRanking.Models
             get { return nome; }
             set { nome = value; }
         }
-
 
         //----------------------------INICIO DOS MÉTODOS--------------------------------
 
