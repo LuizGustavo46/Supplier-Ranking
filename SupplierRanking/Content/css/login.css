@@ -54,8 +54,8 @@ body, html {
 }
 
 .wrap-login100 {
-  width: 870px;
-  height: 889px;
+  width: 1051px;
+  height: 1080px;
   background: #00000054;
   border-radius: 10px;
   overflow: hidden;
@@ -72,9 +72,10 @@ body, html {
 
 .login100-pic {
   width: 100px;
-  height: 100px;
-  margin-left: -68px;
-  margin-top: -57px
+    height: 100px;
+    margin-left: 64px;
+    margin-top: 62px;
+    float: left;
 }
 
 .login100-pic img {

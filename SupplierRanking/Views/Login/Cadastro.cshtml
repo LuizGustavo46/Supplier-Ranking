@@ -9,69 +9,85 @@
     
 
     <div class="wrap-login100">
+     <section style=" 
+    width: 870px; height: 1080px;
+    background-color: #20202500;
+     margin-top: -175px;">
+   
+  
 
 
-        <!---Switch Comprador-->
-        <div class="login100-pic js-tilt" data-tilt>
-            <img style="width:80px;heigth:80px;" src="~/Content/images/comprador.png" IMG" />
-            <h1 style="color:white;font-size:13px;">Comprador</h1>
-        </div>
 
-        <!---Switch -->
-        <label id="labelCheck" class="switch" style="
-            margin-top: -25px;
-            margin-left: -77px;
+
+   
+
+
+         <!---Switch Comprador-->
+         <div class="login100-pic js-tilt" data-tilt>
+             <img style="width:80px;heigth:80px;" src="~/Content/images/comprador.png" IMG" />
+             <h1 style="color:white;font-size:13px;">Comprador</h1>
+         </div>
+
+         <!---Switch -->
+         <label id="labelCheck" class="switch" style="
+           margin-top: 100px;
+            margin-left: -420px;
             ">
 
-            <input id="switchFornecedor" type="checkbox">
-            <span class="slider round"></span>
-        </label>
+             <input id="switchFornecedor" type="checkbox">
+             <span class="slider round"></span>
+         </label>
 
 
 
-        <!---- Fornecedor-->
-        <div class="login100-pic js-tilt" data-tilt>
+         <!---- Fornecedor-->
+         <div class="login100-pic js-tilt" data-tilt>
 
-            <img style="width:80px;heigth:80px;" src="~/Content/images/Login.png" IMG" />
-            <h1 style="color:white;font-size:13px;">Fornecedor</h1>
-        </div>
+             <img style="width:80px;heigth:80px;" src="~/Content/images/Login.png" IMG" />
+
+             <h1 style="color:white;font-size:13px;">Fornecedor</h1>
+         </div>
 
 
 
 
-        <!---Pessoa fisica-->
-        <div id="fisica" data-tilt="" style="will-change: transform; transform: perspective(300px) rotateX(0deg) rotateY(0deg); float: left;
+         <!---Pessoa fisica-->
+         <div id="fisica" data-tilt="" style="will-change: transform; transform: perspective(300px) rotateX(0deg) rotateY(0deg); float: left;
                 margin: 0px 74px 10px;margin-left: 15px;padding-bottom: 51px;">
 
-            <img style="width:80px;heigth:80px;margin-top: 156px;margin-left: -246px;"
-               src="/Content/images/comprador.png" img"="">
-            <h1 style="color:white;font-size:13px;margin-left: -224px;">
-                Física
-            </h1>
-        </div>
+             <img style="width:80px;heigth:80px;margin-top: 251px;margin-left: -285px;" src="/Content/images/comprador.png" img"="">
+             <img style="width:80px;heigth:80px;margin-left: 83px;" src="/Content/images/Login.png" img"="">
+             <h1 style="color:white;font-size:13px;margin-left: -261px;">
+                 Física
+             </h1>
 
-        <!----Pessoa juridica-->
-        <div id="juridica" data-tilt="" style="
-        will-change: transform;
-        transform: perspective(300px) rotateX(0deg) rotateY(0deg);
-        margin-left: -58px;
-        height: 100px;
-        margin-top: 150px;
-        padding-right: 345px;
+             <h1 style="color:white;font-size:13px;margin-left: -99px;margin-top: -13px;">
+                      Jurídica
+             </h1>
+         </div>
+
+         <!----Pessoa juridica-->
+         <div id="juridica" data-tilt="" style="
+       will-change: transform;
+    transform: perspective(300px) rotateX(0deg) rotateY(0deg);
+    margin-left: -58px;
+    height: 100px;
+    margin-top: 243px;
+    padding-right: 345px;
         ">
 
-            <img style="width:80px;heigth:80px;" src="/Content/images/Login.png" img"="">
-            <h1 style="color:white;font-size:13px;">Jurídica</h1>
+          
+             
 
-        </div>
-
-
-
-       
+         </div>
 
 
 
-        @*<h2 class="text-center heading-section" style="margin-top: -510px;
+
+
+
+
+         @*<h2 class="text-center heading-section" style="margin-top: -510px;
             margin-left: 228px;color: white;">
 
             Crie sua Conta
@@ -79,84 +95,170 @@
         </h2>*@
 
 
-        <!-----Formulario de Cadastro-->
-        <form class="login100-form validate-form">
-           
-           
-            <!-- Switch  -->
-            <label id="labelCheckJuri" class="switch" style="margin-left: -110px;margin-top: 7px;">
+         <!-----Formulario de Cadastro-->
+         <form class="login100-form validate-form">
 
-                <input style="margin-left: 31px;" id="switchJuridica" type="checkbox">
-                <span class="slider round"></span>
-            </label>
-           
-            
-           
 
-            <!---cadastro Funcionario -->
-            <div id="inputCPF" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
+             <!-- Switch  -->
+             <label id="labelCheckJuri" class="switch" style=" margin-left: -425px;
+                margin-top: 48px; ">
+   
+    
+   
+
+                 <input style="margin-left: 31px;" id="switchJuridica" type="checkbox">
+                 <span class="slider round"></span>
+             </label>
+
+
+
+
+             <!---cadastro Fisica -->
+             <div id="inputCPF" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
                     margin-top: -267px;
                     margin-left: 225px;
                         ">
-                <input class="input100" type="text" name="login" placeholder="CPF">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-            </div>
-           
-            <div id="inputNome" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
-                    margin-top: 325px;
+                 <input class="input100" type="text" name="login" placeholder="CPF">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-envelope" aria-hidden="true"></i>
+                 </span>
+             </div>
+
+             <div id="inputSobrenome" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
+                    margin-top: 203px;
                     margin-left: 225px;
                         ">
-                <input class="input100" type="text" name="login" placeholder="CPF">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-            </div>
-          
-            <div id="inputSobrenome" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
-                    margin-top: -151px;
+                 <input class="input100" type="text" name="login" placeholder="Sobrenome">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-envelope" aria-hidden="true"></i>
+                 </span>
+             </div>
+
+             <div id="inputNome" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
+                    margin-top: -141px;
                     margin-left: 225px;
                         ">
-                <input class="input100" type="text" name="login" placeholder="CPF">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-            </div>
+                 <input class="input100" type="text" name="login" placeholder="Nome">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-envelope" aria-hidden="true"></i>
+                 </span>
+             </div>
 
 
-            <div id="inputEmail" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
-                    margin-top: -267px;
+             <div id="inputEmail" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
+                    margin-top: -159px;
                     margin-left: 225px;
                         ">
-                <input class="input100" type="text" name="login" placeholder="CPF">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-            </div>
+                 <input class="input100" type="text" name="login" placeholder="Email">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-envelope" aria-hidden="true"></i>
+                 </span>
+             </div>
 
 
-            <div class="wrap-input100 validate-input" data-validate="Password is required" style="
-                    margin-top: 36px;
+             <div class="wrap-input100 validate-input" data-validate="Password is required" style="
+                    margin-top: 238px;
                     margin-left: 227px;
                     ">
-                <input class="input100" type="password" name="senha" placeholder="Senha">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                </span>
-            </div>
+                 <input class="input100" type="password" name="senha" placeholder="Senha">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-lock" aria-hidden="true"></i>
+                 </span>
+             </div>
 
-         
+             <div class="wrap-input100 validate-input" data-validate="Password is required" style="
+                    margin-top: 58px;
+                    margin-left: 227px;
+                    ">
+                 <input class="input100" type="password" name="senha" placeholder="Confirmar senha">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-lock" aria-hidden="true"></i>
+                 </span>
+             </div>
 
 
 
-       
-        </form>
+             <!--Cadastro juridico-->
+
+             <div id="inputCNPJ" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
+                    margin-top: -267px;
+                    margin-left: 225px;
+                        ">
+                 <input class="input100" type="text" name="login" placeholder="CNPJ">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-envelope" aria-hidden="true"></i>
+                 </span>
+             </div>
+
+
+             <div id="inputNomeEmpresa" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
+                    margin-top: -148px;
+                    margin-left: 225px;
+                        ">
+                 <input class="input100" type="text" name="login" placeholder="Nome da Empresa">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-envelope" aria-hidden="true"></i>
+                 </span>
+             </div>
+
+
+            
+             <!---Cadastro fornecedor-->
+
+
+             <div id="inputCNPJFornecedor" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
+                    margin-top: -267px;
+                    margin-left: 225px;
+                        ">
+                 <input class="input100" type="text" name="login" placeholder="CNPJ">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-envelope" aria-hidden="true"></i>
+                 </span>
+             </div>
+
+
+             <div id="inputNomeEmpresaFornecedor" class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz" style="
+                    margin-top: -148px;
+                    margin-left: 225px;
+                        ">
+                 <input class="input100" type="text" name="login" placeholder="Nome da Empresa">
+                 <span class="focus-input100"></span>
+                 <span class="symbol-input100">
+                     <i class="fa fa-envelope" aria-hidden="true"></i>
+                 </span>
+             </div>
+
+
+
+             <div class="container-login100-form-btn">
+                 <button  class="login100-form-btn" style="  margin-top: -42px;
+                   margin-left: -300px;">
+                   
+                     Avançar    
+                      
+                 </button>
+             </div>
+
+
+
+         </form>
+
+
+
+
+
+     </section>   
+
+      
     </div>
 </div>
 

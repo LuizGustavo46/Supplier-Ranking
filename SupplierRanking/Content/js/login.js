@@ -92,47 +92,97 @@ $(document).ready(function () {
 //----------------FUNÇÃO PARA O CADASTRO ---------------------------
 
 
-$(document).ready(function () {
-    "use strict";
+    $(document).ready(function () {
+        "use strict";
 
-    $('#inputCPF').show();
-    $('#inputNome').show();
-    $('#inputSobrenome').show();
-    $('#inputCPF').show();
-    $('#inputCPF').show();
-    $('#inputCPF').show();
-    
+        $('#inputCPF').show();
+        $('#inputNome').show();
+        $('#inputSobrenome').show();
+
+        $('#inputCNPJ').hide();
+        $('#inputNomeEmpresa').hide();
+      
+
+        //Função para o switch Fornecedor
+        $('#switchFornecedor').change(function () {
+
+            if (this.checked) {
+                //input hide
+                $('#inputCPF').hide();
+                $('#inputNome').hide();
+                $('#inputSobrenome').hide();
+               
+                $('#switchJuridica').hide();
+               
+                //input show
+                $('#inputCNPJFornecedor').show();
+                $('#inputNomeEmpresaFornecedor').show();
+                
+          
 
 
-    //Função para o switch Fornecedor
-    $('#switchFornecedor').change(function () {
+                
+               
+          
+
+
+            } else {
+               
+                
+            
+                //input show
+                $('#inputCPF').show();
+                $('#inputNome').show();
+                $('#inputSobrenome').show();
+               
+
+                //input hide
+                $('#inputFuncionario').hide();
+            
+
+
+            }
+        })
+
+
+        $('#inputFuncionario').hide();
+
+       
+
+
+
+    })
+   
+    //Função para switch funcionario
+    $('#switchJuridica').change(function () {
 
         if (this.checked) {
-            //input
-            $('#inputFornecedor').show();
-          
 
+            //input show
+            $('#inputCNPJ').show();
+            $('#inputNomeEmpresa').show();
+           
 
-            //switch
-            $('#switchFuncionario').show();
-          
+            //input hide
+            $('#inputCPF').hide();
+            $('#inputNome').hide();
+            $('#inputSobrenome').hide();
+            
+
 
 
         } else {
-            //Switch
-            $('#funcionario').hide();
-            
-            //input
-            $('#inputFuncionario').hide();
-            
-
+            //input show         
+            $('#inputCPF').show();
+            $('#inputNome').show();
+            $('#inputSobrenome').show();
+            //input hide
+            $('#inputCNPJ').hide();
+            $('#inputNomeEmpresa').hide();
+           
 
         }
-    })
-
-
-
-
+    });
 
 
 
