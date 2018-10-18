@@ -12,10 +12,12 @@ $(document).ready(function () {
     $('#switchFornecedor').change(function () {
 
         if (this.checked) {
+            
             $('#inputHidden').val('2');
             //input
             $('#inputFornecedor').show();
             $('#inputFisica').hide();
+            $('#inputJuridica').hide();
 
 
 
@@ -24,16 +26,22 @@ $(document).ready(function () {
             $("#funcionario").show();
             $('#labelCheckFuncionario').show();
             $('#switchJuridica').hide();
+            $('#switchJuridica').prop('checked', false);
             $("#fisica").hide();
             $('#juridica').hide();
             $('#labelCheckJuri').hide();
 
+            
 
         } else {
             $('#inputHidden').val('0');
             //Switch
+            //document.getElementById('#switchJuridica').checked = false;
+            //document.getElementById('#switchFuncionario').checked = false;
+            $('#switchFuncionario').prop('checked', false);
+          
             $('#funcionario').hide();
-            $('#swtichFuncionario').hide();
+            $('#switchFuncionario').hide();
             $('#labelCheckFuncionario').hide();
             $('#switchJuridica').show();
             $("#fisica").show();
@@ -44,33 +52,12 @@ $(document).ready(function () {
             $('#inputFuncionario').hide();
             $('#inputFornecedor').hide();
             $('#inputFisica').show();
+            $('#inputJuridica').hide();
 
-
-        }
-    });
-
-    $('#inputFuncionario').hide();
-    $('#inputFornecedor').show();
-    //Função para switch funcionario
-    $('#switchFuncionario').change(function () {
-
-        if (this.checked) {
-            $('#inputHidden').val('3');
-            //input
-            $('#inputFuncionario').show();
-            $('#inputFornecedor').hide();
-
-        } else {
-            $('#inputHidden').val('2');
-            //input          
-            $('#inputFuncionario').hide();
-            $('#inputFornecedor').show();
+            
 
         }
     });
-
-    $('#inputJuridica').hide();
-    $('#inputFisica').show();
 
     //Função para o switch Juridica ou física
     $('#switchJuridica').change(function () {
@@ -90,6 +77,33 @@ $(document).ready(function () {
 
         }
     });
+
+    $('#switchFuncionario').change(function () {
+
+        if (this.checked) {
+            $('#inputHidden').val('3');
+            //input
+            $('#inputFuncionario').show();
+
+        } else {
+            $('#inputHidden').val('2');
+            //input          
+            $('#inputFuncionario').hide();
+            $('#inputFornecedor').show();
+
+        }
+    });
+
+
+    $('#inputFuncionario').hide();
+    $('#inputFornecedor').hide();
+    //Função para switch funcionario
+    
+
+    $('#inputJuridica').hide();
+    $('#inputFisica').show();
+
+    
 
     /*==================================================================
     [ Validate ]*/

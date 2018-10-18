@@ -178,7 +178,7 @@ namespace SupplierRanking.Models
             {
                 con.Open();
                 SqlCommand query =
-                    new SqlCommand("SELECT * FROM fornecedor WHERE Login = @cnpj AND Senha = @senha", con);
+                    new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj AND senha = @senha", con);
                 query.Parameters.AddWithValue("@cnpj", cnpj);
                 query.Parameters.AddWithValue("@senha", senha);
                 SqlDataReader leitor = query.ExecuteReader();

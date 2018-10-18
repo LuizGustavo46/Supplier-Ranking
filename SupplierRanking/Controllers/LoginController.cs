@@ -16,12 +16,12 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string cpf, string cnpj, string senha, string inputHidden)
+        public ActionResult Login(string codigoFuncionario, string cpfComprador, string cnpjComprador, string cnpjFornecedor, string senha, string inputHidden)
         {
             if (inputHidden == "0") // 0 é Comprador Pessoa Física
             {
                 Comprador cf = new Comprador();
-                cf.Cpf = cpf;
+                cf.Cpf = cpfComprador;
                 cf.Senha = senha;
                 if (cf.LoginPessoaFisica())
                 {
@@ -38,7 +38,7 @@ namespace SupplierRanking.Controllers
             if (inputHidden == "1") // 1 é Comprador Pessoa Juridica
             {
                 Comprador cj = new Comprador();
-                cj.Cpf = cpf;
+                cj.Cpf = cnpjComprador;
                 cj.Senha = senha;
                 if (cj.LoginPessoaJuridica())
                 {
@@ -55,7 +55,7 @@ namespace SupplierRanking.Controllers
             if (inputHidden == "2") // 2 é Fornecedor
             {
                 Fornecedor f = new Fornecedor();
-                f.Cnpj = cnpj;
+                f.Cnpj = cnpjFornecedor;
                 f.Senha = senha;
                 if (f.Login())
                 {
