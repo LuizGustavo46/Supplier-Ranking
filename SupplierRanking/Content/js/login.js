@@ -7,46 +7,88 @@ $(document).ready(function () {
     $('#labelCheckFuncionario').hide();
     $('#inputFornecedor').hide();
 
+    $('#wrapperPessoas').hide();
 
-    //Função para o switch Fornecedor
+
+    /*** Botão para selecionar o Comprador ***/
+    $('#btnComprador').on('click', function () {
+        var switchFornecedorFalse = $('#switchFornecedor').prop('checked', false);
+
+        uncheckedSwitchFornecedor();
+        switchCompradorFornecedor(switchFornecedorFalse);
+    });
+
+    /*** Botão para selecionar o Fornecedor ***/
+    $('#btnFornecedor').on('click', function () {
+        var switchFornecedorTrue = $('#switchFornecedor').prop('checked', true);
+
+        uncheckedSwitchFornecedor();
+        switchCompradorFornecedor(switchFornecedorTrue);
+    });
+
+    /*** Switch slider para selecionar Comprador ou Fornecedor ***/
     $('#switchFornecedor').change(function () {
+        var inputSwitch = $('#switchFornecedor');
 
-        if (this.checked) {
+        uncheckedSwitchFornecedor();
+        switchCompradorFornecedor(inputSwitch);
+    });
+
+    /*** Função para tirar o slider da função neutra  ***/
+    function uncheckedSwitchFornecedor() {
+        $('#labelCheck .slider').removeClass('unchecked');
+    }
+
+    /*** Função para aparecer / esconder campos conforme o perfil selecionado ***/
+    function switchCompradorFornecedor(input) {
+
+        //Seleciona o Fornecedor
+        if ($(input).is(":checked")) {
+
+            $("#btnComprador").removeClass('active-switch');
+            $("#btnFornecedor").addClass('active-switch');
+
             //input
             $('#inputFornecedor').show();
             $('#inputFisica').hide();
-
 
             //switch
             $('#switchFuncionario').show();
             $("#funcionario").show();
             $('#labelCheckFuncionario').show();
-            $('#switchJuridica').hide();
-            $("#fisica").hide();
-            $('#juridica').hide();
-            $('#labelCheckJuri').hide();
 
+            $('#wrapperPessoas').hide();
+
+            //$('#switchJuridica').hide();
+            //$("#btnFisica").hide();
+            //$('#btnJuridica').hide();
+            //$('#labelCheckJuri').hide();
 
         } else {
+
+            $("#btnFornecedor").removeClass('active-switch');
+            $("#btnComprador").addClass('active-switch');
+
             //Switch
             $('#funcionario').hide();
             $('#swtichFuncionario').hide();
             $('#labelCheckFuncionario').hide();
-            $('#switchJuridica').show();
-            $("#fisica").show();
-            $('#juridica').show();
-            $('#labelCheckJuri').show();
+
+            $('#wrapperPessoas').show();
+
+            //$('#switchJuridica').show();
+            //$("#btnFisica").show();
+            //$('#btnJuridica').show();
+            //$('#labelCheckJuri').show();
 
             //input
             $('#inputFuncionario').hide();
             $('#inputFornecedor').hide();
             $('#inputFisica').show();
-
-
         }
-    });
+    }
 
-    $('#inputFuncionario').hide();
+    //$('#inputFuncionario').hide();
 
     //Função para switch funcionario
     $('#switchFuncionario').change(function () {

@@ -14,7 +14,7 @@
 /*//////////////////////////////////////////////////////////////////
 [ Login ]*/
 
-.container-login100 {
+.container-login {
 	width: 100%;
 	min-height: 100vh;
 	display: -webkit-box;
@@ -33,23 +33,17 @@
 	background: linear-gradient(-135deg, #0e81b6, #222426);
 }
 
-.wrap-login100 {
+.wrap-login {
 	width: 850px;
 	height: 972px;
-	background: #00000054;
+	background: #FFF;
 	border-radius: 10px;
 	overflow: hidden;
-	/*display: -webkit-box;
-	display: -webkit-flex;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: flex;
-	flex-wrap: wrap;*/
-	/*justify-content: space-between;*/
 	padding: 50px;
+    box-shadow: 4px 7px 14px 4px #575757;
 }
 
-.login100-pic {
+/*.login100-pic {
 	width: 100px;
 	height: 100px;
 	margin-left: 66px;
@@ -57,16 +51,14 @@
 
 .login100-pic img {
 	max-width: 100%;
+}*/
+
+.login-form {
+    position: relative;
+    top: -3em;
 }
 
-.login100-form {
-	width: 290px;
-	width: 310px;
-	margin-top: -247px;
-	margin-left: 187px;
-}
-
-.login100-form-title {
+/*.login100-form-title {
 	font-family: inherit;
 	font-size: 24px;
 	color: #f9f9f9;
@@ -75,7 +67,7 @@
 	width: 100%;
 	display: block;
 	padding-bottom: 54px;
-}
+}*/
 
 #txtlogin {
 	font-family: inherit;
@@ -317,8 +309,28 @@
 	height: 34px;
 }
 
-.switch input {
+/*.switch input {
 	display: none;
+}*/
+
+.switch-wrapper {
+    border: 1px solid #0C496BE6;
+    border-radius: 10px;
+}
+
+.switch-person-title {
+    color: #5C5C5C;
+    font-weight: 400;
+}
+
+.slider.unchecked {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider.unchecked:before {
+    position: initial;
 }
 
 .slider {
@@ -328,7 +340,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #ccc;
+	background-color: #C9C5C5;
 	-webkit-transition: .4s;
 	transition: .4s;
 }
@@ -345,9 +357,9 @@
 	transition: .4s;
 }
 
-input:checked+.slider {
+/*input:checked+.slider {
 	background-color: #2196F3;
-}
+}*/
 
 input:focus+.slider {
 	box-shadow: 0 0 1px #2196F3;
@@ -359,6 +371,15 @@ input:checked+.slider:before {
 	transform: translateX(26px);
 }
 
+.active-switch {
+    background-color: #0C496Bc9;
+    border: 2px solid #DAA520;
+    box-shadow: 1px 2px 4px 4px #CCC;
+}
+
+.active-switch .switch-person-title {
+    color: #DAA520;
+}
 
 /* Rounded sliders */
 

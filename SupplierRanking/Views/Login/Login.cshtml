@@ -9,60 +9,66 @@
     </div>
 </div>
 
-<div class="row justify-content-center">
-    <!---Switch Comprador-->
-    <div class="login100-pic js-tilt" data-tilt>
-        <img style="width:80px; heigth:80px;"
-             src="~/Content/images/comprador.png" />
-        <h1 style="color:white;font-size:13px;">Comprador</h1>
+<div class="row align-items-center justify-content-center m-5 p-5">
+    
+    <!--- Comprador --->    
+    <div class="col-5 text-center js-tilt" data-tilt>
+        <button id="btnComprador" class="col-9 switch-wrapper p-3">
+            <img src="/Content/images/comprador.png" />
+            <h5 class="switch-person-title p-2">Comprador</h5>    
+        </button>
     </div>
 
-    <!---Switch -->
-    <label id="labelCheck" class="switch" style="
-    margin-top: 38px;
-    margin-left: 44px; ">
-
+    <!--- Switch --->
+    <label id="labelCheck" class="switch m-3">
         <input id="switchFornecedor" type="checkbox">
-        <span class="slider round"></span>
+        <span class="slider round unchecked"></span>
     </label>
 
-    <!---- Fornecedor-->
-    <div class="login100-pic js-tilt" data-tilt>
-        <img style="width:80px; heigth:80px;"
-             src="~/Content/images/Login.png" />
-        <h1 style="color:white;font-size:13px;">Fornecedor</h1>
+    <!--- Fornecedor --->
+    <div class="col-5 text-center js-tilt" data-tilt>
+        <button id="btnFornecedor" class="col-9 switch-wrapper p-3">
+            <img src="/Content/images/fornecedor.png" />
+            <h5 class="switch-person-title p-2">Fornecedor</h5>
+        </button>
     </div>
+
 </div>
 
-<div class="row justify-content-center">
-        <!-----Formulario de login-->
-        <form class="login100-form validate-form">
+<!--- Formulário de Login --->
+<form class="login-form validate-form">
+
+    <div id="wrapperPessoas"
+         class="row align-items-center justify-content-center m-5 p-5">
+
+        <!--- Pessoa Física --->
+        <div class="col-5 text-center js-tilt" data-tilt>
+            <button id="btnFisica" class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/comprador.png" />
+                <h5 class="switch-person-title p-2">Física</h5>
+            </button>
+        </div>
+
+        <!--- Switch --->
+        <label id="labelCheckJuri" class="switch m-3">
+            <input id="switchJuridica" type="checkbox">
+            <span class="slider round unchecked"></span>
+        </label>
+
+        <!--- Pessoa Jurídica --->
+        <div class="col-5 text-center js-tilt" data-tilt>
+            <button id="btnJuridica" class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/fornecedor.png" />
+                <h5 class="switch-person-title p-2">Jurídica</h5>
+            </button>
+        </div>
+
+    </div>
+                
 
 
-            <!---Pessoa fisica-->
-            <div id="fisica" data-tilt=""
-                 style="will-change: transform; transform: perspective(300px) rotateX(0deg) rotateY(0deg); float: left;
-    margin: 0px 74px 10px;margin-left: 15px;padding-bottom: 51px;">
-
-                <img style="width:80px;heigth:80px;" src="/Content/images/comprador.png" img"="">
-                <h1 style="color:white;font-size:13px;">Física</h1>
-            </div>
-
-            <!---Switch -->
-            <label id="labelCheckJuri" class="switch" style="margin-left: -149px; margin-top: 29px;">
-                <input style="margin-left: 31px;" id="switchJuridica" type="checkbox">
-                <span class="slider round"></span>
-            </label>
-
-            <!----Pessoa juridica-->
-            <div id="juridica" data-tilt="" style="will-change: transform; transform: perspective(300px) rotateX(0deg) rotateY(0deg); float: left;
-        margin-left: 14px;">
-
-                <img style="width:80px;heigth:80px;" src="/Content/images/Login.png" img"="">
-                <h1 style="color:white;font-size:13px;">Jurídica</h1>
-            </div>
-
-            <!---input CNPJ JURIDICA-->
+           
+            @*<!---input CNPJ JURIDICA-->
             <div id="inputJuridica" class="wrap-input100 validate-input"
                  data-validate="Valid email is required: ex@abc.xyz">
                 <input class="input100" type="text" name="email" placeholder="CNPJ">
@@ -145,6 +151,5 @@
                     Criar conta
                     <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                 </a>
-            </div>
-        </form>
-    </div>
+            </div>*@
+</form>
