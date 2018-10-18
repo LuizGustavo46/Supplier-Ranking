@@ -236,6 +236,35 @@ namespace SupplierRanking.Models
         }
         /*==============================================================================================================================================================================*/
 
+        /*=========================================================================CADASTRO FUNCIONARIO FORNECEDOR======================================================================*/
+        public bool LoginFuncionario()
+        {
+            bool res = false;
+
+            try
+            {
+                con.Open();
+                SqlCommand query =
+                    new SqlCommand("SELECT * FROM funcionario WHERE codigo = @codigo AND cnpj_fornecedor = @cnpj_fornecedor AND senha = @senha", con);
+                query.Parameters.AddWithValue("@codigo", codigo);
+                query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);              
+                query.Parameters.AddWithValue("@senha", senha);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                res = leitor.HasRows;
+            }
+            catch (Exception e)
+            {
+                res = false;// Caso der erro na inserção
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();// fecha conexão
+            return res;// retorna resposta de confirmação
+
+        }
+        /*==============================================================================================================================================================================*/
+
         /*==============================================================================CADASTRO FORNECEDOR========================================================================*/
         public string CadastroFornecedor()
         {

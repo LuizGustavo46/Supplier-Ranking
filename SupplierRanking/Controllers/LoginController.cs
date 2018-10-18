@@ -69,6 +69,23 @@ namespace SupplierRanking.Controllers
                 }
             }
 
+            if (inputHidden == "3") // 3 é funcionario
+            {
+                Fornecedor fu = new Fornecedor();
+                fu.Codigo = codigoFuncionario;
+                fu.Cnpj = cnpjFornecedor;          
+                fu.Senha = senha;
+                if (fu.LoginFuncionario())
+                {
+                    Session["User"] = fu;
+                    TempData["Msg"] = "Bem-vindo";
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    TempData["Msg"] = "Preencha corretamente os dados pedidos para efetuar o LOGIN";
+                }
+            }
             return View();
         }
 
@@ -76,5 +93,8 @@ namespace SupplierRanking.Controllers
         {
             return View();
         }
+
+
+
     }
 }
