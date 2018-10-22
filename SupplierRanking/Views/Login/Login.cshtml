@@ -3,72 +3,96 @@
      Layout = "~/Views/Shared/LoginLayout.cshtml";
 }
 
-<div class="row justify-content-center">
-    <div class="col-12 text-center">
-        <h2>Login</h2>
-    </div>
+<div class="row col-12 justify-content-center text-center mt-4">
+    <h2>Login</h2>
 </div>
 
-<div class="row align-items-center justify-content-center m-5 p-5">
-    
-    <!--- Comprador --->    
-    <div class="col-5 text-center js-tilt" data-tilt>
-        <button id="btnComprador" class="col-9 switch-wrapper p-3">
-            <img src="/Content/images/comprador.png" />
-            <h5 class="switch-person-title p-2">Comprador</h5>    
-        </button>
-    </div>
+<div class="row text-center align-items-center justify-content-center p-5">
+    Selecione o seu tipo de usuário:
 
-    <!--- Switch --->
-    <label id="labelCheck" class="switch m-3">
-        <input id="switchFornecedor" type="checkbox">
-        <span class="slider round unchecked"></span>
-    </label>
-
-    <!--- Fornecedor --->
-    <div class="col-5 text-center js-tilt" data-tilt>
-        <button id="btnFornecedor" class="col-9 switch-wrapper p-3">
-            <img src="/Content/images/fornecedor.png" />
-            <h5 class="switch-person-title p-2">Fornecedor</h5>
-        </button>
-    </div>
-
-</div>
-
-<!--- Formulário de Login --->
-<form class="login-form validate-form">
-
-    <div id="wrapperPessoas"
-         class="row align-items-center justify-content-center m-5 p-5">
-
-        <!--- Pessoa Física --->
-        <div class="col-5 text-center js-tilt" data-tilt>
-            <button id="btnFisica" class="col-9 switch-wrapper p-3">
+    <div class="row col-12 mt-4">
+        <!--- Comprador --->
+        <div class="col-5 js-tilt" data-tilt>
+            <button id="btnComprador" class="col-9 switch-wrapper p-3">
                 <img src="/Content/images/comprador.png" />
-                <h5 class="switch-person-title p-2">Física</h5>
+                <h5 class="switch-person-title p-2">Comprador</h5>
             </button>
         </div>
 
         <!--- Switch --->
-        <label id="labelCheckJuri" class="switch m-3">
-            <input id="switchJuridica" type="checkbox">
-            <span class="slider round unchecked"></span>
+        <label class="switch m-3">
+            <input id="switchFornecedor" type="checkbox">
+            <span class="slider slider-fornecedor round unchecked"></span>
         </label>
 
-        <!--- Pessoa Jurídica --->
-        <div class="col-5 text-center js-tilt" data-tilt>
-            <button id="btnJuridica" class="col-9 switch-wrapper p-3">
+        <!--- Fornecedor --->
+        <div class="col-5 js-tilt" data-tilt>
+            <button id="btnFornecedor" class="col-9 switch-wrapper p-3">
                 <img src="/Content/images/fornecedor.png" />
-                <h5 class="switch-person-title p-2">Jurídica</h5>
+                <h5 class="switch-person-title p-2">Fornecedor</h5>
             </button>
         </div>
-
     </div>
-                
+</div>
 
+<!--- Formulário de Login --->
+<form class="row login-form validate-form mt-4 p-5">
 
-           
-            @*<!---input CNPJ JURIDICA-->
+    <!--- Pessoa Física & Pessoa Jurídica --->
+    <div id="wrapperFisicaJuridica" class="col-12 text-center align-items-center justify-content-center">
+        Informe o seu tipo de perfil:
+        
+        <div class="row col-12 mt-4">
+
+            <!--- Pessoa Física --->
+            <div class="col-5 js-tilt" data-tilt>
+                <button id="btnFisica" class="col-9 switch-wrapper p-3">
+                    <img src="/Content/images/comprador.png" />
+                    <h5 class="switch-person-title p-2">Física</h5>
+                </button>
+            </div>
+
+            <!--- Switch --->
+            <label class="switch m-3">
+                <input id="switchJuridica" type="checkbox">
+                <span class="slider slider-juridica round unchecked"></span>
+            </label>
+
+            <!--- Pessoa Jurídica --->
+            <div class="col-5 js-tilt" data-tilt>
+                <button id="btnJuridica" class="col-9 switch-wrapper p-3">
+                    <img src="/Content/images/fornecedor.png" />
+                    <h5 class="switch-person-title p-2">Jurídica</h5>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!--- Funcionario --->
+    <div id="wrapperFuncionario" class="row col-12 text-center justify-content-center">
+        Ative o campo caso seja um funcionário
+        
+        <div class="row col-12 align-items-center justify-content-center mt-4">
+            <!--- Switch --->
+            <label class="switch switch-funcionario">
+                <input id="switchJuridica" type="checkbox">
+                <span class="slider slider-funcionario round unchecked"></span>
+            </label>
+
+            <!--- Funcionario --->
+            <div class="col-5 text-center js-tilt" data-tilt>
+                <button id="btnFuncionario" class="col-9 switch-wrapper p-3">
+                    <img src="/Content/images/comprador.png" />
+                    <h5 class="switch-person-title p-2">Funcionario</h5>
+                </button>
+            </div>
+
+        </div>
+</div>
+        
+
+        @*<!---input CNPJ JURIDICA-->
             <div id="inputJuridica" class="wrap-input100 validate-input"
                  data-validate="Valid email is required: ex@abc.xyz">
                 <input class="input100" type="text" name="email" placeholder="CNPJ">
@@ -78,18 +102,7 @@
                 </span>
             </div>
 
-            <!--Aparece  Funcionario -->
-            <div style="margin-top: -224px;will-change: transform;transform: perspective(300px) rotateX(0deg) rotateY(0deg);margin-left: -125px;width: 14px;margin-bottom: -39px;" id="funcionario" data-tilt="">
-                <img style="width:80px;heigth:80px;" src="/Content/images/comprador.png" img"="">
-                <h1 style="color:white;font-size:13px;width: 24px;">Funcionario</h1>
-            </div>
 
-            <!--Aparece  Switch -->
-            <label id="labelCheckFuncionario" class="switch" style="margin-bottom: 87px;margin-left: 118px;">
-
-                <input id="switchFuncionario" type="checkbox" style="margin-left: 4px; display: inline-block;">
-                <span class="slider round"></span>
-            </label>
 
             <!---input CPF FISICA-->
             <div id="inputFisica" class="wrap-input100 validate-input"

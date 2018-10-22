@@ -2,179 +2,171 @@
 $(document).ready(function () {
     "use strict";
 
-    $('#funcionario').hide();
-    $('#switchFuncionario').hide();
-    $('#labelCheckFuncionario').hide();
-    $('#inputFornecedor').hide();
+    var btnComprador = $('#btnComprador'),
+        btnFornecedor = $('#btnFornecedor'),
+        btnFisica = $('#btnFisica'),
+        btnJuridica = $('#btnJuridica'),
 
-    $('#wrapperPessoas').hide();
+        switchFornecedor = $('#switchFornecedor'),
+        switchJuridica = $('#switchJuridica'),
+
+        sliderFornecedorComprador = $('.slider-fornecedor'),
+        sliderFisicaJuridica = $('.slider-juridica'),
+        sliderFuncionario = $('.slider-funcionario');
+
+    //$('#funcionario').hide();
+    //$('#switchFuncionario').hide();
+    //$('#labelCheckFuncionario').hide();
+    //$('#inputFornecedor').hide();
+
+    $('#wrapperFisicaJuridica').hide();
+    $('#wrapperFuncionario').hide();
 
 
-    /*** Botão para selecionar o Comprador ***/
-    $('#btnComprador').on('click', function () {
-        var switchFornecedorFalse = $('#switchFornecedor').prop('checked', false);
+    /*** Botao para selecionar o Comprador ***/
+    btnComprador.on('click', function () {
+        var switchFornecedorFalse = switchFornecedor.prop('checked', false);
 
-        uncheckedSwitchFornecedor();
+        uncheckedSlider(sliderFornecedorComprador);
         switchCompradorFornecedor(switchFornecedorFalse);
     });
 
-    /*** Botão para selecionar o Fornecedor ***/
-    $('#btnFornecedor').on('click', function () {
-        var switchFornecedorTrue = $('#switchFornecedor').prop('checked', true);
+    /*** Botao para selecionar o Fornecedor ***/
+    btnFornecedor.on('click', function () {
+        var switchFornecedorTrue = switchFornecedor.prop('checked', true);
 
-        uncheckedSwitchFornecedor();
+        uncheckedSlider(sliderFornecedorComprador);
         switchCompradorFornecedor(switchFornecedorTrue);
     });
 
     /*** Switch slider para selecionar Comprador ou Fornecedor ***/
-    $('#switchFornecedor').change(function () {
-        var inputSwitch = $('#switchFornecedor');
-
-        uncheckedSwitchFornecedor();
-        switchCompradorFornecedor(inputSwitch);
+    switchFornecedor.change(function () {
+        uncheckedSlider(sliderFornecedorComprador);
+        switchCompradorFornecedor(switchFornecedor);
     });
 
-    /*** Função para tirar o slider da função neutra  ***/
-    function uncheckedSwitchFornecedor() {
-        $('#labelCheck .slider').removeClass('unchecked');
+    /*** Botao para selecionar pessoa Fisica ***/
+    btnFisica.on('click', function () {
+        var switchJuriciaTrue = switchJuridica.prop('checked', false);
+
+        uncheckedSlider(sliderFisicaJuridica);
+        switchTipoDePessoa(switchJuriciaTrue);
+    });
+
+    /*** Botao para selecionar pessoa Juridica ***/
+    btnJuridica.on('click', function () {
+        var switchJuriciaTrue = switchJuridica.prop('checked', true);
+
+        uncheckedSlider(sliderFisicaJuridica);
+        switchTipoDePessoa(switchJuriciaTrue);
+    });
+
+    /*** Switch slider para selecionar pessoa Fisica ou Juridica ***/
+    switchJuridica.change(function () {
+        uncheckedSlider(sliderFisicaJuridica);
+        switchCompradorFornecedor(switchJuridica);
+    });
+
+    // Funçao para tirar o slider da posiçao neutra  
+    function uncheckedSlider(slider) {
+        slider.removeClass('unchecked');
+
+        if (slider.checked) {
+            //sliderFisicaJuridica.removeClass('unchecked');
+        }
     }
 
-    /*** Função para aparecer / esconder campos conforme o perfil selecionado ***/
+    // Funçao para aparecer / esconder entre Fornecedor ou Comprador
     function switchCompradorFornecedor(input) {
 
-        //Seleciona o Fornecedor
-        if ($(input).is(":checked")) {
+        if ($(input).is(":checked")) { //Seleciona o Fornecedor
 
-            $("#btnComprador").removeClass('active-switch');
-            $("#btnFornecedor").addClass('active-switch');
+            btnComprador.removeClass('active-switch');
+            $('#wrapperFisicaJuridica').hide();
 
-            //input
-            $('#inputFornecedor').show();
-            $('#inputFisica').hide();
+            btnFornecedor.addClass('active-switch');
+            $('#wrapperFuncionario').show();
 
-            //switch
-            $('#switchFuncionario').show();
-            $("#funcionario").show();
-            $('#labelCheckFuncionario').show();
+        } else { //Seleciona o Comprador
 
-            $('#wrapperPessoas').hide();
+            btnFornecedor.removeClass('active-switch');
+            $('#wrapperFuncionario').hide();
 
-            //$('#switchJuridica').hide();
-            //$("#btnFisica").hide();
-            //$('#btnJuridica').hide();
-            //$('#labelCheckJuri').hide();
-
-        } else {
-
-            $("#btnFornecedor").removeClass('active-switch');
-            $("#btnComprador").addClass('active-switch');
-
-            //Switch
-            $('#funcionario').hide();
-            $('#swtichFuncionario').hide();
-            $('#labelCheckFuncionario').hide();
-
-            $('#wrapperPessoas').show();
-
-            //$('#switchJuridica').show();
-            //$("#btnFisica").show();
-            //$('#btnJuridica').show();
-            //$('#labelCheckJuri').show();
-
-            //input
-            $('#inputFuncionario').hide();
-            $('#inputFornecedor').hide();
-            $('#inputFisica').show();
+            btnComprador.addClass('active-switch');
+            $('#wrapperFisicaJuridica').show();
         }
     }
 
-    //$('#inputFuncionario').hide();
+    
+    // Funçao para aparecer / esconder entre pessoa Fisica ou Juridica
+    function switchTipoDePessoa(input) {
 
-    //Função para switch funcionario
-    $('#switchFuncionario').change(function () {
+        if ($(input).is(":checked")) { //Seleciona pessoa Juridica
 
-        if (this.checked) {
+            btnFisica.removeClass('active-switch-pessoa');
+            //$('#wrapperFisicaJuridica').hide();
 
-            //input
-            $('#inputFuncionario').show();
-            $('#inputFornecedor').hide();
+            btnJuridica.addClass('active-switch-pessoa');
+            //$('#wrapperFuncionario').show();
 
-        } else {
-            //input          
-            $('#inputFuncionario').hide();
-            $('#inputFornecedor').show();
+        } else { //Seleciona pessoa Fisica
 
-        }
-    });
+            btnJuridica.removeClass('active-switch-pessoa');
+            //$('#wrapperFisicaJuridica').hide();
 
-    $('#inputJuridica').hide();
-    $('#inputFisica').show();
-
-    //Função para o switch Juridica ou física
-    $('#switchJuridica').change(function () {
-
-        if (this.checked) {
-
-            //input
-            $('#inputJuridica').show();
-            $('#inputFisica').hide();
-
-        } else {
-            //input
-            $('#inputJuridica').hide();
-            $('#inputFisica').show();
-
+            btnFisica.addClass('active-switch-pessoa');
+            //$('#wrapperFuncionario').show();
 
         }
-    });
+    }
 
     /*==================================================================
     [ Validate ]*/
-    var input = $('.validate-input .input100');
+    //var input = $('.validate-input .input100');
 
-    $('.validate-form').on('submit',function(){
-        var check = true;
+    //$('.validate-form').on('submit',function(){
+    //    var check = true;
 
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
-                showValidate(input[i]);
-                check=false;
-            }
-        }
+    //    for(var i=0; i<input.length; i++) {
+    //        if(validate(input[i]) == false){
+    //            showValidate(input[i]);
+    //            check=false;
+    //        }
+    //    }
 
-        return check;
-    });
+    //    return check;
+    //});
 
 
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
-        });
-    });
+    //$('.validate-form .input100').each(function(){
+    //    $(this).focus(function(){
+    //       hideValidate(this);
+    //    });
+    //});
 
-    function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
-            }
-        }
-        else {
-            if($(input).val().trim() == ''){
-                return false;
-            }
-        }
-    }
+    //function validate (input) {
+    //    if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+    //        if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+    //            return false;
+    //        }
+    //    }
+    //    else {
+    //        if($(input).val().trim() == ''){
+    //            return false;
+    //        }
+    //    }
+    //}
 
-    function showValidate(input) {
-        var thisAlert = $(input).parent();
+    //function showValidate(input) {
+    //    var thisAlert = $(input).parent();
 
-        $(thisAlert).addClass('alert-validate');
-    }
+    //    $(thisAlert).addClass('alert-validate');
+    //}
 
-    function hideValidate(input) {
-        var thisAlert = $(input).parent();
+    //function hideValidate(input) {
+    //    var thisAlert = $(input).parent();
 
-        $(thisAlert).removeClass('alert-validate');
-    }
+    //    $(thisAlert).removeClass('alert-validate');
+    //}
     
 });

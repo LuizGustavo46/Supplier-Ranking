@@ -63,9 +63,14 @@ li {
 	list-style-type: none;
 }
 
-input {
+input,
+input[type=checkbox] {
 	outline: none;
 	border: none;
+}
+
+input[type=checkbox] {
+    visibility: hidden;
 }
 
 textarea {
