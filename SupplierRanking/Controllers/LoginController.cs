@@ -94,7 +94,10 @@ namespace SupplierRanking.Controllers
             return View();
         }
 
-
+        public ActionResult Update()
+        {
+            return View();
+        }
 
     }
 }
