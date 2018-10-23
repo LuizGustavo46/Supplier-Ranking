@@ -40,15 +40,14 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroFuncionario(string cnpj, string senha, string nome, int codigo)
+        public ActionResult CadastroFuncionario(string cnpj, string senha, string nome)
         {
             Fornecedor f = new Fornecedor();
             f.Cnpj = cnpj;
             f.Senha = senha;
-            f.Nome = nome;
-            f.Codigo = codigo.ToString();           
+            f.Nome = nome;        
 
-            TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome, codigo);
+            TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome);
             return RedirectToAction("CadastrarFuncionario");
         }
 
@@ -119,7 +118,7 @@ namespace SupplierRanking.Controllers
         
             Fornecedor f = new Fornecedor();
             f.Nome = nome;
-            f.Codigo = codigo.ToString();
+            f.Codigo = codigo;
 
             f.ExcluirFuncionario(nome, codigo, nomeDigitado, codigoDigitado);
 
