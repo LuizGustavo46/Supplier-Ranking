@@ -637,7 +637,7 @@ namespace SupplierRanking.Models
 
         /*==============================================================================================================================================================================*/
 
-        /*======================================== MÉTODO PARA RETORNAR DADOS DO FORNECEDOR (PERFIL) =====================================================================================================*/
+        /*======================================== MÉTODO PARA RETORNAR DADOS DO FORNECEDOR (PERFIL) ===================================================================================*/
         public static Fornecedor Perfil(string cnpj)
         {
             Fornecedor f = new Fornecedor();
@@ -666,6 +666,76 @@ namespace SupplierRanking.Models
                     f.plano = leitor["Plano"].ToString();
                     f.imagem = (byte[])leitor["Imagem"];
                     f.nome_categoria = leitor["Nome_categorias"].ToString();
+                }
+
+            }
+            catch (Exception e)
+            {
+                f = null;
+            }
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+
+            return f;
+        }
+        /*==============================================================================================================================================================================*/
+
+        /*======================================== EDITAR DADOS DO FUNCIONARIO DO FORNECEDOR ===========================================================================================*/
+
+
+        internal string UpdateFuncionarioFornecedor() //NÃO PRECISA DE PARÂMETROS
+
+        {
+            string res = "Salvo com sucesso.";
+                    
+            try
+            {
+                con.Open();
+                SqlCommand query =
+                    new SqlCommand("UPDATE funcionario SET nome = @nome, senha = @senha where codigo = @codigo", con);
+
+                /*SE ALGUMA INFORMAÇÃO ESTIVER VAZIA O SISTEMA RETORNA UMA MENSAGEM DE AVISO PARA PREENCHER OS CAMPOS
+                CORRETAMENTE*/
+
+                if (nome != "" && senha != "")
+                {
+                    query.Parameters.AddWithValue("@nome", nome);
+                    query.Parameters.AddWithValue("@senha", senha);
+                    
+                }
+                else
+                {
+                    return "Preencha as informações corretamente.";
+                }
+            }
+
+            catch (Exception e)
+            {
+                res = e.Message;
+            }
+
+            if (con.State == System.Data.ConnectionState.Open)
+                con.Close();
+
+            return res;
+        }
+
+
+        public static Fornecedor PerfilFuncionario(int codigo)
+        {
+            Fornecedor f = new Fornecedor();
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+                SqlCommand query = new SqlCommand("SELECT * FROM funcionario WHERE codigo = @codigo", con);
+                query.Parameters.AddWithValue("@codigo", codigo);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                if (leitor.Read())
+                {
+                    f.nome = leitor["nome"].ToString();
+                    f.senha = leitor["senha"].ToString();
+                 
                 }
 
             }

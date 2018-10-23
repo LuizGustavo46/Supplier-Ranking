@@ -40,15 +40,14 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroFuncionario(string cnpj, string senha, string nome, int codigo)
+        public ActionResult CadastroFuncionario(string cnpj, string senha, string nome)
         {
             Fornecedor f = new Fornecedor();
             f.Cnpj = cnpj;
             f.Senha = senha;
-            f.Nome = nome;
-            f.Codigo = codigo.ToString();           
+            f.Nome = nome;                    
 
-            TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome, codigo);
+            TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome);
             return RedirectToAction("CadastrarFuncionario");
         }
 
@@ -119,7 +118,7 @@ namespace SupplierRanking.Controllers
         
             Fornecedor f = new Fornecedor();
             f.Nome = nome;
-            f.Codigo = codigo.ToString();
+            f.Codigo = codigo;
 
             f.ExcluirFuncionario(nome, codigo, nomeDigitado, codigoDigitado);
 
@@ -279,10 +278,65 @@ namespace SupplierRanking.Controllers
         }
         /*==============================================================================================================================================================================*/
 
+
+        public ActionResult UpdateFuncionarioFornecedor(string codigo)
+        {
+            return View(Fornecedor.PerfilFuncionario(int.Parse(codigo))); //PASSAR O codgio PARA RETORNAR O PERFIL PARA PODER EDITAR
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdateFuncionarioFornecedor(string nome, string senha)
+        {
+            Fornecedor f = new Fornecedor();
+            f.Nome = nome;
+            f.Senha = senha;
+      
+
+            
+
+            foreach (string imagem in Request.Files)
+            {
+                HttpPostedFileBase arqPostado = Request.Files[imagem];
+                int tamConteudo = arqPostado.ContentLength; //PEGA O TAMANHO DO CONTEÚDO
+                string tipoArq = arqPostado.ContentType; //PEGA O TIPO DO CONTEÚDO
+
+                if (tamConteudo == 0)
+                {
+
+                }
+
+                //TESTAR SE A IMAGEM É JPEG
+                if (tipoArq.IndexOf("jpeg") > 0)
+                {
+                    //CONVERTER PARA BYTES
+                    byte[] imgBytes = new byte[tamConteudo];
+                    arqPostado.InputStream.Read(imgBytes, 0, tamConteudo);
+                    f.Imagem = imgBytes;
+                }
+            }
+
+
+            TempData["Msg"] = f.UpdateFornecedor();
+
+            return RedirectToAction("UpdateFornecedor");
+        }
+
+
+
+
+
+
+
         public ActionResult Homepage()
         {
             return View();
         }
+
+
+
+
+
     }
 
 }
