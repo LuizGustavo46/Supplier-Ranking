@@ -37,8 +37,9 @@ namespace SupplierRanking.Models
         private string nome_categoria;
 
         /*Variavel do funcionário*/
-        private string codigo;
+        private int codigo;
         private string nome;
+        private string cnpj_fornecedor;
 
         private bool fornecedor;
         private bool consumidor;
@@ -153,7 +154,7 @@ namespace SupplierRanking.Models
             set { nome_categoria = value; }
         }
 
-        public String Codigo
+        public int Codigo
         {
             get { return codigo; }
             set { codigo = value; }
@@ -163,6 +164,12 @@ namespace SupplierRanking.Models
         {
             get { return nome; }
             set { nome = value; }
+        }
+
+        public String Cnpj_fornecedor
+        {
+            get { return cnpj_fornecedor; }
+            set { cnpj_fornecedor = value; }
         }
 
         //----------------------------INICIO DOS MÉTODOS--------------------------------
@@ -199,7 +206,7 @@ namespace SupplierRanking.Models
         /*=================================================================================================================================================================================*/
 
         /*=========================================================================CADASTRO FUNCIONARIO FORNECEDOR=========================================================================*/
-        public string CadastroFuncionario(string cnpj, string senha, string nome, int codigo)
+        public string CadastroFuncionario(string cnpj, string senha, string nome)
         {
             string res = "Inserido com sucesso!";
             try
@@ -208,13 +215,13 @@ namespace SupplierRanking.Models
                 con.Open(); // abre conexão
                 // Criação de comando
                 SqlCommand query =
-                    new SqlCommand("INSERT INTO funcionario VALUES (@nome,@codigo,@senha)", con);
+                    new SqlCommand("INSERT INTO funcionario VALUES (@cnpj,@nome,@senha)", con);
                 // Adiciona os parâmetros
 
-                if (nome != "" && codigo.ToString() != "" && senha != "")
+                if (cnpj != "" && nome != "" && senha != "")
                 {
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
                     query.Parameters.AddWithValue("@nome", nome);
-                    query.Parameters.AddWithValue("@codigo", codigo);
                     query.Parameters.AddWithValue("@senha", senha);
                     query.ExecuteNonQuery();
                 }
@@ -234,6 +241,43 @@ namespace SupplierRanking.Models
 
             return res; // retorna resposta de confirmação
         }
+
+        public static Fornecedor ContadorCodigoFuncionario()
+        {
+
+            Fornecedor cf = new Fornecedor();
+            try
+            {
+                con.Open();
+                SqlCommand query =
+                    new SqlCommand("select max(codigo) AS valor from funcionario", con);
+
+                int codigo = 0;
+
+                try
+                {
+                    codigo = Convert.ToInt32(query.ExecuteScalar());
+                }
+                catch (Exception exc) { }
+
+                cf.codigo = codigo + 1;//método para contar o codigo do funcionario automaticamente
+                cf.cnpj_fornecedor = "";
+                cf.nome = "";               
+                cf.senha = "";
+              
+
+            }
+            catch (Exception e)
+            {
+                cf = null;
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            return cf;
+        }
+
         /*==============================================================================================================================================================================*/
 
         /*=========================================================================CADASTRO FUNCIONARIO FORNECEDOR======================================================================*/
@@ -471,7 +515,7 @@ namespace SupplierRanking.Models
                     Fornecedor f = new Fornecedor();
 
                     f.Nome = leitor["Nome"].ToString();
-                    f.Codigo = leitor["Codigio"].ToString();
+                    f.Codigo = int.Parse(leitor["Codigo"].ToString());
                     f.Senha = leitor["Senha"].ToString();
                     listaFuncionario.Add(f); // adiciona os valores cadastrados no banco à lista
                  
