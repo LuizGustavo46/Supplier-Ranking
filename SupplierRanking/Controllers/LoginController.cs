@@ -89,8 +89,15 @@ namespace SupplierRanking.Controllers
             return View();
         }
 
-      
+        public ActionResult Cadastro()
+        {
+            return View();
+        }
 
+        public ActionResult Update()
+        {
+            return View();
+        }
 
     }
 }
