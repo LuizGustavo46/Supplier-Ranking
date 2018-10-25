@@ -69,21 +69,14 @@
 	padding-bottom: 54px;
 }*/
 
-#txtlogin {
-	font-family: inherit;
-	color: white;
-	padding-bottom: 469px;
-	margin-left: 93px;
-}
-
-.wrap-input100 {
+.wrap-input {
 	position: relative;
 	width: 100%;
 	z-index: 1;
 	margin-bottom: 10px;
 }
 
-.input100 {
+.input {
 	font-family: inherit;
 	font-size: 15px;
 	line-height: 1.5;
@@ -92,7 +85,7 @@
 	width: 100%;
 	background: #e6e6e6;
 	height: 50px;
-	border-radius: 25px;
+	border-radius: 10px;
 	padding: 0 30px 0 68px;
 }
 
@@ -100,20 +93,20 @@
 /*------------------------------------------------------------------
 [ Focus ]*/
 
-.focus-input100 {
+.focus-input {
 	display: block;
 	position: absolute;
-	border-radius: 25px;
+	border-radius: 10px;
 	bottom: 0;
-	left: 0;
+	left: 1em;
 	z-index: -1;
-	width: 100%;
+	width: 94%;
 	height: 100%;
 	box-shadow: 0px 0px 0px 0px;
 	color: #0b96e8
 }
 
-.input100:focus+.focus-input100 {
+.input:focus+.focus-input {
 	-webkit-animation: anim-shadow 0.5s ease-in-out forwards;
 	animation: anim-shadow 0.5s ease-in-out forwards;
 }
@@ -132,7 +125,7 @@
 	}
 }
 
-.symbol-input100 {
+.symbol-input {
 	font-size: 15px;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -155,7 +148,7 @@
 	transition: all 0.4s;
 }
 
-.input100:focus+.focus-input100+.symbol-input100 {
+.input:focus+.focus-input+.symbol-input {
 	color: #57b846;
 	padding-left: 28px;
 }
@@ -371,8 +364,7 @@ input:checked+.slider:before {
 	transform: translateX(26px);
 }
 
-.active-switch,
-.active-switch-pessoa {
+.active-switch {
     background-color: #0C496Bc9;
     border: 2px solid #DAA520;
     box-shadow: 1px 2px 4px 4px #CCC;

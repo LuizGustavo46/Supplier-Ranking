@@ -7,10 +7,10 @@
     <h2>Login</h2>
 </div>
 
-<div class="row text-center align-items-center justify-content-center p-5">
+<div class="row text-center justify-content-center p-5">
     Selecione o seu tipo de usuário:
 
-    <div class="row col-12 mt-4">
+    <div class="row col-12 align-items-center mt-4">
         <!--- Comprador --->
         <div class="col-5 js-tilt" data-tilt>
             <button id="btnComprador" class="col-9 switch-wrapper p-3">
@@ -35,134 +35,123 @@
     </div>
 </div>
 
-<!--- Formulário de Login --->
-<form class="row login-form validate-form mt-4 p-5">
+<!--- Pessoa Física & Pessoa Jurídica --->
+<div id="wrapperFisicaJuridica"
+     class="col-12 text-center justify-content-center mt-4">
+    Informe o seu tipo de perfil:
 
-    <!--- Pessoa Física & Pessoa Jurídica --->
-    <div id="wrapperFisicaJuridica" class="col-12 text-center align-items-center justify-content-center">
-        Informe o seu tipo de perfil:
-        
-        <div class="row col-12 mt-4">
+    <div class="row align-items-center mt-4 pr-5 pb-5 pl-5">
+        <!--- Pessoa Física --->
+        <div class="col-5 js-tilt">
+            <button id="btnFisica" class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/comprador.png" />
+                <h5 class="switch-person-title p-2">Física</h5>
+            </button>
+        </div>
 
-            <!--- Pessoa Física --->
-            <div class="col-5 js-tilt" data-tilt>
-                <button id="btnFisica" class="col-9 switch-wrapper p-3">
-                    <img src="/Content/images/comprador.png" />
-                    <h5 class="switch-person-title p-2">Física</h5>
-                </button>
-            </div>
+        <!--- Switch --->
+        <label class="switch m-3">
+            <input id="switchJuridica" type="checkbox">
+            <span class="slider slider-juridica round unchecked"></span>
+        </label>
 
-            <!--- Switch --->
-            <label class="switch m-3">
-                <input id="switchJuridica" type="checkbox">
-                <span class="slider slider-juridica round unchecked"></span>
-            </label>
-
-            <!--- Pessoa Jurídica --->
-            <div class="col-5 js-tilt" data-tilt>
-                <button id="btnJuridica" class="col-9 switch-wrapper p-3">
-                    <img src="/Content/images/fornecedor.png" />
-                    <h5 class="switch-person-title p-2">Jurídica</h5>
-                </button>
-            </div>
-
+        <!--- Pessoa Jurídica --->
+        <div class="col-5 js-tilt">
+            <button id="btnJuridica" class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/fornecedor.png" />
+                <h5 class="switch-person-title p-2">Jurídica</h5>
+            </button>
         </div>
     </div>
-
-    <!--- Funcionario --->
-    <div id="wrapperFuncionario" class="row col-12 text-center justify-content-center">
-        Ative o campo caso seja um funcionário
-        
-        <div class="row col-12 align-items-center justify-content-center mt-4">
-            <!--- Switch --->
-            <label class="switch switch-funcionario">
-                <input id="switchJuridica" type="checkbox">
-                <span class="slider slider-funcionario round unchecked"></span>
-            </label>
-
-            <!--- Funcionario --->
-            <div class="col-5 text-center js-tilt" data-tilt>
-                <button id="btnFuncionario" class="col-9 switch-wrapper p-3">
-                    <img src="/Content/images/comprador.png" />
-                    <h5 class="switch-person-title p-2">Funcionario</h5>
-                </button>
-            </div>
-
-        </div>
 </div>
-        
 
-        @*<!---input CNPJ JURIDICA-->
-            <div id="inputJuridica" class="wrap-input100 validate-input"
-                 data-validate="Valid email is required: ex@abc.xyz">
-                <input class="input100" type="text" name="email" placeholder="CNPJ">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-            </div>
+<!--- Funcionario --->
+<div id="wrapperFuncionario"
+     class="row col-12 text-center justify-content-center mt-4">
+    Ative o campo caso seja um funcionário
 
+    <div class="row col-12 align-items-center justify-content-center mt-4 pr-5 pb-5 pl-5">
+        <!--- Switch --->
+        <label class="switch switch-funcionario">
+            <input id="switchFuncionario" type="checkbox">
+            <span class="slider slider-funcionario round"></span>
+        </label>
 
+        <!--- Funcionario --->
+        <div class="col-5 text-center js-tilt" data-tilt>
+            <button id="btnFuncionario" 
+                    class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/comprador.png" />
+                <h5 class="switch-person-title p-2">Funcionário</h5>
+            </button>
+        </div>
+    </div>
+</div>
 
-            <!---input CPF FISICA-->
-            <div id="inputFisica" class="wrap-input100 validate-input"
-                 data-validate="Valid email is required: ex@abc.xyz">
-                <input class="input100" type="text" name="email" placeholder="CPF">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-            </div>
+<!--- Formulário de Login --->
+<form class="row login-form justify-content-center p-5" >
 
-            <!---input CNPJ Fornecedor-->
-            <div id="inputFornecedor" class="wrap-input100 validate-input"
-                 data-validate="Valid email is required: ex@abc.xyz">
-                <input class="input100" type="text" name="email" placeholder="CNPJ">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-            </div>
+    <!--- CPF --->
+    <div id="inputCpf" class="col-10 wrap-input validate-input"
+         data-validate="Valid email is required: ex@abc.xyz">
+        <input class="input" type="text" name="email" placeholder="CPF">
+        <span class="focus-input"></span>
+        <span class="symbol-input">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
 
-            <!---input Funcionario -->
-            <div id="inputFuncionario" class="wrap-input100 validate-input"
-                 data-validate="Valid email is required: ex@abc.xyz">
-                <input class="input100" type="text" name="email" placeholder="CPF">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-            </div>
+    <!--- CNPJ --->
+    <div id="inputCnpj" class="col-10 wrap-input validate-input"
+         data-validate="Valid email is required: ex@abc.xyz">
+        <input class="input" type="text" name="email" placeholder="CNPJ">
+        <span class="focus-input"></span>
+        <span class="symbol-input">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
 
+    <!--- Codigo Funcionario --->
+    <div id="inputFuncionario" class="col-10 wrap-input validate-input mt-3"
+         data-validate="Valid email is required: ex@abc.xyz">
+        <input class="input" type="text" name="email" placeholder="Código do Funcionário">
+        <span class="focus-input"></span>
+        <span class="symbol-input">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
 
-            <div class="wrap-input100 validate-input"
-                 data-validate="Password is required">
-                <input class="input100" type="password" name="pass" placeholder="Senha">
-                <span class="focus-input100"></span>
-                <span class="symbol-input100">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                </span>
-            </div>
+    <!--- Senha --->
+    <div class="col-10 wrap-input validate-input mt-3" 
+         data-validate="Password is required">
+        <input class="input" type="password" name="pass" placeholder="Senha">
+        <span class="focus-input"></span>
+        <span class="symbol-input">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </span>
+    </div>
 
-            <div class="container-login100-form-btn">
-                <button class="login100-form-btn">
-                    Login
-                </button>
-            </div>
+    <input id="inputHidden" type="text" name="inputHidden" placeholder="Input">
 
-            <div class="text-center p-t-12">
-                <span class="txt1">
-                    Esqueceu
-                </span>
-                <a class="txt2" href="#">
-                    Usuário / Senha ?
-                </a>
-            </div>
+    @*<div class="container-login100-form-btn">
+        <button class="login100-form-btn">
+            Login
+        </button>
+    </div>
 
-            <div class="text-center p-t-136">
-                <a class="txt2" href="#">
-                    Criar conta
-                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                </a>
-            </div>*@
+    <div class="text-center p-t-12">
+        <span class="txt1">
+            Esqueceu
+        </span>
+        <a class="txt2" href="#">
+            Usuário / Senha ?
+        </a>
+    </div>
+
+    <div class="text-center p-t-136">
+        <a class="txt2" href="#">
+            Criar conta
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+        </a>
+    </div>*@
 </form>
