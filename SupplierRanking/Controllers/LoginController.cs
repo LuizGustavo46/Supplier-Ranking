@@ -72,7 +72,7 @@ namespace SupplierRanking.Controllers
             if (inputHidden == "3") // 3 é funcionario
             {
                 Fornecedor fu = new Fornecedor();
-                fu.Codigo = codigoFuncionario;
+                fu.Codigo = int.Parse(codigoFuncionario);
                 fu.Cnpj = cnpjFornecedor;          
                 fu.Senha = senha;
                 if (fu.LoginFuncionario())
