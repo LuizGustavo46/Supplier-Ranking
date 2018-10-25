@@ -64,14 +64,15 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroPessoaFisica(string cpf, string nome, string sobrenome, string email, string senha, string uf, string telefone, string celular)
+        public ActionResult CadastroPessoaFisica(string cpf, string nome, string sobrenome, string email, string senha,string confirmarSenha, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Cpf = cpf;
             c.Nome = nome;
             c.Sobrenome = sobrenome;
             c.Email = email;
-            c.Senha = senha;
+            if(senha == confirmarSenha)
+                c.Senha = senha;
             c.Tipo_pessoa = "F"; //F DE PESSOA FISICA, NÃO PRECISA SER PASSADO ATRAVÉS DA VIEW
             c.Cnpj = ""; //NÃO VAI SER USADO
             c.Nome_empresa = ""; //NÃO VAI SER USADO

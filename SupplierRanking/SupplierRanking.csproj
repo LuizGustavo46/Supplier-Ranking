@@ -260,6 +260,8 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Content\config\css\ajax-loader.gif" />
     <Content Include="Content\config\css\animate.css" />
@@ -423,6 +425,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Cadastro.cshtml" />
     <Content Include="Views\Login\Update.cshtml" />
+    <Content Include="Views\Comprador\CadastroPessoaFisica.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -433,7 +436,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Avaliacao\" />
-    <Folder Include="Views\Comprador\" />
     <Folder Include="Views\Fornecedor\" />
   </ItemGroup>
   <PropertyGroup>

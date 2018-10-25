@@ -221,7 +221,7 @@ namespace SupplierRanking.Models
                     new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
                     "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@fone,@celular)",
                         con);
-                if (cpf.Length == 14 && senha.Length >= 5 && nome.Length >= 3 && email.Length >= 8 && cep.Length == 9 &&
+                if (cpf.Length == 14 && senha.Length >= 5 && nome.Length >= 3 && email.Length >= 8 &&
                     (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0)) //CONDIÇÃO PARA EFETUAR O CADASTRO
                 {
                     //ADICIONA OS PARÂMETROS --- NÃO PRECISA PASSAR O CAMPO CODIGO, ELE GERA AUTOMATICAMENTE NO BANCO
