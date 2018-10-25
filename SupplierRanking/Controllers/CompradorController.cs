@@ -85,9 +85,9 @@ namespace SupplierRanking.Controllers
             c.Celular = celular;
 
             if (c.CadastroPessoaFisica())
-                TempData["Msg"] = "Cadastro Realizado";
+                ViewBag.Message = "Cadastro Realizado";
             else
-                TempData["Msg"] = "Informações Inválidas";
+                ViewBag.Message = "Informações Inválidas";
 
             return RedirectToAction("CadastroPessoaFisica");
         }
@@ -140,14 +140,17 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string senha, string endereco, string bairro, string cidade, string cep, string uf, string telefone, string celular)
+        public ActionResult CadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string senha, string confirmarSenha, string endereco, string bairro, string cidade, string cep, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Cpf = ""; //NÃO VAI SER USADO
             c.Nome = ""; //NÃO VAI SER USADO
             c.Sobrenome = ""; //NÃO VAI SER USADO
             c.Email = email;
-            c.Senha = senha;
+            if (senha == confirmarSenha)
+                c.Senha = senha;
+            else
+                ViewBag.Message = "As senhas não correspondem";
             c.Tipo_pessoa = "J"; //J DE PESSOA JURIDICA, NÃO PRECISA SER PASSADO ATRAVÉS DA VIEW
             c.Cnpj = cnpj;
             c.Nome_empresa = nome_empresa;
@@ -160,9 +163,11 @@ namespace SupplierRanking.Controllers
             c.Celular = celular;
 
             if (c.CadastroPessoaJuridica())
-                TempData["Msg"] = "Cadastro Realizado";
+                //TempData["Msg"] = "Cadastro Realizado";
+                ViewBag.Message = "Cadastro Realizado";
             else
-                TempData["Msg"] = "Informações Inválidas";
+                //TempData["Msg"] = "Informações Inválidas";
+                ViewBag.Message = "Informações Inválidas";
 
             return RedirectToAction("CadastroPessoaJuridica");
         }

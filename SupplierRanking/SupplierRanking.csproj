@@ -426,6 +426,7 @@
     <Content Include="Views\Login\Cadastro.cshtml" />
     <Content Include="Views\Login\Update.cshtml" />
     <Content Include="Views\Comprador\CadastroPessoaFisica.cshtml" />
+    <Content Include="Views\Comprador\CadastroPessoaJuridica.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

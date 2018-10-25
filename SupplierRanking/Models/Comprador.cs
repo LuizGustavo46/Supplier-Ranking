@@ -162,7 +162,7 @@ namespace SupplierRanking.Models
                 con.Open();
                 SqlCommand query =
                     new SqlCommand("SELECT * FROM comprador WHERE cnpj = @cnpj AND senha = @senha", con);
-                query.Parameters.AddWithValue("@cnpj", cpf);
+                query.Parameters.AddWithValue("@cnpj", cnpj);
                 query.Parameters.AddWithValue("@senha", senha);
                 SqlDataReader leitor = query.ExecuteReader();
 
@@ -219,8 +219,9 @@ namespace SupplierRanking.Models
                 //CRIAÇÃO DE COMANDO
                 SqlCommand query =
                     new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
-                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@fone,@celular)",
+                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@telefone,@celular)",
                         con);
+                
                 if (cpf.Length == 14 && senha.Length >= 5 && nome.Length >= 3 && email.Length >= 8 &&
                     (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0)) //CONDIÇÃO PARA EFETUAR O CADASTRO
                 {
@@ -238,7 +239,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@cidade", cidade);
                     query.Parameters.AddWithValue("@uf", uf);
                     query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@fone", telefone);
+                    query.Parameters.AddWithValue("@telefone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
                     query.ExecuteNonQuery();
                 }
@@ -267,10 +268,10 @@ namespace SupplierRanking.Models
                 con.Open(); //ABRE CONEXÃO
                 //CRIAÇÃO DE COMANDO
                 SqlCommand query =
-                    new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@tipo_usuario,@senha," +
-                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@fone,@celular)",
+                    new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
+                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@telefone,@celular)",
                         con);
-                if (cnpj.Length == 19 && senha.Length >= 5 && nome_empresa.Length >= 3 && email.Length >= 8 && cep.Length == 9 &&
+                if (cnpj.Length == 19 && senha.Length >= 5 && nome_empresa.Length >= 1 && email.Length >= 4 && cep.Length == 9 &&
                     (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0) && uf.Length == 2 &&
                     endereco.Length > 1 && bairro.Length > 1 && cidade.Length > 1) //CONDIÇÃO PARA EFETUAR O CADASTRO
                 {
@@ -288,7 +289,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@cidade", cidade);
                     query.Parameters.AddWithValue("@uf", uf);
                     query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@fone", telefone);
+                    query.Parameters.AddWithValue("@telefone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
                     query.ExecuteNonQuery();
                 }

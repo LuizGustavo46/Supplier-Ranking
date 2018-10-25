@@ -1,27 +1,26 @@
 ﻿
 @{
-    ViewBag.Title = "CadastroPessoaFisica";
+    ViewBag.Title = "CadastroPessoaJuridica";
     Layout = "~/Views/Shared/LoginLayout.cshtml";
 }
 
-
 <div class="container-login100">
-    
     <div class="wrap-login100" style="background-color: white;">
+        <h2>CadastroPessoaJuridica</h2>
+        <form method="post" class="login100-form validate-form">
 
-        <h2>CadastroPessoaFisica</h2>
-
-        <form action="../Comprador/CadastroPessoaFisica" method="post" class="login100-form validate-form">
-            <p>@ViewBag.Message</p>
-            <!--- Campos do Comprador Fisico -->
-            <div >
-                <input type="text" name="cpf" placeholder="CPF">
-                <input type="text" name="nome" placeholder="Nome">
-                <input type="text" name="sobrenome" placeholder="Sobrenome">
+            <!--- Campos do Comprador Juridico -->
+            <div>
+                <input type="text" name="cnpj" placeholder="CNPJ">
+                <input type="text" name="nome_empresa" placeholder="Nome da Empresa">
                 <input type="text" name="email" placeholder="Email">
                 <input type="text" name="senha" placeholder="Senha">
                 <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
                 <br /> <br />
+                <input type="text" name="cep" placeholder="CEP">
+                <input type="text" name="endereco" placeholder="Endereço">
+                <input type="text" name="bairro" placeholder="Bairro">
+                <input type="text" name="cidade" placeholder="Cidade">
                 <input type="text" name="uf" placeholder="UF">
                 <br /> <br />
                 <input type="text" name="telefone" placeholder="(00) 0000-0000">
