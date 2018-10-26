@@ -429,6 +429,9 @@
     <Content Include="Views\Comprador\CadastroPessoaJuridica.cshtml" />
     <Content Include="Views\Fornecedor\CadastroFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\CadastroFuncionario.cshtml" />
+    <Content Include="Views\Fornecedor\EnviarEmail.cshtml" />
+    <Content Include="Views\Fornecedor\UpdateSenha.cshtml" />
+    <Content Include="Views\Fornecedor\UpdateFornecedor.cshtml" />
     <Content Include="Views\Comprador\UpdatePessoaFisica.cshtml" />
     <Content Include="Views\Comprador\UpdatePessoaJuridica.cshtml" />
     <Content Include="Views\Comprador\UpdateSenha.cshtml" />
@@ -444,7 +447,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Avaliacao\" />
-    <Folder Include="Views\Default\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

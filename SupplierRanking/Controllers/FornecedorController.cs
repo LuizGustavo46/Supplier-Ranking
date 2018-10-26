@@ -147,7 +147,7 @@ namespace SupplierRanking.Controllers
                 //Configurando a mensagem
                 MailMessage mail = new MailMessage();
                 //Origem
-                mail.From = new MailAddress("suportsupplierranking@hotmail.com@hotmail.com");
+                mail.From = new MailAddress("suportesupplierranking2@hotmail.com");
                 //Destinatário
                 mail.To.Add(email);
                 //Assunto
@@ -163,7 +163,7 @@ namespace SupplierRanking.Controllers
                 //Habilitou o TLS
                 smtpServer.EnableSsl = true;
                 //Configurou usuario e senha p/ logar
-                smtpServer.Credentials = new System.Net.NetworkCredential("suportsupplierranking@hotmail.com", "Senai1234");
+                smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking2@hotmail.com", "SEnai12344");
                 //Envia
                 smtpServer.Send(mail);
                 TempData["Msg"] = "Enviado com sucesso!";
@@ -173,7 +173,7 @@ namespace SupplierRanking.Controllers
                 TempData["Msg"] = "Erro ao enviar";
             }
 
-            return RedirectToAction("Listar");
+            return RedirectToAction("EnviarEmail");
         }
 
         /*================================================================================================================================================================================*/
@@ -212,19 +212,22 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateSenha(string senha, string novaSenha, string senhaDigitada)
+        public ActionResult UpdateSenha(string senha, string novaSenha, string cnpj, string cnpjDigitado)
         {
             Fornecedor senhaUp = new Fornecedor();
 
             senhaUp.Senha = senha;
 
-            bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaDigitada);
+            if (cnpjDigitado == cnpj)
+            {
+                bool res = senhaUp.UpdateSenha(senha, novaSenha, cnpj, cnpjDigitado);
 
-            if (res)
-                //RETORNAR NA VIEW DE UPDATE DE SENHA
-                return RedirectToAction("Logar");
-            else
-                return View();
+                if (res) 
+                    //RETORNAR NA VIEW DE UPDATE DE SENHA
+                 return RedirectToAction("UpdateSenha");
+
+            }   
+                return View("UpdateSenha");
         }
         /*================================================================================================================================================================================*/
 

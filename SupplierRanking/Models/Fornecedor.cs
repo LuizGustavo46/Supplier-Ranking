@@ -538,7 +538,7 @@ namespace SupplierRanking.Models
         
 
         /*=================================================================================UPDATE SENHA=================================================================================*/
-        public Boolean UpdateSenha(string senha, string novaSenha, string senhaDigitada)
+        public Boolean UpdateSenha(string senha, string novaSenha, string cnpj, string cnpjDigitado)
         {
             bool res = false;
             try
@@ -553,17 +553,31 @@ namespace SupplierRanking.Models
                  --------------------------------------------------------------------------------------------------*/
                 /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 
-                if (novaSenha != senha && senhaDigitada == senha)
+                SqlCommand query1 =
+                   new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj AND senha = @senha", con);
+                query1.Parameters.AddWithValue("@cnpj", cnpj);
+                query1.Parameters.AddWithValue("@senha", senha);
+                SqlDataReader leitor = query1.ExecuteReader();
+
+                if (leitor.Read())
+                    cnpj = leitor["cnpj"].ToString();
+                leitor.Close();
+
+                if (cnpjDigitado == cnpj)
                 {
-                    SqlCommand query =
-                        new SqlCommand("UPDATE fornecedor SET  senha = @senha Where cnpj = @cnpj", con);
-                    query.Parameters.AddWithValue("@senha", senha);
-                    query.Parameters.AddWithValue("@cnpj", cnpj);
-                    SqlDataReader leitor = query.ExecuteReader();
-                    res = true;
+                    if (novaSenha != senha)
 
+                    {                     
+                        SqlCommand query =
+                            new SqlCommand("UPDATE fornecedor SET  senha = @novaSenha", con);
+                        query.Parameters.AddWithValue("@novaSenha", novaSenha);
+                         query.ExecuteNonQuery();
+                        res = true;
+
+                       // res = leitor.HasRows;
+                    }
                 }
-
+                                
             }
             catch (Exception e)
             {
@@ -594,14 +608,15 @@ namespace SupplierRanking.Models
                     SqlCommand query =
                         new SqlCommand("UPDATE fornecedor SET email = @email, telefone = @telefone, celular = @celular, endereco = @endereco, " +
                         "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, slogan = @slogan, descricao = @descricao, imagem = @imagem, " +
-                        "nome_categorias = @nome_categorias WHERE cnpj = @cnpj", con);
+                        "nome_categoria = @nome_categoria WHERE cnpj = @cnpj", con);
 
                     /*SE ALGUMA INFORMAÇÃO ESTIVER VAZIA O SISTEMA RETORNA UMA MENSAGEM DE AVISO PARA PREENCHER OS CAMPOS
                     CORRETAMENTE*/
 
-                    if (email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
-                    && cep != "" && slogan != "" && descricao != "" && descricao != "" && imagem != null && nome_categoria != "")
-                    {
+                    //if (cnpj != "" || cnpj == "" && email != "" || email == "" && telefone != "" || telefone == "" && celular != "" || celular == "" && endereco != "" || endereco == "" && bairro != "" || bairro == ""
+                    //&& cidade != "" || cidade == "" && uf != "" || uf == "" && cep != "" || cep == "" && slogan != "" || slogan == "" && descricao != "" || descricao == "" && imagem != null || imagem == null && nome_categoria != "" || nome_categoria == "")
+                    //{
+                        query.Parameters.AddWithValue("@cnpj", cnpj);
                         query.Parameters.AddWithValue("@email", email);
                         query.Parameters.AddWithValue("@telefone", telefone);
                         query.Parameters.AddWithValue("@celular", celular);
@@ -612,15 +627,15 @@ namespace SupplierRanking.Models
                         query.Parameters.AddWithValue("@cep", cep);
                         query.Parameters.AddWithValue("@slogan", slogan);
                         query.Parameters.AddWithValue("@descricao", descricao);
-                        query.Parameters.AddWithValue("@plano", plano);
+                       
                         query.Parameters.AddWithValue("@imagem", imagem);
                         query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
                         query.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        return "Preencha as informações corretamente.";
-                    }
+                    //}
+                    //else
+                    //{
+                    //    return "Preencha as informações corretamente.";
+                    //}
                 }
 
                 catch (Exception e)
