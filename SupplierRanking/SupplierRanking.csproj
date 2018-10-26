@@ -429,6 +429,11 @@
     <Content Include="Views\Comprador\CadastroPessoaJuridica.cshtml" />
     <Content Include="Views\Fornecedor\CadastroFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\CadastroFuncionario.cshtml" />
+    <Content Include="Views\Comprador\UpdatePessoaFisica.cshtml" />
+    <Content Include="Views\Comprador\UpdatePessoaJuridica.cshtml" />
+    <Content Include="Views\Comprador\UpdateSenha.cshtml" />
+    <Content Include="Views\Comprador\RestaurarSenha.cshtml" />
+    <Content Include="Views\Comprador\NovaSenha.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
