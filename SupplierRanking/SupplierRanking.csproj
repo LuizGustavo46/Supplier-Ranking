@@ -427,6 +427,8 @@
     <Content Include="Views\Login\Update.cshtml" />
     <Content Include="Views\Comprador\CadastroPessoaFisica.cshtml" />
     <Content Include="Views\Comprador\CadastroPessoaJuridica.cshtml" />
+    <Content Include="Views\Fornecedor\CadastroFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\CadastroFuncionario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -437,7 +439,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Avaliacao\" />
-    <Folder Include="Views\Fornecedor\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
