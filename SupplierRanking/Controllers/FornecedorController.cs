@@ -62,7 +62,7 @@ namespace SupplierRanking.Controllers
        
         [HttpPost]
         public ActionResult CadastroFornecedor(string cnpj, string nome_empresa, string email, string telefone, string celular, string endereco, string bairro, 
-            string cidade, string uf, string cep, string senha, string slogan, string descricao, /*string plano, */string nome_categoria)
+            string cidade, string uf, string cep, string senha, string slogan, string descricao, /*string plano, */string nome_categoria, string confirmarSenha)
         {
 
             Fornecedor f = new Fornecedor();
@@ -77,7 +77,8 @@ namespace SupplierRanking.Controllers
             f.Cidade = cidade;
             f.Uf = uf;
             f.Cep = cep;
-            f.Senha = senha;
+            if(senha == confirmarSenha)
+                f.Senha = senha;
             f.Slogan = slogan;
             f.Descricao = descricao;
             f.Media = 0;
@@ -102,6 +103,10 @@ namespace SupplierRanking.Controllers
                     byte[] imgBytes = new byte[tamConteudo];
                     arqPostado.InputStream.Read(imgBytes, 0, tamConteudo);
                     f.Imagem = imgBytes;
+                }
+                else
+                {
+                    f.Imagem = new byte[] { };
                 }
             }
 
