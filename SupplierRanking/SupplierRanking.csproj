@@ -429,6 +429,9 @@
     <Content Include="Views\Comprador\CadastroPessoaJuridica.cshtml" />
     <Content Include="Views\Fornecedor\CadastroFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\CadastroFuncionario.cshtml" />
+    <Content Include="Views\Fornecedor\EnviarEmail.cshtml" />
+    <Content Include="Views\Fornecedor\UpdateSenha.cshtml" />
+    <Content Include="Views\Fornecedor\UpdateFornecedor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
