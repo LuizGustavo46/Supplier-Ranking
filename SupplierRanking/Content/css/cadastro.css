@@ -1,0 +1,30 @@
+﻿
+.wrap-cadastro {
+    width: 1024px;
+    min-height: 582px;
+    background: #FFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 4px 7px 14px 4px #575757;
+}
+
+.input {
+    padding: 0 20px;
+}
+
+.focus-input {
+    width: 91.5%;
+}
+
+.states {
+    width: 25%;
+    background: #E6E6E6;
+    height: 50px;
+    border: 0;
+    border-radius: 10px;
+    padding: 0 30px 0 68px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.5;
+}
