@@ -509,7 +509,7 @@ namespace SupplierRanking.Models
             /*PEDE-SE UMA CONFIRMAÇÃO DE SENHA PARA EDITAR AS INFORMAÇÕES DO FORNCEDOR
             PARA QUE TENHA UMA SEGURANÇA MAIOR*/
 
-            //if (confirmaSenha == senha)
+          
                 try
                 {
                     con.Open();
@@ -521,9 +521,7 @@ namespace SupplierRanking.Models
                     /*SE ALGUMA INFORMAÇÃO ESTIVER VAZIA O SISTEMA RETORNA UMA MENSAGEM DE AVISO PARA PREENCHER OS CAMPOS
                     CORRETAMENTE*/
 
-                    if (email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
-                    && cep != "" && slogan != "" && descricao != "" && descricao != "" && imagem != null && nome_categoria != "")
-                    {
+                   
                         query.Parameters.AddWithValue("@email", email);
                         query.Parameters.AddWithValue("@telefone", telefone);
                         query.Parameters.AddWithValue("@celular", celular);
@@ -538,11 +536,7 @@ namespace SupplierRanking.Models
                         query.Parameters.AddWithValue("@imagem", imagem);
                         query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
                         query.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        return "Preencha as informações corretamente.";
-                    }
+                  
                 }
 
                 catch (Exception e)
