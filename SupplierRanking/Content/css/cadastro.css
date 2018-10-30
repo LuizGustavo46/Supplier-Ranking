@@ -1,11 +1,16 @@
 ﻿
 .wrap-cadastro {
     width: 1024px;
-    min-height: 582px;
+    height: 850px;
     background: #FFF;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 4px 7px 14px 4px #575757;
+}
+
+.form-first-part {
+    position: relative;
+    top: -94%;
 }
 
 .input {
@@ -17,14 +22,23 @@
 }
 
 .states {
-    width: 25%;
+    width: 30%;
     background: #E6E6E6;
     height: 50px;
     border: 0;
     border-radius: 10px;
-    padding: 0 30px 0 68px;
-    font-family: inherit;
-    font-size: 15px;
+    padding: 0 20px 0 40px;
+    font: 15px inherit 500;
     color: #666666;
     line-height: 1.5;
+}
+
+.form-second-part {
+    position: absolute;
+    top: 13.9%;
+    left: 0;
+}
+
+.form-second-part .wrap-input {
+    padding: 0 1.1em;
 }

@@ -81,10 +81,10 @@ $(document).ready(function () {
 
     // Primeira funcao a ser executada
     function init() {
-        $('#wrapperFisicaJuridica').hide();
-        $('#wrapperFuncionario').hide();
-        $('.cadastro-form').hide();
-        inputFuncionario.hide();
+        //$('#wrapperFisicaJuridica').hide();
+        //$('#wrapperFuncionario').hide();
+        $('.form-thrid-part').hide();
+        //inputFuncionario.hide();
     }
 
     // Funcao para tirar o slider da posicao neutra  
