@@ -206,10 +206,10 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateSenha(int codigo ,string senhaAntiga, string senhaNova, string confirmaSenhaNova)
+        public ActionResult UpdateSenha(/*int codigo ,*/string senhaAntiga, string senhaNova, string confirmaSenhaNova)
         {
             Comprador c = new Comprador();
-            c.Codigo = codigo;
+            c.Codigo = /*codigo*/2;
             if(c.UpdateSenha(senhaAntiga, senhaNova, confirmaSenhaNova))
                 TempData["Msg"] = "Senha Alterada";
             else

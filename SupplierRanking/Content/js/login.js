@@ -79,8 +79,15 @@ $(document).ready(function () {
         switchTipoFuncionario(switchFuncionario);
     });
 
+    //$('.login-form').submit(function(e){ //tentando parar o submit do botão pra não atualizar a pagina 
+    //    e.preventDefault();
+    //    $(this).submit();
+    //});
+        
+
+
     // Primeira funcao a ser executada
-    function init() {
+    function init() {  
         $('#wrapperFisicaJuridica').hide();
         $('#wrapperFuncionario').hide();
         $('.login-form').hide();
@@ -120,7 +127,7 @@ $(document).ready(function () {
             $('#wrapperFuncionario').show();
             $('.login-form').show();
             inputCpf.hide();
-            inputCnpj.mask('00.000.000/0000-00').show();
+            inputCnpj.show();
             inputHidden.val('2');
 
         } else { //Seleciona o Comprador
@@ -163,14 +170,14 @@ $(document).ready(function () {
     // Funcao para aparecer / esconder Funcionario
     function switchTipoFuncionario(input) {
 
-        if ($(input).is(':checked') && btnFuncionario.hasClass('active-switch')) {
+        if ($(input).is(':checked') && btnFuncionario.hasClass('active-switch')) { //Seleciona fornecedor
             btnFuncionario.removeClass('active-switch');
             switchFuncionario.prop('checked', false);
             inputFuncionario.hide();
             $('.wrap-login').removeClass('has-employee');
             inputHidden.val('2');
 
-        } else {
+        } else { //Seleciona Funcionario
             btnFuncionario.addClass('active-switch');
             switchFuncionario.prop('checked', true);
             $('.wrap-login').addClass('has-employee');

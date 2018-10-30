@@ -94,7 +94,7 @@
     <!--- CPF --->
     <div id="inputCpf" class="col-10 wrap-input"
          data-validate="Valid email is required: ex@abc.xyz">
-        <input class="input" type="text" maxlength="11" name="cpf" placeholder="CPF">
+        <input class="input" type="text" maxlength="14" name="cpf" placeholder="CPF" data-mask="000.000.000-00" data-mask-selectionFocus="true"/>
         <span class="focus-input"></span>
         <span class="symbol-input">
             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -104,7 +104,7 @@
     <!--- CNPJ --->
     <div id="inputCnpj" class="col-10 wrap-input"
          data-validate="Valid email is required: ex@abc.xyz">
-        <input class="input" type="text" maxlength="14" name="cnpj" placeholder="CNPJ">
+        <input class="input" type="text" maxlength="19" name="cnpj" placeholder="CNPJ" data-mask="00.000.000/0000-00" data-mask-selectionFocus="true">
         <span class="focus-input"></span>
         <span class="symbol-input">
             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -132,6 +132,7 @@
     </div>
 
     <input id="inputHidden" type="text" name="inputHidden" hidden>
+    <a style="color: red">@ViewBag.Message</a>
 
     <div class="row col-12 login-form justify-content-center p-5 mt-5 ml-3 mr-3">
         <div class="col-6 mt-3">
