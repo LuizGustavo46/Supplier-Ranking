@@ -1,48 +1,39 @@
 ﻿
-/****** FONT *****/
-@font-face {
-  font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
-}
-
-@font-face {
-  font-family: Poppins-Medium;
-  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
-}
-
-@font-face {
-  font-family: Montserrat-Bold;
-  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
-}
-
-/****** FONT *****/
 * {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 }
 
-body, html {
-	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+html {
+	font-family: sans-serif;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-ms-overflow-style: scrollbar;
+	-webkit-tap-highlight-color: transparent;
 }
 
-/*---------------------------------------------*/
+body {
+	margin: 0;
+	font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #DAA520;
+	text-align: left;
+	background-color: #fff;
+}
+
 a {
-	font-family: Poppins-Regular;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
 	transition: all 0.4s;
 	-webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-moz-transition: all 0.4s;
 }
 
 a:focus {
@@ -51,52 +42,56 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: #0b96e8;
+	color: #0b96e8;
 }
 
-/*---------------------------------------------*/
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
 	margin: 0px;
 }
 
 p {
-	font-family: Poppins-Regular;
+	font-family: inherit;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
 }
 
-ul, li {
+ul,
+li {
 	margin: 0px;
 	list-style-type: none;
 }
 
-
-/*---------------------------------------------*/
-input {
+input,
+input[type=checkbox] {
 	outline: none;
 	border: none;
 }
 
+input[type=checkbox] {
+    visibility: hidden;
+}
+
 textarea {
-  outline: none;
-  border: none;
+	outline: none;
+	border: none;
 }
 
-textarea:focus, input:focus {
-  border-color: transparent !important;
+textarea:focus,
+input:focus {
+	border-color: transparent !important;
 }
 
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; }
-input:focus::-moz-placeholder { color:transparent; }
-input:focus:-ms-input-placeholder { color:transparent; }
+input:focus::-webkit-input-placeholder { color: transparent; }
+input:focus:-moz-placeholder { color: transparent; }
+input:focus::-moz-placeholder { color: transparent; }
+input:focus:-ms-input-placeholder { color: transparent; }
 
-textarea:focus::-webkit-input-placeholder { color:transparent; }
-textarea:focus:-moz-placeholder { color:transparent; }
-textarea:focus::-moz-placeholder { color:transparent; }
-textarea:focus:-ms-input-placeholder { color:transparent; }
+textarea:focus::-webkit-input-placeholder { color: transparent; }
+textarea:focus:-moz-placeholder { color: transparent; }
+textarea:focus::-moz-placeholder { color: transparent; }
+textarea:focus:-ms-input-placeholder { color: transparent; }
 
 input::-webkit-input-placeholder { color: #999999; }
 input:-moz-placeholder { color: #999999; }
@@ -108,7 +103,6 @@ textarea:-moz-placeholder { color: #999999; }
 textarea::-moz-placeholder { color: #999999; }
 textarea:-ms-input-placeholder { color: #999999; }
 
-/*---------------------------------------------*/
 button {
 	outline: none !important;
 	border: none;
@@ -123,3 +117,6 @@ iframe {
 	border: none !important;
 }
 
+.heading-section h2 {
+    font-weight: 500; 
+}

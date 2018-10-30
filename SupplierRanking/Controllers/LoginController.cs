@@ -16,56 +16,56 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string codigoFuncionario, string cpfComprador, string cnpjComprador, string cnpjFornecedor, string senha, string inputHidden)
+        public ActionResult Login(string codigoFuncionario, string cpf, string cnpj, string senha, string inputHidden)
         {
             if (inputHidden == "0") // 0 é Comprador Pessoa Física
             {
                 Comprador cf = new Comprador();
-                cf.Cpf = cpfComprador;
+                cf.Cpf = cpf;
                 cf.Senha = senha;
                 if (cf.LoginPessoaFisica())
                 {
                     Session["User"] = cf;
-                    TempData["Msg"] = "Bem-vindo";
+                    ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    TempData["Msg"] = "CPF ou SENHA incorretos";
+                    ViewBag.Message = "CPF ou SENHA incorretos";
                 }
             }
 
             if (inputHidden == "1") // 1 é Comprador Pessoa Juridica
             {
                 Comprador cj = new Comprador();
-                cj.Cpf = cnpjComprador;
+                cj.Cnpj = cnpj;
                 cj.Senha = senha;
                 if (cj.LoginPessoaJuridica())
                 {
                     Session["User"] = cj;
-                    TempData["Msg"] = "Bem-vindo";
+                    ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    TempData["Msg"] = "CNPJ ou SENHA incorretos";
+                    ViewBag.Message = "CNPJ ou SENHA incorretos";
                 }
             }
 
             if (inputHidden == "2") // 2 é Fornecedor
             {
                 Fornecedor f = new Fornecedor();
-                f.Cnpj = cnpjFornecedor;
+                f.Cnpj = cnpj;
                 f.Senha = senha;
                 if (f.Login())
                 {
                     Session["User"] = f;
-                    TempData["Msg"] = "Bem-vindo";
+                    ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    TempData["Msg"] = "CNPJ ou SENHA incorretos";
+                    ViewBag.Message = "CNPJ ou SENHA incorretos";
                 }
             }
 
@@ -73,17 +73,17 @@ namespace SupplierRanking.Controllers
             {
                 Fornecedor fu = new Fornecedor();
                 fu.Codigo = int.Parse(codigoFuncionario);
-                fu.Cnpj = cnpjFornecedor;          
+                fu.Cnpj = cnpj;          
                 fu.Senha = senha;
                 if (fu.LoginFuncionario())
                 {
                     Session["User"] = fu;
-                    TempData["Msg"] = "Bem-vindo";
+                    ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    TempData["Msg"] = "Preencha corretamente os dados pedidos para efetuar o LOGIN";
+                    ViewBag.Message = "Preencha corretamente os dados pedidos para efetuar o LOGIN";
                 }
             }
             return View();
