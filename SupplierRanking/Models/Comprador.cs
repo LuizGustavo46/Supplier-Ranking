@@ -30,6 +30,9 @@ namespace SupplierRanking.Models
         private string telefone;
         private string celular;
 
+        //Varáveis úteis
+        int codigoEmail;
+
         public int Codigo
         {
             get { return codigo; }
@@ -162,7 +165,7 @@ namespace SupplierRanking.Models
                 con.Open();
                 SqlCommand query =
                     new SqlCommand("SELECT * FROM comprador WHERE cnpj = @cnpj AND senha = @senha", con);
-                query.Parameters.AddWithValue("@cnpj", cpf);
+                query.Parameters.AddWithValue("@cnpj", cnpj);
                 query.Parameters.AddWithValue("@senha", senha);
                 SqlDataReader leitor = query.ExecuteReader();
 
@@ -219,9 +222,10 @@ namespace SupplierRanking.Models
                 //CRIAÇÃO DE COMANDO
                 SqlCommand query =
                     new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
-                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@fone,@celular)",
+                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@telefone,@celular)",
                         con);
-                if (cpf.Length == 14 && senha.Length >= 5 && nome.Length >= 3 && email.Length >= 8 && cep.Length == 9 &&
+                
+                if (cpf.Length == 14 && senha.Length >= 5 && nome.Length >= 3 && email.Length >= 8 &&
                     (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0)) //CONDIÇÃO PARA EFETUAR O CADASTRO
                 {
                     //ADICIONA OS PARÂMETROS --- NÃO PRECISA PASSAR O CAMPO CODIGO, ELE GERA AUTOMATICAMENTE NO BANCO
@@ -238,7 +242,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@cidade", cidade);
                     query.Parameters.AddWithValue("@uf", uf);
                     query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@fone", telefone);
+                    query.Parameters.AddWithValue("@telefone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
                     query.ExecuteNonQuery();
                 }
@@ -267,10 +271,10 @@ namespace SupplierRanking.Models
                 con.Open(); //ABRE CONEXÃO
                 //CRIAÇÃO DE COMANDO
                 SqlCommand query =
-                    new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@tipo_usuario,@senha," +
-                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@fone,@celular)",
+                    new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
+                    "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@telefone,@celular)",
                         con);
-                if (cnpj.Length == 19 && senha.Length >= 5 && nome_empresa.Length >= 3 && email.Length >= 8 && cep.Length == 9 &&
+                if (cnpj.Length == 19 && senha.Length >= 5 && nome_empresa.Length >= 1 && email.Length >= 4 && cep.Length == 9 &&
                     (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0) && uf.Length == 2 &&
                     endereco.Length > 1 && bairro.Length > 1 && cidade.Length > 1) //CONDIÇÃO PARA EFETUAR O CADASTRO
                 {
@@ -288,7 +292,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@cidade", cidade);
                     query.Parameters.AddWithValue("@uf", uf);
                     query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@fone", telefone);
+                    query.Parameters.AddWithValue("@telefone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
                     query.ExecuteNonQuery();
                 }
@@ -336,7 +340,7 @@ namespace SupplierRanking.Models
                     bp.cidade = leitor["cidade"].ToString();
                     bp.uf = leitor["uf"].ToString();
                     bp.cep = leitor["cep"].ToString();
-                    bp.telefone = leitor["fone"].ToString();
+                    bp.telefone = leitor["telefone"].ToString();
                     bp.celular = leitor["celular"].ToString();
                 }
             }
@@ -359,8 +363,8 @@ namespace SupplierRanking.Models
                 con.Open();
                 SqlCommand query =
                     new SqlCommand("UPDATE comprador SET nome = @nome, sobrenome = @sobrenome, email = @email," +
-                    "uf = @uf, fone = @fone, @celular = celular WHERE codigo = @codigo", con);
-                if (nome.Length >= 1 && sobrenome.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0)
+                    "uf = @uf, telefone = @telefone, @celular = celular WHERE codigo = @codigo", con);
+                if (nome.Length >= 1 && sobrenome.Length >= 1 && email.Length >= 4 && (telefone.Length == 14 || telefone.Length == 0)
                     && (celular.Length == 15 || celular.Length == 0))
                 {
                     query.Parameters.AddWithValue("@codigo", codigo);
@@ -368,7 +372,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@sobrenome", sobrenome);
                     query.Parameters.AddWithValue("@email", email);
                     query.Parameters.AddWithValue("@uf", uf);
-                    query.Parameters.AddWithValue("@fone", telefone);
+                    query.Parameters.AddWithValue("@telefone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
                     query.ExecuteNonQuery(); //EXECUTA
                 }
@@ -398,8 +402,8 @@ namespace SupplierRanking.Models
                 //CRIAÇÃO DE COMANDO
                 SqlCommand query =
                     new SqlCommand("UPDATE comprador SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
-                    "bairro = @bairro, cidade = @cidade, @uf = uf, @cep = cep, @fone = fone," + 
-                    "@celular = celular WHERE codigo = @codigo", con);
+                    "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone," + 
+                    "celular = @celular WHERE codigo = @codigo", con);
                 if (nome_empresa.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) &&
                     (celular.Length == 15 || celular.Length == 0) && endereco.Length > 1 && bairro.Length > 1 &&
                     cidade.Length > 1 && uf.Length == 2 && cep.Length == 9)
@@ -412,7 +416,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@cidade", cidade);
                     query.Parameters.AddWithValue("@uf", uf);
                     query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@fone", telefone);
+                    query.Parameters.AddWithValue("@telefone", telefone);
                     query.Parameters.AddWithValue("@celular", celular);
                     query.ExecuteNonQuery(); //EXECUTA
                 }
@@ -470,9 +474,10 @@ namespace SupplierRanking.Models
                 query.Parameters.AddWithValue("@codigo", codigo);
                 SqlDataReader leitor = query.ExecuteReader(); //EXECUTA O COMANDO COM UM READER
 
-                while (leitor.Read()) //ENQUANTO O LEITOR CONSEGUIR LER 
+                if(leitor.Read()) //ENQUANTO O LEITOR CONSEGUIR LER 
                 {
                     senhaUsada = leitor["senha"].ToString(); //GUARDA A SENHA QUE VEIO DO BANCO
+                    leitor.Close();
                 }
 
                 //SE O COMPRADOR QUISER APENAS TROCAR A SENHA (UPDATE SENHA)
@@ -482,21 +487,22 @@ namespace SupplierRanking.Models
                     new SqlCommand("UPDATE comprador SET senha = @senha WHERE codigo = @codigo", con);
                     querySenha.Parameters.AddWithValue("@senha", senhaNova);
                     querySenha.Parameters.AddWithValue("@codigo", codigo);
-                    query.ExecuteNonQuery(); //EXECUTE
+                    querySenha.ExecuteNonQuery(); //EXECUTE
                 }
 
                 //SE O COMPRADOR ESQUECEU A SENHA (RESTAURAR SENHA)
-                if(senhaAntiga == "" && senhaNova == confirmaSenhaNova && senhaNova != senhaUsada)
+                if(senhaAntiga == null && senhaNova == confirmaSenhaNova && senhaNova != senhaUsada)
                 {
                     SqlCommand querySenha =
                     new SqlCommand("UPDATE comprador SET senha = @senha WHERE codigo = @codigo", con);
                     querySenha.Parameters.AddWithValue("@senha", senhaNova);
-                    querySenha.Parameters.AddWithValue("@codigo", codigo);
-                    query.ExecuteNonQuery(); //EXECUTE
+                    querySenha.Parameters.AddWithValue("@codigo", codigoEmail);
+                    querySenha.ExecuteNonQuery(); //EXECUTE
                 }
             }
             catch (Exception ex)
             {
+                string exception = ex.Message;
                 return false;
             }
 
@@ -517,36 +523,38 @@ namespace SupplierRanking.Models
 
                 if (cpf != "") {
                     SqlCommand query =
-                        new SqlCommand("SELECT email FROM comprador WHERE cpf = @cpf", con);
+                        new SqlCommand("SELECT email, codigo FROM comprador WHERE cpf = @cpf", con);
                     query.Parameters.AddWithValue("@cpf", cpf);
                     SqlDataReader leitor = query.ExecuteReader();
                     while (leitor.Read())
                     {
                         email = leitor["email"].ToString();
+                        codigo = int.Parse(leitor["codigo"].ToString());
                     }
                 }
                 else
                 {
                     SqlCommand query =
-                        new SqlCommand("SELECT email FROM comprador WHERE cnpj = @cnpj", con);
+                        new SqlCommand("SELECT email, codigo FROM comprador WHERE cnpj = @cnpj", con);
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     SqlDataReader leitor = query.ExecuteReader();
                     while (leitor.Read())
                     {
                         email = leitor["email"].ToString();
+                        codigo = int.Parse(leitor["codigo"].ToString());
                     }
                 }
 
                 //CONFIGURANDO A MENSAGEM
                 MailMessage mail = new MailMessage();
                 //ORIGEM
-                mail.From = new MailAddress("supplierranking@hotmail.com");
+                mail.From = new MailAddress("vaal_sk8@live.com");
                 //DESTINATÁRIO
                 mail.To.Add(email);
                 //ASSUNTO
-                mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
+                mail.Subject = "REDEFINIÇÃO DE SENHA - Supplier Ranking";
                 //CORPO DO E-MAIL
-                mail.Body = "NADA";//ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA;
+                mail.Body = "Clique aqui para redefinir sua senha:\n http://localhost:16962/Comprador/NovaSenha";//ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA;
 
 
                 //CONFIGURAR O SMTP
@@ -556,13 +564,14 @@ namespace SupplierRanking.Models
                 //HABILITAR O TLS
                 smtpServer.EnableSsl = true;
                 //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking@hotmail.com", "Senai1234");
+                smtpServer.Credentials = new System.Net.NetworkCredential("vaal_sk8@live.com", "counter4");
                 //ENVIAR
                 smtpServer.Send(mail);
 
             }
             catch (Exception ex)
             {
+                string e = ex.Message;
                 return false;
             }
             if (con.State == ConnectionState.Open)

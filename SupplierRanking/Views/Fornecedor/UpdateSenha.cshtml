@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<div class="container-login100">
+    <div class="wrap-login100" style="background-color: white;">
+        <h2>Update de Senha </h2>
+        <form action="../Fornecedor/UpdateSenha" method="post" class="login100-form validate-form">
+
+            <!--- Formulario para enviar e-mails -->
+            <div id="">
+                <h2>Formulário de redefinição de senha </h2>
+                <input type="text" name="cnpj" placeholder="Confirme o CNPJ">
+                <br />  <br />
+                <input type="text" name="senha" placeholder="senha atual">
+                <br />  <br />
+                <input type="text" name="novaSenha" placeholder="nova senha">
+                <br />  <br />
+                <input type="text" name="senhaConfirma" placeholder="confirme a senha">
+
+
+
+            </div>
+
+            <br /> <br />
+            <button id="btnupdateSenha">Update</button>
+        </form>
+    </div>
+</div>

@@ -1,12 +1,22 @@
-﻿@{
-    ViewBag.Title = "Cadastro";
+﻿
+@{
+    ViewBag.Title = "Update";
     Layout = "~/Views/Shared/LoginLayout.cshtml";
 }
 
 <div class="container-login100">
     <div class="wrap-login100" style="background-color: white;">
+        <div style="width: 100%; display: flex; align-content: center; justify-content: center; height: 3em;">
+            <h3>Métodos de Update de Cadastro</h3>
+            <br /> <br />
+            <button id="btnUpdateCompradorFisico" style="margin-right: 1em;">Comprador Físico</button>
+            <button id="btnUpdateCompradorJuridico" style="margin-right: 1em;">Comprador Jurídico</button>
+            <button id="btnUpdateFornecedor" style="margin-right: 1em;">Fornecedor</button>
+            <button id="btnUpdateFuncionario" style="margin-right: 1em;">Funcionario</button>
+        </div>
 
         <form method="post" class="login100-form validate-form">
+            
             <!--- Campos do Comprador Fisico -->
             <div id="wrapperCompradorFisico">
                 <input type="text" name="cpf" placeholder="CPF">
@@ -130,7 +140,7 @@
                 <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
             </div>
             <br /> <br />
-            <button id="btnCadastrar">Cadastrar</button>
+            <button id="btnUpdateCadastro">Alterar Cadastro</button>
         </form>
     </div>
 </div>

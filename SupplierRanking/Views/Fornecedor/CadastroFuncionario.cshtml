@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "CadastroFuncionario";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<div class="container-login100">
+    <div class="wrap-login100" style="background-color: white;">
+        <h2>Cadastro Funcionario</h2>
+        <form action="../Fornecedor/CadastroFuncionario" method="post" class="login100-form validate-form">
+            
+            <!--- Campos do Funcionario -->
+            <div id="">
+                <input type="text" name="cnpj" placeholder="CNPJ">
+                <br /> <br />
+
+                @*CÓDIGO DO FUNCIONARIO VAI SER GERADO AUTOMÁTICAMENTE*@
+                @*<input type="text" name="codigo" placeholder="Codigo" readonly>*@
+
+                <input type="text" name="nome" placeholder="Nome">
+                <br /> <br />
+                <input type="text" name="senha" placeholder="Senha">
+                <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
+            </div>
+
+            <br /> <br />
+            <button id="btnCadastrar">Cadastrar</button>
+        </form>
+    </div>
+</div>
