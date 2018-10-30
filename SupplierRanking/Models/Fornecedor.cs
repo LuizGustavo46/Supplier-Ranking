@@ -538,9 +538,10 @@ namespace SupplierRanking.Models
         
 
         /*=================================================================================UPDATE SENHA=================================================================================*/
-        public Boolean UpdateSenha(string senha, string novaSenha, string cnpj, string cnpjDigitado)
+        public Boolean UpdateSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
         {
             bool res = false;
+           
             try
             {
                 con.Open();
@@ -554,29 +555,25 @@ namespace SupplierRanking.Models
                 /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 
                 SqlCommand query1 =
-                   new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj AND senha = @senha", con);
+                   new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj", con);
                 query1.Parameters.AddWithValue("@cnpj", cnpj);
-                query1.Parameters.AddWithValue("@senha", senha);
+
                 SqlDataReader leitor = query1.ExecuteReader();
-
                 if (leitor.Read())
-                    cnpj = leitor["cnpj"].ToString();
+                    senha = leitor["senha"].ToString();
                 leitor.Close();
+                if (novaSenha != senha && senhaConfirma == novaSenha)
+                   
+                        {
+                            SqlCommand query =
+                                new SqlCommand("UPDATE fornecedor SET  senha = @novaSenha", con);
+                            query.Parameters.AddWithValue("@novaSenha", novaSenha);
+                            query.ExecuteNonQuery();
+                            res = true;
 
-                if (cnpjDigitado == cnpj)
-                {
-                    if (novaSenha != senha)
 
-                    {                     
-                        SqlCommand query =
-                            new SqlCommand("UPDATE fornecedor SET  senha = @novaSenha", con);
-                        query.Parameters.AddWithValue("@novaSenha", novaSenha);
-                         query.ExecuteNonQuery();
-                        res = true;
-
-                       // res = leitor.HasRows;
-                    }
-                }
+                        }
+                    
                                 
             }
             catch (Exception e)
@@ -593,60 +590,45 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================UPDATE CADASTRO=================================================================================*/
-        internal string UpdateFornecedor() //NÃO PRECISA DE PARÂMETROS
+        public static UpdateFornecedor(string cnpj) //NÃO PRECISA DE PARÂMETROS
         
         {
-            string res = "Salvo com sucesso.";
-
-            /*PEDE-SE UMA CONFIRMAÇÃO DE SENHA PARA EDITAR AS INFORMAÇÕES DO FORNCEDOR
-            PARA QUE TENHA UMA SEGURANÇA MAIOR*/
-
-            //if (confirmaSenha == senha)
+            Fornecedor fe = new Fornecedor();  
                 try
                 {
                     con.Open();
                     SqlCommand query =
-                        new SqlCommand("UPDATE fornecedor SET email = @email, telefone = @telefone, celular = @celular, endereco = @endereco, " +
-                        "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, slogan = @slogan, descricao = @descricao, imagem = @imagem, " +
-                        "nome_categoria = @nome_categoria WHERE cnpj = @cnpj", con);
+                        new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj", con);
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    SqlDataReader leitor = query.ExecuteReader();
 
-                    /*SE ALGUMA INFORMAÇÃO ESTIVER VAZIA O SISTEMA RETORNA UMA MENSAGEM DE AVISO PARA PREENCHER OS CAMPOS
-                    CORRETAMENTE*/
-
-                    //if (cnpj != "" || cnpj == "" && email != "" || email == "" && telefone != "" || telefone == "" && celular != "" || celular == "" && endereco != "" || endereco == "" && bairro != "" || bairro == ""
-                    //&& cidade != "" || cidade == "" && uf != "" || uf == "" && cep != "" || cep == "" && slogan != "" || slogan == "" && descricao != "" || descricao == "" && imagem != null || imagem == null && nome_categoria != "" || nome_categoria == "")
-                    //{
-                        query.Parameters.AddWithValue("@cnpj", cnpj);
-                        query.Parameters.AddWithValue("@email", email);
-                        query.Parameters.AddWithValue("@telefone", telefone);
-                        query.Parameters.AddWithValue("@celular", celular);
-                        query.Parameters.AddWithValue("@endereco", endereco);
-                        query.Parameters.AddWithValue("@bairro", bairro);
-                        query.Parameters.AddWithValue("@cidade", cidade);
-                        query.Parameters.AddWithValue("@uf", uf);
-                        query.Parameters.AddWithValue("@cep", cep);
-                        query.Parameters.AddWithValue("@slogan", slogan);
-                        query.Parameters.AddWithValue("@descricao", descricao);
-                       
-                        query.Parameters.AddWithValue("@imagem", imagem);
-                        query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
-                        query.ExecuteNonQuery();
-                    //}
-                    //else
-                    //{
-                    //    return "Preencha as informações corretamente.";
-                    //}
+                while (leitor.Read())
+                {
+                    fe.cnpj = leitor["cnpj"].ToString();             
+                    fe.email = leitor["email"].ToString();
+                    fe.telefone = leitor["leitor"].ToString();
+                    fe.celular = leitor["celular"].ToString();
+                    fe.endereco = leitor["endereco"].ToString();
+                    fe.bairro = leitor["bairro"].ToString();
+                    fe.cidade = leitor["cidade"].ToString();
+                    fe.uf = leitor["uf"].ToString();
+                    fe.cep = leitor["cep"].ToString();
+                    fe.slogan = leitor["slogan"].ToString();
+                    fe.descricao = leitor["descricao"].ToString();
+                   // fe.imagem = leitor["imagem"].ToString();
+                    fe.nome_categoria = leitor["nome_categoria"].ToString(); 
                 }
+            }
 
                 catch (Exception e)
                 {
-                    res = e.Message;
+                    fe = null;
                 }
 
             if (con.State == System.Data.ConnectionState.Open)
                 con.Close();
 
-            return res;
+            return fe;
         }
 
 

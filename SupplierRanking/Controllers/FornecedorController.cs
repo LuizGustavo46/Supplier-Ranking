@@ -212,21 +212,20 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateSenha(string senha, string novaSenha, string cnpj, string cnpjDigitado)
+        public ActionResult UpdateSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
         {
             Fornecedor senhaUp = new Fornecedor();
 
             senhaUp.Senha = senha;
+            
 
-            if (cnpjDigitado == cnpj)
-            {
-                bool res = senhaUp.UpdateSenha(senha, novaSenha, cnpj, cnpjDigitado);
+            
+                bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaConfirma, cnpj);
 
-                if (res) 
-                    //RETORNAR NA VIEW DE UPDATE DE SENHA
-                 return RedirectToAction("UpdateSenha");
+                if (res)  //RETORNAR NA VIEW DE UPDATE DE SENHA
+                return RedirectToAction("UpdateSenha");
 
-            }   
+               
                 return View("UpdateSenha");
         }
         /*================================================================================================================================================================================*/
@@ -234,7 +233,13 @@ namespace SupplierRanking.Controllers
         /*==============================================================================UPDATE DE CADASTRO================================================================================*/
         public ActionResult UpdateFornecedor(string cnpj)
         {
-            return View(Fornecedor.Perfil(cnpj)); //PASSAR O CNPJ PARA RETORNAR O PERFIL PARA PODER EDITAR
+            Fornecedor f = Fornecedor.UpdateFornecedor(cnpj);
+            if (f == null)
+            {
+                TempData["Msg"] = "Erro ao encontrar cnpj";
+                return RedirectToAction("UpdateFornecedor");
+            }
+            return View(f);
         }
       
 
@@ -252,14 +257,13 @@ namespace SupplierRanking.Controllers
             f.Endereco = endereco;
             f.Uf = uf;       
             f.Celular = celular;
-            f.Descricao = descricao;
+            f.Descricao = descricao;          
             f.Cep = cep;
-            f.Slogan = slogan;
-            
+            f.Slogan = slogan;           
             f.Nome_categoria = nome_categoria;
-
+                        
             foreach (string imagem in Request.Files)
-            {
+            {           
                 HttpPostedFileBase arqPostado = Request.Files[imagem];
                 int tamConteudo = arqPostado.ContentLength; //PEGA O TAMANHO DO CONTEÚDO
                 string tipoArq = arqPostado.ContentType; //PEGA O TIPO DO CONTEÚDO
@@ -279,10 +283,13 @@ namespace SupplierRanking.Controllers
                 }
             }
 
+            string res = f.UpdateFornecedor(cnpj);
 
-            TempData["Msg"] = f.UpdateFornecedor();
-            
+            TempData["Msg"] = res;
+            if (res == "Salvo com sucesso!")
                 return RedirectToAction("UpdateFornecedor");
+            else
+                return View();
         }
         /*==============================================================================================================================================================================*/
 
