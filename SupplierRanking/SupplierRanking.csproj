@@ -121,7 +121,6 @@
     <Content Include="Content\css\carossel.css" />
     <Content Include="Content\css\cover_overlay.css" />
     <Content Include="Content\css\loader.css" />
-    <Content Include="Content\css\main.css" />
     <Content Include="Content\css\media.css" />
     <Content Include="Content\css\menu.css" />
     <Content Include="Content\css\planos.css" />
@@ -134,7 +133,7 @@
     <Content Include="Content\images\bg_4.jpg" />
     <Content Include="Content\images\comprador.png" />
     <Content Include="Content\images\give-money.png" />
-    <Content Include="Content\images\Login.png" />
+    <Content Include="Content\images\fornecedor.png" />
     <Content Include="Content\images\LoginFornecedor.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo2.png" />
