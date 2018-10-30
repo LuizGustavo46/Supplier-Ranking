@@ -2,24 +2,24 @@
 $(document).ready(function () {
     'use strict';
 
-    var btnComprador = $('#btnComprador'),
-        btnFornecedor = $('#btnFornecedor'),
-        btnFisica = $('#btnFisica'),
-        btnJuridica = $('#btnJuridica'),
-        btnFuncionario = $('#btnFuncionario'),
+    var btnComprador = $('.cadastro-login #btnComprador'),
+        btnFornecedor = $('.cadastro-login #btnFornecedor'),
+        btnFisica = $('.cadastro-login #btnFisica'),
+        btnJuridica = $('.cadastro-login #btnJuridica'),
+        btnFuncionario = $('.cadastro-login #btnFuncionario'),
 
-        switchFornecedor = $('#switchFornecedor'),
-        switchJuridica = $('#switchJuridica'),
-        switchFuncionario = $('#switchFuncionario'),
+        switchFornecedor = $('.cadastro-login #switchFornecedor'),
+        switchJuridica = $('.cadastro-login #switchJuridica'),
+        switchFuncionario = $('.cadastro-login #switchFuncionario'),
 
-        sliderFornecedorComprador = $('.slider-fornecedor'),
-        sliderFisicaJuridica = $('.slider-juridica'),
-        sliderFuncionario = $('.slider-funcionario'),
+        sliderFornecedorComprador = $('.cadastro-login .slider-fornecedor'),
+        sliderFisicaJuridica = $('.cadastro-login .slider-juridica'),
+        sliderFuncionario = $('.cadastro-login .slider-funcionario'),
 
-        inputCpf = $('#inputCpf'),
-        inputCnpj = $('#inputCnpj'),
-        inputFuncionario = $('#inputFuncionario'),
-        inputHidden = $('#inputHidden');
+        inputCpf = $('.cadastro-login #inputCpf'),
+        inputCnpj = $('.cadastro-login #inputCnpj'),
+        inputFuncionario = $('.cadastro-login #inputFuncionario'),
+        inputHidden = $('.cadastro-login #inputHidden');
 
 
     /*** Botao para selecionar o Comprador ***/
@@ -81,10 +81,10 @@ $(document).ready(function () {
 
     // Primeira funcao a ser executada
     function init() {
-        //$('#wrapperFisicaJuridica').hide();
-        //$('#wrapperFuncionario').hide();
-        $('.form-thrid-part').hide();
-        //inputFuncionario.hide();
+        $('.cadastro-login #wrapperFisicaJuridica').hide();
+        $('.cadastro-login #wrapperFuncionario').hide();
+        $('.cadastro-login .form-thrid-part').hide();
+        inputFuncionario.hide();
     }
 
     // Funcao para tirar o slider da posicao neutra  
@@ -108,17 +108,17 @@ $(document).ready(function () {
 
     // Funcao para aparecer / esconder entre Fornecedor ou Comprador
     function switchCompradorFornecedor(input) {
-        $('.cadastro-form').hide();
+        $('.cadastro-login .cadastro-form').hide();
 
         if ($(input).is(':checked')) { //Seleciona o Fornecedor
 
             btnComprador.removeClass('active-switch');
-            $('#wrapperFisicaJuridica').hide();
+            $('.cadastro-login #wrapperFisicaJuridica').hide();
             uncheckSliderAndButtons(switchJuridica);
 
             btnFornecedor.addClass('active-switch');
-            $('#wrapperFuncionario').show();
-            $('.cadastro-form').show();
+            $('.cadastro-login #wrapperFuncionario').show();
+            $('.cadastro-login .cadastro-form').show();
             inputCpf.hide();
             inputCnpj.mask('00.000.000/0000-00').show();
             inputHidden.val('2');
@@ -127,10 +127,10 @@ $(document).ready(function () {
 
             btnFornecedor.removeClass('active-switch');
             uncheckSliderAndButtons(switchFuncionario);
-            $('#wrapperFuncionario').hide();
+            $('.cadastro-login #wrapperFuncionario').hide();
 
             btnComprador.addClass('active-switch');
-            $('#wrapperFisicaJuridica').show();
+            $('.cadastro-login #wrapperFisicaJuridica').show();
             inputFuncionario.hide();
         }
     }
@@ -157,7 +157,7 @@ $(document).ready(function () {
             inputHidden.val('0');
         }
 
-        $('.cadastro-form').show();
+        $('.cadastro-login .cadastro-form').show();
     }
 
     // Funcao para aparecer / esconder Funcionario
@@ -167,18 +167,18 @@ $(document).ready(function () {
             btnFuncionario.removeClass('active-switch');
             switchFuncionario.prop('checked', false);
             inputFuncionario.hide();
-            $('.wrap-login').removeClass('has-employee');
+            $('.cadastro-login .wrap-login').removeClass('has-employee');
             inputHidden.val('2');
 
         } else {
             btnFuncionario.addClass('active-switch');
             switchFuncionario.prop('checked', true);
-            $('.wrap-login').addClass('has-employee');
+            $('.cadastro-login .wrap-login').addClass('has-employee');
             inputFuncionario.show();
             inputHidden.val('3');
         }
 
-        $('.cadastro-form').show();
+        $('.cadastro-login .cadastro-form').show();
     }
 
     init();

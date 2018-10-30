@@ -27,7 +27,7 @@
     height: 50px;
     border: 0;
     border-radius: 10px;
-    padding: 0 20px 0 40px;
+    padding: 0 20px;
     font: 15px inherit 500;
     color: #666666;
     line-height: 1.5;
@@ -41,4 +41,71 @@
 
 .form-second-part .wrap-input {
     padding: 0 1.1em;
+}
+
+.form-third-part {
+    min-height: 660px;
+}
+
+.form-third-part .row:last-of-type {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.form-third-part .checkbox-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.form-third-part .checkbox-container label {
+    color: #000;
+    text-transform: capitalize;
+    padding-left: 35px;
+}
+
+/* Hide the browser's default checkbox */
+.form-third-part .checkbox-container input[type="checkbox"],
+.form-third-part .checkbox-container input[type="radio"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkbox {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: #EEE;
+    border: 1px solid #0C496Bc9;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkbox:after {
+    display: block;
+    background-color: #0C496Bc9;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkbox:after {
+    width: 18px;
+    height: 18px;
+    left: 2px;
+    top: 2px;
+}
+
+.form-third-part .other-option .checkbox {
+    top: 0;
 }

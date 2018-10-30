@@ -79,6 +79,17 @@ $(document).ready(function () {
         switchTipoFuncionario(switchFuncionario);
     });
 
+    $('.login-form').submit(function (e) {
+        e.preventDefault();
+        console.log($('.login-form input').val());
+        if ($('.login-form input').val().isEmpty()) {
+            console.log('foi');
+            //$(this).submit();
+        }
+        console.log('num foi');
+        //$('.login-form input').attr('required');
+    });
+
     // Primeira funcao a ser executada
     function init() {
         $('#wrapperFisicaJuridica').hide();
@@ -120,7 +131,7 @@ $(document).ready(function () {
             $('#wrapperFuncionario').show();
             $('.login-form').show();
             inputCpf.hide();
-            inputCnpj.mask('00.000.000/0000-00').show();
+            inputCnpj.show();
             inputHidden.val('2');
 
         } else { //Seleciona o Comprador
