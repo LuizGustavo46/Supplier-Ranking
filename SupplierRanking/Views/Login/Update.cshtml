@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<div class="container-login100">
+    <div class="wrap-login100" style="background-color: white;">
+        <div style="width: 100%; display: flex; align-content: center; justify-content: center; height: 3em;">
+            <h3>Métodos de Update de Cadastro</h3>
+            <br /> <br />
+            <button id="btnUpdateCompradorFisico" style="margin-right: 1em;">Comprador Físico</button>
+            <button id="btnUpdateCompradorJuridico" style="margin-right: 1em;">Comprador Jurídico</button>
+            <button id="btnUpdateFornecedor" style="margin-right: 1em;">Fornecedor</button>
+            <button id="btnUpdateFuncionario" style="margin-right: 1em;">Funcionario</button>
+        </div>
+
+        <form method="post" class="login100-form validate-form">
+            
+            <!--- Campos do Comprador Fisico -->
+            <div id="wrapperCompradorFisico">
+                <input type="text" name="cpf" placeholder="CPF">
+                <input type="text" name="nome" placeholder="Nome">
+                <input type="text" name="sobrenome" placeholder="Sobrenome">
+                <input type="text" name="email" placeholder="Email">
+                <input type="text" name="senha" placeholder="Senha">
+                <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
+                <br /> <br />
+                <input type="text" name="uf" placeholder="UF">
+                <br /> <br />
+                <input type="text" name="tel" placeholder="(00) 0000-0000">
+                <input type="text" name="cel" placeholder="(00) 00000-0000">
+                <br /> <br />
+                <fieldset>
+                    <legend>Escolha as categorias do seu interesse:</legend>
+                    <div>
+                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
+                        <label for="fastfood">Fastfood</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="esquadrias" name="esquadrias" value="esquadrias" />
+                        <label for="esquadrias">Esquadrias</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="pesca" name="pesca" value="pesca" />
+                        <label for="pesca">Pesca</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="agropecuaria" name="agropecuaria" value="agropecuaria" />
+                        <label for="agropecuaria">Agropecuária</label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <!--- Campos do Comprador Juridico -->
+            <div id="wrapperCompradorJuridico">
+                <input type="text" name="cnpj" placeholder="CNPJ">
+                <input type="text" name="nomeEmpresa" placeholder="Nome da Empresa">
+                <input type="text" name="email" placeholder="Email">
+                <input type="text" name="senha" placeholder="Senha">
+                <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
+                <br /> <br />
+                <input type="text" name="uf" placeholder="UF">
+                <br /> <br />
+                <input type="text" name="tel" placeholder="(00) 0000-0000">
+                <input type="text" name="cel" placeholder="(00) 00000-0000">
+                <br /> <br />
+                <fieldset>
+                    <legend>Escolha as categorias do seu interesse:</legend>
+                    <div>
+                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
+                        <label for="fastfood">Fastfood</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="esquadrias" name="esquadrias" value="esquadrias" />
+                        <label for="esquadrias">Esquadrias</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="pesca" name="pesca" value="pesca" />
+                        <label for="pesca">Pesca</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="agropecuaria" name="agropecuaria" value="agropecuaria" />
+                        <label for="agropecuaria">Agropecuária</label>
+                    </div>
+                </fieldset>
+            </div>
+
+            <!--- Campos do Fornecedor -->
+            <div id="wrapperFornecedor">
+                <label for="imagePerfil" style="border: 1px solid; background-color: gainsboro; padding: .5em; font-size: 12px; cursor: pointer;">Image de Perfil</label>
+                <input type="file" accept="image/*" id="imagePerfil" name="imagePerfil" style="display: none">
+                <br /> <br />
+                <input type="text" name="cnpj" placeholder="CNPJ">
+                <input type="text" name="nomeEmpresa" placeholder="Nome da Empresa">
+                <input type="text" name="email" placeholder="Email">
+                <input type="text" name="senha" placeholder="Senha">
+                <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
+                <br /> <br />
+                <input type="text" name="cep" placeholder="CEP">
+                <input type="text" name="endereco" placeholder="Endereço">
+                <input type="text" name="bairro" placeholder="Bairro">
+                <input type="text" name="cidade" placeholder="Cidade">
+                <input type="text" name="uf" placeholder="UF">
+                <br /> <br />
+                <input type="text" name="tel" placeholder="(00) 0000-0000">
+                <input type="text" name="cel" placeholder="(00) 00000-0000">
+                <br /> <br />
+                <fieldset>
+                    <legend>Escolha as categorias do seu interesse:</legend>
+                    <div>
+                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
+                        <label for="fastfood">Fastfood</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="esquadrias" name="esquadrias" value="esquadrias" />
+                        <label for="esquadrias">Esquadrias</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="pesca" name="pesca" value="pesca" />
+                        <label for="pesca">Pesca</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="agropecuaria" name="agropecuaria" value="agropecuaria" />
+                        <label for="agropecuaria">Agropecuária</label>
+                    </div>
+                </fieldset>
+                <br /> <br />
+                <input type="text" name="plano" placeholder="Plano">
+            </div>
+
+            <!--- Campos do Funcionario -->
+            <div id="wrapperFuncionario">
+                <input type="text" name="cnpj" placeholder="CNPJ">
+                <br /> <br />
+                <input type="text" name="codigo" placeholder="Codigo" readonly>
+                <input type="text" name="nome" placeholder="Nome">
+                <br /> <br />
+                <input type="text" name="senha" placeholder="Senha">
+                <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
+            </div>
+            <br /> <br />
+            <button id="btnUpdateCadastro">Alterar Cadastro</button>
+        </form>
+    </div>
+</div>

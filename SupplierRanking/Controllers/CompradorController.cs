@@ -64,14 +64,15 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroPessoaFisica(string cpf, string nome, string sobrenome, string email, string senha, string uf, string telefone, string celular)
+        public ActionResult CadastroPessoaFisica(string cpf, string nome, string sobrenome, string email, string senha,string confirmarSenha, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Cpf = cpf;
             c.Nome = nome;
             c.Sobrenome = sobrenome;
             c.Email = email;
-            c.Senha = senha;
+            if(senha == confirmarSenha)
+                c.Senha = senha;
             c.Tipo_pessoa = "F"; //F DE PESSOA FISICA, NÃO PRECISA SER PASSADO ATRAVÉS DA VIEW
             c.Cnpj = ""; //NÃO VAI SER USADO
             c.Nome_empresa = ""; //NÃO VAI SER USADO
@@ -84,42 +85,35 @@ namespace SupplierRanking.Controllers
             c.Celular = celular;
 
             if (c.CadastroPessoaFisica())
-                TempData["Msg"] = "Cadastro Realizado";
+                ViewBag.Message = "Cadastro Realizado";
             else
-                TempData["Msg"] = "Informações Inválidas";
+                ViewBag.Message = "Informações Inválidas";
 
             return RedirectToAction("CadastroPessoaFisica");
         }
 
-        public ActionResult UpdatePessoaFisica(int codigo)
+        public ActionResult UpdatePessoaFisica(/*int codigo*/)
         {
-            Comprador c = Comprador.BuscaPessoa(codigo);
+            Comprador c = Comprador.BuscaPessoa(/*codigo*/1);
 
             if (c == null)
             {
                 TempData["Msg"] = "Erro ao encontrar dados";
-                return RedirectToAction("Index");
+                return RedirectToAction("UpdatePessoaFisica");
             }
             return View(c);
         }
 
         [HttpPost]
-        public ActionResult UpdatePessoaFisica(string cpf, string nome, string sobrenome, string email, string senha, string uf, string telefone, string celular)
+        public ActionResult UpdatePessoaFisica(string codigo, string cpf, string nome, string sobrenome, string email, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
+            c.Codigo = int.Parse(codigo);
             c.Cpf = cpf;
             c.Nome = nome;
             c.Sobrenome = sobrenome;
             c.Email = email;
-            c.Senha = ""; //A SENHA NÃO VAI SER ALTERADA POR AQUI
-            c.Tipo_pessoa = ""; //NÃO VAI SER USADO
-            c.Cnpj = ""; //NÃO VAI SER USADO
-            c.Nome_empresa = ""; //NÃO VAI SER USADO
-            c.Endereco = ""; //NÃO VAI SER USADO
-            c.Bairro = ""; //NÃO VAI SER USADO
-            c.Cidade = ""; //NÃO VAI SER USADO
             c.Uf = uf;
-            c.Cep = ""; //NÃO VAI SER USADO
             c.Telefone = telefone;
             c.Celular = celular;
 
@@ -139,14 +133,17 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string senha, string endereco, string bairro, string cidade, string cep, string uf, string telefone, string celular)
+        public ActionResult CadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string senha, string confirmarSenha, string endereco, string bairro, string cidade, string cep, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Cpf = ""; //NÃO VAI SER USADO
             c.Nome = ""; //NÃO VAI SER USADO
             c.Sobrenome = ""; //NÃO VAI SER USADO
             c.Email = email;
-            c.Senha = senha;
+            if (senha == confirmarSenha)
+                c.Senha = senha;
+            else
+                ViewBag.Message = "As senhas não correspondem";
             c.Tipo_pessoa = "J"; //J DE PESSOA JURIDICA, NÃO PRECISA SER PASSADO ATRAVÉS DA VIEW
             c.Cnpj = cnpj;
             c.Nome_empresa = nome_empresa;
@@ -159,16 +156,18 @@ namespace SupplierRanking.Controllers
             c.Celular = celular;
 
             if (c.CadastroPessoaJuridica())
-                TempData["Msg"] = "Cadastro Realizado";
+                //TempData["Msg"] = "Cadastro Realizado";
+                ViewBag.Message = "Cadastro Realizado";
             else
-                TempData["Msg"] = "Informações Inválidas";
+                //TempData["Msg"] = "Informações Inválidas";
+                ViewBag.Message = "Informações Inválidas";
 
             return RedirectToAction("CadastroPessoaJuridica");
         }
 
-        public ActionResult UpdatePessoaJuridica(int codigo)
+        public ActionResult UpdatePessoaJuridica(/*int codigo*/)
         {
-            Comprador c = Comprador.BuscaPessoa(codigo);
+            Comprador c = Comprador.BuscaPessoa(/*codigo*/5);
 
             if (c == null)
             {
@@ -179,16 +178,11 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdatePessoaJuridica(string nome_empresa, string email, string endereco, string bairro, string cidade, string uf, string cep, string telefone, string celular)
+        public ActionResult UpdatePessoaJuridica(string codigo, string nome_empresa, string email, string endereco, string bairro, string cidade, string uf, string cep, string telefone, string celular)
         {
             Comprador c = new Comprador();
-            c.Cpf = ""; //NÃO VAI SER USADO
-            c.Nome = ""; //NÃO VAI SER USADO
-            c.Sobrenome = ""; //NÃO VAI SER USADO
+            c.Codigo = int.Parse(codigo);         
             c.Email = email;
-            c.Senha = ""; //A SENHA NÃO VAI SER ALTERADA POR AQUI --- UpdateSenha
-            c.Tipo_pessoa = ""; //NÃO VAI SER USADO
-            c.Cnpj = ""; //NÃO VAI SER USADO
             c.Nome_empresa = nome_empresa;
             c.Endereco = endereco;
             c.Bairro = bairro;
@@ -198,7 +192,7 @@ namespace SupplierRanking.Controllers
             c.Telefone = telefone;
             c.Celular = celular;
 
-            if (c.UpdatePessoaFisica())
+            if (c.UpdatePessoaJuridica())
                 TempData["Msg"] = "Alterações Realizadas";
             else
                 TempData["Msg"] = "Informações Inválidas";
@@ -212,10 +206,10 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateSenha(int codigo ,string senhaAntiga, string senhaNova, string confirmaSenhaNova)
+        public ActionResult UpdateSenha(/*int codigo ,*/string senhaAntiga, string senhaNova, string confirmaSenhaNova)
         {
             Comprador c = new Comprador();
-            c.Codigo = codigo;
+            c.Codigo = /*codigo*/2;
             if(c.UpdateSenha(senhaAntiga, senhaNova, confirmaSenhaNova))
                 TempData["Msg"] = "Senha Alterada";
             else
@@ -239,6 +233,11 @@ namespace SupplierRanking.Controllers
                 TempData["Msg"] = "Informação Inválida";
 
             return RedirectToAction("RestaurarSenha");
+        }
+
+        public ActionResult NovaSenha()
+        {
+            return View();
         }
 
         public ActionResult ExcluirConta()

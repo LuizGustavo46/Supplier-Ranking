@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<div class="container-login100">
+    <div class="wrap-login100" style="background-color: white;">
+        <h2>Enviar E-mail</h2>
+        <form action="../Fornecedor/EnviarEmail" method="post" class="login100-form validate-form">
+
+            <!--- Formulario para enviar e-mails -->
+            <div id="">
+                <h2>clique no botao para redefinir sua senha </h2>
+                <br />  <br />
+                <input type="text" name="emailDigitado" placeholder="Seu E-mail">
+                <br />  <br/>
+         
+
+
+                   
+            </div>
+
+            <br /> <br />
+            <button id="btnEnviarEmail">Enviar</button>
+        </form>
+    </div>
+</div>

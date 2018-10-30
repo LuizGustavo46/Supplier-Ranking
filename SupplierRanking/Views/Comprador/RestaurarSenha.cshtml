@@ -1,0 +1,32 @@
+﻿@model SupplierRanking.Models.Comprador
+@{
+    ViewBag.Title = "RestaurarSenha";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+<div class="container-login100">
+
+    <div class="wrap-login100" style="background-color: white;">
+
+        <h2>RestaurarSenha</h2>
+
+        <form action="../Comprador/RestaurarSenha" method="post" class="login100-form validate-form">
+            <p>@ViewBag.Message</p>
+            <!--- Campos do Comprador Fisico -->
+            <div>
+                <br /> <br />
+                <input type="text" name="cnpj" placeholder="Digite seu cnpj">
+                <br /> <br />
+                <h1>ou</h1>
+                <br /> <br />
+                <input type="text" name="cpf" placeholder="Digite seu cpf">
+    
+                <br /> <br />
+            </div>
+
+            <br /> <br />
+            <button id="btnEnviar">Enviar</button>
+        </form>
+    </div>
+</div>
+

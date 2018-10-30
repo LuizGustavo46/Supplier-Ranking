@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+<div class="container-login100">
+    <div class="wrap-login100" style="background-color: white;">
+        <h2>Cadastro Fornecedor</h2>
+        <form action="../Fornecedor/CadastroFornecedor" method="post" class="login100-form validate-form" enctype="multipart/form-data">
+           
+            <!--- Campos do Fornecedor -->
+            <div id="">
+                <label for="imagem" style="border: 1px solid; background-color: gainsboro; padding: .5em; font-size: 12px; cursor: pointer;">Imagem de Perfil</label>
+                <input type="file" accept="image/*" id="imagem" name="imagem" style="display: none">
+
+                @*<input type="file" name="imagem" />*@
+                <br /> <br />
+                <input type="text" name="cnpj" placeholder="CNPJ">
+                <input type="text" name="nome_empresa" placeholder="Nome da Empresa">
+                <input type="text" name="email" placeholder="Email">
+                <input type="text" name="senha" placeholder="Senha">
+                <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
+                <br /> <br />
+                <input type="text" name="cep" placeholder="CEP">
+                <input type="text" name="endereco" placeholder="Endereço">
+                <input type="text" name="bairro" placeholder="Bairro">
+                <input type="text" name="cidade" placeholder="Cidade">
+                <input type="text" name="uf" placeholder="UF">
+                <br /> <br />
+                <input type="text" name="telefone" placeholder="(00) 0000-0000">
+                <input type="text" name="celular" placeholder="(00) 00000-0000">
+                <input type="text" name="slogan" placeholder="Digite o seu slogan!">
+                <input type="text" name="descricao" placeholder="Uma breve descrição">
+                <input type="text" name="nome_categoria" placeholder="categoria">
+                <br /> <br />
+
+                @*<fieldset>
+                    <legend>Escolha as categorias do seu interesse:</legend>
+                    <div>
+                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
+                        <label for="fastfood">Fastfood</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="esquadrias" name="esquadrias" value="esquadrias" />
+                        <label for="esquadrias">Esquadrias</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="pesca" name="pesca" value="pesca" />
+                        <label for="pesca">Pesca</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="agropecuaria" name="agropecuaria" value="agropecuaria" />
+                        <label for="agropecuaria">Agropecuária</label>
+                    </div>
+                </fieldset>*@
+
+                <br /> <br />
+             
+            </div>
+            
+            <br /> <br />
+            <button id="btnCadastrar">Cadastrar</button>
+        </form>
+    </div>
+</div>
