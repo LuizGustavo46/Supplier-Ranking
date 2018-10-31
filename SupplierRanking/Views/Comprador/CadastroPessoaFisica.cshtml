@@ -1,55 +1,271 @@
 ﻿
 @{
-    ViewBag.Title = "CadastroPessoaFisica";
-    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/_LayoutCadastro.cshtml";
 }
 
+<div class="row col-12 form-title justify-content-center text-center mt-4">
+    <h2>Crie sua Conta</h2>
+</div>
 
-<div class="container-login100">
+<div class="row text-center pt-5">
     
-    <div class="wrap-login100" style="background-color: white;">
+    <div class="col-7 align-items-center wrap-options">
+        Selecione o seu tipo de usuário:
 
-        <h2>CadastroPessoaFisica</h2>
-
-        <form action="../Comprador/CadastroPessoaFisica" method="post" class="login100-form validate-form">
-            <p>@ViewBag.Message</p>
-            <!--- Campos do Comprador Fisico -->
-            <div >
-                <input type="text" name="cpf" placeholder="CPF">
-                <input type="text" name="nome" placeholder="Nome">
-                <input type="text" name="sobrenome" placeholder="Sobrenome">
-                <input type="text" name="email" placeholder="Email">
-                <input type="text" name="senha" placeholder="Senha">
-                <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
-                <br /> <br />
-                <input type="text" name="uf" placeholder="UF">
-                <br /> <br />
-                <input type="text" name="telefone" placeholder="(00) 0000-0000">
-                <input type="text" name="celular" placeholder="(00) 00000-0000">
-                <br /> <br />
-                <fieldset>
-                    <legend>Escolha as categorias do seu interesse:</legend>
-                    <div>
-                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
-                        <label for="fastfood">Fastfood</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="esquadrias" name="esquadrias" value="esquadrias" />
-                        <label for="esquadrias">Esquadrias</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="pesca" name="pesca" value="pesca" />
-                        <label for="pesca">Pesca</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="agropecuaria" name="agropecuaria" value="agropecuaria" />
-                        <label for="agropecuaria">Agropecuária</label>
-                    </div>
-                </fieldset>
+        <div class="row align-items-center justify-content-center mt-4">
+            <!--- Comprador --->
+            <div class="col-5 js-tilt" data-tilt>
+                <button id="btnComprador" class="col-9 switch-wrapper active-switch p-3">
+                    <img src="/Content/images/comprador.png" />
+                    <h6 class="switch-person-title p-2">Comprador</h6>
+                </button>
             </div>
 
-            <br /> <br />
-            <button id="btnCadastrar">Cadastrar</button>
-        </form>
+            <!--- Switch --->
+            <label class="switch m-3">
+                <input id="switchFornecedor" type="checkbox">
+                <span class="slider slider-fornecedor round"></span>
+            </label>
+
+            <!--- Fornecedor --->
+            <div class="col-5 js-tilt" data-tilt>
+                <a class="d-flex justify-content-center" href="/Fornecedor/CadastroFornecedor">
+                    <div id="btnFornecedor" class="col-9 switch-wrapper p-3">
+                        <img src="/Content/images/fornecedor.png" />
+                        <h6 class="switch-person-title p-2">Fornecedor</h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!--- Pessoa Fisica & Pessoa Juridica --->
+        <div id="wrapperFisicaJuridica"
+             class="mt-4 pt-4">
+            Informe o seu tipo de perfil:
+
+            <div class="row align-items-center justify-content-center mt-4">
+                <!--- Pessoa Fisica --->
+                <div class="col-5 js-tilt">
+                    <a class="d-flex justify-content-center" href="/Comprador/CadastroPessoaFisica">
+                        <div id="btnFisica" class="col-9 switch-wrapper active-switch p-3">
+                            <img src="/Content/images/comprador.png" />
+                            <h6 class="switch-person-title p-2">Física</h6>
+                        </div>
+                    </a>
+                </div>
+
+                <!--- Switch --->
+                <label class="switch m-3">
+                    <input id="switchJuridica" type="checkbox">
+                    <span class="slider slider-juridica round"></span>
+                </label>
+
+                <!--- Pessoa Juridica --->
+                <div class="col-5 js-tilt">
+                    <a class="d-flex justify-content-center" href="/Comprador/CadastroPessoaJuridica">
+                        <div id="btnJuridica" class="col-9 switch-wrapper p-3">
+                            <img src="/Content/images/fornecedor.png" />
+                            <h6 class="switch-person-title p-2">Jurídica</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+
+    @*<p>@ViewBag.Message</p>*@
+
+
+    <form class="col-12 cadastro-form d-flex justify-content-end mt-4 pt-4 pr-2 pl-0"
+          method="post" action="../Comprador/CadastroPessoaFisica" onsubmit="event.preventDefault();">
+
+        <div class="col-5 form-first-part justify-content-center">
+
+            <!--- CPF --->
+            <div class="col-11 wrap-input p-0">
+                <input class="input" type="text" maxlength="11" name="cpf" placeholder="CPF" data-mask="000.000.000-00" data-mask-sectionFocus="true" />
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <!--- Nome --->
+            <div class="col-11 wrap-input p-0">
+                <input class="input" type="text" name="nome" placeholder="Nome">
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <!--- Sobrenome --->
+            <div class="col-11 wrap-input p-0">
+                <input class="input" type="text" name="sobrenome" placeholder="Sobrenome">
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <!--- Email --->
+            <div class="col-11 wrap-input p-0">
+                <input class="input" type="email" name="email" placeholder="Email">
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="col-11 row p-0 align-items-center justify-content-between">
+                <!--- Senha & Confirmar Senha --->
+                <div class="col-10 p-0">
+                    <!--- Senha --->
+                    <div class="wrap-input">
+                        <input class="input input-senha" type="password" name="senha" placeholder="Senha">
+                        <span class="focus-input"></span>
+                        <span class="symbol-input">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <!--- Confirmar Senha --->
+                    <div class="wrap-input">
+                        <input class="input input-senha" type="password" name="confirmarSenha" placeholder="Confirmar Senha">
+                        <span class="focus-input"></span>
+                        <span class="symbol-input">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!--- Visualizar Senha --->
+                <div class="d-flex align-items-center">
+                    <button id="btnSenha">
+                        <img src="/Content/images/comprador.png" />
+                    </button>
+                </div>
+            </div>
+
+            <!--- UF --->
+            <div class="col-11 row p-0 align-items-center justify-content-between">
+                <div class="col-8 p-0">
+                    Escolha o seu Estado ao lado:
+                </div>
+
+                <select name="uf" class="states text-center">
+                    <option disabled>UF</option>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP">SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row col-12 form-second-part justify-content-between pl-5 pr-5">
+            <!--- Telefone --->
+            <div class="col-5 wrap-input">
+                <input class="input" type="text" name="telefone" maxlength="10" placeholder="(00) 0000-0000" data-mask="(00) 0000-0000" data-mask-sectionFocus="true">
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <!--- Celular --->
+            <div class="col-5 wrap-input pl-4 pr-0 mr-2">
+                <input class="input" type="text" name="celular" placeholder="(00) 00000-0000"  data-mask="(00) 00000-0000" data-mask-sectionFocus="true">
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="row col-12 align-items-center mt-5 pt-5 pl-2 pr-2">
+                <!--- Voltar para Login --->
+                <div class="col-6 text-left">
+                    <a class="sub-link" href="/Login/Login">
+                        Login
+                    </a>
+                </div>
+
+                <!--- Botao Proximo --->
+                <div class="col-6 d-flex align-self-center justify-content-end pr-0">
+                    <button id="btnProximo" class="login-form-btn mt-2">
+                        Próximo
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 form-third-part justify-content-between text-center pl-5 pr-5" style="display: none">
+            Seleciona abaixo todas as categorias de fornecimento que tenha interesse: <br />
+            E não se preocupe se esquecer de alguma, pois será possível editar depois. 
+
+            <div class="col-4 pt-5">
+                <div class="col-12 checkbox-container text-left mt-4 p-0">
+                    <label for="fastfood">
+                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
+                        <span class="checkbox"></span>
+                        fastfood
+                    </label>
+                </div>
+                <div class="col-12 checkbox-container text-left mt-4 p-0">
+                    <label for="fastfood">
+                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
+                        <span class="checkbox"></span>
+                        fastfood
+                    </label>
+                </div>
+                <div class="col-12 checkbox-container text-left mt-4 p-0">
+                    <label for="fastfood">
+                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
+                        <span class="checkbox"></span>
+                        fastfood
+                    </label>
+                </div>
+            </div>
+
+            <div class="row col-12 align-items-center mt-5 pt-4 pl-5 pr-5">
+                <!--- Voltar para etapa anterior --->
+                <div class="col-6 text-left">
+                    <button id="btnVoltar" class="fake-link sub-link">
+                       Voltar
+                    </button>
+                </div>
+
+                <!--- Botao Cadastrar --->
+                <div class="col-6 d-flex align-self-center justify-content-end pr-0">
+                    <button id="btnCadastrar" class="login-form-btn mt-2">
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>

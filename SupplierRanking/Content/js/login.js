@@ -79,15 +79,19 @@ $(document).ready(function () {
         switchTipoFuncionario(switchFuncionario);
     });
 
-    //$('.login-form').submit(function(e){ //tentando parar o submit do botão pra não atualizar a pagina 
-    //    e.preventDefault();
-    //    $(this).submit();
-    //});
-        
-
+    $('.login-form').submit(function (e) {
+        e.preventDefault();
+        console.log($('.login-form input').val());
+        if ($('.login-form input').val().isEmpty()) {
+            console.log('foi');
+            //$(this).submit();
+        }
+        console.log('num foi');
+        //$('.login-form input').attr('required');
+    });
 
     // Primeira funcao a ser executada
-    function init() {  
+    function init() {
         $('#wrapperFisicaJuridica').hide();
         $('#wrapperFuncionario').hide();
         $('.login-form').hide();
