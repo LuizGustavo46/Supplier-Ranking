@@ -233,19 +233,14 @@ namespace SupplierRanking.Controllers
         /*==============================================================================UPDATE DE CADASTRO================================================================================*/
         public ActionResult UpdateFornecedor(string cnpj)
         {
-            Fornecedor f = Fornecedor.UpdateFornecedor(cnpj);
-            if (f == null)
-            {
-                TempData["Msg"] = "Erro ao encontrar cnpj";
-                return RedirectToAction("UpdateFornecedor");
-            }
-            return View(f);
+           
+            return View();
         }
       
 
         [HttpPost]
         public ActionResult UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro,string cidade, string endereco, string uf,
-            string celular, string descricao, string cep, string slogan, string nome_categoria)
+            string celular, string descricao, string cep, string slogan, string nome_categoria, string confirmaSenha)
         {
             Fornecedor f = new Fornecedor();
             f.Cnpj = cnpj;
@@ -283,13 +278,16 @@ namespace SupplierRanking.Controllers
                 }
             }
 
-            string res = f.UpdateFornecedor(cnpj);
 
-            TempData["Msg"] = res;
-            if (res == "Salvo com sucesso!")
-                return RedirectToAction("UpdateFornecedor");
+            if (f.UpdateFornecedor(cnpj, nome_empresa, email,  telefone, bairro, cidade, endereco, uf,
+                 celular, descricao, cep, slogan, nome_categoria, confirmaSenha))
+                TempData["Msg"] = "Alterações Efetuadas com sucesso!";
             else
-                return View();
+                TempData["Msg"] = "Informações Incorretas";
+
+            return RedirectToAction("UpdateFornecedor");
+
+
         }
         /*==============================================================================================================================================================================*/
 
@@ -332,7 +330,7 @@ namespace SupplierRanking.Controllers
             }
 
 
-            TempData["Msg"] = f.UpdateFornecedor();
+            TempData["Msg"] = f.UpdateFuncionarioFornecedor();
 
             return RedirectToAction("UpdateFornecedor");
         }
