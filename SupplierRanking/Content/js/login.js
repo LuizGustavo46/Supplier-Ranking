@@ -79,16 +79,16 @@ $(document).ready(function () {
         switchTipoFuncionario(switchFuncionario);
     });
 
-    $('.login-form').submit(function (e) {
-        e.preventDefault();
-        console.log($('.login-form input').val());
-        if ($('.login-form input').val().isEmpty()) {
-            console.log('foi');
-            //$(this).submit();
-        }
-        console.log('num foi');
-        //$('.login-form input').attr('required');
-    });
+    //$('.login-form').submit(function (e) {
+    //    e.preventDefault();
+    //    console.log($('.login-form input').val());
+    //    if ($('.login-form input').val().isEmpty()) {
+    //        console.log('foi');
+    //        //$(this).submit();
+    //    }
+    //    console.log('num foi');
+    //    //$('.login-form input').attr('required');
+    //});
 
     // Primeira funcao a ser executada
     function init() {
