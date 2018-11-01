@@ -451,37 +451,32 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================RESTAURAR SENHA=================================================================================*/
-        public Boolean RestaurarSenha(string novaSenha, string confirmarSenha, string cnpjDigitado)
+        public Boolean RestaurarSenha(string cnpj)
         {
             bool res = false;
             try
             {
-                //se a nova senha for igual ao campo com a nova senha e o cnpj digitado for igual ao cnpj do banco
-                //a restauração é efetuada
-                if (novaSenha == confirmarSenha && cnpj == cnpjDigitado)
-                {
-                    SqlCommand query =
+                con.Open(); // abre conexão
+                SqlCommand query =
                         new SqlCommand("SELECT email FROM fornecedor WHERE  cnpj = @cnpj", con);
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     SqlDataReader leitor = query.ExecuteReader();
-                    while(leitor.Read())
-                    {
 
-                        email = leitor["email"].ToString();
-                                
-                    }
-                  
+                while (leitor.Read())
+                {
+                    email = leitor["email"].ToString();
+                }
                     //CONFIGURANDO A MENSAGEM
                     MailMessage mail = new MailMessage();
                     //ORIGEM
-                    mail.From = new MailAddress("supplierranking@hotmail.com");
+                    mail.From = new MailAddress("marcelolemos7@outlook.com");//supplierranking@hotmail.com
                     //DESTINATÁRIO
                     mail.To.Add(email);
                     //ASSUNTO
                     mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
                     //CORPO DO E-MAIL
                     //ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA.
-                    mail.Body = "Clique no link http://localhost:16962/Fornecedor/EnviarEmail para a redefinição de senha.";
+                    mail.Body = "Clique no link   http://localhost:16962/Fornecedor/RestaurarSenha   para redefinir sua senha";  
 
 
                     //CONFIGURAR O SMTP
@@ -491,16 +486,15 @@ namespace SupplierRanking.Models
                     //HABILITAR O TLS
                     smtpServer.EnableSsl = true;
                     //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking@hotmail.com", "Senai1234");
+                    smtpServer.Credentials = new System.Net.NetworkCredential("marcelolemos7@outlook.com", "M@rcelo190399");
                     //ENVIAR
                     smtpServer.Send(mail);
-
-
-                }
+              
 
             }
             catch (Exception e)
             {
+                string em = e.Message;
                 res = false;
             }
 
@@ -510,6 +504,9 @@ namespace SupplierRanking.Models
             return res;
 
         }
+
+
+
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================LISTA FUNCIONARIO===============================================================================*/
@@ -588,22 +585,11 @@ namespace SupplierRanking.Models
                 if (novaSenha != senha && senhaConfirma == novaSenha)//se a nova senha for diferente da senha atual e a senhaConfirma for igual a novaSenha executa o update                  
                 {
                     SqlCommand query =
-                                new SqlCommand("UPDATE fornecedor SET  senha = @novaSenha", con);
-                            query.Parameters.AddWithValue("@novaSenha", novaSenha);
-                            query.ExecuteNonQuery();//executa o update
+                                new SqlCommand("Update fornecedor SET senha = @senha WHERE cnpj = @cnpj", con);
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    query.Parameters.AddWithValue("@senha", novaSenha);
+                    query.ExecuteNonQuery();//executa o update
                     res = true;
-                }
-
-                if (senha == null && novaSenha == senhaConfirma && senha != novaSenha)
-                {
-                    SqlCommand query2 =
-                        new SqlCommand("SET senha FROM fornecedor WHERE  cnpj = @cnpj", con);
-                    query2.Parameters.AddWithValue("@senha", senha);
-                    SqlDataReader leitor2 = query2.ExecuteReader();
-                    while (leitor.Read())
-                    {
-                        email = leitor["email"].ToString();
-                    }
                 }
             }
 

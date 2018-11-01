@@ -440,6 +440,7 @@
     <Content Include="Views\Comprador\RestaurarSenha.cshtml" />
     <Content Include="Views\Comprador\NovaSenha.cshtml" />
     <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
+    <Content Include="Views\Fornecedor\RestaurarSenha.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
