@@ -60,6 +60,9 @@ namespace SupplierRanking.Controllers
 
         public ActionResult CadastroPessoaFisica()
         {
+            Categorias c = new Categorias();
+            ViewBag.ListaCategorias = c.ListaCategorias();
+
             return View();
         }
 

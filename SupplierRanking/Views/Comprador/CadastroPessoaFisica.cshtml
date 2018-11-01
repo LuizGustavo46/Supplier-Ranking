@@ -78,7 +78,7 @@
 
 
     <form class="col-12 cadastro-form d-flex justify-content-end mt-4 pt-4 pr-2 pl-0"
-          method="post" action="../Comprador/CadastroPessoaFisica" onsubmit="event.preventDefault();">
+          method="post" action="../Comprador/CadastroPessoaFisica">
 
         <div class="col-5 form-first-part justify-content-center">
 
@@ -206,6 +206,20 @@
                 </span>
             </div>
 
+            <div class="col-4 pt-5">
+                @foreach (var c in ViewBag.ListaCategorias)
+                {
+                    <div class="col-12 checkbox-container text-left mt-4 p-0">
+                        <label for="@(c.Categoria)">
+                            <input type="checkbox" id="@(c.Categoria)" name="@(c.Categoria)" />
+                            <span class="checkbox"></span>
+                            @(c.Categoria)
+                        </label>
+                    </div>
+                    <input id="inputHidden" value="@(c.Categoria)" type="text" name="inputHidden">
+                }   
+            </div>
+
             <div class="row col-12 align-items-center mt-5 pt-5 pl-2 pr-2">
                 <!--- Voltar para Login --->
                 <div class="col-6 text-left">
@@ -226,29 +240,21 @@
         <div class="col-12 form-third-part justify-content-between text-center pl-5 pr-5" >
             Seleciona abaixo todas as categorias de fornecimento que tenha interesse: <br />
             E não se preocupe se esquecer de alguma, pois será possível editar depois. 
+            
 
             <div class="col-4 pt-5">
-                <div class="col-12 checkbox-container text-left mt-4 p-0">
-                    <label for="fastfood">
-                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
-                        <span class="checkbox"></span>
-                        fastfood
-                    </label>
-                </div>
-                <div class="col-12 checkbox-container text-left mt-4 p-0">
-                    <label for="fastfood">
-                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
-                        <span class="checkbox"></span>
-                        fastfood
-                    </label>
-                </div>
-                <div class="col-12 checkbox-container text-left mt-4 p-0">
-                    <label for="fastfood">
-                        <input type="checkbox" id="fastfood" name="fastfood" value="fastfood" />
-                        <span class="checkbox"></span>
-                        fastfood
-                    </label>
-                </div>
+                @*------------------------------------------------------------------------*@
+                @foreach (var c in ViewBag.ListaCategorias)
+                {
+                    <div class="col-12 checkbox-container text-left mt-4 p-0">
+                            <label for="@(c.Categoria)">
+                            <input type="checkbox" id="@(c.Categoria)" name="categoria"/>
+                            <span class="checkbox"></span>
+                            @(c.Categoria)
+                        </label>
+                    </div>
+
+                }
             </div>
 
             <div class="row col-12 align-items-center mt-5 pt-4 pl-5 pr-5">
@@ -261,7 +267,7 @@
 
                 <!--- Botao Cadastrar --->
                 <div class="col-6 d-flex align-self-center justify-content-end pr-0">
-                    <button id="btnCadastrar" class="login-form-btn mt-2">
+                    <button type="submit" id="btnCadastrar" class="login-form-btn mt-2">
                         Cadastrar
                     </button>
                 </div>

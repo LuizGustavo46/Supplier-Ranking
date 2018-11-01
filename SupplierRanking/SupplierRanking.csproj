@@ -297,6 +297,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AvaliacaoController.cs" />
+    <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\CompradorController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -305,6 +306,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Avaliacao.cs" />
+    <Compile Include="Models\Categorias.cs" />
     <Compile Include="Models\Comprador.cs" />
     <Compile Include="Models\Fornecedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -440,6 +442,7 @@
     <Content Include="Views\Comprador\RestaurarSenha.cshtml" />
     <Content Include="Views\Comprador\NovaSenha.cshtml" />
     <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
+    <Content Include="Views\Fornecedor\RestaurarSenha.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -450,6 +453,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Avaliacao\" />
+    <Folder Include="Views\Categorias\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
