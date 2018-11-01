@@ -226,6 +226,15 @@
         <div class="col-12 form-third-part justify-content-between text-center pl-5 pr-5" style="display: none">
             Seleciona abaixo todas as categorias de fornecimento que tenha interesse: <br />
             E não se preocupe se esquecer de alguma, pois será possível editar depois. 
+            @*------------------------------------------------------------------------*@
+            @foreach (var c in ViewBag.ListaCategorias)
+            {
+                <label for="fastfood">
+                    <input type="checkbox" id="categoria" name="categoria" value="@c.Categoria" />
+                    <span class="checkbox"></span>
+                    fastfood
+                </label>
+            }
 
             <div class="col-4 pt-5">
                 <div class="col-12 checkbox-container text-left mt-4 p-0">
