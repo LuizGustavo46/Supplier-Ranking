@@ -34,10 +34,9 @@ namespace SupplierRanking.Models
                     new SqlCommand("SELECT * FROM categorias", con);
                 SqlDataReader leitor = query.ExecuteReader();
 
-                Categorias c = new Categorias();
-
                 while (leitor.Read())
                 {
+                    Categorias c = new Categorias();
                     c.categoria= leitor["nome"].ToString();
                     lista.Add(c); //ADICIONA O QUE VEIO DO BANCO NA LISTA              
                 }
