@@ -37,7 +37,7 @@
 
 <!--- Pessoa Fisica & Pessoa Juridica --->
 <div id="wrapperFisicaJuridica"
-     class="col-12 text-center justify-content-center mt-4">
+     class="col-12 text-center justify-content-center mt-4 hide">
     Informe o seu tipo de perfil:
 
     <div class="row align-items-center mt-4 pr-5 pb-5 pl-5">
@@ -67,7 +67,7 @@
 
 <!--- Funcionario --->
 <div id="wrapperFuncionario"
-     class="row col-12 text-center justify-content-center mt-4">
+     class="row col-12 text-center justify-content-center mt-4 hide">
     Ative o campo caso seja um funcionário
 
     <div class="row col-12 align-items-center justify-content-center mt-4 pr-5 pb-5 pl-5">
@@ -89,11 +89,12 @@
 </div>
 
 <!--- Formulario de Login --->
-<form class="row login-form justify-content-center p-5" method="post" action="../Login/Login">
+<form class="row login-form justify-content-center p-5 hide" 
+      method="post" >
 
     <!--- CPF --->
     <div id="inputCpf" class="col-10 wrap-input pl-2">
-        <input class="input" type="text" maxlength="11" name="cpf" placeholder="CPF">
+        <input class="input" type="text" maxlength="14" name="cpf" placeholder="CPF" data-mask="000.000.000-00" data-mask-sectionFocus="true">
         <span class="focus-input"></span>
         <span class="symbol-input">
             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -102,7 +103,7 @@
 
     <!--- CNPJ --->
     <div id="inputCnpj" class="col-10 wrap-input pl-2">
-        <input class="input" type="text" maxlength="14" name="cnpj" placeholder="CNPJ">
+        <input class="input" type="text" maxlength="19" name="cnpj" placeholder="CNPJ" data-mask="00.000.000/0000-00" data-mask-sectionFocus="true">
         <span class="focus-input"></span>
         <span class="symbol-input">
             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -128,29 +129,35 @@
     </div>
 
     <input id="inputHidden" type="text" name="inputHidden" hidden>
+  
+    
+</form>
+<div class="row col-12 login-options justify-content-center p-5">
 
-    <div class="row col-12 login-form justify-content-center p-5 mt-5 ml-3 mr-3">
-        <div class="col-6 mt-3">
-            <!--- Esquci minha Senha --->
-            <div class="text-left">
-                <a class="sub-link" href="#">
-                    Esqueceu sua senha?
-                </a>
-            </div>
+    @*<div class="col-11 login-form text-center alert-danger mt-3 mb-3">*@
+     <span class="col-8 error-msg alert-danger text-center p-2 mt-3 mb-3 hide"> Preencha o(s) campo(s) corretamente @(ViewBag.Message)</span>
+    @*</div>*@
 
-            <!--- Criar Conta --->
-            <div class="text-left pt-3">
-                <a class="sub-link" href="/Login/Cadastro">
-                    Criar conta
-                </a>
-            </div>
+    <div class="col-6 mt-3">
+        <!--- Esquci minha Senha --->
+        <div class="text-left">
+            <a class="sub-link" href="#">
+                Esqueceu sua senha?
+            </a>
         </div>
 
-        <!--- Botao Entrar --->
-        <div class="col-6 justify-content-center align-self-center mt-2 pl-0 pr-4">
-            <button class="login-form-btn mt-2">
-                Entrar
-            </button>
+        <!--- Criar Conta --->
+        <div class="text-left pt-3">
+            <a class="sub-link" href="/Login/Cadastro">
+                Criar conta
+            </a>
         </div>
     </div>
-</form>
+
+    <!--- Botao Entrar --->
+    <div class="col-6 d-flex justify-content-center align-items-center mt-2 pl-0 pr-4">
+        <button type="submit" class="login-form-btn disabled mt-2" disabled>
+            Entrar
+        </button>
+    </div>
+</div>

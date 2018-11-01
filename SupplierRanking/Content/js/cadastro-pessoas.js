@@ -31,10 +31,10 @@ $(document).ready(function () {
 
     /*** Botao para mudar a proxima etapa de Cadastro ***/
     btnProximo.on('click', function () {
-        divOptions.hide();
-        divFirstPart.hide();
-        divSecondPart.hide();
-        divThridPart.show();
+        divOptions.addClass('hide');
+        divFirstPart.addClass('hide');
+        divSecondPart.addClass('hide');
+        divThridPart.removeClass('hide');
         formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
         formTitle.text('O que você procura?');
         
@@ -42,20 +42,17 @@ $(document).ready(function () {
 
     /*** Botao para voltar para a etapa anterior de Cadastro ***/
     btnVoltar.on('click', function () {
-        divThridPart.hide();
-        divOptions.show();
-        divFirstPart.show();
-        divSecondPart.show();
+        divThridPart.addClass('hide');
+        divOptions.removeClass('hide');
+        divFirstPart.removeClass('hide');
+        divSecondPart.removeClass('hide');
     });
 
 
     // Primeira funcao a ser executada
     function init() {
-        divThridPart.hide();
-
-        
+        divThridPart.addClass('hide');
     }
-
 
     init();
 });

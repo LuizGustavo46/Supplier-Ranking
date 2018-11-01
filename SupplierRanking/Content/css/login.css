@@ -37,6 +37,7 @@
 }
 
 .wrap-login {
+    position: relative;
 	width: 850px;
 	height: 972px;
 	background: #FFF;
@@ -53,6 +54,12 @@
 .login-form {
     position: relative;
     top: -3em;
+}
+
+.login-options {
+    position: absolute;
+    bottom: 1vh;
+    left: 0;
 }
 
 .wrap-input {
