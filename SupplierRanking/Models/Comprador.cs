@@ -181,37 +181,6 @@ namespace SupplierRanking.Models
             return res; //RETORNA TRUE OR FALSE
         }
 
-        //RETURN DOS CAMPOS PARA CADASTRO DE PESSOAS FISICAS OU JURIDICAS --- COMENTEI PQ NÃO SEI SE VAI PRECISAR
-        //public static Comprador TelaCadastroComprador()
-        //{
-        //    Comprador u = new Comprador();
-        //    try
-        //    {
-        //        u.cpf = "";
-        //        u.nome = "";
-        //        u.sobrenome = "";
-        //        u.email = "";
-        //        u.senha = "";
-        //        u.tipo_pessoa = "";   //F ou J (Fisica ou Juridica)
-        //        u.cnpj = "";
-        //        u.nome_empresa = "";
-        //        u.endereco = "";
-        //        u.bairro = "";
-        //        u.cidade = "";
-        //        u.uf = "";
-        //        u.cep = "";
-        //        u.telefone = "";
-        //        u.celular = "";
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        u = null;
-        //    }
-        //    if (con.State == ConnectionState.Open)
-        //        con.Close();
-        //    return u;
-        //}
-
         //CADASTRO DE PESSOA FISICA - VERIFICAR SE ESTA CORRETO
         public bool CadastroPessoaFisica()
         {
