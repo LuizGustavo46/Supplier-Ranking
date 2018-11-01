@@ -1,8 +1,8 @@
 ﻿@model SupplierRanking.Models.Fornecedor
 @{
     ViewBag.Title = "UpdateFornecedor";
-    //Layout = "~/Views/Shared/LoginLayout.cshtml";
-    Layout = "~/Views/Shared/LoginLayout.cshtml";
+   
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 <div class="container-login100">
 
@@ -13,39 +13,39 @@
 
             <!--- Campos do Fornecedor -->
             <div id="">
-                <label for="imagem" style="border: 1px solid; background-color: gainsboro; padding: .5em; font-size: 12px; cursor: pointer;">Imagem de Perfil</label>
-                <input type="file" accept="image/*" id="imagem" name="imagem" style="display: none">
+                @*<label for="imagem" style="border: 1px solid; background-color: gainsboro; padding: .5em; font-size: 12px; cursor: pointer;">Imagem de Perfil</label>
+                <input type="file" accept="image/*" id="imagem" name="imagem" style="display: none">*@
 
-                
+                               
                 <br /> <br />
-                <input type="text" name="confirmaSenha" placeholder="Digite sua senha">                
+                @*<input type="text" name="confirmaSenha" placeholder="Digite sua senha">*@                
                 <br /> <br />          
-                <input type="text" name="@Model.Cnpj" placeholder="CNPJ">
+                <input type="text" value="@Model.Cnpj" name="cnpj" placeholder="CNPJ">
                 <br /> <br />
-                <input type="text" name="@Model.Nome_empresa" placeholder="Nome da Empresa">
+                <input type="text" value="@Model.Nome_empresa" name = "nome_empresa" placeholder="Nome da Empresa">
                 <br /> <br />
-                <input type="text" name="@Model.Email" placeholder="Email">                             
+                <input type="text" value="@Model.Email" name="email" placeholder="Email">                             
                 <br /> <br />
-                <input type="text" name="@Model.Cep" placeholder="CEP">
+                <input type="text" value="@Model.Cep" name="cep" placeholder="CEP">
                 <br /> <br />
-                <input type="text" name="@Model.Endereco" placeholder="Endereço">
+                <input type="text" value="@Model.Endereco" name="endereco" placeholder="Endereço">
                 <br /> <br />
-                <input type="text" name="@Model.Bairro" placeholder="Bairro">
+                <input type="text" value="@Model.Bairro" name="bairro" placeholder="Bairro">
                 <br /> <br />
-                <input type="text" name="@Model.Cidade" placeholder="Cidade">
+                <input type="text" value="@Model.Cidade" name="cidade" placeholder="Cidade">
                 <br /> <br />
-                <input type="text" name="@Model.Uf" placeholder="UF">
+                <input type="text" value="@Model.Uf" name="uf" placeholder="UF">
                 <br /> <br />
-                <input type="text" name="@Model.Telefone" placeholder="(00) 0000-0000">
-                <input type="text" name="@Model.Celular" placeholder="(00) 00000-0000">
+                <input type="text" value="@Model.Telefone" name="telefone" placeholder="(00) 0000-0000">
+                <input type="text" value="@Model.Celular" name="celular" placeholder="(00) 00000-0000">
                 <br /> <br />
-                <input type="text" name="@Model.Slogan" placeholder="Digite o seu slogan!">
+                <input type="text" value="@Model.Slogan" name="slogan" placeholder="Digite o seu slogan!">
                 <br /> <br />
-                <input type="text" name="@Model.Descricao" placeholder="Uma breve descrição">
+                <input type="text" value="@Model.Descricao" name="descricao" placeholder="Uma breve descrição">
                 <br /> <br />
-                <input type="text" name="@Model.Nome_categoria" placeholder="categoria">
+                <input type="text" value="@Model.Nome_categoria" name="nome_categoria" placeholder="categoria">
                 <br /> <br />             
-                <input type="file" name="@Model.Imagem" />
+                <input type="file" name="Imagem" />
                 <br /> <br />
 
             </div>

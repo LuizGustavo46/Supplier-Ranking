@@ -554,7 +554,7 @@ namespace SupplierRanking.Models
                 //ASSUNTO
                 mail.Subject = "REDEFINIÇÃO DE SENHA - Supplier Ranking";
                 //CORPO DO E-MAIL
-                mail.Body = "Clique aqui para redefinir sua senha:\n http://localhost:16962/Comprador/NovaSenha";//ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA;
+                mail.Body = "Clique aqui para redefinir sua senha:\n http://localhost:16962/Comprador/UpdateSenha";//ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA;
 
 
                 //CONFIGURAR O SMTP

@@ -111,7 +111,7 @@ namespace SupplierRanking.Controllers
             }
 
             TempData["Msg"] = f.CadastroFornecedor();
-            return RedirectToAction("CadastroFornecedor");
+            return RedirectToAction("UpdateFornecedor");
         }
 
         /*================================================================================================================================================================================*/
@@ -151,7 +151,7 @@ namespace SupplierRanking.Controllers
                 //Destinatário
                 mail.To.Add(email);
                 //Assunto
-                mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
+                mail.Subject = nome + "Suporte - Supplier Ranking";
                 //Corpo do e-mail
                 mail.Body = "NADA";
 
@@ -233,15 +233,23 @@ namespace SupplierRanking.Controllers
         /*==============================================================================UPDATE DE CADASTRO================================================================================*/
         public ActionResult UpdateFornecedor(string cnpj)
         {
-           
-            return View();
+            
+            Fornecedor c = Fornecedor.PesquisaUpdateFornecedor(/*cnpj*/"112233");
+
+            if (c == null)
+            {
+                TempData["Msg"] = "Erro ao encontrar dados";
+                return RedirectToAction("UpdatePessoaFisica");
+            }
+            return View(c);
         }
       
 
         [HttpPost]
         public ActionResult UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro,string cidade, string endereco, string uf,
-            string celular, string descricao, string cep, string slogan, string nome_categoria, string confirmaSenha)
+            string celular, string descricao, string cep, string slogan, string nome_categoria /*string confirmaSenha*/)
         {
+
             Fornecedor f = new Fornecedor();
             f.Cnpj = cnpj;
             f.Nome_empresa = nome_empresa;
@@ -256,6 +264,8 @@ namespace SupplierRanking.Controllers
             f.Cep = cep;
             f.Slogan = slogan;           
             f.Nome_categoria = nome_categoria;
+            
+            
                         
             foreach (string imagem in Request.Files)
             {           
@@ -279,13 +289,16 @@ namespace SupplierRanking.Controllers
             }
 
 
-            if (f.UpdateFornecedor(cnpj, nome_empresa, email,  telefone, bairro, cidade, endereco, uf,
-                 celular, descricao, cep, slogan, nome_categoria, confirmaSenha))
+            if (f.UpdateFornecedor(cnpj, nome_empresa, email, telefone, bairro, cidade, endereco, uf,
+                 celular, descricao, cep, slogan, nome_categoria /*confirmaSenha*/))
+            {
                 TempData["Msg"] = "Alterações Efetuadas com sucesso!";
+            }
             else
                 TempData["Msg"] = "Informações Incorretas";
 
-            return RedirectToAction("UpdateFornecedor");
+
+                return RedirectToAction("UpdateFornecedor");
 
 
         }
@@ -340,9 +353,10 @@ namespace SupplierRanking.Controllers
 
 
 
+        //QUE ??
 
 
-        public ActionResult UpdateFuncionarioFornecedor(string codigo)
+      /*  public ActionResult UpdateFuncionarioFornecedor(string codigo)
         {
             return View(Fornecedor.PerfilFuncionario(int.Parse(codigo))); //PASSAR O codgio PARA RETORNAR O PERFIL PARA PODER EDITAR
         }
@@ -384,7 +398,7 @@ namespace SupplierRanking.Controllers
 
             return RedirectToAction("UpdateFornecedor");
         }
-
+        */
 
 
 

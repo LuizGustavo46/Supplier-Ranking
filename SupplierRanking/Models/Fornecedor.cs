@@ -398,6 +398,56 @@ namespace SupplierRanking.Models
 
             return lista;
         }
+
+
+
+        public static Fornecedor PesquisaUpdateFornecedor(string cnpj)
+        {
+            Fornecedor f = new Fornecedor();
+            try
+            {
+                con.Open(); // abre conexão
+                // Criação de comando
+
+                SqlCommand query =
+                    new SqlCommand("SELECT * FROM fornecedor WHERE cnpj= @cnpj", con);
+                query.Parameters.AddWithValue("@cnpj", cnpj);
+
+                SqlDataReader leitor = query.ExecuteReader();
+
+                
+                while (leitor.Read())
+                {
+                    f.cnpj = leitor["cnpj"].ToString();
+                    f.nome_empresa = leitor["nome_empresa"].ToString();
+                    f.email = leitor["email"].ToString();
+                    f.endereco = leitor["endereco"].ToString();
+                    f.bairro = leitor["bairro"].ToString();
+                    f.cidade = leitor["cidade"].ToString();
+                    f.uf = leitor["uf"].ToString();
+                    f.cep = leitor["cep"].ToString();
+                    f.telefone = leitor["telefone"].ToString();
+                    f.celular = leitor["celular"].ToString();
+                    f.descricao = leitor["descricao"].ToString();
+                    f.slogan = leitor["slogan"].ToString();
+
+                    
+                    //colocar campo de posiçõ de ranking
+  
+                }
+            }
+            catch (Exception ex)
+            {
+                f = null;
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();
+
+            return f;
+        }
+
+
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================RESTAURAR SENHA=================================================================================*/
@@ -412,7 +462,7 @@ namespace SupplierRanking.Models
                 {
                     SqlCommand query =
                         new SqlCommand("SELECT email FROM fornecedor WHERE  cnpj = @cnpj", con);
-                    query.Parameters.AddWithValue("@senha", senha);
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
                     SqlDataReader leitor = query.ExecuteReader();
                     while(leitor.Read())
                     {
@@ -420,6 +470,7 @@ namespace SupplierRanking.Models
                         email = leitor["email"].ToString();
                                 
                     }
+                  
                     //CONFIGURANDO A MENSAGEM
                     MailMessage mail = new MailMessage();
                     //ORIGEM
@@ -429,7 +480,8 @@ namespace SupplierRanking.Models
                     //ASSUNTO
                     mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
                     //CORPO DO E-MAIL
-                    mail.Body = "NADA";//ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA;
+                    //ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA.
+                    mail.Body = "Clique no link http://localhost:16962/Fornecedor/EnviarEmail para a redefinição de senha.";
 
 
                     //CONFIGURAR O SMTP
@@ -494,6 +546,12 @@ namespace SupplierRanking.Models
 
             return listaFuncionario;
         }
+
+
+
+
+
+
         /*==============================================================================================================================================================================*/
 
 
@@ -534,7 +592,19 @@ namespace SupplierRanking.Models
                             query.Parameters.AddWithValue("@novaSenha", novaSenha);
                             query.ExecuteNonQuery();//executa o update
                     res = true;
-                }                               
+                }
+
+                if (senha == null && novaSenha == senhaConfirma && senha != novaSenha)
+                {
+                    SqlCommand query2 =
+                        new SqlCommand("SET senha FROM fornecedor WHERE  cnpj = @cnpj", con);
+                    query2.Parameters.AddWithValue("@senha", senha);
+                    SqlDataReader leitor2 = query2.ExecuteReader();
+                    while (leitor.Read())
+                    {
+                        email = leitor["email"].ToString();
+                    }
+                }
             }
 
             catch (Exception e)
@@ -552,21 +622,26 @@ namespace SupplierRanking.Models
 
         /*==============================================================================UPDATE CADASTRO=================================================================================*/
         public bool UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro, string cidade, string endereco, string uf,
-            string celular, string descricao, string cep, string slogan, string nome_categoria, string confirmaSenha) 
+            string celular, string descricao, string cep, string slogan, string nome_categoria) 
 
         {
+            
             bool res = true;
-            try
+            try        
             {
                 con.Open(); //ABRE CONEXÃO
+
                 //CRIAÇÃO DE COMANDO
                 SqlCommand query =
                     new SqlCommand("UPDATE fornecedor SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
                     "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone," +
-                    "celular = @celular WHERE cnpj = @cnpj", con);
+                    "celular = @celular, descricao = @descricao, slogan = @slogan WHERE cnpj = @cnpj", con);
 
+                string confirmaSenha ="";
 
-                if (senha == confirmaSenha)
+                if (nome_empresa.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) &&
+                    (celular.Length == 15 || celular.Length == 0) && endereco.Length > 1 && bairro.Length > 1 &&
+                    cidade.Length > 1 && uf.Length == 2 && cep.Length == 9 && senha==confirmaSenha)
                 {
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
@@ -580,8 +655,12 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@celular", celular);
                     query.Parameters.AddWithValue("@descricao", descricao);
                     query.Parameters.AddWithValue("@slogan", slogan);
-                    query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
+                    //query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
                     query.ExecuteNonQuery();
+                }
+                else
+                {
+                    res = false;
                 }
                
                
