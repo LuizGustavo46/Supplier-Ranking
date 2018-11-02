@@ -20,10 +20,10 @@ namespace SupplierRanking.Models
             get { return categoria; }
             set { categoria = value; }
         }
-        //--------------------------------------------------INICIO DOS MÉTODOS-----------------------------------------------------------
 
-        //MÉTODO PARA RETORNR A LISTA DE TODAS AS CATEGORIAS CADASTRADAS NO BANCO
-        public List<Categorias> ListaCategorias()
+        /************************************************************ LISTAR CATEGORIAS ********************************************************/
+
+        public List<Categorias> ListaCategorias() //MÉTODO PARA RETORNR A LISTA DE TODAS AS CATEGORIAS CADASTRADAS NO BANCO
         {
             List<Categorias> lista = new List<Categorias>();
             try
@@ -40,15 +40,11 @@ namespace SupplierRanking.Models
                     c.categoria= leitor["nome"].ToString();
                     lista.Add(c); //ADICIONA O QUE VEIO DO BANCO NA LISTA              
                 }
-            }
-            catch (Exception ex)
-            {
-                lista = null;
-            }
 
+            }catch (Exception ex) { lista = null; }
+    
             if (con.State == ConnectionState.Open)
                 con.Close();
-
             return lista;
         }
 
