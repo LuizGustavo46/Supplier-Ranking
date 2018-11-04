@@ -1,5 +1,6 @@
 ﻿
 .wrap-cadastro {
+    position: relative;
     width: 1024px;
     height: 1150px;
     background: #FFF;
@@ -108,4 +109,10 @@
 
 .form-third-part .other-option .checkbox {
     top: 0;
+}
+
+.cadastro-options {
+    position: absolute;
+    bottom: 1vh;
+    left: 0;
 }

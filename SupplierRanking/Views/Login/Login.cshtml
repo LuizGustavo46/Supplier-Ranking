@@ -129,16 +129,16 @@
     </div>
 
     <input id="inputHidden" type="text" name="inputHidden" hidden>
-  
     
 </form>
+
 <div class="row col-12 login-options justify-content-center p-5">
 
-    @*<div class="col-11 login-form text-center alert-danger mt-3 mb-3">*@
-     <span class="col-8 error-msg alert-danger text-center p-2 mt-3 mb-3 hide"> Preencha o(s) campo(s) corretamente @(ViewBag.Message)</span>
-    @*</div>*@
-
-    <div class="col-6 mt-3">
+     <span class="col-8 error-msg alert-danger text-center p-2 mt-3 mb-4 hide"> 
+        Preencha o(s) campo(s) corretamente! @(ViewBag.Message)
+     </span>
+    
+    <div class="col-6">
         <!--- Esquci minha Senha --->
         <div class="text-left">
             <a class="sub-link" href="#">
@@ -155,8 +155,8 @@
     </div>
 
     <!--- Botao Entrar --->
-    <div class="col-6 d-flex justify-content-center align-items-center mt-2 pl-0 pr-4">
-        <button type="submit" class="login-form-btn disabled mt-2" disabled>
+    <div class="col-6 d-flex justify-content-end align-items-center pl-0 pr-4">
+        <button type="submit" class="login-form-btn disabled" disabled>
             Entrar
         </button>
     </div>

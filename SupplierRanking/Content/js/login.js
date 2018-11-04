@@ -2,26 +2,26 @@
 $(document).ready(function () {
     'use strict';
 
-    var btnComprador = $('#btnComprador'),
-        btnFornecedor = $('#btnFornecedor'),
-        btnFisica = $('#btnFisica'),
-        btnJuridica = $('#btnJuridica'),
-        btnFuncionario = $('#btnFuncionario'),
+    var btnComprador = $('.wrap-login #btnComprador'),
+        btnFornecedor = $('.wrap-login #btnFornecedor'),
+        btnFisica = $('.wrap-login #btnFisica'),
+        btnJuridica = $('.wrap-login #btnJuridica'),
+        btnFuncionario = $('.wrap-login #btnFuncionario'),
 
-        switchFornecedor = $('#switchFornecedor'),
-        switchJuridica = $('#switchJuridica'),
-        switchFuncionario = $('#switchFuncionario'),
+        switchFornecedor = $('.wrap-login #switchFornecedor'),
+        switchJuridica = $('.wrap-login #switchJuridica'),
+        switchFuncionario = $('.wrap-login #switchFuncionario'),
 
-        sliderFornecedorComprador = $('.slider-fornecedor'),
-        sliderFisicaJuridica = $('.slider-juridica'),
-        sliderFuncionario = $('.slider-funcionario'),
+        sliderFornecedorComprador = $('.wrap-login .slider-fornecedor'),
+        sliderFisicaJuridica = $('.wrap-login .slider-juridica'),
+        sliderFuncionario = $('.wrap-login .slider-funcionario'),
 
-        wrapInputCpf = $('#inputCpf').closest('.login-form .wrap-input'),
-        wrapInputCnpj =  $('#inputCnpj').closest('.login-form .wrap-input'),
-        wrapInputFuncionario = $('#inputFuncionario').closest('.login-form .wrap-input'),
+        wrapInputCpf = $('.wrap-login #inputCpf').closest('.login-form .wrap-input'),
+        wrapInputCnpj = $('.wrap-login #inputCnpj').closest('.login-form .wrap-input'),
+        wrapInputFuncionario = $('.wrap-login #inputFuncionario').closest('.login-form .wrap-input'),
 
-        inputHidden = $('#inputHidden'),
-        formInputs = $('.login-form input'),
+        inputHidden = $('.wrap-login #inputHidden'),
+        formInputs = $('.wrap-login .login-form input'),
         activeformInputs;
 
 
@@ -68,20 +68,21 @@ $(document).ready(function () {
     /** Switch slider para selecionar Pessoa Física ou Pessoa Jurídica **/
     switchJuridica.change(function () {
         uncheckedSlider(sliderFisicaJuridica);
-        switchCompradorFornecedor(switchJuridica);
+        switchTipoDePessoa(switchJuridica);
     });
 
-
-    /** Botão para selecionar pessoa Funcionário **/
+    /** Botão para selecionar Funcionário **/
     btnFuncionario.on('click', function () {
         var switchFuncionarioTrueOrFalse = switchFuncionario.prop('checked', true);
 
         switchTipoFuncionario(switchFuncionarioTrueOrFalse);
     });
 
-    /** Switch slider para selecionar Pessoa Física ou Pessoa Jurídica **/
+    /** Switch slider para selecionar Funcionário **/
     switchFuncionario.change(function () {
-        switchTipoFuncionario(switchFuncionario);
+        var switchFuncionarioTrueOrFalse = switchFuncionario.prop('checked') === true ? switchFuncionario.prop('checked', false) : switchFuncionario.prop('checked', true);
+        
+        switchTipoFuncionario(switchFuncionarioTrueOrFalse);
     });
 
 
@@ -267,34 +268,25 @@ $(document).ready(function () {
     }
 
 
-    //$('.login-form-btn').on('click', function () {
-    //    console.log('foi 1');
-    //    $('.login-form').submit();
-    //});
+    $('.login-form-btn').on('click', function () {
+        submitForm();
+    });
 
-    //$('.login-form').on('submit', function (e) {
-        
-    //    e.preventDefault(); // Impede o envio do formulario
-
-    //    console.log('foi submit');
-
-    //    if (activeformInputs.verificarInputsVazios()) {
-    //        $('.error-msg').removeClass('hide');
-    //        console.log('foi 2');
-    //    } else {
-    //        $('.error-msg').addClass('hide');
-    //        $('.login-form').submit();
-    //        console.log('num foi');
-    //    }
-    //});
-
-
+    function submitForm() {
+        if (!verificarInputsVazios()) {
+            $('.error-msg').removeClass('hide');
+            
+        } else {
+            $('.error-msg').addClass('hide');
+            $('.login-form').submit();   
+        }
+    }
+    
     /** Inicia assim que a pagina e carregada **/
     function init() {
         wrapInputCpf.addClass('hide');
         wrapInputCnpj.addClass('hide');
         wrapInputFuncionario.addClass('hide');
-        console.log(activeformInputs);
     }
 
     init();
