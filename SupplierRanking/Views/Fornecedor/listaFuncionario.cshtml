@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SupplierRanking.Models.Fornecedor>
+
+@{
+    ViewBag.Title = "listaFuncionario";
+}
+
+<h2>listaFuncionario</h2>
+
+<p>
+    @Html.ActionLink("listaFuncionario", "Fornecedor")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+           CODIGO
+        </th>
+        <th>
+           NOME
+        </th>
+        <th>
+           SENHA
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Senha)
+        </td>
+       
+    </tr>
+}
+
+</table>
