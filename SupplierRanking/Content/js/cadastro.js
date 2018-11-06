@@ -2,16 +2,16 @@
 $(document).ready(function () {
     'use strict';
 
-    var btnComprador = $('.cadastro-login #btnComprador'),
-        btnFornecedor = $('.cadastro-login #btnFornecedor'),
-        btnFisica = $('.cadastro-login #btnFisica'),
-        btnJuridica = $('.cadastro-login #btnJuridica'),
+    var btnComprador = $('.row-cadastro #btnComprador'),
+        btnFornecedor = $('.row-cadastro #btnFornecedor'),
+        btnFisica = $('.row-cadastro #btnFisica'),
+        btnJuridica = $('.row-cadastro #btnJuridica'),
 
-        switchFornecedor = $('.cadastro-login #switchFornecedor'),
-        switchJuridica = $('.cadastro-login #switchJuridica'),
+        switchFornecedor = $('.row-cadastro #switchFornecedor'),
+        switchJuridica = $('.row-cadastro #switchJuridica'),
 
-        sliderFornecedorComprador = $('.cadastro-login .slider-fornecedor'),
-        sliderFisicaJuridica = $('.cadastro-login .slider-juridica');
+        sliderFornecedorComprador = $('.row-cadastro .slider-fornecedor'),
+        sliderFisicaJuridica = $('.row-cadastro .slider-juridica');
 
 
     /********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
@@ -133,7 +133,7 @@ $(document).ready(function () {
 
     /** Troca entre Fornecedor e Comprador **/
     function switchCompradorFornecedor(input) {
-        //$('.cadastro-login .cadastro-form').addClass('hide');
+        //$('.row-cadastro .cadastro-form').addClass('hide');
 
         if ($(input).is(':checked')) { //Seleciona o Fornecedor
             mostrarComprador(false);
@@ -141,6 +141,7 @@ $(document).ready(function () {
             mostrarFornecedor(true);
 
         } else { //Seleciona o Comprador
+            console.log('s');
             mostrarFornecedor(false);
             mostrarComprador(true);
         }
@@ -161,17 +162,17 @@ $(document).ready(function () {
 
     //// Funcao para aparecer / esconder entre Fornecedor ou Comprador
     //function switchCompradorFornecedor(input) {
-    //    $('.cadastro-login .cadastro-form').hide();
+    //    $('.row-cadastro .cadastro-form').hide();
 
     //    if ($(input).is(':checked')) { //Seleciona o Fornecedor
 
     //        btnComprador.removeClass('active-switch');
-    //        $('.cadastro-login #wrapperFisicaJuridica').hide();
+    //        $('.row-cadastro #wrapperFisicaJuridica').hide();
     //        uncheckSliderAndButtons(switchJuridica);
 
     //        btnFornecedor.addClass('active-switch');
-    //        $('.cadastro-login #wrapperFuncionario').show();
-    //        $('.cadastro-login .cadastro-form').show();
+    //        $('.row-cadastro #wrapperFuncionario').show();
+    //        $('.row-cadastro .cadastro-form').show();
     //        inputCpf.hide();
     //        inputCnpj.mask('00.000.000/0000-00').show();
     //        inputHidden.val('2');
@@ -180,10 +181,10 @@ $(document).ready(function () {
 
     //        btnFornecedor.removeClass('active-switch');
     //        uncheckSliderAndButtons(switchFuncionario);
-    //        $('.cadastro-login #wrapperFuncionario').hide();
+    //        $('.row-cadastro #wrapperFuncionario').hide();
 
     //        btnComprador.addClass('active-switch');
-    //        $('.cadastro-login #wrapperFisicaJuridica').show();
+    //        $('.row-cadastro #wrapperFisicaJuridica').show();
     //        inputFuncionario.hide();
     //    }
     //}
@@ -210,7 +211,7 @@ $(document).ready(function () {
     //        inputHidden.val('0');
     //    }
 
-    //    $('.cadastro-login .cadastro-form').show();
+    //    $('.row-cadastro .cadastro-form').show();
     //}
 
     //// Funcao para aparecer / esconder Funcionario
@@ -220,23 +221,23 @@ $(document).ready(function () {
     //        btnFuncionario.removeClass('active-switch');
     //        switchFuncionario.prop('checked', false);
     //        inputFuncionario.hide();
-    //        $('.cadastro-login .wrap-login').removeClass('has-employee');
+    //        $('.row-cadastro .wrap-login').removeClass('has-employee');
     //        inputHidden.val('2');
 
     //    } else {
     //        btnFuncionario.addClass('active-switch');
     //        switchFuncionario.prop('checked', true);
-    //        $('.cadastro-login .wrap-login').addClass('has-employee');
+    //        $('.row-cadastro .wrap-login').addClass('has-employee');
     //        inputFuncionario.show();
     //        inputHidden.val('3');
     //    }
 
-    //    $('.cadastro-login .cadastro-form').show();
+    //    $('.row-cadastro .cadastro-form').show();
     //}
 
     /** Inicia assim que a pagina e carregada **/
     function init() {
-        $('.cadastro-login #wrapperFisicaJuridica').addClass('hide');
+        $('.row-cadastro #wrapperFisicaJuridica').addClass('hide');
     }
 
     init();
