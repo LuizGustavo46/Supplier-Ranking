@@ -2,11 +2,15 @@
 .wrap-cadastro {
     position: relative;
     width: 1024px;
-    height: 1150px;
+    height: 870px;
     background: #FFF;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 4px 7px 14px 4px #575757;
+}
+
+.row-cadastro {
+    height: 81%;
 }
 
 .form-first-part {
@@ -42,10 +46,6 @@
 
 .form-second-part .wrap-input {
     padding: 0 1.1em;
-}
-
-.form-third-part {
-    min-height: 660px;
 }
 
 .form-third-part .row:last-of-type {
@@ -113,6 +113,6 @@
 
 .cadastro-options {
     position: absolute;
-    bottom: 1vh;
+    bottom: 5vh;
     left: 0;
 }
