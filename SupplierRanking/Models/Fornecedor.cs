@@ -177,7 +177,7 @@ namespace SupplierRanking.Models
         /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 
         /*==============================================================================LOGAR COM O FORNECEDOR==============================================================================*/
-        public bool Login()
+        public bool Login() //FEITO
         {
             bool res = false;
 
@@ -206,7 +206,7 @@ namespace SupplierRanking.Models
         /*=================================================================================================================================================================================*/
 
         /*=========================================================================CADASTRO FUNCIONARIO FORNECEDOR=========================================================================*/
-        public string CadastroFuncionario(string cnpj, string senha, string nome)
+        public string CadastroFuncionario(string cnpj, string senha, string nome) // NAO FEITO
         {
             string res = "Inserido com sucesso!";
             try
@@ -243,8 +243,8 @@ namespace SupplierRanking.Models
         }
         /*==============================================================================================================================================================================*/
 
-        /*=========================================================================CADASTRO FUNCIONARIO FORNECEDOR======================================================================*/
-        public bool LoginFuncionario()
+        /*=========================================================================LOGIN FUNCIONARIO FORNECEDOR======================================================================*/
+        public bool LoginFuncionario() //NAO FEITO 
         {
             bool res = false;
 
@@ -273,7 +273,7 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================CADASTRO FORNECEDOR========================================================================*/
-        public string CadastroFornecedor()
+        public string CadastroFornecedor() //FEITO
         {
             string res = "Cadastro realizado.";
             try
@@ -325,7 +325,7 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*====================================================================EXCLUIR FUNCIONARIO DO FORNECEDOR=========================================================================*/
-        public bool ExcluirFuncionario(string nome, int codigo, string nomeDigitado, int codigoDigitado)
+        public bool ExcluirFuncionario(string nome, int codigo, string nomeDigitado, int codigoDigitado) //TRAVADO PELA HOME LOGADA
         {
             try
             {
@@ -353,7 +353,7 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================BUSCA PESSOA JURIDICA===========================================================================*/
-        public static List<Fornecedor> PesquisaFornecedor(string pesquisa)
+        public static List<Fornecedor> PesquisaFornecedor(string pesquisa) //TRAVADO PELA HOME LOGADA
         {
             List<Fornecedor> lista = new List<Fornecedor>();
             try
@@ -399,9 +399,9 @@ namespace SupplierRanking.Models
             return lista;
         }
 
+        /*==============================================================================================================================================================================*/
 
-
-        public static Fornecedor PesquisaUpdateFornecedor(string cnpj)
+        public static Fornecedor PesquisaUpdateFornecedor(string cnpj) //TRAVADO PELA HOME
         {
             Fornecedor f = new Fornecedor();
             try
@@ -451,7 +451,7 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================RESTAURAR SENHA=================================================================================*/
-        public Boolean RestaurarSenha(string cnpj)
+        public Boolean RestaurarSenha(string cnpj) //FEITO
         {
             bool res = false;
             try
@@ -510,9 +510,9 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*==============================================================================LISTA FUNCIONARIO===============================================================================*/
-        public static List<Fornecedor> ListaFuncionario()
+        public static List<Fornecedor> ListaFuncionario() 
         {
-            List<Fornecedor> listaFuncionario = new List<Fornecedor>();
+            List<Fornecedor> listaFuncionario = new List<Fornecedor>(); //TRAVADO PELA HOME LOGADA
             try
             {
                 con.Open(); // abre conexão
@@ -526,8 +526,8 @@ namespace SupplierRanking.Models
                 {
                     Fornecedor f = new Fornecedor();
 
-                    f.Nome = leitor["Nome"].ToString();
                     f.Codigo = int.Parse(leitor["Codigo"].ToString());
+                    f.Nome = leitor["Nome"].ToString();
                     f.Senha = leitor["Senha"].ToString();
                     listaFuncionario.Add(f); // adiciona os valores cadastrados no banco à lista
                  
@@ -556,7 +556,7 @@ namespace SupplierRanking.Models
         
 
         /*=================================================================================UPDATE SENHA=================================================================================*/
-        public Boolean UpdateSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
+        public Boolean UpdateSenha(string senha, string novaSenha, string senhaConfirma, string cnpj) //FEITO
         {
             bool res = false;
            
@@ -608,7 +608,7 @@ namespace SupplierRanking.Models
 
         /*==============================================================================UPDATE CADASTRO=================================================================================*/
         public bool UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro, string cidade, string endereco, string uf,
-            string celular, string descricao, string cep, string slogan, string nome_categoria) 
+            string celular, string descricao, string cep, string slogan, string nome_categoria) //FEITO
 
         {
             
@@ -667,7 +667,7 @@ namespace SupplierRanking.Models
         /*==============================================================================================================================================================================*/
 
         /*======================================== MÉTODO PARA RETORNAR DADOS DO FORNECEDOR (PERFIL) ===================================================================================*/
-        public static Fornecedor Perfil(string cnpj)
+        public static Fornecedor Perfil(string cnpj) //FEITO
         {
             Fornecedor f = new Fornecedor();
             try
@@ -712,41 +712,27 @@ namespace SupplierRanking.Models
         /*======================================== EDITAR DADOS DO FUNCIONARIO DO FORNECEDOR ===========================================================================================*/
 
 
-        internal string UpdateFuncionarioFornecedor() //NÃO PRECISA DE PARÂMETROS
-
-        {
-            string res = "Salvo com sucesso.";
-                    
+        public bool  UpdateFuncionarioFornecedor(int codigo, string nome, string senha) //FEITO
+        {          
             try
             {
-                con.Open();
-                SqlCommand query =
-                    new SqlCommand("UPDATE funcionario SET nome = @nome, senha = @senha where codigo = @codigo", con);
-
-                /*SE ALGUMA INFORMAÇÃO ESTIVER VAZIA O SISTEMA RETORNA UMA MENSAGEM DE AVISO PARA PREENCHER OS CAMPOS
-                CORRETAMENTE*/
-
-                if (nome != "" && senha != "")
-                {
-                    query.Parameters.AddWithValue("@nome", nome);
-                    query.Parameters.AddWithValue("@senha", senha);
-                    
-                }
-                else
-                {
-                    return "Preencha as informações corretamente.";
-                }
+                con.Open(); //ABRE CONEXÃO
+                SqlCommand query = new SqlCommand("UPDATE funcionario SET nome = @nome, senha = @senha WHERE codigo = @codigo", con);
+                query.Parameters.AddWithValue("@codigo", codigo);
+                query.Parameters.AddWithValue("@nome", nome);
+                query.Parameters.AddWithValue("@senha", senha);
+                query.ExecuteReader();
             }
 
             catch (Exception e)
             {
-                res = e.Message;
+                return false;
             }
 
             if (con.State == System.Data.ConnectionState.Open)
                 con.Close();
 
-            return res;
+            return true;
         }
 
 
@@ -762,6 +748,7 @@ namespace SupplierRanking.Models
 
                 if (leitor.Read())
                 {
+                    f.codigo = int.Parse(leitor["codigo"].ToString());
                     f.nome = leitor["nome"].ToString();
                     f.senha = leitor["senha"].ToString();
                  
@@ -777,6 +764,7 @@ namespace SupplierRanking.Models
 
             return f;
         }
+
 
     }//FIM DA CLASSE
 }//FIM DO NAMESPACE

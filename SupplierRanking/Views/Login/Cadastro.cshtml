@@ -8,7 +8,7 @@
     <h2>Crie sua Conta</h2>
 </div>
 
-<div class="row cadastro-login text-center pt-5">
+<div class="row row-cadastro text-center pt-5">
 
     <div class="col-7 align-items-center">
         Selecione o seu tipo de usuário:
@@ -72,56 +72,21 @@
             </div>
         </div>
     </div>
+</div>
 
-    <div class="row col-12 cadastro-options justify-content-center p-5">
+<div class="row col-12 justify-content-center pl-5 pr-5">
 
-        <span class="col-8 error-msg alert-danger text-center p-2 mt-3 mb-3 hide">
-            Preencha o(s) campo(s) corretamente! @(ViewBag.Message)
-        </span>
+    <!--- Voltar para Login --->
+    <div class="col-6 text-left d-flex align-items-center pr-0">
+        <a class="sub-link" href="/Login/Login">
+            Login
+        </a>
+    </div>
 
-        <!--- Voltar para Login --->
-        <div class="col-6 text-left d-flex align-items-center ">
-            <a class="sub-link" href="/Login/Login">
-                Login
-            </a>
-        </div>
-
-        <!--- Botao Proximo --->
-        @*<div class="col-6 d-flex align-self-center justify-content-end pr-0">
-        <button id="btnProximo" class="login-form-btn mt-2">
+    <!--- Botao Entrar --->
+    <div class="col-6 d-flex justify-content-end align-items-center pl-0">
+        <button id="btnProximo" class="login-form-btn disabled" disabled>
             Próximo
-        </button>*@
-        @*</div>
-        </div>*@
-        <!--- Botao Entrar --->
-        <div class="col-6 d-flex justify-content-end align-items-center mt-2">
-            <button id="btnProximo" class="login-form-btn disabled mt-2" disabled>
-                Próximo
-            </button>
-        </div>
-
-
-        @*<div class="col-6 mt-3">
-            <!--- Esquci minha Senha --->
-            <div class="text-left">
-                <a class="sub-link" href="#">
-                    Esqueceu sua senha?
-                </a>
-            </div>
-
-            <!--- Criar Conta --->
-            <div class="text-left pt-3">
-                <a class="sub-link" href="/Login/Cadastro">
-                    Criar conta
-                </a>
-            </div>
-        </div>
-
-        <!--- Botao Entrar --->
-        <div class="col-6 d-flex justify-content-center align-items-center mt-2 pl-0 pr-4">
-            <button type="submit" class="login-form-btn disabled mt-2" disabled>
-                Entrar
-            </button>
-        </div>*@
+        </button>
     </div>
 </div>

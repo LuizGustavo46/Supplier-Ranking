@@ -7,6 +7,7 @@ $(document).ready(function () {
         btnFisica = $('.wrap-login #btnFisica'),
         btnJuridica = $('.wrap-login #btnJuridica'),
         btnFuncionario = $('.wrap-login #btnFuncionario'),
+        btnLogin = $('.wrap-login .login-form-btn'),
 
         switchFornecedor = $('.wrap-login #switchFornecedor'),
         switchJuridica = $('.wrap-login #switchJuridica'),
@@ -85,6 +86,10 @@ $(document).ready(function () {
         switchTipoFuncionario(switchFuncionarioTrueOrFalse);
     });
 
+    /** Botão Login **/
+    $('.login-form-btn').on('click', function () {
+        submitForm();
+    });
 
 /********************* *********************  FUNÇÕES ********************* *********************/
 
@@ -267,23 +272,19 @@ $(document).ready(function () {
         }
     }
 
-
-    $('.login-form-btn').on('click', function () {
-        submitForm();
-    });
-
+    /** Mostra/esconde mensagem de erro e envia formulário **/
     function submitForm() {
-        if (!verificarInputsVazios()) {
-            console.log(1, verificarInputsVazios());
-            $('.error-msg').removeClass('hide');
+        console.log(!verificarInputsVazios());
+        if (verificarInputsVazios()) {
             
+            $('.error-msg').removeClass('hide');
+
         } else {
             $('.error-msg').addClass('hide');
             $('.login-form').submit();
-            console.log(3, verificarInputsVazios());
         }
     }
-    
+
     /** Inicia assim que a pagina e carregada **/
     function init() {
         wrapInputCpf.addClass('hide');

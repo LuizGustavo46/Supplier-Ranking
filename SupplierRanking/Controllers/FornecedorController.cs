@@ -17,7 +17,7 @@ namespace SupplierRanking.Controllers
         }
 
         /*==============================================================================LOGIN FORNECEDOR=================================================================================*/
-        public ActionResult Login()
+        public ActionResult Login()  //AARUMAR
          {
             return View();
          }
@@ -34,7 +34,7 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================CADASTRO FUNCIONARIO==============================================================================*/
-        public ActionResult CadastroFuncionario()
+        public ActionResult CadastroFuncionario() //FEITO 
         {
             return View();
         }
@@ -55,7 +55,7 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================CADASTRO FORNECEDOR===============================================================================*/
-        public ActionResult CadastroFornecedor()
+        public ActionResult CadastroFornecedor()  //FEITO
         {
             return View();
         }
@@ -121,7 +121,7 @@ namespace SupplierRanking.Controllers
         public ActionResult ExcluirFuncionario(string nome, int codigo, string nomeDigitado, int codigoDigitado)
         {
         
-            Fornecedor f = new Fornecedor();
+            Fornecedor f = new Fornecedor();  //TRAVADO PELA HOME LOGADA
             f.Nome = nome;
             f.Codigo = codigo;
 
@@ -133,7 +133,7 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/
-        public ActionResult EnviarEmail()
+        public ActionResult EnviarEmail() //FEITO
         {
             
             return View();
@@ -153,34 +153,18 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================PESQUISA FUNCIONARIO==============================================================================*/
-        public ActionResult PesquisaFuncionario()
-        {
-            return View();
+        public ActionResult listaFuncionario() //TRAVADO PELA HOME LOGADA
+        { 
+            //nome da action result / nome do model /  nome do metodo
+            return View("listaFuncionario", Fornecedor.ListaFuncionario());
         }
 
-        [HttpPost]
-        public ActionResult PesquisarFuncionario(string pesquisa)
-        {
-            List<Fornecedor> u = new List<Fornecedor>();
-            if (pesquisa == null || pesquisa == "")
-            {
-                TempData["Msg"] = "Digite LOGIN ou NOME do funcionário.";
-                return View(u);
-            }
-            else
-            {
-                u = Fornecedor.PesquisaFornecedor(pesquisa);
-                if (u.Count == 0)
-                    TempData["Msg"] = "Erro ao encontrar Fornecedor";
-                return View(u);
-            }
-
-        }
+       
 
         /*================================================================================================================================================================================*/
 
         /*==============================================================================UPDATE DE SENHA===================================================================================*/
-        public ActionResult UpdateSenha()
+        public ActionResult UpdateSenha() //FEITO
         {
             return View();
         }
@@ -197,13 +181,13 @@ namespace SupplierRanking.Controllers
                 bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaConfirma, cnpj);
 
                 if (res)  //RETORNAR NA VIEW DE UPDATE DE SENHA
-                return RedirectToAction("RestaurarSenha");
+                return RedirectToAction("Login","Login");
 
                
-                return View("RestaurarSenha");
+                return View();
         }
 
-        public ActionResult RestaurarSenha()
+        public ActionResult RestaurarSenha()  
         {
             return View();
         }
@@ -228,7 +212,7 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================UPDATE DE CADASTRO================================================================================*/
-        public ActionResult UpdateFornecedor(string cnpj)
+        public ActionResult UpdateFornecedor(string cnpj) //FEITO
         {
             
             Fornecedor c = Fornecedor.PesquisaUpdateFornecedor(/*cnpj*/"45.997.418/0001-53");
@@ -302,47 +286,38 @@ namespace SupplierRanking.Controllers
         /*==============================================================================================================================================================================*/
 
 
-        public ActionResult UpdateFuncionarioFornecedor(string codigo)
+        public ActionResult UpdateFuncionarioFornecedor(/*int codigo*/)
         {
-            return View(Fornecedor.PerfilFuncionario(int.Parse(codigo))); //PASSAR O codgio PARA RETORNAR O PERFIL PARA PODER EDITAR
+            Fornecedor upFun = Fornecedor.PerfilFuncionario(/*codigo*/2);
+
+            if (upFun == null)
+            {
+                TempData["Msg"] = "Erro ao encontrar dados";
+                return RedirectToAction("UpdateFuncionarioFornecedor");
+            }
+            return View(upFun);
+            
         }
 
 
         [HttpPost]
-        public ActionResult UpdateFuncionarioFornecedor(string nome, string senha)
+        public ActionResult UpdateFuncionarioFornecedor(int codigo, string nome, string senha)
         {
             Fornecedor f = new Fornecedor();
             f.Nome = nome;
-            f.Senha = senha;
-      
+            f.Senha = senha;      
 
-            
-
-            foreach (string imagem in Request.Files)
+            if (f.UpdateFuncionarioFornecedor(codigo, nome, senha))
             {
-                HttpPostedFileBase arqPostado = Request.Files[imagem];
-                int tamConteudo = arqPostado.ContentLength; //PEGA O TAMANHO DO CONTEÚDO
-                string tipoArq = arqPostado.ContentType; //PEGA O TIPO DO CONTEÚDO
-
-                if (tamConteudo == 0)
-                {
-
-                }
-
-                //TESTAR SE A IMAGEM É JPEG
-                if (tipoArq.IndexOf("jpeg") > 0)
-                {
-                    //CONVERTER PARA BYTES
-                    byte[] imgBytes = new byte[tamConteudo];
-                    arqPostado.InputStream.Read(imgBytes, 0, tamConteudo);
-                    f.Imagem = imgBytes;
-                }
+                TempData["Msg"] = "Alterações Efetuadas com sucesso!";
             }
+            else
+                TempData["Msg"] = "Informações Incorretas";
 
 
-            TempData["Msg"] = f.UpdateFuncionarioFornecedor();
+            return RedirectToAction("UpdateFuncionarioFornecedor");
 
-            return RedirectToAction("UpdateFornecedor");
+           
         }
 
 

@@ -443,6 +443,8 @@
     <Content Include="Views\Comprador\NovaSenha.cshtml" />
     <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
     <Content Include="Views\Fornecedor\RestaurarSenha.cshtml" />
+    <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
+    <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
     <Content Include="Views\Avaliacao\RankingLista.cshtml" />
     <Content Include="Views\Avaliacao\RankingGeral.cshtml" />
     <None Include="Web.Debug.config">
