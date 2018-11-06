@@ -1,30 +1,163 @@
-﻿@{
-    ViewBag.Title = "Restaurar Senha";
+﻿
+@model SupplierRanking.Models.Fornecedor
+@{
+    ViewBag.Title = "RestaurarSenha";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
-<div class="container-login100">
-    <div class="wrap-login100" style="background-color: white;">
-        <h2>Update de Senha </h2>
-        <form action="../Fornecedor/UpdateSenha" method="post" class="login100-form validate-form">
 
-            <!--- Formulario para enviar e-mails -->
-            <div id="">
-                <h2>Formulário de redefinição de senha </h2>
+<div class="row col-12 justify-content-center text-center mt-4">
+    <h2>Esqueceu sua senha?</h2>
+</div>
 
-                <h4>Confirme seu CNPJ para maior segurança.</h4>
-                <input type="text" name="cnpj" placeholder="Confirme o CNPJ">
-                <br />  <br />         
-                <input type="text" name="novaSenha" placeholder="nova senha">
-                <br />  <br />
-                <input type="text" name="senhaConfirma" placeholder="confirme a senha">
+<div class="row text-center justify-content-center p-5">
+    Selecione o seu tipo de usuário:
+
+    <div class="row col-12 align-items-center mt-4">
+        <!--- Comprador --->
+        <div class="col-5 js-tilt" data-tilt>
+            <button id="btnComprador" class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/comprador.png" />
+                <h5 class="switch-person-title p-2">Comprador</h5>
+            </button>
+        </div>
+
+        <!--- Switch --->
+        <label class="switch m-3">
+            <input id="switchFornecedor" type="checkbox">
+            <span class="slider slider-fornecedor round unchecked"></span>
+        </label>
+
+        <!--- Fornecedor --->
+        <div class="col-5 js-tilt" data-tilt>
+            <button id="btnFornecedor" class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/fornecedor.png" />
+                <h5 class="switch-person-title p-2">Fornecedor</h5>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Pessoa Fisica & Pessoa Juridica --->
+<div id="wrapperFisicaJuridica"
+     class="col-12 text-center justify-content-center mt-4 hide">
+    Informe o seu tipo de perfil:
+
+    <div class="row align-items-center mt-4 pr-5 pb-5 pl-5">
+        <!--- Pessoa Fisica --->
+        <div class="col-5 js-tilt">
+            <button id="btnFisica" class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/comprador.png" />
+                <h5 class="switch-person-title p-2">Física</h5>
+            </button>
+        </div>
+
+        <!--- Switch --->
+        <label class="switch m-3">
+            <input id="switchJuridica" type="checkbox">
+            <span class="slider slider-juridica round unchecked"></span>
+        </label>
+
+        <!--- Pessoa Juridica --->
+        <div class="col-5 js-tilt">
+            <button id="btnJuridica" class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/fornecedor.png" />
+                <h5 class="switch-person-title p-2">Jurídica</h5>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--- Funcionario --->
+<div id="wrapperFuncionario"
+     class="row col-12 text-center justify-content-center mt-4 hide">
+    Ative o campo caso seja um funcionário
+
+    <div class="row col-12 align-items-center justify-content-center mt-4 pr-5 pb-5 pl-5">
+        <!--- Switch --->
+        <label class="switch switch-funcionario">
+            <input id="switchFuncionario" type="checkbox">
+            <span class="slider slider-funcionario round"></span>
+        </label>
+
+        <!--- Funcionario --->
+        <div class="col-5 text-center js-tilt">
+            <button id="btnFuncionario"
+                    class="col-9 switch-wrapper p-3">
+                <img src="/Content/images/comprador.png" />
+                <h5 class="switch-person-title p-2">Funcionário</h5>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--- Formulario de Login --->
+<form class="row login-form justify-content-center p-5 hide"
+      method="post" action="../Fornecedor/RestaurarSenha">
+
+
+    <!--- CPF --->
+    <div id="inputCpf" class="col-10 wrap-input pl-2">
+        <input class="input" type="text" maxlength="14" name="cpf" placeholder="CPF" data-mask="000.000.000-00" data-mask-sectionFocus="true">
+        <span class="focus-input"></span>
+        <span class="symbol-input">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+        <br />
+        <p style="margin-left: 50%;font-size: 20px;font-family: inherit;color: #DAA520;">Ou</p>
+    </div>
+
+
+    <!--- CNPJ --->
+    <div id="inputCnpj" class="col-10 wrap-input pl-2">
+        <input class="input" type="text" maxlength="19" name="cnpj" placeholder="CNPJ" data-mask="00.000.000/0000-00" data-mask-sectionFocus="true">
+        <span class="focus-input"></span>
+        <span class="symbol-input">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+        <br />
+        <p style="margin-left: 50%;font-size: 20px;font-family: inherit;color: #DAA520;">Ou</p>
+    </div>
+
+    <!--- Codigo Funcionario --->
+    <div id="inputFuncionario" class="col-10 wrap-input pl-2 mt-3">
+        <input class="input" type="text" name="codigoFuncionario" placeholder="Código do Funcionário">
+        <span class="focus-input"></span>
+        <span class="symbol-input">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+    </div>
 
 
 
-            </div>
 
-            <br /> <br />
-            <button id="btnupdateSenha">Update</button>
-        </form>
+    <!--- Email --->
+    <div id="inputEmail" class="col-10 wrap-input pl-2  mt-3">
+        <input class="input" type="email" name="email" placeholder="E-mail">
+        <span class="focus-input"></span>
+        <span class="symbol-input">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </span>
+    </div>
+
+    <input id="inputHidden" type="text" name="inputHidden" hidden>
+
+</form>
+
+<div class="row col-12 login-options justify-content-center p-5">
+
+    @*<span class="col-8 error-msg alert-danger text-center p-2 mt-3 mb-4 hide">
+        Preencha o(s) campo(s) corretamente! @(ViewBag.Message)
+    </span>*@
+
+
+
+
+
+    <!--- Botao Entrar --->
+    <div class="col-6 d-flex justify-content-end align-items-center pl-0 pr-4">
+        <button type="submit" class="login-form-b ">
+            Entrar
+        </button>
     </div>
 </div>
