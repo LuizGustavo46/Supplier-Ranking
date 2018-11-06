@@ -274,11 +274,13 @@ $(document).ready(function () {
 
     function submitForm() {
         if (!verificarInputsVazios()) {
+            console.log(1, verificarInputsVazios());
             $('.error-msg').removeClass('hide');
             
         } else {
             $('.error-msg').addClass('hide');
-            $('.login-form').submit();   
+            $('.login-form').submit();
+            console.log(3, verificarInputsVazios());
         }
     }
     

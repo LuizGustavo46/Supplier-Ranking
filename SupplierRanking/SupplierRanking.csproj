@@ -443,6 +443,8 @@
     <Content Include="Views\Comprador\NovaSenha.cshtml" />
     <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
     <Content Include="Views\Fornecedor\RestaurarSenha.cshtml" />
+    <Content Include="Views\Avaliacao\RankingLista.cshtml" />
+    <Content Include="Views\Avaliacao\RankingGeral.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -452,7 +454,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Avaliacao\" />
     <Folder Include="Views\Categorias\" />
   </ItemGroup>
   <PropertyGroup>
