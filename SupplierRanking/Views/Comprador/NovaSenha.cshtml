@@ -1,0 +1,29 @@
+﻿@model SupplierRanking.Models.Comprador
+@{
+    ViewBag.Title = "RestaurarSenha";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="container-login100">
+
+    <div class="wrap-login100" style="background-color: white;">
+
+        <h2>NovaSenha</h2>
+
+        <form action="../Comprador/UpdateSenha" method="post" class="login100-form validate-form">
+            <p>@ViewBag.Message</p>
+            <!--- Campos do Comprador Fisico -->
+            <div>
+                <input type="hidden" value="@Model.Codigo" name="codigo" readonly="readonly" style="background-color: gray">
+                <br /> <br />
+                <input type="text" name="senhaNova" placeholder="Nova senha">
+                <input type="text" name="confirmaSenhaNova" placeholder="Confirma nova senha">
+
+                <br /> <br />
+            </div>
+
+            <br /> <br />
+            <button id="btnEnviar">Enviar</button>
+        </form>
+    </div>
+</div>

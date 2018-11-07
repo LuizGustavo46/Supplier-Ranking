@@ -17,7 +17,7 @@ namespace SupplierRanking.Controllers
         }
 
         /*==============================================================================LOGIN FORNECEDOR=================================================================================*/
-        public ActionResult Login()
+        public ActionResult Login()  //AARUMAR
          {
             return View();
          }
@@ -34,34 +34,35 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================CADASTRO FUNCIONARIO==============================================================================*/
-        public ActionResult CadastroFuncionario()
+        public ActionResult CadastroFuncionario() //FEITO 
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CadastroFuncionario(string cnpj, string senha, string nome, int codigo)
+        public ActionResult CadastroFuncionario(string cnpj, string senha, string nome)
         {
             Fornecedor f = new Fornecedor();
             f.Cnpj = cnpj;
             f.Senha = senha;
-            f.Nome = nome;
-            f.Codigo = codigo.ToString();           
+            f.Nome = nome;                    
 
-            TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome, codigo);
+            TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome);
             return RedirectToAction("CadastrarFuncionario");
         }
+
+
         /*================================================================================================================================================================================*/
 
         /*==============================================================================CADASTRO FORNECEDOR===============================================================================*/
-        public ActionResult CadastroFornecedor()
+        public ActionResult CadastroFornecedor()  //FEITO
         {
             return View();
         }
        
         [HttpPost]
         public ActionResult CadastroFornecedor(string cnpj, string nome_empresa, string email, string telefone, string celular, string endereco, string bairro, 
-            string cidade, string uf, string cep, string senha, string slogan, string descricao, /*string plano, */string nome_categoria)
+            string cidade, string uf, string cep, string senha, string slogan, string descricao, /*string plano, */string nome_categoria, string confirmarSenha)
         {
 
             Fornecedor f = new Fornecedor();
@@ -76,7 +77,8 @@ namespace SupplierRanking.Controllers
             f.Cidade = cidade;
             f.Uf = uf;
             f.Cep = cep;
-            f.Senha = senha;
+            if(senha == confirmarSenha)
+                f.Senha = senha;
             f.Slogan = slogan;
             f.Descricao = descricao;
             f.Media = 0;
@@ -102,10 +104,14 @@ namespace SupplierRanking.Controllers
                     arqPostado.InputStream.Read(imgBytes, 0, tamConteudo);
                     f.Imagem = imgBytes;
                 }
+                else
+                {
+                    f.Imagem = new byte[] { };
+                }
             }
 
             TempData["Msg"] = f.CadastroFornecedor();
-            return RedirectToAction("CadastroFornecedor");
+            return RedirectToAction("UpdateFornecedor");
         }
 
         /*================================================================================================================================================================================*/
@@ -115,9 +121,9 @@ namespace SupplierRanking.Controllers
         public ActionResult ExcluirFuncionario(string nome, int codigo, string nomeDigitado, int codigoDigitado)
         {
         
-            Fornecedor f = new Fornecedor();
+            Fornecedor f = new Fornecedor();  //TRAVADO PELA HOME LOGADA
             f.Nome = nome;
-            f.Codigo = codigo.ToString();
+            f.Codigo = codigo;
 
             f.ExcluirFuncionario(nome, codigo, nomeDigitado, codigoDigitado);
 
@@ -127,112 +133,104 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/
-        public ActionResult EnviarEmail(string login)
+        public ActionResult EnviarEmail() //FEITO
         {
-            //CRIAR A VIEW PARA RECUPERAR A SENHA
+            
             return View();
         }
 
         [HttpPost]
-        public ActionResult EnviarEmail(string nome, string email, string mensagem)
+        public ActionResult EnviarEmail(string cnpj)
         {
-            try
-            {
-                //Configurando a mensagem
-                MailMessage mail = new MailMessage();
-                //Origem
-                mail.From = new MailAddress("suportsupplierranking@hotmail.com@hotmail.com");
-                //Destinatário
-                mail.To.Add(email);
-                //Assunto
-                mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
-                //Corpo do e-mail
-                mail.Body = "NADA";
+            Fornecedor enviaEmail = new Fornecedor();
+
+            enviaEmail.RestaurarSenha(cnpj); 
 
 
-                //Configurar o smtp
-                SmtpClient smtpServer = new SmtpClient("smtp.live.com");
-                //configurou porta
-                smtpServer.Port = 25;
-                //Habilitou o TLS
-                smtpServer.EnableSsl = true;
-                //Configurou usuario e senha p/ logar
-                smtpServer.Credentials = new System.Net.NetworkCredential("suportsupplierranking@hotmail.com", "Senai1234");
-                //Envia
-                smtpServer.Send(mail);
-                TempData["Msg"] = "Enviado com sucesso!";
-            }
-            catch (Exception ex)
-            {
-                TempData["Msg"] = "Erro ao enviar";
-            }
-
-            return RedirectToAction("Listar");
+            return RedirectToAction("EnviarEmail");
         }
 
         /*================================================================================================================================================================================*/
 
         /*==============================================================================PESQUISA FUNCIONARIO==============================================================================*/
-        public ActionResult PesquisaFuncionario()
-        {
-            return View();
+        public ActionResult listaFuncionario() //TRAVADO PELA HOME LOGADA
+        { 
+            //nome da action result / nome do model /  nome do metodo
+            return View("listaFuncionario", Fornecedor.ListaFuncionario());
         }
 
-        [HttpPost]
-        public ActionResult PesquisarFuncionario(string pesquisa)
-        {
-            List<Fornecedor> u = new List<Fornecedor>();
-            if (pesquisa == null || pesquisa == "")
-            {
-                TempData["Msg"] = "Digite LOGIN ou NOME do funcionário.";
-                return View(u);
-            }
-            else
-            {
-                u = Fornecedor.PesquisaFornecedor(pesquisa);
-                if (u.Count == 0)
-                    TempData["Msg"] = "Erro ao encontrar Fornecedor";
-                return View(u);
-            }
-
-        }
+       
 
         /*================================================================================================================================================================================*/
 
         /*==============================================================================UPDATE DE SENHA===================================================================================*/
-        public ActionResult UpdateSenha()
+        public ActionResult UpdateSenha() //FEITO
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult UpdateSenha(string senha, string novaSenha, string senhaDigitada)
+        public ActionResult UpdateSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
         {
             Fornecedor senhaUp = new Fornecedor();
 
             senhaUp.Senha = senha;
+            
 
-            bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaDigitada);
+            
+                bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaConfirma, cnpj);
 
-            if (res)
-                //RETORNAR NA VIEW DE UPDATE DE SENHA
-                return RedirectToAction("Logar");
-            else
+                if (res)  //RETORNAR NA VIEW DE UPDATE DE SENHA
+                return RedirectToAction("Login","Login");
+
+               
                 return View();
         }
+
+        public ActionResult RestaurarSenha()  
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RestaurarSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
+        {
+            Fornecedor senhaRe = new Fornecedor();
+
+            senhaRe.Senha = senha;
+
+
+
+            bool res = senhaRe.UpdateSenha(senha, novaSenha, senhaConfirma, cnpj);
+
+            if (res)  //RETORNAR NA VIEW DE RESTAURAR DE SENHA
+                return RedirectToAction("RestaurarSenha");
+
+            return View("RestaurarSenha");
+        }
+
         /*================================================================================================================================================================================*/
 
         /*==============================================================================UPDATE DE CADASTRO================================================================================*/
-        public ActionResult UpdateFornecedor(string cnpj)
+        public ActionResult UpdateFornecedor(string cnpj) //FEITO
         {
-            return View(Fornecedor.Perfil(cnpj)); //PASSAR O CNPJ PARA RETORNAR O PERFIL PARA PODER EDITAR
+            
+            Fornecedor c = Fornecedor.PesquisaUpdateFornecedor(/*cnpj*/"45.997.418/0001-53");
+
+            if (c == null)
+            {
+                TempData["Msg"] = "Erro ao encontrar dados";
+                return RedirectToAction("UpdateSenha");//ver se o redrect esta certo!!
+            }
+            return View(c);
         }
       
 
         [HttpPost]
         public ActionResult UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro,string cidade, string endereco, string uf,
-            string celular, string descricao, string cep, string slogan, string nome_categoria)
+            string celular, string descricao, string cep, string slogan, string nome_categoria /*string confirmaSenha*/)
         {
+
             Fornecedor f = new Fornecedor();
             f.Cnpj = cnpj;
             f.Nome_empresa = nome_empresa;
@@ -243,14 +241,15 @@ namespace SupplierRanking.Controllers
             f.Endereco = endereco;
             f.Uf = uf;       
             f.Celular = celular;
-            f.Descricao = descricao;
+            f.Descricao = descricao;          
             f.Cep = cep;
-            f.Slogan = slogan;
-            
+            f.Slogan = slogan;           
             f.Nome_categoria = nome_categoria;
-
+            
+            
+                        
             foreach (string imagem in Request.Files)
-            {
+            {           
                 HttpPostedFileBase arqPostado = Request.Files[imagem];
                 int tamConteudo = arqPostado.ContentLength; //PEGA O TAMANHO DO CONTEÚDO
                 string tipoArq = arqPostado.ContentType; //PEGA O TIPO DO CONTEÚDO
@@ -271,16 +270,78 @@ namespace SupplierRanking.Controllers
             }
 
 
-            TempData["Msg"] = f.UpdateFornecedor();
-            
+            if (f.UpdateFornecedor(cnpj, nome_empresa, email, telefone, bairro, cidade, endereco, uf,
+                 celular, descricao, cep, slogan, nome_categoria /*confirmaSenha*/))
+            {
+                TempData["Msg"] = "Alterações Efetuadas com sucesso!";
+            }
+            else
+                TempData["Msg"] = "Informações Incorretas";
+
+
                 return RedirectToAction("UpdateFornecedor");
+
+
         }
         /*==============================================================================================================================================================================*/
+
+
+        public ActionResult UpdateFuncionarioFornecedor(/*int codigo*/)
+        {
+            Fornecedor upFun = Fornecedor.PerfilFuncionario(/*codigo*/2);
+
+            if (upFun == null)
+            {
+                TempData["Msg"] = "Erro ao encontrar dados";
+                return RedirectToAction("UpdateFuncionarioFornecedor");
+            }
+            return View(upFun);
+            
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdateFuncionarioFornecedor(int codigo, string nome, string senha)
+        {
+            Fornecedor f = new Fornecedor();
+            f.Nome = nome;
+            f.Senha = senha;      
+
+            if (f.UpdateFuncionarioFornecedor(codigo, nome, senha))
+            {
+                TempData["Msg"] = "Alterações Efetuadas com sucesso!";
+            }
+            else
+                TempData["Msg"] = "Informações Incorretas";
+
+
+            return RedirectToAction("UpdateFuncionarioFornecedor");
+
+           
+        }
+
+
+
+
+
+
+    
+
+      
+
+
+
+
 
         public ActionResult Homepage()
         {
             return View();
         }
+
+
+
+
+
     }
 
 }

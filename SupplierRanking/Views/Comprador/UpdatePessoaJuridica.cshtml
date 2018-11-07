@@ -1,0 +1,39 @@
+﻿@model SupplierRanking.Models.Comprador
+@{
+    ViewBag.Title = "UpdatePessoaJuridica";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+}
+
+
+<div class="container-login100">
+
+    <div class="wrap-login100" style="background-color: white;">
+
+        <h2>UpdatePessoaJuridica</h2>
+
+        <form action="../Comprador/UpdatePessoaJuridica" method="post" class="login100-form validate-form">
+            <p>@ViewBag.Message</p>
+            <!--- Campos do Comprador Fisico -->
+            <div>
+                <input type="text" value="@Model.Codigo" name="codigo" readonly="readonly" style="background-color: gray">
+                <input type="text" value="@Model.Cnpj" name="cnpj" readonly="readonly">
+                <input type="text" value="@Model.Nome_empresa" name="nome_empresa">
+                <input type="text" value="@Model.Email" name="email">
+                <input type="text" value="@Model.Endereco" name="endereco">
+                <input type="text" value="@Model.Bairro" name="bairro">
+                <input type="text" value="@Model.Cidade" name="cidade">
+                <input type="text" value="@Model.Cep" name="cep">
+                <br /> <br />
+                <input type="text" value="@Model.Uf" name="uf">
+                <br /> <br />
+                <input type="text" value="@Model.Telefone" name="telefone" placeholder="(00) 0000-0000">
+                <input type="text" value="@Model.Celular" name="celular" placeholder="(00) 00000-0000">
+                <br /> <br />
+            </div>
+
+            <br /> <br />
+            <button id="btnSalvar">Salvar</button>
+        </form>
+    </div>
+</div>
+

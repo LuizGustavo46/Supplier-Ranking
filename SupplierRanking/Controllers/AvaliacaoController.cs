@@ -83,16 +83,11 @@ namespace SupplierRanking.Controllers
         /*==============================================================================Listar============================================================================================*/
 
 
-        public ActionResult RankingLista()
-        {
-            return View();
-        }
-
-        [HttpPost]
         public ActionResult RankingLista(string categoria)
         {
-            return View("RankingLista", Avaliacao.RankingLista(categoria));
+            return View("RankingLista", Avaliacao.RankingLista(/*categoria*/"pesca"));
         }
+    
 
         public ActionResult RankingGeral()
         {

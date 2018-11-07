@@ -273,18 +273,19 @@ namespace SupplierRanking.Models
         public static List<Fornecedor> RankingLista(string categoria)
         {
             List<Fornecedor> ranking = new List<Fornecedor>();
-            Fornecedor f = new Fornecedor();
             try
             {
                 con.Open(); //ABRE CONEXÃO
                 //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS JÁ FORMANDO O RANKING, DA MAIOR PARA A MENOR MÉDIA
-                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE categoria = @categoria ORDER BY media DESC", con);
-                query.Parameters.AddWithValue("@categoria", categoria);
+                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE nome_categorias = @nome_categorias ORDER BY media DESC", con);
+                query.Parameters.AddWithValue("@nome_categorias", categoria);
 
                 SqlDataReader leitor = query.ExecuteReader();
 
                 while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
                 {
+                    Fornecedor f = new Fornecedor();
+
                     f.Cnpj = leitor["Cnpj"].ToString();
                     f.Nome_empresa = leitor["Nome_empresa"].ToString();
                     f.Email = leitor["Email"].ToString();
@@ -302,10 +303,28 @@ namespace SupplierRanking.Models
                     f.Media = float.Parse(leitor["Media"].ToString());
                     f.Plano = leitor["Plano"].ToString();
                     f.Imagem = (byte[])leitor["Imagem"];
+                    f.Imagem64 = Convert.ToBase64String(f.Imagem);
                     f.Nome_categoria = leitor["Nome_categorias"].ToString();
                     
                     ranking.Add(f);
+
+                    //PEGAR CRITÉRIOS DE AVALIAÇÃO SE O FORNECEDOR FOR PREMIUM, PARA MOSTRAR NA VIEW
+                    if (f.Plano == "P")
+                    {
+                        SqlCommand queryAvaliacoes = new SqlCommand("SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor");
+                        queryAvaliacoes.Parameters.AddWithValue("@cnpj_fornecedor", f.Cnpj);
+                        SqlDataReader leitorAvaliacoes = queryAvaliacoes.ExecuteReader();
+
+                        if (leitorAvaliacoes.Read())
+                        {
+                            Avaliacao a = new Avaliacao();
+
+                            a.atendimento = int.Parse(leitorAvaliacoes["atendimento"].ToString()); // terminar de fazer esses bagui aqui
+
+                        }
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -321,7 +340,6 @@ namespace SupplierRanking.Models
         public static List<Fornecedor> RankingGeral()
         {
             List<Fornecedor> ranking = new List<Fornecedor>();
-            Fornecedor f = new Fornecedor();
 
             try
             {
@@ -332,6 +350,8 @@ namespace SupplierRanking.Models
                 SqlDataReader leitor = query.ExecuteReader();
                 while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
                 {
+                    Fornecedor f = new Fornecedor();
+
                     f.Cnpj = leitor["Cnpj"].ToString();
                     f.Nome_empresa = leitor["Nome_empresa"].ToString();
                     f.Email = leitor["Email"].ToString();
@@ -349,6 +369,7 @@ namespace SupplierRanking.Models
                     f.Media = float.Parse(leitor["Media"].ToString());
                     f.Plano = leitor["Plano"].ToString();
                     f.Imagem = (byte[])leitor["Imagem"];
+                    f.Imagem64 = Convert.ToBase64String(f.Imagem);
                     f.Nome_categoria = leitor["Nome_categorias"].ToString();
 
                     ranking.Add(f);

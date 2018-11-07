@@ -1,4 +1,4 @@
-
+Ôªø
 $(document).ready(function () {
     'use strict';
 
@@ -7,7 +7,6 @@ $(document).ready(function () {
         btnFisica = $('.wrap-login #btnFisica'),
         btnJuridica = $('.wrap-login #btnJuridica'),
         btnFuncionario = $('.wrap-login #btnFuncionario'),
-        btnLogin = $('.wrap-login .login-form-btn'),
 
         switchFornecedor = $('.wrap-login #switchFornecedor'),
         switchJuridica = $('.wrap-login #switchJuridica'),
@@ -20,15 +19,16 @@ $(document).ready(function () {
         wrapInputCpf = $('.wrap-login #inputCpf').closest('.login-form .wrap-input'),
         wrapInputCnpj = $('.wrap-login #inputCnpj').closest('.login-form .wrap-input'),
         wrapInputFuncionario = $('.wrap-login #inputFuncionario').closest('.login-form .wrap-input'),
+        wrapInputEmail = $('.wrap-login #inputEmail'),
 
         inputHidden = $('.wrap-login #inputHidden'),
         formInputs = $('.wrap-login .login-form input'),
         activeformInputs;
-
+         
 
 /********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
 
-    /** Bot„o para selecionar o Comprador **/
+    /** Bot√£o para selecionar o Comprador **/
     btnComprador.on('click', function () {
         var switchFornecedorFalse = switchFornecedor.prop('checked', false);
 
@@ -36,7 +36,7 @@ $(document).ready(function () {
         switchCompradorFornecedor(switchFornecedorFalse);
     });
 
-    /** Bot„o para selecionar o Fornecedor **/
+    /** Bot√£o para selecionar o Fornecedor **/
     btnFornecedor.on('click', function () {
         var switchFornecedorTrue = switchFornecedor.prop('checked', true);
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
         switchCompradorFornecedor(switchFornecedor);
     });
 
-    /** Bot„o para selecionar Pessoa FÌsica **/
+    /** Bot√£o para selecionar Pessoa F√≠sica **/
     btnFisica.on('click', function () {
         var switchJuriciaFalse = switchJuridica.prop('checked', false);
 
@@ -58,7 +58,7 @@ $(document).ready(function () {
         switchTipoDePessoa(switchJuriciaFalse);
     });
 
-    /** Bot„o para selecionar Pessoa JurÌdica **/
+    /** Bot√£o para selecionar Pessoa Jur√≠dica **/
     btnJuridica.on('click', function () {
         var switchJuriciaTrue = switchJuridica.prop('checked', true);
 
@@ -66,39 +66,35 @@ $(document).ready(function () {
         switchTipoDePessoa(switchJuriciaTrue);
     });
 
-    /** Switch slider para selecionar Pessoa FÌsica ou Pessoa JurÌdica **/
+    /** Switch slider para selecionar Pessoa F√≠sica ou Pessoa Jur√≠dica **/
     switchJuridica.change(function () {
         uncheckedSlider(sliderFisicaJuridica);
         switchTipoDePessoa(switchJuridica);
     });
 
-    /** Bot„o para selecionar Funcion·rio **/
+    /** Bot√£o para selecionar Funcion√°rio **/
     btnFuncionario.on('click', function () {
         var switchFuncionarioTrueOrFalse = switchFuncionario.prop('checked', true);
 
         switchTipoFuncionario(switchFuncionarioTrueOrFalse);
     });
 
-    /** Switch slider para selecionar Funcion·rio **/
+    /** Switch slider para selecionar Funcion√°rio **/
     switchFuncionario.change(function () {
         var switchFuncionarioTrueOrFalse = switchFuncionario.prop('checked') === true ? switchFuncionario.prop('checked', false) : switchFuncionario.prop('checked', true);
         
         switchTipoFuncionario(switchFuncionarioTrueOrFalse);
     });
 
-    /** Bot„o Login **/
-    $('.login-form-btn').on('click', function () {
-        submitForm();
-    });
 
-/********************* *********************  FUN«’ES ********************* *********************/
+/********************* *********************  FUN√á√ïES ********************* *********************/
 
-    /** Tira o slider da posiÁ„o neutra **/
+    /** Tira o slider da posi√ß√£o neutra **/
     function uncheckedSlider(slider) {
         slider.removeClass('unchecked');
     }
 
-    /** Reseta o slider e os botıes **/
+    /** Reseta o slider e os bot√µes **/
     function uncheckSliderAndButtons(slider) {
         if (slider === switchJuridica) {
             switchJuridica.addClass('unchecked').prop('checked', false);
@@ -112,7 +108,7 @@ $(document).ready(function () {
         btnFuncionario.removeClass('active-switch');
     }
 
-    /** Habilita o Bot„o Comprador e mostra os Bot„o Pessoa FÌsica e JurÌdica **/
+    /** Habilita o Bot√£o Comprador e mostra os Bot√£o Pessoa F√≠sica e Jur√≠dica **/
     function mostrarComprador(showComprador) {
         if (showComprador) {
             btnComprador.addClass('active-switch');
@@ -124,11 +120,12 @@ $(document).ready(function () {
         $('#wrapperFisicaJuridica').addClass('hide');
     }
 
-    /** Habilita o Bot„o Pessoa FÌsica e mostra os campos **/
+    /** Habilita o Bot√£o Pessoa F√≠sica e mostra os campos **/
     function mostrarPessoaFisica(showPessoaFisica) {
         if (showPessoaFisica) {
             btnFisica.addClass('active-switch');
             wrapInputCpf.removeClass('hide');
+            wrapInputEmail.removeClass('hide');
 
             inputHidden.val('0');
             return;
@@ -138,11 +135,12 @@ $(document).ready(function () {
         wrapInputCpf.addClass('hide');
     }
 
-    /** Habilita o Bot„o Pessoa JurÌdica e mostra os campos **/
+    /** Habilita o Bot√£o Pessoa Jur√≠dica e mostra os campos **/
     function mostrarPessoaJuridica(showPessoaJuridica) {
         if (showPessoaJuridica) {
             btnJuridica.addClass('active-switch');
             wrapInputCnpj.removeClass('hide');
+            wrapInputEmail.removeClass('hide');
 
             inputHidden.val('1');
             return;
@@ -152,13 +150,15 @@ $(document).ready(function () {
         wrapInputCnpj.addClass('hide');
     }
 
-    /** Habilita o Bot„o Fornecedor e mostra o Bot„o Funcion·rio **/
+    /** Habilita o Bot√£o Fornecedor e mostra o Bot√£o Funcion√°rio **/
     function mostrarFornecedor(showFornecedor) {
         if (showFornecedor) { 
             btnFornecedor.addClass('active-switch');
+            wrapInputCpf.addClass('hide');
             wrapInputCnpj.removeClass('hide');
             $('#wrapperFuncionario').removeClass('hide');
             $('.login-form').removeClass('hide');
+            wrapInputEmail.removeClass('hide');
 
             inputHidden.val('2');
             return;
@@ -167,17 +167,18 @@ $(document).ready(function () {
         btnFornecedor.removeClass('active-switch');
     }
 
-    /** Habilita o Bot„o Funcion·rio e mostra os campos **/
+    /** Habilita o Bot√£o Funcion√°rio e mostra os campos **/
     function mostrarFuncionario(showInputs, hideWrap) {
 
-        if (hideWrap) { // Esconde Funcion·rio
+        if (hideWrap) { // Esconde Funcion√°rio
             $('#wrapperFuncionario').addClass('hide');
         }
 
-        if (showInputs) { // Mostra os campos e habilita o bot„o
+        if (showInputs) { // Mostra os campos e habilita o bot√£o
             btnFuncionario.addClass('active-switch');
             switchFuncionario.prop('checked', true);
             wrapInputFuncionario.removeClass('hide');
+            wrapInputEmail.addClass('hide');
             $('.wrap-login').addClass('has-employee');
             $('#wrapperFuncionario').removeClass('hide');
 
@@ -185,7 +186,7 @@ $(document).ready(function () {
             return;
         }
 
-        // Esconde os campos e desabilita o bot„o
+        // Esconde os campos e desabilita o bot√£o
         btnFuncionario.removeClass('active-switch');
         switchFuncionario.prop('checked', false);
         wrapInputFuncionario.addClass('hide');
@@ -210,18 +211,18 @@ $(document).ready(function () {
         }
 
         formInputs.val('');
-        activeformInputs = verificaInputsVisiveis();
-        activeformInputs.on('input', verificarInputsVazios);
+        //activeformInputs = verificaInputsVisiveis();
+        //activeformInputs.on('input', verificarInputsVazios);
     }
 
-    /** Troca entre Pessoa FÌsica e Pessoa JurÌdica **/
+    /** Troca entre Pessoa F√≠sica e Pessoa Jur√≠dica **/
     function switchTipoDePessoa(input) {
         
-        if ($(input).is(':checked')) { //Seleciona pessoa JurÌdica
+        if ($(input).is(':checked')) { //Seleciona pessoa Jur√≠dica
             mostrarPessoaFisica(false);
             mostrarPessoaJuridica(true);
 
-        } else { //Seleciona pessoa FÌsica
+        } else { //Seleciona pessoa F√≠sica
             mostrarPessoaJuridica(false);
             mostrarPessoaFisica(true);
         }
@@ -232,13 +233,13 @@ $(document).ready(function () {
         $('.login-form').removeClass('hide');
     }
 
-    /** Mostra/esconder o Funcion·rio **/
+    /** Mostra/esconder o Funcion√°rio **/
     function switchTipoFuncionario(input) {
 
         if ($(input).is(':checked') && btnFuncionario.hasClass('active-switch')) { //Seleciona Fornecedor
             mostrarFuncionario(false, false);
 
-        } else { //Seleciona Funcion·rio
+        } else { //Seleciona Funcion√°rio
             mostrarFuncionario(true, false);
         }
 
@@ -248,43 +249,47 @@ $(document).ready(function () {
         $('.login-form').removeClass('hide');
     }
 
-    /** Verifica todos os inputs visÌveis **/
-    function verificaInputsVisiveis() {
-        return $('.login-form .wrap-input').not('.hide').find('input');
-    }
+    /** Verifica todos os inputs vis√≠veis **/
+    //function verificaInputsVisiveis() {
+    //    return $('.login-form .wrap-input').not('.hide').find('input');
+    //}
 
-    /** Habilita/desabilita o Bot„o Entrar conforme o valor dos campos inputs **/
-    function verificarInputsVazios() {
-        var isEmpty = false;
+    /** Habilita/desabilita o Bot√£o Entrar conforme o valor dos campos inputs **/
+    //function verificarInputsVazios() {
+    //    var isEmpty = false;
 
-        activeformInputs.each(function () { // percorre todos os inputs 
+    //    activeformInputs.each(function () { // percorre todos os inputs 
             
-            if ($(this).val() == '') { // se houver pelo menos um campo vazio, entra no if
-                isEmpty = true;
-                return false; // para o loop, evitando que mais inputs sejam verificados sem necessidade
-            }
-        });
+    //        if ($(this).val() == '') { // se houver pelo menos um campo vazio, entra no if
+    //            isEmpty = true;
+    //            return false; // para o loop, evitando que mais inputs sejam verificados sem necessidade
+    //        }
+    //    });
 
-        if (isEmpty) { // Habilita/desabilita o Bot„o Entrar
-            $('.login-form-btn').attr('disabled', 'disabled').addClass('disabled');
-        } else {
-            $('.login-form-btn').removeAttr('disabled').removeClass('disabled');
-        }
-    }
+    //    if (isEmpty) { // Habilita/desabilita o Bot√£o Entrar
+    //        //$('.login-form-btn').attr('disabled', 'disabled').addClass('disabled');
+    //    } else {
+    //        $('.login-form-btn').removeAttr('disabled').removeClass('disabled');
+    //    }
+    //}
 
-    /** Mostra/esconde mensagem de erro e envia formul·rio **/
+
+    $('.login-form-b').on('click', function () {
+        //submitForm();
+        $('.login-form').submit();
+    });
+
     function submitForm() {
-        console.log(!verificarInputsVazios());
-        if (verificarInputsVazios()) {
-            
+        if (!verificarInputsVazios()) {
             $('.error-msg').removeClass('hide');
 
+            
         } else {
             $('.error-msg').addClass('hide');
-            $('.login-form').submit();
+            $('.login-form').submit();   
         }
     }
-
+    
     /** Inicia assim que a pagina e carregada **/
     function init() {
         wrapInputCpf.addClass('hide');
