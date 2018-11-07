@@ -21,8 +21,8 @@ $(document).ready(function () {
         wrapInputCnpj = $('.wrap-login #inputCnpj').closest('.login-form .wrap-input'),
         wrapInputFuncionario = $('.wrap-login #inputFuncionario').closest('.login-form .wrap-input'),
 
-        inputHidden = $('.wrap-login #inputHidden'),
-        formInputs = $('.wrap-login .login-form input'),
+        inputHidden = $('#inputHidden'),
+        formInputs = $('.wrap-login .login-form input').not('#inputHidden'),
         activeformInputs;
 
 
@@ -88,8 +88,9 @@ $(document).ready(function () {
 
     /** Botão Login **/
     $('.login-form-btn').on('click', function () {
-        submitForm();
+        $('.login-form').submit();
     });
+
 
 /********************* *********************  FUNÇÕES ********************* *********************/
 
@@ -203,6 +204,7 @@ $(document).ready(function () {
             uncheckSliderAndButtons(switchJuridica);
             mostrarFornecedor(true);
 
+
         } else { //Seleciona o Comprador
             mostrarFornecedor(false);
             mostrarFuncionario(false, true);
@@ -269,19 +271,6 @@ $(document).ready(function () {
             $('.login-form-btn').attr('disabled', 'disabled').addClass('disabled');
         } else {
             $('.login-form-btn').removeAttr('disabled').removeClass('disabled');
-        }
-    }
-
-    /** Mostra/esconde mensagem de erro e envia formulário **/
-    function submitForm() {
-        console.log(!verificarInputsVazios());
-        if (verificarInputsVazios()) {
-            
-            $('.error-msg').removeClass('hide');
-
-        } else {
-            $('.error-msg').addClass('hide');
-            $('.login-form').submit();
         }
     }
 
