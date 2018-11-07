@@ -21,7 +21,7 @@ $(document).ready(function () {
         wrapInputCnpj = $('.wrap-login #inputCnpj').closest('.login-form .wrap-input'),
         wrapInputFuncionario = $('.wrap-login #inputFuncionario').closest('.login-form .wrap-input'),
 
-        inputHidden = $('#inputHidden'),
+        inputHidden = $('.wrap-login #inputHidden'),
         formInputs = $('.wrap-login .login-form input').not('#inputHidden'),
         activeformInputs;
 
@@ -160,7 +160,6 @@ $(document).ready(function () {
             wrapInputCnpj.removeClass('hide');
             $('#wrapperFuncionario').removeClass('hide');
             $('.login-form').removeClass('hide');
-
             inputHidden.val('2');
             return;
         }
@@ -204,6 +203,7 @@ $(document).ready(function () {
             uncheckSliderAndButtons(switchJuridica);
             mostrarFornecedor(true);
 
+            //$('#inputHidden').val('2');
 
         } else { //Seleciona o Comprador
             mostrarFornecedor(false);
@@ -211,7 +211,7 @@ $(document).ready(function () {
             mostrarComprador(true);
         }
 
-        //formInputs.val('');
+        formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
     }
@@ -228,7 +228,7 @@ $(document).ready(function () {
             mostrarPessoaFisica(true);
         }
 
-        formInputs.val('');
+        //formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
         $('.login-form').removeClass('hide');
@@ -244,7 +244,7 @@ $(document).ready(function () {
             mostrarFuncionario(true, false);
         }
 
-        //formInputs.val('');
+        formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
         $('.login-form').removeClass('hide');
