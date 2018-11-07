@@ -36,7 +36,7 @@ namespace SupplierRanking.Models
         private string imagem64;
         private string nome_categoria;
 
-        /*Variavel do funcionário*/
+        /*Variaveis do funcionário*/
         private int codigo;
         private string nome;
         private string cnpj_fornecedor;
@@ -44,80 +44,38 @@ namespace SupplierRanking.Models
         private bool fornecedor;
         private bool consumidor;
 
-        //*==================================================TORNANDO AS VARIAVEIS ACESSIVEIS=======================================================================*
-        public String Cnpj
-        { get{ return cnpj; }                      set{ cnpj = value; } }
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ TORNANDO AS VARIAVEIS ACESSIVEIS ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
 
-        public string Nome_empresa
-        { get{ return nome_empresa;}               set { nome_empresa = value; } }
+        public String Cnpj            { get { return cnpj; }                 set { cnpj = value; } }
+        public string Nome_empresa    { get { return nome_empresa;}          set { nome_empresa = value; } }
+        public String Email           { get { return email; }                set { email = value; } }
+        public String Telefone        { get { return telefone;}              set { telefone = value; } }
+        public String Cidade          { get { return cidade; }               set { cidade = value; } }
+        public String Bairro          { get { return bairro; }               set { bairro = value; } }
+        public String Uf              { get { return uf; }                   set { uf = value; } }
+        public byte[] Imagem          { get { return imagem; }               set { imagem = value; } }
+        public String Imagem64        { get { return imagem64; }             set { imagem64 = value; } }
+        public String Senha           { get { return senha; }                set { senha = value; } }
+        public String Celular         { get { return celular; }              set { celular = value; } }
+        public String Endereco        { get { return endereco; }             set { endereco = value; } }
+        public String Descricao       { get { return descricao; }            set { descricao = value; } }
+        public String Cep             { get { return cep; }                  set { cep = value; }}
+        public float Media            { get { return media; }                set { media = value; } }
+        public String Slogan          { get { return slogan; }               set { slogan = value; } }
+        public String Plano           { get { return plano; }                set { plano = value; } }
+        public String Nome_categoria  { get { return nome_categoria; }       set { nome_categoria = value; } }
+        public int Codigo             { get { return codigo; }               set { codigo = value; } }
+        public String Nome            { get { return nome; }                 set { nome = value; } }
+        public String Cnpj_fornecedor { get { return cnpj_fornecedor; }      set { cnpj_fornecedor = value; } }
 
-        public String Email
-        { get{ return email; }                     set { email = value; } }
-
-        public String Telefone
-        { get{ return telefone;}                   set { telefone = value; } }
-
-        public String Cidade
-        { get{ return cidade; }                    set { cidade = value; } }
-
-        public String Bairro
-        { get{ return bairro; }                    set { bairro = value; } }
-
-        public String Uf
-        { get{ return uf; }                        set { uf = value; } }
-
-        public byte[] Imagem
-        { get { return imagem; }                   set { imagem = value; } }
-
-        public String Imagem64
-        { get { return imagem64; }                 set { imagem64 = value; } }
-
-        public String Senha
-        { get { return senha; }                    set { senha = value; } }
-
-        public String Celular
-        { get { return celular; }                  set { celular = value; } }
-
-        public String Endereco
-        { get { return endereco; }                 set { endereco = value; } }
-
-        public String Descricao
-        { get { return descricao; }                set { descricao = value; } }
-
-        public String Cep
-        { get { return cep; }                      set { cep = value; }}
-
-        public float Media
-        { get { return media; }                    set { media = value; } }
-
-        public String Slogan
-        {get { return slogan; }                    set { slogan = value; } }
-
-        public String Plano
-        { get { return plano; }                    set { plano = value; } }
-
-        public String Nome_categoria
-        { get { return nome_categoria; }           set { nome_categoria = value; } }
-
-        public int Codigo
-        { get { return codigo; }                   set { codigo = value; }}
-
-        public String Nome
-        { get { return nome; }                     set { nome = value; }}
-
-        public String Cnpj_fornecedor
-        {
-            get { return cnpj_fornecedor; }
-            set { cnpj_fornecedor = value; }
-        }
-        //=========================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
 
-        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++INICIO DOS MÉTODOS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //███████████████████████████████████████████████████████████████████████▓▒░INICIO DOS MÉTODOS░▒▓████████████████████████████████████████████████████████████████████████████
 
         /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 
-        /*===================================================================LOGAR COM O FORNECEDOR================================================================*/
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ LOGIN ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
         public bool Login() //FEITO
         {
             bool res = false;
@@ -127,8 +85,8 @@ namespace SupplierRanking.Models
                 con.Open();
                 SqlCommand query =
                     new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj AND senha = @senha", con);
-                query.Parameters.AddWithValue("@cnpj", cnpj);
-                query.Parameters.AddWithValue("@senha", senha);
+                query.Parameters.AddWithValue("@cnpj",    cnpj);
+                query.Parameters.AddWithValue("@senha",   senha);
                 SqlDataReader leitor = query.ExecuteReader();
 
                 res = leitor.HasRows;
@@ -138,17 +96,16 @@ namespace SupplierRanking.Models
                 // Caso der erro na inserção
                 res = false;
             }
-
             if (con.State == ConnectionState.Open)
                 con.Close();// fecha conexão
-            return res;// retorna resposta de confirmação
 
+            return res;// retorna resposta de confirmação
         }
 
-        /*===========================================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-        /*================================================================CADASTRO FUNCIONARIO FORNECEDOR============================================================================*/
-        public string CadastroFuncionario(string cnpj, string senha, string nome) // NAO FEITO
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ CADASTRO DE FUNCIONARIO ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
+        public string CadastroFuncionario(string cnpj, string senha, string nome) //FEITO
         {
             string res = "Inserido com sucesso!";
             try
@@ -163,9 +120,9 @@ namespace SupplierRanking.Models
                 //CONDIÇÃO DE CADASTRO (NÃO DEIXA QUE FALTE CAMPOS NECESSARIOS PARA O CADASTRO
                 if (cnpj != "" && nome != "" && senha != "")
                 {
-                    query.Parameters.AddWithValue("@cnpj", cnpj);
-                    query.Parameters.AddWithValue("@nome", nome);
-                    query.Parameters.AddWithValue("@senha", senha);
+                    query.Parameters.AddWithValue("@cnpj",    cnpj);
+                    query.Parameters.AddWithValue("@nome",    nome);
+                    query.Parameters.AddWithValue("@senha",   senha);
                     query.ExecuteNonQuery();
                 }
                 else
@@ -185,10 +142,10 @@ namespace SupplierRanking.Models
             // retorna resposta de confirmação
             return res; 
         }
-        /*===========================================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-        /*=========================================================================LOGIN FUNCIONARIO FORNECEDOR======================================================================*/
-        public bool LoginFuncionario() //NAO FEITO 
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ LOGIN FUNCIONARIO ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
+        public bool LoginFuncionario() //ESPERANDO A VIEW DE LOGIN
         {
             bool res = false;
 
@@ -206,17 +163,19 @@ namespace SupplierRanking.Models
             }
             catch (Exception e)
             {
-                res = false;// Caso der erro na inserção
+                // Caso der erro na inserção
+                res = false;
             }
 
             if (con.State == ConnectionState.Open)
                 con.Close();// fecha conexão
+
             return res;// retorna resposta de confirmação
 
         }
-        /*===========================================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-        /*==============================================================================CADASTRO FORNECEDOR==========================================================================*/
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ EXCLUIR FUNCIONARIO ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
         public string CadastroFornecedor() //FEITO
         {
             string res = "Cadastro realizado.";
@@ -231,25 +190,25 @@ namespace SupplierRanking.Models
                         con);
 
                 // Compara se todos os campos estao preenchidos corretamente, caso não esteja retorna uma mensagem de erro para o usuario 
-                if (email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
-                    && cep != "" && slogan != "" && descricao != "" && descricao != "" && plano != "" && nome_categoria != "")
+                if (cnpj != "" && cnpj.Length <= 19 && nome_empresa != "" && email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
+                    && cep != "" && cep.Length <=8 && slogan != "" && descricao != "" && descricao != "" && nome_categoria != "")
                 {
-                    query.Parameters.AddWithValue("@cnpj", cnpj);
-                    query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
-                    query.Parameters.AddWithValue("@email", email);
-                    query.Parameters.AddWithValue("@telefone", telefone);
-                    query.Parameters.AddWithValue("@celular", celular);
-                    query.Parameters.AddWithValue("@endereco", endereco);
-                    query.Parameters.AddWithValue("@bairro", bairro);
-                    query.Parameters.AddWithValue("@cidade", cidade);
-                    query.Parameters.AddWithValue("@uf", uf);
-                    query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@senha", senha);
-                    query.Parameters.AddWithValue("@slogan", slogan);
-                    query.Parameters.AddWithValue("@descricao", descricao);
-                    query.Parameters.AddWithValue("@media", media);
-                    query.Parameters.AddWithValue("@plano", plano);
-                    query.Parameters.AddWithValue("@imagem", imagem);
+                    query.Parameters.AddWithValue("@cnpj",           cnpj);
+                    query.Parameters.AddWithValue("@nome_empresa",   nome_empresa);
+                    query.Parameters.AddWithValue("@email",          email);
+                    query.Parameters.AddWithValue("@telefone",       telefone);
+                    query.Parameters.AddWithValue("@celular",        celular);
+                    query.Parameters.AddWithValue("@endereco",       endereco);
+                    query.Parameters.AddWithValue("@bairro",         bairro);
+                    query.Parameters.AddWithValue("@cidade",         cidade);
+                    query.Parameters.AddWithValue("@uf",             uf);
+                    query.Parameters.AddWithValue("@cep",            cep);
+                    query.Parameters.AddWithValue("@senha",          senha);
+                    query.Parameters.AddWithValue("@slogan",         slogan);
+                    query.Parameters.AddWithValue("@descricao",      descricao);
+                    query.Parameters.AddWithValue("@media",          media);
+                    query.Parameters.AddWithValue("@plano",          plano);
+                    query.Parameters.AddWithValue("@imagem",         imagem);
                     query.Parameters.AddWithValue("@nome_categoria", nome_categoria);            
                     query.ExecuteNonQuery();               
                 }
@@ -272,9 +231,9 @@ namespace SupplierRanking.Models
             // retorna resposta de confirmação
             return res; 
         }
-        /*===========================================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-        /*====================================================================EXCLUIR FUNCIONARIO DO FORNECEDOR======================================================================*/
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ EXCLUIR FUNCIONARIO ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
         public bool ExcluirFuncionario(string nome, int codigo, string nomeDigitado, int codigoDigitado) //TRAVADO PELA HOME LOGADA
         {
             try
@@ -286,8 +245,8 @@ namespace SupplierRanking.Models
                         con);
                 //Comparando se o código digitado pelo FORNECEDOR é igual ao do funcionario correspondente no banco, se sim ele exclui
                 if(codigo == codigoDigitado && nomeDigitado == nome)
-                query.Parameters.AddWithValue("@codigo", codigo);
-                query.Parameters.AddWithValue("@nome", nome);
+                query.Parameters.AddWithValue("@codigo",    codigo);
+                query.Parameters.AddWithValue("@nome",      nome);
                 query.ExecuteNonQuery();
             }
             //tratamento de erro
@@ -301,9 +260,10 @@ namespace SupplierRanking.Models
 
             return true;
         }
-        /*==============================================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-        /*==============================================================================BUSCA PESSOA JURIDICA===========================================================================*/
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ PESQUISA DE FORNECEDOR ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
+
         public static List<Fornecedor> PesquisaFornecedor(string pesquisa) //TRAVADO PELA HOME LOGADA
         {
             List<Fornecedor> lista = new List<Fornecedor>();
@@ -324,8 +284,8 @@ namespace SupplierRanking.Models
                 while (leitor.Read())
                 {
 
-                    f.nome_empresa = leitor["nome_empresa"].ToString();
-                    f.nome_categoria = leitor["nome_categoria"].ToString();
+                    f.nome_empresa       = leitor["nome_empresa"].ToString();
+                    f.nome_categoria     = leitor["nome_categoria"].ToString();
 
                     //colocar campo de posiçõ de ranking
                     lista.Add(f); // adiciona os valores cadastrados no banco à lista
@@ -353,10 +313,10 @@ namespace SupplierRanking.Models
 
             return lista;
         }
-      
-        /*===========================================================================================================================================================================*/
 
-        /*==============================================================================RESTAURAR SENHA==============================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
+
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ RESTAURAR SENHA ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
         public Boolean RestaurarSenha(string cnpj) //FEITO
         {
             bool res = false;
@@ -415,9 +375,9 @@ namespace SupplierRanking.Models
 
 
 
-        /*==============================================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-        /*==============================================================================LISTA FUNCIONARIO===============================================================================*/
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ LISTAR FUNCIONARIO ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
         public static List<Fornecedor> ListaFuncionario() 
         {
             List<Fornecedor> listaFuncionario = new List<Fornecedor>(); //TRAVADO PELA HOME LOGADA
@@ -435,9 +395,10 @@ namespace SupplierRanking.Models
                 {
                     Fornecedor f = new Fornecedor();
 
-                    f.Codigo = int.Parse(leitor["Codigo"].ToString());
-                    f.Nome = leitor["Nome"].ToString();
-                    f.Senha = leitor["Senha"].ToString();
+                    f.Codigo      = int.Parse(leitor["Codigo"].ToString());
+                    f.Nome        = leitor["Nome"].ToString();
+                    f.Senha       = leitor["Senha"].ToString();
+
                     listaFuncionario.Add(f); // adiciona os valores cadastrados no banco à lista
                  
                 }
@@ -453,67 +414,11 @@ namespace SupplierRanking.Models
 
             return listaFuncionario;
         }
-
-        /* CASO PRECISE É SO CRIAR A VIEW
-        public static List<Fornecedor> ListaFornecedor()
-        {
-            List<Fornecedor> listaFornecedor = new List<Fornecedor>(); 
-            try
-            {
-                con.Open(); // abre conexão
-
-                // Criação de comando para selecionar a tabela de FUNCIONARIOS
-                SqlCommand query =
-                    new SqlCommand("SELECT * FROM fornecedor", con);
-                SqlDataReader leitor = query.ExecuteReader();
-
-                //prepara o leitor
-                while (leitor.Read())
-                {
-                    Fornecedor f = new Fornecedor();
-
-                    f.cnpj = leitor["Cnpj"].ToString();
-                    f.nome_empresa = leitor["Nome_empresa"].ToString();
-                    f.email = leitor["Email"].ToString();
-                    f.telefone = leitor["Telefone"].ToString();
-                    f.celular = leitor["Celular"].ToString();
-                    f.endereco = leitor["Endereco"].ToString();
-                    f.bairro = leitor["Bairro"].ToString();
-                    f.cidade = leitor["Cidade"].ToString();
-                    f.uf = leitor["Uf"].ToString();
-                    f.cep = leitor["Cep"].ToString();
-                    f.slogan = leitor["Slogan"].ToString();
-                    f.descricao = leitor["Descricao"].ToString();
-                    f.media = float.Parse(leitor["Media"].ToString());
-                    f.plano = leitor["Plano"].ToString();
-                    f.imagem = (byte[])leitor["Imagem"];
-                    f.nome_categoria = leitor["Nome_categorias"].ToString();
-                }
-            }
-            //tratamento de erro
-            catch (Exception ex)
-            {
-                listaFornecedor = null;
-            }
-
-            if (con.State == ConnectionState.Open)
-                con.Close();//fecha a conexao
-
-            return listaFornecedor;
-        }
-
-
-        */
-
-
-
-        /*==============================================================================================================================================================================*/
-
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*MÉTODOS DE UPDATE-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
-
-        /*=================================================================================UPDATE SENHA=================================================================================*/
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ UPDATE SENHA ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
         public Boolean UpdateSenha(string senha, string novaSenha, string senhaConfirma, string cnpj) //FEITO
         {
             bool res = false;
@@ -527,7 +432,7 @@ namespace SupplierRanking.Models
                 //comando para selecionar a tabela de FORNECEDOR
                 SqlCommand query1 =
                    new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj", con);
-                query1.Parameters.AddWithValue("@cnpj", cnpj);//seleciona o perfil do fornecedor no banco através do cnpj
+                query1.Parameters.AddWithValue("@cnpj",    cnpj);//seleciona o perfil do fornecedor no banco através do cnpj
                 SqlDataReader leitor = query1.ExecuteReader(); //executa a leitura
 
                 //prepara o leitor
@@ -541,7 +446,7 @@ namespace SupplierRanking.Models
                 {
                     SqlCommand query =
                                 new SqlCommand("Update fornecedor SET senha = @senha WHERE cnpj = @cnpj", con);
-                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    query.Parameters.AddWithValue("@cnpj",  cnpj);
                     query.Parameters.AddWithValue("@senha", novaSenha);
                     query.ExecuteNonQuery();//executa o update
                     res = true;
@@ -559,9 +464,9 @@ namespace SupplierRanking.Models
             return res;
         }
 
-        /*==============================================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-        /*==============================================================================UPDATE CADASTRO=================================================================================*/
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ UPDATE FORNECEDOR ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
         public bool UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro, string cidade, string endereco, string uf,
             string celular, string descricao, string cep, string slogan, string nome_categoria) //FEITO
         {
@@ -584,18 +489,18 @@ namespace SupplierRanking.Models
                     (celular.Length == 15 || celular.Length == 0) && endereco.Length > 1 && bairro.Length > 1 &&
                     cidade.Length > 1 && uf.Length == 2 && cep.Length == 9 && senha == confirmaSenha)
                 {
-                    query.Parameters.AddWithValue("@cnpj", cnpj);
-                    query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
-                    query.Parameters.AddWithValue("@email", email);
-                    query.Parameters.AddWithValue("@endereco", endereco);
-                    query.Parameters.AddWithValue("@bairro", bairro);
-                    query.Parameters.AddWithValue("@cidade", cidade);
-                    query.Parameters.AddWithValue("@uf", uf);
-                    query.Parameters.AddWithValue("@cep", cep);
-                    query.Parameters.AddWithValue("@telefone", telefone);
-                    query.Parameters.AddWithValue("@celular", celular);
-                    query.Parameters.AddWithValue("@descricao", descricao);
-                    query.Parameters.AddWithValue("@slogan", slogan);
+                    query.Parameters.AddWithValue("@cnpj",            cnpj);
+                    query.Parameters.AddWithValue("@nome_empresa",    nome_empresa);
+                    query.Parameters.AddWithValue("@email",           email);
+                    query.Parameters.AddWithValue("@endereco",        endereco);
+                    query.Parameters.AddWithValue("@bairro",          bairro);
+                    query.Parameters.AddWithValue("@cidade",          cidade);
+                    query.Parameters.AddWithValue("@uf",              uf);
+                    query.Parameters.AddWithValue("@cep",             cep);
+                    query.Parameters.AddWithValue("@telefone",        telefone);
+                    query.Parameters.AddWithValue("@celular",         celular);
+                    query.Parameters.AddWithValue("@descricao",       descricao);
+                    query.Parameters.AddWithValue("@slogan",          slogan);
                     //query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
                     query.ExecuteNonQuery();
                 }
@@ -620,9 +525,9 @@ namespace SupplierRanking.Models
         }
 
 
-        /*==============================================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-        /*======================================== MÉTODO PARA RETORNAR DADOS DO FORNECEDOR (PERFIL) ===================================================================================*/
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ PERFIL DO FORNECEDOR ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
         public static Fornecedor Perfil(string cnpj) //FEITO
         {
             Fornecedor f = new Fornecedor();
@@ -635,24 +540,25 @@ namespace SupplierRanking.Models
                 query.Parameters.AddWithValue("@cnpj", cnpj);
                 SqlDataReader leitor = query.ExecuteReader();
 
+                //prepara o leitor para pegar as informações a serem exibidas
                 if (leitor.Read())
                 {
-                    f.cnpj = leitor["Cnpj"].ToString();
-                    f.nome_empresa = leitor["Nome_empresa"].ToString();
-                    f.email = leitor["Email"].ToString();
-                    f.telefone = leitor["Telefone"].ToString();
-                    f.celular = leitor["Celular"].ToString();
-                    f.endereco = leitor["Endereco"].ToString();
-                    f.bairro = leitor["Bairro"].ToString();
-                    f.cidade = leitor["Cidade"].ToString();
-                    f.uf = leitor["Uf"].ToString();
-                    f.cep = leitor["Cep"].ToString();
-                    f.slogan = leitor["Slogan"].ToString();
-                    f.descricao = leitor["Descricao"].ToString();
-                    f.media = float.Parse(leitor["Media"].ToString());
-                    f.plano = leitor["Plano"].ToString();
-                    f.imagem = (byte[])leitor["Imagem"];
-                    f.nome_categoria = leitor["Nome_categorias"].ToString();
+                    f.cnpj            = leitor["Cnpj"].ToString();
+                    f.nome_empresa    = leitor["Nome_empresa"].ToString();
+                    f.email           = leitor["Email"].ToString();
+                    f.telefone        = leitor["Telefone"].ToString();
+                    f.celular         = leitor["Celular"].ToString();
+                    f.endereco        = leitor["Endereco"].ToString();
+                    f.bairro          = leitor["Bairro"].ToString();
+                    f.cidade          = leitor["Cidade"].ToString();
+                    f.uf              = leitor["Uf"].ToString();
+                    f.cep             = leitor["Cep"].ToString();
+                    f.slogan          = leitor["Slogan"].ToString();
+                    f.descricao       = leitor["Descricao"].ToString();
+                    f.media           = float.Parse(leitor["Media"].ToString());
+                    f.plano           = leitor["Plano"].ToString();
+                    f.imagem          = (byte[])leitor["Imagem"];
+                    f.nome_categoria  = leitor["Nome_categorias"].ToString();
                 }
 
             }
@@ -666,9 +572,9 @@ namespace SupplierRanking.Models
 
             return f;
         }
-        /*==============================================================================================================================================================================*/
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-        /*======================================== EDITAR DADOS DO FUNCIONARIO DO FORNECEDOR ===========================================================================================*/
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ EDITAR DADOS DO FUNCIONARIO DO FORNECEDOR ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
 
 
         public bool  UpdateFuncionarioFornecedor(int codigo, string nome, string senha) //FEITO
@@ -676,24 +582,31 @@ namespace SupplierRanking.Models
             try
             {
                 con.Open(); //ABRE CONEXÃO
+
+                //comando para fazer o update na tabela FUNCIONARIOS aonde o codigo estiver cadastrado
                 SqlCommand query = new SqlCommand("UPDATE funcionario SET nome = @nome, senha = @senha WHERE codigo = @codigo", con);
-                query.Parameters.AddWithValue("@codigo", codigo);
-                query.Parameters.AddWithValue("@nome", nome);
-                query.Parameters.AddWithValue("@senha", senha);
+                query.Parameters.AddWithValue("@codigo",    codigo);
+                query.Parameters.AddWithValue("@nome",      nome);
+                query.Parameters.AddWithValue("@senha",     senha);
                 query.ExecuteReader();
             }
-
+            //tratamento de erro
             catch (Exception e)
             {
+                //retorno caso der erro
                 return false;
             }
 
             if (con.State == System.Data.ConnectionState.Open)
-                con.Close();
+                con.Close();//fecha a conexão
 
+            //retorno caso der certo
             return true;
         }
 
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
+
+        /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ PERFIL DO FUNCIONARIO DO FORNECEDOR ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
 
         public static Fornecedor PerfilFuncionario(int codigo)
         {
@@ -707,9 +620,9 @@ namespace SupplierRanking.Models
 
                 if (leitor.Read())
                 {
-                    f.codigo = int.Parse(leitor["codigo"].ToString());
-                    f.nome = leitor["nome"].ToString();
-                    f.senha = leitor["senha"].ToString();
+                    f.codigo      = int.Parse(leitor["codigo"].ToString());
+                    f.nome        = leitor["nome"].ToString();
+                    f.senha       = leitor["senha"].ToString();
                  
                 }
 
@@ -723,7 +636,7 @@ namespace SupplierRanking.Models
 
             return f;
         }
-
+        /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
     }//FIM DA CLASSE
 }//FIM DO NAMESPACE
