@@ -211,7 +211,7 @@ $(document).ready(function () {
             mostrarComprador(true);
         }
 
-        formInputs.val('');
+        //formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
     }
@@ -244,7 +244,7 @@ $(document).ready(function () {
             mostrarFuncionario(true, false);
         }
 
-        formInputs.val('');
+        //formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
         $('.login-form').removeClass('hide');
