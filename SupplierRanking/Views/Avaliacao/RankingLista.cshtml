@@ -1,0 +1,105 @@
+﻿@model List<SupplierRanking.Models.Fornecedor>
+
+@{
+    ViewBag.Title = "RankingLista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RankingLista</h2>
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            CNPJ
+        </th>
+        <th>
+            NOME
+        </th>
+        <th>
+            EMAIL
+        </th>
+        <th>
+            TELEFONE
+        </th>
+        <th>
+            CIDADE
+        </th>
+        <th>
+            CELULAR
+        </th>
+        <th>
+            DESCRICAO
+        </th>
+        <th>
+            MEDIA
+        </th>
+        <th>
+            SLOGAN
+        </th>
+        <th>
+            PLANO
+        </th>
+        <th>
+            CATEGORIA
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (item.Imagem64 == "")
+            {
+                <td>
+                    <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 15px;"/>
+                </td>
+            }
+            else
+            {
+                String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                <td>
+                    <img src="@imagem64" height="100" width="100" style="border-radius: 15px;" />
+                </td>
+            }
+            <td>
+                @item.Cnpj
+            </td>
+            <td>
+                @item.Nome_empresa
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @item.Telefone
+            </td>
+            <td>
+                @item.Cidade
+            </td>
+            <td>
+                @item.Celular
+            </td>
+            <td>
+                @item.Descricao
+            </td>
+            <td>
+                @item.Media
+            </td>
+            <td>
+                @item.Slogan
+            </td>
+            <td>
+                @item.Plano
+            </td>
+            <td>
+                @item.Nome_categoria
+            </td>
+
+        </tr>
+    }
+</table>
+
+
+
+
+

@@ -15,11 +15,7 @@ namespace SupplierRanking.Models
         //CAMPOS DO BANCO DE DADOS
         private string categoria;
 
-        public string Categoria
-        {
-            get { return categoria; }
-            set { categoria = value; }
-        }
+        public string Categoria         { get { return categoria; }         set { categoria = value; }}
 
         /************************************************************ LISTAR CATEGORIAS ********************************************************/
 

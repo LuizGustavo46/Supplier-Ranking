@@ -7,6 +7,7 @@ $(document).ready(function () {
         btnFisica = $('.wrap-login #btnFisica'),
         btnJuridica = $('.wrap-login #btnJuridica'),
         btnFuncionario = $('.wrap-login #btnFuncionario'),
+        btnLogin = $('.wrap-login .login-form-btn'),
 
         switchFornecedor = $('.wrap-login #switchFornecedor'),
         switchJuridica = $('.wrap-login #switchJuridica'),
@@ -21,7 +22,7 @@ $(document).ready(function () {
         wrapInputFuncionario = $('.wrap-login #inputFuncionario').closest('.login-form .wrap-input'),
 
         inputHidden = $('.wrap-login #inputHidden'),
-        formInputs = $('.wrap-login .login-form input'),
+        formInputs = $('.wrap-login .login-form input').not('#inputHidden'),
         activeformInputs;
 
 
@@ -83,6 +84,11 @@ $(document).ready(function () {
         var switchFuncionarioTrueOrFalse = switchFuncionario.prop('checked') === true ? switchFuncionario.prop('checked', false) : switchFuncionario.prop('checked', true);
         
         switchTipoFuncionario(switchFuncionarioTrueOrFalse);
+    });
+
+    /** Botão Login **/
+    $('.login-form-btn').on('click', function () {
+        $('.login-form').submit();
     });
 
 
@@ -154,7 +160,6 @@ $(document).ready(function () {
             wrapInputCnpj.removeClass('hide');
             $('#wrapperFuncionario').removeClass('hide');
             $('.login-form').removeClass('hide');
-
             inputHidden.val('2');
             return;
         }
@@ -198,6 +203,8 @@ $(document).ready(function () {
             uncheckSliderAndButtons(switchJuridica);
             mostrarFornecedor(true);
 
+            //$('#inputHidden').val('2');
+
         } else { //Seleciona o Comprador
             mostrarFornecedor(false);
             mostrarFuncionario(false, true);
@@ -221,7 +228,7 @@ $(document).ready(function () {
             mostrarPessoaFisica(true);
         }
 
-        formInputs.val('');
+        //formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
         $('.login-form').removeClass('hide');
@@ -267,21 +274,6 @@ $(document).ready(function () {
         }
     }
 
-
-    $('.login-form-btn').on('click', function () {
-        submitForm();
-    });
-
-    function submitForm() {
-        if (!verificarInputsVazios()) {
-            $('.error-msg').removeClass('hide');
-            
-        } else {
-            $('.error-msg').addClass('hide');
-            $('.login-form').submit();   
-        }
-    }
-    
     /** Inicia assim que a pagina e carregada **/
     function init() {
         wrapInputCpf.addClass('hide');

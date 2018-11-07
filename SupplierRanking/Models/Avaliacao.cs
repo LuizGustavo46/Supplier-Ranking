@@ -23,62 +23,18 @@ namespace SupplierRanking.Models
         private string cnpj_fornecedor;
         private int codigo_comprador;
 
-        public int Qualidade
-        {
-            get { return qualidade; }
-            set { qualidade = value; }
-        }
+        public int Qualidade                { get { return qualidade; }             set { qualidade = value; }}
+        public int Atendimento              { get { return atendimento; }           set { atendimento = value; }}
+        public int Entrega                  { get { return entrega; }               set { entrega = value; }}
+        public int Preco                    { get { return preco; }                 set { preco = value; }}
+        public int Satisfacao               { get { return satisfacao; }            set { satisfacao = value; } }
+        public string Comentario            { get { return comentario; }            set { comentario = value; }}
+        public string Data_avaliacao        { get { return data_avaliacao; }        set { data_avaliacao = value; }}
+        public string Cnpj_fornecedor       { get { return cnpj_fornecedor; }       set { cnpj_fornecedor = value; }}
+        public int Codigo_comprador         { get { return codigo_comprador; }      set { codigo_comprador = value; }}      
+        
+        /***************************************************** INSERIR CADASTRO DE AVALIAÇÃO **************************************************/
 
-        public int Atendimento
-        {
-            get { return atendimento; }
-            set { atendimento = value; }
-        }
-
-        public int Entrega
-        {
-            get { return entrega; }
-            set { entrega = value; }
-        }
-
-        public int Preco
-        {
-            get { return preco; }
-            set { preco = value; }
-        }
-
-        public int Satisfacao
-        {
-            get { return satisfacao; }
-            set { satisfacao = value; }
-        }
-
-        public string Comentario
-        {
-            get { return comentario; }
-            set { comentario = value; }
-        }
-
-        public string Data_avaliacao
-        {
-            get { return data_avaliacao; }
-            set { data_avaliacao = value; }
-        }
-
-        public string Cnpj_fornecedor
-        {
-            get { return cnpj_fornecedor; }
-            set { cnpj_fornecedor = value; }
-        }
-
-        public int Codigo_comprador
-        {
-            get { return codigo_comprador; }
-            set { codigo_comprador = value; }
-        }
-        //--------------------------------------------------INICIO DOS MÉTODOS-----------------------------------------------------------
-
-        //MÉTODO PARA INSERIR CADASTRO DE AVALIAÇÃO
         public bool CadastrarAvaliacao()
         {
             Avaliacao a = new Avaliacao();
@@ -144,13 +100,8 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
                     query.ExecuteNonQuery(); //EXECUTA
                 }           
-            }
-            catch(Exception ex)
-            {
-                string exception = ex.Message; //CASO DER ERRO NA INSERÇÃO
-                return false;
-            }
-         
+            }catch(Exception ex) { return false; }
+            
             int mediaQualidade = 0, mediaAtendimento = 0, mediaEntrega = 0, mediaPreco = 0, mediaSatisfacao = 0, media = 0, cont = 0;
             try //TRY PARA EXECUÇÃO DA LÓGICA DE ATUALIZAÇÃO DA MÉDIA DAS AVALIAÇÕES
             {
@@ -192,18 +143,14 @@ namespace SupplierRanking.Models
                 queryMedia2.Parameters.AddWithValue("@media", media);
                 queryMedia2.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
                 queryMedia2.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                string exception = ex.Message; //CASO DER ERRO NA INSERÇÃO
-                return false;
-            }
+            } catch (Exception ex) { return false; }
 
             if (con.State == ConnectionState.Open)
                 con.Close(); //FECHA CONEXÃO
-
             return true;
         }
+
+        /************************************************ SELECT DA AVALIAÇÃO PARA FAZER UPDATE ***********************************************/
 
         //MÉTODO QUE PUXA O COMENTÁRIO DA AVALIAÇÃO PARA FAZER O UPDATE DE AVALIAÇÃO (COMENTÁRIO)
         public static Avaliacao ReturnUpdateAvaliacao(string cnpj_fornecedor, string codigo_comprador)
@@ -217,6 +164,7 @@ namespace SupplierRanking.Models
                 query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
                 query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
                 SqlDataReader leitor = query.ExecuteReader();
+
                 if (leitor.Read())
                 {
                     a.qualidade = int.Parse(leitor["Qualidade"].ToString());
@@ -228,16 +176,14 @@ namespace SupplierRanking.Models
                     a.data_avaliacao = leitor["Data_avaliacao"].ToString();
                 }
 
-            }
-            catch (Exception e)
-            {
-                a = null;
-            }
+            } catch (Exception e) { a = null; }
+                
             if (con.State == ConnectionState.Open)
                 con.Close(); //FECHA CONEXÃO
-
             return a;
         }
+
+        /***************************************************** UPDATE DE AVALIAÇÃO (COMENTÁRIO) ***********************************************/
 
         //MÉTODO UPDATE DE AVALIAÇÃO (COMENTÁRIO)
         public bool UpdateAvaliacao()
@@ -259,69 +205,89 @@ namespace SupplierRanking.Models
                 {
                     return false; //TALVEZ PRECISE COLOCAR UMA VARIAVEL BOOL PARA SALVER TRUE OU FALSE
                 }
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            } catch (Exception ex) { return false; }
+
             if (con.State == ConnectionState.Open)
                 con.Close();
             return true;
         }
 
-        // MÉTODO PARA LISTAR RANKING DE CERTA CATEGORIA
+        /***************************************************** LISTAR RANKING POR CATEGORIA ***************************************************/
+
         public static List<Fornecedor> RankingLista(string categoria)
         {
             List<Fornecedor> ranking = new List<Fornecedor>();
-            Fornecedor f = new Fornecedor();
             try
             {
                 con.Open(); //ABRE CONEXÃO
                 //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS JÁ FORMANDO O RANKING, DA MAIOR PARA A MENOR MÉDIA
-                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE categoria = @categoria ORDER BY media DESC", con);
-                query.Parameters.AddWithValue("@categoria", categoria);
+                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE nome_categorias = @nome_categorias ORDER BY media DESC", con);
+                query.Parameters.AddWithValue("@nome_categorias", categoria);
 
                 SqlDataReader leitor = query.ExecuteReader();
 
                 while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
                 {
-                    f.Cnpj = leitor["Cnpj"].ToString();
-                    f.Nome_empresa = leitor["Nome_empresa"].ToString();
-                    f.Email = leitor["Email"].ToString();
-                    f.Telefone = leitor["Telefone"].ToString();
-                    f.Celular = leitor["Celular"].ToString();
-                    f.Endereco = leitor["Endereco"].ToString();
-                    f.Bairro = leitor["Bairro"].ToString();
-                    f.Cidade = leitor["Cidade"].ToString();
-                    f.Uf = leitor["Uf"].ToString();
-                    f.Cep = leitor["Cep"].ToString();
-                    //f.Senha = leitor["Senha"].ToString(); //NÃO VAMOS MOSTRAR A SENHA, OBVIO...
-                    //f.Posicao = leitor["Posicao"].ToString(); //TALVEZ PODEMOS TIRAR ESSE CAMPO DO BANCO...
-                    f.Slogan = leitor["Slogan"].ToString();
-                    f.Descricao = leitor["Descricao"].ToString();
-                    f.Media = float.Parse(leitor["Media"].ToString());
-                    f.Plano = leitor["Plano"].ToString();
-                    f.Imagem = (byte[])leitor["Imagem"];
+                    Fornecedor f = new Fornecedor();
+
+                    f.Cnpj          = leitor["Cnpj"].ToString();
+                    f.Nome_empresa  = leitor["Nome_empresa"].ToString();
+                    f.Email         = leitor["Email"].ToString();
+                    f.Telefone      = leitor["Telefone"].ToString();
+                    f.Celular       = leitor["Celular"].ToString();
+                    f.Endereco      = leitor["Endereco"].ToString();
+                    f.Bairro        = leitor["Bairro"].ToString();
+                    f.Cidade        = leitor["Cidade"].ToString();
+                    f.Uf            = leitor["Uf"].ToString();
+                    f.Cep           = leitor["Cep"].ToString();
+                    //f.Senha       = leitor["Senha"].ToString(); //NÃO VAMOS MOSTRAR A SENHA, OBVIO...
+                    //f.Posicao     = leitor["Posicao"].ToString(); //TALVEZ PODEMOS TIRAR ESSE CAMPO DO BANCO...
+                    f.Slogan        = leitor["Slogan"].ToString();
+                    f.Descricao     = leitor["Descricao"].ToString();
+                    f.Media         = float.Parse(leitor["Media"].ToString());
+                    f.Plano         = leitor["Plano"].ToString();
+                    f.Imagem        = (byte[])leitor["Imagem"];
+                    f.Imagem64      = Convert.ToBase64String(f.Imagem);
                     f.Nome_categoria = leitor["Nome_categorias"].ToString();
                     
                     ranking.Add(f);
+
+                    Avaliacao a = new Avaliacao();
+                    try
+                    {
+                        //PEGAR CRITÉRIOS DE AVALIAÇÃO SE O FORNECEDOR FOR PREMIUM, PARA MOSTRAR NA VIEW
+                        if (f.Plano == "P")
+                        {
+                            SqlCommand queryAvaliacoes = new SqlCommand("SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor");
+                            queryAvaliacoes.Parameters.AddWithValue("@cnpj_fornecedor", f.Cnpj);
+                            SqlDataReader leitorAvaliacoes = queryAvaliacoes.ExecuteReader();
+
+                            if (leitorAvaliacoes.Read())
+                            {
+                                a.qualidade = int.Parse(leitorAvaliacoes["qualidade"].ToString());
+                                a.atendimento = int.Parse(leitorAvaliacoes["atendimento"].ToString()); // terminar de fazer esses bagui aqui
+                                a.entrega = int.Parse(leitorAvaliacoes["entrega"].ToString());
+                                a.preco = int.Parse(leitorAvaliacoes["preco"].ToString());
+                                a.satisfacao = int.Parse(leitorAvaliacoes["satisfacao"].ToString());
+
+
+
+                            }
+                        }
+                    }catch (Exception ex) { a = null; }
                 }
-            }
-            catch (Exception ex)
-            {
-                ranking = null;
-            }
+            } catch (Exception ex) { ranking = null; }
+
             if (con.State == ConnectionState.Open)
                 con.Close();
-
             return ranking;
         }
 
-        //MÉTODO PARA RETORNAR A LISTA DO RANKING GERAL
+        /***************************************************** LISTAR RANKING GERAL ***********************************************************/
+
         public static List<Fornecedor> RankingGeral()
         {
             List<Fornecedor> ranking = new List<Fornecedor>();
-            Fornecedor f = new Fornecedor();
 
             try
             {
@@ -332,35 +298,35 @@ namespace SupplierRanking.Models
                 SqlDataReader leitor = query.ExecuteReader();
                 while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
                 {
-                    f.Cnpj = leitor["Cnpj"].ToString();
-                    f.Nome_empresa = leitor["Nome_empresa"].ToString();
-                    f.Email = leitor["Email"].ToString();
-                    f.Telefone = leitor["Telefone"].ToString();
-                    f.Celular = leitor["Celular"].ToString();
-                    f.Endereco = leitor["Endereco"].ToString();
-                    f.Bairro = leitor["Bairro"].ToString();
-                    f.Cidade = leitor["Cidade"].ToString();
-                    f.Uf = leitor["Uf"].ToString();
-                    f.Cep = leitor["Cep"].ToString();
-                    //f.Senha = leitor["Senha"].ToString(); //NÃO VAMOS MOSTRAR A SENHA, OBVIO...
-                    //f.Posicao = leitor["Posicao"].ToString(); //TALVEZ PODEMOS TIRAR ESSE CAMPO DO BANCO...
-                    f.Slogan = leitor["Slogan"].ToString();
-                    f.Descricao = leitor["Descricao"].ToString();
-                    f.Media = float.Parse(leitor["Media"].ToString());
-                    f.Plano = leitor["Plano"].ToString();
-                    f.Imagem = (byte[])leitor["Imagem"];
+                    Fornecedor f = new Fornecedor();
+
+                    f.Cnpj          = leitor["Cnpj"].ToString();
+                    f.Nome_empresa  = leitor["Nome_empresa"].ToString();
+                    f.Email         = leitor["Email"].ToString();
+                    f.Telefone      = leitor["Telefone"].ToString();
+                    f.Celular       = leitor["Celular"].ToString();
+                    f.Endereco      = leitor["Endereco"].ToString();
+                    f.Bairro        = leitor["Bairro"].ToString();
+                    f.Cidade        = leitor["Cidade"].ToString();
+                    f.Uf            = leitor["Uf"].ToString();
+                    f.Cep           = leitor["Cep"].ToString();
+                    //f.Senha       = leitor["Senha"].ToString(); //NÃO VAMOS MOSTRAR A SENHA, OBVIO...
+                    //f.Posicao     = leitor["Posicao"].ToString(); //TALVEZ PODEMOS TIRAR ESSE CAMPO DO BANCO...
+                    f.Slogan        = leitor["Slogan"].ToString();
+                    f.Descricao     = leitor["Descricao"].ToString();
+                    f.Media         = float.Parse(leitor["Media"].ToString());
+                    f.Plano         = leitor["Plano"].ToString();
+                    f.Imagem        = (byte[])leitor["Imagem"];
+                    f.Imagem64      = Convert.ToBase64String(f.Imagem);
                     f.Nome_categoria = leitor["Nome_categorias"].ToString();
 
                     ranking.Add(f);
                 }
             }
-            catch (Exception ex)
-            {
-                ranking = null;
-            }
+            catch (Exception ex) { ranking = null; }
+
             if (con.State == ConnectionState.Open)
                 con.Close();
-
             return ranking;
         }
 
