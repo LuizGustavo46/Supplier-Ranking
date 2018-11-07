@@ -44,139 +44,80 @@ namespace SupplierRanking.Models
         private bool fornecedor;
         private bool consumidor;
 
-        //---* PEGANDO E RETORNANDO VALORES INSERIDOS NAS VARIAVEIS *---
+        //*==================================================TORNANDO AS VARIAVEIS ACESSIVEIS=======================================================================*
         public String Cnpj
-        {
-            get { return cnpj; }
-            set { cnpj = value; }
-        }
+        { get{ return cnpj; }                      set{ cnpj = value; } }
 
         public string Nome_empresa
-        {
-            get { return nome_empresa; }
-            set { nome_empresa = value; }
-        }
+        { get{ return nome_empresa;}               set { nome_empresa = value; } }
 
         public String Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
+        { get{ return email; }                     set { email = value; } }
 
         public String Telefone
-        {
-            get { return telefone; }
-            set { telefone = value; }
-        }
+        { get{ return telefone;}                   set { telefone = value; } }
 
         public String Cidade
-        {
-            get { return cidade; }
-            set { cidade = value; }
-        }
+        { get{ return cidade; }                    set { cidade = value; } }
 
         public String Bairro
-        {
-            get { return bairro; }
-            set { bairro = value; }
-
-        }
+        { get{ return bairro; }                    set { bairro = value; } }
 
         public String Uf
-        {
-            get { return uf; }
-            set { uf = value; }
-        }
+        { get{ return uf; }                        set { uf = value; } }
 
         public byte[] Imagem
-        {
-            get { return imagem; }
-            set { imagem = value; }
-        }
+        { get { return imagem; }                   set { imagem = value; } }
 
         public String Imagem64
-        {
-            get { return imagem64; }
-            set { imagem64 = value; }
-        }
+        { get { return imagem64; }                 set { imagem64 = value; } }
 
         public String Senha
-        {
-            get { return senha; }
-            set { senha = value; }
-        }
+        { get { return senha; }                    set { senha = value; } }
 
         public String Celular
-        {
-            get { return celular; }
-            set { celular = value; }
-        }
+        { get { return celular; }                  set { celular = value; } }
 
         public String Endereco
-        {
-            get { return endereco; }
-            set { endereco = value; }
-        }
+        { get { return endereco; }                 set { endereco = value; } }
 
         public String Descricao
-        {
-            get { return descricao; }
-            set { descricao = value; }
-        }
+        { get { return descricao; }                set { descricao = value; } }
 
         public String Cep
-        {
-            get { return cep; }
-            set { cep = value; }
-        }
+        { get { return cep; }                      set { cep = value; }}
 
         public float Media
-        {
-            get { return media; }
-            set { media = value; }
-        }
+        { get { return media; }                    set { media = value; } }
 
         public String Slogan
-        {
-            get { return slogan; }
-            set { slogan = value; }
-        }
+        {get { return slogan; }                    set { slogan = value; } }
 
         public String Plano
-        {
-            get { return plano; }
-            set { plano = value; }
-        }
+        { get { return plano; }                    set { plano = value; } }
 
         public String Nome_categoria
-        {
-            get { return nome_categoria; }
-            set { nome_categoria = value; }
-        }
+        { get { return nome_categoria; }           set { nome_categoria = value; } }
 
         public int Codigo
-        {
-            get { return codigo; }
-            set { codigo = value; }
-        }
+        { get { return codigo; }                   set { codigo = value; }}
 
         public String Nome
-        {
-            get { return nome; }
-            set { nome = value; }
-        }
+        { get { return nome; }                     set { nome = value; }}
 
         public String Cnpj_fornecedor
         {
             get { return cnpj_fornecedor; }
             set { cnpj_fornecedor = value; }
         }
+        //=========================================================================================================================================================*/
 
-        //----------------------------INICIO DOS MÉTODOS--------------------------------
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++INICIO DOS MÉTODOS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 
-        /*==============================================================================LOGAR COM O FORNECEDOR==============================================================================*/
+        /*===================================================================LOGAR COM O FORNECEDOR================================================================*/
         public bool Login() //FEITO
         {
             bool res = false;
@@ -193,8 +134,9 @@ namespace SupplierRanking.Models
                 res = leitor.HasRows;
             }
             catch (Exception e)
-            {
-                res = false;// Caso der erro na inserção
+            {   
+                // Caso der erro na inserção
+                res = false;
             }
 
             if (con.State == ConnectionState.Open)
@@ -203,21 +145,22 @@ namespace SupplierRanking.Models
 
         }
 
-        /*=================================================================================================================================================================================*/
+        /*===========================================================================================================================================================================*/
 
-        /*=========================================================================CADASTRO FUNCIONARIO FORNECEDOR=========================================================================*/
+        /*================================================================CADASTRO FUNCIONARIO FORNECEDOR============================================================================*/
         public string CadastroFuncionario(string cnpj, string senha, string nome) // NAO FEITO
         {
             string res = "Inserido com sucesso!";
             try
             {
+                //ABRE A CONEXÃO
+                con.Open();
 
-                con.Open(); // abre conexão
-                // Criação de comando
+                // Criação de comando para inserção no banco
                 SqlCommand query =
                     new SqlCommand("INSERT INTO funcionario VALUES (@cnpj,@nome,@senha)", con);
-                // Adiciona os parâmetros
 
+                //CONDIÇÃO DE CADASTRO (NÃO DEIXA QUE FALTE CAMPOS NECESSARIOS PARA O CADASTRO
                 if (cnpj != "" && nome != "" && senha != "")
                 {
                     query.Parameters.AddWithValue("@cnpj", cnpj);
@@ -239,9 +182,10 @@ namespace SupplierRanking.Models
             if (con.State == ConnectionState.Open)
                 con.Close(); // fecha conexão
 
-            return res; // retorna resposta de confirmação
+            // retorna resposta de confirmação
+            return res; 
         }
-        /*==============================================================================================================================================================================*/
+        /*===========================================================================================================================================================================*/
 
         /*=========================================================================LOGIN FUNCIONARIO FORNECEDOR======================================================================*/
         public bool LoginFuncionario() //NAO FEITO 
@@ -270,19 +214,22 @@ namespace SupplierRanking.Models
             return res;// retorna resposta de confirmação
 
         }
-        /*==============================================================================================================================================================================*/
+        /*===========================================================================================================================================================================*/
 
-        /*==============================================================================CADASTRO FORNECEDOR========================================================================*/
+        /*==============================================================================CADASTRO FORNECEDOR==========================================================================*/
         public string CadastroFornecedor() //FEITO
         {
             string res = "Cadastro realizado.";
             try
-            {
-                con.Open(); // abre conexão
-                // Criação de comando
+            {   
+                // abre conexão
+                con.Open();
+                 
+                // Criação de comando para inserção de dados na tabela fornecedor
                 SqlCommand query =
                     new SqlCommand("INSERT INTO fornecedor VALUES (@cnpj,@nome_empresa,@email,@telefone,@celular,@endereco,@bairro,@cidade,@uf,@cep,@senha,@slogan,@descricao,@media,@plano,@imagem,@nome_categoria)",
                         con);
+
                 // Compara se todos os campos estao preenchidos corretamente, caso não esteja retorna uma mensagem de erro para o usuario 
                 if (email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
                     && cep != "" && slogan != "" && descricao != "" && descricao != "" && plano != "" && nome_categoria != "")
@@ -306,9 +253,11 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@nome_categoria", nome_categoria);            
                     query.ExecuteNonQuery();               
                 }
-                //Mensagem de erro
+
+                
                 else
                 {
+                    //Mensagem de erro
                     res = "Preencha os campos corretamente";
                 }
             }
@@ -320,11 +269,12 @@ namespace SupplierRanking.Models
             if (con.State == ConnectionState.Open)
                 con.Close(); // fecha conexão
 
-            return res; // retorna resposta de confirmação
+            // retorna resposta de confirmação
+            return res; 
         }
-        /*==============================================================================================================================================================================*/
+        /*===========================================================================================================================================================================*/
 
-        /*====================================================================EXCLUIR FUNCIONARIO DO FORNECEDOR=========================================================================*/
+        /*====================================================================EXCLUIR FUNCIONARIO DO FORNECEDOR======================================================================*/
         public bool ExcluirFuncionario(string nome, int codigo, string nomeDigitado, int codigoDigitado) //TRAVADO PELA HOME LOGADA
         {
             try
@@ -340,6 +290,7 @@ namespace SupplierRanking.Models
                 query.Parameters.AddWithValue("@nome", nome);
                 query.ExecuteNonQuery();
             }
+            //tratamento de erro
             catch (Exception ex)
             {
                 return false;
@@ -357,24 +308,26 @@ namespace SupplierRanking.Models
         {
             List<Fornecedor> lista = new List<Fornecedor>();
             try
-            {
-                con.Open(); // abre conexão
-                // Criação de comando
-
+            {   
+                // abre conexão
+                con.Open();
+                 
+                // Criação de comando para selecionar a tabela FORNECEDOR
                 SqlCommand query =
                     new SqlCommand("SELECT * FROM fornecedor WHERE nome_empresa like @texto", con);
                 query.Parameters.AddWithValue("@texto", pesquisa);
-
                 SqlDataReader leitor = query.ExecuteReader();
 
                 Fornecedor f = new Fornecedor();
+
+                //prepara o leitor
                 while (leitor.Read())
                 {
 
                     f.nome_empresa = leitor["nome_empresa"].ToString();
                     f.nome_categoria = leitor["nome_categoria"].ToString();
-                    //colocar campo de posiçõ de ranking
 
+                    //colocar campo de posiçõ de ranking
                     lista.Add(f); // adiciona os valores cadastrados no banco à lista
 
                     //Compara se o nome digitado na barra de pesquisa é igual a alguma empresa (pessoa juridica) cadastrada no banco
@@ -388,69 +341,22 @@ namespace SupplierRanking.Models
                     }
                 }
             }
+
+            //tratamento de erro
             catch (Exception ex)
             {
                 lista = null;
             }
 
             if (con.State == ConnectionState.Open)
-                con.Close();
+                con.Close();//fecha a conexao
 
             return lista;
         }
+      
+        /*===========================================================================================================================================================================*/
 
-        /*==============================================================================================================================================================================*/
-
-        public static Fornecedor PesquisaUpdateFornecedor(string cnpj) //TRAVADO PELA HOME
-        {
-            Fornecedor f = new Fornecedor();
-            try
-            {
-                con.Open(); // abre conexão
-                // Criação de comando
-
-                SqlCommand query =
-                    new SqlCommand("SELECT * FROM fornecedor WHERE cnpj= @cnpj", con);
-                query.Parameters.AddWithValue("@cnpj", cnpj);
-
-                SqlDataReader leitor = query.ExecuteReader();
-
-                
-                while (leitor.Read())
-                {
-                    f.cnpj = leitor["cnpj"].ToString();
-                    f.nome_empresa = leitor["nome_empresa"].ToString();
-                    f.email = leitor["email"].ToString();
-                    f.endereco = leitor["endereco"].ToString();
-                    f.bairro = leitor["bairro"].ToString();
-                    f.cidade = leitor["cidade"].ToString();
-                    f.uf = leitor["uf"].ToString();
-                    f.cep = leitor["cep"].ToString();
-                    f.telefone = leitor["telefone"].ToString();
-                    f.celular = leitor["celular"].ToString();
-                    f.descricao = leitor["descricao"].ToString();
-                    f.slogan = leitor["slogan"].ToString();
-
-                    
-                    //colocar campo de posiçõ de ranking
-  
-                }
-            }
-            catch (Exception ex)
-            {
-                f = null;
-            }
-
-            if (con.State == ConnectionState.Open)
-                con.Close();
-
-            return f;
-        }
-
-
-        /*==============================================================================================================================================================================*/
-
-        /*==============================================================================RESTAURAR SENHA=================================================================================*/
+        /*==============================================================================RESTAURAR SENHA==============================================================================*/
         public Boolean RestaurarSenha(string cnpj) //FEITO
         {
             bool res = false;
@@ -486,12 +392,14 @@ namespace SupplierRanking.Models
                     //HABILITAR O TLS
                     smtpServer.EnableSsl = true;
                     //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                    smtpServer.Credentials = new System.Net.NetworkCredential("marcelolemos7@outlook.com", "M@rcelo190399");
+                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking@hotmail.com", "SEnai12344");
                     //ENVIAR
                     smtpServer.Send(mail);
               
 
             }
+
+            //tratamento de erro
             catch (Exception e)
             {
                 string em = e.Message;
@@ -499,7 +407,7 @@ namespace SupplierRanking.Models
             }
 
             if (con.State == System.Data.ConnectionState.Open)
-                con.Close();
+                con.Close();//fecha a conexao
 
             return res;
 
@@ -517,11 +425,12 @@ namespace SupplierRanking.Models
             {
                 con.Open(); // abre conexão
 
-                // Criação de comando
+                // Criação de comando para selecionar a tabela de FUNCIONARIOS
                 SqlCommand query =
                     new SqlCommand("SELECT * FROM funcionario", con);
                 SqlDataReader leitor = query.ExecuteReader();
 
+                //prepara o leitor
                 while (leitor.Read())
                 {
                     Fornecedor f = new Fornecedor();
@@ -533,19 +442,68 @@ namespace SupplierRanking.Models
                  
                 }
             }
+            //tratamento de erro
             catch (Exception ex)
             {
                 listaFuncionario = null;
             }
 
             if (con.State == ConnectionState.Open)
-                con.Close();
+                con.Close();//fecha a conexao
 
             return listaFuncionario;
         }
 
+        /* CASO PRECISE É SO CRIAR A VIEW
+        public static List<Fornecedor> ListaFornecedor()
+        {
+            List<Fornecedor> listaFornecedor = new List<Fornecedor>(); 
+            try
+            {
+                con.Open(); // abre conexão
+
+                // Criação de comando para selecionar a tabela de FUNCIONARIOS
+                SqlCommand query =
+                    new SqlCommand("SELECT * FROM fornecedor", con);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                //prepara o leitor
+                while (leitor.Read())
+                {
+                    Fornecedor f = new Fornecedor();
+
+                    f.cnpj = leitor["Cnpj"].ToString();
+                    f.nome_empresa = leitor["Nome_empresa"].ToString();
+                    f.email = leitor["Email"].ToString();
+                    f.telefone = leitor["Telefone"].ToString();
+                    f.celular = leitor["Celular"].ToString();
+                    f.endereco = leitor["Endereco"].ToString();
+                    f.bairro = leitor["Bairro"].ToString();
+                    f.cidade = leitor["Cidade"].ToString();
+                    f.uf = leitor["Uf"].ToString();
+                    f.cep = leitor["Cep"].ToString();
+                    f.slogan = leitor["Slogan"].ToString();
+                    f.descricao = leitor["Descricao"].ToString();
+                    f.media = float.Parse(leitor["Media"].ToString());
+                    f.plano = leitor["Plano"].ToString();
+                    f.imagem = (byte[])leitor["Imagem"];
+                    f.nome_categoria = leitor["Nome_categorias"].ToString();
+                }
+            }
+            //tratamento de erro
+            catch (Exception ex)
+            {
+                listaFornecedor = null;
+            }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();//fecha a conexao
+
+            return listaFornecedor;
+        }
 
 
+        */
 
 
 
@@ -553,36 +511,33 @@ namespace SupplierRanking.Models
 
 
         /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*MÉTODOS DE UPDATE-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
-        
+
 
         /*=================================================================================UPDATE SENHA=================================================================================*/
         public Boolean UpdateSenha(string senha, string novaSenha, string senhaConfirma, string cnpj) //FEITO
         {
             bool res = false;
-           
+                     
             try
-            {
-                
-
-                /*---------------------------------------------------------------------------------------------------                 
-                 PARA TER UM CONTROLE MAIOR DE SEGURANÇA TER UMA FORMA DE VALIDAR SE QUEM ESTA ALTERANDO A SENHA É
-                 O DONO DA CONTA MESMO
-                 --------------------------------------------------------------------------------------------------*/
+            {                              
                 /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
+                //ABRE A CONEXAO
+                con.Open();  
 
-
-                con.Open();  //ABRE A CONEXAO
-
+                //comando para selecionar a tabela de FORNECEDOR
                 SqlCommand query1 =
                    new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj", con);
                 query1.Parameters.AddWithValue("@cnpj", cnpj);//seleciona o perfil do fornecedor no banco através do cnpj
                 SqlDataReader leitor = query1.ExecuteReader(); //executa a leitura
 
+                //prepara o leitor
                 if (leitor.Read())
                     senha = leitor["senha"].ToString();//guarda a senha que veio do banco
-                leitor.Close();
 
-                if (novaSenha != senha && senhaConfirma == novaSenha)//se a nova senha for diferente da senha atual e a senhaConfirma for igual a novaSenha executa o update                  
+                leitor.Close();//fecha o leitor
+
+                //se a nova senha for diferente da senha atual e a senhaConfirma for igual a novaSenha executa o update 
+                if (novaSenha != senha && senhaConfirma == novaSenha)                 
                 {
                     SqlCommand query =
                                 new SqlCommand("Update fornecedor SET senha = @senha WHERE cnpj = @cnpj", con);
@@ -592,14 +547,14 @@ namespace SupplierRanking.Models
                     res = true;
                 }
             }
-
+            //tratamento de erro
             catch (Exception e)
             {
                 res = false;
             }
 
             if (con.State == System.Data.ConnectionState.Open)
-                con.Close();
+                con.Close();//fecha a conexao
 
             return res;
         }
@@ -609,15 +564,15 @@ namespace SupplierRanking.Models
         /*==============================================================================UPDATE CADASTRO=================================================================================*/
         public bool UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro, string cidade, string endereco, string uf,
             string celular, string descricao, string cep, string slogan, string nome_categoria) //FEITO
-
         {
             
             bool res = true;
             try        
             {
-                con.Open(); //ABRE CONEXÃO
+                //ABRE CONEXÃO
+                con.Open(); 
 
-                //CRIAÇÃO DE COMANDO
+                //comando para update na tabela de FORNECEDOR
                 SqlCommand query =
                     new SqlCommand("UPDATE fornecedor SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
                     "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone," +
@@ -627,7 +582,7 @@ namespace SupplierRanking.Models
 
                 if (nome_empresa.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) &&
                     (celular.Length == 15 || celular.Length == 0) && endereco.Length > 1 && bairro.Length > 1 &&
-                    cidade.Length > 1 && uf.Length == 2 && cep.Length == 9 && senha==confirmaSenha)
+                    cidade.Length > 1 && uf.Length == 2 && cep.Length == 9 && senha == confirmaSenha)
                 {
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     query.Parameters.AddWithValue("@nome_empresa", nome_empresa);
@@ -644,13 +599,14 @@ namespace SupplierRanking.Models
                     //query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
                     query.ExecuteNonQuery();
                 }
+
                 else
                 {
                     res = false;
-                }
-               
-               
+                }                          
             }
+
+            //tratamento de erro
             catch (Exception e)
             {
                 string exception = e.Message;
@@ -658,7 +614,7 @@ namespace SupplierRanking.Models
             }
 
             if (con.State == System.Data.ConnectionState.Open)
-                con.Close();
+                con.Close();//fecha a conexão
 
             return res;
         }
@@ -673,6 +629,8 @@ namespace SupplierRanking.Models
             try
             {
                 con.Open(); //ABRE CONEXÃO
+
+                //comando para selecionar o fornecedor apartir do cnpj
                 SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj", con);
                 query.Parameters.AddWithValue("@cnpj", cnpj);
                 SqlDataReader leitor = query.ExecuteReader();
@@ -698,6 +656,7 @@ namespace SupplierRanking.Models
                 }
 
             }
+            //tratamento de erro
             catch (Exception e)
             {
                 f = null;
