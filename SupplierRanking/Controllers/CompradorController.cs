@@ -88,9 +88,16 @@ namespace SupplierRanking.Controllers
             c.Celular       = celular;
 
             if (c.CadastroPessoaFisica())
+            {
                 ViewBag.Message = "Cadastro Realizado";
+                ViewBag.cssClass = "col-8 error-msg alert-danger text-center p-2 mt-3 mb-4";
+                return RedirectToAction("Login", "Login");
+            }
             else
+            {
                 ViewBag.Message = "Informações Inválidas";
+                ViewBag.cssClass = "col-8 error-msg alert-danger text-center p-2 mt-3 mb-4";
+            }
 
             return RedirectToAction("CadastroPessoaFisica");
         }
