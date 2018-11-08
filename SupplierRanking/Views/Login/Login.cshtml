@@ -1,7 +1,8 @@
-﻿@{ 
-     ViewBag.Title = "Login";
-     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
+
 
 <div class="row col-12 justify-content-center text-center mt-4">
     <h2>Login</h2>
@@ -112,14 +113,14 @@
         <input class="input" type="password" name="senha" placeholder="Senha">
     </div>
 
-    <input id="inputHidden" type="text" name="inputHidden" hidden>
+    <input id="inputHidden" type="text" name="inputHidden" >
 
 </form>
 
 <div class="row col-12 login-options justify-content-center p-5">
 
-     <span class="col-8 error-msg alert-danger text-center p-2 mt-3 mb-4 hide"> 
-        Preencha o(s) campo(s) corretamente! @ViewBag.Message
+     <span class="@ViewBag.cssClass"> 
+         @ViewBag.Message
      </span>
     
     <div class="col-6">

@@ -47,11 +47,20 @@
 
     @foreach (var item in Model)
     {
-        String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64);  /*PRECISA DISSO PRA FUNCIONAR A IMAGEM*/
         <tr>
-            <td>
-                <img src="@imagem64" height="100" width="100" />
-            </td>
+            @if (item.Imagem64 == "")
+            {
+                <td>
+                    <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 15px;"/>
+                </td>
+            }
+            else
+            {
+                String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                <td>
+                    <img src="@imagem64" height="100" width="100" style="border-radius: 15px;" />
+                </td>
+            }
             <td>
                 @item.Cnpj
             </td>

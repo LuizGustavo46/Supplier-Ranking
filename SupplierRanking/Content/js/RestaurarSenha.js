@@ -8,6 +8,7 @@ $(document).ready(function () {
         btnJuridica = $('.wrap-restaurar-senha #btnJuridica'),
         btnFuncionario = $('.wrap-restaurar-senha #btnFuncionario'),
        btnEnviarEmail = $('.wrap-restaurar-senha #btnEnviarEmail'),
+       btnConfirmaSenha = $('.wrap-restaurar-senha #btnConfirmaSenha'),
 
         switchFornecedor = $('.wrap-restaurar-senha #switchFornecedor'),
         switchJuridica = $('.wrap-restaurar-senha #switchJuridica'),
@@ -21,6 +22,9 @@ $(document).ready(function () {
         wrapInputCnpj = $('.wrap-restaurar-senha #inputCnpj').closest('.restaura-senha-form .wrap-input'),
         wrapInputFuncionario = $('.wrap-restaurar-senha #inputFuncionario').closest('.restaura-senha-form .wrap-input'),
         wrapInputEmail = $('.wrap-restaurar-senha #inputEmail'),
+        wrapInputSenha = $('.wrap-restaurar-senha #inputSenha'),
+        wrapInputConfirmaSenha = $('.wrap-restaurar-senha #inputConfirmaSenha').closet('.confirma-senha-btn .wrap-input'),
+
 
         inputHidden = $('.wrap-restaurar-senha #inputHidden'),
         formInputs = $('.wrap-restaurar-senha .restaura-senha-form input'),
@@ -293,6 +297,26 @@ $(document).ready(function () {
         }
     }
     
+    $('.restaura-senha-form-btn').on('click', function () {
+        //submitForm();
+        //console.log('foi');
+
+        $('.restaura-senha-form').submit();
+    });
+
+    function submitForm() {
+        if (!verificarInputsVazios()) {
+            $('.error-msg').removeClass('hide');
+
+
+        } else {
+            $('.error-msg').addClass('hide');
+            $('.restaura-senha-form').submit();
+        }
+    }
+
+
+
     /** Inicia assim que a pagina e carregada **/
     function init() {
         wrapInputCpf.addClass('hide');

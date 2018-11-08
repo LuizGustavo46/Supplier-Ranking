@@ -117,17 +117,17 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*=============================================================================EXCLUIR FUNCIONARIO================================================================================*/
-        [HttpPost]
-        public ActionResult ExcluirFuncionario(string nome, int codigo, string nomeDigitado, int codigoDigitado)
+      
+        public ActionResult ExcluirFuncionario(int codigo)
         {
         
             Fornecedor f = new Fornecedor();  //TRAVADO PELA HOME LOGADA
-            f.Nome = nome;
+       
             f.Codigo = codigo;
 
-            f.ExcluirFuncionario(nome, codigo, nomeDigitado, codigoDigitado);
+            f.ExcluirFuncionario(codigo);
 
-            return RedirectToAction("Listar");
+            return RedirectToAction("ListaFuncionario");
 
         }
         /*================================================================================================================================================================================*/
@@ -153,13 +153,21 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================PESQUISA FUNCIONARIO==============================================================================*/
-        public ActionResult listaFuncionario() //TRAVADO PELA HOME LOGADA
+        public ActionResult ListaFuncionario() //TRAVADO PELA HOME LOGADA
         { 
             //nome da action result / nome do model /  nome do metodo
-            return View("listaFuncionario", Fornecedor.ListaFuncionario());
+            return View("ListaFuncionario", Fornecedor.ListaFuncionario());
         }
+        /*================================================================================================================================================================================*/
 
+        /*==============================================================================PESQUISA FUNCIONARIO==============================================================================*/
        
+            //CASO PRECISE ESTA FUNCIONANDO SÓ CRIAR A VIEW
+        /* public ActionResult listaFornecedor() //TRAVADO PELA HOME LOGADA
+        {
+            //nome da action result / nome do model /  nome do metodo
+            return View("listaFornecedor", Fornecedor.ListaFornecedor());
+        }*/
 
         /*================================================================================================================================================================================*/
 
@@ -186,7 +194,9 @@ namespace SupplierRanking.Controllers
                
                 return View();
         }
+        /*================================================================================================================================================================================*/
 
+        /*================================================================================RESTAURAR SENHA=================================================================================*/
         public ActionResult RestaurarSenha()  
         {
             return View();
@@ -215,7 +225,7 @@ namespace SupplierRanking.Controllers
         public ActionResult UpdateFornecedor(string cnpj) //FEITO
         {
             
-            Fornecedor c = Fornecedor.PesquisaUpdateFornecedor(/*cnpj*/"45.997.418/0001-53");
+            Fornecedor c = Fornecedor.Perfil(/*cnpj*/"45.997.418/0001-53");
 
             if (c == null)
             {
@@ -286,9 +296,9 @@ namespace SupplierRanking.Controllers
         /*==============================================================================================================================================================================*/
 
 
-        public ActionResult UpdateFuncionarioFornecedor(/*int codigo*/)
+        public ActionResult UpdateFuncionarioFornecedor(/*int codigo*/)  //FEITO
         {
-            Fornecedor upFun = Fornecedor.PerfilFuncionario(/*codigo*/2);
+            Fornecedor upFun = Fornecedor.PerfilFuncionario(/*codigo*/3);
 
             if (upFun == null)
             {

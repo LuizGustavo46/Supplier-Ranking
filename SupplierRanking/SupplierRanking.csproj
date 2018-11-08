@@ -145,7 +145,13 @@
     <Content Include="Content\images\contato.jpg" />
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\ExperimenteAgora.jpg" />
+    <Content Include="Content\images\fornecedor.png" />
     <Content Include="Content\images\fornecedorIcon.png" />
+    <Content Include="Content\images\fotopadrao.jpg" />
+    <Content Include="Content\images\icone sem foto.png" />
+    <Content Include="Content\images\icone-empresa.png" />
+    <Content Include="Content\images\iconecor.png" />
+    <Content Include="Content\images\photo.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\servicos.png" />
@@ -493,21 +499,21 @@
     <Content Include="Views\Comprador\UpdatePessoaFisica.cshtml" />
     <Content Include="Views\Comprador\UpdatePessoaJuridica.cshtml" />
     <Content Include="Views\Comprador\UpdateSenha.cshtml" />
-    <Content Include="Views\config\css\.DS_Store" />
-    <Content Include="Views\config\fonts\.DS_Store" />
-    <Content Include="Views\Login\Update.cshtml" />
-    <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
-    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Avaliacao\RankingGeral.cshtml" />
     <Content Include="Views\Avaliacao\RankingLista.cshtml" />
+    <Content Include="Views\config\css\.DS_Store" />
+    <Content Include="Views\config\fonts\.DS_Store" />
     <Content Include="Views\Fornecedor\CadastroFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\CadastroFuncionario.cshtml" />
     <Content Include="Views\Fornecedor\EnviarEmail.cshtml" />
-    <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
     <Content Include="Views\Fornecedor\RestaurarSenha.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\UpdateSenha.cshtml" />
+    <Content Include="Views\Login\Update.cshtml" />
+    <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -518,8 +524,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Views\Categorias\" />
     <Folder Include="Views\conteudo\js\" />
     <Folder Include="Views\conteudo\scss\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

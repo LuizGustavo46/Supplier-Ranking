@@ -1,36 +1,77 @@
 ﻿
-@model SupplierRanking.Models.Fornecedor
+
 @{
     ViewBag.Title = "RestaurarSenha";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
-<div class="container-login100">
-    <div class="wrap-login100" style="background-color: white;">
-        <h2>Cadastro Fornecedor</h2>
-        <form action="../Fornecedor/RestaurarSenha" method="post" class="login100-form validate-form" enctype="multipart/form-data">
+<div  class="container-restaura-senha">
+    <div  class="wrap-restaurar-senha" style="background-color: white;">
+        <h2 style="margin-left: 264px;">Restaurar Senha</h2>
+       
+        <br /> 
+        <br />
+
+        <form action="../Fornecedor/RestaurarSenha" method="post" class="login100-form validate-form" enctype="multipart/form-data" style="margin-left: 143px;">
 
             <!--- Campos digitar nova senha -->
-            <div id="">
-                <label for="imagem" style="border: 1px solid; background-color: gainsboro; padding: .5em; font-size: 12px; cursor: pointer;">Imagem de Perfil</label>
-                <input type="file" accept="image/*" id="imagem" name="imagem" style="display: none">
 
-             
-                <br /> <br />
-                <input type="text" name="cnpj" placeholder="CNPJ">
+            <!--- CNPJ --->
+            <div id="inputCnpj" class="col-10 wrap-input pl-2">
+                <input class="input" type="text" maxlength="19" name="cnpj" placeholder="CNPJ" data-mask="00.000.000/0000-00" data-mask-sectionFocus="true">
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+               
+            </div>
+          
+            <div id="inputSenha" class="col-10 wrap-input pl-2  mt-3">
+                <input class="input" type="password" name="senha" placeholder="Senha">
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
+            </div>
+            
+            
+            
+              <!---Confirmar Senha---->
+            <div id="inputConfirmaSenha" class="col-10 wrap-input pl-2">
+                <input class="input" type="password"  name="confirmarSenha" placeholder="Confirmar Senha"  >
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
                 
-                <input type="text" name="senha" placeholder="Senha">
-                <input type="text" name="confirmarSenha" placeholder="Confirmar Senha">
-
-           
-              
-
-                <br /> <br />
-
             </div>
 
-            <br /> <br />
-            <button id="btnCadastrar">Confirmar</button>
+
+           
+
+            <br /> 
+            <br />
+
+            <div class="col-6">
+                <!--- Esquci minha Senha --->
+                <div class="text-left">
+                    <a class="sub-link" href="/Login/Login">
+                        Login
+                    </a>
+                </div>
+
+              
+            </div>
+
+
+
+
+            <div class=" col-6 d-flex justify-content-end align-items-center pl-0 pr-4">
+                <button id="btnConfirmaSenha" type="submit" class="confirma-senha-btn  ">
+                    Confirmar
+                </button>
+            </div>
+           
         </form>
     </div>
 </div>
