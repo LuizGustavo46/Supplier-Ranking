@@ -159,8 +159,9 @@
     <Content Include="Content\images\Slide2.jpg" />
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
-    <Content Include="Content\js\cadastro-pessoas.js" />
-    <Content Include="Content\js\cadastro.js" />
+    <Content Include="Content\js\cadastro-pessoa-fisica.js" />
+    <Content Include="Content\js\cadastro-geral.js" />
+    <Content Include="Content\js\cadastro-pessoa-juridica.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\config\js\owl.carousel.min.js" />
     <Content Include="Content\config\js\popper.min.js" />

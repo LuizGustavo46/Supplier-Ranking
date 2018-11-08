@@ -130,8 +130,8 @@ namespace SupplierRanking.Controllers
 
         public ActionResult CadastroPessoaJuridica()
         {
-            //Comprador c = Comprador.TelaCadastroComprador();
-            //return View(c);
+            Categorias c = new Categorias();
+            ViewBag.ListaCategorias = c.ListaCategorias();
             return View();
         }
 
