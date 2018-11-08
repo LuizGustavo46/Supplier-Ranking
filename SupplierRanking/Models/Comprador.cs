@@ -158,53 +158,42 @@ namespace SupplierRanking.Models
                 con.Open(); //ABRE CONEXÃO
                 //COMANDO PARA TESTAR SE JA EXISTE O CNPJ CADASTRADO
                 SqlCommand query =
-                    new SqlCommand("SELECT cnpj FROM comprador WHERE cnpj = @cnpj)", con);
+                    new SqlCommand("SELECT cnpj, email FROM comprador WHERE cnpj = @cnpj OR email = @email;", con);
                 query.Parameters.AddWithValue("@cnpj", cnpj);
+                query.Parameters.AddWithValue("@email", email);
                 SqlDataReader leitor = query.ExecuteReader();
 
                 if (!leitor.Read())
                 {
-                    //COMANDO PARA TESTAR SE JA EXISTE O EMAIL CADASTRADO
-                    SqlCommand queryEmail =
-                        new SqlCommand("SELECT email FROM comprador WHERE email = @email)", con);
-                    query.Parameters.AddWithValue("@cpf", email);
-                    SqlDataReader leitorEmail = queryEmail.ExecuteReader();
-
-                    if (!leitorEmail.Read())
-                    {
-                         //CRIAÇÃO DE COMANDO
-                         SqlCommand queryInsert =
-                            new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
-                            "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@telefone,@celular)",
-                                con);
+                    leitor.Close();
+                    //CRIAÇÃO DE COMANDO
+                    SqlCommand queryInsert =
+                        new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
+                        "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@telefone,@celular)", con);
                         //CONDIÇÃO PARA EFETUAR O CADASTRO
-                        if (cnpj.Length == 19 && senha.Length >= 5 && nome_empresa.Length >= 1 && email.Length >= 4 &&
-                            cep.Length == 9 && (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 ||
-                            celular.Length == 0) && uf.Length == 2 && endereco.Length > 1 && bairro.Length > 1 && cidade.Length > 1)
-                        {
-                            //ADICIONA OS PARÂMETROS --- NÃO PRECISA PASSAR O CAMPO CODIGO, ELE GERA AUTOMATICAMENTE NO BANCO
-                            queryInsert.Parameters.AddWithValue("@cpf",           cpf);
-                            queryInsert.Parameters.AddWithValue("@nome",          nome);
-                            queryInsert.Parameters.AddWithValue("@sobrenome",     sobrenome);
-                            queryInsert.Parameters.AddWithValue("@email",         email);
-                            queryInsert.Parameters.AddWithValue("@senha",         senha);
-                            queryInsert.Parameters.AddWithValue("@tipo_pessoa",   tipo_pessoa);
-                            queryInsert.Parameters.AddWithValue("@cnpj",          cnpj);
-                            queryInsert.Parameters.AddWithValue("@nome_empresa",  nome_empresa);
-                            queryInsert.Parameters.AddWithValue("endereco",       endereco);
-                            queryInsert.Parameters.AddWithValue("@bairro",        bairro);
-                            queryInsert.Parameters.AddWithValue("@cidade",        cidade);
-                            queryInsert.Parameters.AddWithValue("@uf",            uf);
-                            queryInsert.Parameters.AddWithValue("@cep",           cep);
-                            queryInsert.Parameters.AddWithValue("@telefone",      telefone);
-                            queryInsert.Parameters.AddWithValue("@celular",       celular);
-                            queryInsert.ExecuteNonQuery();
-
-                        }else{ res = false; }
-                    }else { res = false; }
+                    if (cnpj.Length == 18 && senha.Length >= 5 && nome_empresa.Length >= 1 && email.Length >= 4 &&
+                        (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0) && uf.Length == 2 )
+                    {
+                        //ADICIONA OS PARÂMETROS --- NÃO PRECISA PASSAR O CAMPO CODIGO, ELE GERA AUTOMATICAMENTE NO BANCO
+                        queryInsert.Parameters.AddWithValue("@cpf",           cpf);
+                        queryInsert.Parameters.AddWithValue("@nome",          nome);
+                        queryInsert.Parameters.AddWithValue("@sobrenome",     sobrenome);
+                        queryInsert.Parameters.AddWithValue("@email",         email);
+                        queryInsert.Parameters.AddWithValue("@senha",         senha);
+                        queryInsert.Parameters.AddWithValue("@tipo_pessoa",   tipo_pessoa);
+                        queryInsert.Parameters.AddWithValue("@cnpj",          cnpj);
+                        queryInsert.Parameters.AddWithValue("@nome_empresa",  nome_empresa);
+                        queryInsert.Parameters.AddWithValue("endereco",       endereco);
+                        queryInsert.Parameters.AddWithValue("@bairro",        bairro);
+                        queryInsert.Parameters.AddWithValue("@cidade",        cidade);
+                        queryInsert.Parameters.AddWithValue("@uf",            uf);
+                        queryInsert.Parameters.AddWithValue("@cep",           cep);
+                        queryInsert.Parameters.AddWithValue("@telefone",      telefone);
+                        queryInsert.Parameters.AddWithValue("@celular",       celular);
+                        queryInsert.ExecuteNonQuery();
+                    }else{ res = false; }
                 }else { res = false; }
-
-            }catch (Exception ex) { res = false; }
+            } catch (Exception ex) { res = false; }
 
             if (con.State == ConnectionState.Open)
                 con.Close(); //FECHA CONEXÃO
