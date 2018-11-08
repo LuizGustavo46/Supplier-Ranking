@@ -37,7 +37,7 @@ namespace SupplierRanking.Controllers
                 {
                     Session["User"] = cf;
                     ViewBag.Message = "Bem-vindo";
-                    return RedirectToAction("UpdatePessoaFisica", "Comprador");
+                    return RedirectToAction("Index", "Home");
                 }
 
                 else
