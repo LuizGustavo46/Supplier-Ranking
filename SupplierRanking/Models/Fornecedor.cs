@@ -313,22 +313,40 @@ namespace SupplierRanking.Models
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ RESTAURAR SENHA ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public Boolean RestaurarSenha(string cnpj) //FEITO
+        public bool RestaurarSenha(string cnpj, string email) //FEITO
         {
             bool res = false;
             try
             {
                 con.Open(); // abre conexão
-                SqlCommand query =
-                        new SqlCommand("SELECT email FROM fornecedor WHERE  cnpj = @cnpj", con);
+
+                if (cnpj != "")
+                {
+                    SqlCommand query =
+                            new SqlCommand("SELECT email FROM fornecedor WHERE  cnpj = @cnpj", con);
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     SqlDataReader leitor = query.ExecuteReader();
 
-                while (leitor.Read())
-                {
-                    email = leitor["email"].ToString();
+                    while (leitor.Read())
+                    {
+                        email = leitor["email"].ToString();
+                    }
+
                 }
-                    //CONFIGURANDO A MENSAGEM
+                else if (email != "")
+                {
+                    SqlCommand query =
+                                 new SqlCommand("SELECT email FROM fornecedor WHERE  email = @email", con);
+                    query.Parameters.AddWithValue("@email", email);
+                    SqlDataReader leitor = query.ExecuteReader();
+
+                    while (leitor.Read())
+                    {
+                        email = leitor["email"].ToString();
+                    }
+                }
+
+                   //CONFIGURANDO A MENSAGEM
                     MailMessage mail = new MailMessage();
                     //ORIGEM
                     mail.From = new MailAddress("marcelolemos7@outlook.com");//supplierranking@hotmail.com
@@ -348,7 +366,7 @@ namespace SupplierRanking.Models
                     //HABILITAR O TLS
                     smtpServer.EnableSsl = true;
                     //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking@hotmail.com", "SEnai12344");
+                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking3@hotmail.com", "SEnai12344");
                     //ENVIAR
                     smtpServer.Send(mail);
               

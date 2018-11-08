@@ -202,7 +202,7 @@ $(document).ready(function () {
 
     /** Troca entre Fornecedor e Comprador **/
     function switchCompradorFornecedor(input) {
-        $('.restaura-senha-form').addClass('hide');
+      
 
         if ($(input).is(':checked')) { //Seleciona o Fornecedor
             mostrarComprador(false);
@@ -278,24 +278,6 @@ $(document).ready(function () {
     //    }
     //}
 
-
-    $('.restaura-senha-form-btn').on('click', function () {
-        //submitForm();
-        //console.log('foi');
-
-        $('.restaura-senha-form').submit();
-    });
-
-    function submitForm() {
-        if (!verificarInputsVazios()) {
-            $('.error-msg').removeClass('hide');
-
-            
-        } else {
-            $('.error-msg').addClass('hide');
-            $('.restaura-senha-form').submit();   
-        }
-    }
     
     $('.restaura-senha-form-btn').on('click', function () {
         //submitForm();
@@ -322,6 +304,7 @@ $(document).ready(function () {
         wrapInputCpf.addClass('hide');
         wrapInputCnpj.addClass('hide');
         wrapInputFuncionario.addClass('hide');
+        $('.restaura-senha-form').addClass('hide');
     }
 
     init();
