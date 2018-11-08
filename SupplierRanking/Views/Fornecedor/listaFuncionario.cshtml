@@ -7,26 +7,26 @@
 <h2>listaFuncionario</h2>
 
 <p>
-    @Html.ActionLink("listaFuncionario", "Fornecedor")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         
         <th>
-           CODIGO
+            @Html.DisplayNameFor(model => model.Codigo)
         </th>
         <th>
-           NOME
+            @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
-           SENHA
+            @Html.DisplayNameFor(model => model.Cnpj_fornecedor)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-      
+       
         <td>
             @Html.DisplayFor(modelItem => item.Codigo)
         </td>
@@ -34,9 +34,13 @@
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Senha)
+            @Html.DisplayFor(modelItem => item.Cnpj_fornecedor)
         </td>
-       
+        <td>
+            @Html.ActionLink("Edit", "UpdateFuncionarioFornecedor", new {  item.Codigo }) |
+            @Html.ActionLink("Details", "Details", new {  item.Codigo }) |
+            @Html.ActionLink("Delete", "ExcluirFuncionario", new {  item.Codigo })
+        </td>
     </tr>
 }
 
