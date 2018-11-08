@@ -22,6 +22,7 @@ $(document).ready(function () {
         wrapInputFuncionario = $('.wrap-login #inputFuncionario').closest('.login-form .wrap-input'),
 
         inputHidden = $('.wrap-login #inputHidden'),
+        formLogin = $('.wrap-login .login-form'),
         formInputs = $('.wrap-login .login-form input').not('#inputHidden'),
         activeformInputs;
 
@@ -87,10 +88,9 @@ $(document).ready(function () {
     });
 
     /** Botão Login **/
-    $('.login-form-btn').on('click', function () {
-        $('.login-form').submit();
+    btnLogin.on('click', function () {
+       formLogin.submit();
     });
-
 
 /********************* *********************  FUNÇÕES ********************* *********************/
 
