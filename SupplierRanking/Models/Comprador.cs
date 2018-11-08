@@ -11,7 +11,7 @@ namespace SupplierRanking.Models
     public class Comprador
     {
         private static SqlConnection con =
-                new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
+            new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
         //CAMPOS DO BANCO DE DADOS (TODOS OS DADOS DE CADASTRO)
         private int codigo;
         private string cpf;
@@ -50,7 +50,9 @@ namespace SupplierRanking.Models
         public string Telefone          { get { return telefone; }        set { telefone = value; }}
         public string Celular           { get { return celular; }         set { celular = value; }}
 
-        /******************************************************** LOGIN PESSOA FISICA ***********************************************************/
+        public object ViewBag { get; private set; }
+
+        /******************************************************** LOGIN PESSOA FISICA ***********************************************/
 
         public bool LoginPessoaFisica()
         {
@@ -72,7 +74,7 @@ namespace SupplierRanking.Models
             return res; //RETORNA TRUE OR FALSE
         }
 
-        /********************************************************** LOGIN PESSOA JURIDICA **********************************************************/
+        /********************************************************** LOGIN PESSOA JURIDICA ******************************************/
 
         public bool LoginPessoaJuridica()
         {
@@ -94,7 +96,7 @@ namespace SupplierRanking.Models
             return res; //RETORNA TRUE OR FALSE
         }
 
-        /********************************************************** CADASTRO PESSOA FISICCA **********************************************************/
+        /***************************************************** CADASTRO PESSOA FISICCA ******************************************/
 
         public bool CadastroPessoaFisica()
         {
@@ -122,9 +124,9 @@ namespace SupplierRanking.Models
                         SqlCommand queryInsert =
                         new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
                         "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@telefone,@celular)", con);
-                
+                        //CONDIÇÃO PARA EFETUAR O CADASTRO
                         if (cpf.Length == 14 && senha.Length >= 5 && nome.Length >= 3 && email.Length >= 8 &&
-                        (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0)) //CONDIÇÃO PARA EFETUAR O CADASTRO
+                        (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0)) 
                         {
                             //ADICIONA OS PARÂMETROS --- NÃO PRECISA PASSAR O CAMPO CODIGO, ELE GERA AUTOMATICAMENTE NO BANCO
                             queryInsert.Parameters.AddWithValue("@cpf",             cpf);
@@ -155,7 +157,7 @@ namespace SupplierRanking.Models
             return res; //RETORNA RESPOSTA DE CONFIRMAÇÃO
         }
     
-        /******************************************************* CADASTRO PESSOA JURIDICA *******************************************************/
+        /******************************************************* CADASTRO PESSOA JURIDICA *******************************************/
 
         public bool CadastroPessoaJuridica()
         {
@@ -184,9 +186,10 @@ namespace SupplierRanking.Models
                             new SqlCommand("INSERT INTO comprador VALUES (@cpf,@nome,@sobrenome,@email,@senha,@tipo_pessoa," +
                             "@cnpj,@nome_empresa,@endereco,@bairro,@cidade,@uf,@cep,@telefone,@celular)",
                                 con);
-                        if (cnpj.Length == 19 && senha.Length >= 5 && nome_empresa.Length >= 1 && email.Length >= 4 && cep.Length == 9 &&
-                            (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 || celular.Length == 0) && uf.Length == 2 &&
-                            endereco.Length > 1 && bairro.Length > 1 && cidade.Length > 1) //CONDIÇÃO PARA EFETUAR O CADASTRO
+                        //CONDIÇÃO PARA EFETUAR O CADASTRO
+                        if (cnpj.Length == 19 && senha.Length >= 5 && nome_empresa.Length >= 1 && email.Length >= 4 &&
+                            cep.Length == 9 && (telefone.Length == 14 || telefone.Length == 0) && (celular.Length == 15 ||
+                            celular.Length == 0) && uf.Length == 2 && endereco.Length > 1 && bairro.Length > 1 && cidade.Length > 1)
                         {
                             //ADICIONA OS PARÂMETROS --- NÃO PRECISA PASSAR O CAMPO CODIGO, ELE GERA AUTOMATICAMENTE NO BANCO
                             queryInsert.Parameters.AddWithValue("@cpf",           cpf);
@@ -217,7 +220,46 @@ namespace SupplierRanking.Models
             return res; //RETORNA RESPOSTA DE CONFIRMAÇÃO
         }
 
-        /********************************************************** BUSCA PESSOA **********************************************************/
+        /***************************************** CADASTRAR CATEGORIAS DE INTERESSE ********************************************/
+        public bool CadastrarInteresses(string cpf, string cnpj, string categorias/*, List<Categorias> listaCaterogias*/)
+        {
+            try
+            {
+                con.Open();
+                if (cpf != "")
+                {
+                    SqlCommand query =
+                        new SqlCommand("SELECT codigo FROM comprador WHERE cpf = @cpf;", con);
+                    query.Parameters.AddWithValue("@cpf", cpf);
+                    SqlDataReader leitor = query.ExecuteReader();
+
+                    if (leitor.Read())           
+                        codigo = int.Parse(leitor["codigo"].ToString());              
+                }
+                else if(cnpj != "")
+                {
+                    SqlCommand query =
+                        new SqlCommand("SELECT codigo FROM comprador WHERE cnpj = @cnpj;", con);
+                    SqlDataReader leitor = query.ExecuteReader();
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    if (leitor.Read())
+                        codigo = int.Parse(leitor["codigo"].ToString());         
+                }
+
+                SqlCommand queryInsert =
+                    new SqlCommand("INSERT INTO categorias_comprador (@codigo_comprador,@nome_categorias);", con);
+                queryInsert.Parameters.AddWithValue("@codigo_comprador", codigo);
+                queryInsert.Parameters.AddWithValue("@nome_categorias", categorias);
+                queryInsert.ExecuteNonQuery();
+
+            } catch (Exception ex) { return false; }
+
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+            return true;
+        }
+
+        /********************************************************** BUSCA PESSOA ************************************************/
 
         public static Comprador BuscaPessoa(int codigo) //BUSCAR USUARIO PARA MOSTRAR NA PAGINA DE UPDATE
         {
@@ -256,7 +298,7 @@ namespace SupplierRanking.Models
             return bp;
         }
 
-        /******************************************************** UPDATE PESSOA FISICA ********************************************************/
+        /******************************************************** UPDATE PESSOA FISICA **********************************************/
 
         internal bool UpdatePessoaFisica()
         {
@@ -288,7 +330,7 @@ namespace SupplierRanking.Models
             return res;
         }
 
-        /******************************************************** UPDATE PESSOA JURIDICA ********************************************************/
+        /******************************************************** UPDATE PESSOA JURIDICA ********************************************/
 
         internal bool UpdatePessoaJuridica()
         {
@@ -326,7 +368,7 @@ namespace SupplierRanking.Models
             return res;
         }
 
-        /******************************************************** EXCLUIR CONTA ********************************************************/    
+        /******************************************************** EXCLUIR CONTA **************************************************/    
         
         public bool ExcluirConta(int codigo, string senha) //(COMPRADOR EXCLUIR SUA PRÓPRIA CONTA) - FALTA TESTAR
         {
@@ -348,7 +390,7 @@ namespace SupplierRanking.Models
             return true;
         }
 
-        /******************************************************** UPDATE SENHA ********************************************************/
+        /******************************************************** UPDATE SENHA ***************************************************/
 
         public bool UpdateSenha(string senhaAntiga, string senhaNova, string confirmaSenhaNova) //ALTERAR SENHA
         {
@@ -368,8 +410,9 @@ namespace SupplierRanking.Models
                 }
 
                 //SE O COMPRADOR QUISER APENAS TROCAR A SENHA (UPDATE SENHA)
-                if (senhaAntiga == senhaUsada && senhaNova == confirmaSenhaNova && senhaNova != senhaAntiga) //CONDIÇÃO PARA EFETUAR O UPDATE SENHA
-                {
+                //CONDIÇÃO PARA EFETUAR O UPDATE SENHA
+                if (senhaAntiga == senhaUsada && senhaNova == confirmaSenhaNova && senhaNova != senhaAntiga)
+                {   
                     SqlCommand querySenha =
                     new SqlCommand("UPDATE comprador SET senha = @senha WHERE codigo = @codigo", con);
                     querySenha.Parameters.AddWithValue("@senha", senhaNova);
@@ -383,7 +426,7 @@ namespace SupplierRanking.Models
                     SqlCommand querySenha =
                     new SqlCommand("UPDATE comprador SET senha = @senha WHERE codigo = @codigo", con);
                     querySenha.Parameters.AddWithValue("@senha", senhaNova);
-                    querySenha.Parameters.AddWithValue("@codigo", codigoEmail);
+                    querySenha.Parameters.AddWithValue("@codigo", codigo);
                     querySenha.ExecuteNonQuery(); //EXECUTE
                 }
 
@@ -394,12 +437,10 @@ namespace SupplierRanking.Models
             return true; 
         }
 
-        /******************************************************* RESTAURAR SENHA *******************************************************/
+        /******************************************************* RESTAURAR SENHA **************************************************/
 
-        public bool RestaurarSenha(string cnpj, string cpf) //RESTAURAR (ESQUECEU SUA SENHA
+        public bool RestaurarSenha(string cnpj, string cpf, string email) //RESTAURAR (ESQUECEU SUA SENHA
         {
-            string email = "";
-
             try
             {
                 con.Open(); //ABRE CONEXÃO
@@ -428,6 +469,18 @@ namespace SupplierRanking.Models
                         codigo  =   int.Parse(leitor["codigo"].ToString());
                     }
                 }
+                else if(email != "") //SE O CPF E O CNPJ NÃO FOREM DIGITADOS, SERÁ O PRÓPRIO EMAIL
+                {
+                    SqlCommand query =
+                        new SqlCommand("SELECT email, codigo FROM comprador WHERE email = @email", con);
+                    query.Parameters.AddWithValue("@email", email);
+                    SqlDataReader leitor = query.ExecuteReader();
+                    while (leitor.Read())
+                    {
+                        email = leitor["email"].ToString();
+                        codigo = int.Parse(leitor["codigo"].ToString());
+                    }
+                }
 
                 //CONFIGURANDO A MENSAGEM
                 MailMessage mail = new MailMessage();
@@ -438,7 +491,8 @@ namespace SupplierRanking.Models
                 //ASSUNTO
                 mail.Subject = "REDEFINIÇÃO DE SENHA - Supplier Ranking";
                 //CORPO DO E-MAIL
-                mail.Body = "Clique aqui para redefinir sua senha:\n http://localhost:16962/Comprador/UpdateSenha";
+                mail.Body = "USER ID: " + codigo + "\nClique aqui para redefinir sua senha:\n" +
+                                                    "http://localhost:16962/Comprador/NovaSenha";
                 //CONFIGURAR O SMTP
                 SmtpClient smtpServer = new SmtpClient("smtp.live.com");
                 //CONFIGURAR PORTA

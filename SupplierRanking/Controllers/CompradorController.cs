@@ -212,11 +212,17 @@ namespace SupplierRanking.Controllers
         public ActionResult UpdateSenha(/*int codigo ,*/string senhaAntiga, string senhaNova, string confirmaSenhaNova)
         {
             Comprador c = new Comprador();
-            c.Codigo = /*codigo*/2;
-            if(c.UpdateSenha(senhaAntiga, senhaNova, confirmaSenhaNova))
+            c.Codigo = /*codigo*/1;
+            if (c.UpdateSenha(senhaAntiga, senhaNova, confirmaSenhaNova))
+            {
                 TempData["Msg"] = "Senha Alterada";
+                return RedirectToAction("Login", "Login");
+            }
             else
+            {
                 TempData["Msg"] = "Senhas não correspondem";
+                return RedirectToAction("");
+            }
 
             return RedirectToAction("UpdateSenha");
         }
@@ -227,10 +233,10 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult RestaurarSenha(string cnpj, string cpf)
+        public ActionResult RestaurarSenha(string cnpj, string cpf, string email)
         {
             Comprador c = new Comprador();
-            if(c.RestaurarSenha(cnpj, cpf))
+            if(c.RestaurarSenha(cnpj, cpf, email))
                 TempData["Msg"] = "Confirmação enviada para o e-mail cadastrado";
             else
                 TempData["Msg"] = "Informação Inválida";
