@@ -43,7 +43,7 @@ namespace SupplierRanking.Models
         public string Cnpj              { get { return cnpj; }            set { cnpj = value; }}
         public string Nome_empresa      { get { return nome_empresa; }    set { nome_empresa = value; }}
         public string Endereco          { get { return endereco; }        set { endereco = value; }}
-        public string Bairro            {get { return bairro; }           set { bairro = value; }}
+        public string Bairro            {get  { return bairro; }           set { bairro = value; }}
         public string Cidade            { get { return cidade; }          set { cidade = value; }}
         public string Uf                { get { return uf; }              set { uf = value; }}
         public string Cep               { get { return cep; }             set { cep = value; }}
