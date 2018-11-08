@@ -2,27 +2,32 @@
 $(document).ready(function () {
     'use strict';
 
-    var btnComprador = $('.wrap-login #btnComprador'),
-        btnFornecedor = $('.wrap-login #btnFornecedor'),
-        btnFisica = $('.wrap-login #btnFisica'),
-        btnJuridica = $('.wrap-login #btnJuridica'),
-        btnFuncionario = $('.wrap-login #btnFuncionario'),
+    var btnComprador = $('.wrap-restaurar-senha #btnComprador'),
+        btnFornecedor = $('.wrap-restaurar-senha #btnFornecedor'),
+        btnFisica = $('.wrap-restaurar-senha #btnFisica'),
+        btnJuridica = $('.wrap-restaurar-senha #btnJuridica'),
+        btnFuncionario = $('.wrap-restaurar-senha #btnFuncionario'),
+       btnEnviarEmail = $('.wrap-restaurar-senha #btnEnviarEmail'),
+       btnConfirmaSenha = $('.wrap-restaurar-senha #btnConfirmaSenha'),
 
-        switchFornecedor = $('.wrap-login #switchFornecedor'),
-        switchJuridica = $('.wrap-login #switchJuridica'),
-        switchFuncionario = $('.wrap-login #switchFuncionario'),
+        switchFornecedor = $('.wrap-restaurar-senha #switchFornecedor'),
+        switchJuridica = $('.wrap-restaurar-senha #switchJuridica'),
+        switchFuncionario = $('.wrap-restaurar-senha #switchFuncionario'),
 
-        sliderFornecedorComprador = $('.wrap-login .slider-fornecedor'),
-        sliderFisicaJuridica = $('.wrap-login .slider-juridica'),
-        sliderFuncionario = $('.wrap-login .slider-funcionario'),
+        sliderFornecedorComprador = $('.wrap-restaurar-senha .slider-fornecedor'),
+        sliderFisicaJuridica = $('.wrap-restaurar-senha .slider-juridica'),
+        sliderFuncionario = $('.wrap-restaurar-senha .slider-funcionario'),
 
-        wrapInputCpf = $('.wrap-login #inputCpf').closest('.login-form .wrap-input'),
-        wrapInputCnpj = $('.wrap-login #inputCnpj').closest('.login-form .wrap-input'),
-        wrapInputFuncionario = $('.wrap-login #inputFuncionario').closest('.login-form .wrap-input'),
-        wrapInputEmail = $('.wrap-login #inputEmail'),
+        wrapInputCpf = $('.wrap-restaurar-senha #inputCpf').closest('.restaura-senha-form .wrap-input'),
+        wrapInputCnpj = $('.wrap-restaurar-senha #inputCnpj').closest('.restaura-senha-form .wrap-input'),
+        wrapInputFuncionario = $('.wrap-restaurar-senha #inputFuncionario').closest('.restaura-senha-form .wrap-input'),
+        wrapInputEmail = $('.wrap-restaurar-senha #inputEmail'),
+        wrapInputSenha = $('.wrap-restaurar-senha #inputSenha'),
+        wrapInputConfirmaSenha = $('.wrap-restaurar-senha #inputConfirmaSenha').closet('.confirma-senha-btn .wrap-input'),
 
-        inputHidden = $('.wrap-login #inputHidden'),
-        formInputs = $('.wrap-login .login-form input'),
+
+        inputHidden = $('.wrap-restaurar-senha #inputHidden'),
+        formInputs = $('.wrap-restaurar-senha .restaura-senha-form input'),
         activeformInputs;
          
 
@@ -157,7 +162,7 @@ $(document).ready(function () {
             wrapInputCpf.addClass('hide');
             wrapInputCnpj.removeClass('hide');
             $('#wrapperFuncionario').removeClass('hide');
-            $('.login-form').removeClass('hide');
+            $('.restaura-senha-form').removeClass('hide');
             wrapInputEmail.removeClass('hide');
 
             inputHidden.val('2');
@@ -179,7 +184,7 @@ $(document).ready(function () {
             switchFuncionario.prop('checked', true);
             wrapInputFuncionario.removeClass('hide');
             wrapInputEmail.addClass('hide');
-            $('.wrap-login').addClass('has-employee');
+            $('.wrap-restaurar-senha').addClass('has-employee');
             $('#wrapperFuncionario').removeClass('hide');
 
             inputHidden.val('3');
@@ -190,14 +195,14 @@ $(document).ready(function () {
         btnFuncionario.removeClass('active-switch');
         switchFuncionario.prop('checked', false);
         wrapInputFuncionario.addClass('hide');
-        $('.wrap-login').removeClass('has-employee');
+        $('.wrap-restaurar-senha').removeClass('has-employee');
 
         inputHidden.val('2');
     }
 
     /** Troca entre Fornecedor e Comprador **/
     function switchCompradorFornecedor(input) {
-        $('.login-form').addClass('hide');
+        $('.restaura-senha-form').addClass('hide');
 
         if ($(input).is(':checked')) { //Seleciona o Fornecedor
             mostrarComprador(false);
@@ -230,7 +235,7 @@ $(document).ready(function () {
         formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
-        $('.login-form').removeClass('hide');
+        $('.restaura-senha-form').removeClass('hide');
     }
 
     /** Mostra/esconder o Funcionário **/
@@ -246,15 +251,15 @@ $(document).ready(function () {
         formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
-        $('.login-form').removeClass('hide');
+        $('.restaura-senha-form').removeClass('hide');
     }
 
-    /** Verifica todos os inputs visíveis **/
+    ///** Verifica todos os inputs visíveis **/
     //function verificaInputsVisiveis() {
-    //    return $('.login-form .wrap-input').not('.hide').find('input');
+    //    return $('restaura-senha-form .wrap-input').not('.hide').find('input');
     //}
 
-    /** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
+    ///** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
     //function verificarInputsVazios() {
     //    var isEmpty = false;
 
@@ -267,16 +272,18 @@ $(document).ready(function () {
     //    });
 
     //    if (isEmpty) { // Habilita/desabilita o Botão Entrar
-    //        //$('.login-form-btn').attr('disabled', 'disabled').addClass('disabled');
+    //        $('restaura-senha-form-btn').attr('disabled', 'disabled').addClass('disabled');
     //    } else {
-    //        $('.login-form-btn').removeAttr('disabled').removeClass('disabled');
+    //        $('restaura-senha-form-btn').removeAttr('disabled').removeClass('disabled');
     //    }
     //}
 
 
-    $('.login-form-b').on('click', function () {
+    $('.restaura-senha-form-btn').on('click', function () {
         //submitForm();
-        $('.login-form').submit();
+        //console.log('foi');
+
+        $('.restaura-senha-form').submit();
     });
 
     function submitForm() {
@@ -286,10 +293,30 @@ $(document).ready(function () {
             
         } else {
             $('.error-msg').addClass('hide');
-            $('.login-form').submit();   
+            $('.restaura-senha-form').submit();   
         }
     }
     
+    $('.restaura-senha-form-btn').on('click', function () {
+        //submitForm();
+        //console.log('foi');
+
+        $('.restaura-senha-form').submit();
+    });
+
+    function submitForm() {
+        if (!verificarInputsVazios()) {
+            $('.error-msg').removeClass('hide');
+
+
+        } else {
+            $('.error-msg').addClass('hide');
+            $('.restaura-senha-form').submit();
+        }
+    }
+
+
+
     /** Inicia assim que a pagina e carregada **/
     function init() {
         wrapInputCpf.addClass('hide');

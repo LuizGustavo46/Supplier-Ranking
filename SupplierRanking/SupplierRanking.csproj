@@ -489,7 +489,6 @@
     <Content Include="Views\Home\SobreNos.cshtml" />
     <Content Include="Views\Home\Contato.cshtml" />
     <Content Include="Views\Home\Planos.cshtml" />
-    <Content Include="Views\Shared\LoginLayout.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Cadastro.cshtml" />
     <Content Include="Views\Comprador\CadastroPessoaFisica.cshtml" />
@@ -506,7 +505,6 @@
     <Content Include="Views\Fornecedor\CadastroFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\CadastroFuncionario.cshtml" />
     <Content Include="Views\Fornecedor\EnviarEmail.cshtml" />
-    <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
     <Content Include="Views\Fornecedor\RestaurarSenha.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
@@ -514,6 +512,7 @@
     <Content Include="Views\Login\Update.cshtml" />
     <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -525,6 +524,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Views\Categorias\" />
+    <Folder Include="Views\conteudo\js\" />
+    <Folder Include="Views\conteudo\scss\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <PropertyGroup>
