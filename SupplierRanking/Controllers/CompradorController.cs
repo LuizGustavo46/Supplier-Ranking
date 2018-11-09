@@ -70,6 +70,23 @@ namespace SupplierRanking.Controllers
         public ActionResult CadastroPessoaFisica(string cpf, string nome, string sobrenome, string email, string senha,
             string confirmarSenha, string uf, string telefone, string celular)
         {
+            //string[] checks = form["check"].Split(',');
+            //FormCollection form/*List<Categorias> listaCategorias*/
+
+            int cont = 0;
+            List<Categorias> lista = new List<Categorias>();     
+            foreach (string item in Request.Form.AllKeys)
+            {    
+                if (cont >= 9)
+                {
+                    Categorias cat = new Categorias();
+                    cat.Categoria = item;
+                    lista.Add(cat);
+                }
+                cont++;
+            }
+            
+            
             Comprador c = new Comprador();
             c.Cpf           = cpf;
             c.Nome          = nome;
@@ -77,6 +94,8 @@ namespace SupplierRanking.Controllers
             c.Email         = email;
             if(senha == confirmarSenha)
                 c.Senha     = senha;
+            else
+                ViewBag.Message = "As senhas não correspondem";
             c.Tipo_pessoa   = "F";  //F DE PESSOA FISICA, NÃO PRECISA SER PASSADO ATRAVÉS DA VIEW
             c.Cnpj          = "";   //NÃO VAI SER USADO
             c.Nome_empresa  = "";   //NÃO VAI SER USADO
@@ -84,7 +103,7 @@ namespace SupplierRanking.Controllers
             c.Telefone      = telefone;
             c.Celular       = celular;
 
-            if (c.CadastroPessoaFisica())
+            if (c.CadastroPessoaFisica() && c.CadastrarInteresses(lista))
             {
                 ViewBag.Message = "Cadastro Realizado";
                 ViewBag.cssClass = "col-8 error-msg alert-danger text-center p-2 mt-3 mb-4";

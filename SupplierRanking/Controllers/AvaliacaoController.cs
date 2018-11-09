@@ -11,9 +11,17 @@ namespace SupplierRanking.Controllers
     {
         /************************************************************ CADASTRAR AVALIAÇÃO ******************************************************/
 
-        public ActionResult CadastrarAvaliacao()
+        public ActionResult CadastrarAvaliacao(/*string cnpj_fornecedor, int codigo_comprador*/)
         {
-            return View();
+
+            Avaliacao a = new Avaliacao();
+            a.Cnpj_fornecedor = /*cnpj_fornecedor*/"45.997.418/0001-53";
+            a.Codigo_comprador = /*codigo_comprador*/2;
+
+            if (a.VerificarSeteDias())
+                return View();
+            else
+                return RedirectToAction("UpdateComentario");
         }
 
         [HttpPost]
@@ -49,12 +57,12 @@ namespace SupplierRanking.Controllers
     
         /************************************************************ UPDATE AVALIAÇÃO ******************************************************/
 
-        public ActionResult UpdateComentario(string cnpj_fornecedor, int codigo_comprador)
+        public ActionResult UpdateComentario(/*string cnpj_fornecedor, int codigo_comprador*/)
         {
-            Avaliacao a = Avaliacao.ReturnUpdateComentario(cnpj_fornecedor, codigo_comprador);
+            Avaliacao a = Avaliacao.ReturnUpdateComentario(/*cnpj_fornecedor, codigo_comprador*/"45.997.418/0001-53", 2);
             if (a == null)
             {
-                TempData["Msg"] = "Avaliação não encontrada.";
+                ViewBag.Message = "Avaliação não encontrada.";
                 return RedirectToAction("RankingGeral"); // VERIFICAR A VIEW QUE VAI RETORNAR 
             }
             return View(a);
@@ -71,15 +79,16 @@ namespace SupplierRanking.Controllers
 
             if (avUP.UpdateComentario()) //SE CONSEGUIR ATUALIZAR
             {
-                TempData["Msg"] = "Comentário atualizado.";
+                ViewBag.Message = "Comentário atualizado.";
+                return RedirectToAction("UpdateComentario");
             }
             else //SENÃO CONSEGUIR
             {
-                TempData["Msg"] = "Comentário não apropriado.";
-                return RedirectToAction("UpdateAvaliacao");
+                ViewBag.Message = "Comentário não apropriado.";
+                return RedirectToAction("UpdateComentario");
             }
 
-            return View("UpdateAvaliacao");
+            return View("UpdateComentario");
         }
 
         /*********************************************************** RANKING POR CATEGORIA *****************************************************/

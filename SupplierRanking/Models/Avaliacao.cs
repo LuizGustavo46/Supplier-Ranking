@@ -33,22 +33,21 @@ namespace SupplierRanking.Models
         public string Cnpj_fornecedor       { get { return cnpj_fornecedor; }       set { cnpj_fornecedor = value; }}
         public int Codigo_comprador         { get { return codigo_comprador; }      set { codigo_comprador = value; }}      
         
-        /***************************************************** INSERIR CADASTRO DE AVALIAÇÃO ************************************************/
+        /***************************************************** VERIFICAR AVALIAÇÃO 7 DIAS ************************************************/
 
-        public bool CadastrarAvaliacao()
+        public bool VerificarSeteDias()
         {
             Avaliacao a = new Avaliacao();
             string data_agora = DateTime.Now.ToShortDateString(); //PEGA A DATA COMPLETA SEM A HORA DO DIA
             try
             {
-                con.Open();//ABRE CONEXÃO
-                //CONDIÇÃO PARA SABER SE AQUELE COMPRADOR JÁ AVALIOU AQUELE FORNECEDOR
-                SqlCommand query1 = //UM COMPRADOR NÃO PODE AVALIAR MAIS DE UMA VEZ O MESMO FORNECEDOR
-                    new SqlCommand(" SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor AND "+
+                con.Open();
+                SqlCommand query = //UM COMPRADOR NÃO PODE AVALIAR MAIS DE UMA VEZ O MESMO FORNECEDOR
+                    new SqlCommand(" SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor AND " +
                     "codigo_comprador = @codigo_comprador", con);
-                query1.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
-                query1.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
-                SqlDataReader leitor = query1.ExecuteReader();
+                query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
+                query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
+                SqlDataReader leitor = query.ExecuteReader();
 
                 //SE NÃO HOUVER NADA REGISTRADO NA TABELA DE AVALIACAO NO BANCO, COM RELAÇÃO AO COMPRADOR E AO FORNECEDOR,
                 //OU A ULTIMA AVALIAÇÃO JA PASSOU DE 7 DIAS, SOMENTE ASSIM PODE OCORRER O REGISTRO DA AVALIAÇÃO NOVAMENTE
@@ -56,52 +55,52 @@ namespace SupplierRanking.Models
                 if (leitor.Read())  //SE CAIR NO ELSE É PORQUE O COMPRADOR ESTA FAZENDO A PRIMEIRA AVALIAÇÃO DA EMPRESA
                 {
                     a.data_avaliacao = leitor["data_avaliacao"].ToString();
-
                     TimeSpan date = Convert.ToDateTime(data_agora) - Convert.ToDateTime(a.data_avaliacao);
                     int diferenca = date.Days;
 
                     if (diferenca >= 7)
                     {
-                        //CRIAÇÃO DE COMANDO
-                        SqlCommand query =
-                        new SqlCommand("INSERT INTO avaliacao VALUES (@qualidade,@atendimento,@entrega,@preco," +
-                        "@satisfacao,@comentario,@data_avaliacao,@cnpj_fornecedor,@codigo_comprador)", con);
-
-                        query.Parameters.AddWithValue("@qualidade", qualidade);
-                        query.Parameters.AddWithValue("@atendimento", atendimento);
-                        query.Parameters.AddWithValue("@entrega", entrega);
-                        query.Parameters.AddWithValue("@preco", preco);
-                        query.Parameters.AddWithValue("@satisfcao", satisfacao);
-                        query.Parameters.AddWithValue("@comentario", comentario);
-                        query.Parameters.AddWithValue("@data_avaliacao", data_avaliacao);
-                        query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
-                        query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
-                        query.ExecuteNonQuery(); //EXECUTA
+                        con.Close(); //FECHA CONEXÃO
+                        return true;
                     }
                     else
                     {
+                        con.Close(); //FECHA CONEXÃO
                         return false;
-                    }//FINAL  DA CONDIÇÃO DOS DIAS
+                    }
                 }
-                else
-                {
-                    leitor.Close();
-                    //CRIAÇÃO DE COMANDO
-                    SqlCommand query =
-                    new SqlCommand("INSERT INTO avaliacao VALUES (@qualidade,@atendimento,@entrega,@preco," +
-                    "@satisfacao,@comentario,@data_avaliacao,@cnpj_fornecedor,@codigo_comprador)", con);
+            } catch(Exception ex) { return false; }
 
-                    query.Parameters.AddWithValue("@qualidade", qualidade);
-                    query.Parameters.AddWithValue("@atendimento", atendimento);
-                    query.Parameters.AddWithValue("@entrega", entrega);
-                    query.Parameters.AddWithValue("@preco", preco);
-                    query.Parameters.AddWithValue("@satisfacao", satisfacao);
-                    query.Parameters.AddWithValue("@comentario", comentario);
-                    query.Parameters.AddWithValue("@data_avaliacao", data_agora);
-                    query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
-                    query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
-                    query.ExecuteNonQuery(); //EXECUTA
-                }           
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+            return true;
+        }
+
+        /***************************************************** INSERIR CADASTRO DE AVALIAÇÃO ************************************************/
+
+        public bool CadastrarAvaliacao()
+        {
+            string data_agora = DateTime.Now.ToShortDateString(); //PEGA A DATA COMPLETA SEM A HORA DO DIA
+            try
+            {
+                con.Open();//ABRE CONEXÃO       
+                
+                //CRIAÇÃO DE COMANDO
+                SqlCommand query =
+                new SqlCommand("INSERT INTO avaliacao VALUES (@qualidade,@atendimento,@entrega,@preco," +
+                "@satisfacao,@comentario,@data_avaliacao,@cnpj_fornecedor,@codigo_comprador)", con);
+
+                query.Parameters.AddWithValue("@qualidade", qualidade);
+                query.Parameters.AddWithValue("@atendimento", atendimento);
+                query.Parameters.AddWithValue("@entrega", entrega);
+                query.Parameters.AddWithValue("@preco", preco);
+                query.Parameters.AddWithValue("@satisfacao", satisfacao);
+                query.Parameters.AddWithValue("@comentario", comentario);
+                query.Parameters.AddWithValue("@data_avaliacao", data_agora);
+                query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
+                query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
+                query.ExecuteNonQuery(); //EXECUTA
+                          
             }catch(Exception ex) { return false; }
 
             double mediaQualidade = 0, mediaAtendimento = 0, mediaEntrega = 0, mediaPreco = 0, mediaSatisfacao = 0, media = 0;
@@ -178,6 +177,8 @@ namespace SupplierRanking.Models
                     a.satisfacao        = int.Parse(leitor["Satisfacao"].ToString());
                     a.comentario        = leitor["Comentario"].ToString();
                     a.data_avaliacao    = leitor["Data_avaliacao"].ToString();
+                    a.cnpj_fornecedor   = leitor["Cnpj_fornecedor"].ToString();
+                    a.codigo_comprador  = int.Parse(leitor["Codigo_comprador"].ToString());
                 }
 
             } catch (Exception e) { a = null; }
@@ -198,7 +199,7 @@ namespace SupplierRanking.Models
                 SqlCommand query = new SqlCommand("UPDATE avaliacao SET comentario = @comentario WHERE " +
                     "cnpj_fornecedor = @cnpj_fornecedor AND codigo_comprador = @codigo_comprador", con);
 
-                if (comentario.Length > 10)
+                if (comentario.Length > 2)
                 {
                     query.Parameters.AddWithValue("@comentario", comentario);
                     query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);

@@ -185,7 +185,7 @@ namespace SupplierRanking.Models
         }
 
         /***************************************** CADASTRAR CATEGORIAS DE INTERESSE ********************************************/
-        public bool CadastrarInteresses(string cpf, string cnpj, string categorias/*, List<Categorias> listaCaterogias*/)
+        public bool CadastrarInteresses(List<Categorias> listaCaterogias)
         {
             try
             {
@@ -198,7 +198,8 @@ namespace SupplierRanking.Models
                     SqlDataReader leitor = query.ExecuteReader();
 
                     if (leitor.Read())           
-                        codigo = int.Parse(leitor["codigo"].ToString());              
+                        codigo = int.Parse(leitor["codigo"].ToString());
+                    leitor.Close();         
                 }
                 else if(cnpj != "")
                 {
@@ -207,14 +208,20 @@ namespace SupplierRanking.Models
                     SqlDataReader leitor = query.ExecuteReader();
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     if (leitor.Read())
-                        codigo = int.Parse(leitor["codigo"].ToString());         
+                        codigo = int.Parse(leitor["codigo"].ToString());
+                    leitor.Close();
                 }
 
-                SqlCommand queryInsert =
-                    new SqlCommand("INSERT INTO categorias_comprador (@codigo_comprador,@nome_categorias);", con);
-                queryInsert.Parameters.AddWithValue("@codigo_comprador", codigo);
-                queryInsert.Parameters.AddWithValue("@nome_categorias", categorias);
-                queryInsert.ExecuteNonQuery();
+                for(int i = 0; i <= listaCaterogias.Count; i++) //ARRUMAR O INDICE DE PERCORRER A LISTA
+                {
+                    SqlCommand queryInsert =
+                    new SqlCommand("INSERT INTO categorias_comprador VALUES (@nome_categorias,@codigo_comprador)", con);
+                    queryInsert.Parameters.AddWithValue("@nome_categorias", listaCaterogias[i].Categoria);
+                    queryInsert.Parameters.AddWithValue("@codigo_comprador", codigo);
+                    queryInsert.ExecuteNonQuery();
+                }
+
+                
 
             } catch (Exception ex) { return false; }
 
