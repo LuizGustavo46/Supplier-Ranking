@@ -154,7 +154,7 @@ namespace SupplierRanking.Controllers
         {
             Fornecedor enviaEmail = new Fornecedor();
 
-            enviaEmail.RestaurarSenha(cnpj); 
+            enviaEmail.EsqueceuSuaSenha(cnpj); 
 
 
             return RedirectToAction("EsqueceuSuaSenha");

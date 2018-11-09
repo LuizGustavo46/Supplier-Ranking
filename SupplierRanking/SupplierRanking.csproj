@@ -159,9 +159,9 @@
     <Content Include="Content\images\Slide2.jpg" />
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
+    <Content Include="Content\js\cadastro-geral.js" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
-    <Content Include="Content\js\esqueceu-senha-fornecedor.js" />
     <Content Include="Content\js\cadastro-pessoa-fisica.js" />
     <Content Include="Content\js\cadastro-pessoa-juridica.js" />
     <Content Include="Content\js\main.js" />
@@ -519,7 +519,6 @@
     <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
-    <Content Include="Views\Fornecedor\EsqueceuSenhaFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\listaFornecedor.cshtml" />
     <Content Include="Views\Avaliacao\CadastrarAvaliacao.cshtml" />
     <Content Include="Views\Avaliacao\UpdateComentario.cshtml" />
