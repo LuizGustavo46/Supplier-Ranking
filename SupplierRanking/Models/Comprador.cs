@@ -393,7 +393,7 @@ namespace SupplierRanking.Models
 
         /******************************************************* RESTAURAR SENHA **************************************************/
 
-        public bool RestaurarSenha(string cnpj, string cpf, string email) //RESTAURAR (ESQUECEU SUA SENHA
+        public bool EsqueceuSuaSenha(string cnpj, string cpf, string email) //RESTAURAR (ESQUECEU SUA SENHA
         {
             try
             {
