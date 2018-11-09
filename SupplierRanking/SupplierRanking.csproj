@@ -498,7 +498,7 @@
     <Content Include="Views\Comprador\CadastroPessoaFisica.cshtml" />
     <Content Include="Views\Comprador\CadastroPessoaJuridica.cshtml" />
     <Content Include="Views\Comprador\NovaSenha.cshtml" />
-    <Content Include="Views\Comprador\RestaurarSenha.cshtml" />
+    <Content Include="Views\Comprador\EsqueceuSuaSenha.cshtml" />
     <Content Include="Views\Comprador\UpdatePessoaFisica.cshtml" />
     <Content Include="Views\Comprador\UpdatePessoaJuridica.cshtml" />
     <Content Include="Views\Comprador\UpdateSenha.cshtml" />
@@ -518,6 +518,8 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
     <Content Include="Views\Fornecedor\listaFornecedor.cshtml" />
+    <Content Include="Views\Avaliacao\CadastrarAvaliacao.cshtml" />
+    <Content Include="Views\Avaliacao\UpdateComentario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
