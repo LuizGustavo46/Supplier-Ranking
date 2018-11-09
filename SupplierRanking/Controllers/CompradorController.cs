@@ -67,7 +67,8 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroPessoaFisica(string cpf, string nome, string sobrenome, string email, string senha,string confirmarSenha, string uf, string telefone, string celular)
+        public ActionResult CadastroPessoaFisica(string cpf, string nome, string sobrenome, string email, string senha,
+            string confirmarSenha, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Cpf           = cpf;
@@ -79,11 +80,7 @@ namespace SupplierRanking.Controllers
             c.Tipo_pessoa   = "F";  //F DE PESSOA FISICA, NÃO PRECISA SER PASSADO ATRAVÉS DA VIEW
             c.Cnpj          = "";   //NÃO VAI SER USADO
             c.Nome_empresa  = "";   //NÃO VAI SER USADO
-            c.Endereco      = "";   //REMOVER DO BANCO
-            c.Bairro        = "";   //REMOVER DO BANCO
-            c.Cidade        = "";   //REMOVER DO BANCO
             c.Uf            = uf;
-            c.Cep           = "";   
             c.Telefone      = telefone;
             c.Celular       = celular;
 
@@ -115,7 +112,8 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdatePessoaFisica(string codigo, string cpf, string nome, string sobrenome, string email, string uf, string telefone, string celular)
+        public ActionResult UpdatePessoaFisica(string codigo, string cpf, string nome, string sobrenome,
+            string email, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Codigo        = int.Parse(codigo);
@@ -143,7 +141,8 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string senha, string confirmarSenha, string cep, string uf, string telefone, string celular)
+        public ActionResult CadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string senha,
+            string confirmarSenha,string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Cpf           = ""; //NÃO VAI SER USADO
@@ -157,10 +156,6 @@ namespace SupplierRanking.Controllers
             c.Tipo_pessoa   = "J"; //J DE PESSOA JURIDICA, NÃO PRECISA SER PASSADO ATRAVÉS DA VIEW
             c.Cnpj          = cnpj;
             c.Nome_empresa  = nome_empresa;
-            c.Endereco      = ""; //REMOVER DO BANCO
-            c.Bairro        = ""; //REMOVER DO BANCO
-            c.Cidade        = ""; //REMOVER DO BANCO
-            c.Cep           = ""; //REMOVER DO BANCO
             c.Uf            = uf;
             c.Telefone      = telefone;
             c.Celular       = celular;
@@ -182,7 +177,7 @@ namespace SupplierRanking.Controllers
 
         public ActionResult UpdatePessoaJuridica(/*int codigo*/)
         {
-            Comprador c = Comprador.BuscaPessoa(/*codigo*/5);
+            Comprador c = Comprador.BuscaPessoa(/*codigo*/2);
 
             if (c == null)
             {
@@ -193,17 +188,13 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdatePessoaJuridica(string codigo, string nome_empresa, string email, string endereco, string bairro, string cidade, string uf, string cep, string telefone, string celular)
+        public ActionResult UpdatePessoaJuridica(string codigo, string nome_empresa, string email, string uf, string telefone, string celular)
         {
             Comprador c = new Comprador();
             c.Codigo        = int.Parse(codigo);         
             c.Email         = email;
             c.Nome_empresa  = nome_empresa;
-            c.Endereco      = endereco;
-            c.Bairro        = bairro;
-            c.Cidade        = cidade;
             c.Uf            = uf;
-            c.Cep           = cep;
             c.Telefone      = telefone;
             c.Celular       = celular;
 
@@ -221,11 +212,11 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateSenha(/*int codigo ,*/string senhaAntiga, string senhaNova, string confirmaSenhaNova)
+        public ActionResult UpdateSenha(/*int codigo ,*/string senhaAtual, string senhaNova, string confirmaSenhaNova)
         {
             Comprador c = new Comprador();
             c.Codigo = /*codigo*/1;
-            if (c.UpdateSenha(senhaAntiga, senhaNova, confirmaSenhaNova))
+            if (c.UpdateSenha(senhaAtual, senhaNova, confirmaSenhaNova))
             {
                 TempData["Msg"] = "Senha Alterada";
                 return RedirectToAction("Login", "Login");
@@ -239,13 +230,13 @@ namespace SupplierRanking.Controllers
             return RedirectToAction("UpdateSenha");
         }
 
-        public ActionResult RestaurarSenha()
+        public ActionResult EsqueceuSuaSenha()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult RestaurarSenha(string cnpj, string cpf, string email)
+        public ActionResult EsqueceuSuaSenha(string cnpj, string cpf, string email)
         {
             Comprador c = new Comprador();
             if(c.RestaurarSenha(cnpj, cpf, email))

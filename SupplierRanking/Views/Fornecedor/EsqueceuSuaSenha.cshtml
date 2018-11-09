@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "EnviarEmail";
+    ViewBag.Title = "EsqueceuSuaSenha";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
@@ -41,16 +41,18 @@
 
             <!--- Switch --->
             <label class="switch m-3">
-                <input id="switchFornecedor" type="checkbox">
+                <input id="switchFornecedor" type="checkbox" >
                 <span class="slider slider-fornecedor round unchecked"></span>
             </label>
 
             <!--- Fornecedor --->
             <div class="col-5 js-tilt" data-tilt>
-                <button id="btnFornecedor" class="col-9 switch-wrapper p-3">
+                <a class="d-flex justify-content-center" href="/Fornecedor/EsqueceuSenhaFornecedor">
+                <div id="btnFornecedor" class="col-9 switch-wrapper  p-3">
                     <img src="/Content/images/fornecedor.png" />
                     <h5 class="switch-person-title p-2">Fornecedor</h5>
-                </button>
+                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -110,7 +112,7 @@
 
     <!--- Formulario de Login --->
     <form class="row restaura-senha-form justify-content-center p-5 hide"
-          method="post" action="../Fornecedor/EnviarEmail">
+          method="post" action="../Fornecedor/EsqueceuSuaSenha">
 
 
         <!--- CPF --->
@@ -173,7 +175,7 @@
 
         <!--- Botao Entrar --->
         <div class=" col-6 d-flex justify-content-end align-items-center pl-0 pr-4">
-            <button id="btnEnviarEmail" type="submit" class="restaura-senha-form-btn  ">
+            <button id="btnEnviarEmail" type="submit" class="login-form-btn">
                 Entrar
             </button>
         </div>

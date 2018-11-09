@@ -33,21 +33,18 @@ namespace SupplierRanking.Models
         public string Cnpj_fornecedor       { get { return cnpj_fornecedor; }       set { cnpj_fornecedor = value; }}
         public int Codigo_comprador         { get { return codigo_comprador; }      set { codigo_comprador = value; }}      
         
-        /***************************************************** INSERIR CADASTRO DE AVALIAÇÃO **************************************************/
+        /***************************************************** INSERIR CADASTRO DE AVALIAÇÃO ************************************************/
 
         public bool CadastrarAvaliacao()
         {
             Avaliacao a = new Avaliacao();
             string data_agora = DateTime.Now.ToShortDateString(); //PEGA A DATA COMPLETA SEM A HORA DO DIA
-            //string dia = DateTime.Now.Day.ToString(); //PEGA O DIA - USAR SOMENTE SE PRECISAR
-            //string mes = DateTime.Now.Month.ToString(); //PEGA O MÊS - USAR SOMENTE SE PRECISAR
-            //string ano = DateTime.Now.Year.ToString(); //PEGA O ANO - USAR SOMENTE SE PRECISAR
             try
             {
                 con.Open();//ABRE CONEXÃO
                 //CONDIÇÃO PARA SABER SE AQUELE COMPRADOR JÁ AVALIOU AQUELE FORNECEDOR
                 SqlCommand query1 = //UM COMPRADOR NÃO PODE AVALIAR MAIS DE UMA VEZ O MESMO FORNECEDOR
-                    new SqlCommand(" SELECT * FROM avaliacao WHERE cnpj_fonecedor = @cnpj_fonecedor AND"+
+                    new SqlCommand(" SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor AND "+
                     "codigo_comprador = @codigo_comprador", con);
                 query1.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
                 query1.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
@@ -80,10 +77,15 @@ namespace SupplierRanking.Models
                         query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
                         query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
                         query.ExecuteNonQuery(); //EXECUTA
-                    } //FINAL  DA CONDIÇÃO DOS DIAS
+                    }
+                    else
+                    {
+                        return false;
+                    }//FINAL  DA CONDIÇÃO DOS DIAS
                 }
                 else
                 {
+                    leitor.Close();
                     //CRIAÇÃO DE COMANDO
                     SqlCommand query =
                     new SqlCommand("INSERT INTO avaliacao VALUES (@qualidade,@atendimento,@entrega,@preco," +
@@ -93,16 +95,17 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@atendimento", atendimento);
                     query.Parameters.AddWithValue("@entrega", entrega);
                     query.Parameters.AddWithValue("@preco", preco);
-                    query.Parameters.AddWithValue("@satisfcao", satisfacao);
+                    query.Parameters.AddWithValue("@satisfacao", satisfacao);
                     query.Parameters.AddWithValue("@comentario", comentario);
-                    query.Parameters.AddWithValue("@data_avaliacao", data_avaliacao);
+                    query.Parameters.AddWithValue("@data_avaliacao", data_agora);
                     query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
                     query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
                     query.ExecuteNonQuery(); //EXECUTA
                 }           
             }catch(Exception ex) { return false; }
-            
-            int mediaQualidade = 0, mediaAtendimento = 0, mediaEntrega = 0, mediaPreco = 0, mediaSatisfacao = 0, media = 0, cont = 0;
+
+            double mediaQualidade = 0, mediaAtendimento = 0, mediaEntrega = 0, mediaPreco = 0, mediaSatisfacao = 0, media = 0;
+            int cont = 0;
             try //TRY PARA EXECUÇÃO DA LÓGICA DE ATUALIZAÇÃO DA MÉDIA DAS AVALIAÇÕES
             {
                 //CRIAÇÃO DE COMANDO
@@ -126,7 +129,7 @@ namespace SupplierRanking.Models
                     mediaPreco          =   mediaPreco        +   b.preco;
                     mediaSatisfacao     =   mediaSatisfacao   +   b.satisfacao;
         
-                    cont = cont++;
+                    cont++;
                 }
 
                 //ATRIBUINDO A MÉDIA DE CADA CRITÉRIO DE AVALIAÇÃO
@@ -136,11 +139,13 @@ namespace SupplierRanking.Models
                 mediaPreco          =   mediaPreco        /   cont;
                 mediaSatisfacao     =   mediaSatisfacao   /   cont;
                 //MÉDIA TOTAL
-                media = mediaQualidade + mediaAtendimento + mediaEntrega + mediaPreco + mediaSatisfacao / 5;
+                media = (mediaQualidade + mediaAtendimento + mediaEntrega + mediaPreco + mediaSatisfacao) / 5;
+                media = Math.Round(media, 1); //LIMITA A CASA DECIMAL "0.0"
                 //COMANDO PARA INSERIR A MÉDIA PARA O FORNECEDOR
-                SqlCommand queryMedia2 = new SqlCommand("UPDATE fornecedor SET media = @media WHERE cnpj_fornecedor = @cnpj_fornecedor", con);
+                leitor.Close();
+                SqlCommand queryMedia2 = new SqlCommand("UPDATE fornecedor SET media = @media WHERE cnpj = @cnpj", con);
                 queryMedia2.Parameters.AddWithValue("@media", media);
-                queryMedia2.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
+                queryMedia2.Parameters.AddWithValue("@cnpj", cnpj_fornecedor);
                 queryMedia2.ExecuteNonQuery();
             } catch (Exception ex) { return false; }
 
@@ -149,10 +154,10 @@ namespace SupplierRanking.Models
             return true;
         }
 
-        /************************************************ SELECT DA AVALIAÇÃO PARA FAZER UPDATE ***********************************************/
+        /************************************************ SELECT DA AVALIAÇÃO PARA FAZER UPDATE *********************************************/
 
-        //MÉTODO QUE PUXA O COMENTÁRIO DA AVALIAÇÃO PARA FAZER O UPDATE DE AVALIAÇÃO (COMENTÁRIO)
-        public static Avaliacao ReturnUpdateAvaliacao(string cnpj_fornecedor, string codigo_comprador)
+        //MÉTODO QUE PUXA O COMENTÁRIO DA AVALIAÇÃO PARA FAZER O UPDATE DO COMENTÁRIO (COMENTÁRIO)
+        public static Avaliacao ReturnUpdateComentario(string cnpj_fornecedor, int codigo_comprador)
         {
             Avaliacao a = new Avaliacao();
             try
@@ -182,10 +187,10 @@ namespace SupplierRanking.Models
             return a;
         }
 
-        /***************************************************** UPDATE DE AVALIAÇÃO (COMENTÁRIO) ***********************************************/
+        /***************************************************** UPDATE DE AVALIAÇÃO (COMENTÁRIO) **********************************************/
 
         //MÉTODO UPDATE DE AVALIAÇÃO (COMENTÁRIO)
-        public bool UpdateAvaliacao()
+        public bool UpdateComentario()
         {
             try
             {
@@ -277,7 +282,7 @@ namespace SupplierRanking.Models
             return ranking;
         }
 
-        /***************************************************** LISTAR RANKING GERAL ***********************************************************/
+        /***************************************************** LISTAR RANKING GERAL **********************************************************/
 
         public static List<Fornecedor> RankingGeral()
         {
@@ -321,7 +326,7 @@ namespace SupplierRanking.Models
             return ranking;
         }
 
-        /***************************************************** LISTAR RANKING PREMUIUM ***********************************************************/
+        /***************************************************** LISTAR RANKING PREMUIUM **********************************************************/
 
         public static List<Fornecedor> RankingPremium()
         {

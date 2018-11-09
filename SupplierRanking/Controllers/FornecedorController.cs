@@ -143,21 +143,21 @@ namespace SupplierRanking.Controllers
         }
 
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/
-        public ActionResult EnviarEmail() //FEITO
+        public ActionResult EsqueceuSuaSenha() //FEITO
         {
             
             return View();
         }
 
         [HttpPost]
-        public ActionResult EnviarEmail(string cnpj)
+        public ActionResult EsqueceuSuaSenha(string cnpj)
         {
             Fornecedor enviaEmail = new Fornecedor();
 
             enviaEmail.RestaurarSenha(cnpj); 
 
 
-            return RedirectToAction("EnviarEmail");
+            return RedirectToAction("EsqueceuSuaSenha");
         }
 
         /*================================================================================================================================================================================*/
@@ -209,13 +209,13 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*================================================================================RESTAURAR SENHA=================================================================================*/
-        public ActionResult RestaurarSenha()  
+        public ActionResult NovaSenha()  
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult RestaurarSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
+        public ActionResult NovaSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
         {
             Fornecedor senhaRe = new Fornecedor();
 
@@ -226,9 +226,9 @@ namespace SupplierRanking.Controllers
             bool res = senhaRe.UpdateSenha(senha, novaSenha, senhaConfirma, cnpj);
 
             if (res)  //RETORNAR NA VIEW DE RESTAURAR DE SENHA
-                return RedirectToAction("RestaurarSenha");
+                return RedirectToAction("NovaSenha");
 
-            return View("RestaurarSenha");
+            return View("NovaSenha");
         }
 
         /*================================================================================================================================================================================*/
@@ -343,13 +343,16 @@ namespace SupplierRanking.Controllers
         }
 
 
+        public ActionResult EsqueceuSenhaFornecedor()
+        {
+            return View();
+        }
 
 
 
 
-    
 
-      
+
 
 
 
