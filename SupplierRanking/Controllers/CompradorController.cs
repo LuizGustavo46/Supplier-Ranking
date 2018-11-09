@@ -221,13 +221,13 @@ namespace SupplierRanking.Controllers
             return RedirectToAction("UpdateSenha");
         }
 
-        public ActionResult RestaurarSenha()
+        public ActionResult EsqueceuSuaSenha()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult RestaurarSenha(string cnpj, string cpf)
+        public ActionResult EsqueceuSuaSenha(string cnpj, string cpf)
         {
             Comprador c = new Comprador();
             if(c.RestaurarSenha(cnpj, cpf))

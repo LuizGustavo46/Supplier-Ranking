@@ -161,6 +161,7 @@
     <Content Include="Content\images\telefone.jpg" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
+    <Content Include="Content\js\esqueceu-senha-fornecedor.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\config\js\owl.carousel.min.js" />
     <Content Include="Content\config\js\popper.min.js" />
@@ -202,7 +203,7 @@
     <Content Include="Content\images\person_3.jpg" />
     <Content Include="Content\images\person_4.jpg" />
     <Content Include="Content\images\planos.jpg" />
-    <Content Include="Content\js\RestaurarSenha.js" />
+    <Content Include="Content\js\esqueceu-senha.js" />
     <Content Include="Content\js\update.js" />
     <Content Include="Content\vendor\animate\animate.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
@@ -494,7 +495,7 @@
     <Content Include="Views\Comprador\CadastroPessoaFisica.cshtml" />
     <Content Include="Views\Comprador\CadastroPessoaJuridica.cshtml" />
     <Content Include="Views\Comprador\NovaSenha.cshtml" />
-    <Content Include="Views\Comprador\RestaurarSenha.cshtml" />
+    <Content Include="Views\Comprador\EsqueceuSuaSenha.cshtml" />
     <Content Include="Views\Comprador\UpdatePessoaFisica.cshtml" />
     <Content Include="Views\Comprador\UpdatePessoaJuridica.cshtml" />
     <Content Include="Views\Comprador\UpdateSenha.cshtml" />
@@ -504,8 +505,8 @@
     <Content Include="Views\config\fonts\.DS_Store" />
     <Content Include="Views\Fornecedor\CadastroFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\CadastroFuncionario.cshtml" />
-    <Content Include="Views\Fornecedor\EnviarEmail.cshtml" />
-    <Content Include="Views\Fornecedor\RestaurarSenha.cshtml" />
+    <Content Include="Views\Fornecedor\EsqueceuSuaSenha.cshtml" />
+    <Content Include="Views\Fornecedor\NovaSenha.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\UpdateSenha.cshtml" />
@@ -513,6 +514,7 @@
     <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
+    <Content Include="Views\Fornecedor\EsqueceuSenhaFornecedor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

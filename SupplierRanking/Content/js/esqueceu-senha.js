@@ -8,6 +8,7 @@ $(document).ready(function () {
         btnJuridica = $('.wrap-restaurar-senha #btnJuridica'),
         btnFuncionario = $('.wrap-restaurar-senha #btnFuncionario'),
        btnEnviarEmail = $('.wrap-restaurar-senha #btnEnviarEmail'),
+
       // btnConfirmaSenha = $('.wrap-restaurar-senha #btnConfirmaSenha'),
 
         switchFornecedor = $('.wrap-restaurar-senha #switchFornecedor'),
@@ -22,6 +23,7 @@ $(document).ready(function () {
         wrapInputCnpj = $('.wrap-restaurar-senha #inputCnpj').closest('.restaura-senha-form .wrap-input'),
         wrapInputFuncionario = $('.wrap-restaurar-senha #inputFuncionario').closest('.restaura-senha-form .wrap-input'),
         wrapInputEmail = $('.wrap-restaurar-senha #inputEmail'),
+       
        // wrapInputSenha = $('.wrap-restaurar-senha #inputSenha'),
        // wrapInputConfirmaSenha = $('.wrap-restaurar-senha #inputConfirmaSenha').closet('.confirma-senha-btn .wrap-input'),
 
@@ -281,7 +283,7 @@ $(document).ready(function () {
 
     $('.restaura-senha-form-btn').on('click', function () {
         //submitForm();
-        console.log('foi');
+        //console.log('foi');
 
         $('.restaura-senha-form').submit();
     });
