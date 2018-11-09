@@ -239,7 +239,7 @@ namespace SupplierRanking.Controllers
         public ActionResult EsqueceuSuaSenha(string cnpj, string cpf, string email)
         {
             Comprador c = new Comprador();
-            if(c.RestaurarSenha(cnpj, cpf, email))
+            if(c.EsqueceuSuaSenha(cnpj, cpf, email))
                 TempData["Msg"] = "Confirmação enviada para o e-mail cadastrado";
             else
                 TempData["Msg"] = "Informação Inválida";
