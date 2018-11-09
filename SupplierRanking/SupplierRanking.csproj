@@ -141,6 +141,7 @@
     <Content Include="Content\css\navbar.css" />
     <Content Include="Content\css\style_login.css" />
     <Content Include="Content\images\about.jpg" />
+    <Content Include="Content\images\add-imagem.png" />
     <Content Include="Content\images\compradorIcon.png" />
     <Content Include="Content\images\contato.jpg" />
     <Content Include="Content\images\email.png" />
@@ -151,6 +152,7 @@
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
+    <Content Include="Content\images\icones.html" />
     <Content Include="Content\images\photo.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\search.png" />
@@ -159,8 +161,9 @@
     <Content Include="Content\images\Slide2.jpg" />
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
+    <Content Include="Content\js\cadastro-fornecedor.js" />
     <Content Include="Content\js\cadastro-pessoa-fisica.js" />
-    <Content Include="Content\js\cadastro-geral.js" />
+    <Content Include="Content\js\cadastro.js" />
     <Content Include="Content\js\cadastro-pessoa-juridica.js" />
     <Content Include="Content\js\main.js" />
     <Content Include="Content\config\js\owl.carousel.min.js" />
@@ -187,7 +190,6 @@
     <Content Include="Content\images\Login.png" />
     <Content Include="Content\images\LoginFornecedor.png" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\plano.png" />
     <Content Include="Content\images\image_1.jpg" />
     <Content Include="Content\images\image_2.jpg" />
