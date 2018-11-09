@@ -166,7 +166,7 @@ $(document).ready(function () {
             $('#wrapperFuncionario').removeClass('hide');
             $('.esqueci-senha-fornecedor-form').removeClass('hide');
             wrapInputEmail.removeClass('hide');
-
+            console.logo(inputHidden);
             inputHidden.val('2');
             return;
         }

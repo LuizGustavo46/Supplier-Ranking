@@ -77,9 +77,6 @@ $(document).ready(function () {
             btnJuridica.removeClass('active-switch');
             return;
         }
-
-        //switchFuncionario.prop('checked', false);
-        //btnFuncionario.removeClass('active-switch');
     }
 
     /** Habilita o Botão Comprador e mostra os Botão Pessoa Física e Jurídica **/
@@ -98,33 +95,26 @@ $(document).ready(function () {
     function mostrarPessoaFisica(showPessoaFisica) {
         if (showPessoaFisica) {
             btnFisica.addClass('active-switch');
-            //wrapInputCpf.removeClass('hide');
             return;
         }
 
         btnFisica.removeClass('active-switch');
-        //wrapInputCpf.addClass('hide');
     }
 
     /** Habilita o Botão Pessoa Jurídica e mostra os campos **/
     function mostrarPessoaJuridica(showPessoaJuridica) {
         if (showPessoaJuridica) {
             btnJuridica.addClass('active-switch');
-            //wrapInputCnpj.removeClass('hide');
             return;
         }
 
         btnJuridica.removeClass('active-switch');
-        //wrapInputCnpj.addClass('hide');
     }
 
     /** Habilita o Botão Fornecedor e mostra o Botão Funcionário **/
     function mostrarFornecedor(showFornecedor) {
         if (showFornecedor) {
             btnFornecedor.addClass('active-switch');
-            //wrapInputCnpj.removeClass('hide');
-            //$('#wrapperFuncionario').removeClass('hide');
-            //$('.login-form').removeClass('hide');
             return;
         }
 
@@ -133,7 +123,6 @@ $(document).ready(function () {
 
     /** Troca entre Fornecedor e Comprador **/
     function switchCompradorFornecedor(input) {
-        //$('.row-cadastro .cadastro-form').addClass('hide');
 
         if ($(input).is(':checked')) { //Seleciona o Fornecedor
             mostrarComprador(false);
@@ -159,81 +148,6 @@ $(document).ready(function () {
             mostrarPessoaFisica(true);
         }
     }
-
-    //// Funcao para aparecer / esconder entre Fornecedor ou Comprador
-    //function switchCompradorFornecedor(input) {
-    //    $('.row-cadastro .cadastro-form').hide();
-
-    //    if ($(input).is(':checked')) { //Seleciona o Fornecedor
-
-    //        btnComprador.removeClass('active-switch');
-    //        $('.row-cadastro #wrapperFisicaJuridica').hide();
-    //        uncheckSliderAndButtons(switchJuridica);
-
-    //        btnFornecedor.addClass('active-switch');
-    //        $('.row-cadastro #wrapperFuncionario').show();
-    //        $('.row-cadastro .cadastro-form').show();
-    //        inputCpf.hide();
-    //        inputCnpj.mask('00.000.000/0000-00').show();
-    //        inputHidden.val('2');
-
-    //    } else { //Seleciona o Comprador
-
-    //        btnFornecedor.removeClass('active-switch');
-    //        uncheckSliderAndButtons(switchFuncionario);
-    //        $('.row-cadastro #wrapperFuncionario').hide();
-
-    //        btnComprador.addClass('active-switch');
-    //        $('.row-cadastro #wrapperFisicaJuridica').show();
-    //        inputFuncionario.hide();
-    //    }
-    //}
-
-    // Funcao para aparecer / esconder entre pessoa Fisica ou Juridica
-    //function switchTipoDePessoa(input) {
-
-    //    if ($(input).is(':checked')) { //Seleciona pessoa Juridica
-
-    //        btnFisica.removeClass('active-switch');
-    //        inputCpf.hide();
-
-    //        btnJuridica.addClass('active-switch');
-    //        inputCnpj.show();
-    //        inputHidden.val('1');
-
-    //    } else { //Seleciona pessoa Fisica
-
-    //        btnJuridica.removeClass('active-switch');
-    //        inputCnpj.hide();
-
-    //        btnFisica.addClass('active-switch');
-    //        inputCpf.show();
-    //        inputHidden.val('0');
-    //    }
-
-    //    $('.row-cadastro .cadastro-form').show();
-    //}
-
-    //// Funcao para aparecer / esconder Funcionario
-    //function switchTipoFuncionario(input) {
-
-    //    if ($(input).is(':checked') && btnFuncionario.hasClass('active-switch')) {
-    //        btnFuncionario.removeClass('active-switch');
-    //        switchFuncionario.prop('checked', false);
-    //        inputFuncionario.hide();
-    //        $('.row-cadastro .wrap-login').removeClass('has-employee');
-    //        inputHidden.val('2');
-
-    //    } else {
-    //        btnFuncionario.addClass('active-switch');
-    //        switchFuncionario.prop('checked', true);
-    //        $('.row-cadastro .wrap-login').addClass('has-employee');
-    //        inputFuncionario.show();
-    //        inputHidden.val('3');
-    //    }
-
-    //    $('.row-cadastro .cadastro-form').show();
-    //}
 
     /** Inicia assim que a pagina e carregada **/
     function init() {

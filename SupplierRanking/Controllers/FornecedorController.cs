@@ -121,7 +121,7 @@ namespace SupplierRanking.Controllers
         public ActionResult ExcluirFuncionario(int codigo)
         {
         
-            Fornecedor f = new Fornecedor();  //TRAVADO PELA HOME LOGADA
+            Fornecedor f = new Fornecedor();  
        
             f.Codigo = codigo;
 
@@ -131,6 +131,16 @@ namespace SupplierRanking.Controllers
 
         }
         /*================================================================================================================================================================================*/
+
+        public ActionResult ExcluirContaFornecedor(string cnpj)/*45.997.418/0001-53*/
+        {          
+            Fornecedor excluir = new Fornecedor();  //TRAVADO PELA HOME LOGADA
+
+            excluir.Cnpj = cnpj;
+            excluir.ExcluirContaFornecedor(cnpj);
+
+            return RedirectToAction("listaFornecedor");
+        }
 
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/
         public ActionResult EsqueceuSuaSenha() //FEITO
@@ -153,21 +163,23 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*==============================================================================PESQUISA FUNCIONARIO==============================================================================*/
+
         public ActionResult ListaFuncionario() //TRAVADO PELA HOME LOGADA
         { 
             //nome da action result / nome do model /  nome do metodo
             return View("ListaFuncionario", Fornecedor.ListaFuncionario());
         }
+
         /*================================================================================================================================================================================*/
 
         /*==============================================================================PESQUISA FUNCIONARIO==============================================================================*/
        
             //CASO PRECISE ESTA FUNCIONANDO SÓ CRIAR A VIEW
-        /* public ActionResult listaFornecedor() //TRAVADO PELA HOME LOGADA
+         public ActionResult listaFornecedor() //EXCLUIR MÉTODO APÓS HOME LOGADA
         {
             //nome da action result / nome do model /  nome do metodo
             return View("listaFornecedor", Fornecedor.ListaFornecedor());
-        }*/
+        }
 
         /*================================================================================================================================================================================*/
 

@@ -109,33 +109,32 @@ namespace SupplierRanking.Models
                 SqlCommand queryMedia = new SqlCommand("SELECT qualidade, atendimento, entrega, preco, satisfacao " + 
                     "FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor", con);
                 queryMedia.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
-
                 SqlDataReader leitor = queryMedia.ExecuteReader();
 
                 while (leitor.Read()) //ENQUANTO O LEITOR LER AS AVALIAÇÕES
                 {
                     Avaliacao b = new Avaliacao();
-                    b.qualidade = int.Parse(leitor["Qualidade"].ToString());
-                    b.atendimento = int.Parse(leitor["Atendimento"].ToString());
-                    b.entrega = int.Parse(leitor["Entrega"].ToString());
-                    b.preco = int.Parse(leitor["Preco"].ToString());
-                    b.satisfacao = int.Parse(leitor["Satisfacao"].ToString());
+                    b.qualidade         =   int.Parse(leitor["Qualidade"].ToString());
+                    b.atendimento       =   int.Parse(leitor["Atendimento"].ToString());
+                    b.entrega           =   int.Parse(leitor["Entrega"].ToString());
+                    b.preco             =   int.Parse(leitor["Preco"].ToString());
+                    b.satisfacao        =   int.Parse(leitor["Satisfacao"].ToString());
 
-                    mediaQualidade = mediaQualidade + b.qualidade;
-                    mediaAtendimento = mediaAtendimento + b.atendimento;
-                    mediaEntrega = mediaEntrega + b.entrega;
-                    mediaPreco = mediaPreco + b.preco;
-                    mediaSatisfacao = mediaSatisfacao + b.satisfacao;
+                    mediaQualidade      =   mediaQualidade    +   b.qualidade;
+                    mediaAtendimento    =   mediaAtendimento  +   b.atendimento;
+                    mediaEntrega        =   mediaEntrega      +   b.entrega;
+                    mediaPreco          =   mediaPreco        +   b.preco;
+                    mediaSatisfacao     =   mediaSatisfacao   +   b.satisfacao;
         
                     cont = cont++;
                 }
 
                 //ATRIBUINDO A MÉDIA DE CADA CRITÉRIO DE AVALIAÇÃO
-                mediaQualidade = mediaQualidade / cont;
-                mediaAtendimento = mediaAtendimento / cont;
-                mediaEntrega = mediaEntrega / cont;
-                mediaPreco = mediaPreco / cont;
-                mediaSatisfacao = mediaSatisfacao / cont;
+                mediaQualidade      =   mediaQualidade    /   cont;
+                mediaAtendimento    =   mediaAtendimento  /   cont;
+                mediaEntrega        =   mediaEntrega      /   cont;
+                mediaPreco          =   mediaPreco        /   cont;
+                mediaSatisfacao     =   mediaSatisfacao   /   cont;
                 //MÉDIA TOTAL
                 media = mediaQualidade + mediaAtendimento + mediaEntrega + mediaPreco + mediaSatisfacao / 5;
                 //COMANDO PARA INSERIR A MÉDIA PARA O FORNECEDOR
@@ -167,13 +166,13 @@ namespace SupplierRanking.Models
 
                 if (leitor.Read())
                 {
-                    a.qualidade = int.Parse(leitor["Qualidade"].ToString());
-                    a.atendimento = int.Parse(leitor["Atendimento"].ToString());
-                    a.entrega = int.Parse(leitor["Entrega"].ToString());
-                    a.preco = int.Parse(leitor["Preco"].ToString());
-                    a.satisfacao = int.Parse(leitor["Satisfacao"].ToString());
-                    a.comentario = leitor["Comentario"].ToString();
-                    a.data_avaliacao = leitor["Data_avaliacao"].ToString();
+                    a.qualidade         = int.Parse(leitor["Qualidade"].ToString());
+                    a.atendimento       = int.Parse(leitor["Atendimento"].ToString());
+                    a.entrega           = int.Parse(leitor["Entrega"].ToString());
+                    a.preco             = int.Parse(leitor["Preco"].ToString());
+                    a.satisfacao        = int.Parse(leitor["Satisfacao"].ToString());
+                    a.comentario        = leitor["Comentario"].ToString();
+                    a.data_avaliacao    = leitor["Data_avaliacao"].ToString();
                 }
 
             } catch (Exception e) { a = null; }
@@ -223,9 +222,7 @@ namespace SupplierRanking.Models
                 //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS JÁ FORMANDO O RANKING, DA MAIOR PARA A MENOR MÉDIA
                 SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE nome_categorias = @nome_categorias ORDER BY media DESC", con);
                 query.Parameters.AddWithValue("@nome_categorias", categoria);
-
                 SqlDataReader leitor = query.ExecuteReader();
-
                 while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
                 {
                     Fornecedor f = new Fornecedor();
@@ -240,22 +237,19 @@ namespace SupplierRanking.Models
                     f.Cidade        = leitor["Cidade"].ToString();
                     f.Uf            = leitor["Uf"].ToString();
                     f.Cep           = leitor["Cep"].ToString();
-                    //f.Senha       = leitor["Senha"].ToString(); //NÃO VAMOS MOSTRAR A SENHA, OBVIO...
-                    //f.Posicao     = leitor["Posicao"].ToString(); //TALVEZ PODEMOS TIRAR ESSE CAMPO DO BANCO...
                     f.Slogan        = leitor["Slogan"].ToString();
                     f.Descricao     = leitor["Descricao"].ToString();
                     f.Media         = float.Parse(leitor["Media"].ToString());
                     f.Plano         = leitor["Plano"].ToString();
                     f.Imagem        = (byte[])leitor["Imagem"];
                     f.Imagem64      = Convert.ToBase64String(f.Imagem);
-                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
-                    
+                    f.Nome_categoria = leitor["Nome_categorias"].ToString();          
                     ranking.Add(f);
 
                     Avaliacao a = new Avaliacao();
                     try
                     {
-                        //PEGAR CRITÉRIOS DE AVALIAÇÃO SE O FORNECEDOR FOR PREMIUM, PARA MOSTRAR NA VIEW
+                        //PEGAR CRITÉRIOS DE AVALIAÇÃO SE O FORNECEDOR FOR PREMIUM PARA MOSTRAR NA VIEW
                         if (f.Plano == "P")
                         {
                             SqlCommand queryAvaliacoes = new SqlCommand("SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor");
@@ -264,17 +258,17 @@ namespace SupplierRanking.Models
 
                             if (leitorAvaliacoes.Read())
                             {
-                                a.qualidade = int.Parse(leitorAvaliacoes["qualidade"].ToString());
-                                a.atendimento = int.Parse(leitorAvaliacoes["atendimento"].ToString()); // terminar de fazer esses bagui aqui
-                                a.entrega = int.Parse(leitorAvaliacoes["entrega"].ToString());
-                                a.preco = int.Parse(leitorAvaliacoes["preco"].ToString());
-                                a.satisfacao = int.Parse(leitorAvaliacoes["satisfacao"].ToString());
-
-
+                                a.qualidade     = int.Parse(leitorAvaliacoes["qualidade"].ToString());
+                                a.atendimento   = int.Parse(leitorAvaliacoes["atendimento"].ToString()); // terminar de fazer esses bagui aqui
+                                a.entrega       = int.Parse(leitorAvaliacoes["entrega"].ToString());
+                                a.preco         = int.Parse(leitorAvaliacoes["preco"].ToString());
+                                a.satisfacao    = int.Parse(leitorAvaliacoes["satisfacao"].ToString());
+                                //falta descobrir um jeito de passar pra lista junto com o fornecedor
+                       
 
                             }
                         }
-                    }catch (Exception ex) { a = null; }
+                    } catch (Exception ex) { a = null; }
                 }
             } catch (Exception ex) { ranking = null; }
 
@@ -294,7 +288,6 @@ namespace SupplierRanking.Models
                 con.Open(); //ABRE CONEXÃO
                             //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS JÁ FORMANDO O RANKING DAS TOP 10 EMPRESAS
                 SqlCommand query = new SqlCommand("SELECT TOP 10 * FROM fornecedor ORDER BY media DESC", con);
-
                 SqlDataReader leitor = query.ExecuteReader();
                 while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
                 {
@@ -310,8 +303,6 @@ namespace SupplierRanking.Models
                     f.Cidade        = leitor["Cidade"].ToString();
                     f.Uf            = leitor["Uf"].ToString();
                     f.Cep           = leitor["Cep"].ToString();
-                    //f.Senha       = leitor["Senha"].ToString(); //NÃO VAMOS MOSTRAR A SENHA, OBVIO...
-                    //f.Posicao     = leitor["Posicao"].ToString(); //TALVEZ PODEMOS TIRAR ESSE CAMPO DO BANCO...
                     f.Slogan        = leitor["Slogan"].ToString();
                     f.Descricao     = leitor["Descricao"].ToString();
                     f.Media         = float.Parse(leitor["Media"].ToString());
@@ -330,9 +321,51 @@ namespace SupplierRanking.Models
             return ranking;
         }
 
+        /***************************************************** LISTAR RANKING PREMUIUM ***********************************************************/
+
+        public static List<Fornecedor> RankingPremium()
+        {
+            List<Fornecedor> ranking = new List<Fornecedor>();
+
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+                            //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS PREMIUM EM ORDEM DESCRESCENTE
+                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE plano = 'P' ORDER BY media DESC", con);
+                SqlDataReader leitor = query.ExecuteReader();
+                while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
+                {
+                    Fornecedor f = new Fornecedor();
+
+                    f.Cnpj          = leitor["Cnpj"].ToString();
+                    f.Nome_empresa  = leitor["Nome_empresa"].ToString();
+                    f.Email         = leitor["Email"].ToString();
+                    f.Telefone      = leitor["Telefone"].ToString();
+                    f.Celular       = leitor["Celular"].ToString();
+                    f.Endereco      = leitor["Endereco"].ToString();
+                    f.Bairro        = leitor["Bairro"].ToString();
+                    f.Cidade        = leitor["Cidade"].ToString();
+                    f.Uf            = leitor["Uf"].ToString();
+                    f.Cep           = leitor["Cep"].ToString();
+                    f.Slogan        = leitor["Slogan"].ToString();
+                    f.Descricao     = leitor["Descricao"].ToString();
+                    f.Media         = float.Parse(leitor["Media"].ToString());
+                    f.Plano         = leitor["Plano"].ToString();
+                    f.Imagem        = (byte[])leitor["Imagem"];
+                    f.Imagem64      = Convert.ToBase64String(f.Imagem);
+                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
+
+                    ranking.Add(f);
+                }
+            } catch (Exception ex) { ranking = null; }
+            
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            return ranking;
+        }
 
 
-       
+
 
 
 
