@@ -112,24 +112,39 @@ namespace SupplierRanking.Models
             {
                 //ABRE A CONEXÃO
                 con.Open();
-
-                // Criação de comando para inserção no banco
                 SqlCommand query =
-                    new SqlCommand("INSERT INTO funcionario VALUES (@cnpj,@nome,@senha)", con);
+                    new SqlCommand("SELECT * FROM funcionario WHERE cnpj_fornecedor = @cnpj_fornecedor and nome = @nome", con);
+                query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
+                query.Parameters.AddWithValue("@nome", nome);
+                SqlDataReader leitor = query.ExecuteReader();
 
-                //CONDIÇÃO DE CADASTRO (NÃO DEIXA QUE FALTE CAMPOS NECESSARIOS PARA O CADASTRO
-                if (cnpj != "" && nome != "" && senha != "")
+                if (!leitor.Read())
                 {
-                    query.Parameters.AddWithValue("@cnpj",    cnpj);
-                    query.Parameters.AddWithValue("@nome",    nome);
-                    query.Parameters.AddWithValue("@senha",   senha);
-                    query.ExecuteNonQuery();
+                    leitor.Close();
+
+                    // Criação de comando para inserção no banco
+                    SqlCommand query2 =
+                        new SqlCommand("INSERT INTO funcionario VALUES (@cnpj_fornecedor,@nome,@senha)", con);
+
+                    //CONDIÇÃO DE CADASTRO (NÃO DEIXA QUE FALTE CAMPOS NECESSARIOS PARA O CADASTRO
+                    if (cnpj != "" && nome != "" && senha != "")
+                    {
+                        query2.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
+                        query2.Parameters.AddWithValue("@nome", nome);
+                        query2.Parameters.AddWithValue("@senha", senha);
+                        query2.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        res = "Preencha os campos corretamente";
+                    }
                 }
                 else
                 {
-                    res = "Preencha os campos corretamente";
-                }
 
+                    res = "Funcionario com o mesmo nome encotrado";
+
+                }
             }
             catch (Exception ex)
             {
