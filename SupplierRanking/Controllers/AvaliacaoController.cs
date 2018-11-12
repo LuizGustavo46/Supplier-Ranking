@@ -9,17 +9,24 @@ namespace SupplierRanking.Controllers
 {
     public class AvaliacaoController : Controller
     {
+        /************************************************************ CADASTRAR AVALIAÇÃO ******************************************************/
 
-
-        /*==============================================================================Cadastrar avaliação=================================================================================*/
-        public ActionResult CadastrarAvaliacao()
+        public ActionResult CadastrarAvaliacao(/*string cnpj_fornecedor, int codigo_comprador*/)
         {
-            return View();
+
+            Avaliacao a = new Avaliacao();
+            a.Cnpj_fornecedor = /*cnpj_fornecedor*/"45.997.418/0001-53";
+            a.Codigo_comprador = /*codigo_comprador*/2;
+
+            if (a.VerificarSeteDias())
+                return View();
+            else
+                return RedirectToAction("UpdateComentario");
         }
 
-
         [HttpPost]
-        public ActionResult CadastrarAvaliacao(int qualidade, int atendimento, int entrega, int preco, int satisfacao, String comentario, String data_avaliacao, String cnpj_fornecedor, int codigo_comprador)
+        public ActionResult CadastrarAvaliacao(int qualidade, int atendimento, int entrega, int preco, int satisfacao, 
+            string comentario/*, string data_avaliacao*/, string cnpj_fornecedor, int codigo_comprador)
         {
             Avaliacao av = new Avaliacao();
 
@@ -29,36 +36,40 @@ namespace SupplierRanking.Controllers
             av.Preco = preco;
             av.Satisfacao = satisfacao;
             av.Comentario = comentario;
-            av.Data_avaliacao = data_avaliacao;
+            //av.Data_avaliacao = data_avaliacao;
             av.Cnpj_fornecedor = cnpj_fornecedor;
             av.Codigo_comprador = codigo_comprador;
 
-            if(av.CadastrarAvaliacao())
-                TempData["Msg"] = "Avaliação realizada.";
+            if (av.CadastrarAvaliacao())
+            {
+                ViewBag.Message = "";
+                return RedirectToAction("Index", "Home");
+            }
             else
-                TempData["Msg"] = "Opss, algo deu errado.";
+            {
+                ViewBag.Message = "Deseja atualizar seu comentário ?";
+                return RedirectToAction("UpdateComentario");
+            }
 
 
             return RedirectToAction("CadastrarAvaliacao");
         }
+    
+        /************************************************************ UPDATE AVALIAÇÃO ******************************************************/
 
-        /*================================================================================================================================================================================*/
-
-        /*==============================================================================Update avaliação==================================================================================*/
-
-        public ActionResult UpdateAvaliacao(string cnpj_fornecedor, string codigo_comprador)
+        public ActionResult UpdateComentario(/*string cnpj_fornecedor, int codigo_comprador*/)
         {
-            Avaliacao a = Avaliacao.ReturnUpdateAvaliacao(cnpj_fornecedor, codigo_comprador);
+            Avaliacao a = Avaliacao.ReturnUpdateComentario(/*cnpj_fornecedor, codigo_comprador*/"45.997.418/0001-53", 2);
             if (a == null)
             {
-                TempData["Msg"] = "Avaliação não encontrada.";
+                ViewBag.Message = "Avaliação não encontrada.";
                 return RedirectToAction("RankingGeral"); // VERIFICAR A VIEW QUE VAI RETORNAR 
             }
             return View(a);
         }
 
         [HttpPost]
-        public ActionResult UpdateAvaliacao(string comentario, string cnpj_fornecedor, int codigo_comprador)
+        public ActionResult UpdateComentario(string comentario, string cnpj_fornecedor, int codigo_comprador)
         {
             Avaliacao avUP = new Avaliacao();
 
@@ -66,40 +77,35 @@ namespace SupplierRanking.Controllers
             avUP.Cnpj_fornecedor = cnpj_fornecedor;
             avUP.Codigo_comprador = codigo_comprador;
 
-            if (avUP.UpdateAvaliacao()) //SE CONSEGUIR ATUALIZAR
+            if (avUP.UpdateComentario()) //SE CONSEGUIR ATUALIZAR
             {
-                TempData["Msg"] = "Comentário atualizado.";
+                ViewBag.Message = "Comentário atualizado.";
+                return RedirectToAction("UpdateComentario");
             }
             else //SENÃO CONSEGUIR
             {
-                TempData["Msg"] = "Comentário não apropriado.";
-                return RedirectToAction("UpdateAvaliacao");
+                ViewBag.Message = "Comentário não apropriado.";
+                return RedirectToAction("UpdateComentario");
             }
 
-            return View("UpdateAvaliacao");
+            return View("UpdateComentario");
         }
-        /*================================================================================================================================================================================*/
 
-        /*==============================================================================Listar============================================================================================*/
-
+        /*********************************************************** RANKING POR CATEGORIA *****************************************************/
 
         public ActionResult RankingLista(string categoria)
         {
             return View("RankingLista", Avaliacao.RankingLista(/*categoria*/"pesca"));
         }
-    
+
+        /*************************************************************** RANING GERAL *********************************************************/
 
         public ActionResult RankingGeral()
         {
             return View("RankingGeral", Avaliacao.RankingGeral());
         }
 
-
-
-
-
-
-
+        /*************************************************************** FINAL INDEX ***********************************************************/
         // GET: Avaliacao
         public ActionResult Index()
         {

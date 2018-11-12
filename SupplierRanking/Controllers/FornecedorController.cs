@@ -17,7 +17,7 @@ namespace SupplierRanking.Controllers
         }
 
         /*==============================================================================LOGIN FORNECEDOR=================================================================================*/
-        public ActionResult Login()  //FEITO
+        public ActionResult Login()  //AARUMAR
          {
             return View();
          }
@@ -26,8 +26,8 @@ namespace SupplierRanking.Controllers
          public ActionResult Login(string cnpj, string senha)
          {
         Fornecedor f = new Fornecedor();
-        f.Cnpj =      cnpj;
-        f.Senha =     senha;         
+        f.Cnpj = cnpj;
+        f.Senha = senha;         
          
         return View();
          }
@@ -43,9 +43,9 @@ namespace SupplierRanking.Controllers
         public ActionResult CadastroFuncionario(string cnpj, string senha, string nome)
         {
             Fornecedor f = new Fornecedor();
-            f.Cnpj =    cnpj;
-            f.Senha =   senha;
-            f.Nome =    nome;                    
+            f.Cnpj = cnpj;
+            f.Senha = senha;
+            f.Nome = nome;                    
 
             TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome);
             return RedirectToAction("CadastrarFuncionario");
@@ -67,23 +67,23 @@ namespace SupplierRanking.Controllers
 
             Fornecedor f = new Fornecedor();
 
-            f.Cnpj =               cnpj;
-            f.Nome_empresa =       nome_empresa;
-            f.Email =              email;
-            f.Telefone =           telefone;
-            f.Celular =            celular;
-            f.Endereco =           endereco;
-            f.Bairro =             bairro;
-            f.Cidade =             cidade;
-            f.Uf =                 uf;
-            f.Cep =                cep;
+            f.Cnpj = cnpj;
+            f.Nome_empresa = nome_empresa;
+            f.Email = email;
+            f.Telefone = telefone;
+            f.Celular = celular;
+            f.Endereco = endereco;
+            f.Bairro = bairro;
+            f.Cidade = cidade;
+            f.Uf = uf;
+            f.Cep = cep;
             if(senha == confirmarSenha)
-            f.Senha =              senha;
-            f.Slogan =             slogan;
-            f.Descricao =          descricao;
-            f.Media =              0;
-            f.Plano =              "F";
-            f.Nome_categoria =     nome_categoria;
+                f.Senha = senha;
+            f.Slogan = slogan;
+            f.Descricao = descricao;
+            f.Media = 0;
+            f.Plano = "F";
+            f.Nome_categoria = nome_categoria;
 
             foreach (string imagem in Request.Files)
             {
@@ -121,7 +121,7 @@ namespace SupplierRanking.Controllers
         public ActionResult ExcluirFuncionario(int codigo)
         {
         
-            Fornecedor f = new Fornecedor();  //FEITO
+            Fornecedor f = new Fornecedor();  
        
             f.Codigo = codigo;
 
@@ -132,42 +132,54 @@ namespace SupplierRanking.Controllers
         }
         /*================================================================================================================================================================================*/
 
+        public ActionResult ExcluirContaFornecedor(string cnpj)/*45.997.418/0001-53*/
+        {          
+            Fornecedor excluir = new Fornecedor();  //TRAVADO PELA HOME LOGADA
+
+            excluir.Cnpj = cnpj;
+            excluir.ExcluirContaFornecedor(cnpj);
+
+            return RedirectToAction("listaFornecedor");
+        }
+
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/
-        public ActionResult EnviarEmail() //FEITO
+        public ActionResult EsqueceuSuaSenha() //FEITO
         {
             
             return View();
         }
 
         [HttpPost]
-        public ActionResult EnviarEmail(string cnpj, string email)
+        public ActionResult EsqueceuSuaSenha(string cnpj)
         {
             Fornecedor enviaEmail = new Fornecedor();
 
-            enviaEmail.RestaurarSenha(cnpj, email); 
+            enviaEmail.EsqueceuSuaSenha(cnpj); 
 
 
-            return RedirectToAction("EnviarEmail");
+            return RedirectToAction("EsqueceuSuaSenha");
         }
 
         /*================================================================================================================================================================================*/
 
         /*==============================================================================PESQUISA FUNCIONARIO==============================================================================*/
-        public ActionResult ListaFuncionario() //FEITO
+
+        public ActionResult ListaFuncionario() //TRAVADO PELA HOME LOGADA
         { 
             //nome da action result / nome do model /  nome do metodo
             return View("ListaFuncionario", Fornecedor.ListaFuncionario());
         }
+
         /*================================================================================================================================================================================*/
 
         /*==============================================================================PESQUISA FUNCIONARIO==============================================================================*/
-
-        //CASO PRECISE ESTA FUNCIONANDO SÓ CRIAR A VIEW
-        /* public ActionResult listaFornecedor() //TRAVADO PELA HOME LOGADA
+       
+            //CASO PRECISE ESTA FUNCIONANDO SÓ CRIAR A VIEW
+         public ActionResult listaFornecedor() //EXCLUIR MÉTODO APÓS HOME LOGADA
         {
             //nome da action result / nome do model /  nome do metodo
             return View("listaFornecedor", Fornecedor.ListaFornecedor());
-        }*/
+        }
 
         /*================================================================================================================================================================================*/
 
@@ -197,13 +209,13 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*================================================================================RESTAURAR SENHA=================================================================================*/
-        public ActionResult RestaurarSenha()   //FEITO
+        public ActionResult NovaSenha()  
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult RestaurarSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
+        public ActionResult NovaSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
         {
             Fornecedor senhaRe = new Fornecedor();
 
@@ -214,9 +226,9 @@ namespace SupplierRanking.Controllers
             bool res = senhaRe.UpdateSenha(senha, novaSenha, senhaConfirma, cnpj);
 
             if (res)  //RETORNAR NA VIEW DE RESTAURAR DE SENHA
-                return RedirectToAction("RestaurarSenha");
+                return RedirectToAction("NovaSenha");
 
-            return View("RestaurarSenha");
+            return View("NovaSenha");
         }
 
         /*================================================================================================================================================================================*/
@@ -242,19 +254,19 @@ namespace SupplierRanking.Controllers
         {
 
             Fornecedor f = new Fornecedor();
-            f.Cnpj =             cnpj;
-            f.Nome_empresa =     nome_empresa;
-            f.Email =            email;
-            f.Telefone =         telefone;
-            f.Bairro =           bairro;
-            f.Cidade =           cidade;
-            f.Endereco =         endereco;
-            f.Uf =               uf;       
-            f.Celular =          celular;
-            f.Descricao =        descricao;          
-            f.Cep =              cep;
-            f.Slogan =           slogan;           
-            f.Nome_categoria =   nome_categoria;
+            f.Cnpj = cnpj;
+            f.Nome_empresa = nome_empresa;
+            f.Email = email;
+            f.Telefone = telefone;
+            f.Bairro = bairro;
+            f.Cidade = cidade;
+            f.Endereco = endereco;
+            f.Uf = uf;       
+            f.Celular = celular;
+            f.Descricao = descricao;          
+            f.Cep = cep;
+            f.Slogan = slogan;           
+            f.Nome_categoria = nome_categoria;
             
             
                         
@@ -295,10 +307,9 @@ namespace SupplierRanking.Controllers
         }
         /*==============================================================================================================================================================================*/
 
-        /*==============================================================================UPDATE FUNCIONARIO==============================================================================*/
+
         public ActionResult UpdateFuncionarioFornecedor(/*int codigo*/)  //FEITO
         {
-            //com a HOME logada, alterar o 3 para CODIGO
             Fornecedor upFun = Fornecedor.PerfilFuncionario(/*codigo*/3);
 
             if (upFun == null)
@@ -315,8 +326,8 @@ namespace SupplierRanking.Controllers
         public ActionResult UpdateFuncionarioFornecedor(int codigo, string nome, string senha)
         {
             Fornecedor f = new Fornecedor();
-            f.Nome =    nome;
-            f.Senha =   senha;
+            f.Nome = nome;
+            f.Senha = senha;      
 
             if (f.UpdateFuncionarioFornecedor(codigo, nome, senha))
             {
@@ -328,16 +339,34 @@ namespace SupplierRanking.Controllers
 
             return RedirectToAction("UpdateFuncionarioFornecedor");
 
-
+           
         }
+
+
+        public ActionResult EsqueceuSenhaFornecedor()
+        {
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
 
         public ActionResult Homepage()
         {
             return View();
         }
 
-        /*==============================================================================================================================================================================*/
 
 
-    }//FIM DA CLASSE
-}//FIM DO NAMESPACE
+
+
+    }
+
+}

@@ -2,29 +2,29 @@
 $(document).ready(function () {
     'use strict';
 
-    var btnVisualizarSenha = $('#btnSenha'),
-        btnProximo = $('#btnProximo'),
-        btnVoltar = $('#btnVoltar'),
-        btnCadastrar = $('#btnCadastrar'),
+    var btnVisualizarSenha = $('.wrap-cadastro-pj #btnSenha'),
+        btnProximo = $('.wrap-cadastro-pj #btnProximo'),
+        btnVoltar = $('.wrap-cadastro-pj #btnVoltar'),
+        btnCadastrar = $('.wrap-cadastro-pj #btnCadastrar'),
 
-        inputSenhas = $('.input-senha'),
+        inputSenhas = $('.wrap-cadastro-pj .input-senha'),
 
-        divOptions = $('.wrap-options'),
-        divFirstPart = $('.form-first-part'),
-        divSecondPart = $('.form-second-part'),
-        divThridPart = $('.form-third-part'),
+        divOptions = $('.wrap-cadastro-pj .wrap-options'),
+        divFirstPart = $('.wrap-cadastro-pj .form-pj-first-part'),
+        divSecondPart = $('.wrap-cadastro-pj .form-pj-second-part'),
+        divThridPart = $('.wrap-cadastro-pj .form-pj-third-part'),
 
-        formCadastro = $('.cadastro-form'),
-        formTitle = $('.form-title h2'),
-        formInputs = $('.wrap-cadastro .cadastro-form input'),
+        formCadastro = $('.wrap-cadastro-pj .cadastro-form'),
+        formTitle = $('.wrap-cadastro-pj .form-title h2'),
+        formInputs = $('.wrap-cadastro-pj .cadastro-form input'),
         activeformInputs,
         activeformChechbox;
 
 
-/********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
+    /********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
 
     /*** Botao para visualizar a Senha ***/
-    btnVisualizarSenha.on('click', function(e) {
+    btnVisualizarSenha.on('click', function (e) {
         visualizarSenhas(e);
     });
 
@@ -44,7 +44,7 @@ $(document).ready(function () {
     });
 
 
-/********************* *********************  FUNÇÕES ********************* *********************/
+    /********************* *********************  FUNÇÕES ********************* *********************/
 
     /** Transforma as senhas em text/pass **/
     function visualizarSenhas(e) {
@@ -60,12 +60,12 @@ $(document).ready(function () {
 
     /** Verifica todos os inputs visíveis **/
     function verificaInputsVisiveis() {
-        return $('.cadastro-form .wrap-input').not('.hide').find('input');
+        return $('.wrap-cadastro-pj .cadastro-form .wrap-input').not('.hide').find('input');
     }
 
     /** Verifica todos os checkbox visíveis **/
     function verificaCheckBoxVisiveis() {
-        return $('.cadastro-form .checkbox-container input[type=checkbox]');
+        return $('.wrap-cadastro-pj .cadastro-form .checkbox-container input[type=checkbox]');
     }
 
     /** Habilita/desabilita o Botão Cadastro conforme qunado pelo menos 1 item estiver selecionado **/
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
     /** Muda o conteúdo entre o primeiro passo de Cadastro e o segundo **/
     function mostraConteudo2Etapa(showThirdPart) {
-        if(showThirdPart) {
+        if (showThirdPart) {
             divOptions.addClass('hide');
             divFirstPart.addClass('hide');
             divSecondPart.addClass('hide');
