@@ -166,7 +166,7 @@ $(document).ready(function () {
             $('#wrapperFuncionario').removeClass('hide');
             $('.restaura-senha-form').removeClass('hide');
             wrapInputEmail.removeClass('hide');
-
+           
             inputHidden.val('2');
             return;
         }
@@ -282,7 +282,7 @@ $(document).ready(function () {
 
 
     $('.restaura-senha-form-btn').on('click', function () {
-        //submitForm();
+       //submitForm();
         //console.log('foi');
 
         $('.restaura-senha-form').submit();

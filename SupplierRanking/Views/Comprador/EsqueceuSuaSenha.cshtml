@@ -15,24 +15,30 @@
     <div class="row col-12 align-items-center mt-4">
         <!--- Comprador --->
         <div class="col-5 js-tilt" data-tilt>
-            <button id="btnComprador" class="col-9 switch-wrapper p-3">
-                <img src="/Content/images/comprador.png" />
-                <h5 class="switch-person-title p-2">Comprador</h5>
-            </button>
-        </div>
+            <a class="d-flex justify-content-center" >
+                <div id="btnComprador" class="col-9 switch-wrapper p-3">
+                    <img src="/Content/images/comprador.png" />
+                    <h5 class="switch-person-title p-2">Comprador</h5>
+                </div>
+                </a>
+</div>
 
         <!--- Switch --->
         <label class="switch m-3">
-            <input id="switchFornecedor" type="checkbox">
-            <span class="slider slider-fornecedor round unchecked"></span>
-        </label>
+          
+                <input id="switchFornecedor" type="checkbox" disabled>
+                <span class="slider slider-fornecedor round unchecked"></span>
+             
+</label>
 
         <!--- Fornecedor --->
         <div class="col-5 js-tilt" data-tilt>
-            <button id="btnFornecedor" class="col-9 switch-wrapper p-3">
+            <a  href="../Fornecedor/EsqueceuSuaSenha">
+            <div id="btnFornecedor" class="col-9 switch-wrapper p-3">
                 <img src="/Content/images/fornecedor.png" />
                 <h5 class="switch-person-title p-2">Fornecedor</h5>
-            </button>
+            </div>
+            </a>
         </div>
     </div>
 </div>
@@ -92,7 +98,7 @@
 
 <!--- Formulario de Login --->
 <form class="row login-form justify-content-center p-5 hide"
-      method="post" action="../Comprador/RestaurarSenha">
+      method="post" action="../Comprador/EsqueceuSuaSenha">
     
 
     <!--- CPF --->
@@ -155,7 +161,7 @@
 
     <!--- Botao Entrar --->
     <div class="col-6 d-flex justify-content-end align-items-center pl-0 pr-4">
-        <button type="submit" class="login-form-btn disabled" disabled>
+        <button id="btnEnviarEmail" type="submit" class="restaura-senha-form-btn">
             Entrar
         </button>
     </div>
