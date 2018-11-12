@@ -10,8 +10,14 @@ namespace SupplierRanking.Models
 {
     public class Avaliacao
     {
+        //CONEXÃO DO SENAI
         private static SqlConnection con =
                 new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
+
+        //CONEXÃO DA CASA DO VAL
+        //private static SqlConnection con =
+        //new SqlConnection("Server=DESKTOP-P4KIC71\\SQLEXPRESS;Database=TCC_Laressa_Luiz_Marcelo_Valmir;Trusted_Connection=True;");
+
         //CAMPOS DO BANCO DE DADOS
         private int qualidade;
         private int atendimento;

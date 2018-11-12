@@ -320,6 +320,9 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\SupplierRanking.dll.config" />
+    <Content Include="obj\Debug\SupplierRanking.csproj.CopyComplete" />
+    <Content Include="obj\Debug\SupplierRanking.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\SupplierRanking.csprojAssemblyReference.cache" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
