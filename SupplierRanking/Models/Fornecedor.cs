@@ -389,7 +389,7 @@ namespace SupplierRanking.Models
                     //HABILITAR O TLS
                     smtpServer.EnableSsl = true;
                     //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking3@hotmail.com", "SEnai12344");
+                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking@gmail.com", "Senai1234");
                     //ENVIAR
                     smtpServer.Send(mail);
               

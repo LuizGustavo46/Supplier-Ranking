@@ -163,6 +163,19 @@ namespace SupplierRanking.Controllers
         public ActionResult CadastroPessoaJuridica(string cnpj, string nome_empresa, string email, string senha,
             string confirmarSenha,string uf, string telefone, string celular)
         {
+            int cont = 0;
+            List<Categorias> lista = new List<Categorias>();
+            foreach (string item in Request.Form.AllKeys)
+            {
+                if (cont >= 8)
+                {
+                    Categorias cat = new Categorias();
+                    cat.Categoria = item;
+                    lista.Add(cat);
+                }
+                cont++;
+            }
+
             Comprador c = new Comprador();
             c.Cpf           = ""; //NÃO VAI SER USADO
             c.Nome          = ""; //NÃO VAI SER USADO
@@ -179,7 +192,7 @@ namespace SupplierRanking.Controllers
             c.Telefone      = telefone;
             c.Celular       = celular;
 
-            if (c.CadastroPessoaJuridica())
+            if (c.CadastroPessoaJuridica() && c.CadastrarInteresses(lista))
             {
                 //TempData["Msg"] = "Cadastro Realizado";
                 ViewBag.Message = "Cadastro Realizado";
