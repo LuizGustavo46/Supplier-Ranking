@@ -142,7 +142,7 @@ $(document).ready(function () {
         }
     }
 
-    /** Muda o conteúdo entre o primeiro passo de Cadastro e o segundo **/
+    /** Muda o conteúdo entre o primeiro passo de Cadastro e o segundo* **/
     function mostraConteudo2Etapa(showThirdPart) {
         if (showThirdPart) {
             divOptions.addClass('hide');
