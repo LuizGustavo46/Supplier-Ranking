@@ -56,7 +56,7 @@
               method="post" action="../Fornecedor/CadastroFornecedor">
 
             <!--- PRIMEIRA TELA --->
-            <div class="col-5 form-forn-first-part justify-content-center">
+            <div class="col-5 form-forn-1-part form-parts justify-content-center">
 
                 <!--- CNPJ --->
                 <div class="col-11 wrap-input p-0">
@@ -102,140 +102,155 @@
             </div>
 
 
-                        @*<!--- SEGUNDA TELA --->
-                <div class="row col-12 form-forn-second-part justify-content-between pl-5 pr-5">
+            <!--- SEGUNDA TELA --->
+            <div class="row col-12 form-forn-second-part form-parts justify-content-between pl-5 pr-5">
+                <div class="row ml-4 mb-4">
+                    Informe o endereço de sua localização:
+                </div>
 
+                <div class="row">
                     <!--- CEP --->
-                    <div class="col-11 wrap-input p-0">
+                    <div class="col-5 wrap-input p-0">
                         <input class="input" type="text" name="cep" placeholder="CEP">
                     </div>
 
                     <!--- Endereço --->
-                    <div class="col-11 wrap-input p-0">
+                    <div class="col-12 wrap-input p-0">
                         <input class="input" type="text" name="endereco" placeholder="Endereço">
                     </div>
 
-                    <!--- Bairro --->
-                    <div class="col-11 wrap-input p-0">
-                        <input class="input" type="text" name="bairro" placeholder="Bairro">
-                    </div>
-
-                    <!--- Cidade --->
-                    <div class="col-11 wrap-input p-0">
-                        <input class="input" type="text" name="cidade" placeholder="Cidade">
-                    </div>
-
-                    <!--- UF --->
-                    <div class="col-11 row p-0 align-items-center justify-content-between">
-                        <div class="col-8 p-0">
-                            Escolha o seu Estado ao lado:
+                    <div class="row col-12 d-flex justify-content-between p-0">
+                        <!--- Bairro --->
+                        <div class="col-5 wrap-input p-0">
+                            <input class="input" type="text" name="bairro" placeholder="Bairro">
                         </div>
 
-                        <select name="uf" class="states text-center">
-                            <option disabled>UF</option>
-                            <option value="AC">AC</option>
-                            <option value="AL">AL</option>
-                            <option value="AP">AP</option>
-                            <option value="AM">AM</option>
-                            <option value="BA">BA</option>
-                            <option value="CE">CE</option>
-                            <option value="DF">DF</option>
-                            <option value="ES">ES</option>
-                            <option value="GO">GO</option>
-                            <option value="MA">MA</option>
-                            <option value="MT">MT</option>
-                            <option value="MS">MS</option>
-                            <option value="MG">MG</option>
-                            <option value="PA">PA</option>
-                            <option value="PB">PB</option>
-                            <option value="PR">PR</option>
-                            <option value="PE">PE</option>
-                            <option value="PI">PI</option>
-                            <option value="RJ">RJ</option>
-                            <option value="RN">RN</option>
-                            <option value="RS">RS</option>
-                            <option value="RO">RO</option>
-                            <option value="RR">RR</option>
-                            <option value="SC">SC</option>
-                            <option value="SP">SP</option>
-                            <option value="SE">SE</option>
-                            <option value="TO">TO</option>
-                        </select>
+                        <!--- Cidade --->
+                        <div class="col-5 wrap-input p-0">
+                            <input class="input" type="text" name="cidade" placeholder="Cidade">
+                        </div>
+
+                        <!--- UF --->
+                        <div class="align-items-center justify-content-between p-0">
+                            <select name="uf" class="states text-center"  style="width:auto">
+                                <option disabled>UF</option>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5 pt-3">
+                    <div class="row col-12 ml-4 mb-4">
+                        Preencha pelo menos um campo de contato:
                     </div>
 
                     <!--- Telefone --->
-                    <div class="col-5 wrap-input">
+                    <div class="col-6 wrap-input">
                         <input class="input" type="text" name="telefone" maxlength="10" placeholder="(00) 0000-0000" data-mask="(00) 0000-0000" data-mask-sectionFocus="true">
                     </div>
 
                     <!--- Celular --->
-                    <div class="col-5 wrap-input pl-4 pr-0 mr-2">
+                    <div class="col-6 wrap-input">
                         <input class="input" type="text" name="celular" placeholder="(00) 00000-0000" data-mask="(00) 00000-0000" data-mask-sectionFocus="true">
                     </div>
 
-            <input type="text" name="descricao" placeholder="Uma breve descrição">
-
-                </div>
-
-
-                <!--- TERCEIRA TELA --->
-                <div class="col-12 form-forn-third-part justify-content-between text-center pl-5 pr-5">
-                    Seleciona abaixo todas as categorias de fornecimento que tenha interesse: <br />
-                    E não se preocupe se esquecer de alguma, pois será possível editar depois.
-
-                    @*<div class="col-4 pt-5">
-                        @foreach (var c in ViewBag.ListaCategorias)
-                        {
-                            <div class="col-12 checkbox-container text-left mt-4 p-0">
-                                <label for="@(c.Categoria)">
-                                    <input type="checkbox" id="@(c.Categoria)" name="@(c.Categoria)" />
-                                    <span class="checkbox"></span>
-                                    @(c.Categoria)
-                                </label>
-                            </div>
-                        }
-                    </div>
-                </div>
-        </div>*@
-
-        </form>
-        <div class="row col-12 cadastro-options align-items-center pl-5 pr-5">
-
-            <span class="@ViewBag.cssClass">
-                @ViewBag.Message
-            </span>
-
-            <div class="col-12 d-flex form-forn-first-part p-0">
-                <!--- Voltar para Login --->
-                <div class="col-6 d-flex align-self-center text-left">
-                    <a class="sub-link" href="/Login/Login">
-                        Login
-                    </a>
-                </div>
-
-                <!--- Botao Proximo --->
-                <div class="col-6 d-flex align-self-center justify-content-end pr-0">
-                    <button id="btnProximo" class="login-form-btn disabled" disabled>
-                        Próximo
-                    </button>
+                    <input type="text" name="descricao" placeholder="Uma breve descrição">
                 </div>
             </div>
 
-            @*<div class="col-12 d-flex form-forn-third-part p-0">
-                <!--- Voltar para etapa anterior --->
-                <div class="col-6 d-flex align-self-center text-left">
-                    <button id="btnVoltar" class="fake-link sub-link">
-                        Voltar
-                    </button>
-                </div>
+@*
+            <!--- TERCEIRA TELA --->
+            <div class="col-12 form-forn-third-part form-parts justify-content-between text-center pl-5 pr-5">
+                Seleciona abaixo todas as categorias de fornecimento que tenha interesse: <br />
+                E não se preocupe se esquecer de alguma, pois será possível editar depois.
 
-                <!--- Botao Cadastrar --->
-                <div class="col-6 d-flex align-self-center justify-content-end pr-0">
-                    <button type="submit" id="btnCadastrar" class="login-form-btn disabled" disabled>
-                        Cadastrar
-                    </button>
+              <div class="col-4 pt-5">
+                    @foreach (var c in ViewBag.ListaCategorias)
+                    {
+                        <div class="col-12 checkbox-container text-left mt-4 p-0">
+                            <label for="@(c.Categoria)">
+                                <input type="checkbox" id="@(c.Categoria)" name="@(c.Categoria)" />
+                                <span class="checkbox"></span>
+                                @(c.Categoria)
+                            </label>
+                        </div>
+                    }
                 </div>
+            </div>
+    </div> *@
+
+    </form>
+    <div class="row col-12 cadastro-options align-items-center pl-5 pr-5">
+
+        <span class="@ViewBag.cssClass">
+            @ViewBag.Message
+        </span>
+
+        <div class="col-12 d-flex form-forn-first-part p-0">
+            <!--- Voltar para Login --->
+            @*<div class="col-6 d-flex align-self-center text-left">
+                <a class="sub-link" href="/Login/Login">
+                    Login
+                </a>
             </div>*@
+
+            <!--- Voltar --->
+            <div class="col-6 d-flex align-self-center text-left">
+                <button class="sub-link" href="">
+                    Voltar
+                </button>
+            </div>
+
+            <!--- Botao Proximo --->
+            <div class="col-6 d-flex align-self-center justify-content-end pr-0">
+                <button id="btnProximo" class="login-form-btn disabled" disabled>
+                    Próximo
+                </button>
+            </div>
+        </div>
+
+        @*<div class="col-12 d-flex form-forn-third-part p-0">
+            <!--- Voltar para etapa anterior --->
+            <div class="col-6 d-flex align-self-center text-left">
+                <button id="btnVoltar" class="fake-link sub-link">
+                    Voltar
+                </button>
+            </div>
+
+            <!--- Botao Cadastrar --->
+            <div class="col-6 d-flex align-self-center justify-content-end pr-0">
+                <button type="submit" id="btnCadastrar" class="login-form-btn disabled" disabled>
+                    Cadastrar
+                </button>
+            </div>
+        </div>*@
         </div>
     </div>
 </div>
