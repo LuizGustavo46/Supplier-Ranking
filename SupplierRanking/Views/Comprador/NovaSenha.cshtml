@@ -4,26 +4,45 @@
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
-<div class="container-login100">
+<div class="container-novaSenha">
 
-    <div class="wrap-login100" style="background-color: white;">
+    <div class="wrap-novaSenha" style="background-color: white;">
 
-        <h2>NovaSenha</h2>
+        <h2 style="text-align: center;margin-bottom:132px;">Nova Senha</h2>
 
         <form action="../Comprador/UpdateSenha" method="post" class="login100-form validate-form">
             <p>@ViewBag.Message</p>
             <!--- Campos do Comprador Fisico -->
-            <div>
-                <input type="hidden" value="1" name="codigo" readonly="readonly" style="background-color: gray">
-                <br /> <br />
-                <input type="text" name="senhaNova" placeholder="Nova senha">
-                <input type="text" name="confirmaSenhaNova" placeholder="Confirma nova senha">
-
-                <br /> <br />
+            <div id="inputSenha" class="col-10 wrap-input pl-2  mt-3">
+                <input class="input" type="password" name="senhaNova" placeholder="Senha"  style="margin-bottom: 28px;
+                    margin-left: 207px;width: 50%;">
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                </span>
             </div>
 
-            <br /> <br />
-            <button id="btnEnviar">Enviar</button>
+
+
+            <!---Confirmar Senha---->
+           <div id="inputConfirmaSenha" class="col-10 wrap-input pl-2" style="margin-bottom: 47px;" >
+                <input class="input" type="password" name="confirmaSenhaNova" placeholder="Confirmar Senha" style="width: 50%;margin-left: 209px;">
+                <span class="focus-input"></span>
+                <span class="symbol-input">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </span>
+
+            </div>
+
+            
+
+            
+            <div class=" col-6 d-flex justify-content-end align-items-center pl-0 pr-4" style="margin-left: 90px;">
+                <button id="btnConfirmaSenha" type="submit" class="login-form-btn   "  style="height: 49px;width: 143px;">
+                    Confirmar
+                </button>
+            </div>
         </form>
     </div>
 </div>
+

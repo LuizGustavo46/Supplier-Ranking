@@ -372,7 +372,7 @@ namespace SupplierRanking.Models
                     //CONFIGURANDO A MENSAGEM
                     MailMessage mail = new MailMessage();
                     //ORIGEM
-                    mail.From = new MailAddress("marcelolemos7@outlook.com");//supplierranking@hotmail.com
+                    mail.From = new MailAddress("suportesupplierranking3@hotmail.com");//supplierranking@hotmail.com
                     //DESTINATÁRIO
                     mail.To.Add(email);
                     //ASSUNTO
@@ -389,7 +389,7 @@ namespace SupplierRanking.Models
                     //HABILITAR O TLS
                     smtpServer.EnableSsl = true;
                     //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking@gmail.com", "Senai1234");
+                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking3@hotmail.com", "SEnai12344");
                     //ENVIAR
                     smtpServer.Send(mail);
               
