@@ -16,7 +16,7 @@
         <!--- Comprador --->
         <div class="col-5 js-tilt" data-tilt>
             <a class="d-flex justify-content-center" >
-                <div id="btnComprador" class="col-9 switch-wrapper p-3">
+                <div id="btnComprador" class="col-9 switch-wrapper  active-switch  p-3">
                     <img src="/Content/images/comprador.png" />
                     <h5 class="switch-person-title p-2">Comprador</h5>
                 </div>
@@ -25,10 +25,10 @@
 
         <!--- Switch --->
         <label class="switch m-3">
-          
-                <input id="switchFornecedor" type="checkbox" disabled>
-                <span class="slider slider-fornecedor round unchecked"></span>
-             
+            <a href="../Fornecedor/EsqueceuSuaSenha">
+                <input id="switchFornecedor" type="checkbox"  />
+                <span class="slider slider-fornecedor round "></span>
+            </a>
 </label>
 
         <!--- Fornecedor --->
@@ -45,7 +45,7 @@
 
 <!-- Pessoa Fisica & Pessoa Juridica --->
 <div id="wrapperFisicaJuridica"
-     class="col-12 text-center justify-content-center mt-4 hide">
+     class="col-12 text-center justify-content-center mt-4  ">
     Informe o seu tipo de perfil:
 
     <div class="row align-items-center mt-4 pr-5 pb-5 pl-5">
@@ -97,7 +97,7 @@
 </div>
 
 <!--- Formulario de Login --->
-<form class="row login-form justify-content-center p-5 hide"
+<form class="row login-form justify-content-center p-5  hide"
       method="post" action="../Comprador/EsqueceuSuaSenha">
     
 
@@ -114,7 +114,7 @@
     
 
     <!--- CNPJ --->
-    <div id="inputCnpj" class="col-10 wrap-input pl-2">
+    <div id="inputCnpj" class="col-10 wrap-input pl-2 " >
         <input class="input" type="text" maxlength="19" name="cnpj" placeholder="CNPJ" data-mask="00.000.000/0000-00" data-mask-sectionFocus="true">
         <span class="focus-input"></span>
         <span class="symbol-input">
@@ -137,7 +137,7 @@
 
 
     <!--- Email --->
-    <div id="inputEmail" class="col-10 wrap-input pl-2  mt-3">
+    <div id="inputEmail" class="col-10 wrap-input pl-2  mt-3 ">
         <input class="input" type="email" name="email" placeholder="E-mail">
         <span class="focus-input"></span>
         <span class="symbol-input">

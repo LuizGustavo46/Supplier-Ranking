@@ -164,3 +164,73 @@
 .form-pj-third-part .other-option .checkbox {
     top: 0;
 }
+
+
+/********************* FORNECEDOR *********************/
+
+.form-forn-first-part {
+    position: relative;
+    top: -110%;
+}
+
+.form-forn-first-part .input-slogan {
+    height: 190px;
+    line-height: 1.5em;
+    padding: 20px;
+    resize: none;
+}
+
+.form-forn-second-part {
+    position: absolute;
+    top: 8%;
+    left: 0;
+}
+
+.form-forn-second-part .wrap-input {
+    padding: 0 1.1em;
+}
+
+.form-forn-third-part .row:last-of-type {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.form-forn-third-part .checkbox-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.form-forn-third-part .checkbox-container label {
+    color: #000;
+    text-transform: capitalize;
+    padding-left: 35px;
+}
+
+/* Hide the browser's default checkbox */
+.form-forn-third-part .checkbox-container input[type="checkbox"],
+.form-forn-third-part .checkbox-container input[type="radio"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-forn-third-part .other-option .checkbox {
+    top: 0;
+}
+
+.wrap-cadastro-fornecedor .input-image {
+    width: 20em;
+    height: 20em;
+    cursor: pointer;
+}
+
+.wrap-cadastro-fornecedor .input-image-default {
+    border: none;
+}
+
+.wrap-cadastro-fornecedor .input-image-carregada {
+    border: 9px dashed #0C496Bc9;
+}
