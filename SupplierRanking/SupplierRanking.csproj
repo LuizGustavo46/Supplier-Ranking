@@ -528,6 +528,7 @@
     <Content Include="Views\Fornecedor\listaFornecedor.cshtml" />
     <Content Include="Views\Avaliacao\CadastrarAvaliacao.cshtml" />
     <Content Include="Views\Avaliacao\UpdateComentario.cshtml" />
+    <Content Include="Views\Avaliacao\RankingPremium.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
