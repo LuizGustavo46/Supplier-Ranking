@@ -12,9 +12,9 @@ $(document).ready(function () {
         inputSenhas = $('.wrap-cadastro-fornecedor .input-senha'),
 
         divOptions = $('.wrap-cadastro-fornecedor .wrap-options'),
-        divFirstPart = $('.wrap-cadastro-fornecedor .form-pj-first-part'),
-        divSecondPart = $('.wrap-cadastro-fornecedor .form-pj-second-part'),
-        divThridPart = $('.wrap-cadastro-fornecedor .form-pj-third-part'),
+        divFirstPart = $('.wrap-cadastro-fornecedor .form-forn-first-part'),
+        divSecondPart = $('.wrap-cadastro-fornecedor .form-forn-second-part'),
+        divThridPart = $('.wrap-cadastro-fornecedor .form-forn-third-part'),
 
         formCadastro = $('.wrap-cadastro-fornecedor .cadastro-form'),
         formTitle = $('.wrap-cadastro-fornecedor .form-title h2'),
@@ -49,7 +49,7 @@ $(document).ready(function () {
 
     /*** Botao para mudar a proxima etapa de Cadastro ***/
     btnProximo.on('click', function () {
-        mostraConteudo2Etapa(true);
+        mostraConteudo2Etapa(this);
     });
 
     /*** Botao para voltar para a etapa anterior de Cadastro ***/
@@ -79,7 +79,7 @@ $(document).ready(function () {
 
     /** Verifica todos os inputs visíveis **/
     function verificaInputsVisiveis() {
-        return $('.wrap-cadastro-fornecedor .cadastro-form .wrap-input').not('.hide').find('input');
+        return $('.wrap-cadastro-fornecedor .form-parts').not('.hide').find('.wrap-input input, textarea');
     }
 
     /** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
@@ -143,12 +143,16 @@ $(document).ready(function () {
     }
 
     /** Muda o conteúdo entre o primeiro passo de Cadastro e o segundo* **/
-    function mostraConteudo2Etapa(showThirdPart) {
+    function mostraConteudoDasEtapas() {
+        var divVisivel = $('form-parts').not('.hide');
+
+
+        console.log('foi', showThirdPart);
         if (showThirdPart) {
             divOptions.addClass('hide');
             divFirstPart.addClass('hide');
-            divSecondPart.addClass('hide');
-            divThridPart.removeClass('hide');
+            divSecondPart.removeClass('hide');
+            //divThridPart.removeClass('hide');
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('O que você procura?');
             return;
@@ -162,11 +166,12 @@ $(document).ready(function () {
 
     /** Inicia assim que a pagina e carregada **/
     function init() {
+        divSecondPart.addClass('hide');
         divThridPart.addClass('hide');
         formInputs.val('');
 
-        //activeformInputs = verificaInputsVisiveis();
-        //activeformInputs.on('input', verificaInputsVazios);
+        activeformInputs = verificaInputsVisiveis();
+        activeformInputs.on('input', verificaInputsVazios);
 
         //activeformChechbox = verificaCheckBoxVisiveis();
         //activeformChechbox.on('input', verificaCheckBox);
