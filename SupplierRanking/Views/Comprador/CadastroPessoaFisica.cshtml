@@ -175,10 +175,10 @@
             </div>
 
             <div class="col-12 form-pf-third-part justify-content-between text-center pl-5 pr-5">
-                Seleciona abaixo todas as categorias de fornecimento que tenha interesse: <br />
+                Selecione abaixo todas as categorias de fornecimento que tenha interesse: <br />
                 E não se preocupe se esquecer de alguma, pois será possível editar depois.
 
-                <div class="col-4 pt-5">
+                <div class="" style="height:550px; overflow-y:scroll; margin-top: 15px;">
                     @foreach (var c in ViewBag.ListaCategorias)
                     {
                         <div class="col-12 checkbox-container text-left mt-4 p-0">
@@ -188,6 +188,8 @@
                                 @(c.Categoria)
                             </label>
                         </div>
+
+                        
                     }
                 </div>
             </div>

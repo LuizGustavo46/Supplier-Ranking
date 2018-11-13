@@ -16,6 +16,10 @@ namespace SupplierRanking.Models
         private static SqlConnection con =
                new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
 
+        //CONEXÃO DA CASA DO VAL - SÓ VOU USAR SE PRECISAR TESTAR ALGO EM CASA
+        //private static SqlConnection con =
+        //new SqlConnection("Server=DESKTOP-P4KIC71\\SQLEXPRESS;Database=TCC_Laressa_Luiz_Marcelo_Valmir;Trusted_Connection=True;");
+
         //---* DECLARAÇÃO DE VARIAVEIS *-
         private string cnpj;
         private string nome_empresa;
@@ -112,24 +116,39 @@ namespace SupplierRanking.Models
             {
                 //ABRE A CONEXÃO
                 con.Open();
-
-                // Criação de comando para inserção no banco
                 SqlCommand query =
-                    new SqlCommand("INSERT INTO funcionario VALUES (@cnpj,@nome,@senha)", con);
+                    new SqlCommand("SELECT * FROM funcionario WHERE cnpj_fornecedor = @cnpj_fornecedor and nome = @nome", con);
+                query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
+                query.Parameters.AddWithValue("@nome", nome);
+                SqlDataReader leitor = query.ExecuteReader();
 
-                //CONDIÇÃO DE CADASTRO (NÃO DEIXA QUE FALTE CAMPOS NECESSARIOS PARA O CADASTRO
-                if (cnpj != "" && nome != "" && senha != "")
+                if (!leitor.Read())
                 {
-                    query.Parameters.AddWithValue("@cnpj",    cnpj);
-                    query.Parameters.AddWithValue("@nome",    nome);
-                    query.Parameters.AddWithValue("@senha",   senha);
-                    query.ExecuteNonQuery();
+                    leitor.Close();
+
+                    // Criação de comando para inserção no banco
+                    SqlCommand query2 =
+                        new SqlCommand("INSERT INTO funcionario VALUES (@cnpj_fornecedor,@nome,@senha)", con);
+
+                    //CONDIÇÃO DE CADASTRO (NÃO DEIXA QUE FALTE CAMPOS NECESSARIOS PARA O CADASTRO
+                    if (cnpj != "" && nome != "" && senha != "")
+                    {
+                        query2.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
+                        query2.Parameters.AddWithValue("@nome", nome);
+                        query2.Parameters.AddWithValue("@senha", senha);
+                        query2.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        res = "Preencha os campos corretamente";
+                    }
                 }
                 else
                 {
-                    res = "Preencha os campos corretamente";
-                }
 
+                    res = "Funcionario com o mesmo nome encotrado";
+
+                }
             }
             catch (Exception ex)
             {
@@ -339,7 +358,7 @@ namespace SupplierRanking.Models
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ RESTAURAR SENHA ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public Boolean RestaurarSenha(string cnpj) //FEITO
+        public Boolean EsqueceuSuaSenha(string cnpj) //FEITO
         {
             bool res = false;
             try
@@ -364,7 +383,7 @@ namespace SupplierRanking.Models
                     mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
                     //CORPO DO E-MAIL
                     //ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA.
-                    mail.Body = "Clique no link   http://localhost:16962/Fornecedor/RestaurarSenha   para redefinir sua senha";  
+                    mail.Body = "Clique no link   http://localhost:16962/Fornecedor/NovaSenha   para redefinir sua senha";  
 
 
                     //CONFIGURAR O SMTP
@@ -374,7 +393,7 @@ namespace SupplierRanking.Models
                     //HABILITAR O TLS
                     smtpServer.EnableSsl = true;
                     //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking3@hotmail.com", "SEnai12344");
+                    smtpServer.Credentials = new System.Net.NetworkCredential("suportesupplierranking@gmail.com", "Senai1234");
                     //ENVIAR
                     smtpServer.Send(mail);
               

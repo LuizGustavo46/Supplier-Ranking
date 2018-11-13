@@ -45,10 +45,11 @@ namespace SupplierRanking.Controllers
             Fornecedor f = new Fornecedor();
             f.Cnpj = cnpj;
             f.Senha = senha;
-            f.Nome = nome;                    
+            f.Nome = nome; 
+                               
 
             TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome);
-            return RedirectToAction("CadastrarFuncionario");
+            return RedirectToAction("CadastroFuncionario");
         }
 
 
@@ -111,7 +112,7 @@ namespace SupplierRanking.Controllers
             }
 
             TempData["Msg"] = f.CadastroFornecedor();
-            return RedirectToAction("UpdateFornecedor");
+            return RedirectToAction("CadastroFornecedor");
         }
 
         /*================================================================================================================================================================================*/
@@ -154,7 +155,7 @@ namespace SupplierRanking.Controllers
         {
             Fornecedor enviaEmail = new Fornecedor();
 
-            enviaEmail.RestaurarSenha(cnpj); 
+            enviaEmail.EsqueceuSuaSenha(cnpj); 
 
 
             return RedirectToAction("EsqueceuSuaSenha");

@@ -10,21 +10,27 @@ namespace SupplierRanking.Models
 {
     public class Comprador
     {
+        //CONEXÃO DO SENAI
         private static SqlConnection con =
             new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
+
+        //CONEXÃO DA CASA DO VALMIR
+        //private static SqlConnection con =
+        //    new SqlConnection("Server=DESKTOP-P4KIC71\\SQLEXPRESS;Database=TCC_Laressa_Luiz_Marcelo_Valmir;Trusted_Connection=True;");
+
         //CAMPOS DO BANCO DE DADOS (TODOS OS DADOS DE CADASTRO)
-        private int codigo;
-        private string cpf;
-        private string nome;
-        private string sobrenome;
-        private string email;
-        private string tipo_pessoa;
-        private string senha;
-        private string cnpj;
-        private string nome_empresa;   
-        private string uf;
-        private string telefone;
-        private string celular;
+        private int     codigo;
+        private string  cpf;
+        private string  nome;
+        private string  sobrenome;
+        private string  email;
+        private string  tipo_pessoa;
+        private string  senha;
+        private string  cnpj;
+        private string  nome_empresa;   
+        private string  uf;
+        private string  telefone;
+        private string  celular;
 
         //Varáveis úteis
         int codigoEmail;
@@ -185,7 +191,7 @@ namespace SupplierRanking.Models
         }
 
         /***************************************** CADASTRAR CATEGORIAS DE INTERESSE ********************************************/
-        public bool CadastrarInteresses(string cpf, string cnpj, string categorias/*, List<Categorias> listaCaterogias*/)
+        public bool CadastrarInteresses(List<Categorias> listaCaterogias)
         {
             try
             {
@@ -198,23 +204,30 @@ namespace SupplierRanking.Models
                     SqlDataReader leitor = query.ExecuteReader();
 
                     if (leitor.Read())           
-                        codigo = int.Parse(leitor["codigo"].ToString());              
+                        codigo = int.Parse(leitor["codigo"].ToString());
+                    leitor.Close();         
                 }
                 else if(cnpj != "")
                 {
                     SqlCommand query =
                         new SqlCommand("SELECT codigo FROM comprador WHERE cnpj = @cnpj;", con);
-                    SqlDataReader leitor = query.ExecuteReader();
                     query.Parameters.AddWithValue("@cnpj", cnpj);
+                    SqlDataReader leitor = query.ExecuteReader();
                     if (leitor.Read())
-                        codigo = int.Parse(leitor["codigo"].ToString());         
+                        codigo = int.Parse(leitor["codigo"].ToString());
+                    leitor.Close();
                 }
 
-                SqlCommand queryInsert =
-                    new SqlCommand("INSERT INTO categorias_comprador (@codigo_comprador,@nome_categorias);", con);
-                queryInsert.Parameters.AddWithValue("@codigo_comprador", codigo);
-                queryInsert.Parameters.AddWithValue("@nome_categorias", categorias);
-                queryInsert.ExecuteNonQuery();
+                for(int i = 0; i < listaCaterogias.Count; i++) //ARRUMAR O INDICE DE PERCORRER A LISTA
+                {
+                    SqlCommand queryInsert =
+                    new SqlCommand("INSERT INTO categorias_comprador VALUES (@nome_categorias,@codigo_comprador)", con);
+                    queryInsert.Parameters.AddWithValue("@nome_categorias", listaCaterogias[i].Categoria);
+                    queryInsert.Parameters.AddWithValue("@codigo_comprador", codigo);
+                    queryInsert.ExecuteNonQuery();
+                }
+
+                
 
             } catch (Exception ex) { return false; }
 
