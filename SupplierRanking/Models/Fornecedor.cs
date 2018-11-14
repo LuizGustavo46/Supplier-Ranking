@@ -354,7 +354,7 @@ namespace SupplierRanking.Models
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ RESTAURAR SENHA ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public Boolean EsqueceuSuaSenha(string cnpj) //FEITO
+        public Boolean EsqueceuSuaSenha(string cnpj, string email) //FEITO
         {
             bool res = false;
             try
@@ -363,7 +363,8 @@ namespace SupplierRanking.Models
                 SqlCommand query =
                         new SqlCommand("SELECT email FROM fornecedor WHERE  cnpj = @cnpj", con);
                     query.Parameters.AddWithValue("@cnpj", cnpj);
-                    SqlDataReader leitor = query.ExecuteReader();
+                    query.Parameters.AddWithValue("@email", email);
+                SqlDataReader leitor = query.ExecuteReader();
 
                 while (leitor.Read())
                 {

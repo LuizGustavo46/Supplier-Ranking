@@ -151,11 +151,11 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult EsqueceuSuaSenha(string cnpj)
+        public ActionResult EsqueceuSuaSenha(string cnpj, string email)
         {
             Fornecedor enviaEmail = new Fornecedor();
 
-            enviaEmail.EsqueceuSuaSenha(cnpj); 
+            enviaEmail.EsqueceuSuaSenha(cnpj, email); 
 
 
             return RedirectToAction("EsqueceuSuaSenha");
