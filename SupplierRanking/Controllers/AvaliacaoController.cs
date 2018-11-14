@@ -106,6 +106,13 @@ namespace SupplierRanking.Controllers
         }
 
         /*************************************************************** FINAL INDEX ***********************************************************/
+
+        public ActionResult RankingPremium()
+        {
+            return View("RankingPremium", Avaliacao.RankingPremium());
+        }
+        /*************************************************************** FINAL INDEX ***********************************************************/
+
         // GET: Avaliacao
         public ActionResult Index()
         {
