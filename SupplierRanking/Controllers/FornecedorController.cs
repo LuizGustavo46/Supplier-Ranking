@@ -58,6 +58,9 @@ namespace SupplierRanking.Controllers
         /*==============================================================================CADASTRO FORNECEDOR===============================================================================*/
         public ActionResult CadastroFornecedor()  //FEITO
         {
+            Categorias c = new Categorias();
+            ViewBag.ListaCategorias = c.ListaCategorias();
+
             return View();
         }
        
