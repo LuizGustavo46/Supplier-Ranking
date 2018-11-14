@@ -5,8 +5,9 @@ $(document).ready(function () {
     var btnComprador = $('.wrap-cadastro-fornecedor #btnComprador'),
         btnVisualizarSenha = $('.wrap-cadastro-fornecedor #btnSenha'),
         btnImagem = $('.wrap-cadastro-fornecedor #btnImagem'),
-        btnProximo = $('.wrap-cadastro-fornecedor #btnProximo'),
+        btnLogin = $('.wrap-cadastro-fornecedor #btnLogin'),
         btnVoltar = $('.wrap-cadastro-fornecedor #btnVoltar'),
+        btnProximo = $('.wrap-cadastro-fornecedor #btnProximo'),
         btnCadastrar = $('.wrap-cadastro-fornecedor #btnCadastrar'),
 
         inputSenhas = $('.wrap-cadastro-fornecedor .input-senha'),
@@ -18,7 +19,7 @@ $(document).ready(function () {
 
         formCadastro = $('.wrap-cadastro-fornecedor .cadastro-form'),
         formTitle = $('.wrap-cadastro-fornecedor .form-title h2'),
-        formInputs = $('.wrap-cadastro-fornecedor .cadastro-form input'),
+        formInputs = $('.wrap-cadastro-fornecedor .cadastro-form input, textarea'),
 
         imgCarregada = $('.wrap-cadastro-fornecedor #imagemCarregada'),
         urlImageDefault = '/Content/images/add-imagem.png',
@@ -49,12 +50,12 @@ $(document).ready(function () {
 
     /*** Botao para mudar a proxima etapa de Cadastro ***/
     btnProximo.on('click', function () {
-        mostraConteudo2Etapa(this);
+        mostrarProximoConteudo();
     });
 
     /*** Botao para voltar para a etapa anterior de Cadastro ***/
     btnVoltar.on('click', function () {
-        mostraConteudo2Etapa(false);
+        mostrarConteudoAnterior();
     });
 
     /*** Botao para cadastrar ***/
@@ -79,7 +80,7 @@ $(document).ready(function () {
 
     /** Verifica todos os inputs visíveis **/
     function verificaInputsVisiveis() {
-        return $('.wrap-cadastro-fornecedor .form-parts').not('.hide').find('.wrap-input input, textarea');
+        return $('.wrap-cadastro-fornecedor .form-parts').not('.hide').find('.wrap-input input, textarea, select');
     }
 
     /** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
@@ -142,19 +143,80 @@ $(document).ready(function () {
         }
     }
 
-    /** Muda o conteúdo entre o primeiro passo de Cadastro e o segundo* **/
-    function mostraConteudoDasEtapas() {
-        var divVisivel = $('form-parts').not('.hide');
+    /** Muda para a próxima tela de conteúdo dos passos de Cadastro ***/
+    function mostrarProximoConteudo() {
 
-
-        console.log('foi', showThirdPart);
-        if (showThirdPart) {
+        if (!divFirstPart.hasClass('hide')) {
             divOptions.addClass('hide');
             divFirstPart.addClass('hide');
             divSecondPart.removeClass('hide');
-            //divThridPart.removeClass('hide');
+
+            btnLogin.parent('.form-forn-btn').addClass('hide');
+            btnVoltar.parent('.form-forn-btn').removeClass('hide');
+            //btnProximo.attr('disabled', 'disabled').addClass('disabled');
+
+            formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
+            formTitle.text('Estamos quase lá...');
+
+            activeformInputs = verificaInputsVisiveis();
+            activeformInputs.on('input', verificaInputsVazios);
+            console.log(activeformInputs);
+            return;
+        }
+
+
+        if (!divSecondPart.hasClass('hide')) {
+            divSecondPart.addClass('hide');
+            divThridPart.removeClass('hide');
+
+            formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
+            formTitle.text('O que você fornece?');
+
+            activeformInputs = verificaInputsVisiveis();
+            activeformInputs.on('input', verificaInputsVazios);
+            return;
+        }
+
+        if (!divThridPart.hasClass('hide')) {
+            divThridPart.addClass('hide');
+            
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('O que você procura?');
+            return;
+        }
+
+        divThridPart.addClass('hide');
+        divOptions.removeClass('hide');
+        divFirstPart.removeClass('hide');
+        divSecondPart.removeClass('hide');
+    }
+
+    /** Muda para a tela anterior de conteúdo dos passos de Cadastro ***/
+    function mostrarConteudoAnterior() {
+
+        if (!divSecondPart.hasClass('hide')) {
+            divOptions.removeClass('hide');
+            divFirstPart.removeClass('hide');
+            divSecondPart.addClass('hide');
+
+            btnLogin.parent('.form-forn-btn').removeClass('hide');
+            btnVoltar.parent('.form-forn-btn').addClass('hide');
+
+            formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
+            formTitle.text('Crie sua Conta');
+
+            activeformInputs = verificaInputsVisiveis();
+            activeformInputs.on('input', verificaInputsVazios);
+
+            return;
+        }
+
+        if (!divThridPart.hasClass('hide')) {
+            divSecondPart.removeClass('hide');
+            divThridPart.addClass('hide');
+
+            formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
+            formTitle.text('Estamos quase lá...');
             return;
         }
 
