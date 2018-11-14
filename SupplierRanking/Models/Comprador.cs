@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,21 +11,23 @@ namespace SupplierRanking.Models
 {
     public class Comprador
     {
+        //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-            new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
+            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
+
         //CAMPOS DO BANCO DE DADOS (TODOS OS DADOS DE CADASTRO)
-        private int codigo;
-        private string cpf;
-        private string nome;
-        private string sobrenome;
-        private string email;
-        private string tipo_pessoa;
-        private string senha;
-        private string cnpj;
-        private string nome_empresa;   
-        private string uf;
-        private string telefone;
-        private string celular;
+        private int     codigo;
+        private string  cpf;
+        private string  nome;
+        private string  sobrenome;
+        private string  email;
+        private string  tipo_pessoa;
+        private string  senha;
+        private string  cnpj;
+        private string  nome_empresa;   
+        private string  uf;
+        private string  telefone;
+        private string  celular;
 
         //Varáveis úteis
         int codigoEmail;
@@ -446,7 +449,7 @@ namespace SupplierRanking.Models
                 //CONFIGURANDO A MENSAGEM
                 MailMessage mail = new MailMessage();
                 //ORIGEM
-                mail.From = new MailAddress("vaal_sk8@live.com");
+                mail.From = new MailAddress("suportesuplierranking3@hotmail.com");
                 //DESTINATÁRIO
                 mail.To.Add(email);
                 //ASSUNTO
@@ -461,7 +464,7 @@ namespace SupplierRanking.Models
                 //HABILITAR O TLS
                 smtpServer.EnableSsl = true;
                 //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                smtpServer.Credentials = new System.Net.NetworkCredential("vaal_sk8@live.com", "counter4");
+                smtpServer.Credentials = new System.Net.NetworkCredential("suportesuplierranking3@hotmail.com", "SEnai12344");
                 //ENVIAR
                 smtpServer.Send(mail);
 

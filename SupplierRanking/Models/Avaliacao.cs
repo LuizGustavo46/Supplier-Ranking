@@ -5,13 +5,16 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using SupplierRanking.Models;
+using System.Configuration;
 
 namespace SupplierRanking.Models
 {
     public class Avaliacao
     {
+        //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-                new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
+            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
+
         //CAMPOS DO BANCO DE DADOS
         private int qualidade;
         private int atendimento;

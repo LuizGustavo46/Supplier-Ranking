@@ -1,6 +1,7 @@
 ﻿/*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,10 +12,9 @@ namespace SupplierRanking.Models
 {
     public class Fornecedor
     {
-
-        //---* SETA O CAMINHO COM O BANCO DE DADOS *---
+        //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-               new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
+            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
 
         //---* DECLARAÇÃO DE VARIAVEIS *-
         private string cnpj;
