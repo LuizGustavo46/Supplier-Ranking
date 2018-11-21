@@ -16,7 +16,7 @@ namespace SupplierRanking.Controllers
 
             Avaliacao a = new Avaliacao();
             a.Cnpj_fornecedor = /*cnpj_fornecedor*/"45.997.418/0001-53";
-            a.Codigo_comprador = /*codigo_comprador*/2;
+            a.Codigo_comprador = /*codigo_comprador*/1;
 
             if (a.VerificarSeteDias())
                 return View();

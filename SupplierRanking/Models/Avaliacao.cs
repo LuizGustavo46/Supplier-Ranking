@@ -145,8 +145,15 @@ namespace SupplierRanking.Models
                 media = Math.Round(media, 1); //LIMITA A CASA DECIMAL "0.0"
                 //COMANDO PARA INSERIR A MÉDIA PARA O FORNECEDOR
                 leitor.Close();
-                SqlCommand queryMedia2 = new SqlCommand("UPDATE fornecedor SET media = @media WHERE cnpj = @cnpj", con);
+                SqlCommand queryMedia2 = new SqlCommand("UPDATE fornecedor SET media = @media, media_qualidade = @media_qualidade, "+
+                    "media_atendimento = @media_atendimento, media_entrega = @media_entrega, media_preco = @media_preco, " +
+                    "media_satisfacao = @media_satisfacao WHERE cnpj = @cnpj", con);
                 queryMedia2.Parameters.AddWithValue("@media", media);
+                queryMedia2.Parameters.AddWithValue("@media_qualidade", mediaQualidade);
+                queryMedia2.Parameters.AddWithValue("@media_atendimento", mediaAtendimento);
+                queryMedia2.Parameters.AddWithValue("@media_entrega", mediaEntrega);
+                queryMedia2.Parameters.AddWithValue("@media_preco", mediaPreco);
+                queryMedia2.Parameters.AddWithValue("@media_satisfacao", mediaSatisfacao);
                 queryMedia2.Parameters.AddWithValue("@cnpj", cnpj_fornecedor);
                 queryMedia2.ExecuteNonQuery();
             } catch (Exception ex) { return false; }
@@ -193,7 +200,6 @@ namespace SupplierRanking.Models
 
         /***************************************************** UPDATE DE AVALIAÇÃO (COMENTÁRIO) **********************************************/
 
-        //MÉTODO UPDATE DE AVALIAÇÃO (COMENTÁRIO)
         public bool UpdateComentario()
         {
             try
@@ -372,6 +378,32 @@ namespace SupplierRanking.Models
                 con.Close();
             return ranking;
         }
+
+        /**************************************************** LISTAR RANKING COM FILTROS ********************************************************/
+        public static List<Fornecedor> RankingFiltro(string filtro)
+        {
+            List<Fornecedor> ranking = new List<Fornecedor>();
+
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+                //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS PREMIUM EM ORDEM DESCRESCENTE
+                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor ORDER BY @filtro DESC", con);
+                query.Parameters.AddWithValue("@filtro", filtro);
+
+                //terminar de fazer isso aqui
+
+
+
+
+
+            } catch(Exception ex) { ranking = null; }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            return ranking;
+        }
+
 
 
 

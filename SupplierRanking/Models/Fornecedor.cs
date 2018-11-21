@@ -35,6 +35,11 @@ namespace SupplierRanking.Models
         private byte[] imagem;
         private string imagem64;
         private string nome_categoria;
+        private float media_qualidade;
+        private float media_atendimento;
+        private float media_preco;
+        private float media_entrega;
+        private float media_satisfacao;
 
         /*Variaveis do funcionário*/
         private int codigo;
@@ -46,27 +51,32 @@ namespace SupplierRanking.Models
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ TORNANDO AS VARIAVEIS ACESSIVEIS ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
 
-        public String Cnpj            { get { return cnpj; }                 set { cnpj = value; } }
-        public string Nome_empresa    { get { return nome_empresa;}          set { nome_empresa = value; } }
-        public String Email           { get { return email; }                set { email = value; } }
-        public String Telefone        { get { return telefone;}              set { telefone = value; } }
-        public String Cidade          { get { return cidade; }               set { cidade = value; } }
-        public String Bairro          { get { return bairro; }               set { bairro = value; } }
-        public String Uf              { get { return uf; }                   set { uf = value; } }
-        public byte[] Imagem          { get { return imagem; }               set { imagem = value; } }
-        public String Imagem64        { get { return imagem64; }             set { imagem64 = value; } }
-        public String Senha           { get { return senha; }                set { senha = value; } }
-        public String Celular         { get { return celular; }              set { celular = value; } }
-        public String Endereco        { get { return endereco; }             set { endereco = value; } }
-        public String Descricao       { get { return descricao; }            set { descricao = value; } }
-        public String Cep             { get { return cep; }                  set { cep = value; }}
-        public float Media            { get { return media; }                set { media = value; } }
-        public String Slogan          { get { return slogan; }               set { slogan = value; } }
-        public String Plano           { get { return plano; }                set { plano = value; } }
-        public String Nome_categoria  { get { return nome_categoria; }       set { nome_categoria = value; } }
-        public int Codigo             { get { return codigo; }               set { codigo = value; } }
-        public String Nome            { get { return nome; }                 set { nome = value; } }
-        public String Cnpj_fornecedor { get { return cnpj_fornecedor; }      set { cnpj_fornecedor = value; } }
+        public String Cnpj              { get { return cnpj; }                  set { cnpj = value; } }
+        public string Nome_empresa      { get { return nome_empresa;}           set { nome_empresa = value; } }
+        public String Email             { get { return email; }                 set { email = value; } }
+        public String Telefone          { get { return telefone;}               set { telefone = value; } }
+        public String Cidade            { get { return cidade; }                set { cidade = value; } }
+        public String Bairro            { get { return bairro; }                set { bairro = value; } }
+        public String Uf                { get { return uf; }                    set { uf = value; } }
+        public byte[] Imagem            { get { return imagem; }                set { imagem = value; } }
+        public String Imagem64          { get { return imagem64; }              set { imagem64 = value; } }
+        public String Senha             { get { return senha; }                 set { senha = value; } }
+        public String Celular           { get { return celular; }               set { celular = value; } }
+        public String Endereco          { get { return endereco; }              set { endereco = value; } }
+        public String Descricao         { get { return descricao; }             set { descricao = value; } }
+        public String Cep               { get { return cep; }                   set { cep = value; }}
+        public float Media              { get { return media; }                 set { media = value; } }
+        public String Slogan            { get { return slogan; }                set { slogan = value; } }
+        public String Plano             { get { return plano; }                 set { plano = value; } }
+        public String Nome_categoria    { get { return nome_categoria; }        set { nome_categoria = value; } }
+        public float Media_qualidade    { get { return media_qualidade; }       set { media_qualidade = value; } }
+        public float Media_atendimento  { get { return media_atendimento; }     set { media_atendimento = value; } }
+        public float Media_entrega      { get { return media_entrega; }         set { media_entrega = value; } }
+        public float Media_preco        { get { return media_preco; }           set { media_preco = value; } }
+        public float Media_satisfacao   { get { return media_satisfacao; }      set { media_satisfacao = value; } }
+        public int Codigo               { get { return codigo; }                set { codigo = value; } }
+        public String Nome              { get { return nome; }                  set { nome = value; } }
+        public String Cnpj_fornecedor   { get { return cnpj_fornecedor; }       set { cnpj_fornecedor = value; } }
 
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
@@ -201,30 +211,35 @@ namespace SupplierRanking.Models
                  
                 // Criação de comando para inserção de dados na tabela fornecedor
                 SqlCommand query =
-                    new SqlCommand("INSERT INTO fornecedor VALUES (@cnpj,@nome_empresa,@email,@telefone,@celular,@endereco,@bairro,@cidade,@uf,@cep,@senha,@slogan,@descricao,@media,@plano,@imagem,@nome_categoria)",
+                    new SqlCommand("INSERT INTO fornecedor VALUES (@cnpj,@nome_empresa,@email,@telefone,@celular,@endereco,@bairro,@cidade,@uf,@cep,@senha,@slogan,@descricao,@media,@plano,@imagem,@nome_categoria,@media_qualidade,@media_atendimento,@media_entrega,@media_preco,@media_satisfacao)",
                         con);
 
                 // Compara se todos os campos estao preenchidos corretamente, caso não esteja retorna uma mensagem de erro para o usuario 
                 if (cnpj != "" && cnpj.Length <= 19 && nome_empresa != "" && email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
                     && cep != "" && cep.Length <=8 && slogan != "" && descricao != "" && descricao != "" && nome_categoria != "")
                 {
-                    query.Parameters.AddWithValue("@cnpj",           cnpj);
-                    query.Parameters.AddWithValue("@nome_empresa",   nome_empresa);
-                    query.Parameters.AddWithValue("@email",          email);
-                    query.Parameters.AddWithValue("@telefone",       telefone);
-                    query.Parameters.AddWithValue("@celular",        celular);
-                    query.Parameters.AddWithValue("@endereco",       endereco);
-                    query.Parameters.AddWithValue("@bairro",         bairro);
-                    query.Parameters.AddWithValue("@cidade",         cidade);
-                    query.Parameters.AddWithValue("@uf",             uf);
-                    query.Parameters.AddWithValue("@cep",            cep);
-                    query.Parameters.AddWithValue("@senha",          senha);
-                    query.Parameters.AddWithValue("@slogan",         slogan);
-                    query.Parameters.AddWithValue("@descricao",      descricao);
-                    query.Parameters.AddWithValue("@media",          media);
-                    query.Parameters.AddWithValue("@plano",          plano);
-                    query.Parameters.AddWithValue("@imagem",         imagem);
-                    query.Parameters.AddWithValue("@nome_categoria", nome_categoria);            
+                    query.Parameters.AddWithValue("@cnpj",              cnpj);
+                    query.Parameters.AddWithValue("@nome_empresa",      nome_empresa);
+                    query.Parameters.AddWithValue("@email",             email);
+                    query.Parameters.AddWithValue("@telefone",          telefone);
+                    query.Parameters.AddWithValue("@celular",           celular);
+                    query.Parameters.AddWithValue("@endereco",          endereco);
+                    query.Parameters.AddWithValue("@bairro",            bairro);
+                    query.Parameters.AddWithValue("@cidade",            cidade);
+                    query.Parameters.AddWithValue("@uf",                uf);
+                    query.Parameters.AddWithValue("@cep",               cep);
+                    query.Parameters.AddWithValue("@senha",             senha);
+                    query.Parameters.AddWithValue("@slogan",            slogan);
+                    query.Parameters.AddWithValue("@descricao",         descricao);
+                    query.Parameters.AddWithValue("@media",             media);
+                    query.Parameters.AddWithValue("@plano",             plano);
+                    query.Parameters.AddWithValue("@imagem",            imagem);
+                    query.Parameters.AddWithValue("@nome_categoria",    nome_categoria);
+                    query.Parameters.AddWithValue("@media_qualidade",   media_qualidade);
+                    query.Parameters.AddWithValue("@media_atendimento", media_atendimento);
+                    query.Parameters.AddWithValue("@media_entrega",     media_entrega);
+                    query.Parameters.AddWithValue("@media_preco",       media_preco);
+                    query.Parameters.AddWithValue("@media_satisfacao",  media_satisfacao);
                     query.ExecuteNonQuery();               
                 }
 
