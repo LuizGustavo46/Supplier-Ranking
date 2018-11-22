@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "RankingLista";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
 
 <h2>RankingLista</h2>
@@ -93,6 +93,16 @@
             </td>
             <td>
                 @item.Nome_categoria
+            </td>
+            <td>
+                @if (item.Plano.Equals("P"))
+                {
+                    <a>Qualidade: </a>@item.Media_qualidade <br />
+                    <a>Atendimento: </a>@item.Media_atendimento <br />
+                    <a>Entrega: </a>@item.Media_entrega <br />
+                    <a>Preco: </a>@item.Media_preco <br />
+                    <a>Satisfacao: </a>@item.Media_satisfacao
+                }
             </td>
 
         </tr>

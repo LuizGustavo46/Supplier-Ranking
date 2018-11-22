@@ -72,7 +72,7 @@ namespace SupplierRanking.Models
                         return false;
                     }
                 }
-            } catch(Exception ex) { return false; }
+            } catch(Exception ex) { }
 
             if (con.State == ConnectionState.Open)
                 con.Close(); //FECHA CONEXÃO
@@ -258,32 +258,16 @@ namespace SupplierRanking.Models
                     f.Plano         = leitor["Plano"].ToString();
                     f.Imagem        = (byte[])leitor["Imagem"];
                     f.Imagem64      = Convert.ToBase64String(f.Imagem);
-                    f.Nome_categoria = leitor["Nome_categorias"].ToString();          
-                    ranking.Add(f);
-
-                    Avaliacao a = new Avaliacao();
-                    try
+                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
+                    if (f.Plano.Equals("P")) //SE O FORNECEDOR FOR PREMIUM MOSTRA AS MÉDIAS DOS CRITÉRIOS DE AVALIAÇÃO
                     {
-                        //PEGAR CRITÉRIOS DE AVALIAÇÃO SE O FORNECEDOR FOR PREMIUM PARA MOSTRAR NA VIEW
-                        if (f.Plano == "P")
-                        {
-                            SqlCommand queryAvaliacoes = new SqlCommand("SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor");
-                            queryAvaliacoes.Parameters.AddWithValue("@cnpj_fornecedor", f.Cnpj);
-                            SqlDataReader leitorAvaliacoes = queryAvaliacoes.ExecuteReader();
-
-                            if (leitorAvaliacoes.Read())
-                            {
-                                a.qualidade     = int.Parse(leitorAvaliacoes["qualidade"].ToString());
-                                a.atendimento   = int.Parse(leitorAvaliacoes["atendimento"].ToString()); // terminar de fazer esses bagui aqui
-                                a.entrega       = int.Parse(leitorAvaliacoes["entrega"].ToString());
-                                a.preco         = int.Parse(leitorAvaliacoes["preco"].ToString());
-                                a.satisfacao    = int.Parse(leitorAvaliacoes["satisfacao"].ToString());
-                                //falta descobrir um jeito de passar pra lista junto com o fornecedor
-                       
-
-                            }
-                        }
-                    } catch (Exception ex) { a = null; }
+                        f.Media_qualidade = float.Parse(leitor["Media_qualidade"].ToString());
+                        f.Media_atendimento = float.Parse(leitor["Media_atendimento"].ToString());
+                        f.Media_entrega = float.Parse(leitor["Media_entrega"].ToString());
+                        f.Media_preco = float.Parse(leitor["Media_preco"].ToString());
+                        f.Media_satisfacao = float.Parse(leitor["Media_satisfacao"].ToString());
+                    }
+                    ranking.Add(f);    
                 }
             } catch (Exception ex) { ranking = null; }
 
@@ -325,7 +309,14 @@ namespace SupplierRanking.Models
                     f.Imagem        = (byte[])leitor["Imagem"];
                     f.Imagem64      = Convert.ToBase64String(f.Imagem);
                     f.Nome_categoria = leitor["Nome_categorias"].ToString();
-
+                    if (f.Plano.Equals("P")) //SE O FORNECEDOR FOR PREMIUM MOSTRA AS MÉDIAS DOS CRITÉRIOS DE AVALIAÇÃO
+                    {
+                        f.Media_qualidade = float.Parse(leitor["Media_qualidade"].ToString());
+                        f.Media_atendimento = float.Parse(leitor["Media_atendimento"].ToString());
+                        f.Media_entrega = float.Parse(leitor["Media_entrega"].ToString());
+                        f.Media_preco = float.Parse(leitor["Media_preco"].ToString());
+                        f.Media_satisfacao = float.Parse(leitor["Media_satisfacao"].ToString());
+                    }
                     ranking.Add(f);
                 }
             }
@@ -393,10 +384,31 @@ namespace SupplierRanking.Models
             try
             {
                 con.Open(); //ABRE CONEXÃO
-                //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS PREMIUM EM ORDEM DESCRESCENTE
-                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor ORDER BY @filtro DESC", con);
-                query.Parameters.AddWithValue("@filtro", filtro);
-                SqlDataReader leitor = query.ExecuteReader();
+                SqlCommand query;
+                SqlDataReader leitor = null;
+                //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DOS FORNECEDORES EM ORDEM DE FILTRO
+                if (filtro.Equals("media_qualidade"))
+                {
+                    query = new SqlCommand("SELECT * FROM fornecedor ORDER BY media_qualidade DESC", con);
+                    leitor = query.ExecuteReader();
+                } else if (filtro.Equals("media_atendimento"))
+                {
+                    query = new SqlCommand("SELECT * FROM fornecedor ORDER BY media_atendimento DESC", con);
+                    leitor = query.ExecuteReader();
+                } else if (filtro.Equals("media_entrega"))
+                {
+                    query = new SqlCommand("SELECT * FROM fornecedor ORDER BY media_entrega DESC", con);
+                    leitor = query.ExecuteReader();
+                } else if (filtro.Equals("media_preco"))
+                {
+                    query = new SqlCommand("SELECT * FROM fornecedor ORDER BY media_preco DESC", con);
+                    leitor = query.ExecuteReader();
+                } else if (filtro.Equals("media_satisfacao"))
+                {
+                    query = new SqlCommand("SELECT * FROM fornecedor ORDER BY media_satisfacao DESC", con);
+                    leitor = query.ExecuteReader();
+                }
+
                 while (leitor.Read())
                 {
                     Fornecedor f = new Fornecedor();
