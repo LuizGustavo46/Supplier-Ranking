@@ -171,3 +171,8 @@ a.article:hover {
         display: none;
     }
 }
+#sidebar:hover{
+    width: 380px;
+}
+
+ 

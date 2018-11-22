@@ -1,11 +1,13 @@
-﻿@{ 
-    ViewBag.Title = "Pesquisa";
+﻿
+@{
+    ViewBag.Title = "Perfil";
     Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
 
+
 <div class="wrapper">
     <!-- Sidebar  -->
-    <nav id="sidebar" onmousemove="moverMenu()" onmouseout="moverMenu2()" >
+    <nav id="sidebar" onmousemove="moverMenu()" onmouseout="moverMenu2()">
         <div class="sidebar-header" style="height: 104px;">
             <h3>Supplier Ranking</h3>
         </div>
@@ -31,43 +33,67 @@
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Sair</a>
             </li>
         </ul>
-        <div id="perfil"  style="width: 100px; height: 100px; background-color: antiquewhite; border-radius: 70px; margin: 167px auto auto 20px;">
+        <div id="perfil" style="width: 100px; height: 100px; background-color: antiquewhite; border-radius: 70px; margin: 167px auto auto 20px;">
 
         </div>
     </nav>
     <!-- Page Content  -->
-    <div id="content" style="background: linear-gradient(-135deg, #0e5176, #ffffff);">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 1000px;position:absolute;left: 30%;">
-            <div class="container-fluid">
-                <!-- <button type="button" id="sidebarCollapse" onmouse="menu()"class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
+    <div id="content" style="background: white">
+        
+        <section>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 1000px;position:absolute;left: 30%;">
+                <div class="container-fluid">
+                    <!-- <button type="button" id="sidebarCollapse" onmouse="menu()"class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
 
-                    </button>-->
+                </button>-->
 
 
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-align-justify"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <input class="col-10 wrap-input pl-2 mt-3"  style="width:870px;height: 40px;background-color: white;margin-left: 53px;"placeholder="Digite aqui o nome do fornecedor..." />
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <input class="col-10 wrap-input pl-2 mt-3" style="width:870px;height: 40px;background-color: white;margin-left: 53px;" placeholder="Digite aqui o nome do fornecedor..." />
+
+
+                    </div>
+
+                    <!--<img style="width: 27px;height: 27px;margin-right: 100px; "src="imagens/pesquisa.png"/>-->
+                    <button style="background: url('../Content/images/pesquisa.png') no-repeat;width: 30px;height:30px;margin-left: -120px;margin-top: 10px;"></button>
+
+
+                    <button id="btfiltro" onclick="filtro()" style="background: url('../Content/images/filtro.png') no-repeat;width: 30px;height:30px;margin-top: 10px;"
+                            class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button>
+
 
 
                 </div>
+            </nav>
 
-                <!--<img style="width: 27px;height: 27px;margin-right: 100px; "src="imagens/pesquisa.png"/>-->
-                <button style="background: url('../Content/images/pesquisa.png') no-repeat;width: 30px;height:30px;margin-left: -120px;margin-top: 10px;"></button>
-                
-                
-                <button id="btfiltro" onclick="filtro()" style="background: url('../Content/images/filtro.png') no-repeat;width: 30px;height:30px;margin-top: 10px;"
-                        class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button>
-
-
-
-            </div>
-        </nav>
+        </section>
+        
         <div id="divFiltro" style="width:600px;height:450px;background-color:white;border: 30px;border-color: black;visibility:hidden;position: absolute;
             left: 31%;"></div>
+
+        
+            <div style="width: 100%;height: 1090px;background-color:white;margin-top:89px;">
+            
+
+
+
+
+
+
+            
+            </div>
+
+           
+
+        
+
+
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -84,10 +110,10 @@
                     <div class="modal-body">
                         <p>Filtrar por:</p>
 
-                      
+
                         <label style="margin-left: 4px;" class="container">
                             Entrega
-                            
+
                             <input id="entrega" type="radio" checked="checked" name="radio">
                             <span style="margin-left: -15px;" class="checkmark"></span>
                         </label>
@@ -103,7 +129,7 @@
                         </label>
                         <label style="margin-left: 4px;" class="container">
                             Satisfação
-                            <input id="satisfacao"  type="radio" name="radio">
+                            <input id="satisfacao" type="radio" name="radio">
                             <span style="margin-left: -15px;" class="checkmark"></span>
                         </label>
                         <label style="margin-left: 4px;" class="container">
