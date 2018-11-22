@@ -15,6 +15,7 @@ namespace SupplierRanking.Controllers
         }
 
         public ActionResult Perfil()
+          
         {
             return View();
         }
