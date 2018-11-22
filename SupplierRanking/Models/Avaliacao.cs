@@ -352,23 +352,29 @@ namespace SupplierRanking.Models
                 {
                     Fornecedor f = new Fornecedor();
 
-                    f.Cnpj          = leitor["Cnpj"].ToString();
-                    f.Nome_empresa  = leitor["Nome_empresa"].ToString();
-                    f.Email         = leitor["Email"].ToString();
-                    f.Telefone      = leitor["Telefone"].ToString();
-                    f.Celular       = leitor["Celular"].ToString();
-                    f.Endereco      = leitor["Endereco"].ToString();
-                    f.Bairro        = leitor["Bairro"].ToString();
-                    f.Cidade        = leitor["Cidade"].ToString();
-                    f.Uf            = leitor["Uf"].ToString();
-                    f.Cep           = leitor["Cep"].ToString();
-                    f.Slogan        = leitor["Slogan"].ToString();
-                    f.Descricao     = leitor["Descricao"].ToString();
-                    f.Media         = float.Parse(leitor["Media"].ToString());
-                    f.Plano         = leitor["Plano"].ToString();
-                    f.Imagem        = (byte[])leitor["Imagem"];
-                    f.Imagem64      = Convert.ToBase64String(f.Imagem);
-                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
+                    f.Cnpj              = leitor["Cnpj"].ToString();
+                    f.Nome_empresa      = leitor["Nome_empresa"].ToString();
+                    f.Email             = leitor["Email"].ToString();
+                    f.Telefone          = leitor["Telefone"].ToString();
+                    f.Celular           = leitor["Celular"].ToString();
+                    f.Endereco          = leitor["Endereco"].ToString();
+                    f.Bairro            = leitor["Bairro"].ToString();
+                    f.Cidade            = leitor["Cidade"].ToString();
+                    f.Uf                = leitor["Uf"].ToString();
+                    f.Cep               = leitor["Cep"].ToString();
+                    f.Slogan            = leitor["Slogan"].ToString();
+                    f.Descricao         = leitor["Descricao"].ToString();
+                    f.Media             = float.Parse(leitor["Media"].ToString());
+                    f.Plano             = leitor["Plano"].ToString();
+                    f.Imagem            = (byte[])leitor["Imagem"];
+                    f.Imagem64          = Convert.ToBase64String(f.Imagem);
+                    f.Nome_categoria    = leitor["Nome_categorias"].ToString();
+                    f.Media_qualidade   = float.Parse(leitor["Media_qualidade"].ToString());
+                    f.Media_atendimento = float.Parse(leitor["Media_atendimento"].ToString());
+                    f.Media_entrega     = float.Parse(leitor["Media_entrega"].ToString());
+                    f.Media_preco       = float.Parse(leitor["Media_preco"].ToString());
+                    f.Media_satisfacao  = float.Parse(leitor["Media_satisfacao"].ToString());
+
 
                     ranking.Add(f);
                 }
@@ -390,13 +396,38 @@ namespace SupplierRanking.Models
                 //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS PREMIUM EM ORDEM DESCRESCENTE
                 SqlCommand query = new SqlCommand("SELECT * FROM fornecedor ORDER BY @filtro DESC", con);
                 query.Parameters.AddWithValue("@filtro", filtro);
+                SqlDataReader leitor = query.ExecuteReader();
+                while (leitor.Read())
+                {
+                    Fornecedor f = new Fornecedor();
 
-                //terminar de fazer isso aqui
-
-
-
-
-
+                    f.Cnpj          = leitor["Cnpj"].ToString();
+                    f.Nome_empresa  = leitor["Nome_empresa"].ToString();
+                    f.Email         = leitor["Email"].ToString();
+                    f.Telefone      = leitor["Telefone"].ToString();
+                    f.Celular       = leitor["Celular"].ToString();
+                    f.Endereco      = leitor["Endereco"].ToString();
+                    f.Bairro        = leitor["Bairro"].ToString();
+                    f.Cidade        = leitor["Cidade"].ToString();
+                    f.Uf            = leitor["Uf"].ToString();
+                    f.Cep           = leitor["Cep"].ToString();
+                    f.Slogan        = leitor["Slogan"].ToString();
+                    f.Descricao     = leitor["Descricao"].ToString();
+                    f.Media         = float.Parse(leitor["Media"].ToString());
+                    f.Plano         = leitor["Plano"].ToString();
+                    f.Imagem        = (byte[])leitor["Imagem"];
+                    f.Imagem64      = Convert.ToBase64String(f.Imagem);
+                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
+                    if (f.Plano.Equals("P")) //SE O FORNECEDOR FOR PREMIUM MOSTRA AS MÉDIAS DOS CRITÉRIOS DE AVALIAÇÃO
+                    {
+                        f.Media_qualidade   = float.Parse(leitor["Media_qualidade"].ToString());
+                        f.Media_atendimento = float.Parse(leitor["Media_atendimento"].ToString());
+                        f.Media_entrega     = float.Parse(leitor["Media_entrega"].ToString());
+                        f.Media_preco       = float.Parse(leitor["Media_preco"].ToString());
+                        f.Media_satisfacao  = float.Parse(leitor["Media_satisfacao"].ToString());
+                    }
+                    ranking.Add(f);
+                }
             } catch(Exception ex) { ranking = null; }
 
             if (con.State == ConnectionState.Open)
