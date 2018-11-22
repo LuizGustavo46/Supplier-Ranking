@@ -330,27 +330,40 @@ namespace SupplierRanking.Models
                 query.Parameters.AddWithValue("@texto", pesquisa);
                 SqlDataReader leitor = query.ExecuteReader();
 
-                Fornecedor f = new Fornecedor();
+                
 
                 //prepara o leitor
                 while (leitor.Read())
                 {
+                    Fornecedor f = new Fornecedor();
 
-                    f.nome_empresa       = leitor["nome_empresa"].ToString();
-                    f.nome_categoria     = leitor["nome_categoria"].ToString();
-
+                    f.Cnpj          = leitor["Cnpj"].ToString();
+                    f.Nome_empresa  = leitor["Nome_empresa"].ToString();
+                    f.Email         = leitor["Email"].ToString();
+                    f.Telefone      = leitor["Telefone"].ToString();
+                    f.Celular       = leitor["Celular"].ToString();
+                    f.Endereco      = leitor["Endereco"].ToString();
+                    f.Bairro        = leitor["Bairro"].ToString();
+                    f.Cidade        = leitor["Cidade"].ToString();
+                    f.Uf            = leitor["Uf"].ToString();
+                    f.Cep           = leitor["Cep"].ToString();
+                    f.Slogan        = leitor["Slogan"].ToString();
+                    f.Descricao     = leitor["Descricao"].ToString();
+                    f.Media         = float.Parse(leitor["Media"].ToString());
+                    f.Plano         = leitor["Plano"].ToString();
+                    f.Imagem        = (byte[])leitor["Imagem"];
+                    f.Imagem64      = Convert.ToBase64String(f.Imagem);
+                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
+                    if (f.Plano.Equals("P")) //SE O FORNECEDOR FOR PREMIUM MOSTRA AS MÉDIAS DOS CRITÉRIOS DE AVALIAÇÃO
+                    {
+                        f.Media_qualidade = float.Parse(leitor["Media_qualidade"].ToString());
+                        f.Media_atendimento = float.Parse(leitor["Media_atendimento"].ToString());
+                        f.Media_entrega = float.Parse(leitor["Media_entrega"].ToString());
+                        f.Media_preco = float.Parse(leitor["Media_preco"].ToString());
+                        f.Media_satisfacao = float.Parse(leitor["Media_satisfacao"].ToString());
+                    }
                     //colocar campo de posiçõ de ranking
                     lista.Add(f); // adiciona os valores cadastrados no banco à lista
-
-                    //Compara se o nome digitado na barra de pesquisa é igual a alguma empresa (pessoa juridica) cadastrada no banco
-                    if (pesquisa == f.nome_empresa)
-                    {
-
-                        f.Nome_empresa = f.nome_empresa;
-                        f.Nome_categoria = f.nome_categoria;
-                        lista.Add(f); // adiciona os valores cadastrados no banco à lista
-                        
-                    }
                 }
             }
 
