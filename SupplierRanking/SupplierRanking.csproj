@@ -383,6 +383,7 @@
     <Content Include="Views\config\css\css\bootstrap-reboot.css" />
     <Content Include="Views\config\css\css\mixins\_text-hide.css" />
     <Content Include="Views\Avaliacao\RankingFiltro.cshtml" />
+    <None Include="Views\Comprador\Email.cshtml" />
     <Content Include="Views\HomeLogada\Perfil.cshtml" />
     <None Include="Views\Shared\Layout_logada.cshtml" />
     <Content Include="Web.config" />

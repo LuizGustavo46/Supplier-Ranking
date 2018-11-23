@@ -449,14 +449,16 @@ namespace SupplierRanking.Models
                 //CONFIGURANDO A MENSAGEM
                 MailMessage mail = new MailMessage();
                 //ORIGEM
-                mail.From = new MailAddress("suportesuplierranking3@hotmail.com");
+                mail.From = new MailAddress("officialsranking@outlook.com");
                 //DESTINATÁRIO
                 mail.To.Add(email);
                 //ASSUNTO
                 mail.Subject = "REDEFINIÇÃO DE SENHA - Supplier Ranking";
                 //CORPO DO E-MAIL
-                mail.Body = "USER ID: " + codigo + "\nClique aqui para redefinir sua senha:\n" +
-                                                    "http://localhost:16962/Comprador/NovaSenha";
+                string body = "USER ID: " + codigo + "\nClique aqui para redefinir sua senha:\n" +
+                                                    "http://localhost:16962/Fornecedor/NovaSenha";
+               
+                
                 //CONFIGURAR O SMTP
                 SmtpClient smtpServer = new SmtpClient("smtp.live.com");
                 //CONFIGURAR PORTA
@@ -464,7 +466,7 @@ namespace SupplierRanking.Models
                 //HABILITAR O TLS
                 smtpServer.EnableSsl = true;
                 //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                smtpServer.Credentials = new System.Net.NetworkCredential("suportesuplierranking3@hotmail.com", "SEnai12344");
+                smtpServer.Credentials = new System.Net.NetworkCredential("officialsranking@outlook.com", "Senai1234");
                 //ENVIAR
                 smtpServer.Send(mail);
 

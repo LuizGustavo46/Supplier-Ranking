@@ -4,10 +4,11 @@ $(document).ready(function () {
 
     var btnComprador = $('.wrap-cadastro-fornecedor #btnComprador'),
         btnVisualizarSenha = $('.wrap-cadastro-fornecedor #btnSenha'),
-        btnImagem = $('.wrap-cadastro-fornecedor #btnImagem'),
+        btnImagemPerfil = $('.wrap-cadastro-fornecedor #btnImagemPerfil'),
         btnLogin = $('.wrap-cadastro-fornecedor #btnLogin'),
         btnVoltar = $('.wrap-cadastro-fornecedor #btnVoltar'),
         btnProximo = $('.wrap-cadastro-fornecedor #btnProximo'),
+        btnImagens = $('.wrap-cadastro-fornecedor #btnImagens'),
         btnCadastrar = $('.wrap-cadastro-fornecedor #btnCadastrar'),
 
         inputSenhas = $('.wrap-cadastro-fornecedor .input-senha'),
@@ -16,12 +17,13 @@ $(document).ready(function () {
         divFirstPart = $('.wrap-cadastro-fornecedor .form-forn-first-part'),
         divSecondPart = $('.wrap-cadastro-fornecedor .form-forn-second-part'),
         divThridPart = $('.wrap-cadastro-fornecedor .form-forn-third-part'),
+        divForthPart = $('.wrap-cadastro-fornecedor .form-forn-forth-part'),
 
         formCadastro = $('.wrap-cadastro-fornecedor .cadastro-form'),
         formTitle = $('.wrap-cadastro-fornecedor .form-title h2'),
         formInputs = $('.wrap-cadastro-fornecedor .cadastro-form input, textarea'),
 
-        imgCarregada = $('.wrap-cadastro-fornecedor #imagemCarregada'),
+        imgPerfilCarregada = $('.wrap-cadastro-fornecedor #imagemPerfilCarregada'),
         urlImageDefault = '/Content/images/add-imagem.png',
         activeformInputs,
         activeformChechbox;
@@ -43,9 +45,9 @@ $(document).ready(function () {
         visualizarSenhas(e);
     });
 
-    /*** Botao para carregar uma imagem ***/
-    btnImagem.on('change', function () {
-        showImagemCarregada(this);
+    /*** Botao para carregar a imagem de perfil ***/
+    btnImagemPerfil.on('change', function () {
+        showImagemPerfilCarregada(this);
     });
 
     /*** Botao para mudar a proxima etapa de Cadastro ***/
@@ -56,6 +58,11 @@ $(document).ready(function () {
     /*** Botao para voltar para a etapa anterior de Cadastro ***/
     btnVoltar.on('click', function () {
         mostrarConteudoAnterior();
+    });
+
+    /*** Botao para carregar uma imagem ***/
+    btnImagens.on('change', function (ev) {
+        showImagensCarregadas(ev);
     });
 
     /*** Botao para cadastrar ***/
@@ -103,19 +110,19 @@ $(document).ready(function () {
     }
 
     /** Verifica todos os checkbox visíveis **/
-    function showImagemCarregada(input) {
+    function showImagemPerfilCarregada(input) {
 
         if (input.files && input.files[0]) {
             var imagem = new FileReader();
 
             imagem.onload = function (e) {
-                imgCarregada.removeClass('input-image-default').addClass('input-image-carregada').attr('src', e.target.result);
+                imgPerfilCarregada.removeClass('input-image-default').addClass('input-image-carregada').attr('src', e.target.result);
             };
 
             imagem.readAsDataURL(input.files[0]);
 
         } else {
-            imgCarregada.removeClass('input-image-carregada').addClass('input-image-default').attr('src', urlImageDefault);
+            imgPerfilCarregada.removeClass('input-image-carregada').addClass('input-image-default').attr('src', urlImageDefault);
         }
     }
 
@@ -143,6 +150,45 @@ $(document).ready(function () {
         }
     }
 
+    /** Verifica todos os checkbox visíveis **/
+    function showImagensCarregadas(input) {
+        var files = input.target.files; //FileList object
+
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i],
+                picReader = new FileReader();
+
+            //Only pics
+            if (!file.type.match('image'))
+                continue;
+
+            picReader.addEventListener("load", function (event) {
+
+                var picFile = event.target;
+
+                document.getElementById("result").innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                        "title='" + picFile.name + "'/>";
+
+            });
+
+            //Read the image
+            picReader.readAsDataURL(file);
+        }
+
+        //if (input.files && input.files[0]) {
+        //    var imagem = new FileReader();
+
+        //    imagem.onload = function (e) {
+        //        imgPerfilCarregada.removeClass('input-image-default').addClass('input-image-carregada').attr('src', e.target.result);
+        //    };
+
+        //    imagem.readAsDataURL(input.files[0]);
+
+        //} else {
+        //    imgPerfilCarregada.removeClass('input-image-carregada').addClass('input-image-default').attr('src', urlImageDefault);
+        //}
+    }
+
     /** Muda para a próxima tela de conteúdo dos passos de Cadastro ***/
     function mostrarProximoConteudo() {
 
@@ -164,7 +210,6 @@ $(document).ready(function () {
             return;
         }
 
-
         if (!divSecondPart.hasClass('hide')) {
             divSecondPart.addClass('hide');
             divThridPart.removeClass('hide');
@@ -179,9 +224,10 @@ $(document).ready(function () {
 
         if (!divThridPart.hasClass('hide')) {
             divThridPart.addClass('hide');
+            divForthPart.removeClass('hide');
             
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
-            formTitle.text('O que você procura?');
+            formTitle.text('E para finalizar!');
             return;
         }
 
@@ -207,7 +253,6 @@ $(document).ready(function () {
 
             activeformInputs = verificaInputsVisiveis();
             activeformInputs.on('input', verificaInputsVazios);
-
             return;
         }
 
@@ -220,10 +265,14 @@ $(document).ready(function () {
             return;
         }
 
-        divThridPart.addClass('hide');
-        divOptions.removeClass('hide');
-        divFirstPart.removeClass('hide');
-        divSecondPart.removeClass('hide');
+        if (!divForthPart.hasClass('hide')) {
+            divThridPart.removeClass('hide');
+            divForthPart.addClass('hide');
+
+            formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
+            formTitle.text('O que você fornece?');
+            return;
+        }
     }
 
     /** Inicia assim que a pagina e carregada **/
