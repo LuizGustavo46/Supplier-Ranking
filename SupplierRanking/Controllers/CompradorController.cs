@@ -276,7 +276,7 @@ namespace SupplierRanking.Controllers
             else
                 TempData["Msg"] = "Informação Inválida";
 
-            return RedirectToAction("RestaurarSenha");
+            return RedirectToAction("EsqueceuSuaSenha");
         }
 
         public ActionResult NovaSenha()

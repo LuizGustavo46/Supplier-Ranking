@@ -116,8 +116,11 @@
     <Content Include="bin\System.Web.Webpages.Razor.dll" />
     <Content Include="bin\System.Web.Webpages.Razor.xml" />
     <Content Include="bin\System.Web.Webpages.xml" />
+    <Content Include="Content\config\css\avaliar-star.css" />
     <Content Include="Content\config\css\bootstrap\main.css" />
     <Content Include="Content\config\css\bootstrap\util.css" />
+    <Content Include="Content\config\css\checkbox-home-logada.css" />
+    <Content Include="Content\config\css\styleLogada.css" />
     <Content Include="Content\config\fonts\flaticon\font\Flaticon.svg" />
     <Content Include="Content\config\fonts\svg\icone.svg" />
     <Content Include="Content\config\js\aos.js" />
@@ -142,10 +145,14 @@
     <Content Include="Content\css\style_login.css" />
     <Content Include="Content\images\about.jpg" />
     <Content Include="Content\images\add-imagem.png" />
+    <Content Include="Content\images\avaliar.png" />
     <Content Include="Content\images\compradorIcon.png" />
     <Content Include="Content\images\contato.jpg" />
     <Content Include="Content\images\email.png" />
+    <Content Include="Content\images\email1.png" />
+    <Content Include="Content\images\endereco.png" />
     <Content Include="Content\images\ExperimenteAgora.jpg" />
+    <Content Include="Content\images\filtro.png" />
     <Content Include="Content\images\fornecedor.png" />
     <Content Include="Content\images\fornecedorIcon.png" />
     <Content Include="Content\images\fotoMarcelo2.png" />
@@ -154,7 +161,12 @@
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
+    <Content Include="Content\images\luizao.png" />
+    <Content Include="Content\images\luizao2.png" />
+    <Content Include="Content\images\luizao3.png" />
     <Content Include="Content\images\marcelo255.png" />
+    <Content Include="Content\images\pesquisa.png" />
+    <Content Include="Content\images\phone.png" />
     <Content Include="Content\images\photo.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\search.png" />
@@ -370,6 +382,10 @@
     <Content Include="Content\images\payment.png" />
     <Content Include="Views\config\css\css\bootstrap-reboot.css" />
     <Content Include="Views\config\css\css\mixins\_text-hide.css" />
+    <Content Include="Views\Avaliacao\RankingFiltro.cshtml" />
+    <None Include="Views\Comprador\Email.cshtml" />
+    <Content Include="Views\HomeLogada\Perfil.cshtml" />
+    <None Include="Views\Shared\Layout_logada.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -379,6 +395,7 @@
     <Compile Include="Controllers\CompradorController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeLogadaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -535,6 +552,7 @@
     <Content Include="Views\Avaliacao\CadastrarAvaliacao.cshtml" />
     <Content Include="Views\Avaliacao\UpdateComentario.cshtml" />
     <Content Include="Views\Avaliacao\RankingPremium.cshtml" />
+    <Content Include="Views\HomeLogada\Pesquisa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
