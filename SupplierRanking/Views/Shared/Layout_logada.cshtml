@@ -14,7 +14,8 @@
     <!-- Our Custom CSS -->
     <link href="~/Content/config/css/checkbox-home-logada.css" rel="stylesheet" />
     <link href="../../Content/config/css/styleLogada.css" rel="stylesheet" />
-   
+
+    <link href="~/Content/config/css/avaliar-star.css" rel="stylesheet" />
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -22,10 +23,44 @@
 
 <body style="background: white;">
     
-   
+    <nav id="sidebar" onmousemove="moverMenu()" onmouseout="moverMenu2()">
+        <div class="sidebar-header" style="height: 104px;">
+            <h3>Supplier Ranking</h3>
+        </div>
+        <ul class="list-unstyled components">
+            <p>Menu</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+
+            </li>
+            <li>
+                <a href="../Views/HomeLogada/Pesquisa.cshtml" data-toggle="collapse" aria-expanded="false">Pesquisar</a>
+            </li>
+
+
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Suporte</a>
+
+            </li>
+
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Sair</a>
+            </li>
+        </ul>
+
+        <a href="~/Views/HomeLogada/Perfil.cshtml">
+            <div id="perfil" style="width: 100px; height: 100px; background-color: antiquewhite; border-radius: 70px; margin: 167px auto auto 20px;">
+                <h5 class="p-2">Perfil</h5>
+            </div>
+        </a>
+
+    </nav>
+    <div>
+        @RenderBody();
+
+    </div>
     
     
-    @RenderBody();
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
