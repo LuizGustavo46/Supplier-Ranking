@@ -16,7 +16,7 @@ namespace SupplierRanking.Controllers
 
             Avaliacao a = new Avaliacao();
             a.Cnpj_fornecedor = /*cnpj_fornecedor*/"45.997.418/0001-53";
-            a.Codigo_comprador = /*codigo_comprador*/2;
+            a.Codigo_comprador = /*codigo_comprador*/1;
 
             if (a.VerificarSeteDias())
                 return View();
@@ -95,7 +95,7 @@ namespace SupplierRanking.Controllers
 
         public ActionResult RankingLista(string categoria)
         {
-            return View("RankingLista", Avaliacao.RankingLista(/*categoria*/"pesca"));
+            return View("RankingLista", Avaliacao.RankingLista(/*categoria*/"Bebidas"));
         }
 
         /*************************************************************** RANING GERAL *********************************************************/
@@ -105,11 +105,17 @@ namespace SupplierRanking.Controllers
             return View("RankingGeral", Avaliacao.RankingGeral());
         }
 
-        /*************************************************************** FINAL INDEX ***********************************************************/
+        /*************************************************************** RANKING PREMIUM ***********************************************************/
 
         public ActionResult RankingPremium()
         {
             return View("RankingPremium", Avaliacao.RankingPremium());
+        }
+        /*************************************************************** RANKING FILTRO ***********************************************************/
+
+        public ActionResult RankingFiltro()
+        {
+            return View("RankingFiltro", Avaliacao.RankingFiltro("media_entrega"));
         }
         /*************************************************************** FINAL INDEX ***********************************************************/
 

@@ -2,13 +2,13 @@
 
 @{
     ViewBag.Title = "RankingGeral";
-    Layout = null;
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
 
 <h2>RankingGeral</h2>
 
 <table class="table">
-    <tr>
+    @*<tr>
         <th></th>
         <th>
             CNPJ
@@ -47,7 +47,7 @@
             CATEGORIA
         </th>
         <th></th>
-    </tr>
+    </tr>*@
 
 @foreach (var item in Model)
 {
@@ -67,40 +67,51 @@
         }
         
         <td>
-            @item.Cnpj
+            CNPJ: @item.Cnpj
         </td>
         <td>
             @item.Nome_empresa
         </td>
         <td>
-            @item.Email
+            E-mail: @item.Email
         </td>
         <td>
-            @item.Telefone
+            Tel: @item.Telefone
         </td>
         <td>
+            Cel: @item.Celular
+        </td>
+        <td>
+
             @item.Cidade
         </td>
         <td>
             @item.Uf
         </td>
         <td>
-            @item.Celular
-        </td>
-        <td>
             @item.Descricao
         </td>
         <td>
-            @item.Media
+            Média: @item.Media
         </td>
         <td>
-            @item.Slogan
+            Slogan: @item.Slogan
         </td>
         <td>
             @item.Plano
         </td>
         <td>
-            @item.Nome_categoria
+            Categoria: @item.Nome_categoria
+        </td>
+        <td>
+            @if (item.Plano.Equals("P"))
+            {
+                <a>Qualidade: </a>@item.Media_qualidade <br /> 
+                <a>Atendimento: </a>@item.Media_atendimento <br /> 
+                <a>Entrega: </a>@item.Media_entrega <br /> 
+                <a>Preco: </a>@item.Media_preco <br /> 
+                <a>Satisfacao: </a>@item.Media_satisfacao
+            }
         </td>
     </tr>
 }
