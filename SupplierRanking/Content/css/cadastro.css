@@ -234,3 +234,18 @@
 .wrap-cadastro-fornecedor .input-image-carregada {
     border: 9px dashed #0C496Bc9;
 }
+
+#result {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-height: 330px;
+    overflow: auto;
+}
+
+#result img {
+    width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+}

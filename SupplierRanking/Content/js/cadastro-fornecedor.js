@@ -150,7 +150,7 @@ $(document).ready(function () {
         }
     }
 
-    /** Verifica todos os checkbox visíveis **/
+    /** Exibe todas as imagens carregadas dos produtos do Fornecedor **/
     function showImagensCarregadas(input) {
         var files = input.target.files; //FileList object
 
@@ -162,31 +162,13 @@ $(document).ready(function () {
             if (!file.type.match('image'))
                 continue;
 
-            picReader.addEventListener("load", function (event) {
-
-                var picFile = event.target;
-
-                document.getElementById("result").innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
-                        "title='" + picFile.name + "'/>";
-
-            });
+            picReader.onload = function (event) {
+                $($.parseHTML('<img>')).attr('src', event.target.result).appendTo($('#result'));
+            };
 
             //Read the image
             picReader.readAsDataURL(file);
         }
-
-        //if (input.files && input.files[0]) {
-        //    var imagem = new FileReader();
-
-        //    imagem.onload = function (e) {
-        //        imgPerfilCarregada.removeClass('input-image-default').addClass('input-image-carregada').attr('src', e.target.result);
-        //    };
-
-        //    imagem.readAsDataURL(input.files[0]);
-
-        //} else {
-        //    imgPerfilCarregada.removeClass('input-image-carregada').addClass('input-image-default').attr('src', urlImageDefault);
-        //}
     }
 
     /** Muda para a próxima tela de conteúdo dos passos de Cadastro ***/
