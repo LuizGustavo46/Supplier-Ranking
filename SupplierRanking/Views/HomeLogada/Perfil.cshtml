@@ -7,36 +7,7 @@
 
 <div class="wrapper">
     <!-- Sidebar  -->
-    <nav id="sidebar" onmousemove="moverMenu()" onmouseout="moverMenu2()">
-        <div class="sidebar-header" style="height: 104px;">
-            <h3>Supplier Ranking</h3>
-        </div>
-        <ul class="list-unstyled components">
-            <p>Menu</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-
-            </li>
-            <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Pesquisar</a>
-            </li>
-
-            <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Avaliar</a>
-            </li>
-            <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Suporte</a>
-
-            </li>
-
-            <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Sair</a>
-            </li>
-        </ul>
-        <div id="perfil" style="width: 100px; height: 100px; background-color: antiquewhite; border-radius: 70px; margin: 167px auto auto 20px;">
-
-        </div>
-    </nav>
+   
     <!-- Page Content  -->
     <div id="content" style="background: white">
         
@@ -44,7 +15,7 @@
 
 
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 1000px;position:absolute;left: 30%;">
+
                 <div class="container-fluid">
                     <!-- <button type="button" id="sidebarCollapse" onmouse="menu()"class="btn btn-info">
                     <i class="fas fa-align-left"></i>
@@ -56,23 +27,15 @@
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <input class="col-10 wrap-input pl-2 mt-3" style="width:870px;height: 40px;background-color: white;margin-left: 53px;" placeholder="Digite aqui o nome do fornecedor..." />
-
-
-                    </div>
+                   
 
                     <!--<img style="width: 27px;height: 27px;margin-right: 100px; "src="imagens/pesquisa.png"/>-->
-                    <button style="background: url('../Content/images/pesquisa.png') no-repeat;width: 30px;height:30px;margin-left: -120px;margin-top: 10px;"></button>
-
-
-                    <button id="btfiltro" onclick="filtro()" style="background: url('../Content/images/filtro.png') no-repeat;width: 30px;height:30px;margin-top: 10px;"
-                            class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button>
+                  
 
 
 
                 </div>
-            </nav>
+           
 
         </section>
         
@@ -93,8 +56,8 @@
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
 
-                    <button style="background: url('../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
-                     position: absolute;margin-left: 240px;margin-top: -59px;"></button>
+                    <button onclick="filtro()" style="background: url('../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
+                     position: absolute;margin-left: 240px;margin-top: -59px;"data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal"></button>
 
                     <img style="position: absolute;right: 538px;top: 190px;width:40px;" src="~/Content/images/endereco.png" />
 
@@ -154,40 +117,194 @@
                             color: white;
                             border-bottom: 3px solid #bbad00; ">
 
-                        <h4 style="margin-left: 380px;" class="modal-title">Filtro </h4>
+                        <h4 style="margin-left: 380px;" class="modal-title">Nós ajude a melhorar nosso serviço!</h4>
                         <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
 
                     </div>
                     <div class="modal-body">
-                        <p>Filtrar por:</p>
+                        <p>Avalie por :</p>
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            
+                        </form>
+                       
+                        <br />
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
 
+                        </form>
 
-                        <label style="margin-left: 4px;" class="container">
-                            Entrega
+                        <br />
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
 
-                            <input id="entrega" type="radio" checked="checked" name="radio">
-                            <span style="margin-left: -15px;" class="checkmark"></span>
-                        </label>
-                        <label style="margin-left: 4px;" class="container">
-                            Qualidade
-                            <input id="qualidade" type="radio" name="radio">
-                            <span style="margin-left: -15px;" class="checkmark"></span>
-                        </label>
-                        <label style="margin-left: 4px;" class="container">
-                            Preço
-                            <input id="preco" type="radio" name="radio">
-                            <span style="margin-left: -15px;" class="checkmark"></span>
-                        </label>
-                        <label style="margin-left: 4px;" class="container">
-                            Satisfação
-                            <input id="satisfacao" type="radio" name="radio">
-                            <span style="margin-left: -15px;" class="checkmark"></span>
-                        </label>
-                        <label style="margin-left: 4px;" class="container">
-                            Atendimento
-                            <input id="atendimento" type="radio" name="radio">
-                            <span style="margin-left: -15px;" class="checkmark"></span>
-                        </label>
+                        </form>
+
+                      
+                        <br />
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+
+                        </form>
+                       
+                        <br />
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+
+                        </form>
+
+                        <br />
+                        <form>
+                            <label>Comentário</label>
+                            <br />
+                            <input type="text" />
+                        </form>
+                       
 
                     </div>
                     <div class="modal-footer">
@@ -201,3 +318,10 @@
 
     </div>
 </div>
+<script>
+
+
+    $(':radio').change(function () {
+        console.log('New star rating: ' + this.value);
+    });
+</script>
