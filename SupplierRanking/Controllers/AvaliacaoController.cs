@@ -91,33 +91,6 @@ namespace SupplierRanking.Controllers
             return View("UpdateComentario");
         }
 
-        /*********************************************************** RANKING POR CATEGORIA *****************************************************/
-
-        public ActionResult RankingLista(string categoria)
-        {
-            return View("RankingLista", Avaliacao.RankingLista(/*categoria*/"Bebidas"));
-        }
-
-        /*************************************************************** RANING GERAL *********************************************************/
-
-        public ActionResult RankingGeral()
-        {
-            return View("RankingGeral", Avaliacao.RankingGeral());
-        }
-
-        /*************************************************************** RANKING PREMIUM ***********************************************************/
-
-        public ActionResult RankingPremium()
-        {
-            return View("RankingPremium", Avaliacao.RankingPremium());
-        }
-        /*************************************************************** RANKING FILTRO ***********************************************************/
-
-        public ActionResult RankingFiltro()
-        {
-            return View("RankingFiltro", Avaliacao.RankingFiltro("media_entrega"));
-        }
-        /*************************************************************** FINAL INDEX ***********************************************************/
 
         // GET: Avaliacao
         public ActionResult Index()
