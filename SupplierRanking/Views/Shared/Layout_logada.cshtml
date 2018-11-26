@@ -21,41 +21,46 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
 
-<body style="background: white;">
-    
-    <nav id="sidebar" onmousemove="moverMenu()" onmouseout="moverMenu2()">
-        <div class="sidebar-header" style="height: 104px;">
-            <h3>Supplier Ranking</h3>
-        </div>
-        <ul class="list-unstyled components">
-            <p>Menu</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-
-            </li>
-            <li>
-                <a href="../Views/HomeLogada/Pesquisa.cshtml" data-toggle="collapse" aria-expanded="false">Pesquisar</a>
-            </li>
-
-
-            <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Suporte</a>
-
-            </li>
-
-            <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Sair</a>
-            </li>
-        </ul>
-
-        <a href="~/Views/HomeLogada/Perfil.cshtml">
-            <div id="perfil" style="width: 100px; height: 100px; background-color: antiquewhite; border-radius: 70px; margin: 167px auto auto 20px;">
-                <h5 class="p-2">Perfil</h5>
+<body class="d-flex" style="background: white;">
+    <div class="col-3">
+        <nav id="sidebar" onmousemove="moverMenu()" onmouseout="moverMenu2()">
+            <div class="sidebar-header" style="height: 104px;">
+                <h3>Supplier Ranking</h3>
             </div>
-        </a>
+            <ul class="list-unstyled components">
+                <p>Menu</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
 
-    </nav>
-    <div>
+                </li>
+                <li>
+                    <a href="../Views/HomeLogada/Pesquisa.cshtml" data-toggle="collapse" aria-expanded="false">Pesquisar</a>
+                </li>
+
+
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Suporte</a>
+
+                </li>
+
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Sair</a>
+                </li>
+            </ul>
+
+            <a href="~/Views/HomeLogada/Perfil.cshtml">
+                <div id="perfil" style="width: 100px; height: 100px; background-color: antiquewhite; border-radius: 70px; margin: 167px auto auto 20px;">
+                    <h5 class="p-2">Perfil</h5>
+                </div>
+            </a>
+
+        </nav>
+
+    </div>
+    
+    
+
+    <div class="col-9">
         @RenderBody();
 
     </div>

@@ -8,6 +8,8 @@ body {
     background: #fafafa;
 }
 
+
+
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -57,12 +59,15 @@ a:focus {
 }
 
 #sidebar {
-    width: 150px;
-    background: #0C496BE6;
-    color: #fff;
-    transition: all 0.3s;
-    font-family: 'Poppins', sans-serif;
-    decoration: none;
+   height: 1000px;
+   width: 150px;
+   background: #0C496BE6;
+   color: #fff;
+   transition: all 0.3s;
+   font-family: 'Poppins', sans-serif;
+    z-index: 2;
+    position: absolute;
+    top: 0px;
 }
 
 
