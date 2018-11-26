@@ -6,114 +6,166 @@
 }
 
 <h2>RankingGeral</h2>
+@*
+    <table class="table">
+       <tr>
+            <th></th>
+            <th>
+                CNPJ
+            </th>
+            <th>
+                NOME
+            </th>
+            <th>
+                EMAIL
+            </th>
+            <th>
+                TELEFONE
+            </th>
+            <th>
+                CIDADE
+            </th>
+            <th>
+                UF
+            </th>
+            <th>
+                CELULAR
+            </th>
+            <th>
+                DESCRIÇÃO
+            </th>
+            <th>
+                MEDIA
+            </th>
+            <th>
+                SLOGAN
+            </th>
+            <th>
+                PLANO
+            </th>
+            <th>
+                CATEGORIA
+            </th>
+            <th></th>
+        </tr>*@
 
-<table class="table">
-    @*<tr>
-        <th></th>
-        <th>
-            CNPJ
-        </th>
-        <th>
-            NOME
-        </th>
-        <th>
-            EMAIL
-        </th>
-        <th>
-            TELEFONE
-        </th>
-        <th>
-            CIDADE
-        </th>
-        <th>
-            UF
-        </th>
-        <th>
-            CELULAR
-        </th>
-        <th>
-            DESCRIÇÃO
-        </th>
-        <th>
-            MEDIA
-        </th>
-        <th>
-            SLOGAN
-        </th>
-        <th>
-            PLANO
-        </th>
-        <th>
-            CATEGORIA
-        </th>
-        <th></th>
-    </tr>*@
-
-@foreach (var item in Model)
-{
-    <tr>
-        @if (item.Imagem64 == "")
-        {
-            <td>
-                <img src="~/Content/images/iconecor.png" height="100" width="100" />
-            </td>
-        }
-        else
-        {
-            String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-            <td>
-                <img src="@imagem64" height="100" width="100" />
-            </td>
-        }
-        
-        <td>
-            CNPJ: @item.Cnpj
-        </td>
-        <td>
-            @item.Nome_empresa
-        </td>
-        <td>
-            E-mail: @item.Email
-        </td>
-        <td>
-            Tel: @item.Telefone
-        </td>
-        <td>
-            Cel: @item.Celular
-        </td>
-        <td>
-
-            @item.Cidade
-        </td>
-        <td>
-            @item.Uf
-        </td>
-        <td>
-            @item.Descricao
-        </td>
-        <td>
-            Média: @item.Media
-        </td>
-        <td>
-            Slogan: @item.Slogan
-        </td>
-        <td>
-            @item.Plano
-        </td>
-        <td>
-            Categoria: @item.Nome_categoria
-        </td>
-        <td>
-            @if (item.Plano.Equals("P"))
+@*@foreach (var item in Model)
+    {
+        <tr>
+            @if (item.Imagem64 == "")
             {
-                <a>Qualidade: </a>@item.Media_qualidade <br /> 
-                <a>Atendimento: </a>@item.Media_atendimento <br /> 
-                <a>Entrega: </a>@item.Media_entrega <br /> 
-                <a>Preco: </a>@item.Media_preco <br /> 
-                <a>Satisfacao: </a>@item.Media_satisfacao
+                <td>
+                    <img src="~/Content/images/iconecor.png" height="100" width="100" />
+                </td>
             }
-        </td>
-    </tr>
-}
+            else
+            {
+                String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                <td>
+                    <img src="@imagem64" height="100" width="100" />
+                </td>
+            }
 
-</table>
+            <td>
+                CNPJ: @item.Cnpj
+            </td>
+             <td>
+                E-mail: @item.Email
+            </td>
+            <td>
+                Tel: @item.Telefone
+            </td>
+            <td>
+                Cel: @item.Celular
+            </td>
+            <td>
+
+            </td>
+            <td>
+                Slogan: @item.Slogan
+            </td>
+            <td>
+                @item.Plano
+            </td>
+            <td>
+                Categoria: @item.Nome_categoria
+            </td>
+            <td>
+                @if (item.Plano.Equals("P"))
+                {
+                    <a>Qualidade: </a>@item.Media_qualidade <br />
+                    <a>Atendimento: </a>@item.Media_atendimento <br />
+                    <a>Entrega: </a>@item.Media_entrega <br />
+                    <a>Preco: </a>@item.Media_preco <br />
+                    <a>Satisfacao: </a>@item.Media_satisfacao
+                }
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+<ul class="row list-unstyled m-3">
+    @foreach (var item in Model)
+    {
+        <li class="col-12 d-flex p-3 mb-3" style="border: 2px solid;">
+            <div class="col-1 d-flex align-items-center p-0 mr-2">
+                @if (item.Imagem64 == "")
+                {
+                    <img src="~/Content/images/iconecor.png" height="100" width="100" />
+                }
+                else
+                {
+                    String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                    <img src="@imagem64" height="100" width="100" />
+                }
+            </div>
+            <div class="col-7">
+                <div>
+                    <h4>
+                        @item.Media
+                    </h4>
+                    @if (item.Plano.Equals("P"))
+                    {
+                        <div>
+                            <img />
+                            @item.Media_qualidade
+                        </div>
+
+                        <div>
+                            <img />
+                            @item.Media_atendimento
+                        </div>
+
+                        <div>
+                            <img />
+                            @item.Media_entrega
+                        </div>
+
+                        <div>
+                            <img />
+                            @item.Media_preco
+                        </div>
+
+                        <div>
+                            <img />
+                            @item.Media_satisfacao
+                        </div>
+                    }
+                </div>
+                <h3>
+                    @item.Nome_empresa
+                </h3>
+                <p>
+                    @item.Endereco, @item.Bairro - @item.Cidade / @item.Uf
+                </p>
+            </div>
+            <div class="col-4" style="border-left: 2px solid">
+                <h4>Descrição: </h4>
+                <textarea>
+                    @item.Descricao
+                </textarea>
+            </div>
+        </li>
+    }
+</ul>
