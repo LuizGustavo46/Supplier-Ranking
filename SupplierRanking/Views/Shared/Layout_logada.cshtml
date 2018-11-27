@@ -5,10 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Collapsible sidebar using Bootstrap 4</title>
 
     <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
@@ -34,7 +36,7 @@
 
                 </li>
                 <li>
-                    <a href="../Views/HomeLogada/Pesquisa.cshtml" data-toggle="collapse" aria-expanded="false">Pesquisar</a>
+                    <a href="/HomeLogada/Pesquisa" data-toggle="collapse" aria-expanded="false">Pesquisar</a>
                 </li>
 
 
@@ -48,11 +50,11 @@
                 </li>
             </ul>
 
-            <a href="~/Views/HomeLogada/Perfil.cshtml">
+           
                 <div id="perfil" style="width: 100px; height: 100px; background-color: antiquewhite; border-radius: 70px; margin: 167px auto auto 20px;">
-                    <h5 class="p-2">Perfil</h5>
+                    <a class="perfil"href="/HomeLogada/Perfil">Perfil </a>
                 </div>
-            </a>
+           
 
         </nav>
 
