@@ -20,6 +20,7 @@ namespace SupplierRanking.Models
         public static List<Fornecedor> RankingCategoria(string categoria)
         {
             List<Fornecedor> ranking = new List<Fornecedor>();
+            
             try
             {
                 con.Open(); //ABRE CONEXÃO
@@ -71,6 +72,7 @@ namespace SupplierRanking.Models
         public static List<Fornecedor> RankingGeral()
         {
             List<Fornecedor> ranking = new List<Fornecedor>();
+  
 
             try
             {
@@ -122,6 +124,7 @@ namespace SupplierRanking.Models
         public static List<Fornecedor> RankingPremium()
         {
             List<Fornecedor> ranking = new List<Fornecedor>();
+            
 
             try
             {
@@ -171,6 +174,7 @@ namespace SupplierRanking.Models
         public static List<Fornecedor> RankingFiltro(string filtro)
         {
             List<Fornecedor> ranking = new List<Fornecedor>();
+            
 
             try
             {
@@ -248,6 +252,7 @@ namespace SupplierRanking.Models
         public static List<Fornecedor> PesquisaFornecedor(string pesquisa) //TRAVADO PELA HOME LOGADA
         {
             List<Fornecedor> lista = new List<Fornecedor>();
+            
             try
             {
                 // abre conexão

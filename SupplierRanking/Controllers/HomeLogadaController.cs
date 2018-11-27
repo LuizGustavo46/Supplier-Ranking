@@ -12,19 +12,19 @@ namespace SupplierRanking.Controllers
         // GET: HomeLogada
         public ActionResult Pesquisa()
         {
-            return View();
+            return View("Pesquisa", HomeLogada.RankingGeral());
         }
 
         [HttpPost]
         public ActionResult Pesquisa(string pesquisa)
         {
             List<Fornecedor> lista = new List<Fornecedor>();
-
-            if(lista == null)
+           
+            if(lista.Count == 0)
                 lista = HomeLogada.PesquisaFornecedor(pesquisa);
-            else if (lista == null)
+            if (lista.Count == 0)
                 lista = HomeLogada.RankingCategoria(pesquisa);
-            else if (lista == null)
+            if (lista.Count == 0)
                 lista = HomeLogada.RankingFiltro(pesquisa);
 
             return View(lista);

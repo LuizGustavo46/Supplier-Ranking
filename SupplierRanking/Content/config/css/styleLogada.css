@@ -66,7 +66,7 @@ a:focus {
    transition: all 0.3s;
    font-family: 'Poppins', sans-serif;
     z-index: 2;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
 }
@@ -177,9 +177,7 @@ a.article:hover {
         display: none;
     }
 }
-#sidebar:hover{
-    width: 380px;
-}
+
 
  
 
@@ -194,3 +192,24 @@ a.perfil {
 .w3-content{
     max-width: 502px;
 }
+.carousel {
+    margin: 0 auto;
+    width:800px;
+    height: 300px;
+    display: relative;
+  }
+  .carousel img {
+    display: hidden; /* hide images until carousel prepares them */
+    cursor: pointer; /* not needed if you wrap carousel items in links */
+    width: 300px;
+    height: 300px;
+    }
+
+  .comentario{
+    width: 900px;
+    height: 100px;
+    position: absolute;
+    border: solid 1px;
+    top: 84%;
+    left: 20%;
+  }
