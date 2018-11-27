@@ -25,6 +25,7 @@ namespace SupplierRanking.Models
         private string data_avaliacao;
         private string cnpj_fornecedor;
         private int codigo_comprador;
+        private Comprador c;
 
         public int Qualidade                { get { return qualidade; }             set { qualidade = value; }}
         public int Atendimento              { get { return atendimento; }           set { atendimento = value; }}
@@ -34,8 +35,9 @@ namespace SupplierRanking.Models
         public string Comentario            { get { return comentario; }            set { comentario = value; }}
         public string Data_avaliacao        { get { return data_avaliacao; }        set { data_avaliacao = value; }}
         public string Cnpj_fornecedor       { get { return cnpj_fornecedor; }       set { cnpj_fornecedor = value; }}
-        public int Codigo_comprador         { get { return codigo_comprador; }      set { codigo_comprador = value; }}      
-        
+        public int Codigo_comprador         { get { return codigo_comprador; }      set { codigo_comprador = value; }}
+        public Comprador C                  { get { return c; }                     set { c = value; }}
+
         /***************************************************** VERIFICAR AVALIAÇÃO 7 DIAS ************************************************/
 
         public bool VerificarSeteDias()

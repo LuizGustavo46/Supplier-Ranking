@@ -37,7 +37,7 @@ namespace SupplierRanking.Controllers
                 {
                     Session["User"] = cf;
                     ViewBag.Message = "Bem-vindo";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RankingGeral", "HomeLogada");
                 }
 
                 else
@@ -56,7 +56,7 @@ namespace SupplierRanking.Controllers
                 {
                     Session["User"] = cj;
                     ViewBag.Message = "Bem-vindo";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RankingGeral", "HomeLogada");
                 }
 
                 else
@@ -75,7 +75,7 @@ namespace SupplierRanking.Controllers
                 {
                     Session["User"] = f;
                     ViewBag.Message = "Bem-vindo";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RankingGeral", "HomeLogada");
                 }
 
                 else
@@ -95,7 +95,7 @@ namespace SupplierRanking.Controllers
                 {
                     Session["User"] = fu;
                     ViewBag.Message = "Bem-vindo";
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("RankingGeral", "HomeLogada");
                 }
 
                 else

@@ -20,21 +20,20 @@ namespace SupplierRanking.Controllers
         {
             List<Fornecedor> lista = new List<Fornecedor>();
 
-            if(lista == null)
+            if(lista.Count == 0)
                 lista = HomeLogada.PesquisaFornecedor(pesquisa);
-            else if (lista == null)
+            if (lista.Count == 0)
                 lista = HomeLogada.RankingCategoria(pesquisa);
-            else if (lista == null)
+            if (lista.Count == 0)
                 lista = HomeLogada.RankingFiltro(pesquisa);
 
             return View(lista);
         }
 
 
-        public ActionResult Perfil()
-
+        public ActionResult Perfil(string cnpj)
         {
-            return View();
+            return View(HomeLogada.Perfil(cnpj));
         }
 
 
