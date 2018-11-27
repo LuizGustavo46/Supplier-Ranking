@@ -4,11 +4,16 @@
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    /*font-family: 'Poppins', sans-serif;
+    background: #fafafa;*/
+    position: relative;
+
 }
 
-
+.conteudo-logada {
+    position: absolute;
+    left: 150px;
+}
 
 p {
     font-family: 'Poppins', sans-serif;
@@ -59,23 +64,20 @@ a:focus {
 }
 
 #sidebar {
-   height: 1095px;
    width: 150px;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
    background: #0C496BE6;
    color: #fff;
    transition: all 0.3s;
    font-family: 'Poppins', sans-serif;
-    z-index: 2;
-    position: fixed;
-    top: 0px;
-    left: 0px;
 }
 
-
-
-#sidebar.active {
+/*#sidebar.active {
     margin-left: -250px;
-}
+}*/
 
 #sidebar .sidebar-header {
     padding: 20px;
@@ -104,13 +106,12 @@ a:focus {
     background: #fff;
 }
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
+#sidebar ul li.active>a {
     color: #fff;
     background: #D0A748;
 }
 
-a[data-toggle="collapse"] {
+/*a[data-toggle="collapse"] {
     position: relative;
 }
 
@@ -120,7 +121,7 @@ a[data-toggle="collapse"] {
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
-}
+}*/
 
 ul ul a {
     font-size: 0.9em !important;
@@ -128,7 +129,7 @@ ul ul a {
     background: #6d7fcc;
 }
 
-ul.CTAs {
+/*ul.CTAs {
     padding: 20px;
 }
 
@@ -143,13 +144,13 @@ ul.CTAs a {
 a.download {
     background: #fff;
     color: #7386D5;
-}
+}*/
 
-a.article,
+/*a.article,
 a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
-}
+}*/
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -178,9 +179,6 @@ a.article:hover {
     }
 }
 
-
- 
-
 a.perfil {
     text-align: center;
     display: block;
@@ -188,9 +186,17 @@ a.perfil {
     width: 100%;
     text-decoration: none;
 }
-.mySlides {display:none;}
+
+/*.mySlides {
+    display:none;
+}
+
 .w3-content{
     max-width: 502px;
+}*/
+
+.modal-open {
+	overflow: visible !important;
 }
 .carousel {
     margin: 0 auto;

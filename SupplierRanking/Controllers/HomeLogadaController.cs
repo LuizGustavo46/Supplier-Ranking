@@ -19,7 +19,7 @@ namespace SupplierRanking.Controllers
         public ActionResult Pesquisa(string pesquisa)
         {
             List<Fornecedor> lista = new List<Fornecedor>();
-           
+
             if(lista.Count == 0)
                 lista = HomeLogada.PesquisaFornecedor(pesquisa);
             if (lista.Count == 0)
@@ -31,10 +31,9 @@ namespace SupplierRanking.Controllers
         }
 
 
-        public ActionResult Perfil()
-
+        public ActionResult Perfil(string cnpj)
         {
-            return View();
+            return View(HomeLogada.Perfil(cnpj));
         }
 
 

@@ -119,8 +119,8 @@
     <Content Include="Content\config\css\avaliar-star.css" />
     <Content Include="Content\config\css\bootstrap\main.css" />
     <Content Include="Content\config\css\bootstrap\util.css" />
-    <Content Include="Content\config\css\checkbox-home-logada.css" />
-    <Content Include="Content\config\css\styleLogada.css" />
+    <Content Include="Content\css\checkbox-home-logada.css" />
+    <Content Include="Content\css\style_logada.css" />
     <Content Include="Content\config\fonts\flaticon\font\Flaticon.svg" />
     <Content Include="Content\config\fonts\svg\icone.svg" />
     <Content Include="Content\config\js\aos.js" />
