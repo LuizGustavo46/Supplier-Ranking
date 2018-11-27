@@ -633,6 +633,50 @@ namespace SupplierRanking.Models
         }
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
+        /***************************************************** PERFIL DO FORNECEDOR ********************************************************/
+
+        public static Fornecedor Perfil(string cnpj) //FEITO
+        {
+            Fornecedor f = new Fornecedor();
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+
+                //comando para selecionar o fornecedor apartir do cnpj
+                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj", con);
+                query.Parameters.AddWithValue("@cnpj", cnpj);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                //prepara o leitor para pegar as informações a serem exibidas
+                if (leitor.Read())
+                {
+                    f.Cnpj = leitor["Cnpj"].ToString();
+                    f.Nome_empresa = leitor["Nome_empresa"].ToString();
+                    f.Email = leitor["Email"].ToString();
+                    f.Telefone = leitor["Telefone"].ToString();
+                    f.Celular = leitor["Celular"].ToString();
+                    f.Endereco = leitor["Endereco"].ToString();
+                    f.Bairro = leitor["Bairro"].ToString();
+                    f.Cidade = leitor["Cidade"].ToString();
+                    f.Uf = leitor["Uf"].ToString();
+                    f.Cep = leitor["Cep"].ToString();
+                    f.Slogan = leitor["Slogan"].ToString();
+                    f.Descricao = leitor["Descricao"].ToString();
+                    f.Media = float.Parse(leitor["Media"].ToString());
+                    f.Plano = leitor["Plano"].ToString();
+                    f.Imagem = (byte[])leitor["Imagem"];
+                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
+                }
+            }
+            //tratamento de erro
+            catch (Exception e) { f = null; }
+
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+
+            return f;
+        }
+
     }//FIM DA CLASSE
 }//FIM DO NAMESPACE
 
