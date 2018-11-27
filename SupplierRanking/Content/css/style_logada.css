@@ -66,13 +66,15 @@ a:focus {
 #sidebar {
    width: 150px;
     height: 100vh;
-    position: absolute;
+    /*position: absolute;*/
     top: 0px;
     left: 0px;
    background: #0C496BE6;
    color: #fff;
    transition: all 0.3s;
    font-family: 'Poppins', sans-serif;
+   position: fixed;
+   
 }
 
 /*#sidebar.active {
@@ -207,15 +209,16 @@ a.perfil {
   .carousel img {
     display: hidden; /* hide images until carousel prepares them */
     cursor: pointer; /* not needed if you wrap carousel items in links */
-    width: 300px;
-    height: 300px;
-    }
+    width: 200px;
+    height: 200px;
+
+  }
 
   .comentario{
     width: 900px;
     height: 100px;
     position: absolute;
-    border: solid 1px;
-    top: 84%;
-    left: 20%;
-  }
+    border: solid 2px ;
+    top: 7%;
+    left: 5%;
+    }
