@@ -166,7 +166,7 @@ $(document).ready(function () {
             $('#wrapperFuncionario').removeClass('hide');
             $('.restaura-senha-form').removeClass('hide');
             wrapInputEmail.removeClass('hide');
-
+           
             inputHidden.val('2');
             return;
         }
@@ -235,8 +235,8 @@ $(document).ready(function () {
         }
 
         formInputs.val('');
-        activeformInputs = verificaInputsVisiveis();
-        activeformInputs.on('input', verificarInputsVazios);
+        //activeformInputs = verificaInputsVisiveis();
+        //activeformInputs.on('input', verificarInputsVazios);
         $('.restaura-senha-form').removeClass('hide');
     }
 
@@ -251,8 +251,8 @@ $(document).ready(function () {
         }
 
         formInputs.val('');
-        activeformInputs = verificaInputsVisiveis();
-        activeformInputs.on('input', verificarInputsVazios);
+        //activeformInputs = verificaInputsVisiveis();
+        //activeformInputs.on('input', verificarInputsVazios);
         $('.restaura-senha-form').removeClass('hide');
     }
 
@@ -282,22 +282,22 @@ $(document).ready(function () {
 
 
     $('.restaura-senha-form-btn').on('click', function () {
-        //submitForm();
+       //submitForm();
         //console.log('foi');
 
         $('.restaura-senha-form').submit();
     });
 
-    function submitForm() {
-        if (!verificarInputsVazios()) {
-            $('.error-msg').removeClass('hide');
+    //function submitForm() {
+    //    if (!verificarInputsVazios()) {
+    //        $('.error-msg').removeClass('hide');
 
             
-        } else {
-            $('.error-msg').addClass('hide');
-            $('.restaura-senha-form').submit();   
-        }
-    }
+    //    } else {
+    //        $('.error-msg').addClass('hide');
+    //        $('.restaura-senha-form').submit();   
+    //    }
+    //}
     
    
 

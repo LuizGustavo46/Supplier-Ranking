@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "CadastroFuncionario";
-    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
 <div class="container-login100">
@@ -11,11 +11,7 @@
             <!--- Campos do Funcionario -->
             <div id="">
                 <input type="text" name="cnpj" placeholder="CNPJ">
-                <br /> <br />
-
-                @*CÓDIGO DO FUNCIONARIO VAI SER GERADO AUTOMÁTICAMENTE*@
-                @*<input type="text" name="codigo" placeholder="Codigo" readonly>*@
-
+                <br /> <br />             
                 <input type="text" name="nome" placeholder="Nome">
                 <br /> <br />
                 <input type="text" name="senha" placeholder="Senha">

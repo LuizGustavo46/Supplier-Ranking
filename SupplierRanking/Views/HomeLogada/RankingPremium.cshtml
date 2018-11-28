@@ -1,11 +1,12 @@
 ﻿@model List<SupplierRanking.Models.Fornecedor>
 
 @{
-    ViewBag.Title = "RankingLista";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "RankingPremium";
+    Layout = null;
 }
 
-<h2>RankingLista</h2>
+<h2>Ranking Premium</h2>
+
 <table class="table">
     <tr>
         <th></th>
@@ -25,10 +26,13 @@
             CIDADE
         </th>
         <th>
+            UF
+        </th>
+        <th>
             CELULAR
         </th>
         <th>
-            DESCRICAO
+            DESCRIÇÃO
         </th>
         <th>
             MEDIA
@@ -42,7 +46,7 @@
         <th>
             CATEGORIA
         </th>
-
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -51,16 +55,17 @@
             @if (item.Imagem64 == "")
             {
                 <td>
-                    <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 15px;"/>
+                    <img src="~/Content/images/iconecor.png" height="100" width="100" />
                 </td>
             }
             else
             {
                 String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
                 <td>
-                    <img src="@imagem64" height="100" width="100" style="border-radius: 15px;" />
+                    <img src="@imagem64" height="100" width="100" />
                 </td>
             }
+
             <td>
                 @item.Cnpj
             </td>
@@ -75,6 +80,9 @@
             </td>
             <td>
                 @item.Cidade
+            </td>
+            <td>
+                @item.Uf
             </td>
             <td>
                 @item.Celular
@@ -94,12 +102,7 @@
             <td>
                 @item.Nome_categoria
             </td>
-
         </tr>
     }
+
 </table>
-
-
-
-
-

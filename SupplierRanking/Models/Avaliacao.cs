@@ -5,13 +5,16 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using SupplierRanking.Models;
+using System.Configuration;
 
 namespace SupplierRanking.Models
 {
     public class Avaliacao
     {
+        //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-                new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
+            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
+
         //CAMPOS DO BANCO DE DADOS
         private int qualidade;
         private int atendimento;
@@ -22,6 +25,7 @@ namespace SupplierRanking.Models
         private string data_avaliacao;
         private string cnpj_fornecedor;
         private int codigo_comprador;
+        private Comprador c;
 
         public int Qualidade                { get { return qualidade; }             set { qualidade = value; }}
         public int Atendimento              { get { return atendimento; }           set { atendimento = value; }}
@@ -31,24 +35,24 @@ namespace SupplierRanking.Models
         public string Comentario            { get { return comentario; }            set { comentario = value; }}
         public string Data_avaliacao        { get { return data_avaliacao; }        set { data_avaliacao = value; }}
         public string Cnpj_fornecedor       { get { return cnpj_fornecedor; }       set { cnpj_fornecedor = value; }}
-        public int Codigo_comprador         { get { return codigo_comprador; }      set { codigo_comprador = value; }}      
-        
-        /***************************************************** INSERIR CADASTRO DE AVALIAÇÃO ************************************************/
+        public int Codigo_comprador         { get { return codigo_comprador; }      set { codigo_comprador = value; }}
+        public Comprador C                  { get { return c; }                     set { c = value; }}
 
-        public bool CadastrarAvaliacao()
+        /***************************************************** VERIFICAR AVALIAÇÃO 7 DIAS ************************************************/
+
+        public bool VerificarSeteDias()
         {
             Avaliacao a = new Avaliacao();
             string data_agora = DateTime.Now.ToShortDateString(); //PEGA A DATA COMPLETA SEM A HORA DO DIA
             try
             {
-                con.Open();//ABRE CONEXÃO
-                //CONDIÇÃO PARA SABER SE AQUELE COMPRADOR JÁ AVALIOU AQUELE FORNECEDOR
-                SqlCommand query1 = //UM COMPRADOR NÃO PODE AVALIAR MAIS DE UMA VEZ O MESMO FORNECEDOR
-                    new SqlCommand(" SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor AND "+
+                con.Open();
+                SqlCommand query = //UM COMPRADOR NÃO PODE AVALIAR MAIS DE UMA VEZ O MESMO FORNECEDOR
+                    new SqlCommand(" SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor AND " +
                     "codigo_comprador = @codigo_comprador", con);
-                query1.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
-                query1.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
-                SqlDataReader leitor = query1.ExecuteReader();
+                query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
+                query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
+                SqlDataReader leitor = query.ExecuteReader();
 
                 //SE NÃO HOUVER NADA REGISTRADO NA TABELA DE AVALIACAO NO BANCO, COM RELAÇÃO AO COMPRADOR E AO FORNECEDOR,
                 //OU A ULTIMA AVALIAÇÃO JA PASSOU DE 7 DIAS, SOMENTE ASSIM PODE OCORRER O REGISTRO DA AVALIAÇÃO NOVAMENTE
@@ -56,52 +60,52 @@ namespace SupplierRanking.Models
                 if (leitor.Read())  //SE CAIR NO ELSE É PORQUE O COMPRADOR ESTA FAZENDO A PRIMEIRA AVALIAÇÃO DA EMPRESA
                 {
                     a.data_avaliacao = leitor["data_avaliacao"].ToString();
-
                     TimeSpan date = Convert.ToDateTime(data_agora) - Convert.ToDateTime(a.data_avaliacao);
                     int diferenca = date.Days;
 
                     if (diferenca >= 7)
                     {
-                        //CRIAÇÃO DE COMANDO
-                        SqlCommand query =
-                        new SqlCommand("INSERT INTO avaliacao VALUES (@qualidade,@atendimento,@entrega,@preco," +
-                        "@satisfacao,@comentario,@data_avaliacao,@cnpj_fornecedor,@codigo_comprador)", con);
-
-                        query.Parameters.AddWithValue("@qualidade", qualidade);
-                        query.Parameters.AddWithValue("@atendimento", atendimento);
-                        query.Parameters.AddWithValue("@entrega", entrega);
-                        query.Parameters.AddWithValue("@preco", preco);
-                        query.Parameters.AddWithValue("@satisfcao", satisfacao);
-                        query.Parameters.AddWithValue("@comentario", comentario);
-                        query.Parameters.AddWithValue("@data_avaliacao", data_avaliacao);
-                        query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
-                        query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
-                        query.ExecuteNonQuery(); //EXECUTA
+                        con.Close(); //FECHA CONEXÃO
+                        return true;
                     }
                     else
                     {
+                        con.Close(); //FECHA CONEXÃO
                         return false;
-                    }//FINAL  DA CONDIÇÃO DOS DIAS
+                    }
                 }
-                else
-                {
-                    leitor.Close();
-                    //CRIAÇÃO DE COMANDO
-                    SqlCommand query =
-                    new SqlCommand("INSERT INTO avaliacao VALUES (@qualidade,@atendimento,@entrega,@preco," +
-                    "@satisfacao,@comentario,@data_avaliacao,@cnpj_fornecedor,@codigo_comprador)", con);
+            } catch(Exception ex) { }
 
-                    query.Parameters.AddWithValue("@qualidade", qualidade);
-                    query.Parameters.AddWithValue("@atendimento", atendimento);
-                    query.Parameters.AddWithValue("@entrega", entrega);
-                    query.Parameters.AddWithValue("@preco", preco);
-                    query.Parameters.AddWithValue("@satisfacao", satisfacao);
-                    query.Parameters.AddWithValue("@comentario", comentario);
-                    query.Parameters.AddWithValue("@data_avaliacao", data_agora);
-                    query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
-                    query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
-                    query.ExecuteNonQuery(); //EXECUTA
-                }           
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+            return true;
+        }
+
+        /***************************************************** INSERIR CADASTRO DE AVALIAÇÃO ************************************************/
+
+        public bool CadastrarAvaliacao()
+        {
+            string data_agora = DateTime.Now.ToShortDateString(); //PEGA A DATA COMPLETA SEM A HORA DO DIA
+            try
+            {
+                con.Open();//ABRE CONEXÃO       
+                
+                //CRIAÇÃO DE COMANDO
+                SqlCommand query =
+                new SqlCommand("INSERT INTO avaliacao VALUES (@qualidade,@atendimento,@entrega,@preco," +
+                "@satisfacao,@comentario,@data_avaliacao,@cnpj_fornecedor,@codigo_comprador)", con);
+
+                query.Parameters.AddWithValue("@qualidade", qualidade);
+                query.Parameters.AddWithValue("@atendimento", atendimento);
+                query.Parameters.AddWithValue("@entrega", entrega);
+                query.Parameters.AddWithValue("@preco", preco);
+                query.Parameters.AddWithValue("@satisfacao", satisfacao);
+                query.Parameters.AddWithValue("@comentario", comentario);
+                query.Parameters.AddWithValue("@data_avaliacao", data_agora);
+                query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
+                query.Parameters.AddWithValue("@codigo_comprador", codigo_comprador);
+                query.ExecuteNonQuery(); //EXECUTA
+                          
             }catch(Exception ex) { return false; }
 
             double mediaQualidade = 0, mediaAtendimento = 0, mediaEntrega = 0, mediaPreco = 0, mediaSatisfacao = 0, media = 0;
@@ -143,8 +147,15 @@ namespace SupplierRanking.Models
                 media = Math.Round(media, 1); //LIMITA A CASA DECIMAL "0.0"
                 //COMANDO PARA INSERIR A MÉDIA PARA O FORNECEDOR
                 leitor.Close();
-                SqlCommand queryMedia2 = new SqlCommand("UPDATE fornecedor SET media = @media WHERE cnpj = @cnpj", con);
+                SqlCommand queryMedia2 = new SqlCommand("UPDATE fornecedor SET media = @media, media_qualidade = @media_qualidade, "+
+                    "media_atendimento = @media_atendimento, media_entrega = @media_entrega, media_preco = @media_preco, " +
+                    "media_satisfacao = @media_satisfacao WHERE cnpj = @cnpj", con);
                 queryMedia2.Parameters.AddWithValue("@media", media);
+                queryMedia2.Parameters.AddWithValue("@media_qualidade", mediaQualidade);
+                queryMedia2.Parameters.AddWithValue("@media_atendimento", mediaAtendimento);
+                queryMedia2.Parameters.AddWithValue("@media_entrega", mediaEntrega);
+                queryMedia2.Parameters.AddWithValue("@media_preco", mediaPreco);
+                queryMedia2.Parameters.AddWithValue("@media_satisfacao", mediaSatisfacao);
                 queryMedia2.Parameters.AddWithValue("@cnpj", cnpj_fornecedor);
                 queryMedia2.ExecuteNonQuery();
             } catch (Exception ex) { return false; }
@@ -178,6 +189,8 @@ namespace SupplierRanking.Models
                     a.satisfacao        = int.Parse(leitor["Satisfacao"].ToString());
                     a.comentario        = leitor["Comentario"].ToString();
                     a.data_avaliacao    = leitor["Data_avaliacao"].ToString();
+                    a.cnpj_fornecedor   = leitor["Cnpj_fornecedor"].ToString();
+                    a.codigo_comprador  = int.Parse(leitor["Codigo_comprador"].ToString());
                 }
 
             } catch (Exception e) { a = null; }
@@ -189,7 +202,6 @@ namespace SupplierRanking.Models
 
         /***************************************************** UPDATE DE AVALIAÇÃO (COMENTÁRIO) **********************************************/
 
-        //MÉTODO UPDATE DE AVALIAÇÃO (COMENTÁRIO)
         public bool UpdateComentario()
         {
             try
@@ -198,7 +210,7 @@ namespace SupplierRanking.Models
                 SqlCommand query = new SqlCommand("UPDATE avaliacao SET comentario = @comentario WHERE " +
                     "cnpj_fornecedor = @cnpj_fornecedor AND codigo_comprador = @codigo_comprador", con);
 
-                if (comentario.Length > 10)
+                if (comentario.Length > 2)
                 {
                     query.Parameters.AddWithValue("@comentario", comentario);
                     query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj_fornecedor);
@@ -215,161 +227,6 @@ namespace SupplierRanking.Models
                 con.Close();
             return true;
         }
-
-        /***************************************************** LISTAR RANKING POR CATEGORIA ***************************************************/
-
-        public static List<Fornecedor> RankingLista(string categoria)
-        {
-            List<Fornecedor> ranking = new List<Fornecedor>();
-            try
-            {
-                con.Open(); //ABRE CONEXÃO
-                //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS JÁ FORMANDO O RANKING, DA MAIOR PARA A MENOR MÉDIA
-                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE nome_categorias = @nome_categorias ORDER BY media DESC", con);
-                query.Parameters.AddWithValue("@nome_categorias", categoria);
-                SqlDataReader leitor = query.ExecuteReader();
-                while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
-                {
-                    Fornecedor f = new Fornecedor();
-
-                    f.Cnpj          = leitor["Cnpj"].ToString();
-                    f.Nome_empresa  = leitor["Nome_empresa"].ToString();
-                    f.Email         = leitor["Email"].ToString();
-                    f.Telefone      = leitor["Telefone"].ToString();
-                    f.Celular       = leitor["Celular"].ToString();
-                    f.Endereco      = leitor["Endereco"].ToString();
-                    f.Bairro        = leitor["Bairro"].ToString();
-                    f.Cidade        = leitor["Cidade"].ToString();
-                    f.Uf            = leitor["Uf"].ToString();
-                    f.Cep           = leitor["Cep"].ToString();
-                    f.Slogan        = leitor["Slogan"].ToString();
-                    f.Descricao     = leitor["Descricao"].ToString();
-                    f.Media         = float.Parse(leitor["Media"].ToString());
-                    f.Plano         = leitor["Plano"].ToString();
-                    f.Imagem        = (byte[])leitor["Imagem"];
-                    f.Imagem64      = Convert.ToBase64String(f.Imagem);
-                    f.Nome_categoria = leitor["Nome_categorias"].ToString();          
-                    ranking.Add(f);
-
-                    Avaliacao a = new Avaliacao();
-                    try
-                    {
-                        //PEGAR CRITÉRIOS DE AVALIAÇÃO SE O FORNECEDOR FOR PREMIUM PARA MOSTRAR NA VIEW
-                        if (f.Plano == "P")
-                        {
-                            SqlCommand queryAvaliacoes = new SqlCommand("SELECT * FROM avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor");
-                            queryAvaliacoes.Parameters.AddWithValue("@cnpj_fornecedor", f.Cnpj);
-                            SqlDataReader leitorAvaliacoes = queryAvaliacoes.ExecuteReader();
-
-                            if (leitorAvaliacoes.Read())
-                            {
-                                a.qualidade     = int.Parse(leitorAvaliacoes["qualidade"].ToString());
-                                a.atendimento   = int.Parse(leitorAvaliacoes["atendimento"].ToString()); // terminar de fazer esses bagui aqui
-                                a.entrega       = int.Parse(leitorAvaliacoes["entrega"].ToString());
-                                a.preco         = int.Parse(leitorAvaliacoes["preco"].ToString());
-                                a.satisfacao    = int.Parse(leitorAvaliacoes["satisfacao"].ToString());
-                                //falta descobrir um jeito de passar pra lista junto com o fornecedor
-                       
-
-                            }
-                        }
-                    } catch (Exception ex) { a = null; }
-                }
-            } catch (Exception ex) { ranking = null; }
-
-            if (con.State == ConnectionState.Open)
-                con.Close();
-            return ranking;
-        }
-
-        /***************************************************** LISTAR RANKING GERAL **********************************************************/
-
-        public static List<Fornecedor> RankingGeral()
-        {
-            List<Fornecedor> ranking = new List<Fornecedor>();
-
-            try
-            {
-                con.Open(); //ABRE CONEXÃO
-                            //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS JÁ FORMANDO O RANKING DAS TOP 10 EMPRESAS
-                SqlCommand query = new SqlCommand("SELECT TOP 10 * FROM fornecedor ORDER BY media DESC", con);
-                SqlDataReader leitor = query.ExecuteReader();
-                while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
-                {
-                    Fornecedor f = new Fornecedor();
-
-                    f.Cnpj          = leitor["Cnpj"].ToString();
-                    f.Nome_empresa  = leitor["Nome_empresa"].ToString();
-                    f.Email         = leitor["Email"].ToString();
-                    f.Telefone      = leitor["Telefone"].ToString();
-                    f.Celular       = leitor["Celular"].ToString();
-                    f.Endereco      = leitor["Endereco"].ToString();
-                    f.Bairro        = leitor["Bairro"].ToString();
-                    f.Cidade        = leitor["Cidade"].ToString();
-                    f.Uf            = leitor["Uf"].ToString();
-                    f.Cep           = leitor["Cep"].ToString();
-                    f.Slogan        = leitor["Slogan"].ToString();
-                    f.Descricao     = leitor["Descricao"].ToString();
-                    f.Media         = float.Parse(leitor["Media"].ToString());
-                    f.Plano         = leitor["Plano"].ToString();
-                    f.Imagem        = (byte[])leitor["Imagem"];
-                    f.Imagem64      = Convert.ToBase64String(f.Imagem);
-                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
-
-                    ranking.Add(f);
-                }
-            }
-            catch (Exception ex) { ranking = null; }
-
-            if (con.State == ConnectionState.Open)
-                con.Close();
-            return ranking;
-        }
-
-        /***************************************************** LISTAR RANKING PREMUIUM **********************************************************/
-
-        public static List<Fornecedor> RankingPremium()
-        {
-            List<Fornecedor> ranking = new List<Fornecedor>();
-
-            try
-            {
-                con.Open(); //ABRE CONEXÃO
-                            //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS PREMIUM EM ORDEM DESCRESCENTE
-                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor WHERE plano = 'P' ORDER BY media DESC", con);
-                SqlDataReader leitor = query.ExecuteReader();
-                while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
-                {
-                    Fornecedor f = new Fornecedor();
-
-                    f.Cnpj          = leitor["Cnpj"].ToString();
-                    f.Nome_empresa  = leitor["Nome_empresa"].ToString();
-                    f.Email         = leitor["Email"].ToString();
-                    f.Telefone      = leitor["Telefone"].ToString();
-                    f.Celular       = leitor["Celular"].ToString();
-                    f.Endereco      = leitor["Endereco"].ToString();
-                    f.Bairro        = leitor["Bairro"].ToString();
-                    f.Cidade        = leitor["Cidade"].ToString();
-                    f.Uf            = leitor["Uf"].ToString();
-                    f.Cep           = leitor["Cep"].ToString();
-                    f.Slogan        = leitor["Slogan"].ToString();
-                    f.Descricao     = leitor["Descricao"].ToString();
-                    f.Media         = float.Parse(leitor["Media"].ToString());
-                    f.Plano         = leitor["Plano"].ToString();
-                    f.Imagem        = (byte[])leitor["Imagem"];
-                    f.Imagem64      = Convert.ToBase64String(f.Imagem);
-                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
-
-                    ranking.Add(f);
-                }
-            } catch (Exception ex) { ranking = null; }
-            
-            if (con.State == ConnectionState.Open)
-                con.Close();
-            return ranking;
-        }
-
-
 
 
 

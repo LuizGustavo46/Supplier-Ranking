@@ -1,7 +1,35 @@
-﻿
+﻿@model SupplierRanking.Models.Avaliacao
 @{
     ViewBag.Title = "UpdateComentario";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
-<h2>UpdateComentario</h2>
+<div class="container-login100">
 
+    <div class="wrap-login100" style="background-color: white;">
+
+        <h2>UpdateComentario</h2>
+
+        <form action="../Avaliacao/UpdateComentario" method="post" class="login100-form validate-form">
+            <p>@ViewBag.Message</p>
+            <!--- Campos Para Editar COMENTARIO -->
+            <div>
+                <input type="text" value="@Model.Qualidade" name="qualidade" style="border: 1px solid black" placeholder="Qualidade">
+                <input type="text" value="@Model.Atendimento" name="atendimento" style="border: 1px solid black" placeholder="Atendimento">
+                <input type="text" value="@Model.Entrega" name="entrega" style="border: 1px solid black" placeholder="Entrega">
+                <input type="text" value="@Model.Preco" name="preco" style="border: 1px solid black" placeholder="Preço">
+                <input type="text" value="@Model.Satisfacao" name="satisfacao" style="border: 1px solid black" placeholder="Satisfação">
+                <br /> <br />
+                <input type="text" value="@Model.Comentario" name="comentario" style="border: 1px solid black" placeholder="Comentário">
+                <br /> <br />
+                @*<input type="text" value="09/11/2018" name="data_avaliacao" placeholder="Dia / Mês / Ano" style="border: 1px solid black">*@
+                <input type="text" value="@Model.Cnpj_fornecedor" name="cnpj_fornecedor" placeholder="cnpj fornecedor" style="border: 1px solid black">
+                <input type="text" value="@Model.Codigo_comprador" name="codigo_comprador" placeholder="codigo comprador" style="border: 1px solid black">
+                <br /> <br />
+            </div>
+
+            <br /> <br />
+            <button id="btnSalvar">Salvar</button>
+        </form>
+    </div>
+</div>

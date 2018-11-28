@@ -1,0 +1,312 @@
+﻿@model List<SupplierRanking.Models.Fornecedor>
+
+@{
+    ViewBag.Title = "RankingGeral";
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
+}
+
+<div class="m-5">
+
+    <div class="row justify-content-center text-center mt-4">
+        <h2>Esses são nossos Destaques da Semana!</h2>
+    </div>
+
+    <div class="row">
+        <ul class="row list-unstyled m-3">
+            @foreach (var item in Model)
+            {
+                <li class="col-12 p-4 mb-3" style="border: 2px solid;">
+                    <div class="row">
+                        <div class="d-flex justify-content-center align-items-center mr-5" style="padding-left: 4rem;">
+
+                            <div class="pr-5">
+                                <h2>@(Model.IndexOf(item) + 1)º </h2>
+                            </div>
+
+                            @*<div class="col-10">*@
+                                @if (item.Imagem64 == "")
+                                {
+                                    <img src="~/Content/images/iconecor.png" height="100" width="100" />
+                                }
+                                else
+                                {
+                                    String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                                    <img src="@imagem64" height="100" width="100" />
+                                }
+                            @*</div>*@
+                        </div>
+                        <div class="col-5">
+                            @if (item.Plano.Equals("P"))
+                            {
+                                <div class="d-flex align-items-baseline pl-3">
+                                    <h4>
+                                        @item.Media
+                                    </h4>
+                                    <div class="d-flex col-10 justify-content-around pl-5">
+                                        <div>
+                                            <img />
+                                            @item.Media_qualidade
+                                        </div>
+
+                                        <div>
+                                            <img />
+                                            @item.Media_atendimento
+                                        </div>
+
+                                        <div>
+                                            <img />
+                                            @item.Media_entrega
+                                        </div>
+
+                                        <div>
+                                            <img />
+                                            @item.Media_preco
+                                        </div>
+
+                                        <div>
+                                            <img />
+                                            @item.Media_satisfacao
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <div>
+                                <h3>
+                                    @item.Nome_empresa
+                                </h3>
+                            </div>
+                            <p>
+                                @item.Endereco, @item.Bairro - @item.Cidade / @item.Uf
+                            </p>
+                        </div>
+                        <div class="col-4 mr-5" style="border-left: 2px solid;padding-left: 5rem;">
+                            <h4 class="mt-0">Descrição: </h4>
+                            <div style="min-height: 69px;height: 77%;border: 1px solid;">
+                                @item.Descricao
+                            </div>
+                        </div>
+                        <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
+                            <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+
+                            @Html.ActionLink("Perfil", "Perfil", new { item.Cnpj })
+                            @*<a id=""href="/HomeLogada/Perfil">Perfil</a>*@
+                        </div>
+                    </div>
+                    <div class="row mt-3 p-2">
+                       Categoria: @item.Nome_categoria
+                    </div>
+                </li>
+            }
+        </ul>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" style="
+                            background-color: #0C496BE6;
+                            color: white;
+                            border-bottom: 3px solid #bbad00; ">
+
+                        <h4 style="margin-left: 241px;" class="modal-title">Nós ajude a melhorar nosso serviço!</h4>
+                        <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <p>Avalie por :</p>
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+
+                        </form>
+
+                        <br />
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+
+                        </form>
+
+                        <br />
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+
+                        </form>
+
+
+                        <br />
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+
+                        </form>
+
+                        <br />
+                        <form class="rating">
+                            <label>
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+
+                        </form>
+
+                        <br />
+                        <form>
+                            <label>Comentário</label>
+                            <br />
+                            <input type="text" />
+                        </form>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default">Concluir</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
