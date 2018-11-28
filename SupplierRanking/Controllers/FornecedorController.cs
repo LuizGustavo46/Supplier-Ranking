@@ -66,10 +66,21 @@ namespace SupplierRanking.Controllers
        
         [HttpPost]
         public ActionResult CadastroFornecedor(string cnpj, string nome_empresa, string email, string telefone, string celular, string endereco, string bairro, 
-            string cidade, string uf, string cep, string senha, string slogan, string descricao, /*string plano, */string nome_categoria, string confirmarSenha)
+            string cidade, string uf, string cep, string senha, string slogan, string descricao, /*string planostring nome_categoria,*/  string confirmarSenha)
         {
-
             Fornecedor f = new Fornecedor();
+
+            int cont = 0;
+            foreach (string item in Request.Form.AllKeys)
+            {
+                if (cont >= 14)
+                {
+                    Categorias cat = new Categorias();
+                    cat.Categoria = item;
+                    f.Nome_categoria = cat.Categoria;
+                }
+                cont++;
+            }
 
             f.Cnpj = cnpj;
             f.Nome_empresa = nome_empresa;
@@ -127,7 +138,7 @@ namespace SupplierRanking.Controllers
 
         /*=============================================================================EXCLUIR FUNCIONARIO================================================================================*/
       
-        public ActionResult ExcluirFuncionario(int codigo)
+        public ActionResult ExcluirFuncionario(int codigo) //feito
         {
         
             Fornecedor f = new Fornecedor();  
@@ -218,7 +229,7 @@ namespace SupplierRanking.Controllers
         /*================================================================================================================================================================================*/
 
         /*================================================================================RESTAURAR SENHA=================================================================================*/
-        public ActionResult NovaSenha()  
+        public ActionResult NovaSenha() //feito 
         {
             return View();
         }
