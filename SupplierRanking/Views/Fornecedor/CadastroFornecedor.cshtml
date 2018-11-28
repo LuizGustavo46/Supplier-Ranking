@@ -45,9 +45,9 @@
             <div class="mt-4 pt-2">
                 <div class="row align-items-center justify-content-center mt-4">
                     <label for="btnImagem" class="input-image">
-                        <img id="imagemCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" />
+                        <img id="imagemPerfilCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" />
                     </label>
-                    <input id="btnImagem" type="file" accept="image/*" name="imagem" style="display: none">
+                    <input id="btnImagemPerfil" type="file" accept="image/*" name="imagem" style="display: none">
                 </div>
             </div>
         </div>
@@ -183,9 +183,7 @@
                 </div>
             </div>
 
-            @*<input type="text" name="descricao" placeholder="Uma breve descrição">*@
-
-            <!------------------ TERCEIRA TELA ------------------>
+             <!------------------ TERCEIRA TELA ------------------>
             <div class="col-12 form-forn-third-part form-parts justify-content-between text-center pl-5 pr-5 hide">
                 Seleciona abaixo todas as categorias de fornecimento que tenha interesse: <br />
                 E não se preocupe se esquecer de alguma, pois será possível editar depois.
@@ -201,6 +199,28 @@
                             </label>
                         </div>
                     }
+                </div>
+            </div>
+
+            <!------------------ QUARTA TELA ------------------>
+            <div class="col-12 form-forn-forth-part form-parts justify-content-between text-center pl-5 pr-5 hide">
+
+                @*<input type="text" name="descricao" placeholder="Uma breve descrição">*@
+
+                <!--- Imagem Perfil --->
+                @*<div class="mt-4 pt-2">
+                    <div class="row align-items-center justify-content-center mt-4">
+                        <label for="btnImagem" class="input-image">
+                            <img id="imagemCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" />
+                        </label>
+                        <input id="btnImagem" type="file" accept="image/*" name="imagem" style="display: none">
+                    </div>
+                </div>*@
+
+                <input id="btnImagens" type="file" accept="image/*" class="input-image input-image-default" multiple/>
+                
+                <div id="result">
+
                 </div>
             </div>
         </form>

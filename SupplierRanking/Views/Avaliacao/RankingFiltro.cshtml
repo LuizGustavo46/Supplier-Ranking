@@ -1,0 +1,322 @@
+﻿@model List<SupplierRanking.Models.Fornecedor>
+@{
+    ViewBag.Title = "RankingFiltro";
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
+}
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" onmousemove="moverMenu()" onmouseout="moverMenu2()">
+        <div class="sidebar-header">
+            <h3>Supplier Ranking</h3>
+        </div>
+        <ul class="list-unstyled components">
+            <p>Menu</p>
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+
+            </li>
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Pesquisar</a>
+            </li>
+
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Avaliar</a>
+            </li>
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Suporte</a>
+
+            </li>
+
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Sair</a>
+            </li>
+        </ul>
+        <div id="perfil" style="width: 100px; height: 100px; background-color: antiquewhite; border-radius: 70px; margin: 167px auto auto 20px;">
+
+        </div>
+    </nav>
+    <!-- Page Content  -->
+    <div id="content" style="background: linear-gradient(-135deg, #0e5176, #ffffff);">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 1000px;position:absolute;left: 30%;">
+            <div class="container-fluid">
+                <!-- <button type="button" id="sidebarCollapse" onmouse="menu()"class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+
+                    </button>-->
+
+
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <input class="col-10 wrap-input pl-2 mt-3" style="width:870px;height: 40px;background-color: white;margin-left: 53px;" placeholder="Digite aqui o nome do fornecedor..." />
+
+
+                </div>
+
+                <!--<img style="width: 27px;height: 27px;margin-right: 100px; "src="imagens/pesquisa.png"/>-->
+                <button style="background: url('../Content/images/pesquisa.png') no-repeat;width: 30px;height:30px;margin-left: -120px;margin-top: 10px;"></button>
+
+
+                <button id="btfiltro" onclick="filtro()" style="background: url('../Content/images/filtro.png') no-repeat;width: 30px;height:30px;margin-top: 10px;"
+                        class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button>
+
+
+
+            </div>
+        </nav>
+        <div id="divFiltro" style="width:600px;height:450px;background-color:white;border: 30px;border-color: black;visibility:hidden;position: absolute;
+            left: 31%;"></div>
+
+        <!-- Lista -->
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>
+                    CNPJ
+                </th>
+                <th>
+                    NOME
+                </th>
+                <th>
+                    EMAIL
+                </th>
+                <th>
+                    TELEFONE
+                </th>
+                <th>
+                    CIDADE
+                </th>
+                <th>
+                    UF
+                </th>
+                <th>
+                    CELULAR
+                </th>
+                <th>
+                    DESCRIÇÃO
+                </th>
+                <th>
+                    MEDIA
+                </th>
+                <th>
+                    SLOGAN
+                </th>
+                <th>
+                    PLANO
+                </th>
+                <th>
+                    CATEGORIA
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (item.Plano.Equals("P"))
+                {
+                    <tr style="background-color:#D0A748">
+                        @if (item.Imagem64 == "")
+                    {
+                            <td>
+                                <img src="~/Content/images/iconecor.png" height="100" width="100" />
+                            </td>
+                        }
+                        else
+                        {
+                            String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                            <td>
+                                <img src="@imagem64" height="100" width="100" />
+                            </td>
+                        }
+
+                        <td>
+                            @item.Cnpj
+                        </td>
+                        <td>
+                            @item.Nome_empresa
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @item.Telefone
+                        </td>
+                        <td>
+                            @item.Cidade
+                        </td>
+                        <td>
+                            @item.Uf
+                        </td>
+                        <td>
+                            @item.Celular
+                        </td>
+                        <td>
+                            @item.Descricao
+                        </td>
+                        <td>
+                            @item.Media
+                        </td>
+                        <td>
+                            @item.Slogan
+                        </td>
+                        <td>
+                            @item.Plano
+                        </td>
+                        <td>
+                            @item.Nome_categoria
+                        </td>
+                        <td>
+                            @if (item.Plano.Equals("P"))
+                            {
+                                <a>Qualidade: </a>@item.Media_qualidade <br />
+                                <a>Atendimento: </a>@item.Media_atendimento <br />
+                                <a>Entrega: </a>@item.Media_entrega <br />
+                                <a>Preco: </a>@item.Media_preco <br />
+                                <a>Satisfacao: </a>@item.Media_satisfacao
+
+
+                            }
+                                    <
+                                </td>
+
+                            </tr>
+                }
+                else if(item.Plano.Equals("F"))
+                {
+                <tr>
+                    @if (item.Imagem64 == "")
+                    {
+                        <td>
+                            <img src="~/Content/images/iconecor.png" height="100" width="100" />
+                        </td>
+                    }
+                    else
+                    {
+                        String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                        <td>
+                            <img src="@imagem64" height="100" width="100" />
+                        </td>
+                    }
+
+                    <td>
+                        @item.Cnpj
+                    </td>
+                    <td>
+                        @item.Nome_empresa
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.Telefone
+                    </td>
+                    <td>
+                        @item.Cidade
+                    </td>
+                    <td>
+                        @item.Uf
+                    </td>
+                    <td>
+                        @item.Celular
+                    </td>
+                    <td>
+                        @item.Descricao
+                    </td>
+                    <td>
+                        @item.Media
+                    </td>
+                    <td>
+                        @item.Slogan
+                    </td>
+                    <td>
+                        @item.Plano
+                    </td>
+                    <td>
+                        @item.Nome_categoria
+                    </td>
+                    <td>
+                        @if (item.Plano.Equals("P"))
+                        {
+                            <a>Qualidade: </a>@item.Media_qualidade <br />
+                            <a>Atendimento: </a>@item.Media_atendimento <br />
+                            <a>Entrega: </a>@item.Media_entrega <br />
+                            <a>Preco: </a>@item.Media_preco <br />
+                            <a>Satisfacao: </a>@item.Media_satisfacao
+
+                        }
+                    </td>
+
+                </tr>
+                }
+            }
+
+        </table>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" style="
+                            background-color: #0C496BE6;
+                            color: white;
+                            border-bottom: 3px solid #bbad00; ">
+
+                        <h4 style="margin-left: 380px;" class="modal-title">Filtro </h4>
+                        <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
+
+                    </div>
+                    <div class="modal-body">
+                        <p>Filtrar por:</p>
+
+
+                        <label style="margin-left: 4px;" class="container">
+                            Entrega
+
+                            <input type="radio" checked="checked" name="radio">
+                            <span style="margin-left: -15px;" class="checkmark"></span>
+                        </label>
+                        <label style="margin-left: 4px;" class="container">
+                            Qualidade
+                            <input type="radio" name="radio">
+                            <span style="margin-left: -15px;" class="checkmark"></span>
+                        </label>
+                        <label style="margin-left: 4px;" class="container">
+                            Preço
+                            <input type="radio" name="radio">
+                            <span style="margin-left: -15px;" class="checkmark"></span>
+                        </label>
+                        <label style="margin-left: 4px;" class="container">
+                            Satisfação
+                            <input type="radio" name="radio">
+                            <span style="margin-left: -15px;" class="checkmark"></span>
+                        </label>
+                        <label style="margin-left: 4px;" class="container">
+                            Atendimento
+                            <input type="radio" name="radio">
+                            <span style="margin-left: -15px;" class="checkmark"></span>
+                        </label>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default">Concluir</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -98,7 +98,12 @@ namespace SupplierRanking.Controllers
             f.Descricao = descricao;
             f.Media = 0;
             f.Plano = "F";
-            //f.Nome_categoria = nome_categoria;
+            f.Nome_categoria = nome_categoria;
+            f.Media_qualidade = 0;
+            f.Media_atendimento = 0;
+            f.Media_entrega = 0;
+            f.Media_preco = 0;
+            f.Media_satisfacao = 0;
 
             foreach (string imagem in Request.Files)
             {
