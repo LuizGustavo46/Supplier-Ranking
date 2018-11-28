@@ -63,54 +63,12 @@
         </div>
     </div>
 
-    <!-- Pessoa Fisica & Pessoa Juridica --->
-    <div id="wrapperFisicaJuridica"
-         class="col-12 text-center justify-content-center mt-4 hide ">
-        Informe o seu tipo de perfil:
-
-        <div class="row align-items-center mt-4 pr-5 pb-5 pl-5">
-            <!--- Pessoa Fisica --->
-            <div class="col-5 js-tilt">
-                <button id="btnFisica" class="col-9 switch-wrapper p-3">
-                    <img src="/Content/images/comprador.png" />
-                    <h5 class="switch-person-title p-2">Física</h5>
-                </button>
-            </div>
-
-            <!--- Switch --->
-            <label class="switch m-3">
-                <input id="switchJuridica" type="checkbox">
-                <span class="slider slider-juridica round unchecked"></span>
-            </label>
-
-            <!--- Pessoa Juridica --->
-            <div class="col-5 js-tilt">
-                <button id="btnJuridica" class="col-9 switch-wrapper p-3">
-                    <img src="/Content/images/fornecedor.png" />
-                    <h5 class="switch-person-title p-2">Jurídica</h5>
-                </button>
-            </div>
-        </div>
-    </div>
-
-   
-
     <!--- Formulario de Enviar email--->
     <form class="row restaura-senha-form justify-content-center p-5 hide"
           method="post" action="../Fornecedor/EsqueceuSuaSenha">
 
 
-        <!--- CPF --->
-        <div id="inputCpf" class="col-10 wrap-input pl-2">
-            <input class="input" type="text" maxlength="14" name="cpf" placeholder="CPF" data-mask="000.000.000-00" data-mask-sectionFocus="true">
-            <span class="focus-input"></span>
-            <span class="symbol-input">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-            </span>
-            <br />
-            <p style="margin-left: 50%;font-size: 20px;font-family: inherit;color: #DAA520;">Ou</p>
-        </div>
-
+       
 
         <!--- CNPJ --->
         <div id="inputCnpj" class="col-10 wrap-input pl-2 ">
@@ -144,17 +102,24 @@
     <div class="row col-12 login-options justify-content-center p-5">
 
         @*<span class="col-8 error-msg alert-danger text-center p-2 mt-3 mb-4 hide">
-            Preencha o(s) campo(s) corretamente! @(ViewBag.Message)
-        </span>*@
+                Preencha o(s) campo(s) corretamente! @(ViewBag.Message)
+            </span>*@
+        
+        <!---Botão voltar-->
+        <div style="margin-right: 175px;" class="text-left pt-3">
+
+            <a class="sub-link" href="/Login/Login">
+                Voltar
+            </a>
+        </div>
+
+       
 
 
-
-
-
-        <!--- Botao Entrar --->
+        <!--- Botao Enviar --->
         <div class=" col-6 d-flex justify-content-end align-items-center pl-0 pr-4">
-            <button id="btnEnviarEmail" type="submit" class="restaura-senha-form-btn">
-                Entrar
+            <button id="btnEnviarEmail" type="submit" class="restaura-senha-form-btn" >
+              Enviar
             </button>
         </div>
     </div>

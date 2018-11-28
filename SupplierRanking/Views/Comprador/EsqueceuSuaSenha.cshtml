@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
-
+<div class="wrap-restaurar-senha-comprador">
 <div class="row col-12 justify-content-center text-center mt-4">
     <h2>Esqueceu sua senha?</h2>
 </div>
@@ -97,7 +97,7 @@
 </div>
 
 <!--- Formulario de Login --->
-<form class="row login-form justify-content-center p-5  hide"
+<form class="row restaurar-senha-comprador-form justify-content-center p-5  hide"
       method="post" action="../Comprador/EsqueceuSuaSenha">
     
 
@@ -156,13 +156,34 @@
     </span>*@
 
     
-
-       
-
-    <!--- Botao Entrar --->
     <div class="col-6 d-flex justify-content-end align-items-center pl-0 pr-4">
-        <button id="btnEnviarEmail" type="submit" class="">
-            Entrar
-        </button>
+   
+   <!---Botão voltar-->
+        <div style="margin-right: 175px;" class="text-left pt-3">
+
+            <a class="sub-link" href="/Login/Login">
+                Voltar
+            </a>
+        </div>
+        
+
     </div>
+    
+  
+
+    <!--- Botao Enviar --->
+    <div class="col-6 d-flex justify-content-end align-items-center pl-0 pr-4">
+        
+        <button id="btnEnviarEmail" type="submit" class="restaurar-senha-comprador-btn">
+            Enviar
+        </button>
+        
+       
+        
+
+        </div>
+    </div>
+
+
+
 </div>

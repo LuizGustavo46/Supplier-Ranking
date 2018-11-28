@@ -1,6 +1,7 @@
 ﻿/*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,14 +12,9 @@ namespace SupplierRanking.Models
 {
     public class Fornecedor
     {
-
-        //---* SETA O CAMINHO COM O BANCO DE DADOS *---
+        //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-               new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
-
-        //CONEXÃO DA CASA DO VAL - SÓ VOU USAR SE PRECISAR TESTAR ALGO EM CASA
-        //private static SqlConnection con =
-        //new SqlConnection("Server=DESKTOP-P4KIC71\\SQLEXPRESS;Database=TCC_Laressa_Luiz_Marcelo_Valmir;Trusted_Connection=True;");
+            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
 
         //---* DECLARAÇÃO DE VARIAVEIS *-
         private string cnpj;
@@ -365,9 +361,9 @@ namespace SupplierRanking.Models
             {
                 con.Open(); // abre conexão
                 SqlCommand query =
-                        new SqlCommand("SELECT email, cnpj FROM fornecedor WHERE  cnpj = @cnpj AND email = @email", con);
-                query.Parameters.AddWithValue("@cnpj", cnpj);
-                query.Parameters.AddWithValue("@email", email);
+                        new SqlCommand("SELECT email FROM fornecedor WHERE  cnpj = @cnpj", con);
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    query.Parameters.AddWithValue("@email", email);
                 SqlDataReader leitor = query.ExecuteReader();
 
                 while (leitor.Read())

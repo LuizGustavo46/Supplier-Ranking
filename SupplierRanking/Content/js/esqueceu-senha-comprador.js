@@ -2,38 +2,38 @@
 $(document).ready(function () {
     'use strict';
 
-    var btnComprador = $('.wrap-restaurar-senha #btnComprador'),
-        btnFornecedor = $('.wrap-restaurar-senha #btnFornecedor'),
-        btnFisica = $('.wrap-restaurar-senha #btnFisica'),
-        btnJuridica = $('.wrap-restaurar-senha #btnJuridica'),
-        btnFuncionario = $('.wrap-restaurar-senha #btnFuncionario'),
-       btnEnviarEmail = $('.wrap-restaurar-senha #btnEnviarEmail'),
+    var btnComprador = $('.wrap-restaurar-senha-comprador #btnComprador'),
+        btnFornecedor = $('.wrap-restaurar-senha-comprador #btnFornecedor'),
+        btnFisica = $('.wrap-restaurar-senha-comprador #btnFisica'),
+        btnJuridica = $('.wrap-restaurar-senha-comprador #btnJuridica'),
+        btnFuncionario = $('.wrap-restaurar-senha-comprador #btnFuncionario'),
+       btnEnviarEmail = $('.wrap-restaurar-senha-comprador #btnEnviarEmail'),
 
-      // btnConfirmaSenha = $('.wrap-restaurar-senha #btnConfirmaSenha'),
+      // btnConfirmaSenha = $('.wrap-restaurar-senha-comprador #btnConfirmaSenha'),
 
-        switchFornecedor = $('.wrap-restaurar-senha #switchFornecedor'),
-        switchJuridica = $('.wrap-restaurar-senha #switchJuridica'),
-        switchFuncionario = $('.wrap-restaurar-senha #switchFuncionario'),
+        switchFornecedor = $('.wrap-restaurar-senha-comprador #switchFornecedor'),
+        switchJuridica = $('.wrap-restaurar-senha-comprador #switchJuridica'),
+        switchFuncionario = $('.wrap-restaurar-senha-comprador #switchFuncionario'),
 
-        sliderFornecedorComprador = $('.wrap-restaurar-senha .slider-fornecedor'),
-        sliderFisicaJuridica = $('.wrap-restaurar-senha .slider-juridica'),
-        sliderFuncionario = $('.wrap-restaurar-senha .slider-funcionario'),
+        sliderFornecedorComprador = $('.wrap-restaurar-senha-comprador .slider-fornecedor'),
+        sliderFisicaJuridica = $('.wrap-restaurar-senha-comprador .slider-juridica'),
+        sliderFuncionario = $('.wrap-restaurar-senha-comprador .slider-funcionario'),
 
-        wrapInputCpf = $('.wrap-restaurar-senha #inputCpf').closest('.restaura-senha-form .wrap-input'),
-        wrapInputCnpj = $('.wrap-restaurar-senha #inputCnpj').closest('.restaura-senha-form .wrap-input'),
-        wrapInputFuncionario = $('.wrap-restaurar-senha #inputFuncionario').closest('.restaura-senha-form .wrap-input'),
-        wrapInputEmail = $('.wrap-restaurar-senha #inputEmail'),
-       
-       // wrapInputSenha = $('.wrap-restaurar-senha #inputSenha'),
-       // wrapInputConfirmaSenha = $('.wrap-restaurar-senha #inputConfirmaSenha').closet('.confirma-senha-btn .wrap-input'),
+        wrapInputCpf = $('.wrap-restaurar-senha-comprador #inputCpf').closest('.restaurar-senha-comprador-form  .wrap-input'),
+        wrapInputCnpj = $('.wrap-restaurar-senha-comprador #inputCnpj').closest('.restaurar-senha-comprador-form  .wrap-input'),
+        wrapInputFuncionario = $('.wrap-restaurar-senha-comprador #inputFuncionario').closest('.restaurar-senha-comprador-form  .wrap-input'),
+        wrapInputEmail = $('.wrap-restaurar-senha-comprador #inputEmail'),
+
+       // wrapInputSenha = $('.wrap-restaurar-senha-comprador #inputSenha'),
+       // wrapInputConfirmaSenha = $('.wrap-restaurar-senha-comprador #inputConfirmaSenha').closet('.confirma-senha-btn .wrap-input'),
 
 
-        inputHidden = $('.wrap-restaurar-senha #inputHidden'),
-        formInputs = $('.wrap-restaurar-senha .restaura-senha-form input'),
+        inputHidden = $('.wrap-restaurar-senha-comprador #inputHidden'),
+        formInputs = $('.wrap-restaurar-senha-comprador .restaurar-senha-comprador-form  input'),
         activeformInputs;
-         
 
-/********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
+
+    /********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
 
     /** Botão para selecionar o Comprador **/
     btnComprador.on('click', function () {
@@ -89,12 +89,12 @@ $(document).ready(function () {
     /** Switch slider para selecionar Funcionário **/
     switchFuncionario.change(function () {
         var switchFuncionarioTrueOrFalse = switchFuncionario.prop('checked') === true ? switchFuncionario.prop('checked', false) : switchFuncionario.prop('checked', true);
-        
+
         switchTipoFuncionario(switchFuncionarioTrueOrFalse);
     });
 
 
-/********************* *********************  FUNÇÕES ********************* *********************/
+    /********************* *********************  FUNÇÕES ********************* *********************/
 
     /** Tira o slider da posição neutra **/
     function uncheckedSlider(slider) {
@@ -159,14 +159,14 @@ $(document).ready(function () {
 
     /** Habilita o Botão Fornecedor e mostra o Botão Funcionário **/
     function mostrarFornecedor(showFornecedor) {
-        if (showFornecedor) { 
+        if (showFornecedor) {
             btnFornecedor.addClass('active-switch');
             wrapInputCpf.addClass('hide');
             wrapInputCnpj.removeClass('hide');
             $('#wrapperFuncionario').removeClass('hide');
-            $('.restaura-senha-form').removeClass('hide');
+            $('.restaurar-senha-comprador-form ').removeClass('hide');
             wrapInputEmail.removeClass('hide');
-           
+
             inputHidden.val('2');
             return;
         }
@@ -204,7 +204,7 @@ $(document).ready(function () {
 
     /** Troca entre Fornecedor e Comprador **/
     function switchCompradorFornecedor(input) {
-        $('.restaura-senha-form').addClass('hide');
+        $('.restaurar-senha-comprador-form ').addClass('hide');
 
         if ($(input).is(':checked')) { //Seleciona o Fornecedor
             mostrarComprador(false);
@@ -218,13 +218,13 @@ $(document).ready(function () {
         }
 
         formInputs.val('');
-        //activeformInputs = verificaInputsVisiveis();
-        //activeformInputs.on('input', verificarInputsVazios);
+        activeformInputs = verificaInputsVisiveis();
+        activeformInputs.on('input', verificarInputsVazios);
     }
 
     /** Troca entre Pessoa Física e Pessoa Jurídica **/
     function switchTipoDePessoa(input) {
-        
+
         if ($(input).is(':checked')) { //Seleciona pessoa Jurídica
             mostrarPessoaFisica(false);
             mostrarPessoaJuridica(true);
@@ -235,9 +235,9 @@ $(document).ready(function () {
         }
 
         formInputs.val('');
-        //activeformInputs = verificaInputsVisiveis();
-        //activeformInputs.on('input', verificarInputsVazios);
-        $('.restaura-senha-form').removeClass('hide');
+        activeformInputs = verificaInputsVisiveis();
+        activeformInputs.on('input', verificarInputsVazios);
+        $('.restaurar-senha-comprador-form ').removeClass('hide');
     }
 
     /** Mostra/esconder o Funcionário **/
@@ -251,9 +251,9 @@ $(document).ready(function () {
         }
 
         formInputs.val('');
-        //activeformInputs = verificaInputsVisiveis();
-        //activeformInputs.on('input', verificarInputsVazios);
-        $('.restaura-senha-form').removeClass('hide');
+        activeformInputs = verificaInputsVisiveis();
+        activeformInputs.on('input', verificarInputsVazios);
+        $('.restaurar-senha-comprador-form ').removeClass('hide');
     }
 
     ///** Verifica todos os inputs visíveis **/
@@ -266,7 +266,7 @@ $(document).ready(function () {
     //    var isEmpty = false;
 
     //    activeformInputs.each(function () { // percorre todos os inputs 
-            
+
     //        if ($(this).val() == '') { // se houver pelo menos um campo vazio, entra no if
     //            isEmpty = true;
     //            return false; // para o loop, evitando que mais inputs sejam verificados sem necessidade
@@ -281,25 +281,25 @@ $(document).ready(function () {
     //}
 
 
-    $('.restaura-senha-form-btn').on('click', function () {
-       //submitForm();
+    $('.restaurar-senha-comprador-btn').on('click', function () {
+        //submitForm();
         //console.log('foi');
 
-        $('.restaura-senha-form').submit();
+        $('.restaurar-senha-comprador-form ').submit();
     });
 
-    //function submitForm() {
-    //    if (!verificarInputsVazios()) {
-    //        $('.error-msg').removeClass('hide');
+    function submitForm() {
+        if (!verificarInputsVazios()) {
+            $('.error-msg').removeClass('hide');
 
-            
-    //    } else {
-    //        $('.error-msg').addClass('hide');
-    //        $('.restaura-senha-form').submit();   
-    //    }
-    //}
-    
-   
+
+        } else {
+            $('.error-msg').addClass('hide');
+            $('.restaurar-senha-comprador-form ').submit();   
+        }
+    }
+
+
 
 
 

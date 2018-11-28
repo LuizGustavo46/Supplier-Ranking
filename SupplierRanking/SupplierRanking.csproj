@@ -148,10 +148,13 @@
     <Content Include="Content\images\ExperimenteAgora.jpg" />
     <Content Include="Content\images\fornecedor.png" />
     <Content Include="Content\images\fornecedorIcon.png" />
+    <Content Include="Content\images\fotoMarcelo2.png" />
     <Content Include="Content\images\fotopadrao.jpg" />
+    <Content Include="Content\images\fotoValmir.png" />
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
+    <Content Include="Content\images\marcelo255.png" />
     <Content Include="Content\images\photo.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\search.png" />
@@ -160,8 +163,11 @@
     <Content Include="Content\images\Slide2.jpg" />
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
+    <Content Include="Content\images\valmir255.png" />
+    <Content Include="Content\js\bloqueia-input.js" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
+    <Content Include="Content\js\esqueceu-senha-comprador.js" />
     <Content Include="Content\js\esqueceu-senha-fornecedor.js" />
     <Content Include="Content\js\cadastro-fornecedor.js" />
     <Content Include="Content\js\cadastro-pessoa-fisica.js" />
@@ -528,6 +534,7 @@
     <Content Include="Views\Fornecedor\listaFornecedor.cshtml" />
     <Content Include="Views\Avaliacao\CadastrarAvaliacao.cshtml" />
     <Content Include="Views\Avaliacao\UpdateComentario.cshtml" />
+    <Content Include="Views\Avaliacao\RankingPremium.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

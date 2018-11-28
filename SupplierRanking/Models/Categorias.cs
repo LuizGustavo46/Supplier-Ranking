@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,13 +10,9 @@ namespace SupplierRanking.Models
 {
     public class Categorias
     {
-        //CONEXÃO DO SENAI
+        //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-                new SqlConnection("Server=ESN509VMSSQL;Database=TCC_Laressa_Luiz_Marcelo_Valmir;User id=Aluno;Password=Senai1234");
-
-        //CONEXÃO DA CASA DO VAL
-        //private static SqlConnection con =
-        //new SqlConnection("Server=DESKTOP-P4KIC71\\SQLEXPRESS;Database=TCC_Laressa_Luiz_Marcelo_Valmir;Trusted_Connection=True;");
+            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
 
         //CAMPOS DO BANCO DE DADOS
         private string categoria;
