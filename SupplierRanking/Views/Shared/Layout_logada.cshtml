@@ -5,24 +5,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
         <title>Collapsible sidebar using Bootstrap 4</title>
 
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <!-- Our Custom CSS -->
         <link href="~/Content/css/checkbox-home-logada.css" rel="stylesheet" />
         <link href="~/Content/css/style_logada.css" rel="stylesheet" />
         <link href="~/Content/config/css/avaliar-star.css" rel="stylesheet" />
-      
+
+       
+
+
+        <script src="~/Content/js/carousel-perfil.js"></script>
+       
         <!-- Font Awesome JS -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     </head>
 
-    <body>
+    <body style="background: #f2fcff;">
         <div>
             <nav id="sidebar">
                 <div class="sidebar-header" style="height: 104px;">
@@ -42,9 +49,12 @@
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Sair</a>
                     </li>
                 </ul>
+                
                 <div id="perfil" style="width: 100px; height: 100px; background-color: antiquewhite; border-radius: 70px; margin: 167px auto auto 20px;">
                     <a class="perfil"href="/HomeLogada/Perfil">Perfil </a>
+                    @RenderSection("Foto", false)
                 </div>
+                    
             </nav>
         </div>
 
@@ -59,7 +69,7 @@
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
         
-        <script src="~/Content/config/js/carousel-perfil.js"></script>
+       
       
 
         <meta charset="utf-8">

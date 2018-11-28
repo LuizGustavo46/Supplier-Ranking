@@ -9,7 +9,7 @@
     <!-- Sidebar  -->
    
     <!-- Page Content  -->
-    <div id="content" style="background: white">
+    <div id="content" style="background: #eefbfa00;">
         
         <section style=" width: 2000px;height: 104px;background: #0C496BE6;position: absolute;top: 0px;left:0px;">
 
@@ -43,33 +43,41 @@
             left: 31%;"></div>
 
         
-            <div style="width: 1358px;height: 500px;background-color: #D0A748;
-            top: 13%;position: absolute;left: 195px; box-shadow: 0px 0px 20px black;">
+            <div style="width:1500px;height: 680px;background-color: white;
+            top: 13%;position: absolute;left: 195px; box-shadow: 1px 0px 20px black;">
                 <section>
                     
-                    <div style="width:210px;height:210px;position: absolute;left: 17%;top:26px;">
-                        @if (Model.Imagem64 == null)
-                        {
-                            <img src="~/Content/images/iconecor.png" height="210" width="210" />
-                        }
-                        else
-                        {
-                            String imagem64 = string.Format("data:image/jpeg;base64,{0}", @Model.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                            <img src="@imagem64" height="210" width="210" />
-                        }
+                    <div style="width:210px;height:210px;position: absolute;left: 10%;top:26px;">
+                       
+                            
+                            @if (Model.Imagem64 == null)
+                            {
+                                <img src="~/Content/images/iconecor.png" height="210" width="210" />
+                            }
+                            else
+                            {
+                                String imagem64 = string.Format("data:image/jpeg;base64,{0}", @Model.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                                <img src="@imagem64" height="210" width="210" />
+                            }
+                            
+                            
+                            
+                            
                     </div>
 
-                    <h1 style="position: absolute;left: 41%;">@Model.Nome_empresa</h1>
+                    <h1 style="position: absolute;left: 41%;"></h1>
 
                     <div style="width: 413px;height: 226px;background-color: #fff0;position: absolute;left: 40%;top: 28%;">
+                        
+                        <h1 style="position: absolute;left: -34%;top: -120px;">@Model.Nome_empresa</h1>
+                        <h1 style="position: absolute;left: 32%;top: 27px;">Descrição</h1>
 
-                        <h1 style="position: absolute;left: 32%;top: 0px;">Descrição</h1>
-                        <div style="position: absolute; width: 350px; height: 200px; border: 1px solid black; top: 70px;">@Model.Descricao</div>
+                        <div style="position: absolute;width: 643px;height: 200px;border: 1px solid black;top: 104px;right: -28%;overflow: hidden;">@Model.Descricao</div>
                     </div>
                     
 
 
-                    <div style="position: absolute;left: 50%;margin-top: 89px;">
+                    <div style="position: absolute;left: 50%;margin-top: 103px;">
                         <span style=" color: orange;" class="fa fa-star checked"></span>
                         <span style=" color: orange;" class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -78,12 +86,14 @@
 
                         <button onclick="filtro()" style="background: url('../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
                      position: absolute;margin-left: 240px;margin-top: -59px;" data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal"></button>
+                        <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco</h1>
+                        <img style="position: absolute;right: 790px;top: 190px;width: 40px;" src="~/Content/images/endereco.png" />
 
-                        <img style="position: absolute;right: 538px;top: 190px;width:40px;" src="~/Content/images/endereco.png" />
-
-
-                        <img style="position: absolute;right: 538px;top: 280px;width:40px;" src="~/Content/images/phone.png" />
-                        <img style="position: absolute;right: 47px;top: 280px;width:40px;" src="~/Content/images/email1.png" />
+                        <h1 style="position: absolute;right: 600px;top: 270px;font-size: 22px;">@Model.Telefone</h1>
+                        <img style="position: absolute;right: 785px;top: 280px;width: 40px;" src="~/Content/images/phone.png" />
+                        
+                        <h1 style="position: absolute;right: 504px;top: 361px;font-size: 22px;">@Model.Email</h1>
+                        <img style="position: absolute;right: 787px;top: 374px;width: 40px;" src="~/Content/images/email1.png" />
 
 
 
@@ -98,8 +108,8 @@
 
 
             </div>
-            <div style=" width: 1358px;height: 1200px;background-color: #D0A748;position: absolute;
-               left: 195px;top: 64%; box-shadow: 0px 0px 20px black">
+            <div style=" width: 1500px;height: 1200px;background-color: white;position: absolute;left: 195px;top: 83%;
+            box-shadow: 1px 13px 20px black;">
 
 
                 <section>
@@ -121,16 +131,36 @@
 
                 </section>
                 <h2 style="margin-top: 194px;margin-left: 128px;" class="w3-center">Galeria de fotos</h2>
+              
+                
+                  <div class="w3-content" style="max-width:1200px">
+                    <img  class="mySlides" src="~/Content/images/image_5.jpg" style="width:308px;display:none;width: 308px;display: block;margin-left: 497px;">
+                    <img class="mySlides" src="~/Content/images/image_2.jpg" style="width:308px;margin-left: 497px;">
+                    <img class="mySlides" src="~/Content/images/image_7.jpg" style="width:308px;display:none;margin-left: 497px;">
 
-                <div class="carousel" style="position: relative;top: 15px;left: 5%;">
+                    <div class="w3-row-padding w3-section">
+                        <div class="w3-col s4">
+                            <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/images/image_5.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
+                        </div>
+                        <div class="w3-col s4">
+                            <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/images/image_2.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
+                        </div>
+                        <div class="w3-col s4">
+                            <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/images/image_7.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
+                        </div>
+                    </div>
+                </div>
+                
+                
+                @*<div class="carousel" style="position: relative;top: 15px;left: 5%;">
                     <img src="~/Content/images/about.jpg" alt="Image 1" />
                     <img src="~/Content/images/bg_1.jpg" alt="Image 2" />
                     <img src="~/Content/images/bg_3.jpg" alt="Image 3" />
                     <img src="~/Content/images/photo.png" alt="Image 4" />
                     <img src="~/Content/images/team.jpg" alt="Image 5" />
-                </div>
+                </div>*@
                 <h2 style="margin-top: 246px;margin-left: 171px;color: black;">Comentários</h2>
-                <div style="width: 998px;height: 289px;position: absolute;top: 70%;left:13%;overflow:hidden;border: solid 3px #0C496BE6;">
+                <div style="width: 1275px;height: 147px;position: absolute;top: 85%;left: 8%;overflow: hidden;box-shadow: 1px 1px 9px black;">
                     <div class="comentario">
                         <h3 style="margin-left: 168px;margin-top: 32px;">
                         Nome avaliador
@@ -139,7 +169,7 @@
                        
 
                     </div>
-                    <textarea style="position: absolute;left: 44%;top: 10%;width: 468px;height: 84px;"></textarea>
+                    <div style="position: absolute;width: 649px;height: 86px;border: 1px solid black;top: 25px;left: 47%;overflow:hidden;">@Model.Descricao</div>
                     
                     <div id="icone" style="width: 85px;height: 85px;background-color: #a19c97;border-radius: 70px;margin: 167px auto auto 20px;
                 margin-top: 167px;margin-left: 20px;margin-left: 92px;margin-top: 28px;">
@@ -174,10 +204,14 @@
                     <div class="modal-body">
                         <p>Avalie por :</p>
                        
-
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Entrega
+                        </h1>
                             <form style="margin-left: 269px;" class="rating">
-                                
+                               
                                 <label>
+                                    
+                                    
                                     <input type="radio" name="stars" value="1" />
                                     <span class="icon">★</span>
                                 </label>
@@ -212,7 +246,9 @@
 
                             <br />
                       
-
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Qualidade
+                        </h1>
                         <form style="margin-left: 269px;" class="rating">
                                 <label>
                                     <input type="radio" name="stars" value="1" />
@@ -249,7 +285,9 @@
 
                             <br />
 
-                       
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Preço
+                        </h1>
 
                             <form style="margin-left: 269px;" class="rating">
                                 <label>
@@ -288,7 +326,9 @@
 
                             <br />
 
-                       
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Satisfação
+                        </h1>
 
                             <form style="margin-left: 269px;" class="rating">
                                 <label>
@@ -326,7 +366,9 @@
 
                             <br />
 
-
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Atendimento
+                        </h1>
                             <form style="margin-left: 269px;" class="rating">
                                 <label>
                                     <input type="radio" name="stars" value="1" />
@@ -362,10 +404,13 @@
                             </form>
 
                             <br />
-                            <form>
+                      
+                        
+                          <form>
                                 <h1 style="margin-bottom: -17px;margin-left: 161px;font-size: 23px;">Comentário</h1>
                                 <br />
-                                <input style="width: 416px;height:46px;margin-left: 163px;" type="text" />
+                                <input style="margin-left: 161px;width:463px;height:30px"/>
+                               
                             </form>
 
 

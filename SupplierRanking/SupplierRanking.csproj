@@ -127,7 +127,6 @@
     <Content Include="Content\config\js\bootstrap-datepicker.js" />
     <Content Include="Content\config\js\bootstrap.min.js" />
     <Content Include="Content\config\js\google-map.js" />
-    <Content Include="Content\config\js\carousel-perfil.js" />
     <Content Include="Content\config\js\jquery-3.2.1.min.js" />
     <Content Include="Content\config\js\jquery-migrate-3.0.1.min.js" />
     <Content Include="Content\config\js\jquery.animateNumber.min.js" />
@@ -180,6 +179,7 @@
     <Content Include="Content\js\bloqueia-input.js" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
+    <Content Include="Content\js\carousel-perfil.js" />
     <Content Include="Content\js\esqueceu-senha-comprador.js" />
     <Content Include="Content\js\esqueceu-senha-fornecedor.js" />
     <Content Include="Content\js\cadastro-fornecedor.js" />

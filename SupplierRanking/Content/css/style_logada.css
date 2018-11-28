@@ -7,7 +7,7 @@ body {
     /*font-family: 'Poppins', sans-serif;
     background: #fafafa;*/
     position: relative;
-
+  
 }
 
 .conteudo-logada {
@@ -200,25 +200,15 @@ a.perfil {
 .modal-open {
 	overflow: visible !important;
 }
-.carousel {
-    margin: 0 auto;
-    width:800px;
-    height: 300px;
-    display: relative;
-  }
-  .carousel img {
-    display: hidden; /* hide images until carousel prepares them */
-    cursor: pointer; /* not needed if you wrap carousel items in links */
-    width: 200px;
-    height: 200px;
 
-  }
 
   .comentario{
-    width: 900px;
-    height: 100px;
-    position: absolute;
-    border: solid 2px ;
-    top: 7%;
-    left: 5%;
+   width: 1197px;
+   height: 120px;
+   position: absolute;
+   border: solid 3px;
+   top: 7%;
+   left: 5%;
     }
+
+  
