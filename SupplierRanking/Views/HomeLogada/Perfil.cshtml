@@ -86,10 +86,10 @@
 
                         <button onclick="filtro()" style="background: url('../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
                      position: absolute;margin-left: 240px;margin-top: -59px;" data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal"></button>
-                        <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco</h1>
+                        <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco - @Model.Bairro, @Model.Cidade / @Model.Uf</h1>
                         <img style="position: absolute;right: 790px;top: 190px;width: 40px;" src="~/Content/images/endereco.png" />
 
-                        <h1 style="position: absolute;right: 600px;top: 270px;font-size: 22px;">@Model.Telefone</h1>
+                        <h1 style="position: absolute;right: 600px;top: 270px;font-size: 22px;width: 145px;">@Model.Telefone</h1>
                         <img style="position: absolute;right: 785px;top: 280px;width: 40px;" src="~/Content/images/phone.png" />
                         
                         <h1 style="position: absolute;right: 504px;top: 361px;font-size: 22px;">@Model.Email</h1>
@@ -108,7 +108,7 @@
 
 
             </div>
-            <div style=" width: 1500px;height: 1200px;background-color: white;position: absolute;left: 195px;top: 83%;
+            <div style=" width: 1500px;height: 1471px;background-color: white;position: absolute;left: 195px;top: 83%;
             box-shadow: 1px 13px 20px black;">
 
 
@@ -134,10 +134,7 @@
               
                 
                   <div class="w3-content" style="max-width:1200px">
-                    <img  class="mySlides" src="~/Content/images/image_5.jpg" style="width:308px;display:none;width: 308px;display: block;margin-left: 497px;">
-                    <img class="mySlides" src="~/Content/images/image_2.jpg" style="width:308px;margin-left: 497px;">
-                    <img class="mySlides" src="~/Content/images/image_7.jpg" style="width:308px;display:none;margin-left: 497px;">
-
+                   
                     <div class="w3-row-padding w3-section">
                         <div class="w3-col s4">
                             <img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/images/image_5.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
@@ -160,7 +157,7 @@
                     <img src="~/Content/images/team.jpg" alt="Image 5" />
                 </div>*@
                 <h2 style="margin-top: 246px;margin-left: 171px;color: black;">Comentários</h2>
-                <div style="width: 1275px;height: 147px;position: absolute;top: 85%;left: 8%;overflow: hidden;box-shadow: 1px 1px 9px black;">
+                <div style="width: 1275px;height: 400px;position: absolute;top: 69%;left: 8%;overflow: hidden;box-shadow: 1px 1px 9px black;">
                     <div class="comentario">
                         <h3 style="margin-left: 168px;margin-top: 32px;">
                         Nome avaliador

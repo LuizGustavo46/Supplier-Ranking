@@ -61,78 +61,149 @@
         <div id="divFiltro" style="width:600px;height:450px;background-color:white;border: 30px;border-color: black;visibility:hidden;position: absolute;
             left: 31%;"></div>
 
-        <div class="resultado-pesquisa" style="position: absolute;top: 20%;left: 350px;">
+        <div class="resultado-pesquisa" style="position: absolute;top: 20%;left: 104px;">
             <ul class="row list-unstyled m-3">
-               
-
-                
-
-                    @foreach (var item in Model)
+                @foreach (var item in Model)
                 {
-                        <li class="col-12 d-flex p-3 mb-3" style="border: 2px solid;">
-                            <div class="col-1 d-flex align-items-center p-0 mr-2">
-                                @if (item.Imagem64 == "")
+                    if (item.Plano.Equals("P"))
                     {
-                                    <img src="~/Content/images/iconecor.png" height="100" width="100" />
-                                }
-                                else
-                                {
-                                    String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                                    <img src="@imagem64" height="100" width="100" />
-                                }
-                            </div>
-                            <div class="col-7">
-                                <div>
-                                    <h4>
-                                        @item.Media
-                                    </h4>
-                                    @if (item.Plano.Equals("P"))
+                        <li class="col-12 p-4 mb-5" style="background: white;box-shadow: 0px 0px 9px black;background: #2c8cb6;
+                         box-shadow: 0px 0px 23px black;color: white;border: solid 1px #00000045;width: 1572px;">
+                            <div class="row">
+                                <div class="d-flex justify-content-center align-items-center mr-5" style="padding-left: 4rem;">
+
+                                    <div class="pr-5">
+                                        <h2>@(Model.IndexOf(item) + 1)º </h2>
+                                    </div>
+
+                                    @*<div class="col-10">*@
+                                    @if (item.Imagem64 == "")
                                     {
-                                        <div>
-                                            <img />
-                                            @item.Media_qualidade
-                                        </div>
-
-                                        <div>
-                                            <img />
-                                            @item.Media_atendimento
-                                        </div>
-
-                                        <div>
-                                            <img />
-                                            @item.Media_entrega
-                                        </div>
-
-                                        <div>
-                                            <img />
-                                            @item.Media_preco
-                                        </div>
-
-                                        <div>
-                                            <img />
-                                            @item.Media_satisfacao
-                                        </div>
+                                        <img src="~/Content/images/iconecor.png" height="100" width="100" />
                                     }
+                                    else
+                                    {
+                                        String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                                        <img src="@imagem64" height="100" width="100" />
+                                    }
+                                    @*</div>*@
                                 </div>
-                                <h3>
-                                    @item.Nome_empresa
-                                </h3>
-                                <p>
-                                    @item.Endereco, @item.Bairro - @item.Cidade / @item.Uf
-                                </p>
+                                <div class="col-5">
+                                    <div class="d-flex align-items-baseline pl-3">
+                                        <h4>
+                                            @item.Media
+                                        </h4>
+                                        <div class="d-flex col-10 justify-content-around pl-5">
+                                            <div>
+                                                <img />
+                                                @item.Media_qualidade
+                                            </div>
+
+                                            <div>
+                                                <img />
+                                                @item.Media_atendimento
+                                            </div>
+
+                                            <div>
+                                                <img />
+                                                @item.Media_entrega
+                                            </div>
+
+                                            <div>
+                                                <img />
+                                                @item.Media_preco
+                                            </div>
+
+                                            <div>
+                                                <img />
+                                                @item.Media_satisfacao
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h2 style="font-weight: bold;">
+                                            @item.Nome_empresa
+                                        </h2>
+                                    </div>
+                                    <div>
+                                        @item.Nome_categoria
+                                    </div>
+                                </div>
+                                <div class="col-4 d-flex justify-content-between mr-5" style="flex-direction:column; border-left: 2px solid;padding-left: 5rem;">
+
+                                    <h3>"@item.Slogan"</h3>
+                                    <p style="color: white;">
+                                        @item.Endereco, @item.Bairro - @item.Cidade / @item.Uf
+                                    </p>
+                                </div>
+                                <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
+                                    <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+
+                                    @*@Html.ActionLink("Perfil", "Perfil", new { item.Cnpj })*@
+                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
+                                </div>
                             </div>
-                            <div class="col-4" style="border-left: 2px solid">
-                                <h4>Descrição: </h4>
-                                <textarea>
-                                    @item.Descricao
-                                </textarea>
+
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="col-12 p-4 mb-5" style="background: white;box-shadow: 0px 0px 9px black;">
+                            <div class="row">
+                                <div class="d-flex justify-content-center align-items-center mr-5" style="padding-left: 4rem;">
+
+                                    <div class="pr-5">
+                                        <h2>@(Model.IndexOf(item) + 1)º </h2>
+                                    </div>
+
+                                    @*<div class="col-10">*@
+                                    @if (item.Imagem64 == "")
+                                    {
+                                        <img src="~/Content/images/iconecor.png" height="100" width="100" />
+                                    }
+                                    else
+                                    {
+                                        String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                                        <img src="@imagem64" height="100" width="100" />
+                                    }
+                                    @*</div>*@
+                                </div>
+                                <div class="col-5">
+                                    <div class="d-flex align-items-baseline pl-3">
+                                        <h4 style="font-weight: bold;">
+                                            @item.Media
+                                        </h4>
+                                    </div>
+                                    <div>
+                                        <h2>
+                                            @item.Nome_empresa
+                                        </h2>
+                                    </div>
+                                    <div>
+                                        @item.Nome_categoria
+                                    </div>
+
+                                </div>
+                                <div class="col-4 d-flex justify-content-between mr-5" style="flex-direction:column; border-left: 2px solid;padding-left: 5rem;">
+
+                                    <h3>"@item.Slogan"</h3>
+                                    <p>
+                                        @item.Endereco, @item.Bairro - @item.Cidade / @item.Uf
+                                    </p>
+                                </div>
+                                <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
+                                    <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+
+                                    @*@Html.ActionLink("Perfil", "Perfil", new { item.Cnpj })*@
+                                    <a style="text-decoration: none;color: #2c8cb6;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
+                                </div>
                             </div>
+
                         </li>
                     }
 
-
-
-                
+                }
             </ul>
                 
 
