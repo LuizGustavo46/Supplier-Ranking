@@ -735,7 +735,9 @@
         return this;
     };
 
-    $.fn.waterwheelCarousel.defaults = {
+    $.fn.waterwheel
+
+      .defaults = {
         // number tweeks to change apperance
         startingItem: 1,   // item to place in the center of the carousel. Set to 0 for auto
         separation: 175, // distance between items in carousel
