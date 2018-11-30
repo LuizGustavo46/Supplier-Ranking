@@ -315,7 +315,7 @@ namespace SupplierRanking.Models
 
         /***************************************************** LISTAR COMENTÁRIOS ********************************************************/
 
-        public static List<Avaliacao> Comentarios(string cnpj_fornecedor)
+        public List<Avaliacao> Comentarios(string cnpj_fornecedor)
         {
             List<Avaliacao> listaComentarios = new List<Avaliacao>();
 
@@ -338,6 +338,9 @@ namespace SupplierRanking.Models
                     a.Codigo_comprador = int.Parse(leitor["codigo_comprador"].ToString());
                     c.Nome = leitor["nome"].ToString();
                     c.Nome_empresa = leitor["nome_empresa"].ToString();
+
+                 
+                        
                     a.C = c;
 
                     listaComentarios.Add(a);

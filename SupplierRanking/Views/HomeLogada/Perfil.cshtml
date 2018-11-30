@@ -157,26 +157,38 @@
                     <img src="~/Content/images/team.jpg" alt="Image 5" />
                 </div>*@
                 <h2 style="margin-top: 246px;margin-left: 171px;color: black;">Comentários</h2>
-                <div style="width: 1275px;height: 400px;position: absolute;top: 69%;left: 8%;overflow: hidden;box-shadow: 1px 1px 9px black;">
-                    <div class="comentario">
-                        <h3 style="margin-left: 168px;margin-top: 32px;">
-                        Nome avaliador
-                        </h3>
+                <ul>
+                    @foreach (var h in ViewBag.Comentarios)
+                    {
+                        //LARESSA POR FAVOR ARRUMA ISSO ? ESSA LISTA DE COMENTARIOS TA TODA ZUADA E EU NAO SEI ARRUMAR - OBG 'val :)'
 
-                       
+                        <li class="col-12 p-4 mb-5" style="background: white;box-shadow: 0px 0px 9px black;">
+                            @*<div style="width: 1275px;height: 400px;top: 69%;left: 8%;overflow: hidden;box-shadow: 1px 1px 9px black;">*@
+                                <div class="comentario">
+                                    <h3 style="margin-left: 168px;margin-top: 32px;">
+                                        @(h.C.Nome)
+                                        @(h.C.Nome_empresa)
+                                    </h3>
+                                    <h5 style="margin-left: 168px;margin-top: 36px;">@(h.Data_avaliacao)</h5>
 
-                    </div>
-                    <div style="position: absolute;width: 649px;height: 86px;border: 1px solid black;top: 25px;left: 47%;overflow:hidden;">@Model.Descricao</div>
-                    
-                    <div id="icone" style="width: 85px;height: 85px;background-color: #a19c97;border-radius: 70px;margin: 167px auto auto 20px;
-                margin-top: 167px;margin-left: 20px;margin-left: 92px;margin-top: 28px;">
-                       
-                    </div>
-                 
-                </div>
-              
+                                </div>
+                                <div style="position: absolute;width: 649px;height: 86px;border: 1px solid black;top: 25px;left: 47%;overflow:hidden;">@(h.Comentario)</div>
 
-            </div>
+                                <div id="icone" style="width: 85px;height: 85px;background-color: #a19c97;border-radius: 70px;margin: 167px auto auto 20px;
+                                margin-top: 167px;margin-left: 20px;margin-left: 92px;margin-top: 28px;">
+
+                                </div>
+
+                            @*</div>*@
+                        </li>
+                    }
+                </ul>
+
+
+
+
+
+</div>
 
 
                  
