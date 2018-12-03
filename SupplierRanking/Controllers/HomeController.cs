@@ -38,8 +38,16 @@ namespace SupplierRanking.Controllers
         {
             return View();
         }
+        public ActionResult Sair()
+        {
+            Session["0"] = null;
+            Session["1"] = null;
+            Session["2"] = null;
+            Session["3"] = null;
 
-        
+            return RedirectToAction("Index", "Home");
+        }
+
 
     }
 }
