@@ -111,7 +111,7 @@ namespace SupplierRanking.Controllers
             return View();
         }
 
-        public ActionResult Sair()
+       /* public ActionResult Sair()
         {
             Session["0"] = null;
             Session["1"] = null;
@@ -119,7 +119,7 @@ namespace SupplierRanking.Controllers
             Session["3"] = null;
 
             return RedirectToAction("Login", "Login");
-        }
+        }*/
 
     }
 }
