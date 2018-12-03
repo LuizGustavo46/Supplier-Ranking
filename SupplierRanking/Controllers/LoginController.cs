@@ -15,6 +15,9 @@ namespace SupplierRanking.Controllers
             return View();
         }
 
+        
+
+
         public ActionResult Cadastro()
         {
             return View();
@@ -104,8 +107,19 @@ namespace SupplierRanking.Controllers
                     ViewBag.cssClass = "col-8 error-msg alert-danger text-center p-2 mt-3 mb-4";
                 }
             }
-
+     
             return View();
         }
+
+       /* public ActionResult Sair()
+        {
+            Session["0"] = null;
+            Session["1"] = null;
+            Session["2"] = null;
+            Session["3"] = null;
+
+            return RedirectToAction("Login", "Login");
+        }*/
+
     }
 }

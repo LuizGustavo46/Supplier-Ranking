@@ -46,7 +46,8 @@
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Suporte</a>
                     </li>
                     <li>
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Sair</a>
+                        @*<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Sair</a>*@ 
+                        @Html.ActionLink("Sair", "Sair", "Home", new { area = "" }, new { @class = "" })
                     </li>
                 </ul>
                 
