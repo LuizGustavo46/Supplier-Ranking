@@ -65,6 +65,7 @@ $(document).ready(function () {
         showImagensCarregadas(ev);
     });
 
+
     /*** Botao para cadastrar ***/
     btnCadastrar.on('click', function () {
         formCadastro.submit();
@@ -87,7 +88,7 @@ $(document).ready(function () {
 
     /** Verifica todos os inputs visíveis **/
     function verificaInputsVisiveis() {
-        return $('.wrap-cadastro-fornecedor .form-parts').not('.hide').find('.wrap-input input, textarea, select');
+        return $('.wrap-cadastro-fornecedor .form-parts').not('.hide').find('.wrap-input input, select');
     }
 
     /** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
@@ -158,15 +159,34 @@ $(document).ready(function () {
             var file = files[i],
                 picReader = new FileReader();
 
-            //Only pics
+            // Verifica se é uma imagem
             if (!file.type.match('image'))
                 continue;
 
             picReader.onload = function (event) {
-                $($.parseHTML('<img>')).attr('src', event.target.result).appendTo($('#result'));
+                // Cria cada imagem e insere dentro da div imagensCarregada
+                $("<span class=\"image-wrapper\">" +
+                    "<img src=\"" + event.target.result + "\" title=\"" + file.name + "\"/>" +
+                    "<span class=\"remove-image hide\"></span>" +
+                  "</span>").appendTo($('#imagensCarregada'));
+
+                // Remove a imagem clicada da visão prévia e do cadastro final
+                $(".remove-image").click(function () {
+                    $(this).parent(".image-wrapper").remove();
+                });
+
+                // Exibe o deletar por cima da imagem quando o mouse estiver em cima da imagem
+                $('.image-wrapper').on('mouseenter', function () {
+                    $(this).find('.remove-image').removeClass('hide');
+                });
+
+                // Esconde o deletar por cima da imagem quando o mouse sair de cima da imagem
+                $('.image-wrapper').on('mouseleave', function () {
+                    $(this).find('.remove-image').addClass('hide');
+                });
             };
 
-            //Read the image
+            // Lê todas as imagens enviadas e renderiza
             picReader.readAsDataURL(file);
         }
     }
@@ -259,8 +279,6 @@ $(document).ready(function () {
 
     /** Inicia assim que a pagina e carregada **/
     function init() {
-        divSecondPart.addClass('hide');
-        divThridPart.addClass('hide');
         formInputs.val('');
 
         activeformInputs = verificaInputsVisiveis();

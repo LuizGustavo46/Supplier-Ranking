@@ -152,6 +152,7 @@
     <Content Include="Content\images\email1.png" />
     <Content Include="Content\images\endereco.png" />
     <Content Include="Content\images\ExperimenteAgora.jpg" />
+    <Content Include="Content\images\fechar.png" />
     <Content Include="Content\images\filtro.png" />
     <Content Include="Content\images\fornecedor.png" />
     <Content Include="Content\images\fornecedorIcon.png" />

@@ -12,7 +12,7 @@
 
     <div class="row text-center pt-5 mt-5">
 
-        <div class="col-7 align-items-center wrap-options">
+        <div class="col-7 align-items-center wrap-options hide">
             Selecione o seu tipo de usuário:
 
             <div class="row align-items-center justify-content-center mt-4">
@@ -44,7 +44,7 @@
             <!--- Imagem Perfil --->
             <div class="mt-4 pt-2">
                 <div class="row align-items-center justify-content-center mt-4">
-                    <label for="btnImagem" class="input-image">
+                    <label for="btnImagemPerfil" class="input-image">
                         <img id="imagemPerfilCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" />
                     </label>
                     <input id="btnImagemPerfil" type="file" accept="image/*" name="imagem" style="display: none">
@@ -56,7 +56,7 @@
               method="post" action="../Fornecedor/CadastroFornecedor">
 
             <!------------------ PRIMEIRA TELA ------------------>
-            <div class="col-5 form-forn-first-part form-parts justify-content-center">
+            <div class="col-5 form-forn-first-part form-parts justify-content-center hide">
 
                 <!--- CNPJ --->
                 <div class="col-11 wrap-input p-0">
@@ -97,7 +97,7 @@
 
                 <!--- Slogan --->
                 <div class="col-11 wrap-input p-0">
-                    <textarea class="input input-slogan" type="text" name="slogan" placeholder="Digite o seu slogan!"></textarea>
+                    <textarea class="input input-slogan" type="text" name="slogan" placeholder="Possui um slogan? Então escreva ele aqui!"></textarea>
                 </div>
             </div>
 
@@ -203,25 +203,33 @@
             </div>
 
             <!------------------ QUARTA TELA ------------------>
-            <div class="col-12 form-forn-forth-part form-parts justify-content-between text-center pl-5 pr-5 hide">
+            <div class="col-12 form-forn-forth-part form-parts justify-content-between text-center pl-5 pr-5 ">
 
-                @*<input type="text" name="descricao" placeholder="Uma breve descrição">*@
-
-                <!--- Imagem Perfil --->
-                @*<div class="mt-4 pt-2">
-                    <div class="row align-items-center justify-content-center mt-4">
-                        <label for="btnImagem" class="input-image">
-                            <img id="imagemCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" />
-                        </label>
-                        <input id="btnImagem" type="file" accept="image/*" name="imagem" style="display: none">
-                    </div>
-                </div>*@
-
-                <input id="btnImagens" type="file" accept="image/*" class="input-image input-image-default" multiple/>
-                
-                <div id="result">
-
+                <div class="wrap-input pl-0">
+                    <textarea class="input" type="text" name="descricao" placeholder="Faça uma breve descrição do seu negócio e empresa..."></textarea>
                 </div>
+                
+
+                <!--- Imagens do Produto --->
+                <div class="row mt-4 pt-2">
+                        Selecione todas as imagens de seu(s) produto(s) que deseje em seu perfil:
+                    <div class="col-3 mt-5">
+                        <div class="row align-items-center justify-content-center mt-4">
+                            <label for="btnImagens" class="input-images" style="">
+                                <img class="input-images input-image-default" src="/Content/images/add-imagem.png" />
+                            </label>
+                            <input id="btnImagens" type="file" accept="image/*" name="imagensProdutos" class="input-images input-image-default" style="display: none" multiple />
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div id="imagensCarregada">
+
+                        </div>
+                    </div>
+                    
+                </div>
+
+                
             </div>
         </form>
     </div> 

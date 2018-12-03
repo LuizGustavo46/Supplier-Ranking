@@ -221,21 +221,42 @@
     top: 0;
 }
 
-.wrap-cadastro-fornecedor .input-image {
+.form-forn-forth-part {
+    position: absolute;
+    top: -260%;
+}
+
+.form-forn-forth-part .wrap-input > textarea {
+    height: 120px;
+}
+
+.form-forn-forth-part .wrap-input textarea {
+    resize: none;
+    padding: 1em;
+    overflow-y: auto;
+}
+
+.form-forn-forth-part .input-image,
+.form-forn-forth-part .input-images {
     width: 20em;
     height: 20em;
     cursor: pointer;
 }
 
-.wrap-cadastro-fornecedor .input-image-default {
+.form-forn-forth-part .input-images {
+    width: 10em;
+    height: 10em;
+}
+
+.form-forn-forth-part .input-image-default {
     border: none;
 }
 
-.wrap-cadastro-fornecedor .input-image-carregada {
+.form-forn-forth-part .input-image-carregada {
     border: 9px dashed #0C496Bc9;
 }
 
-#result {
+.form-forn-forth-part #imagensCarregada {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -243,9 +264,25 @@
     overflow: auto;
 }
 
-#result img {
-    width: 150px;
+.form-forn-forth-part #imagensCarregada .image-wrapper {
+    position: relative;
+    margin: 1em .3em;
     display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 1em;
+    align-items: center;
+    /*flex-wrap: wrap;*/
+}
+
+.form-forn-forth-part #imagensCarregada .image-wrapper img {
+    max-width: 150px;
+    max-height: 100px;
+}
+
+.form-forn-forth-part #imagensCarregada .image-wrapper .remove-image {
+    width: 100%;
+    height: 100%;
+    background: url('../images/fechar.png') #000000b3 no-repeat center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
