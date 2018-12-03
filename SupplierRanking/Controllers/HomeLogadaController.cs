@@ -33,7 +33,9 @@ namespace SupplierRanking.Controllers
 
         public ActionResult Perfil(string cnpj)
         {
-            return View(HomeLogada.Perfil(cnpj));
+            HomeLogada h = new HomeLogada();
+            ViewBag.Comentarios = h.Comentarios(cnpj);
+            return View("Perfil", HomeLogada.Perfil(cnpj));
         }
 
 
