@@ -14,14 +14,14 @@
         <section style=" width: 2000px;height: 104px;background: #0C496BE6;position: absolute;top: 0px;left:0px;">
 
 
-
-
+            
                 <div class="container-fluid">
                     <!-- <button type="button" id="sidebarCollapse" onmouse="menu()"class="btn btn-info">
                     <i class="fas fa-align-left"></i>
                     <span>Toggle Sidebar</span>
 
                 </button>-->
+                    
 
 
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,14 +41,14 @@
         
         <div id="divFiltro" style="width:600px;height:450px;background-color:white;border: 30px;border-color: black;visibility:hidden;position: absolute;
             left: 31%;"></div>
-
+       
         
             <div style="width:1500px;height: 680px;background-color: white;
             top: 13%;position: absolute;left: 195px; box-shadow: 1px 0px 20px black;">
                 <section>
                     
                     <div style="width:210px;height:210px;position: absolute;left: 10%;top:26px;">
-                       
+                      
                             
                             @if (Model.Imagem64 == null)
                             {
@@ -64,7 +64,7 @@
                             
                             
                     </div>
-
+                   
                     <h1 style="position: absolute;left: 41%;"></h1>
 
                     <div style="width: 413px;height: 226px;background-color: #fff0;position: absolute;left: 40%;top: 28%;">
@@ -95,7 +95,13 @@
                         <h1 style="position: absolute;right: 504px;top: 361px;font-size: 22px;">@Model.Email</h1>
                         <img style="position: absolute;right: 787px;top: 374px;width: 40px;" src="~/Content/images/email1.png" />
 
+                        <div>
+                            <a href="~/Views/Comprador/NovaSenha.cshtml">
+                                <img style="width:40px;height: 40px;margin-left: -37rem;margin-top: 8rem;" src="~/Content/images/edit.png" />
+                            </a>
+                           
 
+                        </div>
 
 
 

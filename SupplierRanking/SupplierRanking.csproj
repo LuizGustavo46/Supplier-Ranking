@@ -148,6 +148,7 @@
     <Content Include="Content\images\avaliar.png" />
     <Content Include="Content\images\compradorIcon.png" />
     <Content Include="Content\images\contato.jpg" />
+    <Content Include="Content\images\edit.png" />
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\email1.png" />
     <Content Include="Content\images\endereco.png" />
