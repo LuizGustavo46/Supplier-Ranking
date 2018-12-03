@@ -89,7 +89,8 @@
                         <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
                             <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
 
-                            <a href="/HomeLogada/Perfil">Perfil</a>
+                            @Html.ActionLink("Perfil", "Perfil", new { item.Cnpj })
+                            @*<a id=""href="/HomeLogada/Perfil">Perfil</a>*@
                         </div>
                     </div>
                     <div class="row mt-3 p-2">
@@ -114,7 +115,53 @@
                     </div>
                     <div class="modal-body">
                         <p>Avalie por :</p>
-                        <form class="rating">
+
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Entrega
+                        </h1>
+                        <form style="margin-left: 269px;" class="rating">
+
+                            <label>
+
+
+                                <input type="radio" name="stars" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="stars" value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+
+                        </form>
+
+                        <br />
+
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Qualidade
+                        </h1>
+                        <form style="margin-left: 269px;" class="rating">
                             <label>
                                 <input type="radio" name="stars" value="1" />
                                 <span class="icon">★</span>
@@ -149,42 +196,12 @@
                         </form>
 
                         <br />
-                        <form class="rating">
-                            <label>
-                                <input type="radio" name="stars" value="1" />
-                                <span class="icon">★</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="stars" value="2" />
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="stars" value="3" />
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="stars" value="4" />
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="stars" value="5" />
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                                <span class="icon">★</span>
-                            </label>
 
-                        </form>
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Preço
+                        </h1>
 
-                        <br />
-                        <form class="rating">
+                        <form style="margin-left: 269px;" class="rating">
                             <label>
                                 <input type="radio" name="stars" value="1" />
                                 <span class="icon">★</span>
@@ -220,7 +237,12 @@
 
 
                         <br />
-                        <form class="rating">
+
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Satisfação
+                        </h1>
+
+                        <form style="margin-left: 269px;" class="rating">
                             <label>
                                 <input type="radio" name="stars" value="1" />
                                 <span class="icon">★</span>
@@ -255,7 +277,11 @@
                         </form>
 
                         <br />
-                        <form class="rating">
+
+                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                            Atendimento
+                        </h1>
+                        <form style="margin-left: 269px;" class="rating">
                             <label>
                                 <input type="radio" name="stars" value="1" />
                                 <span class="icon">★</span>
@@ -290,10 +316,13 @@
                         </form>
 
                         <br />
+
+
                         <form>
-                            <label>Comentário</label>
+                            <h1 style="margin-bottom: -17px;margin-left: 161px;font-size: 23px;">Comentário</h1>
                             <br />
-                            <input type="text" />
+                            <input style="margin-left: 161px;width:463px;height:30px" />
+
                         </form>
 
 
