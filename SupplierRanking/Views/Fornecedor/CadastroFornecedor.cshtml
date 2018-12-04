@@ -45,7 +45,7 @@
             <div class="mt-4 pt-2">
                 <div class="row align-items-center justify-content-center mt-4">
                     <label for="btnImagemPerfil" class="input-image">
-                        <img id="imagemPerfilCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" />
+                        <img id="imagemPerfilCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" name="imagem"/>
                     </label>
                     <input id="btnImagemPerfil" type="file" accept="image/*" name="imagem" style="display: none">
                 </div>
@@ -53,7 +53,7 @@
         </div>
 
         <form class="col-12 cadastro-form d-flex justify-content-end mt-4 pt-4 pr-2 pl-0"
-              method="post" action="../Fornecedor/CadastroFornecedor">
+              method="post" action="../Fornecedor/CadastroFornecedor" enctype="multipart/form-data">
 
             <!------------------ PRIMEIRA TELA ------------------>
             <div class="col-5 form-forn-first-part form-parts justify-content-center">
