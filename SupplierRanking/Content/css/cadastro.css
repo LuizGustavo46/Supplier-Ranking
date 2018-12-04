@@ -243,17 +243,17 @@
     cursor: pointer;
 }
 
-.form-forn-forth-part .input-images {
-    width: 4em;
-    height: 4em;
-}
-
-.form-forn-forth-part .input-image-default {
+.wrap-cadastro-fornecedor .input-image-default {
     border: none;
 }
 
-.form-forn-forth-part .input-image-carregada {
+.wrap-cadastro-fornecedor .input-image-carregada {
     border: 9px dashed #0C496Bc9;
+}
+
+.form-forn-forth-part .input-images {
+    width: 4em;
+    height: 4em;
 }
 
 .form-forn-forth-part #imagensCarregada {

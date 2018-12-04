@@ -68,7 +68,7 @@ $(document).ready(function () {
 
     /*** Botao para carregar o PDF ***/
     btnPdf.on('change', function (ev) {
-        showPdf(ev);
+        addPdf(ev);
     });
 
     /*** Botao para cadastrar ***/
@@ -172,7 +172,7 @@ $(document).ready(function () {
                 // Cria cada imagem e insere dentro da div imagensCarregada
                 $("<span class=\"image-wrapper\">" +
                     "<img src=\"" + event.target.result + "\" title=\"" + file.name + "\"/>" +
-                    "<input name=\"galeriaFotos\" style=\"display: none\" value=\""+ event.target.result +"\"/>" +
+                    "<input type=\"file\" name=\"galeriaFotos\" style=\"display: none\" value=\""+ event.target.result +"\"/>" +
                     "<span class=\"remove-image hide\"></span>" +
                   "</span>").appendTo($('#imagensCarregada'));
 
@@ -198,25 +198,31 @@ $(document).ready(function () {
     }
 
     /** Exibe o PDF do Fornecedor **/
-    function showPdf(input) {
+    function addPdf(input) {
+        //input.preventDefault();
+
         var reader = new FileReader(),
             file = $('#btnPdf')[0],
             fullPath = file.value.split('.')[0],
             filename = fullPath.replace(/^.*[\\\/]/, '');
 
         // Quando add um PDF muda o ícone e inclui o nome do arquivo embaixo
-        if ($('#wrapper-remove-pdf').hasClass('hide')) {
             $('#wrapper-remove-pdf').removeClass('hide');
             $('#wrapper-add-pdf').addClass('hide');
-            $("<p id=\"nomePdf\">" + filename + "</p>").appendTo($('#nomePdf'));
-
-        } else { // Troca o ícone para o anterior e deleta o arquivo
-            $('#wrapper-remove-pdf').addClass('hide');
-            $('#wrapper-add-pdf').removeClass('hide');
-            $("#nomePdf").remove();
-        }
+            $("<p>" + filename + "</p>").appendTo($('#nomePdf'));
 
         reader.readAsDataURL(file.files[0]);
+    }
+
+    /** Remove o PDF do Fornecedor **/
+    function removePdf(input) {
+        
+        // Quando add um PDF muda o ícone e inclui o nome do arquivo embaixo
+        $('#wrapper-remove-pdf').addClass('hide');
+        $('#wrapper-add-pdf').removeClass('hide');
+        $("#nomePdf").remove();
+
+        //reader.readAsDataURL(file.files[0]);
     }
 
     /** Tira o slider da posição neutra **/
