@@ -330,15 +330,18 @@ namespace SupplierRanking.Controllers
 
         public ActionResult UpdateFuncionarioFornecedor(/*int codigo*/)  //FEITO
         {
-            Fornecedor upFun = Fornecedor.PerfilFuncionario(/*codigo*/3);
+            Fornecedor upFun = Fornecedor.PerfilFuncionario(/*codigo*/1);
 
             if (upFun == null)
             {
                 TempData["Msg"] = "Erro ao encontrar dados";
+                //return View();
                 return RedirectToAction("UpdateFuncionarioFornecedor");
             }
-            return View(upFun);
-            
+            else
+            {
+                return View(upFun);
+            }
         }
 
 
