@@ -38,7 +38,7 @@ namespace SupplierRanking.Controllers
                 cf.Senha = senha;
                 if (cf.LoginPessoaFisica())
                 {
-                    Session["User"] = cf;
+                    Session["UserPessoaFisica"] = cf;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
@@ -57,7 +57,7 @@ namespace SupplierRanking.Controllers
                 cj.Senha = senha;
                 if (cj.LoginPessoaJuridica())
                 {
-                    Session["User"] = cj;
+                    Session["UserPessoaJuridica"] = cj;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
@@ -76,7 +76,7 @@ namespace SupplierRanking.Controllers
                 f.Senha = senha;
                 if (f.Login())
                 {
-                    Session["User"] = f;
+                    Session["UserFornecedor"] = f;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
@@ -96,7 +96,7 @@ namespace SupplierRanking.Controllers
                 fu.Senha = senha;
                 if (fu.LoginFuncionario())
                 {
-                    Session["User"] = fu;
+                    Session["UserFuncionario"] = fu;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
