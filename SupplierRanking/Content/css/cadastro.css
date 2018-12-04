@@ -236,31 +236,32 @@
     overflow-y: auto;
 }
 
-.form-forn-forth-part .input-image,
+.wrap-cadastro-fornecedor .input-image,
 .form-forn-forth-part .input-images {
     width: 20em;
     height: 20em;
     cursor: pointer;
 }
 
-.form-forn-forth-part .input-images {
-    width: 10em;
-    height: 10em;
-}
-
-.form-forn-forth-part .input-image-default {
+.wrap-cadastro-fornecedor .input-image-default {
     border: none;
 }
 
-.form-forn-forth-part .input-image-carregada {
+.wrap-cadastro-fornecedor .input-image-carregada {
     border: 9px dashed #0C496Bc9;
+}
+
+.form-forn-forth-part .input-images {
+    width: 4em;
+    height: 4em;
 }
 
 .form-forn-forth-part #imagensCarregada {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-height: 330px;
+    width: 100%;
+    max-height: 150px;
     overflow: auto;
 }
 
@@ -269,7 +270,6 @@
     margin: 1em .3em;
     display: flex;
     align-items: center;
-    /*flex-wrap: wrap;*/
 }
 
 .form-forn-forth-part #imagensCarregada .image-wrapper img {

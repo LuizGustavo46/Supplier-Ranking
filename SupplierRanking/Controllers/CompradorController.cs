@@ -194,13 +194,11 @@ namespace SupplierRanking.Controllers
 
             if (c.CadastroPessoaJuridica() && c.CadastrarInteresses(lista))
             {
-                //TempData["Msg"] = "Cadastro Realizado";
                 ViewBag.Message = "Cadastro Realizado";
                 return RedirectToAction("Login", "Login");
             }
             else
             {
-                //TempData["Msg"] = "Informações Inválidas";
                 ViewBag.Message = "Informações Inválidas";
             }
 

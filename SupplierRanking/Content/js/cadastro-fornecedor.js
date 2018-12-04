@@ -9,6 +9,7 @@ $(document).ready(function () {
         btnVoltar = $('.wrap-cadastro-fornecedor #btnVoltar'),
         btnProximo = $('.wrap-cadastro-fornecedor #btnProximo'),
         btnImagens = $('.wrap-cadastro-fornecedor #btnImagens'),
+        btnPdf = $('.wrap-cadastro-fornecedor #btnPdf'),
         btnCadastrar = $('.wrap-cadastro-fornecedor #btnCadastrar'),
 
         inputSenhas = $('.wrap-cadastro-fornecedor .input-senha'),
@@ -65,6 +66,10 @@ $(document).ready(function () {
         showImagensCarregadas(ev);
     });
 
+    /*** Botao para carregar o PDF ***/
+    btnPdf.on('change', function (ev) {
+        addPdf(ev);
+    });
 
     /*** Botao para cadastrar ***/
     btnCadastrar.on('click', function () {
@@ -167,6 +172,7 @@ $(document).ready(function () {
                 // Cria cada imagem e insere dentro da div imagensCarregada
                 $("<span class=\"image-wrapper\">" +
                     "<img src=\"" + event.target.result + "\" title=\"" + file.name + "\"/>" +
+                    "<input type=\"file\" name=\"galeriaFotos\" style=\"display: none\" value=\""+ event.target.result +"\"/>" +
                     "<span class=\"remove-image hide\"></span>" +
                   "</span>").appendTo($('#imagensCarregada'));
 
@@ -188,6 +194,55 @@ $(document).ready(function () {
 
             // Lê todas as imagens enviadas e renderiza
             picReader.readAsDataURL(file);
+        }
+    }
+
+    /** Exibe o PDF do Fornecedor **/
+    function addPdf(input) {
+        //input.preventDefault();
+
+        var reader = new FileReader(),
+            file = $('#btnPdf')[0],
+            fullPath = file.value.split('.')[0],
+            filename = fullPath.replace(/^.*[\\\/]/, '');
+
+        // Quando add um PDF muda o ícone e inclui o nome do arquivo embaixo
+            $('#wrapper-remove-pdf').removeClass('hide');
+            $('#wrapper-add-pdf').addClass('hide');
+            $("<p>" + filename + "</p>").appendTo($('#nomePdf'));
+
+        reader.readAsDataURL(file.files[0]);
+    }
+
+    /** Remove o PDF do Fornecedor **/
+    function removePdf(input) {
+        
+        // Quando add um PDF muda o ícone e inclui o nome do arquivo embaixo
+        $('#wrapper-remove-pdf').addClass('hide');
+        $('#wrapper-add-pdf').removeClass('hide');
+        $("#nomePdf").remove();
+
+        //reader.readAsDataURL(file.files[0]);
+    }
+
+    /** Tira o slider da posição neutra **/
+    function uncheckedSlider(slider) {
+        slider.removeClass('unchecked');
+    }
+
+    /** Seleciona os planos **/
+    function switchPlanos(input) {
+
+        if ($(input).is(':checked')) { //Seleciona o Fornecedor
+            $('.input-plano').val('P');
+            $('#btnPlanoFree').removeClass('active-switch');
+            $('#btnPlanoPremium').addClass('active-switch');
+            
+        } else { //Seleciona o Comprador
+            $('.input-plano').val('F');
+            $('#btnPlanoFree').addClass('active-switch');
+            $('#btnPlanoPremium').removeClass('active-switch');
+           
         }
     }
 
@@ -215,6 +270,7 @@ $(document).ready(function () {
         if (!divSecondPart.hasClass('hide')) {
             divSecondPart.addClass('hide');
             divThridPart.removeClass('hide');
+            //btnCadastrar.attr('disabled', 'disabled').addClass('disabled');
 
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('O que você fornece?');
@@ -227,7 +283,10 @@ $(document).ready(function () {
         if (!divThridPart.hasClass('hide')) {
             divThridPart.addClass('hide');
             divForthPart.removeClass('hide');
-            
+
+            btnProximo.parent('.form-forn-btn').addClass('hide');
+            btnCadastrar.removeAttr('disabled').removeClass('disabled').parent('.form-forn-btn').removeClass('hide');
+
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('E para finalizar!');
             return;
