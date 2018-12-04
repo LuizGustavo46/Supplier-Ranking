@@ -12,7 +12,7 @@
 
     <div class="row text-center pt-5 mt-5">
 
-        <div class="col-7 align-items-center wrap-options hide">
+        <div class="col-7 align-items-center wrap-options">
             Selecione o seu tipo de usuário:
 
             <div class="row align-items-center justify-content-center mt-4">
@@ -56,7 +56,7 @@
               method="post" action="../Fornecedor/CadastroFornecedor">
 
             <!------------------ PRIMEIRA TELA ------------------>
-            <div class="col-5 form-forn-first-part form-parts justify-content-center hide">
+            <div class="col-5 form-forn-first-part form-parts justify-content-center">
 
                 <!--- CNPJ --->
                 <div class="col-11 wrap-input p-0">
@@ -193,7 +193,7 @@
                     {
                         <div class="col-12 checkbox-container text-left mt-4 p-0">
                             <label for="@(c.Categoria)">
-                                <input type="checkbox" id="@(c.Categoria)" name="@(c.Categoria)" />
+                                <input type="radio" id="@(c.Categoria)" name="nome_categoria" value="@(c.Categoria)"/>
                                 <span class="checkbox"></span>
                                 @(c.Categoria)
                             </label>
@@ -203,8 +203,9 @@
             </div>
 
             <!------------------ QUARTA TELA ------------------>
-            <div class="col-12 form-forn-forth-part form-parts justify-content-between text-center pl-5 pr-5 ">
+            <div class="col-12 form-forn-forth-part form-parts justify-content-between text-center pl-5 pr-5 hide">
 
+                <!--- Descrição --->
                 <div class="wrap-input pl-0">
                     <textarea class="input" type="text" name="descricao" placeholder="Faça uma breve descrição do seu negócio e empresa..."></textarea>
                 </div>
@@ -212,24 +213,81 @@
 
                 <!--- Imagens do Produto --->
                 <div class="row mt-4 pt-2">
-                        Selecione todas as imagens de seu(s) produto(s) que deseje em seu perfil:
-                    <div class="col-3 mt-5">
-                        <div class="row align-items-center justify-content-center mt-4">
-                            <label for="btnImagens" class="input-images" style="">
-                                <img class="input-images input-image-default" src="/Content/images/add-imagem.png" />
-                            </label>
-                            <input id="btnImagens" type="file" accept="image/*" name="imagensProdutos" class="input-images input-image-default" style="display: none" multiple />
+                        
+                    <div class="col-3 p-2">
+                            Selecione todas as imagens de seu(s) produto(s) que deseje em seu perfil:
+
+                            <div class="row align-items-center justify-content-center mt-4">
+                                <label for="btnImagens" class="input-images">
+                                    <img class="input-images" src="/Content/images/add-imagem-pequeno.png" />
+                                </label>
+                                <input id="btnImagens" type="file" accept="image/*" style="display: none" multiple />
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div id="imagensCarregada">
+
+                            </div>
                         </div>
                     </div>
-                    <div class="col-9">
-                        <div id="imagensCarregada">
 
+                    <div class="row mt-4 pt-2">
+                        <!--- PDF --->
+                        <div class="col-3 p-2">
+                            Inclua abaixo um PDF com as informações de seu(s) produto(s):
+
+                            <div id="wrapper-add-pdf" class="row align-items-center justify-content-center mt-4">
+                                <label for="btnPdf" class="input-images">
+                                    <img class="input-images" src="/Content/images/add-pdf.png" />
+                                </label>
+                                <input id="btnPdf" type="file" accept="application/pdf" name="pdf" style="display: none"/>
+                            </div>
+
+                            <div id="wrapper-remove-pdf" class="row align-items-center justify-content-center mt-4 hide">
+                                <button>
+                                    <img class="input-images input-remove-pdf" src="/Content/images/remove-pdf.png" />
+                                </button>
+                            </div>
+
+                            <div id="nomePdf" class="row align-items-center justify-content-center mt-3">
+
+                            </div>
                         </div>
-                    </div>
-                    
-                </div>
 
-                
+                        @*<!--- Plano --->
+                        <div class="row col-9 d-flex align-items-center">
+                            <div class="col-12 d-flex justify-content-center">
+                                Selecione o plano escolhido:
+                            </div>
+
+                            <div class="col-12 d-flex justify-content-center align-items-center mt-4">
+                                <!--- Free --->
+                                <div class="col-4">
+                                    <div id="btnPlanoFree" class="col-9 switch-wrapper p-3">
+                                        <img style="width: 4em;" src="/Content/images/plano-free.png" />
+                                        <h6 class="switch-person-title p-2">Free</h6>
+                                    </div>
+                                </div>
+
+                                <!--- Switch --->
+                                <label class="switch m-3">
+                                    <input id="switchFornecedor" type="checkbox">
+                                    <span class="slider slider-fornecedor round unchecked"></span>
+                                </label>
+
+                                <!--- Premium --->
+                                <div class="col-4">
+                                    <div id="btnPlanoPremium" class="col-9 switch-wrapper p-3">
+                                        <img style="width: 4em;" src="/Content/images/plano-premium.png" />
+                                        <h6 class="switch-person-title p-2">Premium</h6>
+                                    </div>
+                                </div>
+
+                                <input class="input-plano" name="plano" value="" style="display: none;" />
+                            </div>
+                        </div>*@
+                    </div>
+
             </div>
         </form>
     </div> 
@@ -242,42 +300,32 @@
 
         <div class="col-12 d-flex p-0">
             <!--- Voltar para Login --->
-            <div class="col-6 d-flex form-forn-btn align-self-center text-left">
+            <div class="col-6 form-forn-btn d-flex align-self-center text-left">
                 <a id="btnLogin" class="sub-link" href="/Login/Login">
                     Login
                 </a>
             </div>
 
             <!--- Voltar --->
-            <div class="col-6 d-flex form-forn-btn align-self-center text-left hide">
+            <div class="col-6 form-forn-btn d-flex align-self-center text-left hide">
                 <button id="btnVoltar" class="sub-link">
                     Voltar
                 </button>
             </div>
 
             <!--- Botao Proximo --->
-            <div class="col-6 d-flex align-self-center justify-content-end pr-0">
+            <div class="col-6 form-forn-btn d-flex align-self-center justify-content-end pr-0">
                 <button id="btnProximo" class="login-form-btn disabled" disabled>
                     Próximo
                 </button>
             </div>
-        </div>
-
-        @*<div class="col-12 d-flex form-forn-third-part p-0">
-            <!--- Voltar para etapa anterior --->
-            <div class="col-6 d-flex align-self-center text-left">
-                <button id="btnVoltar" class="fake-link sub-link">
-                    Voltar
-                </button>
-            </div>
 
             <!--- Botao Cadastrar --->
-            <div class="col-6 d-flex align-self-center justify-content-end pr-0">
+            <div class="col-6 form-forn-btn d-flex align-self-center justify-content-end pr-0 hide">
                 <button type="submit" id="btnCadastrar" class="login-form-btn disabled" disabled>
                     Cadastrar
                 </button>
             </div>
-        </div>*@
+        </div>
         </div>
     </div>
-</div>
