@@ -391,6 +391,7 @@
     <Content Include="Views\Avaliacao\RankingFiltro.cshtml" />
     <None Include="Views\Comprador\Email.cshtml" />
     <Content Include="Views\HomeLogada\Perfil.cshtml" />
+    <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <None Include="Views\Shared\Layout_logada.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -547,7 +548,6 @@
     <Content Include="Views\Fornecedor\EsqueceuSuaSenha.cshtml" />
     <Content Include="Views\Fornecedor\NovaSenha.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFornecedor.cshtml" />
-    <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\UpdateSenha.cshtml" />
     <Content Include="Views\Login\Update.cshtml" />
     <Content Include="Views\Shared\_LayoutCadastro.cshtml" />
