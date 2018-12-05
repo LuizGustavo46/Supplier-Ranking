@@ -271,7 +271,6 @@ $(document).ready(function () {
             btnPlanoFree.addClass('active-switch');
             btnPlanoPremium.removeClass('active-switch');
         }
-        //console.log('de', ;
 
         if ($('.input-plano').val().length) {
             btnCadastrar.removeAttr('disabled').removeClass('disabled');
