@@ -82,24 +82,24 @@ $(document).ready(function () {
     });
 
     /*** Botao para voltar para a etapa anterior de Cadastro ***/
-    btnPlanoFree.on('click', function () {
+    btnPlanoFree.on('click', function (e) {
         var switchPlanoPremium = switchPlano.prop('checked', false);
 
         uncheckedSlider(sliderPlano);
-        switchPlanos(switchPlanoPremium);
+        switchPlanos(e, switchPlanoPremium);
     });
     
     /*** Botao para voltar para a etapa anterior de Cadastro ***/
-    btnPlanoPremium.on('click', function () {
+    btnPlanoPremium.on('click', function (e) {
         var switchPlanoPremium = switchPlano.prop('checked', true);
 
         uncheckedSlider(sliderPlano);
-        switchPlanos(switchPlanoPremium);
+        switchPlanos(e, switchPlanoPremium);
     });
 
-    switchPlano.on('click', function () {
+    switchPlano.on('click', function (e) {
         uncheckedSlider(sliderPlano);
-        switchPlanos(switchPlano);
+        switchPlanos(e, switchPlano);
     });
 
     /*** Botao para cadastrar ***/
@@ -258,7 +258,8 @@ $(document).ready(function () {
     }
 
     /** Seleciona os planos **/
-    function switchPlanos(input) {
+    function switchPlanos(e, input) {
+        e.preventDefault();
 
         if ($(input).is(':checked')) { //Seleciona o Plano Premium
             $('.input-plano').val('P');

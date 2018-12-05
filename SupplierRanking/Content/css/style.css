@@ -70,8 +70,8 @@
 }
 
 .btn.btn-primary {
-    background: #0962ea;
-    border: 2px solid #0962ea;
+    background: #134e74;
+    border: 2px solid #134e74;
     color: #fff;
 }
 
@@ -147,7 +147,7 @@ a {
 	-webkit-transition: .3s all ease;
 	-o-transition: .3s all ease;
 	transition: .3s all ease;
-	color: #0962ea;
+	color: #134e74;
 }
 
 a:hover {
@@ -166,7 +166,7 @@ h5,
 .h4,
 .h5 {
 	line-height: 1.5;
-	color: #000;
+	color: #134e74;
 	font-weight: 300;
 }
 
