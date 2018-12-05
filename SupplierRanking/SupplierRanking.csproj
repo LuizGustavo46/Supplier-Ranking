@@ -158,6 +158,7 @@
     <Content Include="Content\images\fotoMarcelo2.png" />
     <Content Include="Content\images\fotopadrao.jpg" />
     <Content Include="Content\images\fotoValmir.png" />
+    <Content Include="Content\images\give-money.png" />
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
@@ -168,6 +169,7 @@
     <Content Include="Content\images\pesquisa.png" />
     <Content Include="Content\images\phone.png" />
     <Content Include="Content\images\photo.png" />
+    <Content Include="Content\images\plano.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\servicos.png" />
@@ -176,6 +178,7 @@
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
     <Content Include="Content\images\valmir255.png" />
+    <Content Include="Content\images\video.mp4" />
     <Content Include="Content\js\bloqueia-input.js" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
@@ -206,12 +209,10 @@
     <Content Include="Content\images\bg_3.jpg" />
     <Content Include="Content\images\bg_4.jpg" />
     <Content Include="Content\images\comprador.png" />
-    <Content Include="Content\images\give-money.png" />
     <Content Include="Content\images\Login.png" />
     <Content Include="Content\images\LoginFornecedor.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo2.png" />
-    <Content Include="Content\images\plano.png" />
     <Content Include="Content\images\image_1.jpg" />
     <Content Include="Content\images\image_2.jpg" />
     <Content Include="Content\images\image_3.jpg" />
