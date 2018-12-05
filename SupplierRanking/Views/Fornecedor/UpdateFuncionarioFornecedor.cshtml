@@ -1,15 +1,16 @@
-﻿@model SupplierRanking.Models.Fornecedor
+﻿
+@model SupplierRanking.Models.Fornecedor
 
 @{
     ViewBag.Title = "UpdateFuncionarioFornecedor";
 
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
-<div class="container-login100">
+<div class="container-login100" style="width: 946px;height: 400px;background: #fff;position: absolute;left:435px;margin-top: 172px; box-shadow: 1px 1px 27px;">
 
-    <div class="wrap-login100" style="background-color: white;">
+    <div class="wrap-login100" style="background-color: white;position: absolute;left: 41%;">
 
-        <h2>update Fornecedor</h2>
+        <h2>Editar informações</h2>
         <form action="../Fornecedor/UpdateFuncionarioFornecedor" method="post" class="login100-form validate-form" enctype="multipart/form-data">
 
             <!--- Campos do Fornecedor -->
@@ -18,18 +19,18 @@
                     <input type="file" accept="image/*" id="imagem" name="imagem" style="display: none">*@
 
 
-                <br /> <br />  
-                <input type="text" value="@Model.Codigo" name="codigo" placeholder="codigo">
                 <br /> <br />
-                <input type="text" value="@Model.Nome" name="nome" placeholder="nome">
+                <input class="input" type="text" value="@Model.Codigo" name="codigo" placeholder="codigo">
                 <br /> <br />
-                <input type="text" value="@Model.Senha" name="senha" placeholder="senha">
+                <input class="input" type="text" value="@Model.Nome" name="nome" placeholder="nome">
                 <br /> <br />
-             
+                <input class="input" type="text" value="@Model.Senha" name="senha" placeholder="senha">
+                <br /> <br />
+
             </div>
 
             <br /> <br />
-            <button id="btnAtualizar">Atualizar</button>
+            <button style="background: #166083;" class="btn btn-info btn-lg" id="btnAtualizar">Atualizar</button>
         </form>
     </div>
 </div>

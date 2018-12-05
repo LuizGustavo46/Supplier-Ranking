@@ -14,14 +14,14 @@
         <section style=" width: 2000px;height: 104px;background: #0C496BE6;position: absolute;top: 0px;left:0px;">
 
 
-
-
+            
                 <div class="container-fluid">
                     <!-- <button type="button" id="sidebarCollapse" onmouse="menu()"class="btn btn-info">
                     <i class="fas fa-align-left"></i>
                     <span>Toggle Sidebar</span>
 
                 </button>-->
+                    
 
 
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,14 +41,14 @@
         
         <div id="divFiltro" style="width:600px;height:450px;background-color:white;border: 30px;border-color: black;visibility:hidden;position: absolute;
             left: 31%;"></div>
-
+       
         
             <div style="width:1500px;height: 680px;background-color: white;
             top: 13%;position: absolute;left: 195px; box-shadow: 1px 0px 20px black;">
                 <section>
                     
                     <div style="width:210px;height:210px;position: absolute;left: 10%;top:26px;">
-                       
+                      
                             
                             @if (Model.Imagem64 == null)
                             {
@@ -64,7 +64,7 @@
                             
                             
                     </div>
-
+                   
                     <h1 style="position: absolute;left: 41%;"></h1>
 
                     <div style="width: 413px;height: 226px;background-color: #fff0;position: absolute;left: 40%;top: 28%;">
@@ -84,9 +84,11 @@
                         <span class="fa fa-star"></span>
                         <span class="fa fa-star"></span>
 
+                        <!----Botao avaliar-->
                         <button onclick="filtro()" style="background: url('../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
                      position: absolute;margin-left: 240px;margin-top: -59px;" data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal"></button>
-                        <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco - @Model.Bairro, @Model.Cidade / @Model.Uf</h1>
+                       
+                         <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco - @Model.Bairro, @Model.Cidade / @Model.Uf</h1>
                         <img style="position: absolute;right: 790px;top: 190px;width: 40px;" src="~/Content/images/endereco.png" />
 
                         <h1 style="position: absolute;right: 600px;top: 270px;font-size: 22px;width: 145px;">@Model.Telefone</h1>
@@ -95,9 +97,16 @@
                         <h1 style="position: absolute;right: 504px;top: 361px;font-size: 22px;">@Model.Email</h1>
                         <img style="position: absolute;right: 787px;top: 374px;width: 40px;" src="~/Content/images/email1.png" />
 
+                        @*<div>
+                            <a>
+                                <img style="width:40px;height: 40px;margin-left: -37rem;margin-top: 8rem;" src="~/Content/images/edit.png" />
+                            </a>
+                           
 
-
-
+                        </div>*@
+                        <!---Botao Editar-->
+                        <button onclick="filtro()"  style="background: url(../../Content/images/edit.png) no-repeat;width: 30px;height: 30px;position: absolute;
+                        right: 403px;margin-top: 89px;" data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal"></button>
 
                     </div>
 
@@ -193,7 +202,254 @@
 
                  
 
-        <!-- Modal -->
+       
+         <!-- Modal Avaliar-->
+        @if (Session["UserPessoaFisica"] != null && Session["UserPessoaJuridica"] != null)
+        {
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="
+                            background-color: #0C496BE6;
+                            color: white;
+                            border-bottom: 3px solid #bbad00; ">
+
+                            <h4 style="margin-left: 241px;" class="modal-title">Nós ajude a melhorar nosso serviço!</h4>
+                            <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
+
+                        </div>
+
+
+
+
+                        <div class="modal-body">
+                            <p>Avalie por :</p>
+
+                            <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                                Entrega
+                            </h1>
+                            <form style="margin-left: 269px;" class="rating">
+
+                                <label>
+
+
+                                    <input type="radio" name="stars" value="1" />
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="2" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="3" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="4" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="5" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+
+                            </form>
+
+                            <br />
+
+                            <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                                Qualidade
+                            </h1>
+                            <form style="margin-left: 269px;" class="rating">
+                                <label>
+                                    <input type="radio" name="stars" value="1" />
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="2" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="3" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="4" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="5" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+
+                            </form>
+
+                            <br />
+
+                            <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                                Preço
+                            </h1>
+
+                            <form style="margin-left: 269px;" class="rating">
+                                <label>
+                                    <input type="radio" name="stars" value="1" />
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="2" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="3" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="4" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="5" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+
+                            </form>
+
+
+                            <br />
+
+                            <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                                Satisfação
+                            </h1>
+
+                            <form style="margin-left: 269px;" class="rating">
+                                <label>
+                                    <input type="radio" name="stars" value="1" />
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="2" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="3" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="4" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="5" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+
+                            </form>
+
+                            <br />
+
+                            <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
+                                Atendimento
+                            </h1>
+                            <form style="margin-left: 269px;" class="rating">
+                                <label>
+                                    <input type="radio" name="stars" value="1" />
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="2" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="3" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="4" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="stars" value="5" />
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                    <span class="icon">★</span>
+                                </label>
+
+                            </form>
+
+                            <br />
+
+
+                            <form>
+                                <h1 style="margin-bottom: -17px;margin-left: 161px;font-size: 23px;">Comentário</h1>
+                                <br />
+                                <input style="margin-left: 161px;width:463px;height:30px" />
+
+                            </form>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default">Concluir</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        
+
+       
+
+
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -203,227 +459,62 @@
                             border-bottom: 3px solid #bbad00; ">
 
                         <h4 style="margin-left: 241px;" class="modal-title">Nós ajude a melhorar nosso serviço!</h4>
-                        <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
+                        <button type="button" class="close" data-dismiss="modal2" style="color:white;">×</button>
 
                     </div>
 
-                   
+
 
 
                     <div class="modal-body">
-                        <p>Avalie por :</p>
-                       
-                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                            Entrega
-                        </h1>
-                            <form style="margin-left: 269px;" class="rating">
-                               
-                                <label>
-                                    
-                                    
-                                    <input type="radio" name="stars" value="1" />
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="2" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="3" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="4" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="5" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
+                        <h2>Editar informações</h2>
+                        <form action="../Fornecedor/UpdateFornecedor" method="post" class="login100-form validate-form" enctype="multipart/form-data">
 
-                            </form>
-
-                            <br />
-                      
-                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                            Qualidade
-                        </h1>
-                        <form style="margin-left: 269px;" class="rating">
-                                <label>
-                                    <input type="radio" name="stars" value="1" />
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="2" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="3" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="4" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="5" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-
-                            </form>
-
-                            <br />
-
-                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                            Preço
-                        </h1>
-
-                            <form style="margin-left: 269px;" class="rating">
-                                <label>
-                                    <input type="radio" name="stars" value="1" />
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="2" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="3" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="4" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="5" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-
-                            </form>
+                            <!--- Campos do Fornecedor -->
+                            <div id="">
+                                @*<label for="imagem" style="border: 1px solid; background-color: gainsboro; padding: .5em; font-size: 12px; cursor: pointer;">Imagem de Perfil</label>
+                <input type="file" accept="image/*" id="imagem" name="imagem" style="display: none">*@
 
 
-                            <br />
+                                <br /> <br />
+                                @*<input type="text" name="confirmaSenha" placeholder="Digite sua senha">*@
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Cnpj" name="cnpj" placeholder="CNPJ">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Nome_empresa" name="nome_empresa" placeholder="Nome da Empresa">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Email" name="email" placeholder="Email">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Cep" name="cep" placeholder="CEP">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Endereco" name="endereco" placeholder="Endereço">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Bairro" name="bairro" placeholder="Bairro">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Cidade" name="cidade" placeholder="Cidade">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Uf" name="uf" placeholder="UF">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Telefone" name="telefone" placeholder="(00) 0000-0000">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Celular" name="celular" placeholder="(00) 00000-0000">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Slogan" name="slogan" placeholder="Digite o seu slogan!">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Descricao" name="descricao" placeholder="Uma breve descrição">
+                                <br /> <br />
+                                <input class="input" type="text" value="@Model.Nome_categoria" name="nome_categoria" placeholder="categoria">
+                                <br /> <br />
+                                <input class="button" type="file" name="Imagem" />
+                                <br /> <br />
 
-                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                            Satisfação
-                        </h1>
+                            </div>
 
-                            <form style="margin-left: 269px;" class="rating">
-                                <label>
-                                    <input type="radio" name="stars" value="1" />
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="2" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="3" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="4" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="5" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
+                            <br /> <br />
+                            <button style="margin-top: -62px;background: #166083;" class="btn btn-info btn-lg" id="btnAtualizar">Atualizar</button>
+                        </form>
 
-                            </form>
-
-                            <br />
-
-                        <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                            Atendimento
-                        </h1>
-                            <form style="margin-left: 269px;" class="rating">
-                                <label>
-                                    <input type="radio" name="stars" value="1" />
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="2" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="3" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="4" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="stars" value="5" />
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                    <span class="icon">★</span>
-                                </label>
-
-                            </form>
-
-                            <br />
-                      
-                        
-                          <form>
-                                <h1 style="margin-bottom: -17px;margin-left: 161px;font-size: 23px;">Comentário</h1>
-                                <br />
-                                <input style="margin-left: 161px;width:463px;height:30px"/>
-                               
-                            </form>
-
-
-</div>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default">Concluir</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -432,6 +523,7 @@
                 </div>
             </div>
         </div>
+
 
     </div>
 </div>

@@ -119,6 +119,7 @@
     <Content Include="Content\config\css\avaliar-star.css" />
     <Content Include="Content\config\css\bootstrap\main.css" />
     <Content Include="Content\config\css\bootstrap\util.css" />
+    <Content Include="Content\images\add-pdf.png" />
     <Content Include="Content\css\checkbox-home-logada.css" />
     <Content Include="Content\css\style_logada.css" />
     <Content Include="Content\config\fonts\flaticon\font\Flaticon.svg" />
@@ -144,21 +145,23 @@
     <Content Include="Content\css\navbar.css" />
     <Content Include="Content\css\style_login.css" />
     <Content Include="Content\images\about.jpg" />
+    <Content Include="Content\images\add-imagem-pequeno.png" />
     <Content Include="Content\images\add-imagem.png" />
     <Content Include="Content\images\avaliar.png" />
     <Content Include="Content\images\compradorIcon.png" />
     <Content Include="Content\images\contato.jpg" />
+    <Content Include="Content\images\edit.png" />
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\email1.png" />
     <Content Include="Content\images\endereco.png" />
     <Content Include="Content\images\ExperimenteAgora.jpg" />
+    <Content Include="Content\images\fechar.png" />
     <Content Include="Content\images\filtro.png" />
     <Content Include="Content\images\fornecedor.png" />
     <Content Include="Content\images\fornecedorIcon.png" />
     <Content Include="Content\images\fotoMarcelo2.png" />
     <Content Include="Content\images\fotopadrao.jpg" />
     <Content Include="Content\images\fotoValmir.png" />
-    <Content Include="Content\images\give-money.png" />
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
@@ -169,8 +172,8 @@
     <Content Include="Content\images\pesquisa.png" />
     <Content Include="Content\images\phone.png" />
     <Content Include="Content\images\photo.png" />
-    <Content Include="Content\images\plano.png" />
     <Content Include="Content\images\ranking.png" />
+    <Content Include="Content\images\remove-pdf.png" />
     <Content Include="Content\images\search.png" />
     <Content Include="Content\images\servicos.png" />
     <Content Include="Content\images\Slide1.jpg" />
@@ -178,7 +181,6 @@
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
     <Content Include="Content\images\valmir255.png" />
-    <Content Include="Content\images\video.mp4" />
     <Content Include="Content\js\bloqueia-input.js" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
@@ -209,10 +211,12 @@
     <Content Include="Content\images\bg_3.jpg" />
     <Content Include="Content\images\bg_4.jpg" />
     <Content Include="Content\images\comprador.png" />
+    <Content Include="Content\images\plano-premium.png" />
     <Content Include="Content\images\Login.png" />
     <Content Include="Content\images\LoginFornecedor.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo2.png" />
+    <Content Include="Content\images\plano-free.png" />
     <Content Include="Content\images\image_1.jpg" />
     <Content Include="Content\images\image_2.jpg" />
     <Content Include="Content\images\image_3.jpg" />
@@ -387,6 +391,7 @@
     <Content Include="Views\Avaliacao\RankingFiltro.cshtml" />
     <None Include="Views\Comprador\Email.cshtml" />
     <Content Include="Views\HomeLogada\Perfil.cshtml" />
+    <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <None Include="Views\Shared\Layout_logada.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -543,7 +548,6 @@
     <Content Include="Views\Fornecedor\EsqueceuSuaSenha.cshtml" />
     <Content Include="Views\Fornecedor\NovaSenha.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFornecedor.cshtml" />
-    <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\UpdateSenha.cshtml" />
     <Content Include="Views\Login\Update.cshtml" />
     <Content Include="Views\Shared\_LayoutCadastro.cshtml" />

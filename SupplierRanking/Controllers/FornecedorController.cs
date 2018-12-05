@@ -66,21 +66,22 @@ namespace SupplierRanking.Controllers
        
         [HttpPost]
         public ActionResult CadastroFornecedor(string cnpj, string nome_empresa, string email, string telefone, string celular, string endereco, string bairro, 
-            string cidade, string uf, string cep, string senha, string slogan, string descricao, /*string planostring nome_categoria,*/  string confirmarSenha)
+            string cidade, string uf, string cep, string senha, string slogan, string descricao, string plano, string nome_categoria, string confirmarSenha)
         {
             Fornecedor f = new Fornecedor();
+            List<byte[]> listGaleriaFotos = new List<byte[]>();
 
-            int cont = 0;
-            foreach (string item in Request.Form.AllKeys)
-            {
-                if (cont >= 14)
-                {
-                    Categorias cat = new Categorias();
-                    cat.Categoria = item;
-                    f.Nome_categoria = cat.Categoria;
-                }
-                cont++;
-            }
+            //int cont = 0;
+            //foreach (string item in Request.Form.AllKeys)
+            //{
+            //    if (cont >= 14)
+            //    {
+            //        Categorias cat = new Categorias();
+            //        cat.Categoria = item;
+            //        f.Nome_categoria = cat.Categoria;
+            //    }
+            //    cont++;
+            //}
 
             f.Cnpj = cnpj;
             f.Nome_empresa = nome_empresa;
@@ -97,14 +98,15 @@ namespace SupplierRanking.Controllers
             f.Slogan = slogan;
             f.Descricao = descricao;
             f.Media = 0;
-            f.Plano = "F";
-            //f.Nome_categoria = nome_empresa;
+            f.Plano = plano;
+            f.Nome_categoria = nome_categoria;
             f.Media_qualidade = 0;
             f.Media_atendimento = 0;
             f.Media_entrega = 0;
             f.Media_preco = 0;
             f.Media_satisfacao = 0;
 
+            //PROCURAR FOTO DE PERFIL NO CADASTRO
             foreach (string imagem in Request.Files)
             {
                 HttpPostedFileBase arqPostado = Request.Files[imagem];
@@ -115,7 +117,6 @@ namespace SupplierRanking.Controllers
                 {
 
                 }
-
                 //TESTAR SE A IMAGEM É JPEG
                 if (tipoArq.IndexOf("jpeg") > 0)
                 {
@@ -130,7 +131,61 @@ namespace SupplierRanking.Controllers
                 }
             }
 
-            TempData["Msg"] = f.CadastroFornecedor();
+            //PROCURAR ARQUIVO PDF NO CADASTRO
+            foreach (string pdf in Request.Files)
+            {
+                HttpPostedFileBase arqPostado = Request.Files[pdf];
+                int tamConteudo = arqPostado.ContentLength; //PEGA O TAMANHO DO CONTEÚDO
+                string tipoArq = arqPostado.ContentType; //PEGA O TIPO DO CONTEÚDO
+
+                if (tamConteudo == 0)
+                {
+
+                }
+                //TESTAR SE A IMAGEM É JPEG
+                if (tipoArq.IndexOf("pdf") > 0)
+                {
+                    //CONVERTER PARA BYTES
+                    byte[] pdfBytes = new byte[tamConteudo];
+                    arqPostado.InputStream.Read(pdfBytes, 0, tamConteudo);
+                    f.Pdf = pdfBytes;
+                }
+                else
+                {
+                    f.Pdf = new byte[] { };
+                }
+            }
+
+            //PROCURAR LISTA DE IMAGENS NO CADASTRO
+            foreach (string galeriaFotos in Request.Files)
+            {
+                HttpPostedFileBase arqPostado = Request.Files[galeriaFotos];
+                
+                //HttpPostedFileBase arqPostado = Request.Files[pdf];
+                int tamConteudo = arqPostado.ContentLength; //PEGA O TAMANHO DO CONTEÚDO
+                string tipoArq = arqPostado.ContentType; //PEGA O TIPO DO CONTEÚDO
+
+                    if (tamConteudo == 0)
+                    {
+
+                    }
+                    //TESTAR SE A O ARQUIVO É jpeg
+                    if (tipoArq.IndexOf("jpeg") > 0)
+                    {
+                        //CONVERTER PARA BYTES
+                        byte[] galeriaFotosBytes = new byte[tamConteudo];
+                        arqPostado.InputStream.Read(galeriaFotosBytes, 0, tamConteudo);
+                        f.Pdf = galeriaFotosBytes;
+                        listGaleriaFotos.Add(f.Pdf);
+                    }
+                    else
+                    {
+                        f.Pdf = new byte[] { };
+                    }
+                }
+
+            if(f.CadastrarGaleriaFotos(cnpj, listGaleriaFotos))
+                TempData["Msg"] = f.CadastroFornecedor();
             return RedirectToAction("CadastroFornecedor");
         }
 
@@ -330,15 +385,18 @@ namespace SupplierRanking.Controllers
 
         public ActionResult UpdateFuncionarioFornecedor(/*int codigo*/)  //FEITO
         {
-            Fornecedor upFun = Fornecedor.PerfilFuncionario(/*codigo*/3);
+            Fornecedor upFun = Fornecedor.PerfilFuncionario(/*codigo*/1);
 
             if (upFun == null)
             {
                 TempData["Msg"] = "Erro ao encontrar dados";
+                //return View();
                 return RedirectToAction("UpdateFuncionarioFornecedor");
             }
-            return View(upFun);
-            
+            else
+            {
+                return View(upFun);
+            }
         }
 
 
