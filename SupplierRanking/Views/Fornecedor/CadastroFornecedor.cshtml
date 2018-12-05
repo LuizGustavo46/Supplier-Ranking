@@ -41,19 +41,21 @@
                 </div>
             </div>
 
-            <!--- Imagem Perfil --->
-            <div class="mt-4 pt-2">
-                <div class="row align-items-center justify-content-center mt-4">
-                    <label for="btnImagemPerfil" class="input-image">
-                        <img id="imagemPerfilCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" name="imagem"/>
-                    </label>
-                    <input id="btnImagemPerfil" type="file" accept="image/*" name="imagem" style="display: none">
-                </div>
-            </div>
+            
         </div>
 
         <form class="col-12 cadastro-form d-flex justify-content-end mt-4 pt-4 pr-2 pl-0"
               method="post" action="../Fornecedor/CadastroFornecedor" enctype="multipart/form-data">
+
+            <!--- Imagem Perfil --->
+            <div class="mt-4 pt-2">
+                <div class="row align-items-center justify-content-center mt-4">
+                    <label for="btnImagemPerfil" class="input-image">
+                        <img id="imagemPerfilCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" name="imagem" />
+                    </label>
+                    <input id="btnImagemPerfil" type="file" accept="image/*" name="imagem" style="display: none" />
+                </div>
+            </div>
 
             <!------------------ PRIMEIRA TELA ------------------>
             <div class="col-5 form-forn-first-part form-parts justify-content-center">
@@ -193,7 +195,7 @@
                     {
                         <div class="col-12 checkbox-container text-left mt-4 p-0">
                             <label for="@(c.Categoria)">
-                                <input type="radio" id="@(c.Categoria)" name="nome_categoria" value="@(c.Categoria)"/>
+                                <input type="radio" id="@(c.Categoria)" name="@(c.Categoria)" value="@(c.Categoria)"/>
                                 <span class="checkbox"></span>
                                 @(c.Categoria)
                             </label>
@@ -221,7 +223,7 @@
                                 <label for="btnImagens" class="input-images">
                                     <img class="input-images" src="/Content/images/add-imagem-pequeno.png" />
                                 </label>
-                                <input id="btnImagens" type="file" accept="image/*" style="display: none" multiple />
+                                <input id="btnImagens" type="file" accept="image/*" name="galeriaFotos" style="display: none" multiple />
                             </div>
                         </div>
                         <div class="col-9">
@@ -320,12 +322,12 @@
                 </button>
             </div>
 
-            <!--- Botao Cadastrar --->
-            @*<div class="col-6 form-forn-btn d-flex align-self-center justify-content-end pr-0 hide">
+            @*- Botao Cadastrar -*@
+            <div class="col-6 form-forn-btn d-flex align-self-center justify-content-end pr-0 hide">
                 <button type="submit" id="btnCadastrar" class="login-form-btn disabled" disabled>
                     Cadastrar
                 </button>
-            </div>*@
+            </div>
         </div>
         </div>
     </div>
