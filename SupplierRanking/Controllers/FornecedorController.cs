@@ -98,7 +98,7 @@ namespace SupplierRanking.Controllers
             f.Slogan = slogan;
             f.Descricao = descricao;
             f.Media = 0;
-            f.Plano = "F";
+            f.Plano = "P";
             //f.Nome_categoria = nome_categoria; //A CATEGORIA VAI SER PEGA ALI EM CIMA PELO FOREACH
             f.Media_qualidade = 0;
             f.Media_atendimento = 0;
