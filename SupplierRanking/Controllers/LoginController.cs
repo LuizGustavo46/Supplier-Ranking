@@ -76,6 +76,7 @@ namespace SupplierRanking.Controllers
                 f.Senha = senha;
                 if (f.Login())
                 {
+                    f = Fornecedor.Perfil(cnpj);
                     Session["UserFornecedor"] = f;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");

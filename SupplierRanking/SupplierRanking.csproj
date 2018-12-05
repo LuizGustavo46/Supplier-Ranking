@@ -175,6 +175,7 @@
     <Content Include="Content\images\photo.png" />
     <Content Include="Content\images\plano-free.png" />
     <Content Include="Content\images\plano-premium.png" />
+    <Content Include="Content\images\plano.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\remove-pdf.png" />
     <Content Include="Content\images\search.png" />
@@ -184,6 +185,7 @@
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
     <Content Include="Content\images\valmir255.png" />
+    <Content Include="Content\images\video.mp4" />
     <Content Include="Content\js\bloqueia-input.js" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
