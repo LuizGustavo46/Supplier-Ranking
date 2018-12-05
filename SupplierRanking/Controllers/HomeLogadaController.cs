@@ -50,6 +50,11 @@ namespace SupplierRanking.Controllers
             return View("RankingPremium", HomeLogada.RankingPremium());
         }
 
+        public ActionResult Suporte()
+        {
+            return View();
+        }
+
 
     }
 }

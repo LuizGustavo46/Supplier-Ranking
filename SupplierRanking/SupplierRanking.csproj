@@ -166,6 +166,7 @@
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
+    <Content Include="Content\images\icones.html" />
     <Content Include="Content\images\luizao.png" />
     <Content Include="Content\images\luizao2.png" />
     <Content Include="Content\images\luizao3.png" />
@@ -392,6 +393,7 @@
     <None Include="Views\Comprador\Email.cshtml" />
     <Content Include="Views\HomeLogada\Perfil.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
+    <Content Include="Views\HomeLogada\Suporte.cshtml" />
     <None Include="Views\Shared\Layout_logada.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
