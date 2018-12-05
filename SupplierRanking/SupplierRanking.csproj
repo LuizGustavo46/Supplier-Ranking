@@ -165,6 +165,7 @@
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
+    <Content Include="Content\images\icones.html" />
     <Content Include="Content\images\luizao.png" />
     <Content Include="Content\images\luizao2.png" />
     <Content Include="Content\images\luizao3.png" />
@@ -172,6 +173,8 @@
     <Content Include="Content\images\pesquisa.png" />
     <Content Include="Content\images\phone.png" />
     <Content Include="Content\images\photo.png" />
+    <Content Include="Content\images\plano-free.png" />
+    <Content Include="Content\images\plano-premium.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\remove-pdf.png" />
     <Content Include="Content\images\search.png" />
@@ -211,12 +214,10 @@
     <Content Include="Content\images\bg_3.jpg" />
     <Content Include="Content\images\bg_4.jpg" />
     <Content Include="Content\images\comprador.png" />
-    <Content Include="Content\images\plano-premium.png" />
     <Content Include="Content\images\Login.png" />
     <Content Include="Content\images\LoginFornecedor.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo2.png" />
-    <Content Include="Content\images\plano-free.png" />
     <Content Include="Content\images\image_1.jpg" />
     <Content Include="Content\images\image_2.jpg" />
     <Content Include="Content\images\image_3.jpg" />
