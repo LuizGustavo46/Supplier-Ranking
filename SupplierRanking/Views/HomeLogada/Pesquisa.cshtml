@@ -9,55 +9,7 @@
    
     <!-- Page Content  -->
     <div id="content" style="background:#eefbfa00">
-        <section class="pesquisa" style=" width: 2000px;height:104px;background: #0C496BE6;position: absolute;top: 0px;left: -2px;">
-
-
-
-
-
-
-
-
-
-
-
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 1000px;position:absolute;left: 19%;top:10px;">
-                <form style="height: 52px;" action="../HomeLogada/Pesquisa" method="post">
-                    <div class="container-fluid">
-                        <!-- <button type="button" id="sidebarCollapse" onmouse="menu()"class="btn btn-info">
-            <i class="fas fa-align-left"></i>
-            <span>Toggle Sidebar</span>
-
-        </button>-->
-
-
-                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-align-justify"></i>
-                        </button>
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <input  name="pesquisa"class="col-10 wrap-input pl-2 mt-3" style="width:870px;height: 40px;background-color: white;margin-left: 53px;" placeholder="Digite aqui o nome do fornecedor..." />
-
-
-                        </div>
-
-                        <!--<img style="width: 27px;height: 27px;margin-right: 100px; "src="imagens/pesquisa.png"/>-->
-                        <button type="submit" style="background: url('../Content/images/pesquisa.png') no-repeat;width: 30px;height:30px;margin-right: 45px;margin-top: -37px;float: right;"></button>
-
-
-                        <button type="button" id="btfiltro" onclick="filtro()" style="background: url('../Content/images/filtro.png') no-repeat;width: 30px;height:30px;margin-top: -35px;float: right;"
-                                class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"></button>
-
-
-
-                    </div>
-
-                </form>
-                
-            </nav>
-
-        </section>
+        
         <div id="divFiltro" style="width:600px;height:450px;background-color:white;border: 30px;border-color: black;visibility:hidden;position: absolute;
             left: 31%;"></div>
 
@@ -211,66 +163,7 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header" style="
-                            background-color: #0C496BE6;
-                            color: white;
-                            border-bottom: 3px solid #bbad00; ">
-
-                        <h4 style="margin-left: 380px;" class="modal-title">Filtro </h4>
-                        <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
-
-                    </div>
-                   
-                    <form method="post" action="../HomeLogada/Pesquisa">
-                        <div class="modal-body">
-                            <p>Filtrar por:</p>
-
-
-                            <label style="margin-left: 4px;" class="container">
-                                Entrega
-
-                                <input value="media_entrega" id="entrega" type="radio" checked="checked" name="pesquisa">
-                                <span style="margin-left: -15px;" class="checkmark"></span>
-                            </label>
-                            <label style="margin-left: 4px;" class="container">
-                                Qualidade
-                                <input value="media_qualidade"id="qualidade" type="radio" name="pesquisa">
-                                <span style="margin-left: -15px;" class="checkmark"></span>
-                            </label>
-                            <label style="margin-left: 4px;" class="container">
-                                Preço
-                                <input value="media_preco"id="preco" type="radio" name="pesquisa">
-                                <span style="margin-left: -15px;" class="checkmark"></span>
-                            </label>
-                            <label style="margin-left: 4px;" class="container">
-                                Satisfação
-                                <input value="media_satisfacao"id="satisfacao" type="radio" name="pesquisa">
-                                <span style="margin-left: -15px;" class="checkmark"></span>
-                            </label>
-                            <label style="margin-left: 4px;" class="container">
-                                Atendimento
-                                <input value="media_atendimento"id="atendimento" type="radio" name="pesquisa">
-                                <span style="margin-left: -15px;" class="checkmark"></span>
-                            </label>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-default">Concluir</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-
-                        </div>
-                    </form>
-                       
-                      
-                   
-                    
-                    
-                </div>
-            </div>
-        </div>
+        
 
     </div>
 </div>

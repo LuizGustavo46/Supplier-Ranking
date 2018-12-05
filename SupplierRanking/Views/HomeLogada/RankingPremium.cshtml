@@ -2,107 +2,142 @@
 
 @{
     ViewBag.Title = "RankingPremium";
-    Layout = null;
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
 
-<h2>Ranking Premium</h2>
 
-<table class="table">
-    <tr>
-        <th></th>
-        <th>
-            CNPJ
-        </th>
-        <th>
-            NOME
-        </th>
-        <th>
-            EMAIL
-        </th>
-        <th>
-            TELEFONE
-        </th>
-        <th>
-            CIDADE
-        </th>
-        <th>
-            UF
-        </th>
-        <th>
-            CELULAR
-        </th>
-        <th>
-            DESCRIÇÃO
-        </th>
-        <th>
-            MEDIA
-        </th>
-        <th>
-            SLOGAN
-        </th>
-        <th>
-            PLANO
-        </th>
-        <th>
-            CATEGORIA
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            @if (item.Imagem64 == "")
+<div class="row">
+    <ul class="row list-unstyled m-3">
+        @foreach (var item in Model)
+        {
+            if (item.Plano.Equals("P"))
             {
-                <td>
-                    <img src="~/Content/images/iconecor.png" height="100" width="100" />
-                </td>
-            }
-            else
-            {
-                String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                <td>
-                    <img src="@imagem64" height="100" width="100" />
-                </td>
-            }
+                <li class="col-12 p-4 mb-5" style="background: white;box-shadow: 0px 0px 9px black;background: #2c8cb6;
+                         box-shadow: 0px 0px 23px black;color: white;border: solid 1px #00000045;width: 1557px;margin-left: 48px;">
+                    <div class="row">
+                        <div class="d-flex justify-content-center align-items-center mr-5" style="padding-left: 4rem;">
 
-            <td>
-                @item.Cnpj
-            </td>
-            <td>
-                @item.Nome_empresa
-            </td>
-            <td>
-                @item.Email
-            </td>
-            <td>
-                @item.Telefone
-            </td>
-            <td>
-                @item.Cidade
-            </td>
-            <td>
-                @item.Uf
-            </td>
-            <td>
-                @item.Celular
-            </td>
-            <td>
-                @item.Descricao
-            </td>
-            <td>
-                @item.Media
-            </td>
-            <td>
-                @item.Slogan
-            </td>
-            <td>
-                @item.Plano
-            </td>
-            <td>
-                @item.Nome_categoria
-            </td>
-        </tr>
-    }
+                            <div class="pr-5">
+                                <h2>@(Model.IndexOf(item) + 1)º </h2>
+                            </div>
 
-</table>
+                            @*<div class="col-10">*@
+                            @if (item.Imagem64 == "")
+                            {
+                                <img src="/Content/images/iconecor.png" height="100" width="100" />
+                            }
+                            else
+                            {
+                                String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                                <img src="@imagem64" height="100" width="100" />
+                            }
+                            
+                            @*</div>*@
+                            
+                        </div>
+                   </div>
+                </li>
+            }
+        }
+    </ul>
+ </div>
+
+                        @*<table class="table">
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        CNPJ
+                                    </th>
+                                    <th>
+                                        NOME
+                                    </th>
+                                    <th>
+                                        EMAIL
+                                    </th>
+                                    <th>
+                                        TELEFONE
+                                    </th>
+                                    <th>
+                                        CIDADE
+                                    </th>
+                                    <th>
+                                        UF
+                                    </th>
+                                    <th>
+                                        CELULAR
+                                    </th>
+                                    <th>
+                                        DESCRIÇÃO
+                                    </th>
+                                    <th>
+                                        MEDIA
+                                    </th>
+                                    <th>
+                                        SLOGAN
+                                    </th>
+                                    <th>
+                                        PLANO
+                                    </th>
+                                    <th>
+                                        CATEGORIA
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @if (item.Imagem64 == "")
+                                        {
+                                            <td>
+                                                <img src="~/Content/images/iconecor.png" height="100" width="100" />
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                                            <td>
+                                                <img src="@imagem64" height="100" width="100" />
+                                            </td>
+                                        }
+
+                                        <td>
+                                            @item.Cnpj
+                                        </td>
+                                        <td>
+                                            @item.Nome_empresa
+                                        </td>
+                                        <td>
+                                            @item.Email
+                                        </td>
+                                        <td>
+                                            @item.Telefone
+                                        </td>
+                                        <td>
+                                            @item.Cidade
+                                        </td>
+                                        <td>
+                                            @item.Uf
+                                        </td>
+                                        <td>
+                                            @item.Celular
+                                        </td>
+                                        <td>
+                                            @item.Descricao
+                                        </td>
+                                        <td>
+                                            @item.Media
+                                        </td>
+                                        <td>
+                                            @item.Slogan
+                                        </td>
+                                        <td>
+                                            @item.Plano
+                                        </td>
+                                        <td>
+                                            @item.Nome_categoria
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>*@

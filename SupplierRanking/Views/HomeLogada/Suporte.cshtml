@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Suporte";
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
+}
+
+
+
+<div class="container bg-light" style="position: absolute;margin-left: 15rem;top: 23rem;box-shadow: 1px 1px 25px;height: 700px;
+max-width: 2000px;width: 1422px;">
+
+    <!-- INÍCIO - Informações de Contato -->
+    <div class="row d-flex mb-5 contact-info">
+        <div class="col-md-12 mb-4 heading-section">
+            <h2>Suporte</h2>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-6">
+            <p>
+                <span>Endereço:</span>
+            </p>
+            <p class="text-gray">Av. da Saudade, 125 - Ponte Preta, Campinas - SP</p>
+        </div>
+        <div class="col-md-3">
+            <p>
+                <span>Telefone:</span>
+            </p>
+            <p>
+                <a class="text-gray"
+                   href="tel://1932312540">
+                    (19) 3231-2540
+                </a>
+            </p>
+        </div>
+        <div class="col-md-3">
+            <p>
+                <span>E-mail:</span>
+            </p>
+            <p>
+                <a class="text-gray"
+                   href="mailto:officialsranking@outlook.com">
+                    officialsranking@outlook.com
+                </a>
+            </p>
+        </div>
+    </div>
+    <!-- FIM - Informações de Contato -->
+    <!-- INÍCIO - Formulário de Mensagem -->
+    <div >
+        <div class="col-md-6 pr-md-5">
+            <form action="#">
+                <div class="form-group">
+                    <br />
+                    <input style="width: 651px;" class="form-control"
+                           type="text"
+                           placeholder="Nome">
+                </div>
+                
+                <br />
+               
+
+                <div class="form-group">
+                    <input style="width: 651px;" class="form-control"
+                           type="text"
+                           placeholder="Email">
+                </div>
+
+                <br />
+              
+
+                <div class="form-group">
+                    <input style="width: 651px;" class="form-control"
+                           type="text"
+                           placeholder="Assunto">
+                </div>
+
+                <br />
+               
+
+                <div class="form-group">
+                    <textarea class="form-control"
+                              cols="30" rows="7"
+                              placeholder="Mensagem"></textarea>
+                </div>
+
+                <br />
+                
+
+                <div class="form-group">
+                    <button class="btn btn-primary py-3 px-5">
+                        Enviar
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6" id="map"></div>
+    </div>
+    <!-- FIM - Formulário de Mensagem -->
+</div>
