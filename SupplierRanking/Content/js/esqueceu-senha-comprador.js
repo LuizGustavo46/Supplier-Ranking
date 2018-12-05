@@ -7,7 +7,7 @@ $(document).ready(function () {
         btnFisica = $('.wrap-restaurar-senha-comprador #btnFisica'),
         btnJuridica = $('.wrap-restaurar-senha-comprador #btnJuridica'),
         btnFuncionario = $('.wrap-restaurar-senha-comprador #btnFuncionario'),
-       btnEnviarEmail = $('.wrap-restaurar-senha-comprador #btnEnviarEmail'),
+        btnEnviarEmail = $('.wrap-restaurar-senha-comprador #btnEnviarEmail'),
 
       // btnConfirmaSenha = $('.wrap-restaurar-senha-comprador #btnConfirmaSenha'),
 
@@ -93,6 +93,12 @@ $(document).ready(function () {
         switchTipoFuncionario(switchFuncionarioTrueOrFalse);
     });
 
+    btnEnviarEmail.on('click', function () {
+        submitForm();
+        //console.log('foi');
+
+        //$('.restaurar-senha-comprador-form ').submit();
+    });
 
     /********************* *********************  FUNÇÕES ********************* *********************/
 
@@ -253,49 +259,42 @@ $(document).ready(function () {
         formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
-        $('.restaurar-senha-comprador-form ').removeClass('hide');
+        $('.restaurar-senha-comprador-form').removeClass('hide');
     }
 
-    ///** Verifica todos os inputs visíveis **/
-    //function verificaInputsVisiveis() {
-    //    return $('restaura-senha-form .wrap-input').not('.hide').find('input');
-    //}
+    /** Verifica todos os inputs visíveis **/
+    function verificaInputsVisiveis() {
+        return $('.restaurar-senha-comprador-form .wrap-input').not('.hide').find('input');
+    }
 
-    ///** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
-    //function verificarInputsVazios() {
-    //    var isEmpty = false;
+    /** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
+    function verificarInputsVazios() {
+        var isEmpty = false;
 
-    //    activeformInputs.each(function () { // percorre todos os inputs 
+        activeformInputs.each(function () { // percorre todos os inputs 
 
-    //        if ($(this).val() == '') { // se houver pelo menos um campo vazio, entra no if
-    //            isEmpty = true;
-    //            return false; // para o loop, evitando que mais inputs sejam verificados sem necessidade
-    //        }
-    //    });
+            if ($(this).val() == '') { // se houver pelo menos um campo vazio, entra no if
+                isEmpty = true;
+                return false; // para o loop, evitando que mais inputs sejam verificados sem necessidade
+            }
+        });
 
-    //    if (isEmpty) { // Habilita/desabilita o Botão Entrar
-    //        $('restaura-senha-form-btn').attr('disabled', 'disabled').addClass('disabled');
-    //    } else {
-    //        $('restaura-senha-form-btn').removeAttr('disabled').removeClass('disabled');
-    //    }
-    //}
+        if (isEmpty) { // Habilita/desabilita o Botão Entrar
+            btnEnviarEmail.attr('disabled', 'disabled').addClass('disabled');
+        } else {
+            btnEnviarEmail.removeAttr('disabled').removeClass('disabled');
+        }
+    }
 
 
-    $('.restaurar-senha-comprador-btn').on('click', function () {
-        //submitForm();
-        //console.log('foi');
-
-        $('.restaurar-senha-comprador-form ').submit();
-    });
 
     function submitForm() {
         if (!verificarInputsVazios()) {
             $('.error-msg').removeClass('hide');
 
-
         } else {
             $('.error-msg').addClass('hide');
-            $('.restaurar-senha-comprador-form ').submit();   
+            $('.restaurar-senha-comprador-form').submit();   
         }
     }
 
