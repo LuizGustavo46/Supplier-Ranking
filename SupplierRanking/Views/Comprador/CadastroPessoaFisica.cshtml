@@ -79,26 +79,27 @@
         <form class="col-12 cadastro-form d-flex justify-content-end mt-4 pt-4 pr-2 pl-0 "
               method="post" action="../Comprador/CadastroPessoaFisica">
 
+            <!------------------ PRIMEIRA TELA ------------------>
             <div class="col-5 form-pf-first-part justify-content-center">
 
                 <!--- CPF --->
                 <div class="col-11 wrap-input p-0">
-                    <input class="input" type="text" maxlength="14" name="cpf" placeholder="CPF" data-mask="000.000.000-00" data-mask-sectionFocus="true" />
+                    <input class="input" type="text" maxlength="14" name="cpf" placeholder="* CPF" data-mask="000.000.000-00" data-mask-sectionFocus="true" />
                 </div>
 
                 <!--- Nome --->
                 <div class="col-11 wrap-input p-0">
-                    <input class="input" type="text" name="nome" placeholder="Nome">
+                    <input class="input" type="text" name="nome" placeholder="* Nome">
                 </div>
 
                 <!--- Sobrenome --->
                 <div class="col-11 wrap-input p-0">
-                    <input class="input" type="text" name="sobrenome" placeholder="Sobrenome">
+                    <input class="input" type="text" name="sobrenome" placeholder="* Sobrenome">
                 </div>
 
                 <!--- Email --->
                 <div class="col-11 wrap-input p-0">
-                    <input class="input" type="email" name="email" placeholder="Email">
+                    <input class="input" type="email" name="email" placeholder="* Email">
                 </div>
 
                 <div class="col-11 row p-0 align-items-center justify-content-between">
@@ -106,12 +107,12 @@
                     <div class="col-10 p-0">
                         <!--- Senha --->
                         <div class="wrap-input">
-                            <input class="input input-senha" type="password" name="senha" placeholder="Senha">
+                            <input class="input input-senha" type="password" name="senha" placeholder="* Senha">
                         </div>
 
                         <!--- Confirmar Senha --->
                         <div class="wrap-input">
-                            <input class="input input-senha" type="password" name="confirmarSenha" placeholder="Confirmar Senha">
+                            <input class="input input-senha" type="password" name="confirmarSenha" placeholder="* Confirmar Senha">
                         </div>
                     </div>
 
@@ -130,7 +131,6 @@
                     </div>
 
                     <select name="uf" class="states text-center">
-                        <option disabled>UF</option>
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
                         <option value="AP">AP</option>
@@ -165,15 +165,17 @@
             <div class="row col-12 form-pf-second-part justify-content-between pl-5 pr-5">
                 <!--- Telefone --->
                 <div class="col-5 wrap-input">
-                    <input class="input" type="text" name="telefone" maxlength="10" placeholder="(00) 0000-0000" data-mask="(00) 0000-0000" data-mask-sectionFocus="true">
+                    <input class="input" type="text" name="telefone" maxlength="10" placeholder="* (00) 0000-0000" data-mask="(00) 0000-0000" data-mask-sectionFocus="true">
                 </div>
 
                 <!--- Celular --->
                 <div class="col-5 wrap-input pl-4 pr-0 mr-2">
-                    <input class="input" type="text" name="celular" placeholder="(00) 00000-0000" data-mask="(00) 00000-0000" data-mask-sectionFocus="true">
+                    <input class="input" type="text" name="celular" placeholder="* (00) 00000-0000" data-mask="(00) 00000-0000" data-mask-sectionFocus="true">
                 </div>
             </div>
 
+
+            <!------------------ SEGUNDA TELA ------------------>
             <div class="col-12 form-pf-third-part justify-content-between text-center pl-5 pr-5">
                 Selecione abaixo todas as categorias de fornecimento que tenha interesse: <br />
                 E não se preocupe se esquecer de alguma, pois será possível editar depois.
