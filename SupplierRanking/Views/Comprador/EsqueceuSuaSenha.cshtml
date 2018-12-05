@@ -20,8 +20,8 @@
                     <img src="/Content/images/comprador.png" />
                     <h5 class="switch-person-title p-2">Comprador</h5>
                 </div>
-                </a>
-</div>
+            </a>
+        </div>
 
         <!--- Switch --->
         <label class="switch m-3">
@@ -29,15 +29,15 @@
                 <input id="switchFornecedor" type="checkbox"  />
                 <span class="slider slider-fornecedor round "></span>
             </a>
-</label>
+        </label>
 
         <!--- Fornecedor --->
         <div class="col-5 js-tilt" data-tilt>
             <a  href="../Fornecedor/EsqueceuSuaSenha">
-            <div id="btnFornecedor" class="col-9 switch-wrapper p-3">
-                <img src="/Content/images/fornecedor.png" />
-                <h5 class="switch-person-title p-2">Fornecedor</h5>
-            </div>
+                <div id="btnFornecedor" class="col-9 switch-wrapper p-3">
+                    <img src="/Content/images/fornecedor.png" />
+                    <h5 class="switch-person-title p-2">Fornecedor</h5>
+                </div>
             </a>
         </div>
     </div>
@@ -149,21 +149,18 @@
 
 </form>
 
-<div class="row col-12 login-options justify-content-center p-5">
+@*<div class="row col-12 login-options justify-content-center p-5">
 
-    @*<span class="col-8 error-msg alert-danger text-center p-2 mt-3 mb-4 hide">
+   <span class="col-8 error-msg alert-danger text-center p-2 mt-3 mb-4 hide">
         Preencha o(s) campo(s) corretamente! @(ViewBag.Message)
-    </span>*@
+    </span>
 
     
     <div class="col-6 d-flex justify-content-end align-items-center pl-0 pr-4">
    
    <!---Botão voltar-->
         <div style="margin-right: 175px;" class="text-left pt-3">
-
-            <a class="sub-link" href="/Login/Login">
-                Voltar
-            </a>
+            
         </div>
         
 
@@ -184,6 +181,28 @@
         </div>
     </div>
 
+</div>*@
 
 
+<div class="row col-12 login-options justify-content-center p-5">
+
+    <span class="@ViewBag.cssClass">
+        @ViewBag.Message
+    </span>
+
+    <div class="col-6 d-flex align-items-center">
+        <!--- Voltar --->
+        <div class="text-left">
+            <a class="sub-link" href="/Login/Login">
+                Voltar
+            </a>
+        </div>
+    </div>
+
+    <!--- Botao Entrar --->
+    <div class="col-6 d-flex justify-content-end align-items-center pl-0">
+        <button id="btnEnviarEmail" type="submit" class="login-form-btn disabled" disabled>
+            Enviar
+        </button>
+    </div>
 </div>
