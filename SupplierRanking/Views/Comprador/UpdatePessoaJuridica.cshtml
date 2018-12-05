@@ -1,15 +1,16 @@
 ﻿@model SupplierRanking.Models.Comprador
 @{
     ViewBag.Title = "UpdatePessoaJuridica";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
+<section style=" width: 2000px;height: 104px;background: #0C496BE6;position: absolute;top: 0px;left:0px;">
+</section>
 
+<div class="container-login100" style="width: 946px;height: 634px;background: #fff;position: absolute;left:435px;margin-top: 172px; box-shadow: 1px 1px 27px;">
 
-<div class="container-login100">
+    <div class="wrap-login100" style="background-color: white;position: absolute;left: 41%;">
 
-    <div class="wrap-login100" style="background-color: white;">
-
-        <h2>Editar informações</h2>
+        <h2 style="margin-left: -45px;margin-bottom: 41px;" >Editar informações</h2>
 
         <form action="../Comprador/UpdatePessoaJuridica" method="post" class="login100-form validate-form">
             <p>@ViewBag.Message</p>
@@ -32,7 +33,7 @@
             </div>
 
             <br /> <br />
-            <button style="background: #166083;" class="btn btn-info btn-lg" id="btnAtualizar">Atualizar</button>
+            <button type="submit" style="margin-left: 27px; background: #166083;" class="btn btn-info btn-lg" id="btnAtualizar">Atualizar</button>
         </form>
     </div>
 </div>

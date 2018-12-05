@@ -219,8 +219,8 @@ namespace SupplierRanking.Models
                         con);
 
                 // Compara se todos os campos estao preenchidos corretamente, caso não esteja retorna uma mensagem de erro para o usuario 
-                if (cnpj != "" && cnpj.Length <= 19 && nome_empresa != "" && email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
-                    && cep != "" && cep.Length <=8 && slogan != "" && descricao != "" && descricao != "" && nome_categoria != "")
+                if (cnpj != "" && cnpj.Length <= 19 && nome_empresa != "" && email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && cidade != "" && uf != ""
+                    && cep != "" && cep.Length == 9 && nome_categoria != "")
                 {
                     query.Parameters.AddWithValue("@cnpj",              cnpj);
                     query.Parameters.AddWithValue("@nome_empresa",      nome_empresa);
