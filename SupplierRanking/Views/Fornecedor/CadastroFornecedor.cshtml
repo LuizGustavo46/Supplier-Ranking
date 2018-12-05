@@ -10,7 +10,7 @@
         <h2>Crie sua Conta</h2>
     </div>
 
-    <div class="row text-center pt-5 mt-5">
+    <div class="row text-center mt-5" style="padding-top: 1em;">
 
         <div class="col-7 align-items-center wrap-options">
             Selecione o seu tipo de usuário:
@@ -40,39 +40,40 @@
                     </a>
                 </div>
             </div>
-
-            
         </div>
 
         <form class="col-12 cadastro-form d-flex justify-content-end mt-4 pt-4 pr-2 pl-0"
               method="post" action="../Fornecedor/CadastroFornecedor" enctype="multipart/form-data">
 
+            <!------------------ PRIMEIRA TELA ------------------>
             <!--- Imagem Perfil --->
-            <div class="mt-4 pt-2">
+            <div class="col-7 align-items-center wrap-options">
+                Escolha uma imagem de perfil:
+
                 <div class="row align-items-center justify-content-center mt-4">
                     <label for="btnImagemPerfil" class="input-image">
                         <img id="imagemPerfilCarregada" class="input-image input-image-default" src="/Content/images/add-imagem.png" name="imagem" />
                     </label>
-                    <input id="btnImagemPerfil" type="file" accept="image/*" name="imagem" style="display: none" />
+                    <input id="btnImagemPerfil" type="file" accept="image/*" name="imagem" style="display: none">
                 </div>
             </div>
 
-            <!------------------ PRIMEIRA TELA ------------------>
+            <!--- Todos os campos --->
             <div class="col-5 form-forn-first-part form-parts justify-content-center">
 
                 <!--- CNPJ --->
                 <div class="col-11 wrap-input p-0">
-                    <input class="input" type="text" maxlength="19" name="cnpj" placeholder="CNPJ" data-mask="00.000.000/0000-00" data-mask-sectionFocus="true" />
+                    <input class="input required-field" type="text" maxlength="19" name="cnpj" placeholder="* CNPJ" data-mask="00.000.000/0000-00" data-mask-sectionFocus="true" />
                 </div>
 
                 <!--- Nome da Empresa --->
                 <div class="col-11 wrap-input p-0">
-                    <input class="input" type="text" name="nome_empresa" placeholder="Nome da Empresa">
+                    <input class="input required-field" type="text" name="nome_empresa" placeholder="* Nome da Empresa">
                 </div>
 
                 <!--- Email --->
                 <div class="col-11 wrap-input p-0">
-                    <input class="input" type="email" name="email" placeholder="Email">
+                    <input class="input required-field" type="email" name="email" placeholder="* Email">
                 </div>
 
                 <!--- Senha & Confirmar Senha --->
@@ -80,12 +81,12 @@
                     <div class="col-10 p-0">
                         <!--- Senha --->
                         <div class="wrap-input">
-                            <input class="input input-senha" type="password" name="senha" placeholder="Senha">
+                            <input class="input input-senha required-field" type="password" name="senha" placeholder="* Senha">
                         </div>
 
                         <!--- Confirmar Senha --->
                         <div class="wrap-input">
-                            <input class="input input-senha" type="password" name="confirmarSenha" placeholder="Confirmar Senha">
+                            <input class="input input-senha required-field" type="password" name="confirmarSenha" placeholder="* Confirmar Senha">
                         </div>
                     </div>
 
@@ -105,7 +106,7 @@
 
 
             <!------------------ SEGUNDA TELA ------------------>
-            <div class="row col-12 form-forn-second-part form-parts justify-content-between pl-5 pr-5 hide">
+            <div class="row col-12 form-forn-second-part form-parts justify-content-between pl-5 pr-5 mt-5 hide">
                 <div class="row ml-4 mb-4">
                     Informe o endereço de sua localização:
                 </div>
@@ -113,29 +114,28 @@
                 <div class="row">
                     <!--- CEP --->
                     <div class="col-5 wrap-input p-0">
-                        <input class="input" type="text" name="cep" placeholder="CEP" data-mask="00000-000" data-mask-sectionFocus="true">
+                        <input class="input required-field" type="text" name="cep" placeholder="* CEP" data-mask="00000-000" data-mask-sectionFocus="true">
                     </div>
 
                     <!--- Endereço --->
                     <div class="col-12 wrap-input p-0">
-                        <input class="input" type="text" name="endereco" placeholder="Endereço">
+                        <input class="input required-field" type="text" name="endereco" placeholder="* Endereço">
                     </div>
 
                     <div class="row col-12 d-flex justify-content-between p-0">
                         <!--- Bairro --->
                         <div class="col-5 wrap-input p-0">
-                            <input class="input" type="text" name="bairro" placeholder="Bairro">
+                            <input class="input required-field" type="text" name="bairro" placeholder="* Bairro">
                         </div>
 
                         <!--- Cidade --->
                         <div class="col-5 wrap-input p-0">
-                            <input class="input" type="text" name="cidade" placeholder="Cidade">
+                            <input class="input required-field" type="text" name="cidade" placeholder="* Cidade">
                         </div>
 
                         <!--- UF --->
                         <div class="align-items-center justify-content-between p-0">
-                            <select name="uf" class="states text-center" style="width:auto">
-                                <option disabled>UF</option>
+                            <select name="uf" class="states text-center required-field" style="width:auto">
                                 <option value="AC">AC</option>
                                 <option value="AL">AL</option>
                                 <option value="AP">AP</option>
@@ -175,17 +175,17 @@
 
                     <!--- Telefone --->
                     <div class="col-6 wrap-input pl-0">
-                        <input class="input" type="text" name="telefone" maxlength="10" placeholder="(00) 0000-0000" data-mask="(00) 0000-0000" data-mask-sectionFocus="true">
+                        <input class="input required-field" type="text" name="telefone" maxlength="10" placeholder="* (00) 0000-0000" data-mask="(00) 0000-0000" data-mask-sectionFocus="true">
                     </div>
 
                     <!--- Celular --->
                     <div class="col-6 wrap-input pr-0">
-                        <input class="input" type="text" name="celular" placeholder="(00) 00000-0000" data-mask="(00) 00000-0000" data-mask-sectionFocus="true">
+                        <input class="input required-field" type="text" name="celular" placeholder="* (00) 00000-0000" data-mask="(00) 00000-0000" data-mask-sectionFocus="true">
                     </div>
                 </div>
             </div>
 
-             <!------------------ TERCEIRA TELA ------------------>
+            <!------------------ TERCEIRA TELA ------------------>
             <div class="col-12 form-forn-third-part form-parts justify-content-between text-center pl-5 pr-5 hide">
                 Seleciona abaixo todas as categorias de fornecimento que tenha interesse: <br />
                 E não se preocupe se esquecer de alguma, pois será possível editar depois.
@@ -195,7 +195,7 @@
                     {
                         <div class="col-12 checkbox-container text-left mt-4 p-0">
                             <label for="@(c.Categoria)">
-                                <input type="radio" id="@(c.Categoria)" name="@(c.Categoria)" value="@(c.Categoria)"/>
+                                <input type="radio" id="@(c.Categoria)" name="nome_categoria" value="@(c.Categoria)" class="required-field" />
                                 <span class="checkbox"></span>
                                 @(c.Categoria)
                             </label>
@@ -211,87 +211,86 @@
                 <div class="wrap-input pl-0">
                     <textarea class="input" type="text" name="descricao" placeholder="Faça uma breve descrição do seu negócio e empresa..."></textarea>
                 </div>
-                
+
 
                 <!--- Imagens do Produto --->
                 <div class="row mt-4 pt-2">
-                        
+
                     <div class="col-3 p-2">
-                            Selecione todas as imagens de seu(s) produto(s) que deseje em seu perfil:
+                        Selecione todas as imagens de seu(s) produto(s) que deseje em seu perfil:
 
-                            <div class="row align-items-center justify-content-center mt-4">
-                                <label for="btnImagens" class="input-images">
-                                    <img class="input-images" src="/Content/images/add-imagem-pequeno.png" />
-                                </label>
-                                <input id="btnImagens" type="file" accept="image/*" name="galeriaFotos" style="display: none" multiple />
-                            </div>
+                        <div class="row align-items-center justify-content-center mt-4">
+                            <label for="btnImagens" class="input-images">
+                                <img class="input-images" src="/Content/images/add-imagem-pequeno.png" />
+                            </label>
+                            <input id="btnImagens" type="file" accept="image/*" style="display: none" multiple />
                         </div>
-                        <div class="col-9">
-                            <div id="imagensCarregada">
+                    </div>
+                    <div class="col-9">
+                        <div id="imagensCarregada">
 
-                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4 pt-2">
+                    <!--- PDF --->
+                    <div class="col-3 pl-2 pr-2" style="height: 200px;">
+                        Inclua abaixo um PDF com as informações de seu(s) produto(s):
+
+                        <div id="wrapper-add-pdf" class="row align-items-center justify-content-center mt-4">
+                            <label for="btnPdf" class="input-images">
+                                <img class="input-images" src="/Content/images/add-pdf.png" />
+                            </label>
+                            <input id="btnPdf" type="file" accept="application/pdf" name="pdf" style="display: none" />
+                        </div>
+
+                        <div id="wrapper-remove-pdf" class="row align-items-center justify-content-center mt-4 hide">
+                            <button id="btnPdf">
+                                <img class="input-images input-remove-pdf" src="/Content/images/remove-pdf.png" />
+                            </button>
+                        </div>
+
+                        <div id="nomePdf" class="row align-items-center justify-content-center mt-3">
+
                         </div>
                     </div>
 
-                    <div class="row mt-4 pt-2">
-                        <!--- PDF --->
-                        <div class="col-3 p-2">
-                            Inclua abaixo um PDF com as informações de seu(s) produto(s):
+                    <!--- Plano --->
+                    <div class="row col-9 d-flex align-items-center">
+                        <div class="col-12 d-flex justify-content-center">
+                            Selecione o plano escolhido:
+                        </div>
 
-                            <div id="wrapper-add-pdf" class="row align-items-center justify-content-center mt-4">
-                                <label for="btnPdf" class="input-images">
-                                    <img class="input-images" src="/Content/images/add-pdf.png" />
-                                </label>
-                                <input id="btnPdf" type="file" accept="application/pdf" name="pdf" style="display: none"/>
-                            </div>
-
-                            <div id="wrapper-remove-pdf" class="row align-items-center justify-content-center mt-4 hide">
-                                <button id="btnPdf">
-                                    <img class="input-images input-remove-pdf" src="/Content/images/remove-pdf.png" />
+                        <div class="col-12 d-flex justify-content-center align-items-center mt-4">
+                            <!--- Free --->
+                            <div class="col-4 d-flex justify-content-center">
+                                <button id="btnPlanoFree" class="col-9 switch-wrapper p-3">
+                                    <img style="width: 4em;" src="/Content/images/plano-free.png" />
+                                    <h6 class="switch-person-title p-2">Free</h6>
                                 </button>
                             </div>
 
-                            <div id="nomePdf" class="row align-items-center justify-content-center mt-3">
+                            <!--- Switch --->
+                            <label class="switch m-3">
+                                <input id="switchPlanos" type="checkbox">
+                                <span class="slider slider-planos round unchecked"></span>
+                            </label>
 
+                            <!--- Premium --->
+                            <div class="col-4 d-flex justify-content-center">
+                                <button id="btnPlanoPremium" class="col-9 switch-wrapper p-3">
+                                    <img style="width: 4em;" src="/Content/images/plano-premium.png" />
+                                    <h6 class="switch-person-title p-2">Premium</h6>
+                                </button>
                             </div>
+
+                            <input class="input-plano required-field" name="plano" value="" style="display: none;" />
                         </div>
-
-                        @*<!--- Plano --->
-                        <div class="row col-9 d-flex align-items-center">
-                            <div class="col-12 d-flex justify-content-center">
-                                Selecione o plano escolhido:
-                            </div>
-
-                            <div class="col-12 d-flex justify-content-center align-items-center mt-4">
-                                <!--- Free --->
-                                <div class="col-4">
-                                    <div id="btnPlanoFree" class="col-9 switch-wrapper p-3">
-                                        <img style="width: 4em;" src="/Content/images/plano-free.png" />
-                                        <h6 class="switch-person-title p-2">Free</h6>
-                                    </div>
-                                </div>
-
-                                <!--- Switch --->
-                                <label class="switch m-3">
-                                    <input id="switchFornecedor" type="checkbox">
-                                    <span class="slider slider-fornecedor round unchecked"></span>
-                                </label>
-
-                                <!--- Premium --->
-                                <div class="col-4">
-                                    <div id="btnPlanoPremium" class="col-9 switch-wrapper p-3">
-                                        <img style="width: 4em;" src="/Content/images/plano-premium.png" />
-                                        <h6 class="switch-person-title p-2">Premium</h6>
-                                    </div>
-                                </div>
-
-                                <input class="input-plano" name="plano" value="" style="display: none;" />
-                            </div>
-                        </div>*@
                     </div>
-
+                </div>
             </div>
-        </form>
+</form>
     </div> 
 
     <div class="row col-12 cadastro-options align-items-center pl-5 pr-5">
@@ -322,7 +321,7 @@
                 </button>
             </div>
 
-            @*- Botao Cadastrar -*@
+            <!--- Botao Cadastrar --->
             <div class="col-6 form-forn-btn d-flex align-self-center justify-content-end pr-0 hide">
                 <button type="submit" id="btnCadastrar" class="login-form-btn disabled" disabled>
                     Cadastrar

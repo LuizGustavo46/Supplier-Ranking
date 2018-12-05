@@ -10,6 +10,8 @@ $(document).ready(function () {
         btnProximo = $('.wrap-cadastro-fornecedor #btnProximo'),
         btnImagens = $('.wrap-cadastro-fornecedor #btnImagens'),
         btnPdf = $('.wrap-cadastro-fornecedor #btnPdf'),
+        btnPlanoFree = $('.wrap-cadastro-fornecedor #btnPlanoFree'),
+        btnPlanoPremium = $('.wrap-cadastro-fornecedor #btnPlanoPremium'),
         btnCadastrar = $('.wrap-cadastro-fornecedor #btnCadastrar'),
 
         inputSenhas = $('.wrap-cadastro-fornecedor .input-senha'),
@@ -23,6 +25,9 @@ $(document).ready(function () {
         formCadastro = $('.wrap-cadastro-fornecedor .cadastro-form'),
         formTitle = $('.wrap-cadastro-fornecedor .form-title h2'),
         formInputs = $('.wrap-cadastro-fornecedor .cadastro-form input, textarea'),
+
+        switchPlano = $('.wrap-cadastro-fornecedor #switchPlanos'),
+        sliderPlano = $('.wrap-cadastro-fornecedor .slider-planos'),
 
         imgPerfilCarregada = $('.wrap-cadastro-fornecedor #imagemPerfilCarregada'),
         urlImageDefault = '/Content/images/add-imagem.png',
@@ -71,6 +76,32 @@ $(document).ready(function () {
         addPdf(ev);
     });
 
+    /*** Botao para carregar o PDF ***/
+    btnPdf.on('click', function (ev) {
+        removePdf();
+    });
+
+    /*** Botao para voltar para a etapa anterior de Cadastro ***/
+    btnPlanoFree.on('click', function () {
+        var switchPlanoPremium = switchPlano.prop('checked', false);
+
+        uncheckedSlider(sliderPlano);
+        switchPlanos(switchPlanoPremium);
+    });
+    
+    /*** Botao para voltar para a etapa anterior de Cadastro ***/
+    btnPlanoPremium.on('click', function () {
+        var switchPlanoPremium = switchPlano.prop('checked', true);
+
+        uncheckedSlider(sliderPlano);
+        switchPlanos(switchPlanoPremium);
+    });
+
+    switchPlano.on('click', function () {
+        uncheckedSlider(sliderPlano);
+        switchPlanos(switchPlano);
+    });
+
     /*** Botao para cadastrar ***/
     btnCadastrar.on('click', function () {
         formCadastro.submit();
@@ -93,7 +124,7 @@ $(document).ready(function () {
 
     /** Verifica todos os inputs visíveis **/
     function verificaInputsVisiveis() {
-        return $('.wrap-cadastro-fornecedor .form-parts').not('.hide').find('.wrap-input input, select');
+        return $('.wrap-cadastro-fornecedor .form-parts').not('.hide').find('.required-field');
     }
 
     /** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
@@ -134,15 +165,15 @@ $(document).ready(function () {
 
     /** Verifica todos os checkbox visíveis **/
     function verificaCheckBoxVisiveis() {
-        return $('.wrap-cadastro-fornecedor .cadastro-form .checkbox-container input[type=checkbox]');
+        return $('.wrap-cadastro-fornecedor .cadastro-form .checkbox-container input[type=radio]');
     }
 
     /** Habilita/desabilita o Botão Cadastro conforme qunado pelo menos 1 item estiver selecionado **/
     function verificaCheckBox() {
         var isEmpty = true;
+        
 
         activeformChechbox.each(function () { // percorre todos os checkbox 
-
             if ($(this).is(':checked')) { // se houver pelo menos um checkbox selecionado, entra no if
                 isEmpty = false;
                 return false; // para o loop, evitando que mais inputs sejam verificados sem necessidade
@@ -150,9 +181,9 @@ $(document).ready(function () {
         });
 
         if (isEmpty) { // Habilita/desabilita o Botão Entrar
-            btnCadastrar.attr('disabled', 'disabled').addClass('disabled');
+            btnProximo.attr('disabled', 'disabled').addClass('disabled');
         } else {
-            btnCadastrar.removeAttr('disabled').removeClass('disabled');
+            btnProximo.removeAttr('disabled').removeClass('disabled');
         }
     }
 
@@ -199,8 +230,6 @@ $(document).ready(function () {
 
     /** Exibe o PDF do Fornecedor **/
     function addPdf(input) {
-        //input.preventDefault();
-
         var reader = new FileReader(),
             file = $('#btnPdf')[0],
             fullPath = file.value.split('.')[0],
@@ -215,14 +244,12 @@ $(document).ready(function () {
     }
 
     /** Remove o PDF do Fornecedor **/
-    function removePdf(input) {
-        
+    function removePdf() {
+
         // Quando add um PDF muda o ícone e inclui o nome do arquivo embaixo
         $('#wrapper-remove-pdf').addClass('hide');
         $('#wrapper-add-pdf').removeClass('hide');
-        $("#nomePdf").remove();
-
-        //reader.readAsDataURL(file.files[0]);
+        $("#nomePdf p").remove();
     }
 
     /** Tira o slider da posição neutra **/
@@ -233,16 +260,23 @@ $(document).ready(function () {
     /** Seleciona os planos **/
     function switchPlanos(input) {
 
-        if ($(input).is(':checked')) { //Seleciona o Fornecedor
+        if ($(input).is(':checked')) { //Seleciona o Plano Premium
             $('.input-plano').val('P');
-            $('#btnPlanoFree').removeClass('active-switch');
-            $('#btnPlanoPremium').addClass('active-switch');
+            uncheckedSlider(switchPlano);
+            btnPlanoFree.removeClass('active-switch');
+            btnPlanoPremium.addClass('active-switch');
             
-        } else { //Seleciona o Comprador
+        } else { //Seleciona o Plano Free
             $('.input-plano').val('F');
-            $('#btnPlanoFree').addClass('active-switch');
-            $('#btnPlanoPremium').removeClass('active-switch');
-           
+            btnPlanoFree.addClass('active-switch');
+            btnPlanoPremium.removeClass('active-switch');
+        }
+        //console.log('de', ;
+
+        if ($('.input-plano').val().length) {
+            btnCadastrar.removeAttr('disabled').removeClass('disabled');
+        } else {
+            btnCadastrar.attr('disabled', 'disabled').addClass('disabled');
         }
     }
 
@@ -256,27 +290,26 @@ $(document).ready(function () {
 
             btnLogin.parent('.form-forn-btn').addClass('hide');
             btnVoltar.parent('.form-forn-btn').removeClass('hide');
-            //btnProximo.attr('disabled', 'disabled').addClass('disabled');
+            btnProximo.attr('disabled', 'disabled').addClass('disabled');
 
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('Estamos quase lá...');
 
             activeformInputs = verificaInputsVisiveis();
             activeformInputs.on('input', verificaInputsVazios);
-            console.log(activeformInputs);
             return;
         }
 
         if (!divSecondPart.hasClass('hide')) {
             divSecondPart.addClass('hide');
             divThridPart.removeClass('hide');
-            //btnCadastrar.attr('disabled', 'disabled').addClass('disabled');
+            btnProximo.attr('disabled', 'disabled').addClass('disabled');
 
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('O que você fornece?');
 
-            activeformInputs = verificaInputsVisiveis();
-            activeformInputs.on('input', verificaInputsVazios);
+            activeformChechbox = verificaCheckBoxVisiveis();
+            activeformChechbox.on('input', verificaCheckBox);
             return;
         }
 
@@ -285,17 +318,12 @@ $(document).ready(function () {
             divForthPart.removeClass('hide');
 
             btnProximo.parent('.form-forn-btn').addClass('hide');
-            btnCadastrar.removeAttr('disabled').removeClass('disabled').parent('.form-forn-btn').removeClass('hide');
+            btnCadastrar.attr('disabled', 'disabled').addClass('disabled').parent('.form-forn-btn').removeClass('hide');
 
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('E para finalizar!');
             return;
         }
-
-        divThridPart.addClass('hide');
-        divOptions.removeClass('hide');
-        divFirstPart.removeClass('hide');
-        divSecondPart.removeClass('hide');
     }
 
     /** Muda para a tela anterior de conteúdo dos passos de Cadastro ***/
@@ -342,9 +370,6 @@ $(document).ready(function () {
 
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificaInputsVazios);
-
-        //activeformChechbox = verificaCheckBoxVisiveis();
-        //activeformChechbox.on('input', verificaCheckBox);
     }
 
     init();
