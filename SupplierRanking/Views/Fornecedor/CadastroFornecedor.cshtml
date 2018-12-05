@@ -195,7 +195,7 @@
                     {
                         <div class="col-12 checkbox-container text-left mt-4 p-0">
                             <label for="@(c.Categoria)">
-                                <input type="radio" id="@(c.Categoria)" name="nome_categoria" value="@(c.Categoria)" class="required-field" />
+                                <input type="radio" id="@(c.Categoria)" name="@(c.Categoria)" value="@(c.Categoria)" class="required-field" />
                                 <span class="checkbox"></span>
                                 @(c.Categoria)
                             </label>
@@ -223,7 +223,7 @@
                             <label for="btnImagens" class="input-images">
                                 <img class="input-images" src="/Content/images/add-imagem-pequeno.png" />
                             </label>
-                            <input id="btnImagens" type="file" accept="image/*" style="display: none" multiple />
+                            <input id="btnImagens" type="file" accept="image/*" name="galeriaFotos"style="display: none" multiple />
                         </div>
                     </div>
                     <div class="col-9">

@@ -162,9 +162,11 @@
     <Content Include="Content\images\fotoMarcelo2.png" />
     <Content Include="Content\images\fotopadrao.jpg" />
     <Content Include="Content\images\fotoValmir.png" />
+    <Content Include="Content\images\give-money.png" />
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
+    <Content Include="Content\images\icones.html" />
     <Content Include="Content\images\luizao.png" />
     <Content Include="Content\images\luizao2.png" />
     <Content Include="Content\images\luizao3.png" />
@@ -172,6 +174,7 @@
     <Content Include="Content\images\pesquisa.png" />
     <Content Include="Content\images\phone.png" />
     <Content Include="Content\images\photo.png" />
+    <Content Include="Content\images\plano.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\remove-pdf.png" />
     <Content Include="Content\images\search.png" />
@@ -181,6 +184,7 @@
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
     <Content Include="Content\images\valmir255.png" />
+    <Content Include="Content\images\video.mp4" />
     <Content Include="Content\js\bloqueia-input.js" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
