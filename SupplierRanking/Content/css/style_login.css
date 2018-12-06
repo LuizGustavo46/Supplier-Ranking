@@ -145,7 +145,8 @@ iframe {
     display: none !important;
 }
 
-.error-msg {
+.error-msg,
+.alert-msg {
     font-weight: bold;
 }
 

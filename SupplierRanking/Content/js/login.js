@@ -203,8 +203,6 @@ $(document).ready(function () {
             uncheckSliderAndButtons(switchJuridica);
             mostrarFornecedor(true);
 
-            //$('#inputHidden').val('2');
-
         } else { //Seleciona o Comprador
             mostrarFornecedor(false);
             mostrarFuncionario(false, true);
@@ -228,7 +226,8 @@ $(document).ready(function () {
             mostrarPessoaFisica(true);
         }
 
-        //formInputs.val('');
+        $('.error-msg').remove();
+        formInputs.val('');
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificarInputsVazios);
         $('.login-form').removeClass('hide');
