@@ -1,5 +1,4 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     'use strict';
 
     var btnComprador = $('.wrap-cadastro-fornecedor #btnComprador'),
@@ -35,7 +34,7 @@ $(document).ready(function () {
         activeformChechbox;
 
 
-    /********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
+/********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
 
     /** Botão para selecionar o Comprador **/
     btnComprador.on('click', function () {
@@ -46,42 +45,42 @@ $(document).ready(function () {
         $('.wrap-cadastro-fornecedor #wrapperFisicaJuridica').removeClass('hide');
     });
 
-    /*** Botao para visualizar a Senha ***/
+    /*** Botão para visualizar a Senha ***/
     btnVisualizarSenha.on('click', function (e) {
         visualizarSenhas(e);
     });
 
-    /*** Botao para carregar a imagem de perfil ***/
+    /*** Botão para carregar a imagem de perfil ***/
     btnImagemPerfil.on('change', function () {
         showImagemPerfilCarregada(this);
     });
 
-    /*** Botao para mudar a proxima etapa de Cadastro ***/
+    /*** Botão para mudar a proxima etapa de Cadastro ***/
     btnProximo.on('click', function () {
         mostrarProximoConteudo();
     });
 
-    /*** Botao para voltar para a etapa anterior de Cadastro ***/
+    /*** Botão para voltar para a etapa anterior de Cadastro ***/
     btnVoltar.on('click', function () {
         mostrarConteudoAnterior();
     });
 
-    /*** Botao para carregar uma imagem ***/
+    /*** Botão para carregar uma imagem ***/
     btnImagens.on('change', function (ev) {
         showImagensCarregadas(ev);
     });
 
-    /*** Botao para carregar o PDF ***/
+    /*** Botão para carregar o PDF ***/
     btnPdf.on('change', function (ev) {
         addPdf(ev);
     });
 
-    /*** Botao para carregar o PDF ***/
+    /*** Botão para carregar o PDF ***/
     btnPdf.on('click', function (ev) {
         removePdf();
     });
 
-    /*** Botao para voltar para a etapa anterior de Cadastro ***/
+    /*** Botão para voltar para a etapa anterior de Cadastro ***/
     btnPlanoFree.on('click', function (e) {
         var switchPlanoPremium = switchPlano.prop('checked', false);
 
@@ -89,7 +88,7 @@ $(document).ready(function () {
         switchPlanos(e, switchPlanoPremium);
     });
     
-    /*** Botao para voltar para a etapa anterior de Cadastro ***/
+    /*** Botão para voltar para a etapa anterior de Cadastro ***/
     btnPlanoPremium.on('click', function (e) {
         var switchPlanoPremium = switchPlano.prop('checked', true);
 
@@ -97,18 +96,19 @@ $(document).ready(function () {
         switchPlanos(e, switchPlanoPremium);
     });
 
+    /*** Switch slider para selecionar Plano Free ou Plano Premium ***/
     switchPlano.on('click', function (e) {
         uncheckedSlider(sliderPlano);
         switchPlanos(e, switchPlano);
     });
 
-    /*** Botao para cadastrar ***/
+    /*** Botão para cadastrar ***/
     btnCadastrar.on('click', function () {
         formCadastro.submit();
     });
 
 
-    /********************* *********************  FUNÇÕES ********************* *********************/
+/********************* *********************  FUNÇÕES ********************* *********************/
 
     /** Transforma as senhas em text/pass **/
     function visualizarSenhas(e) {
@@ -146,7 +146,7 @@ $(document).ready(function () {
         }
     }
 
-    /** Verifica todos os checkbox visíveis **/
+    /** Renderiza a imagem de perfil escolhida na tela **/
     function showImagemPerfilCarregada(input) {
 
         if (input.files && input.files[0]) {
@@ -171,7 +171,6 @@ $(document).ready(function () {
     /** Habilita/desabilita o Botão Cadastro conforme qunado pelo menos 1 item estiver selecionado **/
     function verificaCheckBox() {
         var isEmpty = true;
-        
 
         activeformChechbox.each(function () { // percorre todos os checkbox 
             if ($(this).is(':checked')) { // se houver pelo menos um checkbox selecionado, entra no if
@@ -283,7 +282,7 @@ $(document).ready(function () {
     /** Muda para a próxima tela de conteúdo dos passos de Cadastro ***/
     function mostrarProximoConteudo() {
 
-        if (!divFirstPart.hasClass('hide')) {
+        if (!divFirstPart.hasClass('hide')) { // Muda para a segunda etapa
             divOptions.addClass('hide');
             divFirstPart.addClass('hide');
             divSecondPart.removeClass('hide');
@@ -300,7 +299,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (!divSecondPart.hasClass('hide')) {
+        if (!divSecondPart.hasClass('hide')) { // Muda para a terceira etapa
             divSecondPart.addClass('hide');
             divThridPart.removeClass('hide');
             btnProximo.attr('disabled', 'disabled').addClass('disabled');
@@ -313,7 +312,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (!divThridPart.hasClass('hide')) {
+        if (!divThridPart.hasClass('hide')) { // Muda para a quarta etapa
             divThridPart.addClass('hide');
             divForthPart.removeClass('hide');
 
@@ -329,7 +328,7 @@ $(document).ready(function () {
     /** Muda para a tela anterior de conteúdo dos passos de Cadastro ***/
     function mostrarConteudoAnterior() {
 
-        if (!divSecondPart.hasClass('hide')) {
+        if (!divSecondPart.hasClass('hide')) { // Volta para a primeira etapa
             divOptions.removeClass('hide');
             divFirstPart.removeClass('hide');
             divSecondPart.addClass('hide');
@@ -345,7 +344,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (!divThridPart.hasClass('hide')) {
+        if (!divThridPart.hasClass('hide')) { // Volta para a segunda etapa
             divSecondPart.removeClass('hide');
             divThridPart.addClass('hide');
 
@@ -354,7 +353,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (!divForthPart.hasClass('hide')) {
+        if (!divForthPart.hasClass('hide')) { // Volta para a terceira etapa
             divThridPart.removeClass('hide');
             divForthPart.addClass('hide');
 

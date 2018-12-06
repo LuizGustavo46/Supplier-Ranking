@@ -257,7 +257,7 @@ namespace SupplierRanking.Controllers
                 return RedirectToAction("");
             }
 
-            return RedirectToAction("UpdateSenha");
+            //return RedirectToAction("UpdateSenha");
         }
 
         public ActionResult EsqueceuSuaSenha()
@@ -270,11 +270,17 @@ namespace SupplierRanking.Controllers
         {
             Comprador c = new Comprador();
             if(c.EsqueceuSuaSenha(cnpj, cpf, email))
-                TempData["Msg"] = "Confirmação enviada para o e-mail cadastrado";
+            {
+                ViewBag.Message = "Confirmação enviada para o e-mail cadastrado!";
+                ViewBag.cssClass = "col-8 alert-msg alert-info text-center p-2 mt-3 mb-4";
+            }
             else
-                TempData["Msg"] = "Informação Inválida";
+            {
+                ViewBag.Message = "Preencha o(s) campo(s) corretamente!";
+                ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mt-3 mb-4";
+            }
 
-            return RedirectToAction("EsqueceuSuaSenha");
+            return View();
         }
 
         public ActionResult NovaSenha()

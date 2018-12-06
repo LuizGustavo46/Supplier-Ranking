@@ -32,15 +32,19 @@
                                 @*<div class="col-10">*@
                                 @if (item.Imagem64 == "")
                                 {
-                                    <img src="/Content/images/iconecor.png" height="100" width="100" />
+                                    <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%;"/>
+                                    </a>
                                 }
                                 else
                                 {
                                     String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                                    <img src="@imagem64" height="100" width="100" />
+                                    <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%;" />
+                                    </a>
                                 }
-                                @*</div>*@
-                            </div>
+                                        @*</div>*@
+</div>
                             <div class="col-5">
                                 <div class="d-flex align-items-baseline pl-3">
                                     <h4>
@@ -113,12 +117,16 @@
                                 @*<div class="col-10">*@
                                 @if (item.Imagem64 == "")
                                 {
-                                    <img src="~/Content/images/iconecor.png" height="100" width="100" />
+                                    <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%;" />
+                                    </a>
                                 }
                                 else
                                 {
                                     String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                                    <img src="@imagem64" height="100" width="100" />
+                                    <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%;" />
+                                    </a>
                                 }
                                 @*</div>*@
                             </div>
