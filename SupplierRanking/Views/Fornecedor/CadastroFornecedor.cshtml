@@ -3,6 +3,7 @@
     Layout = "~/Views/Shared/_LayoutCadastro.cshtml";
 }
 
+@using SupplierRanking.Models
 
 <div class="wrap-cadastro-fornecedor pl-2 pr-2">
 
@@ -191,14 +192,14 @@
                 E não se preocupe se esquecer de alguma, pois será possível editar depois.
 
                 <div class="mt-5" style="height:460px; overflow-y:scroll; ">
-                    @foreach (var c in ViewBag.ListaCategorias)
+                    @foreach (Categorias c in ViewBag.ListaCategorias)
                     {
                         <div class="col-12 checkbox-container text-left mt-4 p-0">
-                            
-                                <input type="radio" id="@(c.Categoria)" name="@(c.Categoria)" value="@(c.Categoria)" class="required-field" />
+                            <label for="@(c.Categoria)">
+                                <input type="radio" id="@(c.Categoria)" name="nome_categoria" class="required-field" value="@(c.Categoria)" />
                                 <span class="checkbox"></span>
                                 @(c.Categoria)
-                            
+                            </label>
                         </div>
                     }
                 </div>

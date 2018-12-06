@@ -365,7 +365,7 @@
 
     /** Inicia assim que a pagina e carregada **/
     function init() {
-        formInputs.val('');
+        //formInputs.val('');
 
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificaInputsVazios);

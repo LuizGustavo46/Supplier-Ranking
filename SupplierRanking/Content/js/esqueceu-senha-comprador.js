@@ -155,7 +155,7 @@ $(document).ready(function () {
                 isEmpty = $.trim($(this).val()).length > 0;
                 prevInput = isEmpty;
             }
-            
+            console.log('prevInput', prevInput, isEmpty)
             if (isEmpty) { // Habilita/desabilita o Botão Entrar
                 btnEnviarEmail.removeAttr('disabled').removeClass('disabled');
             } else {
