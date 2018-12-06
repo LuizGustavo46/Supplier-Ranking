@@ -175,6 +175,7 @@
     <Content Include="Content\images\photo.png" />
     <Content Include="Content\images\plano-free.png" />
     <Content Include="Content\images\plano-premium.png" />
+    <Content Include="Content\images\plano.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\remove-pdf.png" />
     <Content Include="Content\images\search.png" />
