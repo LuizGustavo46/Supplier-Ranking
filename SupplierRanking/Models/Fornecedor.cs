@@ -40,6 +40,8 @@ namespace SupplierRanking.Models
         private float media_preco;
         private float media_entrega;
         private float media_satisfacao;
+        private byte[] pdf;
+        private string pdf64;
 
         /*Variaveis do funcionário*/
         private int codigo;
@@ -77,6 +79,8 @@ namespace SupplierRanking.Models
         public int Codigo               { get { return codigo; }                set { codigo = value; } }
         public String Nome              { get { return nome; }                  set { nome = value; } }
         public String Cnpj_fornecedor   { get { return cnpj_fornecedor; }       set { cnpj_fornecedor = value; } }
+        public byte[] Pdf               { get { return pdf; }                   set { pdf = value; } }
+        public String Pdf64             { get { return pdf64; }                 set { pdf64 = value; } }
 
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
@@ -211,12 +215,12 @@ namespace SupplierRanking.Models
                  
                 // Criação de comando para inserção de dados na tabela fornecedor
                 SqlCommand query =
-                    new SqlCommand("INSERT INTO fornecedor VALUES (@cnpj,@nome_empresa,@email,@telefone,@celular,@endereco,@bairro,@cidade,@uf,@cep,@senha,@slogan,@descricao,@media,@plano,@imagem,@nome_categoria,@media_qualidade,@media_atendimento,@media_entrega,@media_preco,@media_satisfacao)",
+                    new SqlCommand("INSERT INTO fornecedor VALUES (@cnpj,@nome_empresa,@email,@telefone,@celular,@endereco,@bairro,@cidade,@uf,@cep,@senha,@slogan,@descricao,@media,@plano,@imagem,@nome_categoria,@media_qualidade,@media_atendimento,@media_entrega,@media_preco,@media_satisfacao,@pdf)",
                         con);
 
                 // Compara se todos os campos estao preenchidos corretamente, caso não esteja retorna uma mensagem de erro para o usuario 
-                if (cnpj != "" && cnpj.Length <= 19 && nome_empresa != "" && email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && bairro != "" && cidade != "" && uf != ""
-                    && cep != "" && cep.Length <=8 && slogan != "" && descricao != "" && descricao != "" && nome_categoria != "")
+                if (cnpj != "" && cnpj.Length <= 19 && nome_empresa != "" && email != "" && telefone != "" && celular != "" && endereco != "" && bairro != "" && cidade != "" && uf != ""
+                    && cep != "" && cep.Length == 9 && nome_categoria != "")
                 {
                     query.Parameters.AddWithValue("@cnpj",              cnpj);
                     query.Parameters.AddWithValue("@nome_empresa",      nome_empresa);
@@ -240,6 +244,7 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@media_entrega",     media_entrega);
                     query.Parameters.AddWithValue("@media_preco",       media_preco);
                     query.Parameters.AddWithValue("@media_satisfacao",  media_satisfacao);
+                    query.Parameters.AddWithValue("@pdf", pdf);
                     query.ExecuteNonQuery();               
                 }
 
@@ -675,6 +680,30 @@ namespace SupplierRanking.Models
                 con.Close(); //FECHA CONEXÃO
 
             return f;
+        }
+
+
+        /************************************************** GUARDAR ARQUIVOS (IMAGENS & PDF) *****************************************************/
+
+        public bool CadastrarGaleriaFotos(string cnpj, List<byte[]> galeriaFotos)
+        {
+            try
+            {
+                con.Open();//ABRE CONEXÃO
+
+                for (int i = 0; i < galeriaFotos.Count; i++) {
+                    //CRIAÇÃO DE COMANDO
+                    SqlCommand query = new SqlCommand("INSER INTO arquivos VALUES (@imagem,@cnpj_fornecedor", con);
+                    query.Parameters.AddWithValue("@imagem", galeriaFotos[i]);
+                    query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
+                    query.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex) { return false; }
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+
+            return true;
         }
 
     }//FIM DA CLASSE

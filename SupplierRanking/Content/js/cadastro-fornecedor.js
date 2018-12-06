@@ -1,5 +1,4 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     'use strict';
 
     var btnComprador = $('.wrap-cadastro-fornecedor #btnComprador'),
@@ -9,6 +8,9 @@ $(document).ready(function () {
         btnVoltar = $('.wrap-cadastro-fornecedor #btnVoltar'),
         btnProximo = $('.wrap-cadastro-fornecedor #btnProximo'),
         btnImagens = $('.wrap-cadastro-fornecedor #btnImagens'),
+        btnPdf = $('.wrap-cadastro-fornecedor #btnPdf'),
+        btnPlanoFree = $('.wrap-cadastro-fornecedor #btnPlanoFree'),
+        btnPlanoPremium = $('.wrap-cadastro-fornecedor #btnPlanoPremium'),
         btnCadastrar = $('.wrap-cadastro-fornecedor #btnCadastrar'),
 
         inputSenhas = $('.wrap-cadastro-fornecedor .input-senha'),
@@ -23,13 +25,16 @@ $(document).ready(function () {
         formTitle = $('.wrap-cadastro-fornecedor .form-title h2'),
         formInputs = $('.wrap-cadastro-fornecedor .cadastro-form input, textarea'),
 
+        switchPlano = $('.wrap-cadastro-fornecedor #switchPlanos'),
+        sliderPlano = $('.wrap-cadastro-fornecedor .slider-planos'),
+
         imgPerfilCarregada = $('.wrap-cadastro-fornecedor #imagemPerfilCarregada'),
         urlImageDefault = '/Content/images/add-imagem.png',
         activeformInputs,
         activeformChechbox;
 
 
-    /********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
+/********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
 
     /** Botão para selecionar o Comprador **/
     btnComprador.on('click', function () {
@@ -40,38 +45,70 @@ $(document).ready(function () {
         $('.wrap-cadastro-fornecedor #wrapperFisicaJuridica').removeClass('hide');
     });
 
-    /*** Botao para visualizar a Senha ***/
+    /*** Botão para visualizar a Senha ***/
     btnVisualizarSenha.on('click', function (e) {
         visualizarSenhas(e);
     });
 
-    /*** Botao para carregar a imagem de perfil ***/
+    /*** Botão para carregar a imagem de perfil ***/
     btnImagemPerfil.on('change', function () {
         showImagemPerfilCarregada(this);
     });
 
-    /*** Botao para mudar a proxima etapa de Cadastro ***/
+    /*** Botão para mudar a proxima etapa de Cadastro ***/
     btnProximo.on('click', function () {
         mostrarProximoConteudo();
     });
 
-    /*** Botao para voltar para a etapa anterior de Cadastro ***/
+    /*** Botão para voltar para a etapa anterior de Cadastro ***/
     btnVoltar.on('click', function () {
         mostrarConteudoAnterior();
     });
 
-    /*** Botao para carregar uma imagem ***/
+    /*** Botão para carregar uma imagem ***/
     btnImagens.on('change', function (ev) {
         showImagensCarregadas(ev);
     });
 
-    /*** Botao para cadastrar ***/
+    /*** Botão para carregar o PDF ***/
+    btnPdf.on('change', function (ev) {
+        addPdf(ev);
+    });
+
+    /*** Botão para carregar o PDF ***/
+    btnPdf.on('click', function (ev) {
+        removePdf();
+    });
+
+    /*** Botão para voltar para a etapa anterior de Cadastro ***/
+    btnPlanoFree.on('click', function (e) {
+        var switchPlanoPremium = switchPlano.prop('checked', false);
+
+        uncheckedSlider(sliderPlano);
+        switchPlanos(e, switchPlanoPremium);
+    });
+    
+    /*** Botão para voltar para a etapa anterior de Cadastro ***/
+    btnPlanoPremium.on('click', function (e) {
+        var switchPlanoPremium = switchPlano.prop('checked', true);
+
+        uncheckedSlider(sliderPlano);
+        switchPlanos(e, switchPlanoPremium);
+    });
+
+    /*** Switch slider para selecionar Plano Free ou Plano Premium ***/
+    switchPlano.on('click', function (e) {
+        uncheckedSlider(sliderPlano);
+        switchPlanos(e, switchPlano);
+    });
+
+    /*** Botão para cadastrar ***/
     btnCadastrar.on('click', function () {
         formCadastro.submit();
     });
 
 
-    /********************* *********************  FUNÇÕES ********************* *********************/
+/********************* *********************  FUNÇÕES ********************* *********************/
 
     /** Transforma as senhas em text/pass **/
     function visualizarSenhas(e) {
@@ -87,7 +124,7 @@ $(document).ready(function () {
 
     /** Verifica todos os inputs visíveis **/
     function verificaInputsVisiveis() {
-        return $('.wrap-cadastro-fornecedor .form-parts').not('.hide').find('.wrap-input input, textarea, select');
+        return $('.wrap-cadastro-fornecedor .form-parts').not('.hide').find('.required-field');
     }
 
     /** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
@@ -109,7 +146,7 @@ $(document).ready(function () {
         }
     }
 
-    /** Verifica todos os checkbox visíveis **/
+    /** Renderiza a imagem de perfil escolhida na tela **/
     function showImagemPerfilCarregada(input) {
 
         if (input.files && input.files[0]) {
@@ -128,7 +165,7 @@ $(document).ready(function () {
 
     /** Verifica todos os checkbox visíveis **/
     function verificaCheckBoxVisiveis() {
-        return $('.wrap-cadastro-fornecedor .cadastro-form .checkbox-container input[type=checkbox]');
+        return $('.wrap-cadastro-fornecedor .cadastro-form .checkbox-container input[type=radio]');
     }
 
     /** Habilita/desabilita o Botão Cadastro conforme qunado pelo menos 1 item estiver selecionado **/
@@ -136,7 +173,6 @@ $(document).ready(function () {
         var isEmpty = true;
 
         activeformChechbox.each(function () { // percorre todos os checkbox 
-
             if ($(this).is(':checked')) { // se houver pelo menos um checkbox selecionado, entra no if
                 isEmpty = false;
                 return false; // para o loop, evitando que mais inputs sejam verificados sem necessidade
@@ -144,9 +180,9 @@ $(document).ready(function () {
         });
 
         if (isEmpty) { // Habilita/desabilita o Botão Entrar
-            btnCadastrar.attr('disabled', 'disabled').addClass('disabled');
+            btnProximo.attr('disabled', 'disabled').addClass('disabled');
         } else {
-            btnCadastrar.removeAttr('disabled').removeClass('disabled');
+            btnProximo.removeAttr('disabled').removeClass('disabled');
         }
     }
 
@@ -158,71 +194,141 @@ $(document).ready(function () {
             var file = files[i],
                 picReader = new FileReader();
 
-            //Only pics
+            // Verifica se é uma imagem
             if (!file.type.match('image'))
                 continue;
 
             picReader.onload = function (event) {
-                $($.parseHTML('<img>')).attr('src', event.target.result).appendTo($('#result'));
+                // Cria cada imagem e insere dentro da div imagensCarregada
+                $("<span class=\"image-wrapper\">" +
+                    "<img src=\"" + event.target.result + "\" title=\"" + file.name + "\"/>" +
+                    "<input type=\"file\" name=\"galeriaFotos\" style=\"display: none\" value=\""+ event.target.result +"\"/>" +
+                    "<span class=\"remove-image hide\"></span>" +
+                  "</span>").appendTo($('#imagensCarregada'));
+
+                // Remove a imagem clicada da visão prévia e do cadastro final
+                $(".remove-image").click(function () {
+                    $(this).parent(".image-wrapper").remove();
+                });
+
+                // Exibe o deletar por cima da imagem quando o mouse estiver em cima da imagem
+                $('.image-wrapper').on('mouseenter', function () {
+                    $(this).find('.remove-image').removeClass('hide');
+                });
+
+                // Esconde o deletar por cima da imagem quando o mouse sair de cima da imagem
+                $('.image-wrapper').on('mouseleave', function () {
+                    $(this).find('.remove-image').addClass('hide');
+                });
             };
 
-            //Read the image
+            // Lê todas as imagens enviadas e renderiza
             picReader.readAsDataURL(file);
+        }
+    }
+
+    /** Exibe o PDF do Fornecedor **/
+    function addPdf(input) {
+        var reader = new FileReader(),
+            file = $('#btnPdf')[0],
+            fullPath = file.value.split('.')[0],
+            filename = fullPath.replace(/^.*[\\\/]/, '');
+
+        // Quando add um PDF muda o ícone e inclui o nome do arquivo embaixo
+            $('#wrapper-remove-pdf').removeClass('hide');
+            $('#wrapper-add-pdf').addClass('hide');
+            $("<p>" + filename + "</p>").appendTo($('#nomePdf'));
+
+        reader.readAsDataURL(file.files[0]);
+    }
+
+    /** Remove o PDF do Fornecedor **/
+    function removePdf() {
+
+        // Quando add um PDF muda o ícone e inclui o nome do arquivo embaixo
+        $('#wrapper-remove-pdf').addClass('hide');
+        $('#wrapper-add-pdf').removeClass('hide');
+        $("#nomePdf p").remove();
+    }
+
+    /** Tira o slider da posição neutra **/
+    function uncheckedSlider(slider) {
+        slider.removeClass('unchecked');
+    }
+
+    /** Seleciona os planos **/
+    function switchPlanos(e, input) {
+        e.preventDefault();
+
+        if ($(input).is(':checked')) { //Seleciona o Plano Premium
+            $('.input-plano').val('P');
+            uncheckedSlider(switchPlano);
+            btnPlanoFree.removeClass('active-switch');
+            btnPlanoPremium.addClass('active-switch');
+            
+        } else { //Seleciona o Plano Free
+            $('.input-plano').val('F');
+            btnPlanoFree.addClass('active-switch');
+            btnPlanoPremium.removeClass('active-switch');
+        }
+
+        if ($('.input-plano').val().length) {
+            btnCadastrar.removeAttr('disabled').removeClass('disabled');
+        } else {
+            btnCadastrar.attr('disabled', 'disabled').addClass('disabled');
         }
     }
 
     /** Muda para a próxima tela de conteúdo dos passos de Cadastro ***/
     function mostrarProximoConteudo() {
 
-        if (!divFirstPart.hasClass('hide')) {
+        if (!divFirstPart.hasClass('hide')) { // Muda para a segunda etapa
             divOptions.addClass('hide');
             divFirstPart.addClass('hide');
             divSecondPart.removeClass('hide');
 
             btnLogin.parent('.form-forn-btn').addClass('hide');
             btnVoltar.parent('.form-forn-btn').removeClass('hide');
-            //btnProximo.attr('disabled', 'disabled').addClass('disabled');
+            btnProximo.attr('disabled', 'disabled').addClass('disabled');
 
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('Estamos quase lá...');
 
             activeformInputs = verificaInputsVisiveis();
             activeformInputs.on('input', verificaInputsVazios);
-            console.log(activeformInputs);
             return;
         }
 
-        if (!divSecondPart.hasClass('hide')) {
+        if (!divSecondPart.hasClass('hide')) { // Muda para a terceira etapa
             divSecondPart.addClass('hide');
             divThridPart.removeClass('hide');
+            btnProximo.attr('disabled', 'disabled').addClass('disabled');
 
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('O que você fornece?');
 
-            activeformInputs = verificaInputsVisiveis();
-            activeformInputs.on('input', verificaInputsVazios);
+            activeformChechbox = verificaCheckBoxVisiveis();
+            activeformChechbox.on('input', verificaCheckBox);
             return;
         }
 
-        if (!divThridPart.hasClass('hide')) {
+        if (!divThridPart.hasClass('hide')) { // Muda para a quarta etapa
             divThridPart.addClass('hide');
             divForthPart.removeClass('hide');
-            
+
+            btnProximo.parent('.form-forn-btn').addClass('hide');
+            btnCadastrar.attr('disabled', 'disabled').addClass('disabled').parent('.form-forn-btn').removeClass('hide');
+
             formCadastro.removeClass('mt-4 pt-4 pr-2 pl-0');
             formTitle.text('E para finalizar!');
             return;
         }
-
-        divThridPart.addClass('hide');
-        divOptions.removeClass('hide');
-        divFirstPart.removeClass('hide');
-        divSecondPart.removeClass('hide');
     }
 
     /** Muda para a tela anterior de conteúdo dos passos de Cadastro ***/
     function mostrarConteudoAnterior() {
 
-        if (!divSecondPart.hasClass('hide')) {
+        if (!divSecondPart.hasClass('hide')) { // Volta para a primeira etapa
             divOptions.removeClass('hide');
             divFirstPart.removeClass('hide');
             divSecondPart.addClass('hide');
@@ -238,7 +344,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (!divThridPart.hasClass('hide')) {
+        if (!divThridPart.hasClass('hide')) { // Volta para a segunda etapa
             divSecondPart.removeClass('hide');
             divThridPart.addClass('hide');
 
@@ -247,7 +353,7 @@ $(document).ready(function () {
             return;
         }
 
-        if (!divForthPart.hasClass('hide')) {
+        if (!divForthPart.hasClass('hide')) { // Volta para a terceira etapa
             divThridPart.removeClass('hide');
             divForthPart.addClass('hide');
 
@@ -259,15 +365,10 @@ $(document).ready(function () {
 
     /** Inicia assim que a pagina e carregada **/
     function init() {
-        divSecondPart.addClass('hide');
-        divThridPart.addClass('hide');
-        formInputs.val('');
+        //formInputs.val('');
 
         activeformInputs = verificaInputsVisiveis();
         activeformInputs.on('input', verificaInputsVazios);
-
-        //activeformChechbox = verificaCheckBoxVisiveis();
-        //activeformChechbox.on('input', verificaCheckBox);
     }
 
     init();

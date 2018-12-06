@@ -1,36 +1,44 @@
 ﻿@model SupplierRanking.Models.Comprador
 @{
     ViewBag.Title = "UpdatePessoaFisica";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
 
+<section style=" width: 2000px;height: 104px;background: #0C496BE6;position: absolute;top: 0px;left:0px;">
+</section>
+    <div class="container-login100" style="width: 946px;height: 634px;background: #fff;position: absolute;left:435px;margin-top: 172px; box-shadow: 1px 1px 27px;">
 
-<div class="container-login100">
+        <div class="wrap-login100" style="background-color: white;position: absolute;left: 41%;">
 
-    <div class="wrap-login100" style="background-color: white;">
+            <h2 style="margin-left: -45px;margin-bottom: 41px;">
+                Editar informações
+            </h2>
 
-        <h2>UpdatePessoaFisica</h2>
+            <form action="../Comprador/UpdatePessoaFisica" method="post" class="login100-form validate-form">
+                <p>@ViewBag.Message</p>
+                <!--- Campos do Comprador Fisico -->
+                <div>
+                    <input class="input" type="text" value="@Model.Codigo" name="codigo" readonly="readonly" style="background-color: gray">
+                    <br /> <br />
+                    <input class="input" type="text" value="@Model.Cpf" name="cpf" readonly="readonly">
+                    <br /> <br />
+                    <input class="input" type="text" value="@Model.Nome" name="nome">
+                    <br /> <br />
+                    <input class="input" type="text" value="@Model.Sobrenome" name="sobrenome">
+                    <br /> <br />
+                    <input class="input" type="text" value="@Model.Email" name="email">
+                    <br /> <br />
+                    <input class="input" type="text" value="@Model.Uf" name="uf">
+                    <br /> <br />
+                    <input class="input" type="text" value="@Model.Telefone" name="telefone" placeholder="(00) 0000-0000">
+                    <br /> <br />
+                    <input class="input" type="text" value="@Model.Celular" name="celular" placeholder="(00) 00000-0000">
+                    <br /> <br />
+                </div>
 
-        <form action="../Comprador/UpdatePessoaFisica" method="post" class="login100-form validate-form">
-            <p>@ViewBag.Message</p>
-            <!--- Campos do Comprador Fisico -->
-            <div>
-                <input type="text" value="@Model.Codigo" name="codigo" readonly="readonly" style="background-color: gray">
-                <input type="text" value="@Model.Cpf" name="cpf" readonly="readonly">
-                <input type="text" value="@Model.Nome" name="nome">
-                <input type="text" value="@Model.Sobrenome" name="sobrenome">
-                <input type="text" value="@Model.Email"name="email">
                 <br /> <br />
-                <input type="text" value="@Model.Uf" name="uf">
-                <br /> <br />
-                <input type="text" value="@Model.Telefone"name="telefone" placeholder="(00) 0000-0000">
-                <input type="text" value="@Model.Celular" name="celular" placeholder="(00) 00000-0000">
-                <br /> <br />
-            </div>
-
-            <br /> <br />
-            <button id="btnSalvar">Salvar</button>
-        </form>
+                <button type="submit" style="margin-left:27px;background: #166083;" class="btn btn-info btn-lg" id="btnAtualizar">Atualizar</button>
+            </form>
+        </div>
     </div>
-</div>
 

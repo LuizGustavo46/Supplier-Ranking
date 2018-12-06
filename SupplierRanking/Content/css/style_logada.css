@@ -7,7 +7,7 @@ body {
     /*font-family: 'Poppins', sans-serif;
     background: #fafafa;*/
     position: relative;
-
+    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .conteudo-logada {
@@ -16,7 +16,6 @@ body {
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
@@ -71,8 +70,7 @@ a:focus {
     left: 0px;
    background: #0C496BE6;
    color: #fff;
-   transition: all 0.3s;
-   font-family: 'Poppins', sans-serif;
+   transition: all 0.3s; 
    position: fixed;
    
 }
@@ -101,6 +99,7 @@ a:focus {
     font-size: 1.1em;
     display: block;
     text-decoration: none;
+    color: white;
 }
 
 #sidebar ul li a:hover {
@@ -200,25 +199,15 @@ a.perfil {
 .modal-open {
 	overflow: visible !important;
 }
-.carousel {
-    margin: 0 auto;
-    width:800px;
-    height: 300px;
-    display: relative;
-  }
-  .carousel img {
-    display: hidden; /* hide images until carousel prepares them */
-    cursor: pointer; /* not needed if you wrap carousel items in links */
-    width: 200px;
-    height: 200px;
 
-  }
 
   .comentario{
-    width: 900px;
-    height: 100px;
-    position: absolute;
-    border: solid 2px ;
-    top: 7%;
-    left: 5%;
+   width: 1197px;
+   height: 120px;
+   position: absolute;
+   border: solid 3px;
+   top: 3%;
+   left: 5%;
     }
+
+  

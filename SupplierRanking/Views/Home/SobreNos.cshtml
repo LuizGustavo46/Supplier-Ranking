@@ -27,12 +27,10 @@
             <div class="img col-sm-12 col-md-6" 
                  style="background-image: url('../../Content/images/team.jpg" 
                  data-aos="fade-right">
-                <a class="button popup-vimeo"
-                   href="https://vimeo.com/45830194"
-                   data-aos="fade-right" 
-                   data-aos-delay="700">
-                   <span class="ion-ios-play"></span>
-                </a>
+                <button data-target="#myModal" class="btn btn-info btn-lg button popup-vimeo aos-init aos-animate data-aos="fade-right" " data-toggle="modal">
+                    <span class="ion-ios-play"></span>
+                   
+                </button>
             </div>
             <div class="text col-md-6">
                 <div class="text-inner align-self-start" 
@@ -50,6 +48,43 @@
     </div>
 </section>
 <!-- FIM - Como Surgiu -->
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="width: 1280px;pointer-events: auto;background-color: #fff0;background-clip: padding-box;
+        border-radius: 0.3rem;outline: 0;height: 720px;margin-left: -250px;">
+            <div class="modal-header" style="  background-color: #1F221F;color: white;">
+
+               
+                <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
+
+            </div>
+
+
+
+
+            <div class="modal-body">
+                <video style="width: 1280px;height: 766px;margin-left: -18px;margin-top: -48px;" controls>
+                
+                       <source type="video/mp4"  src="~/Content/images/video.mp4">   
+                    
+                    @*<video width="320" height="240" controls>
+                        <source src="movie.mp4" type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                        Your browser does not support the video tag.
+                    </video>*@ 
+                </video>
+
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-default">Concluir</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+            </div>*@
+        </div>
+    </div>
+</div>
+
 
 <!-- INÍCIO - Nosso Time -->
 <section class="ftco-section bg-light">

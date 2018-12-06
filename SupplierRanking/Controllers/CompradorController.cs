@@ -194,13 +194,11 @@ namespace SupplierRanking.Controllers
 
             if (c.CadastroPessoaJuridica() && c.CadastrarInteresses(lista))
             {
-                //TempData["Msg"] = "Cadastro Realizado";
                 ViewBag.Message = "Cadastro Realizado";
                 return RedirectToAction("Login", "Login");
             }
             else
             {
-                //TempData["Msg"] = "Informações Inválidas";
                 ViewBag.Message = "Informações Inválidas";
             }
 
@@ -250,16 +248,17 @@ namespace SupplierRanking.Controllers
             c.Codigo = /*codigo*/1;
             if (c.UpdateSenha(senhaAtual, senhaNova, confirmaSenhaNova))
             {
-                TempData["Msg"] = "Senha Alterada";
+                ViewBag.Message = "Nova Senha alterada com sucesso!";
+                ViewBag.cssClass = "col-8 alert-msg alert-info text-center p-2 mb-5";
                 return RedirectToAction("Login", "Login");
             }
             else
             {
-                TempData["Msg"] = "Senhas não correspondem";
-                return RedirectToAction("");
+                ViewBag.Message = "Preencha o(s) campo(s) corretamente!";
+                ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mb-5";
             }
 
-            return RedirectToAction("UpdateSenha");
+            return View();
         }
 
         public ActionResult EsqueceuSuaSenha()
@@ -272,11 +271,17 @@ namespace SupplierRanking.Controllers
         {
             Comprador c = new Comprador();
             if(c.EsqueceuSuaSenha(cnpj, cpf, email))
-                TempData["Msg"] = "Confirmação enviada para o e-mail cadastrado";
+            {
+                ViewBag.Message = "Confirmação enviada para o e-mail cadastrado!";
+                ViewBag.cssClass = "col-8 alert-msg alert-info text-center p-2 mt-3 mb-4";
+            }
             else
-                TempData["Msg"] = "Informação Inválida";
+            {
+                ViewBag.Message = "Preencha o(s) campo(s) corretamente!";
+                ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mt-3 mb-4";
+            }
 
-            return RedirectToAction("EsqueceuSuaSenha");
+            return View();
         }
 
         public ActionResult NovaSenha()

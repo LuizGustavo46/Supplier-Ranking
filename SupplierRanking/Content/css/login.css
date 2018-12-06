@@ -45,6 +45,7 @@
 	overflow: hidden;
 	padding: 50px;
     box-shadow: 4px 7px 14px 4px #575757;
+    overflow: auto;
 }
 
 .wrap-login.has-employee {

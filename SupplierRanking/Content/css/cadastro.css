@@ -69,7 +69,6 @@
 
 
 /********************* PESSOA FÍSICA *********************/
-
 .form-pf-first-part {
     position: relative;
     top: -94%;
@@ -118,7 +117,6 @@
 
 
 /********************* PESSOA JURÍDICA *********************/
-
 .form-pj-first-part {
     position: relative;
     top: -101%;
@@ -167,10 +165,9 @@
 
 
 /********************* FORNECEDOR *********************/
-
 .form-forn-first-part {
     position: relative;
-    top: -110%;
+    top: -27%;
 }
 
 .form-forn-first-part .input-slogan {
@@ -221,7 +218,23 @@
     top: 0;
 }
 
-.wrap-cadastro-fornecedor .input-image {
+.form-forn-forth-part {
+    position: absolute;
+    top: -260%;
+}
+
+.form-forn-forth-part .wrap-input > textarea {
+    height: 120px;
+}
+
+.form-forn-forth-part .wrap-input textarea {
+    resize: none;
+    padding: 1em;
+    overflow-y: auto;
+}
+
+.wrap-cadastro-fornecedor .input-image,
+.form-forn-forth-part .input-images {
     width: 20em;
     height: 20em;
     cursor: pointer;
@@ -235,17 +248,38 @@
     border: 9px dashed #0C496Bc9;
 }
 
-#result {
+.form-forn-forth-part .input-images {
+    width: 4em;
+    height: 4em;
+}
+
+.form-forn-forth-part #imagensCarregada {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-height: 330px;
+    width: 100%;
+    height: 180px;
     overflow: auto;
 }
 
-#result img {
-    width: 150px;
+.form-forn-forth-part #imagensCarregada .image-wrapper {
+    position: relative;
+    margin: 2.3em .3em;
     display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 1em;
+    align-items: center;
+}
+
+.form-forn-forth-part #imagensCarregada .image-wrapper img {
+    max-width: 150px;
+    max-height: 100px;
+}
+
+.form-forn-forth-part #imagensCarregada .image-wrapper .remove-image {
+    width: 100%;
+    height: 100%;
+    background: url('../images/fechar.png') #000000b3 no-repeat center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

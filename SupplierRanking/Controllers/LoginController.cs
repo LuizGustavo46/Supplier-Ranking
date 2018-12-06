@@ -15,6 +15,9 @@ namespace SupplierRanking.Controllers
             return View();
         }
 
+        
+
+
         public ActionResult Cadastro()
         {
             return View();
@@ -35,7 +38,7 @@ namespace SupplierRanking.Controllers
                 cf.Senha = senha;
                 if (cf.LoginPessoaFisica())
                 {
-                    Session["User"] = cf;
+                    Session["UserPessoaFisica"] = cf;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
@@ -54,7 +57,7 @@ namespace SupplierRanking.Controllers
                 cj.Senha = senha;
                 if (cj.LoginPessoaJuridica())
                 {
-                    Session["User"] = cj;
+                    Session["UserPessoaJuridica"] = cj;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
@@ -73,7 +76,9 @@ namespace SupplierRanking.Controllers
                 f.Senha = senha;
                 if (f.Login())
                 {
-                    Session["User"] = f;
+                    f = Fornecedor.Perfil(cnpj);
+                    Session["UserFornecedor"] = f.Cnpj;
+                    //ViewBag.UserFornecedor = Fornecedor.Perfil(cnpj);
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
@@ -93,7 +98,7 @@ namespace SupplierRanking.Controllers
                 fu.Senha = senha;
                 if (fu.LoginFuncionario())
                 {
-                    Session["User"] = fu;
+                    Session["UserFuncionario"] = fu;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
@@ -104,8 +109,19 @@ namespace SupplierRanking.Controllers
                     ViewBag.cssClass = "col-8 error-msg alert-danger text-center p-2 mt-3 mb-4";
                 }
             }
-
+     
             return View();
         }
+
+       /* public ActionResult Sair()
+        {
+            Session["0"] = null;
+            Session["1"] = null;
+            Session["2"] = null;
+            Session["3"] = null;
+
+            return RedirectToAction("Login", "Login");
+        }*/
+
     }
 }
