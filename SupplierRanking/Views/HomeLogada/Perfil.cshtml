@@ -65,11 +65,16 @@
                         <h1 style="position: absolute;right: 504px;top: 361px;font-size: 22px;">@Model.Email</h1>
                         <img style="position: absolute;right: 787px;top: 374px;width: 40px;" src="~/Content/images/email1.png" />
 
+                    @if (Session["UserFornecedor"].ToString() == Model.Cnpj)
+                    {
                         <div>
-                             <a @*href="/Comprador/UpdatePessoaFisica"*@>
+
+                          
+                           <a @*href="/Comprador/UpdatePessoaFisica"*@>
                                <img style="width:40px;height: 40px;margin-left: -37rem;margin-top: 8rem;" src="~/Content/images/edit.png" />
                              </a>
                         </div>
+                    }
 
                     </div>
 

@@ -1,4 +1,4 @@
-﻿@Model SupplierRanking.Models;
+﻿
 <!DOCTYPE html>
 <html>
     <head>
@@ -115,7 +115,7 @@
                     </li>*@
                     
                     <li>
-                        <a href="/HomeLogada/RankingPremium" data-toggle="collapse" aria-expanded="false">Ranking Premium</a>
+                        <a href="/HomeLogada/RankingPremium"  aria-expanded="false">Ranking Premium</a>
                     </li>
 
                     <li >
@@ -133,6 +133,7 @@
                     <a href="/HomeLogada/Perfil/?Cnpj=@Session["UserFornecedor"].ToString()">
                         <img src="/Content/images/iconecor.png" id="perfil" style="width: 100px; height: 100px; border-radius: 50px; border: 1px solid white; margin: 167px auto auto 20px;"/>
                     </a>
+                    
                     }
                     else
                     {
@@ -141,7 +142,66 @@
                     
             </nav>
             <!---- Modal ---->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header" style="
+                            background-color: #0C496BE6;
+                            color: white;
+                            border-bottom: 3px solid #bbad00; ">
 
+                            <h4 style="margin-left: 380px;" class="modal-title">Filtro </h4>
+                            <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
+
+                        </div>
+
+                        <form method="post" action="../HomeLogada/Pesquisa">
+                            <div class="modal-body">
+                                <p>Filtrar por:</p>
+
+
+                                <label style="margin-left: 4px;" class="container">
+                                    Entrega
+
+                                    <input value="media_entrega" id="entrega" type="radio" checked="checked" name="pesquisa" style="visibility:hidden">
+                                    <span style="margin-left: -15px;" class="checkmark"></span>
+                                </label>
+                                <label style="margin-left: 4px;" class="container">
+                                    Qualidade
+                                    <input value="media_qualidade" id="qualidade" type="radio" name="pesquisa" style="visibility:hidden">
+                                    <span style="margin-left: -15px;" class="checkmark"></span>
+                                </label>
+                                <label style="margin-left: 4px;" class="container">
+                                    Preço
+                                    <input value="media_preco" id="preco" type="radio" name="pesquisa" style="visibility:hidden">
+                                    <span style="margin-left: -15px;" class="checkmark"></span>
+                                </label>
+                                <label style="margin-left: 4px;" class="container">
+                                    Satisfação
+                                    <input value="media_satisfacao" id="satisfacao" type="radio" name="pesquisa" style="visibility:hidden">
+                                    <span style="margin-left: -15px;" class="checkmark"></span>
+                                </label>
+                                <label style="margin-left: 4px;" class="container">
+                                    Atendimento
+                                    <input value="media_atendimento" id="atendimento" type="radio" name="pesquisa" style="visibility:hidden">
+                                    <span style="margin-left: -15px;" class="checkmark"></span>
+                                </label>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-default">Concluir</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+                            </div>
+                        </form>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
                         </div>
 
         <div class="conteudo-logada row pl-5 pr-5 col-11" style="top: 105px;">
@@ -154,7 +214,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-        
+
+        <link href="~/Content/css/modal.css" rel="stylesheet" />
        
       
 
