@@ -194,11 +194,11 @@
                     @foreach (var c in ViewBag.ListaCategorias)
                     {
                         <div class="col-12 checkbox-container text-left mt-4 p-0">
-                            <label for="@(c.Categoria)">
+                            
                                 <input type="radio" id="@(c.Categoria)" name="@(c.Categoria)" value="@(c.Categoria)" class="required-field" />
                                 <span class="checkbox"></span>
                                 @(c.Categoria)
-                            </label>
+                            
                         </div>
                     }
                 </div>
