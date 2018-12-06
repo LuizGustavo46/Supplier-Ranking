@@ -120,6 +120,7 @@
     <Content Include="Content\config\css\bootstrap\main.css" />
     <Content Include="Content\config\css\bootstrap\util.css" />
     <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\modal.css" />
     <Content Include="Content\images\add-pdf.png" />
     <Content Include="Content\css\checkbox-home-logada.css" />
     <Content Include="Content\css\style_logada.css" />
