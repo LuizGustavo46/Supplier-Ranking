@@ -7,13 +7,17 @@
 
 
 <div class="row">
-    <ul class="row list-unstyled m-3">
+    <h2 style="color: #D0A748;font-weight: bold; text-shadow: 1px 2px 0px #6c6c6c;margin-bottom: 4rem;margin-top: 8rem;margin-left: 56rem;
+     margin-bottom: -136px;">
+        Esses são nossos Destaques da Semana!
+    </h2>
+    <ul class="row list-unstyled m-3" style="margin-top: 18rem !important;">
         @foreach (var item in Model)
         {
             if (item.Plano.Equals("P"))
             {
-                <li class="col-12 p-4 mb-5" style="background: white;box-shadow: 0px 0px 9px black;background: #2c8cb6;
-                         box-shadow: 0px 0px 23px black;color: white;border: solid 1px #00000045;width: 1557px;margin-left: 48px;margin-top: 18rem;">
+                <li class="col-12 p-4 mb-5 my-5" style="background: white;box-shadow: 0px 0px 9px black;background: #2c8cb6;
+                         box-shadow: 0px 0px 23px black;color: white;border: solid 1px #00000045;width: 1557px;margin-left: 24px;margin-bottom: 0rem !important">
                     <div class="row">
                         <div class="d-flex justify-content-center align-items-center mr-5" style="padding-left: 4rem;">
 
@@ -33,7 +37,7 @@
                             }
                             
                             @*</div>*@
-                            <div class="col-5">
+                            <div class="col-5 " style="width: 972px;">
                                 <div class="d-flex align-items-baseline pl-3">
                                     <h4>
                                         @item.Media
@@ -84,7 +88,7 @@
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
                                 <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
 
-                                @*@Html.ActionLink("Perfil", "Perfil", new { item.Cnpj })*@
+                               
                                 <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
                             </div>
                         </div>
@@ -95,102 +99,4 @@
     </ul>
  </div>
 
-                        @*<table class="table">
-                                <tr>
-                                    <th></th>
-                                    <th>
-                                        CNPJ
-                                    </th>
-                                    <th>
-                                        NOME
-                                    </th>
-                                    <th>
-                                        EMAIL
-                                    </th>
-                                    <th>
-                                        TELEFONE
-                                    </th>
-                                    <th>
-                                        CIDADE
-                                    </th>
-                                    <th>
-                                        UF
-                                    </th>
-                                    <th>
-                                        CELULAR
-                                    </th>
-                                    <th>
-                                        DESCRIÇÃO
-                                    </th>
-                                    <th>
-                                        MEDIA
-                                    </th>
-                                    <th>
-                                        SLOGAN
-                                    </th>
-                                    <th>
-                                        PLANO
-                                    </th>
-                                    <th>
-                                        CATEGORIA
-                                    </th>
-                                    <th></th>
-                                </tr>
-
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        @if (item.Imagem64 == "")
-                                        {
-                                            <td>
-                                                <img src="~/Content/images/iconecor.png" height="100" width="100" />
-                                            </td>
-                                        }
-                                        else
-                                        {
-                                            String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                                            <td>
-                                                <img src="@imagem64" height="100" width="100" />
-                                            </td>
-                                        }
-
-                                        <td>
-                                            @item.Cnpj
-                                        </td>
-                                        <td>
-                                            @item.Nome_empresa
-                                        </td>
-                                        <td>
-                                            @item.Email
-                                        </td>
-                                        <td>
-                                            @item.Telefone
-                                        </td>
-                                        <td>
-                                            @item.Cidade
-                                        </td>
-                                        <td>
-                                            @item.Uf
-                                        </td>
-                                        <td>
-                                            @item.Celular
-                                        </td>
-                                        <td>
-                                            @item.Descricao
-                                        </td>
-                                        <td>
-                                            @item.Media
-                                        </td>
-                                        <td>
-                                            @item.Slogan
-                                        </td>
-                                        <td>
-                                            @item.Plano
-                                        </td>
-                                        <td>
-                                            @item.Nome_categoria
-                                        </td>
-                                    </tr>
-                                }
-
-                            </table>*@
+                      

@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SupplierRanking.Models;
+using System.Drawing;
+using System.IO;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 
 namespace SupplierRanking.Controllers
 {
@@ -20,7 +24,7 @@ namespace SupplierRanking.Controllers
         {
             List<Fornecedor> lista = new List<Fornecedor>();
 
-            if(lista.Count == 0)
+            if (lista.Count == 0)
                 lista = HomeLogada.PesquisaFornecedor(pesquisa);
             if (lista.Count == 0)
                 lista = HomeLogada.RankingCategoria(pesquisa);
@@ -55,6 +59,60 @@ namespace SupplierRanking.Controllers
             return View();
         }
 
+        public string CarregaFoto()
+        {
+            try
+            {
+                Fornecedor usuario = HomeLogada.Perfil(Session["UserFornecedor"].ToString());
 
+                if (usuario.Imagem != null)
+                {
+                    Bitmap imagem = new Bitmap(Image.FromStream(new MemoryStream(usuario.Imagem)));
+                    int dimensaoMaior = Math.Max(imagem.Width, imagem.Height);
+                    Bitmap imagemRedimencionada = ResizeImage(imagem, dimensaoMaior, dimensaoMaior); // Redimensionamento da imagem para ser sempre quadrada, para não sair toda cagada no layout da tela
+
+                    MemoryStream ms = new MemoryStream();
+                    imagemRedimencionada.Save(ms, ImageFormat.Png);
+
+                    string foto = Convert.ToBase64String(ms.ToArray());
+                    return string.Format("data:image/jpeg;base64, {0}", foto);
+                }
+                else
+                    return "";
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+        }
+
+        private Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+                return destImage;
+            }
+        }
     }
 }
+
+
+
+
+

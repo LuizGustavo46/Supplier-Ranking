@@ -66,7 +66,7 @@ namespace SupplierRanking.Controllers
        
         [HttpPost]
         public ActionResult CadastroFornecedor(string cnpj, string nome_empresa, string email, string telefone, string celular, string endereco, string bairro, 
-            string cidade, string uf, string cep, string senha, string slogan, string descricao, string plano/*, string nome_categoria*/, string confirmarSenha)
+            string cidade, string uf, string cep, string senha, string slogan, string descricao, string plano, string nome_categoria, string confirmarSenha)
         {
             Fornecedor f = new Fornecedor();
             List<byte[]> listGaleriaFotos = new List<byte[]>();
@@ -98,7 +98,7 @@ namespace SupplierRanking.Controllers
             f.Slogan = slogan;
             f.Descricao = descricao;
             f.Media = 0;
-            f.Plano = "P";
+            f.Plano = plano;
             //f.Nome_categoria = nome_categoria; //A CATEGORIA VAI SER PEGA ALI EM CIMA PELO FOREACH
             f.Media_qualidade = 0;
             f.Media_atendimento = 0;
