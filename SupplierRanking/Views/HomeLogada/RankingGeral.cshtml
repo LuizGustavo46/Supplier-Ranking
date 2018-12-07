@@ -96,7 +96,7 @@
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
                                 @if (Session["UserFornecedor"] == null)
                                 {
-                                    <button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+                                    @*<button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>*@
                                 <button id="#myModal2" class="btn btn-info btn-lg">Avaliar</button>
                                 }
                                 <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
@@ -159,7 +159,7 @@
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
                             @if (Session["UserFornecedor"] == null)
                             {
-                                <button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+                                @*<button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>*@
                                 <button id="myBtn" class="btn btn-info btn-lg ">Avaliar</button>
                             }
                                 <a style="text-decoration: none;color: #2c8cb6;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
@@ -363,7 +363,7 @@
                         <div style="position: relative;top: -239px;">
                             <h1 style="margin-bottom: -17px;margin-left: 344px;font-size: 23px;">Comentário</h1>
                             <br />
-                            <input style="margin-left: 161px;width:463px;height:30px" />
+                            <input name="comentario" style="margin-left: 161px;width:463px;height:30px" />
 
                             <button type="submit" class="btn btn-info btn-lg ">Salvar</button>
                         </div>
