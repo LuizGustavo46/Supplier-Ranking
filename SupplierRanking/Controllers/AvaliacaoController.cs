@@ -11,18 +11,18 @@ namespace SupplierRanking.Controllers
     {
         /************************************************************ CADASTRAR AVALIAÇÃO ******************************************************/
 
-        public ActionResult CadastrarAvaliacao(/*string cnpj_fornecedor, int codigo_comprador*/)
-        {
+        //public ActionResult CadastrarAvaliacao(/*string cnpj_fornecedor, int codigo_comprador*/)
+        //{
 
-            Avaliacao a = new Avaliacao();
-            a.Cnpj_fornecedor = /*cnpj_fornecedor*/"45.997.418/0001-53";
-            a.Codigo_comprador = /*codigo_comprador*/1;
+        //    Avaliacao a = new Avaliacao();
+        //    a.Cnpj_fornecedor = /*cnpj_fornecedor*/"45.997.418/0001-53";
+        //    a.Codigo_comprador = /*codigo_comprador*/1;
 
-            if (a.VerificarSeteDias())
-                return View();
-            else
-                return RedirectToAction("UpdateComentario");
-        }
+        //    if (a.VerificarSeteDias())
+        //        return View();
+        //    else
+        //        return RedirectToAction("UpdateComentario");
+        //}
 
         [HttpPost]
         public ActionResult CadastrarAvaliacao(int qualidade, int atendimento, int entrega, int preco, int satisfacao, 

@@ -53,9 +53,14 @@
                         <span class="fa fa-star"></span>
 
                         <!----Botao avaliar-->
-                        <button onclick="filtro()" style="background: url('../../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
-                     position: absolute;margin-left: 240px;margin-top: -59px;" data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal"></button>
-                       
+                       @if (Session["UserPessoaFisica"] != null && Session["UserPessoaJuridica"] != null)
+                       {
+
+                         <button  style="background: url('../../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
+                     position: absolute;margin-left: 240px;margin-top: -59px;" data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal"></button>
+
+
+                       }
                          <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco - @Model.Bairro, @Model.Cidade / @Model.Uf</h1>
                         <img style="position: absolute;right: 790px;top: 190px;width: 40px;" src="~/Content/images/endereco.png" />
 
@@ -156,29 +161,25 @@
          <!-- Modal Avaliar-->
         @if (Session["UserPessoaFisica"] != null && Session["UserPessoaJuridica"] != null)
         {
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header" style="
+            <div class="modal-avaliacao fade" id="myModal2" role="dialog">
+                <div class="modal-avaliacao-dialog modal-avaliacao-lg">
+                    <div class="modal-avaliacao-content">
+                        <div class="modal-avaliacao-header" style="
                             background-color: #0C496BE6;
                             color: white;
                             border-bottom: 3px solid #bbad00; ">
 
-                            <h4 style="margin-left: 241px;" class="modal-title">Nós ajude a melhorar nosso serviço!</h4>
+                            <h4 style="margin-left: 241px;" class="modal-avaliacao-title">Nós ajude a melhorar nosso serviço!</h4>
                             <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
 
                         </div>
-
-
-
-
-                        <div class="modal-body">
+                        <div class="modal-avaliacao-body">
                             <p>Avalie por :</p>
 
                             <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
                                 Entrega
                             </h1>
-                            <form style="margin-left: 269px;" class="rating">
+                            <form @*action="../Avaliacao/CadastrarAvaliacao"*@ style="margin-left: 269px;" class="rating">
 
                                 <label>
 
@@ -386,8 +387,8 @@
 
 
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default">Concluir</button>
+                        <div class="modal-avaliacao-footer">
+                            <button type="submit" class=" btn btn-default">Concluir</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 
                         </div>
