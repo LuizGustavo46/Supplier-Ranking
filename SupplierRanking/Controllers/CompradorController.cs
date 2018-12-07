@@ -248,16 +248,17 @@ namespace SupplierRanking.Controllers
             c.Codigo = /*codigo*/1;
             if (c.UpdateSenha(senhaAtual, senhaNova, confirmaSenhaNova))
             {
-                TempData["Msg"] = "Senha Alterada";
+                ViewBag.Message = "Nova Senha alterada com sucesso!";
+                ViewBag.cssClass = "col-8 alert-msg alert-info text-center p-2 mb-5";
                 return RedirectToAction("Login", "Login");
             }
             else
             {
-                TempData["Msg"] = "Senhas não correspondem";
-                return RedirectToAction("");
+                ViewBag.Message = "Preencha o(s) campo(s) corretamente!";
+                ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mb-5";
             }
 
-            //return RedirectToAction("UpdateSenha");
+            return View();
         }
 
         public ActionResult EsqueceuSuaSenha()

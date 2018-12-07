@@ -71,17 +71,17 @@ namespace SupplierRanking.Controllers
             Fornecedor f = new Fornecedor();
             List<byte[]> listGaleriaFotos = new List<byte[]>();
 
-            int cont = 0;
-            foreach (string item in Request.Form.AllKeys) //FOREACH PARA PEGAR A CATEGORIA SELECIONADA
-            {
-                if (cont == 13)
-                {
-                    Categorias cat = new Categorias();
-                    cat.Categoria = item;
-                    f.Nome_categoria = cat.Categoria;
-                }
-                cont++;
-            }
+            //int cont = 0;
+            //foreach (string item in Request.Form.AllKeys) //FOREACH PARA PEGAR A CATEGORIA SELECIONADA
+            //{
+            //    if (cont == 13)
+            //    {
+            //        Categorias cat = new Categorias();
+            //        cat.Categoria = item;
+            //        f.Nome_categoria = cat.Categoria;
+            //    }
+            //    cont++;
+            //}
 
             f.Cnpj = cnpj;
             f.Nome_empresa = nome_empresa;
@@ -99,7 +99,7 @@ namespace SupplierRanking.Controllers
             f.Descricao = descricao;
             f.Media = 0;
             f.Plano = plano;
-            //f.Nome_categoria = nome_categoria; //A CATEGORIA VAI SER PEGA ALI EM CIMA PELO FOREACH
+            f.Nome_categoria = nome_categoria;
             f.Media_qualidade = 0;
             f.Media_atendimento = 0;
             f.Media_entrega = 0;
