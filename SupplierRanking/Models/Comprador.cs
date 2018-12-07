@@ -455,8 +455,8 @@ namespace SupplierRanking.Models
                 //ASSUNTO
                 mail.Subject = "REDEFINIÇÃO DE SENHA - Supplier Ranking";
                 //CORPO DO E-MAIL
-                string body = "USER ID: " + codigo + "\nClique aqui para redefinir sua senha:\n" +
-                                                    "http://localhost:16962/Fornecedor/NovaSenha";
+                mail.Body = "USER ID: " + codigo + "\nClique aqui para redefinir sua senha:\n" +
+                                                    "http://localhost:16962/Comprador/NovaSenha";
                
                 
                 //CONFIGURAR O SMTP
@@ -475,6 +475,46 @@ namespace SupplierRanking.Models
             if (con.State == ConnectionState.Open)
                 con.Close();
             return true;
+        }
+
+        /******************************************************* PEGAR NOME COMPRADOR **************************************************/
+
+        public Comprador DadosPerfil(string cpf_cnpj) //FEITO
+        {
+            Comprador c = new Comprador();
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+
+                    SqlCommand query = new SqlCommand("SELECT nome, codigo FROM comprador WHERE cpf = @cpf", con);
+                query.Parameters.AddWithValue("@cpf", cpf_cnpj);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                if (leitor.Read())
+                {
+                    c.Nome = leitor["Nome"].ToString();
+                    c.Codigo = int.Parse(leitor["Codigo"].ToString());
+                }
+                else
+                {
+                    leitor.Close();
+
+                    SqlCommand query2 = new SqlCommand("SELECT nome_empresa, codigo FROM comprador WHERE cnpj = @cnpj", con);
+                    query2.Parameters.AddWithValue("@cnpj", cpf_cnpj);
+                    leitor = query2.ExecuteReader();
+                    if (leitor.Read())
+                    {
+                        c.Nome_empresa = leitor["Nome_empresa"].ToString();
+                        c.Codigo = int.Parse(leitor["Codigo"].ToString());
+                    }
+                }
+            }
+            catch (Exception e) { c = null; }
+
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+
+            return c;
         }
 
 

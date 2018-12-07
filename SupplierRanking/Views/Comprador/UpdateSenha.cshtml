@@ -1,4 +1,4 @@
-﻿@model SupplierRanking.Models.Fornecedor
+﻿@model SupplierRanking.Models.Comprador
 @{
     ViewBag.Title = "UpdateSenha";
     Layout = "~/Views/Shared/_LayoutCadastro.cshtml";
@@ -12,7 +12,7 @@
     <!--- Formulario de Nova Senha --->
 
     <form class="row nova-senha-comprador-form justify-content-center pt-5 mt-4"
-          method="post" action="../Fornecedor/UpdateSenha">
+          method="post" action="/Comprador/UpdateSenha">
 
         <div class="row col-12 d-flex justify-content-center mb-5">
             Segue abaixo nossas recomendações para a criação de uma senha:
@@ -30,6 +30,10 @@
         <div class="row col-10 d-flex align-items-center justify-content-center pl-5 pr-5">
 
             <div class="col-9 pl-5">
+                <!-- Senha Atual-->
+                <div class="wrap-input mb-4">
+                    <input class="input input-senha required-field" type="password" name="senhaAtual" placeholder="* Sua senha atual">
+                </div>
 
                 <!--- Senha --->
                 <div class="wrap-input mb-4">
@@ -38,7 +42,7 @@
 
                 <!--- Confirmar Senha --->
                 <div class="wrap-input">
-                    <input class="input input-senha required-field" type="password" name="confirmaSenhaNova" placeholder="* Confirmar Senha">
+                    <input class="input input-senha required-field" type="password" name="confirmaSenhaNova" placeholder="* Confirmar senha">
                 </div>
             </div>
 

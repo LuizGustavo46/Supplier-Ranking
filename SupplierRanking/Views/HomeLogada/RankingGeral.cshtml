@@ -44,7 +44,7 @@
                                     </a>
                                 }
                                         @*</div>*@
-                                </div>
+</div>
                             <div class="col-5">
                                 <div class="d-flex align-items-baseline pl-3">
                                     <h4>
@@ -94,9 +94,11 @@
                                 </p>
                             </div>
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
+                                @if (Session["UserFornecedor"] == null)
+                                {
+                                    <button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
                                 <button id="#myModal2" class="btn btn-info btn-lg">Avaliar</button>
-
-                                @*@Html.ActionLink("Perfil", "Perfil", new { item.Cnpj })*@
+                                }
                                 <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
                             </div>
                         </div>
@@ -153,12 +155,16 @@
                                     @item.Endereco, @item.Bairro - @item.Cidade / @item.Uf
                                 </p>
                             </div>
+                            
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
+                            @if (Session["UserFornecedor"] == null)
+                            {
+                                <button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
                                 <button id="myBtn" class="btn btn-info btn-lg ">Avaliar</button>
-
-                                @*@Html.ActionLink("Perfil", "Perfil", new { item.Cnpj })*@
+                            }
                                 <a style="text-decoration: none;color: #2c8cb6;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
                             </div>
+                            
                         </div>
                         
                     </li>
@@ -169,11 +175,11 @@
 
         <!-- Modal -->
         <div id="myModal2" class="modal">
-            
+
                 <!-- Modal content -->
                 <div style="width: 835px;height: 600px;" class="modal-content">
                     <span class="close-avaliacao">&times;</span>
-                   
+
                     <h3>Entrega</h3>
                     <h3>Qualidade</h3>
                     <h3>Atendimento</h3>
@@ -181,35 +187,35 @@
                     <h3>Satisfação</h3>
 
                     <form method="post" action="../Avaliacao/CadastrarAvaliacao" class="rating">
-                       
+
                        <div style="position: relative;top: -27.5rem;left: 21%;">
-                           
+
                            <label>
                                <input type="radio" name="entrega" value="1" />
-                               <span class="icon">★</span>
-                           </label>
+                                <span class="icon">★</span>
+                            </label>
 
-                           <label>
+                            <label>
                                <input type="radio" name="entrega" value="2" />
                                <span class="icon">★★</span>
-                           </label>
+                            </label>
 
-                           <label>
+                            <label>
                                <input type="radio" name="entrega" value="3" />
                                <span class="icon">★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="entrega" value="4" />
                                <span class="icon">★★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="entrega" value="5" />
                                <span class="icon">★★★★★</span>
-                           </label>
+                            </label>
 
 
                        </div>
@@ -219,102 +225,102 @@
                        <div style="position:relative;top: -27.8rem;left: 21%;">
                           
 
-                           <label>
+                            <label>
                                <input type="radio" name="qualidade" value="1" />
-                               <span class="icon">★</span>
-                           </label>
+                                <span class="icon">★</span>
+                            </label>
 
-                           <label>
+                            <label>
                                <input type="radio" name="qualidade" value="2" />
                                <span class="icon">★★</span>
-                           </label>
+                            </label>
 
-                           <label>
+                            <label>
                                <input type="radio" name="qualidade" value="3" />
                                <span class="icon">★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="qualidade" value="4" />
                                <span class="icon">★★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="qualidade" value="5" />
                                <span class="icon">★★★★★</span>
-                           </label>
+                            </label>
 
 
                        </div>
-                     
-                      
+
+
 
 
                        <div style="position: relative;top: -28.8rem;left: 21%;">
                            
-                           <label>
+                            <label>
                                <input type="radio" name="atendimento" value="1" />
-                               <span class="icon">★</span>
-                           </label>
+                                <span class="icon">★</span>
+                            </label>
 
-                           <label>
+                            <label>
                                <input type="radio" name="atendimento" value="2" />
                                <span class="icon">★★</span>
-                           </label>
+                            </label>
 
-                           <label>
+                            <label>
                                <input type="radio" name="atendimento" value="3" />
                                <span class="icon">★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="atendimento" value="4" />
                                <span class="icon">★★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="atendimento" value="5" />
                                <span class="icon">★★★★★</span>
-                           </label>
+                            </label>
 
 
                        </div>
 
-                      
+
 
 
                        <div style="position: relative;top: -29.8rem;left: 21%;">
-                          
-                           <label>
-                               <input type="radio" name="preco" value="1" />
-                               <span class="icon">★</span>
-                           </label>
 
-                           <label>
+                            <label>
+                               <input type="radio" name="preco" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+
+                            <label>
                                <input type="radio" name="preco" value="2" />
                                <span class="icon">★★</span>
-                           </label>
+                            </label>
 
-                           <label>
+                            <label>
                                <input type="radio" name="preco" value="3" />
                                <span class="icon">★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="preco" value="4" />
                                <span class="icon">★★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="preco" value="5" />
                                <span class="icon">★★★★★</span>
-                           </label>
+                            </label>
 
 
                        </div>
@@ -323,33 +329,33 @@
 
 
                        <div style="position: relative;top: -29.8rem;left: 21%;">
-                          
-                           <label>
-                               <input type="radio" name="satisfacao" value="1" />
-                               <span class="icon">★</span>
-                           </label>
 
-                           <label>
+                            <label>
+                               <input type="radio" name="satisfacao" value="1" />
+                                <span class="icon">★</span>
+                            </label>
+
+                            <label>
                                <input type="radio" name="satisfacao" value="2" />
                                <span class="icon">★★</span>
-                           </label>
+                            </label>
 
-                           <label>
+                            <label>
                                <input type="radio" name="satisfacao" value="3" />
                                <span class="icon">★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="satisfacao" value="4" />
                                <span class="icon">★★★★</span>
-                           </label>
+                            </label>
 
 
-                           <label>
+                            <label>
                                <input type="radio" name="satisfacao" value="5" />
                                <span class="icon">★★★★★</span>
-                           </label>
+                            </label>
 
 
                        </div>
@@ -362,16 +368,16 @@
                             <button type="submit" class="btn btn-info btn-lg ">Salvar</button>
                         </div>
                                               
-                  </form>
-                     
-                      
-
-           </div>
+                        </form>
 
 
-            </div>
 
-        </div>
+                    </div>
+
+
+                    </div>
+
+    </div>
           
               
                

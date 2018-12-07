@@ -22,13 +22,13 @@
                 <section>
                     
                     <div style="width:210px;height:210px;position: absolute;left: 10%;top:26px;">                                          
-                        @if (@Model.Imagem64 == "")
+                        @if (Model.Imagem64 == "")
                         {
                            <img src="~/Content/images/iconecor.png" height="210" width="210" />
                         }
                         else
                         {
-                            String imagem64 = string.Format("data:image/jpeg;base64,{0}", @Model.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                            String imagem64 = string.Format("data:image/jpeg;base64,{0}", Model.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
                             <img src="@imagem64" height="210" width="210" style="border-radius: 50%;"/>
                         }                                                                     
                     </div>

@@ -133,12 +133,16 @@
                     <a href="/HomeLogada/Perfil/?Cnpj=@Session["UserFornecedor"].ToString()">
                         <img src="/Content/images/iconecor.png" id="perfil" style="width: 100px; height: 100px; border-radius: 50px; border: 1px solid white; margin: 167px auto auto 20px;"/>
                     </a>
-                    
+                    <a style="font-family:inherit; font-size: 20px; margin-left: 23px;">@Session["NomeUsuario"].ToString()</a>  
                     }
                     else
                     {
                         <img src="/Content/images/iconecor.png" id="perfil" style="width: 100px; height: 100px; border-radius: 50px; border: 1px solid white; margin: 167px auto auto 20px;"/>
+                        <a style="font-family:inherit; font-size: 20px; display:flex; justify-content:center;">@Session["NomeUsuario"].ToString()</a>
                     }
+                    <br />
+                    <a href="/Comprador/UpdateSenha/" >Alterar senha</a>
+                   
                     
             </nav>
             <!---- Modal ---->
