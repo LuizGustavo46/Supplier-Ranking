@@ -8,17 +8,17 @@ $(document).ready(function () {
         activeformInputs;
 
 
-    /********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
+/********************* *********************  COMPORTAMENTO DO ELEMENTO ********************* *********************/
 
     btnEnviarEmail.on('click', function () {
         formRestaurarSenha.submit();
     });
 
-    /********************* *********************  FUNÇÕES ********************* *********************/
+/********************* *********************  FUNÇÕES ********************* *********************/
 
     /** Verifica todos os inputs visíveis **/
     function verificaInputsVisiveis() {
-        return $('.restaurar-senha-comprador-form .wrap-input').not('.hide').find('input');
+        return $('.restaurar-senha-fornecedor-form .wrap-input').not('.hide').find('input');
     }
 
     /** Habilita/desabilita o Botão Entrar conforme o valor dos campos inputs **/
@@ -31,7 +31,6 @@ $(document).ready(function () {
                 prevInput = isEmpty;
             }
 
-            console.log('prevInput',prevInput, isEmpty)
             if (isEmpty) { // Habilita/desabilita o Botão Entrar
                 btnEnviarEmail.removeAttr('disabled').removeClass('disabled');
             } else {

@@ -125,6 +125,18 @@
                     <li>
                         @*<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Sair</a>*@ 
                         @Html.ActionLink("Sair", "Sair", "Home", new { area = "" }, new { @class = "" })
+
+                        @if (Session["UserPessoaFisica"] != null)
+                        {
+                        <a href="/Comprador/UpdatePessoaFisica/?Codigo=@Session["CodigoUsuario"].ToString()">UpdatePessoaFisica</a>
+                        }
+                        else if (Session["UserPessoaJuridica"] != null)
+                        {
+                        <a href="/Comprador/UpdatePessoaJuridica/?Codigo=@Session["CodigoUsuario"].ToString()">UpdatePessoaJuridica</a>
+                        }
+
+                        @*@Html.ActionLink("Editar informações", "UpdatePessoaFisica", "Comprador", new { area = "" }, new { @class = "" })*@
+
                     </li>
                 </ul>
                 
@@ -133,12 +145,17 @@
                     <a href="/HomeLogada/Perfil/?Cnpj=@Session["UserFornecedor"].ToString()">
                         <img src="/Content/images/iconecor.png" id="perfil" style="width: 100px; height: 100px; border-radius: 50px; border: 1px solid white; margin: 167px auto auto 20px;"/>
                     </a>
-                    
+                    <a style="font-family:inherit; font-size: 20px; margin-left: 23px;">@Session["NomeUsuario"].ToString()</a>  
                     }
                     else
                     {
                         <img src="/Content/images/iconecor.png" id="perfil" style="width: 100px; height: 100px; border-radius: 50px; border: 1px solid white; margin: 167px auto auto 20px;"/>
+                        <a style="font-family:inherit; font-size: 20px; display:flex; justify-content:center;">@Session["NomeUsuario"].ToString()</a>
                     }
+                    <br />
+                    <a style="text-decoration: none;color: white;font-family: inherit;
+                    margin-left: 25px;" href="/Comprador/UpdateSenha/" >Alterar senha</a>
+                   
                     
             </nav>
             <!---- Modal ---->
@@ -214,7 +231,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
         <!-- Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
+       
+         <script src="~/Content/js/modal-avaliacao.js"></script>
         <link href="~/Content/css/modal.css" rel="stylesheet" />
        
       

@@ -11,12 +11,12 @@ namespace SupplierRanking.Controllers
     {
         /************************************************************ CADASTRAR AVALIAÇÃO ******************************************************/
 
-        public ActionResult CadastrarAvaliacao(/*string cnpj_fornecedor, int codigo_comprador*/)
+        public ActionResult CadastrarAvaliacao(string cnpj_fornecedor, int codigo_comprador)
         {
 
             Avaliacao a = new Avaliacao();
-            a.Cnpj_fornecedor = /*cnpj_fornecedor*/"45.997.418/0001-53";
-            a.Codigo_comprador = /*codigo_comprador*/1;
+            a.Cnpj_fornecedor = cnpj_fornecedor;
+            a.Codigo_comprador = codigo_comprador;
 
             if (a.VerificarSeteDias())
                 return View();
