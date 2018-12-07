@@ -16,6 +16,7 @@ namespace SupplierRanking.Controllers
         // GET: HomeLogada
         public ActionResult Pesquisa()
         {
+
             return View("Pesquisa", HomeLogada.RankingGeral());
         }
 
