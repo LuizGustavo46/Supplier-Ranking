@@ -125,6 +125,18 @@
                     <li>
                         @*<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Sair</a>*@ 
                         @Html.ActionLink("Sair", "Sair", "Home", new { area = "" }, new { @class = "" })
+
+                        @if (Session["UserPessoaFisica"] != null)
+                        {
+                        <a href="/Comprador/UpdatePessoaFisica/?Codigo=@Session["CodigoUsuario"].ToString()">UpdatePessoaFisica</a>
+                        }
+                        else if (Session["UserPessoaJuridica"] != null)
+                        {
+                        <a href="/Comprador/UpdatePessoaJuridica/?Codigo=@Session["CodigoUsuario"].ToString()">UpdatePessoaJuridica</a>
+                        }
+
+                        @*@Html.ActionLink("Editar informações", "UpdatePessoaFisica", "Comprador", new { area = "" }, new { @class = "" })*@
+
                     </li>
                 </ul>
                 
