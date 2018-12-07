@@ -188,6 +188,7 @@
     <Content Include="Content\images\valmir255.png" />
     <Content Include="Content\images\video.mp4" />
     <Content Include="Content\js\bloqueia-input.js" />
+    <Content Include="Content\js\cadastro-funcionario.js" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
     <Content Include="Content\js\carousel-perfil.js" />

@@ -1,14 +1,10 @@
-﻿@{
-    ViewBag.Title = "CadastroFuncionario";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
-}
+﻿
 
-<div class="container-login100">
+@*<div class="container-login100">
     <div class="wrap-login100" style="background-color: white;">
         <h2>Cadastro Funcionario</h2>
         <form action="../Fornecedor/CadastroFuncionario" method="post" class="login100-form validate-form">
             
-            <!--- Campos do Funcionario -->
             <div id="">
                 <input type="text" name="cnpj" placeholder="CNPJ">
                 <br /> <br />             
@@ -22,4 +18,79 @@
             <button id="btnCadastrar">Cadastrar</button>
         </form>
     </div>
+</div>*@
+
+@{
+    ViewBag.Title = "Cadastro Funcionário";
+    Layout = "~/Views/Shared/_LayoutCadastro.cshtml";
+}
+
+<div class="wrap-cadastro-funcionario p-5">
+    <div class="row col-12 justify-content-center text-center mt-4">
+        <h2>Cadastro Funcionário</h2>
+    </div>
+
+    <!--- Formulario de Nova Senha --->
+
+    <form class="row cadastro-form justify-content-center pt-5 mt-5"
+          method="post" action="../Fornecedor/CadastroFuncionario">
+
+        <!--- CNPJ --->
+        <div class="row col-8 wrap-input pl-5 pr-5 mb-4">
+            <input class="input required-field" type="text" maxlength="19" name="cnpj" placeholder="* CNPJ" data-mask="00.000.000/0000-00" data-mask-sectionFocus="true" />
+        </div>
+
+        <!--- Nome --->
+        <div class="row col-8 wrap-input pl-5 pr-5 mb-4">
+            <input class="input required-field" type="text" name="nome" placeholder="* Nome completo">
+        </div>
+
+        <!--- Senha & Confirmar Senha --->
+        <div class="row col-10 d-flex align-items-center justify-content-center pl-5 pr-5">
+
+            <div class="col-9 pl-5">
+                <!--- Senha --->
+                <div class="wrap-input mb-4">
+                    <input class="input input-senha required-field" type="password" name="senha" placeholder="* Senha">
+                </div>
+
+                <!--- Confirmar Senha --->
+                <div class="wrap-input">
+                    <input class="input input-senha required-field" type="password" name="confirmarSenha" placeholder="* Confirmar Senha">
+                </div>
+            </div>
+
+            <!--- Visualizar Senha --->
+            <div class="col-2 d-flex justify-content-center pr-5">
+                <button id="btnSenha">
+                    <img src="/Content/images/comprador.png" />
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="row col-12 cadastro-options justify-content-center pl-5 pr-5">
+
+        <span class="@ViewBag.cssClass">
+            @ViewBag.Message
+        </span>
+
+        <div class="col-12 d-flex p-0">
+            <!--- Voltar para Home --->
+            <div class="col-6 form-forn-btn d-flex align-self-center text-left">
+                <a id="btnLogin" class="sub-link" href="/HomeLogada/RankingGeral">
+                    Home
+                </a>
+            </div>
+
+            <!--- Botao Cadastrar --->
+            <div class="col-6 form-forn-btn d-flex align-self-center justify-content-end pr-0">
+                <button type="submit" id="btnCadastrar" class="login-form-btn disabled" disabled>
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </div>
+
 </div>

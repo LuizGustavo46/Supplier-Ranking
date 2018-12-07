@@ -201,13 +201,13 @@ a.perfil {
 }
 
 
-  .comentario{
-   width: 1197px;
-   height: 120px;
-   position: absolute;
-   border: solid 3px;
-   top: 3%;
-   left: 5%;
-    }
+.comentario {
+    width: 1197px;
+    height: 120px;
+    position: absolute;
+    border: solid 3px;
+    top: 3%;
+    left: 5%;
+}
 
   

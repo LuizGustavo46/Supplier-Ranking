@@ -45,11 +45,22 @@ namespace SupplierRanking.Controllers
             Fornecedor f = new Fornecedor();
             f.Cnpj = cnpj;
             f.Senha = senha;
-            f.Nome = nome; 
-                               
+            f.Nome = nome;
 
-            TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome);
-            return RedirectToAction("CadastroFuncionario");
+            if (f.CadastroFuncionario(cnpj, senha, nome))
+            {
+                ViewBag.Message = "Cadastro realizado com sucesso!";
+                ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mt-3 mb-5";
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                ViewBag.Message = "Preencha o(s) campo(s) corretamente!";
+                ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mt-3 mb-5";
+            }
+
+            //TempData["Msg"] = f.CadastroFuncionario(cnpj, senha,  nome);
+            return View();
         }
 
 
@@ -302,7 +313,7 @@ namespace SupplierRanking.Controllers
         public ActionResult UpdateFornecedor(string cnpj) //FEITO
         {
             
-            Fornecedor c = Fornecedor.Perfil(/*cnpj*/"45.997.418/0001-53");
+            Fornecedor c = Fornecedor.Perfil(cnpj);
 
             if (c == null)
             {
