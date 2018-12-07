@@ -477,20 +477,19 @@ namespace SupplierRanking.Models
         /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*MÉTODOS DE UPDATE-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ UPDATE SENHA ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public Boolean UpdateSenha(string senha, string novaSenha, string senhaConfirma, string cnpj) //FEITO
+        public bool UpdateSenha(string senha, string novaSenha, string senhaConfirma) //FEITO
         {
-            bool res = false;
-                     
+
             try
-            {                              
+            {
                 /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
                 //ABRE A CONEXAO
                 con.Open();  
 
                 //comando para selecionar a tabela de FORNECEDOR
                 SqlCommand query1 =
-                   new SqlCommand("SELECT * FROM fornecedor WHERE cnpj = @cnpj", con);
-                query1.Parameters.AddWithValue("@cnpj",    cnpj);//seleciona o perfil do fornecedor no banco através do cnpj
+                   new SqlCommand("SELECT senha FROM fornecedor WHERE cnpj = @cnpj", con);
+                query1.Parameters.AddWithValue("@cnpj", cnpj);//seleciona o perfil do fornecedor no banco através do cnpj
                 SqlDataReader leitor = query1.ExecuteReader(); //executa a leitura
 
                 //prepara o leitor
@@ -507,19 +506,15 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@cnpj",  cnpj);
                     query.Parameters.AddWithValue("@senha", novaSenha);
                     query.ExecuteNonQuery();//executa o update
-                    res = true;
                 }
             }
             //tratamento de erro
-            catch (Exception e)
-            {
-                res = false;
-            }
+            catch (Exception) { return false; }
 
-            if (con.State == System.Data.ConnectionState.Open)
+            if (con.State == ConnectionState.Open)
                 con.Close();//fecha a conexao
 
-            return res;
+            return true;
         }
 
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/

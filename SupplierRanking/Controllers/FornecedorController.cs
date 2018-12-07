@@ -251,7 +251,7 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
+        public ActionResult UpdateSenha(string senha, string novaSenha, string senhaConfirma)
         {
             Fornecedor senhaUp = new Fornecedor();
 
@@ -259,7 +259,7 @@ namespace SupplierRanking.Controllers
             
 
             
-                bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaConfirma, cnpj);
+                bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaConfirma);
 
                 if (res)  //RETORNAR NA VIEW DE UPDATE DE SENHA
                 return RedirectToAction("Login","Login");
@@ -276,20 +276,24 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult NovaSenha(string senha, string novaSenha, string senhaConfirma, string cnpj)
+        public ActionResult NovaSenha(string senhaAtual, string novaSenha, string senhaConfirma)
         {
-            Fornecedor senhaRe = new Fornecedor();
+            Fornecedor f = new Fornecedor();
+            f.Senha = senhaAtual;
 
-            senhaRe.Senha = senha;
+            if (f.UpdateSenha(senhaAtual, novaSenha, senhaConfirma))
+            {
+                ViewBag.Message = "Nova Senha alterada com sucesso!";
+                ViewBag.cssClass = "col- alert-msg alert-info text-center p-2 mb-5";
+                return RedirectToAction("Login", "Login");
+            }
+            else
+            {
+                ViewBag.Message = "Preencha o(s) campo(s) corretamente!";
+                ViewBag.cssClass = "col-6 alert-msg alert-danger text-center p-2 mb-5";
+            }
 
-
-
-            bool res = senhaRe.UpdateSenha(senha, novaSenha, senhaConfirma, cnpj);
-
-            if (res)  //RETORNAR NA VIEW DE RESTAURAR DE SENHA
-                return RedirectToAction("NovaSenha");
-
-            return View("NovaSenha");
+            return View();
         }
 
         /*================================================================================================================================================================================*/
