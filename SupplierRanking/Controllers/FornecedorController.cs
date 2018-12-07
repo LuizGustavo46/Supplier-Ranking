@@ -302,7 +302,7 @@ namespace SupplierRanking.Controllers
         public ActionResult UpdateFornecedor(string cnpj) //FEITO
         {
             
-            Fornecedor c = Fornecedor.Perfil(/*cnpj*/"45.997.418/0001-53");
+            Fornecedor c = Fornecedor.Perfil(cnpj);
 
             if (c == null)
             {

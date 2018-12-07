@@ -261,7 +261,7 @@ namespace SupplierRanking.Models
                 // Criação de comando para selecionar a tabela FORNECEDOR
                 SqlCommand query =
                     new SqlCommand("SELECT * FROM fornecedor WHERE nome_empresa like @texto", con);
-                query.Parameters.AddWithValue("@texto", pesquisa);
+                query.Parameters.AddWithValue("@texto", "%" + pesquisa + "%");
                 SqlDataReader leitor = query.ExecuteReader();
 
 

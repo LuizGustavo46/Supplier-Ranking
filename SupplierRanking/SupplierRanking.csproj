@@ -171,6 +171,8 @@
     <Content Include="Content\images\luizao2.png" />
     <Content Include="Content\images\luizao3.png" />
     <Content Include="Content\images\marcelo255.png" />
+    <Content Include="Content\images\olhoAberto.png" />
+    <Content Include="Content\images\olhoFechado.png" />
     <Content Include="Content\images\pesquisa.png" />
     <Content Include="Content\images\phone.png" />
     <Content Include="Content\images\photo.png" />
