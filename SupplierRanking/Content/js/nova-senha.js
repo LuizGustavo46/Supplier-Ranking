@@ -10,8 +10,8 @@
         inputSenhasComprador = $('.wrap-nova-senha-comprador .input-senha'),
         inputSenhasFornecedor = $('.wrap-nova-senha-fornecedor .input-senha'),
             
-        formComprador = $('.nova-senha-comprador-form'),
-        formFornecedor = $('.nova-senha-fornecedor-form');
+        formComprador = $('.wrap-nova-senha-comprador .nova-senha-comprador-form'),
+        formFornecedor = $('.wrap-nova-senha-fornecedor .nova-senha-fornecedor-form');
 
 
 /********************* *********************  COMPORTAMENTO DOS ELEMENTOS ********************* *********************/
@@ -23,6 +23,8 @@
 
     /*** Botão para cadastrar a nova senha do Comprador ***/
     btnCadastrarNovaSenhaComprador.on('click', function () {
+
+        console.log('auqi');
         formComprador.submit();
     });
 
@@ -33,6 +35,7 @@
 
     /*** Botão para cadastrar a nova senha do Comprador ***/
     btnCadastrarNovaSenhaFornecedor.on('click', function () {
+        console.log('auqi');
         formFornecedor.submit();
     });
 

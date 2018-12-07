@@ -1,12 +1,73 @@
-﻿
-
+﻿@model SupplierRanking.Models.Fornecedor
 @{
-    ViewBag.Title = "NovaSenha";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = "Nova Senha";
+    Layout = "~/Views/Shared/_LayoutCadastro.cshtml";
 }
 
-<div class="container-senha-nova">
-    <div class="wrap-login100" style="background-color: white;">
+<div class="wrap-nova-senha-fornecedor p-5">
+    <div class="row col-12 justify-content-center text-center mt-4">
+        <h2>Crie sua Nova Senha</h2>
+    </div>
+
+    <!--- Formulario de Nova Senha --->
+    <form class="row nova-senha-fornecedor-form justify-content-center pt-5 mt-4"
+          method="post" action="../Fornecedor/NovaSenha">
+
+        <div class="row col-12 d-flex justify-content-center mb-5">
+            Segue abaixo nossas recomendações para a criação de uma senha:
+
+            <ul class="row d-flex flex-column mt-5 mb-5">
+                <li class="mb-3" style="list-style-type: square;"> Conter no mínimo 6 caractéres; </li>
+                <li class="mb-3" style="list-style-type: square;"> Misture letras, números e caractéres especiais (!, $, #, %); </li>
+                <li style="list-style-type: square;"> Inclua letras maiúsculas e minúsculas. </li>
+            </ul>
+
+            Agora que já sabe das recomendações, cadastre abaixo sua nova senha:
+        </div>
+
+        <!--- Senha & Confirmar Senha --->
+        <div class="row col-10 d-flex align-items-center justify-content-center pl-5 pr-5">
+
+            <div class="col-9 pl-5">
+                <!--- Senha --->
+                <div class="wrap-input mb-4">
+                    <input class="input input-senha required-field" type="password" name="novaSenha" placeholder="* Senha">
+                </div>
+
+                <!--- Confirmar Senha --->
+                <div class="wrap-input">
+                    <input class="input input-senha required-field" type="password" name="senhaConfirma" placeholder="* Confirmar Senha">
+                </div>
+            </div>
+
+            <!--- Visualizar Senha --->
+            <div class="col-2 d-flex justify-content-center pr-5">
+                <button id="btnSenha">
+                    <img src="/Content/images/comprador.png" />
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="row col-12 login-options justify-content-center pb-5">
+
+        <span class="@ViewBag.cssClass">
+            @ViewBag.Message
+        </span>
+
+        <!--- Botão Cadastrar Nova Senha --->
+        <div class="row col-12 d-flex justify-content-center">
+            <button id="btnCadastrarNovaSenha" type="submit" class="login-form-btn">
+                Cadastrar Nova Senha
+            </button>
+        </div>
+    </div>
+
+</div>
+
+
+    @*<div class="wrap-login100" style="background-color: white;">
         <h2 style="text-align: center;margin-bottom: 68px;">Nova Senha</h2>
 
         <br />
@@ -73,4 +134,4 @@
 
         </form>
     </div>
-</div>
+</div>*@
