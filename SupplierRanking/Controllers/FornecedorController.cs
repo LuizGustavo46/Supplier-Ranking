@@ -199,19 +199,26 @@ namespace SupplierRanking.Controllers
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/
         public ActionResult EsqueceuSuaSenha() //FEITO
         {
-            
             return View();
         }
 
         [HttpPost]
         public ActionResult EsqueceuSuaSenha(string cnpj, string email)
         {
-            Fornecedor enviaEmail = new Fornecedor();
+            Fornecedor f = new Fornecedor();
+            if (f.EsqueceuSuaSenha(cnpj, email))
+            {
+                ViewBag.Message = "Confirmação enviada para o e-mail cadastrado!";
+                ViewBag.cssClass = "col-8 alert-msg alert-info text-center p-2 mt-3 mb-5";
+            }
+            else
+            {
+                ViewBag.Message = "Preencha o(s) campo(s) corretamente!";
+                ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mt-3 mb-5";
+            }
 
-            enviaEmail.EsqueceuSuaSenha(cnpj, email); 
-
-
-            return RedirectToAction("EsqueceuSuaSenha");
+            return View();
+            //return RedirectToAction("EsqueceuSuaSenha");
         }
 
         /*================================================================================================================================================================================*/

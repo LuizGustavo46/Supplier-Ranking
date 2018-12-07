@@ -320,61 +320,71 @@ namespace SupplierRanking.Models
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ RESTAURAR SENHA ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public Boolean EsqueceuSuaSenha(string cnpj, string email) //FEITO
+        public bool EsqueceuSuaSenha(string cnpj, string email) //FEITO
         {
-            bool res = false;
+
             try
             {
                 con.Open(); // abre conexão
-                SqlCommand query =
-                        new SqlCommand("SELECT email FROM fornecedor WHERE  cnpj = @cnpj", con);
-                    query.Parameters.AddWithValue("@cnpj", cnpj);
-                    query.Parameters.AddWithValue("@email", email);
-                SqlDataReader leitor = query.ExecuteReader();
 
-                while (leitor.Read())
+                if (cnpj != "") 
                 {
-                    email = leitor["email"].ToString();
+                    SqlCommand query =
+                        new SqlCommand("SELECT email FROM fornecedor WHERE cnpj = @cnpj", con);
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    SqlDataReader leitor = query.ExecuteReader();
+
+                    while (leitor.Read())
+                    {
+                        email = leitor["email"].ToString();
+                    }
                 }
-                    //CONFIGURANDO A MENSAGEM
-                    MailMessage mail = new MailMessage();
-                    //ORIGEM
-                    mail.From = new MailAddress("officialsranking@outlook.com");//supplierranking@hotmail.com
-                    //DESTINATÁRIO
-                    mail.To.Add(email);
-                    //ASSUNTO
-                    mail.Subject = nome + "REDEFINIÇÃO DE SENHA - Supplier Ranking";
-                    //CORPO DO E-MAIL
-                    //ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA.
-                    mail.Body = "USER ID: " + codigo + "\nClique aqui para redefinir sua senha:\n" +
-                                                    "http://localhost:16962/Fornecedor/NovaSenha";  
+                else
+                {
+                    SqlCommand query =
+                        new SqlCommand("SELECT email FROM fornecedor WHERE email = @email", con);
+                    query.Parameters.AddWithValue("@email", email);
+                    SqlDataReader leitor = query.ExecuteReader();
+
+                    while (leitor.Read())
+                    {
+                        email = leitor["email"].ToString();
+                    }
+                }
+
+                //CONFIGURANDO A MENSAGEM
+                MailMessage mail = new MailMessage();
+                //ORIGEM
+                mail.From = new MailAddress("officialsranking@outlook.com");//supplierranking@hotmail.com
+                //DESTINATÁRIO
+                mail.To.Add(email);
+                //ASSUNTO
+                mail.Subject = "REDEFINIÇÃO DE SENHA - Supplier Ranking";
+                //CORPO DO E-MAIL
+                //ESCREVER AQUI A MENSAGEM COM O LINK PARA A PAGINA DE REDEFINIÇÃO DE SENHA.
+                mail.Body = "USER ID: " + codigo + "\nClique aqui para redefinir sua senha:\n" +
+                                                "http://localhost:16962/Fornecedor/NovaSenha";  
 
 
-                    //CONFIGURAR O SMTP
-                    SmtpClient smtpServer = new SmtpClient("smtp.live.com");
-                    //CONFIGURAR PORTA
-                    smtpServer.Port = 25;
-                    //HABILITAR O TLS
-                    smtpServer.EnableSsl = true;
-                    //CONFIGURAR USUARIO E SENHA PARA LOGAR
-                    smtpServer.Credentials = new System.Net.NetworkCredential("officialsranking@outlook.com", "Senai1234");
-                    //ENVIAR
-                    smtpServer.Send(mail);
-              
-
+                //CONFIGURAR O SMTP
+                SmtpClient smtpServer = new SmtpClient("smtp.live.com");
+                //CONFIGURAR PORTA
+                smtpServer.Port = 25;
+                //HABILITAR O TLS
+                smtpServer.EnableSsl = true;
+                //CONFIGURAR USUARIO E SENHA PARA LOGAR
+                smtpServer.Credentials = new System.Net.NetworkCredential("officialsranking@outlook.com", "Senai1234");
+                //ENVIAR
+                smtpServer.Send(mail);
             }
 
             //tratamento de erro
-            catch (Exception e)
-            {
-                string em = e.Message;
-                res = false;
-            }
+            catch (Exception e) { return false; }
 
-            if (con.State == System.Data.ConnectionState.Open)
+            if (con.State == ConnectionState.Open)
                 con.Close();//fecha a conexao
 
-            return res;
+            return true;
 
         }
 
