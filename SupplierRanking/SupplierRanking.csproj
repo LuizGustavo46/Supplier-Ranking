@@ -400,6 +400,7 @@
     <Content Include="Views\HomeLogada\Perfil.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <Content Include="Views\HomeLogada\Suporte.cshtml" />
+    <Content Include="Views\Comprador\UpdateSenha.cshtml" />
     <None Include="Views\Shared\Layout_logada.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>

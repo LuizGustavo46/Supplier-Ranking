@@ -89,9 +89,10 @@
                                     </p>
                                 </div>
                                 <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
-                                    <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
-
-                                    @*@Html.ActionLink("Perfil", "Perfil", new { item.Cnpj })*@
+                                    @if (Session["UserFornecedor"] == null)
+                                    {
+                                        <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+                                    }
                                     <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
                                 </div>
                             </div>
@@ -145,9 +146,10 @@
                                     </p>
                                 </div>
                                 <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
-                                    <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
-
-                                    @*@Html.ActionLink("Perfil", "Perfil", new { item.Cnpj })*@
+                                    @if (Session["UserFornecedor"] == null)
+                                    {
+                                        <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+                                    }
                                     <a style="text-decoration: none;color: #2c8cb6;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
                                 </div>
                             </div>

@@ -236,16 +236,18 @@ namespace SupplierRanking.Controllers
             return RedirectToAction("UpdatePessoaJuridica");
         }
 
-        public ActionResult UpdateSenha()
+        public ActionResult UpdateSenha(/*int codigo*/)
         {
+            //Session["Codigo"] = codigo;
             return View();
         }
 
         [HttpPost]
-        public ActionResult UpdateSenha(/*int codigo ,*/string senhaAtual, string senhaNova, string confirmaSenhaNova)
+        public ActionResult UpdateSenha(string senhaAtual, string senhaNova, string confirmaSenhaNova)
         {
             Comprador c = new Comprador();
-            c.Codigo = /*codigo*/1;
+            c.Codigo = int.Parse(Session["CodigoUsuario"].ToString());
+            
             if (c.UpdateSenha(senhaAtual, senhaNova, confirmaSenhaNova))
             {
                 ViewBag.Message = "Nova Senha alterada com sucesso!";
@@ -258,7 +260,7 @@ namespace SupplierRanking.Controllers
                 ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mb-5";
             }
 
-            return View();
+            return View("Comprador","UpdateSenha");
         }
 
         public ActionResult EsqueceuSuaSenha()
@@ -273,12 +275,12 @@ namespace SupplierRanking.Controllers
             if(c.EsqueceuSuaSenha(cnpj, cpf, email))
             {
                 ViewBag.Message = "Confirmação enviada para o e-mail cadastrado!";
-                ViewBag.cssClass = "col-8 alert-msg alert-info text-center p-2 mt-3 mb-4";
+                ViewBag.cssClass = "col-8 alert-msg alert-info text-center p-2 mt-3 mb-5";
             }
             else
             {
                 ViewBag.Message = "Preencha o(s) campo(s) corretamente!";
-                ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mt-3 mb-4";
+                ViewBag.cssClass = "col-8 alert-msg alert-danger text-center p-2 mt-3 mb-5";
             }
 
             return View();

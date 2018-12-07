@@ -40,10 +40,10 @@ namespace SupplierRanking.Controllers
         }
         public ActionResult Sair()
         {
-            Session["0"] = null;
-            Session["1"] = null;
-            Session["2"] = null;
-            Session["3"] = null;
+            Session["UserFornecedor"] = null;
+            Session["UserPessoaFisica"] = null;
+            Session["UserPessoaJuridica"] = null;
+            Session["UserFuncionario"] = null;
 
             return RedirectToAction("Index", "Home");
         }
