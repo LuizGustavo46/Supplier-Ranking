@@ -238,6 +238,7 @@
     <Content Include="Content\images\person_4.jpg" />
     <Content Include="Content\images\planos.jpg" />
     <Content Include="Content\js\esqueceu-senha.js" />
+    <Content Include="Content\js\modal-avaliacao.js" />
     <Content Include="Content\js\nova-senha.js" />
     <Content Include="Content\js\update.js" />
     <Content Include="Content\vendor\animate\animate.css" />
@@ -563,7 +564,6 @@
     <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
     <Content Include="Views\Fornecedor\EsqueceuSenhaFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\listaFornecedor.cshtml" />
-    <Content Include="Views\Avaliacao\CadastrarAvaliacao.cshtml" />
     <Content Include="Views\Avaliacao\UpdateComentario.cshtml" />
     <Content Include="Views\HomeLogada\RankingPremium.cshtml" />
     <Content Include="Views\HomeLogada\Pesquisa.cshtml" />
