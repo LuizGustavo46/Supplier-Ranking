@@ -258,8 +258,9 @@ namespace SupplierRanking.Controllers
             Fornecedor senhaUp = new Fornecedor();
 
             senhaUp.Senha = senha;
-            
 
+            string cnpj=Session["UserFornecedor"].ToString();
+            senhaUp.Cnpj=cnpj;
             
                 bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaConfirma);
 
@@ -282,6 +283,9 @@ namespace SupplierRanking.Controllers
         {
             Fornecedor f = new Fornecedor();
             f.Senha = senhaAtual;
+
+            string cnpj = Session["UserFornecedor"].ToString();
+            f.Cnpj = cnpj;
 
             if (f.UpdateSenha(senhaAtual, novaSenha, senhaConfirma))
             {

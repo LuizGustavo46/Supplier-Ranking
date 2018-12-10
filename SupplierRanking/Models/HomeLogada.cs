@@ -395,6 +395,8 @@ namespace SupplierRanking.Models
                         f.Media_preco = float.Parse(leitor["Media_preco"].ToString());
                         f.Media_satisfacao = float.Parse(leitor["Media_satisfacao"].ToString());
                     }
+                    f.Pdf = (byte[])leitor["Pdf"];
+                    f.Pdf64 = Convert.ToBase64String(f.Pdf);
                 }
             }
             //tratamento de erro
@@ -404,6 +406,39 @@ namespace SupplierRanking.Models
                 con.Close(); //FECHA CONEXÃO
 
             return f;
+        }
+
+        /***************************************************** PERFIL DO FORNECEDOR ********************************************************/
+
+        public List<String> GaleriaFotos(string cnpj) //FEITO
+        {
+            List<String> galeriaFotos = new List<string>();
+            byte[] foto;
+            string foto64;
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+
+                //comando para selecionar o fornecedor apartir do cnpj
+                SqlCommand query = new SqlCommand("SELECT * FROM arquivos WHERE cnpj = @cnpj", con);
+                query.Parameters.AddWithValue("@cnpj", cnpj);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                //prepara o leitor para pegar as informações a serem exibidas
+                while(leitor.Read())
+                {
+                    foto = (byte[])leitor["Imagem"];
+                    foto64 = Convert.ToBase64String(foto);
+                    galeriaFotos.Add(foto64);
+                }
+            }
+            //tratamento de erro
+            catch (Exception e) { galeriaFotos = null; }
+
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+
+            return galeriaFotos;
         }
 
     }//FINAL DA CLASSE

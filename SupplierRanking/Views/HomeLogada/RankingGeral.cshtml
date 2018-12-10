@@ -223,14 +223,14 @@
                                 @if (item.Imagem64 == "")
                                 {
                                     <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%;" />
+                                        <img src="/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;" />
                                     </a>
                                 }
                                 else
                                 {
                                     String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
                                     <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%;" />
+                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;" />
                                     </a>
                                 }
                                 @*</div>*@
@@ -310,14 +310,14 @@
                                 @if (item.Imagem64 == "")
                                 {
                                     <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%;" />
+                                        <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px black;" />
                                     </a>
                                 }
                                 else
                                 {
                                     String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
                                     <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%;" />
+                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px black;" />
                                     </a>
                                 }
                                 @*</div>*@
