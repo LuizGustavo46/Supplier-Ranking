@@ -19,6 +19,197 @@
             {
                 if (item.Plano.Equals("P"))
                 {
+                    <div id="myModal2" class="modal">
+
+                        <!-- Modal content -->
+                        <div style="width: 835px;height: 600px;" class="modal-content">
+                            <span class="close-avaliacao">&times;</span>
+
+                            <h3>Entrega</h3>
+                            <h3>Qualidade</h3>
+                            <h3>Atendimento</h3>
+                            <h3>Preço</h3>
+                            <h3>Satisfação</h3>
+
+                            <form method="post" action="../Avaliacao/CadastrarAvaliacao" class="rating">
+
+                                <div style="position: relative;top: -27.5rem;left: 21%;">
+
+                                    <label>
+                                        <input type="radio" name="entrega" value="1" />
+                                        <span class="icon">★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="entrega" value="2" />
+                                        <span class="icon">★★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="entrega" value="3" />
+                                        <span class="icon">★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="entrega" value="4" />
+                                        <span class="icon">★★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="entrega" value="5" />
+                                        <span class="icon">★★★★★</span>
+                                    </label>
+
+
+                                </div>
+
+                                <div style="position:relative;top: -27.8rem;left: 21%;">
+
+
+                                    <label>
+                                        <input type="radio" name="qualidade" value="1" />
+                                        <span class="icon">★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="qualidade" value="2" />
+                                        <span class="icon">★★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="qualidade" value="3" />
+                                        <span class="icon">★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="qualidade" value="4" />
+                                        <span class="icon">★★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="qualidade" value="5" />
+                                        <span class="icon">★★★★★</span>
+                                    </label>
+
+
+                                </div>
+
+                                <div style="position: relative;top: -28.8rem;left: 21%;">
+
+                                    <label>
+                                        <input type="radio" name="atendimento" value="1" />
+                                        <span class="icon">★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="atendimento" value="2" />
+                                        <span class="icon">★★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="atendimento" value="3" />
+                                        <span class="icon">★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="atendimento" value="4" />
+                                        <span class="icon">★★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="atendimento" value="5" />
+                                        <span class="icon">★★★★★</span>
+                                    </label>
+
+
+                                </div>
+
+                                <div style="position: relative;top: -29.8rem;left: 21%;">
+
+                                    <label>
+                                        <input type="radio" name="preco" value="1" />
+                                        <span class="icon">★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="preco" value="2" />
+                                        <span class="icon">★★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="preco" value="3" />
+                                        <span class="icon">★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="preco" value="4" />
+                                        <span class="icon">★★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="preco" value="5" />
+                                        <span class="icon">★★★★★</span>
+                                    </label>
+
+
+                                </div>
+
+                                <div style="position: relative;top: -29.8rem;left: 21%;">
+
+                                    <label>
+                                        <input type="radio" name="satisfacao" value="1" />
+                                        <span class="icon">★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="satisfacao" value="2" />
+                                        <span class="icon">★★</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="satisfacao" value="3" />
+                                        <span class="icon">★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="satisfacao" value="4" />
+                                        <span class="icon">★★★★</span>
+                                    </label>
+
+
+                                    <label>
+                                        <input type="radio" name="satisfacao" value="5" />
+                                        <span class="icon">★★★★★</span>
+                                    </label>
+
+
+                                </div>
+
+                                <div style="position: relative;top: -239px;">
+                                    <h1 style="margin-bottom: -17px;margin-left: 344px;font-size: 23px;">Comentário</h1>
+                                    <br />
+                                    <input name="comentario" style="margin-left: 161px;width:463px;height:30px" />
+                                    <input  id="cnpj" name="cnpj_fornecedor" value="@item.Cnpj" style="font-size: 10px;visibility: hidden;" />
+
+                                    <button type="submit" class="btn btn-info btn-lg ">Salvar</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
                     <li class="col-12 p-4 mb-5" style="background: white;box-shadow: 0px 0px 9px black;background: #2c8cb6;
                          box-shadow: 0px 0px 23px black;color: white;border: solid 1px #00000045;">
                         <div class="row">
@@ -32,14 +223,14 @@
                                 @if (item.Imagem64 == "")
                                 {
                                     <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%;" />
+                                        <img src="/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;" />
                                     </a>
                                 }
                                 else
                                 {
                                     String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
                                     <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%;" />
+                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;" />
                                     </a>
                                 }
                                 @*</div>*@
@@ -96,7 +287,7 @@
                                 @if (Session["UserFornecedor"] == null)
                                 {
                                     @*<button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>*@
-                                    <button id="#myModal2" class="btn btn-info btn-lg">Avaliar</button>
+                                    <button id="@item.Cnpj" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>
                                 }
                                 <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
                             </div>
@@ -119,14 +310,14 @@
                                 @if (item.Imagem64 == "")
                                 {
                                     <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%;" />
+                                        <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px black;" />
                                     </a>
                                 }
                                 else
                                 {
                                     String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
                                     <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%;" />
+                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px black;" />
                                     </a>
                                 }
                                 @*</div>*@
@@ -159,7 +350,9 @@
                                 @if (Session["UserFornecedor"] == null)
                                 {
                                     @*<button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>*@
-                                    <button id="myBtn" class="btn btn-info btn-lg">Avaliar</button>
+                                    <button id="@item.Cnpj" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>
+
+
 
                                 }
                                 <a style="text-decoration: none;color: #2c8cb6;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
@@ -174,208 +367,9 @@
             }
 
         </ul>
-
+        
         <!-- Modal -->
-        <div id="myModal2" class="modal">
-
-            <!-- Modal content -->
-            <div style="width: 835px;height: 600px;" class="modal-content">
-                <span class="close-avaliacao">&times;</span>
-
-                <h3>Entrega</h3>
-                <h3>Qualidade</h3>
-                <h3>Atendimento</h3>
-                <h3>Preço</h3>
-                <h3>Satisfação</h3>
-
-                <form method="post" action="../Avaliacao/CadastrarAvaliacao" class="rating">
-
-                    <div style="position: relative;top: -27.5rem;left: 21%;">
-
-                        <label>
-                            <input type="radio" name="entrega" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="entrega" value="2" />
-                            <span class="icon">★★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="entrega" value="3" />
-                            <span class="icon">★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="entrega" value="4" />
-                            <span class="icon">★★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="entrega" value="5" />
-                            <span class="icon">★★★★★</span>
-                        </label>
-
-
-                    </div>
-
-
-
-                    <div style="position:relative;top: -27.8rem;left: 21%;">
-
-
-                        <label>
-                            <input type="radio" name="qualidade" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="qualidade" value="2" />
-                            <span class="icon">★★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="qualidade" value="3" />
-                            <span class="icon">★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="qualidade" value="4" />
-                            <span class="icon">★★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="qualidade" value="5" />
-                            <span class="icon">★★★★★</span>
-                        </label>
-
-
-                    </div>
-
-
-
-
-                    <div style="position: relative;top: -28.8rem;left: 21%;">
-
-                        <label>
-                            <input type="radio" name="atendimento" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="atendimento" value="2" />
-                            <span class="icon">★★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="atendimento" value="3" />
-                            <span class="icon">★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="atendimento" value="4" />
-                            <span class="icon">★★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="atendimento" value="5" />
-                            <span class="icon">★★★★★</span>
-                        </label>
-
-
-                    </div>
-
-
-
-
-                    <div style="position: relative;top: -29.8rem;left: 21%;">
-
-                        <label>
-                            <input type="radio" name="preco" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="preco" value="2" />
-                            <span class="icon">★★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="preco" value="3" />
-                            <span class="icon">★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="preco" value="4" />
-                            <span class="icon">★★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="preco" value="5" />
-                            <span class="icon">★★★★★</span>
-                        </label>
-
-
-                    </div>
-
-
-
-
-                    <div style="position: relative;top: -29.8rem;left: 21%;">
-
-                        <label>
-                            <input type="radio" name="satisfacao" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="satisfacao" value="2" />
-                            <span class="icon">★★</span>
-                        </label>
-
-                        <label>
-                            <input type="radio" name="satisfacao" value="3" />
-                            <span class="icon">★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="satisfacao" value="4" />
-                            <span class="icon">★★★★</span>
-                        </label>
-
-
-                        <label>
-                            <input type="radio" name="satisfacao" value="5" />
-                            <span class="icon">★★★★★</span>
-                        </label>
-
-
-                    </div>
-
-                    <div style="position: relative;top: -239px;">
-                        <h1 style="margin-bottom: -17px;margin-left: 344px;font-size: 23px;">Comentário</h1>
-                        <br />
-                        <input name="comentario" style="margin-left: 161px;width:463px;height:30px" />
-                        @*<input id="cnpj" name="cnpj_fornecedor"  style="font-size: 10px;" />*@
-
-                        <button type="submit" class="btn btn-info btn-lg ">Salvar</button>
-                    </div>
-
-                </form>
-
-            </div>
-
-        </div>
+        
 
     </div>
 

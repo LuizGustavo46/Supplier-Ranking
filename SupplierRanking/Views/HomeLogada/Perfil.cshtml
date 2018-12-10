@@ -24,13 +24,32 @@
                     <div style="width:210px;height:210px;position: absolute;left: 10%;top:26px;">                                          
                         @if (Model.Imagem64 == "")
                         {
-                           <img src="~/Content/images/iconecor.png" height="210" width="210" />
+                            if (Model.Plano.Equals("P"))
+                            {
+                                <img src="~/Content/images/iconecor.png" height="210" width="210" style="box-shadow: 0px 0px 9px white; border: 4px dotted white;"/>
+                        }
+                        else
+                        {
+                                <img src="~/Content/images/iconecor.png" height="210" width="210" style="box-shadow: 0px 0px 9px black;" />
+                            }
                         }
                         else
                         {
                             String imagem64 = string.Format("data:image/jpeg;base64,{0}", Model.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                            <img src="@imagem64" height="210" width="210" style="border-radius: 50%;"/>
+                            if (Model.Plano.Equals("P"))
+                            {
+                                <img src="@imagem64" height="210" width="210" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;"/>
                         }                                                                     
+                            else
+                            {
+                                <img src="@imagem64" height="210" width="210" style="border-radius: 50%; box-shadow: 0px 0px 9px black;"/>
+                            }
+                        }
+
+                        @if(Model.Pdf64 != "")
+                        {
+                            <a href="@Model.Pdf64"></a>
+                        }
                     </div>
                    
                     <h1 style="position: absolute;left: 41%;"></h1>
@@ -46,9 +65,9 @@
 
 
                     <div style="position: absolute;left: 50%;margin-top: 103px;">
-                        <span  style=" color: orange;" class="fa fa-star checked"></span>
-                        <span style=" color: orange;" class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star "></span>
                         <span class="fa fa-star"></span>
                         <span class="fa fa-star"></span>
 
@@ -91,8 +110,8 @@
 
                 <section>
 
-                        <h2 style="position: absolute;left: 39%;;">Arquivo PDF</h2>
-                    @Model.Pdf
+                        <h2 style="position: absolute;left: 39%;">Arquivo PDF</h2>
+                    @*@Model.Pdf*@
                         
                 </section>
                 <h2 style="margin-top: 194px;margin-left: -120px;" class="w3-center">Galeria de fotos</h2>
@@ -110,13 +129,19 @@
                 </div>
                 
                 
-                @*<div class="carousel" style="position: relative;top: 15px;left: 5%;">
-                    <img src="~/Content/images/about.jpg" alt="Image 1" />
-                    <img src="~/Content/images/bg_1.jpg" alt="Image 2" />
-                    <img src="~/Content/images/bg_3.jpg" alt="Image 3" />
-                    <img src="~/Content/images/photo.png" alt="Image 4" />
-                    <img src="~/Content/images/team.jpg" alt="Image 5" />
-                </div>*@
+               @if (ViewBag.GaleriaFotos != null)
+               {
+                int cont = 0;
+                   foreach (var f in ViewBag.GaleriaFotos)
+                   {
+
+                        <div class="carousel" style="position: relative;top: 15px;left: 5%;">
+                        <img src="@(f[cont])" alt="Image 1" />
+                        </div>
+                       cont++;
+                   }
+               }
+                
                 <h2 style="margin-top: 246px;margin-left: 171px;color: black;">Comentários</h2>
                 <ul>
                     @if (ViewBag.Comentarios != null)
