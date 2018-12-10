@@ -171,6 +171,8 @@
     <Content Include="Content\images\luizao2.png" />
     <Content Include="Content\images\luizao3.png" />
     <Content Include="Content\images\marcelo255.png" />
+    <Content Include="Content\images\olhoAberto.png" />
+    <Content Include="Content\images\olhoFechado.png" />
     <Content Include="Content\images\pesquisa.png" />
     <Content Include="Content\images\phone.png" />
     <Content Include="Content\images\photo.png" />
@@ -185,6 +187,7 @@
     <Content Include="Content\images\Slide2.jpg" />
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
+    <Content Include="Content\images\user.png" />
     <Content Include="Content\images\valmir255.png" />
     <Content Include="Content\images\video.mp4" />
     <Content Include="Content\js\bloqueia-input.js" />
@@ -239,6 +242,7 @@
     <Content Include="Content\images\person_4.jpg" />
     <Content Include="Content\images\planos.jpg" />
     <Content Include="Content\js\esqueceu-senha.js" />
+    <Content Include="Content\js\modal-avaliacao.js" />
     <Content Include="Content\js\nova-senha.js" />
     <Content Include="Content\js\update.js" />
     <Content Include="Content\vendor\animate\animate.css" />
@@ -401,6 +405,7 @@
     <Content Include="Views\HomeLogada\Perfil.cshtml" />
     <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <Content Include="Views\HomeLogada\Suporte.cshtml" />
+    <Content Include="Views\Comprador\UpdateSenha.cshtml" />
     <None Include="Views\Shared\Layout_logada.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -563,7 +568,6 @@
     <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
     <Content Include="Views\Fornecedor\EsqueceuSenhaFornecedor.cshtml" />
     <Content Include="Views\Fornecedor\listaFornecedor.cshtml" />
-    <Content Include="Views\Avaliacao\CadastrarAvaliacao.cshtml" />
     <Content Include="Views\Avaliacao\UpdateComentario.cshtml" />
     <Content Include="Views\HomeLogada\RankingPremium.cshtml" />
     <Content Include="Views\HomeLogada\Pesquisa.cshtml" />

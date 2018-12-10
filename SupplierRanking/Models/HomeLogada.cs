@@ -261,7 +261,7 @@ namespace SupplierRanking.Models
                 // Criação de comando para selecionar a tabela FORNECEDOR
                 SqlCommand query =
                     new SqlCommand("SELECT * FROM fornecedor WHERE nome_empresa like @texto", con);
-                query.Parameters.AddWithValue("@texto", pesquisa);
+                query.Parameters.AddWithValue("@texto", "%" + pesquisa + "%");
                 SqlDataReader leitor = query.ExecuteReader();
 
 
@@ -385,6 +385,7 @@ namespace SupplierRanking.Models
                     f.Media = float.Parse(leitor["Media"].ToString());
                     f.Plano = leitor["Plano"].ToString();
                     f.Imagem = (byte[])leitor["Imagem"];
+                    f.Imagem64 = Convert.ToBase64String(f.Imagem);
                     f.Nome_categoria = leitor["Nome_categorias"].ToString();
                     if (f.Plano.Equals("P")) //SE O FORNECEDOR FOR PREMIUM MOSTRA AS MÉDIAS DOS CRITÉRIOS DE AVALIAÇÃO
                     {

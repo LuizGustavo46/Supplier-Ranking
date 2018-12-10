@@ -38,7 +38,10 @@ namespace SupplierRanking.Controllers
                 cf.Senha = senha;
                 if (cf.LoginPessoaFisica())
                 {
-                    Session["UserPessoaFisica"] = cf;
+                    Session["UserPessoaFisica"] = cf.Cpf;
+                    cf = cf.DadosPerfil(cpf);
+                    Session["NomeUsuario"] = cf.Nome;
+                    Session["CodigoUsuario"] = cf.Codigo;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
@@ -57,7 +60,10 @@ namespace SupplierRanking.Controllers
                 cj.Senha = senha;
                 if (cj.LoginPessoaJuridica())
                 {
-                    Session["UserPessoaJuridica"] = cj;
+                    Session["UserPessoaJuridica"] = cj.Cnpj;
+                    cj = cj.DadosPerfil(cnpj);
+                    Session["NomeUsuario"] = cj.Nome_empresa;
+                    Session["CodigoUsuario"] = cj.Codigo;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }
@@ -78,6 +84,7 @@ namespace SupplierRanking.Controllers
                 {
                     f = Fornecedor.Perfil(cnpj);
                     Session["UserFornecedor"] = f.Cnpj;
+                    Session["NomeUsuario"] = f.Nome_empresa;
                     //ViewBag.UserFornecedor = Fornecedor.Perfil(cnpj);
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
@@ -99,6 +106,7 @@ namespace SupplierRanking.Controllers
                 if (fu.LoginFuncionario())
                 {
                     Session["UserFuncionario"] = fu;
+                    Session["NomeUsuario"] = fu.Nome;
                     ViewBag.Message = "Bem-vindo";
                     return RedirectToAction("RankingGeral", "HomeLogada");
                 }

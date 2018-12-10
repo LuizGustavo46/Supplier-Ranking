@@ -477,6 +477,46 @@ namespace SupplierRanking.Models
             return true;
         }
 
+        /******************************************************* PEGAR NOME COMPRADOR **************************************************/
+
+        public Comprador DadosPerfil(string cpf_cnpj) //FEITO
+        {
+            Comprador c = new Comprador();
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+
+                    SqlCommand query = new SqlCommand("SELECT nome, codigo FROM comprador WHERE cpf = @cpf", con);
+                query.Parameters.AddWithValue("@cpf", cpf_cnpj);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                if (leitor.Read())
+                {
+                    c.Nome = leitor["Nome"].ToString();
+                    c.Codigo = int.Parse(leitor["Codigo"].ToString());
+                }
+                else
+                {
+                    leitor.Close();
+
+                    SqlCommand query2 = new SqlCommand("SELECT nome_empresa, codigo FROM comprador WHERE cnpj = @cnpj", con);
+                    query2.Parameters.AddWithValue("@cnpj", cpf_cnpj);
+                    leitor = query2.ExecuteReader();
+                    if (leitor.Read())
+                    {
+                        c.Nome_empresa = leitor["Nome_empresa"].ToString();
+                        c.Codigo = int.Parse(leitor["Codigo"].ToString());
+                    }
+                }
+            }
+            catch (Exception e) { c = null; }
+
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+
+            return c;
+        }
+
 
 
 

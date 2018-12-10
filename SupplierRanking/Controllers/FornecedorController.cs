@@ -168,15 +168,17 @@ namespace SupplierRanking.Controllers
                 }
             }
 
-            
 
-            
 
-            TempData["Msg"] = f.CadastroFornecedor();
-            if(listGaleriaFotos != null)
-                f.CadastrarGaleriaFotos(cnpj, listGaleriaFotos);
 
-            return RedirectToAction("CadastroFornecedor");
+
+            if (f.CadastroFornecedor())
+            {
+                if (listGaleriaFotos != null)
+                    f.CadastrarGaleriaFotos(cnpj, listGaleriaFotos);
+                return RedirectToAction("Login", "Login");
+            }
+            else { return RedirectToAction("CadastroFornecedor"); }
         }
 
         /*================================================================================================================================================================================*/
