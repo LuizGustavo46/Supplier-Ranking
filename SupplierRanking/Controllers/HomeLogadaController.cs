@@ -71,6 +71,15 @@ namespace SupplierRanking.Controllers
                 return View("RankingPremium", HomeLogada.RankingPremium());
         }
 
+        public ActionResult RankingInteresses()
+        {
+            if (Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null)
+                return RedirectToAction("Index", "Home");
+            else
+
+                return View("RankingInteresses", HomeLogada.RankingInteresses(int.Parse(Session["CodigoUsuario"].ToString())));
+        }
+
         public ActionResult Suporte()
         {
             if (Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)

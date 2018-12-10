@@ -713,7 +713,7 @@ namespace SupplierRanking.Models
 
                 for (int i = 0; i < galeriaFotos.Count; i++) {
                     //CRIAÇÃO DE COMANDO
-                    SqlCommand query = new SqlCommand("INSER INTO arquivos VALUES (@imagem,@cnpj_fornecedor", con);
+                    SqlCommand query = new SqlCommand("INSERT INTO arquivos VALUES (@imagem,@cnpj_fornecedor)", con);
                     query.Parameters.AddWithValue("@imagem", galeriaFotos[i]);
                     query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
                     query.ExecuteNonQuery();

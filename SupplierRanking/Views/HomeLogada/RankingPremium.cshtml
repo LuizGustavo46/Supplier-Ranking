@@ -37,47 +37,52 @@
                             }
                             
                             @*</div>*@
-                            <div class="col-5 " style="width: 972px;">
-                                <div class="d-flex align-items-baseline pl-3">
-                                    <h4>
-                                        @item.Media
-                                    </h4>
-                                    <div class="d-flex col-10 justify-content-around pl-5">
-                                        <div>
-                                            <img />
-                                            @item.Media_qualidade
+                                <div class="col-5 " style="width: 972px;">
+                                    <div class="d-flex align-items-baseline pl-3">
+
+                                        <div class="d-flex col-10 justify-content-around pl-5" style="margin-left:60px">
+                                            <div>
+                                                <img src="~/Content/images/qualidade.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_qualidade
+                                            </div>
+
+                                            <div>
+                                                <img src="~/Content/images/atendimento.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_atendimento
+                                            </div>
+
+                                            <div>
+                                                <img src="~/Content/images/entrega.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_entrega
+                                            </div>
+
+                                            <div>
+                                                <img src="~/Content/images/preço.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_preco
+                                            </div>
+
+                                            <div>
+                                                <img src="~/Content/images/satisfacao.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_satisfacao
+                                            </div>
                                         </div>
 
-                                        <div>
-                                            <img />
-                                            @item.Media_atendimento
-                                        </div>
+                                        <img src="~/Content/images/selo.png" height="120" width="150" style="position:absolute; margin-left:525px;margin-top:23px;" />
+                                        <h3 style="position:absolute;margin-left:595px;margin-top:59px;color:black;text-shadow:0px 0px 10px black">
+                                            @item.Media
+                                        </h3>
 
-                                        <div>
-                                            <img />
-                                            @item.Media_entrega
-                                        </div>
-
-                                        <div>
-                                            <img />
-                                            @item.Media_preco
-                                        </div>
-
-                                        <div>
-                                            <img />
-                                            @item.Media_satisfacao
-                                        </div>
                                     </div>
+                                    <div>
+                                        <h2 style="font-weight: bold;">
+                                            @item.Nome_empresa
+                                        </h2>
+                                    </div>
+                                    <div>
+                                        @item.Nome_categoria
+                                    </div>
+                                    <img src="~/Content/images/premium2.png" height="90" width="70" style="margin-left:-245px; margin-top:-223px;" />
                                 </div>
-                                <div>
-                                    <h2 style="font-weight: bold;">
-                                        @item.Nome_empresa
-                                    </h2>
-                                </div>
-                                <div>
-                                    @item.Nome_categoria
-                                </div>
-                            </div>
                             <div class="col-4 d-flex justify-content-between mr-5" style="flex-direction:column; border-left: 2px solid;padding-left: 5rem;">
 
                                 <h3>"@item.Slogan"</h3>

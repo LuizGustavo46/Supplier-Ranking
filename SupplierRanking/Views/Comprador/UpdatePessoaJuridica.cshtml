@@ -16,11 +16,13 @@
             <p>@ViewBag.Message</p>
             <!--- Campos do Comprador Fisico -->
             <div>
-                <input class="input" type="text" value="@Model.Codigo" name="codigo" readonly="readonly" style="background-color: gray">
+                <input class="input" type="text" value="@Model.Codigo" name="codigo" readonly="readonly" style="visibility:hidden">
+                <a name="codigo" style="margin-left:-110px;">@Model.Codigo</a>
                 <br /> <br />
-                <input class="input" type="text" value="@Model.Cnpj" name="cnpj" readonly="readonly">
+                <input class="input" type="text" value="@Model.Cnpj" name="cnpj" readonly="readonly" style="visibility:hidden">
+                <a name="cpf" style="margin-left:-160px;">CPF: @Model.Cnpj</a>
                 <br /> <br />
-                <input class="input"  type="text" value="@Model.Nome_empresa" name="nome_empresa">
+                <input class="input" type="text" value="@Model.Nome_empresa" name="nome_empresa">
                 <br /> <br />
                 <input class="input" type="text" value="@Model.Email" name="email">
                 <br /> <br />

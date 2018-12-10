@@ -149,6 +149,7 @@
     <Content Include="Content\images\about.jpg" />
     <Content Include="Content\images\add-imagem-pequeno.png" />
     <Content Include="Content\images\add-imagem.png" />
+    <Content Include="Content\images\atendimento.png" />
     <Content Include="Content\images\avaliar.png" />
     <Content Include="Content\images\compradorIcon.png" />
     <Content Include="Content\images\contato.jpg" />
@@ -156,6 +157,7 @@
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\email1.png" />
     <Content Include="Content\images\endereco.png" />
+    <Content Include="Content\images\entrega.png" />
     <Content Include="Content\images\ExperimenteAgora.jpg" />
     <Content Include="Content\images\fechar.png" />
     <Content Include="Content\images\filtro.png" />
@@ -182,9 +184,15 @@
     <Content Include="Content\images\plano-free.png" />
     <Content Include="Content\images\plano-premium.png" />
     <Content Include="Content\images\plano.png" />
+    <Content Include="Content\images\premium.png" />
+    <Content Include="Content\images\premium2.png" />
+    <Content Include="Content\images\preço.png" />
+    <Content Include="Content\images\qualidade.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\remove-pdf.png" />
+    <Content Include="Content\images\satisfacao.png" />
     <Content Include="Content\images\search.png" />
+    <Content Include="Content\images\selo.png" />
     <Content Include="Content\images\servicos.png" />
     <Content Include="Content\images\Slide1.jpg" />
     <Content Include="Content\images\Slide2.jpg" />
@@ -409,6 +417,7 @@
     <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <Content Include="Views\HomeLogada\Suporte.cshtml" />
     <Content Include="Views\Comprador\UpdateSenha.cshtml" />
+    <Content Include="Views\HomeLogada\RankingInteresses.cshtml" />
     <None Include="Views\Shared\Layout_logada.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -121,13 +121,12 @@ namespace SupplierRanking.Controllers
         public ActionResult UpdatePessoaFisica(int codigo)
         {
             Comprador c = Comprador.BuscaPessoa(codigo);
-
-            if (c == null)
-            {
-                TempData["Msg"] = "Erro ao encontrar dados";
-                return RedirectToAction("UpdatePessoaFisica");
-            }
-            return View(c);
+                if (c == null)
+                {
+                    TempData["Msg"] = "Erro ao encontrar dados";
+                    return RedirectToAction("UpdatePessoaFisica");
+                }
+                return View(c);          
         }
 
         [HttpPost]
