@@ -1,13 +1,7 @@
-/*
-    DEMO STYLE
-*/
 
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-    /*font-family: 'Poppins', sans-serif;
-    background: #fafafa;*/
     position: relative;
-    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
 }
 
 .conteudo-logada {
@@ -52,8 +46,44 @@ a:focus {
     margin: 40px 0;
 }
 
+
 /* ---------------------------------------------------
-    SIDEBAR STYLE
+    BARRA DE PESQUISA
+----------------------------------------------------- */
+
+.section-pesquisa {
+    height: 104px;
+    background: #0C496BE6;
+}
+
+.section-pesquisa .input-pesquisa {
+    width: 100%; 
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.section-pesquisa .btn-pesquisa,
+.section-pesquisa .btn-filtro {
+    width: 30px;
+    height:30px;
+}
+
+.section-pesquisa .wrap-btns {
+    width: 85px;
+}
+
+.section-pesquisa .btn-pesquisa {
+    background: url('../images/pesquisa.png') no-repeat;
+}
+
+.section-pesquisa .btn-filtro {
+    background: url('../images/filtro.png') no-repeat;
+}
+
+
+/* ---------------------------------------------------
+    MENU LATERAL
 ----------------------------------------------------- */
 
 .wrapper {
@@ -63,21 +93,13 @@ a:focus {
 }
 
 #sidebar {
-   width: 150px;
+    width: 150px;
     height: 100vh;
-    /*position: absolute;*/
+    position: fixed;
     top: 0px;
-    left: 0px;
-   background: #0C496BE6;
-   color: #fff;
-   transition: all 0.3s; 
-   position: fixed;
-   
+    background: #0C496BE6;
+    color: #fff;
 }
-
-/*#sidebar.active {
-    margin-left: -250px;
-}*/
 
 #sidebar .sidebar-header {
     padding: 20px;
@@ -188,18 +210,9 @@ a.perfil {
     text-decoration: none;
 }
 
-/*.mySlides {
-    display:none;
-}
-
-.w3-content{
-    max-width: 502px;
-}*/
-
 .modal-open {
 	overflow: visible !important;
 }
-
 
 .comentario {
     width: 1197px;
@@ -210,4 +223,3 @@ a.perfil {
     left: 5%;
 }
 
-  
