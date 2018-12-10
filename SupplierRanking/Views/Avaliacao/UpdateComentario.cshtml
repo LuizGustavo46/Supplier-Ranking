@@ -1,4 +1,4 @@
-﻿@model SupplierRanking.Models.Avaliacao
+﻿@model SupplierRanking.Models.Fornecedor
 @{
     ViewBag.Title = "UpdateComentario";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
@@ -6,13 +6,13 @@
 
 <div class="container-login100">
 
-    <div class="wrap-login100" style="background-color: white;">
+    @*<div class="wrap-login100" style="background-color: white;">
 
         <h2>UpdateComentario</h2>
 
         <form action="../Avaliacao/UpdateComentario" method="post" class="login100-form validate-form">
-            <p>@ViewBag.Message</p>
-            <!--- Campos Para Editar COMENTARIO -->
+            <p>ViewBag.Message</p>
+            - Campos Para Editar COMENTARIO 
             <div>
                 <input type="text" value="@Model.Qualidade" name="qualidade" style="border: 1px solid black" placeholder="Qualidade">
                 <input type="text" value="@Model.Atendimento" name="atendimento" style="border: 1px solid black" placeholder="Atendimento">
@@ -23,13 +23,213 @@
                 <input type="text" value="@Model.Comentario" name="comentario" style="border: 1px solid black" placeholder="Comentário">
                 <br /> <br />
                 @*<input type="text" value="09/11/2018" name="data_avaliacao" placeholder="Dia / Mês / Ano" style="border: 1px solid black">*@
-                <input type="text" value="@Model.Cnpj_fornecedor" name="cnpj_fornecedor" placeholder="cnpj fornecedor" style="border: 1px solid black">
-                <input type="text" value="@Model.Codigo_comprador" name="codigo_comprador" placeholder="codigo comprador" style="border: 1px solid black">
+                @*<input type="text" value="Model.Cnpj_fornecedor" name="cnpj_fornecedor" placeholder="cnpj fornecedor" style="border: 1px solid black">
+                <input type="text" value="Model.Codigo_comprador" name="codigo_comprador" placeholder="codigo comprador" style="border: 1px solid black">
                 <br /> <br />
             </div>
 
             <br /> <br />
             <button id="btnSalvar">Salvar</button>
         </form>
+    </div>*@
+
+
+    <div id="myModal2" class="modal">
+
+        <!-- Modal content -->
+        <div style="width: 835px;height: 600px;" class="modal-content">
+            <span class="close-avaliacao">&times;</span>
+
+            <h3>Entrega</h3>
+            <h3>Qualidade</h3>
+            <h3>Atendimento</h3>
+            <h3>Preço</h3>
+            <h3>Satisfação</h3>
+
+            <form method="post" action="../Avaliacao/CadastrarAvaliacao" class="rating">
+
+                <div style="position: relative;top: -27.5rem;left: 21%;">
+
+                    <label>
+                        <input type="radio" name="entrega" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="entrega" value="2" />
+                        <span class="icon">★★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="entrega" value="3" />
+                        <span class="icon">★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="entrega" value="4" />
+                        <span class="icon">★★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="entrega" value="5" />
+                        <span class="icon">★★★★★</span>
+                    </label>
+
+
+                </div>
+
+                <div style="position:relative;top: -27.8rem;left: 21%;">
+
+
+                    <label>
+                        <input type="radio" name="qualidade" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="qualidade" value="2" />
+                        <span class="icon">★★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="qualidade" value="3" />
+                        <span class="icon">★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="qualidade" value="4" />
+                        <span class="icon">★★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="qualidade" value="5" />
+                        <span class="icon">★★★★★</span>
+                    </label>
+
+
+                </div>
+
+                <div style="position: relative;top: -28.8rem;left: 21%;">
+
+                    <label>
+                        <input type="radio" name="atendimento" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="atendimento" value="2" />
+                        <span class="icon">★★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="atendimento" value="3" />
+                        <span class="icon">★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="atendimento" value="4" />
+                        <span class="icon">★★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="atendimento" value="5" />
+                        <span class="icon">★★★★★</span>
+                    </label>
+
+
+                </div>
+
+                <div style="position: relative;top: -29.8rem;left: 21%;">
+
+                    <label>
+                        <input type="radio" name="preco" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="preco" value="2" />
+                        <span class="icon">★★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="preco" value="3" />
+                        <span class="icon">★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="preco" value="4" />
+                        <span class="icon">★★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="preco" value="5" />
+                        <span class="icon">★★★★★</span>
+                    </label>
+
+
+                </div>
+
+                <div style="position: relative;top: -29.8rem;left: 21%;">
+
+                    <label>
+                        <input type="radio" name="satisfacao" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="satisfacao" value="2" />
+                        <span class="icon">★★</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" name="satisfacao" value="3" />
+                        <span class="icon">★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="satisfacao" value="4" />
+                        <span class="icon">★★★★</span>
+                    </label>
+
+
+                    <label>
+                        <input type="radio" name="satisfacao" value="5" />
+                        <span class="icon">★★★★★</span>
+                    </label>
+
+
+                </div>
+
+                <div style="position: relative;top: -239px;">
+                    <h1 style="margin-bottom: -17px;margin-left: 344px;font-size: 23px;">Comentário</h1>
+                    <br />
+                    <input name="comentario" style="margin-left: 161px;width:463px;height:30px" />
+                    <input id="cnpj" name="cnpj_fornecedor" value="@Model.Cnpj" style="font-size: 10px;visibility: hidden;" />
+
+                    <button type="submit" class="btn btn-info btn-lg ">Salvar</button>
+                </div>
+
+            </form>
+
+        </div>
+
     </div>
+
+
+
+
+
+
+
+
+
 </div>

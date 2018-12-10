@@ -30,29 +30,36 @@ namespace SupplierRanking.Controllers
         {
             Avaliacao av = new Avaliacao();
 
-            av.Qualidade = qualidade;
-            av.Atendimento = atendimento;
-            av.Entrega = entrega;
-            av.Preco = preco;
-            av.Satisfacao = satisfacao;
-            av.Comentario = comentario;
-            //av.Data_avaliacao = data_avaliacao;
             av.Cnpj_fornecedor = cnpj_fornecedor;
             av.Codigo_comprador = int.Parse(Session["CodigoUsuario"].ToString());
 
-            if (av.CadastrarAvaliacao())
+            if (av.VerificarSeteDias())
             {
-                ViewBag.Message = "Avaliação realizada!";
-                return RedirectToAction("Index", "Home");
+                av.Qualidade = qualidade;
+                av.Atendimento = atendimento;
+                av.Entrega = entrega;
+                av.Preco = preco;
+                av.Satisfacao = satisfacao;
+                av.Comentario = comentario;
+                //av.Data_avaliacao = data_avaliacao;
+                av.Cnpj_fornecedor = cnpj_fornecedor;
+                av.Codigo_comprador = int.Parse(Session["CodigoUsuario"].ToString());
+
+                if (av.CadastrarAvaliacao())
+                {
+                    ViewBag.Message = "Avaliação realizada!";
+                    return RedirectToAction("RankingGeral", "HomeLogada");
+                }
+                else
+                {
+                    ViewBag.Message = "Deseja atualizar seu comentário?";
+                    return RedirectToAction("UpdateComentario");
+                }
             }
             else
             {
-                ViewBag.Message = "Deseja atualizar seu comentário?";
                 return RedirectToAction("UpdateComentario");
             }
-
-
-            return RedirectToAction("CadastrarAvaliacao");
         }
     
         /************************************************************ UPDATE AVALIAÇÃO ******************************************************/
