@@ -16,8 +16,10 @@ namespace SupplierRanking.Controllers
         // GET: HomeLogada
         public ActionResult Pesquisa()
         {
-
-            return View("Pesquisa", HomeLogada.RankingGeral());
+            if (Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+                return RedirectToAction("Index", "Home");
+            else
+                return View("Pesquisa", HomeLogada.RankingGeral());
         }
 
         [HttpPost]
@@ -46,18 +48,27 @@ namespace SupplierRanking.Controllers
 
         public ActionResult RankingGeral()
         {
-            return View("RankingGeral", HomeLogada.RankingGeral());
+            if(Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+                return RedirectToAction("Index","Home");
+            else
+                return View("RankingGeral", HomeLogada.RankingGeral());
         }
 
 
         public ActionResult RankingPremium()
         {
-            return View("RankingPremium", HomeLogada.RankingPremium());
+            if (Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+                return RedirectToAction("Index", "Home");
+            else
+                return View("RankingPremium", HomeLogada.RankingPremium());
         }
 
         public ActionResult Suporte()
         {
-            return View();
+            if (Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+                return RedirectToAction("Index", "Home");
+            else
+                return View();
         }
 
         public string CarregaFoto()

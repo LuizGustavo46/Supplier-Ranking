@@ -119,9 +119,11 @@
                 </div>*@
                 <h2 style="margin-top: 246px;margin-left: 171px;color: black;">Comentários</h2>
                 <ul>
-                    @foreach (var h in ViewBag.Comentarios)
+                    @if (ViewBag.Comentarios != null)
                     {
-                        //LARESSA POR FAVOR ARRUMA ISSO ? ESSA LISTA DE COMENTARIOS TA TODA ZUADA E EU NAO SEI ARRUMAR - OBG 'val :)'
+                        foreach (var h in ViewBag.Comentarios)
+                        {
+                            //LARESSA POR FAVOR ARRUMA ISSO ? ESSA LISTA DE COMENTARIOS TA TODA ZUADA E EU NAO SEI ARRUMAR - OBG 'val if'
 
                         <li class="col-12 p-4 mb-5" style="background: white;box-shadow: 0px 0px 9px black;">
                             @*<div style="width: 1275px;height: 400px;top: 69%;left: 8%;overflow: hidden;box-shadow: 1px 1px 9px black;">*@
@@ -142,6 +144,7 @@
 
                             @*</div>*@
                         </li>
+                        }
                     }
                 </ul>
 

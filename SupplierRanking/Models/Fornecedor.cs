@@ -205,9 +205,9 @@ namespace SupplierRanking.Models
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ CADASTRO FORNECEDOR ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public string CadastroFornecedor() //FEITO
+        public bool CadastroFornecedor() //FEITO
         {
-            string res = "Cadastro realizado.";
+            bool res = true;
             try
             {   
                 // abre conexão
@@ -252,12 +252,12 @@ namespace SupplierRanking.Models
                 else
                 {
                     //Mensagem de erro
-                    res = "Preencha os campos corretamente";
+                    res = false;
                 }
             }
             catch (Exception ex)
             {
-                res = ex.Message; // Caso der erro na inserção
+                res = false; // Caso der erro na inserção
             }
 
             if (con.State == ConnectionState.Open)

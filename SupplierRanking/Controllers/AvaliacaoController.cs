@@ -11,22 +11,22 @@ namespace SupplierRanking.Controllers
     {
         /************************************************************ CADASTRAR AVALIAÇÃO ******************************************************/
 
-        public ActionResult CadastrarAvaliacao(string cnpj_fornecedor, int codigo_comprador)
-        {
+        //public ActionResult CadastrarAvaliacao(string cnpj_fornecedor)
+        //{
 
-            Avaliacao a = new Avaliacao();
-            a.Cnpj_fornecedor = cnpj_fornecedor;
-            a.Codigo_comprador = codigo_comprador;
+        //    Avaliacao a = new Avaliacao();
+        //    a.Cnpj_fornecedor = cnpj_fornecedor;
+        //    a.Codigo_comprador = int.Parse(Session["CodigoUsuario"].ToString());
 
-            if (a.VerificarSeteDias())
-                return View();
-            else
-                return RedirectToAction("UpdateComentario");
-        }
+        //    if (a.VerificarSeteDias())
+        //        return View();
+        //    else
+        //        return RedirectToAction("UpdateComentario");
+        //}
 
         [HttpPost]
         public ActionResult CadastrarAvaliacao(int qualidade, int atendimento, int entrega, int preco, int satisfacao, 
-            string comentario/*, string data_avaliacao*/, string cnpj_fornecedor, int codigo_comprador)
+            string comentario/*, string data_avaliacao*/, string cnpj_fornecedor)
         {
             Avaliacao av = new Avaliacao();
 
@@ -38,16 +38,16 @@ namespace SupplierRanking.Controllers
             av.Comentario = comentario;
             //av.Data_avaliacao = data_avaliacao;
             av.Cnpj_fornecedor = cnpj_fornecedor;
-            av.Codigo_comprador = codigo_comprador;
+            av.Codigo_comprador = int.Parse(Session["CodigoUsuario"].ToString());
 
             if (av.CadastrarAvaliacao())
             {
-                ViewBag.Message = "";
+                ViewBag.Message = "Avaliação realizada!";
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                ViewBag.Message = "Deseja atualizar seu comentário ?";
+                ViewBag.Message = "Deseja atualizar seu comentário?";
                 return RedirectToAction("UpdateComentario");
             }
 
