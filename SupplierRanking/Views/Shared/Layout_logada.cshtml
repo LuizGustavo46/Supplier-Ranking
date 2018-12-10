@@ -144,12 +144,25 @@
                     </li>
 
                     <li>
-                        <a style="text-decoration: none; font-family: inherit;"
-                        href="/Comprador/UpdateSenha/" aria-expanded="false">Alterar Senha</a>
+                        
+                           @if (Session["UserFornecedor"] != null)
+                           {
+                            <a style="text-decoration: none; font-family: inherit;"
+                               href="/Fornecedor/UpdateSenha/" aria - expanded="false">
+                                Alterar Senha </a>
+
+                           }
+                           else if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                           {
+                            <a style="text-decoration: none; font-family: inherit;"
+                               href="/Comprador/UpdateSenha/" aria - expanded="false">
+                                Alterar Senha </a>
+
+                           }
                     </li>
 
-                    <li>
-                        <a style="text-decoration: none; font-family: inherit;"
+                           <li>
+                               <a style="text-decoration: none; font-family: inherit;"
                         href="/Home/Sair/" aria-expanded="false">Encerrar Sessão</a>
                     </li>
                 </ul>
