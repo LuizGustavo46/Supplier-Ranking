@@ -6,6 +6,7 @@ body {
 
 .conteudo-logada {
     position: absolute;
+    top: 105px;
     left: 150px;
 }
 
@@ -46,6 +47,21 @@ a:focus {
     margin: 40px 0;
 }
 
+.footer-logado h4 {
+    font-weight: bold;
+    color: #FFF;
+}
+
+.footer-logado a {
+    font-size: 16px;
+    color: #D0A748;
+}
+
+.footer-logado p,
+.footer-logado p>a {
+    font-size: 15px;
+}
+
 
 /* ---------------------------------------------------
     BARRA DE PESQUISA
@@ -54,6 +70,10 @@ a:focus {
 .section-pesquisa {
     height: 104px;
     background: #0C496BE6;
+}
+
+.section-pesquisa nav {
+    border-radius: 4px;
 }
 
 .section-pesquisa .input-pesquisa {
@@ -102,13 +122,29 @@ a:focus {
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
-    background: #0C496BE6;
+    height: 104px;
 }
 
-#sidebar ul.components {
+#sidebar .sidebar-header h4 {
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+}
+
+#sidebar ul.nav-menu {
     padding: 20px 0;
     border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul.nav-menu li {
+    flex-direction: column;
+}
+
+#sidebar ul.nav-menu #perfil {
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50px; 
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3); 
 }
 
 #sidebar ul p {
@@ -116,9 +152,13 @@ a:focus {
     padding: 10px;
 }
 
+#sidebar ul h5 {
+    color: #fff;
+}
+
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 15px;
     display: block;
     text-decoration: none;
     color: white;
@@ -129,22 +169,10 @@ a:focus {
     background: #fff;
 }
 
-#sidebar ul li.active>a {
+#sidebar ul li.active > a {
     color: #fff;
     background: #D0A748;
 }
-
-/*a[data-toggle="collapse"] {
-    position: relative;
-}
-
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-}*/
 
 ul ul a {
     font-size: 0.9em !important;
