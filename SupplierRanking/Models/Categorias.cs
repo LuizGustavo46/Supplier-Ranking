@@ -12,7 +12,7 @@ namespace SupplierRanking.Models
     {
         //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-            new SqlConnection(ConfigurationManager.ConnectionStrings["VALMIR"].ConnectionString);
+            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
 
         //CAMPOS DO BANCO DE DADOS
         private string categoria;
