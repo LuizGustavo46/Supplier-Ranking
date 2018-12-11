@@ -168,30 +168,37 @@
                 </ul>
 
 
-                    <ul class="list-unstyled components">
-                        <li class="active">
-                            <a href="/HomeLogada/RankingGeral" aria-expanded="false">Ranking Geral</a>
-                        </li>
-                        @*<li>
-                    <a href="/HomeLogada/Pesquisa"  aria-expanded="false">Pesquisar</a>
-                </li>*@
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="/HomeLogada/RankingGeral" aria-expanded="false">Ranking Geral</a>
+                    </li>
+                    @*<li>
+            <a href="/HomeLogada/Pesquisa"  aria-expanded="false">Pesquisar</a>
+        </li>*@
 
+                    <li>
+                        <a href="/HomeLogada/RankingPremium" aria-expanded="false">Ranking Premium</a>
+                    </li>
+
+                    @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                    {
                         <li>
-                            <a href="/HomeLogada/RankingPremium" aria-expanded="false">Ranking Premium</a>
+                            <a href="/HomeLogada/RankingInteresses" aria-expanded="false">Ranking Interesses</a>
                         </li>
+                    }
 
-                        <li>
-                            <a href="/HomeLogada/Suporte" aria-expanded="false">Suporte</a>
-                        </li>
+                    <li>
+                        <a href="/HomeLogada/Suporte" aria-expanded="false">Suporte</a>
+                    </li>
 
-                        <li>
-                            @*<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Sair</a>*@
+                    <li>
+                        @*<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Sair</a>*@
 
 
-                            @*@Html.ActionLink("Editar informações", "UpdatePessoaFisica", "Comprador", new { area = "" }, new { @class = "" })*@
+                        @*@Html.ActionLink("Editar informações", "UpdatePessoaFisica", "Comprador", new { area = "" }, new { @class = "" })*@
 
-                        </li>
-                    </ul>
+                    </li>
+                </ul>
 
 
 

@@ -122,14 +122,14 @@
                 </div>
                 
                 
-               @if (ViewBag.GaleriaFotos != null)
+               @if (ViewBag.ListaFotos != null)
                {
-                int cont = 0;
-                   foreach (var f in ViewBag.GaleriaFotos)
+                   int cont = 0;
+                   foreach (var f in ViewBag.ListaFotos)
                    {
-
+                       String foto64 = string.Format("data:image/jpeg;base64,{0}", f);
                         <div class="carousel" style="position: relative;top: 15px;left: 5%;">
-                        <img src="@(f[cont])" alt="Image 1" />
+                        <img src="@foto64" alt="Image1" />
                         </div>
                        cont++;
                    }

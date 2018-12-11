@@ -42,7 +42,7 @@ namespace SupplierRanking.Controllers
                 av.Satisfacao = satisfacao;
                 av.Comentario = comentario;
                 //av.Data_avaliacao = data_avaliacao;
-                av.Cnpj_fornecedor = cnpj_fornecedor;
+                av.Cnpj_fornecedor = Session["PassarCnpj"].ToString(); /*cnpj_fornecedor;*/
                 av.Codigo_comprador = int.Parse(Session["CodigoUsuario"].ToString());
 
                 if (av.CadastrarAvaliacao())

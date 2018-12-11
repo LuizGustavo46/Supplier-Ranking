@@ -528,19 +528,29 @@ namespace SupplierRanking.Models
             try        
             {
                 //ABRE CONEXÃO
-                con.Open(); 
-
+                con.Open();
+                SqlCommand query;
                 //comando para update na tabela de FORNECEDOR
-                SqlCommand query =
-                    new SqlCommand("UPDATE fornecedor SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
-                    "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone," +
-                    "celular = @celular, descricao = @descricao, slogan = @slogan WHERE cnpj = @cnpj", con);
+                if (imagem != null)
+                {
+                    query =
+                        new SqlCommand("UPDATE fornecedor SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
+                        "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone," +
+                        "celular = @celular, descricao = @descricao, slogan = @slogan, imagem = @imagem WHERE cnpj = @cnpj", con);
+                }
+                else
+                {
+                    query =
+                        new SqlCommand("UPDATE fornecedor SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
+                        "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone," +
+                        "celular = @celular, descricao = @descricao, slogan = @slogan WHERE cnpj = @cnpj", con);
+                }
 
                 string confirmaSenha ="";
 
-                if (nome_empresa.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) &&
-                    (celular.Length == 15 || celular.Length == 0) && endereco.Length > 1 && bairro.Length > 1 &&
-                    cidade.Length > 1 && uf.Length == 2 && cep.Length == 9 && senha == confirmaSenha)
+                if (nome_empresa.Length >= 1 && email.Length >= 8 && telefone.Length >= 14 &&
+                    celular.Length >= 15 && endereco.Length > 1 && bairro.Length > 1 &&
+                    cidade.Length > 1 && uf.Length == 2 && cep.Length == 9)
                 {
                     query.Parameters.AddWithValue("@cnpj",            cnpj);
                     query.Parameters.AddWithValue("@nome_empresa",    nome_empresa);
@@ -554,8 +564,13 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@celular",         celular);
                     query.Parameters.AddWithValue("@descricao",       descricao);
                     query.Parameters.AddWithValue("@slogan",          slogan);
-                    //query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
-                    query.ExecuteNonQuery();
+                    if (imagem != null)
+                    {
+                        query.Parameters.AddWithValue("@imagem", imagem);
+                    }
+                        //query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
+                        query.ExecuteNonQuery();
+                    
                 }
 
                 else
@@ -698,7 +713,7 @@ namespace SupplierRanking.Models
 
                 for (int i = 0; i < galeriaFotos.Count; i++) {
                     //CRIAÇÃO DE COMANDO
-                    SqlCommand query = new SqlCommand("INSER INTO arquivos VALUES (@imagem,@cnpj_fornecedor", con);
+                    SqlCommand query = new SqlCommand("INSERT INTO arquivos VALUES (@imagem,@cnpj_fornecedor)", con);
                     query.Parameters.AddWithValue("@imagem", galeriaFotos[i]);
                     query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
                     query.ExecuteNonQuery();
