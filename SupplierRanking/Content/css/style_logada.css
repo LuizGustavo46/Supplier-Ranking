@@ -5,6 +5,7 @@ body {
 }
 
 .conteudo-logada {
+    min-height: 89vh;
     position: absolute;
     top: 105px;
     left: 170px;
