@@ -22,10 +22,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">*@
        
         <!-- Bootstrap CSS CDN -->
-        @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700">
@@ -70,14 +70,14 @@
             <!-- Menu Lateral -->
             <nav id="sidebar">
                 <div class="sidebar-header d-flex align-items-center">
-                    <h4 class="m-0">Supplier Ranking</h4>
+                    <h3 class="m-0 text-center">Supplier Ranking</h3>
                 </div>
 
                 <div class="d-flex align-items-center mt-5" style="flex-direction: column;">
                      <!-- Perfil do login -->
                     <ul class="list-unstyled nav-menu pt-5 pb-5">
                         <li class="d-flex align-items-center">
-                            <h5 class="mb-4">Bem-vindo!</h5>
+                            <h4 class="mb-4">Bem-vindo!</h4>
 
                             @if (Session["UserFornecedor"] != null)
                             {
@@ -90,7 +90,7 @@
                                 <img src="~/Content/images/user.png" id="perfil" />
                             }
 
-                            <h5 class="mt-4">@Session["NomeUsuario"].ToString()</h5>
+                            <h4 class="mt-4">@Session["NomeUsuario"].ToString()</h4>
                         </li>
                     </ul>
 
@@ -246,12 +246,12 @@
         @*<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">*@
     
-    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <!-- INÍCIO - Script's de configuracao -->
 
-        @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="~/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
         <script src="~/Scripts/jquery.mask.js"></script>

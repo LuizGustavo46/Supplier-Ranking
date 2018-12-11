@@ -7,7 +7,7 @@ body {
 .conteudo-logada {
     position: absolute;
     top: 105px;
-    left: 150px;
+    left: 170px;
 }
 
 p {
@@ -132,6 +132,7 @@ a:focus {
 }
 
 #sidebar ul.nav-menu {
+    width: 100%;
     padding: 20px 0;
     border-bottom: 1px solid #47748b;
 }
