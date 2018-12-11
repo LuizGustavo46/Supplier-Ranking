@@ -199,10 +199,10 @@ namespace SupplierRanking.Controllers
         {          
             Fornecedor excluir = new Fornecedor();  
 
-            excluir.Cnpj = Session["UsuarioFornecedor"].ToString();
+            excluir.Cnpj = Session["UserFornecedor"].ToString();
             excluir.ExcluirContaFornecedor(confirmaSenha);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/

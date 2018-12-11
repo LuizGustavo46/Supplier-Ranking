@@ -141,6 +141,7 @@
                             <a style="text-decoration: none;font-family: inherit;" 
                             href="/Fornecedor/UpdateFornecedor/?Cnpj=@Session["UserFornecedor"].ToString()" aria-expanded="false">Editar Perfil</a>
                         }
+                       
                     </li>
 
                     <li>
@@ -192,12 +193,22 @@
                     </li>
 
                     <li>
-                        @*<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Sair</a>*@
+                        @if (Session["UserFornecedor"] != null)
+                        {
+                            <a style="text-decoration: none;font-family: inherit;"
+                               href="/Fornecedor/ExcluirContaFornecedor/?Cnpj=@Session["UserFornecedor"].ToString()" aria-expanded="false">Excluir sua conta</a>
+                        }
 
 
-                        @*@Html.ActionLink("Editar informações", "UpdatePessoaFisica", "Comprador", new { area = "" }, new { @class = "" })*@
+                        @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                        {
+                            <a style="text-decoration: none;font-family: inherit;"
+                               href="/Comprador/ExcluirConta/" aria-expanded="false">Excluir sua conta</a>
+                        }
 
                     </li>
+
+                
                 </ul>
 
 
