@@ -1,9 +1,10 @@
 ﻿.rating {
-  display: inline-block;
+  display: block;
   position: relative;
   height: 50px;
   line-height: 50px;
-  font-size: 50px;
+  font-size: 36px;
+  margin-left: 318px;
 }
 
 .rating label {
