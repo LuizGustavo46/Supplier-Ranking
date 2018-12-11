@@ -188,14 +188,21 @@ namespace SupplierRanking.Controllers
         }
         /*================================================================================================================================================================================*/
 
-        public ActionResult ExcluirContaFornecedor(string cnpj)/*45.997.418/0001-53*/
+        public ActionResult ExcluirContaFornecedor()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ExcluirContaFornecedor(string confirmaSenha)
         {          
-            Fornecedor excluir = new Fornecedor();  //TRAVADO PELA HOME LOGADA
+            Fornecedor excluir = new Fornecedor();  
 
-            excluir.Cnpj = cnpj;
-            excluir.ExcluirContaFornecedor(cnpj);
+            excluir.Cnpj = Session["UsuarioFornecedor"].ToString();
+            excluir.ExcluirContaFornecedor(confirmaSenha);
 
-            return RedirectToAction("listaFornecedor");
+            return RedirectToAction("Index");
         }
 
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/
