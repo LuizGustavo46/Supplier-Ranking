@@ -16,8 +16,10 @@ namespace SupplierRanking.Controllers
         // GET: HomeLogada
         public ActionResult Pesquisa()
         {
-
-            return View("Pesquisa", HomeLogada.RankingGeral());
+            if (Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+                return RedirectToAction("Index", "Home");
+            else
+                return View("Pesquisa", HomeLogada.RankingGeral());
         }
 
         [HttpPost]
@@ -35,29 +37,74 @@ namespace SupplierRanking.Controllers
             return View(lista);
         }
 
+        public void Pdf(string id)
+        {
+            string cnpj = id;
+            //cnpj = cnpj.Substring(0, 2) + "." + cnpj.Substring(2, 3) + "." + cnpj.Substring(5, 3) + "/" +
+            //    cnpj.Substring(8, 4) + "-" + cnpj.Substring(12, 2);
+            HomeLogada h = new HomeLogada();
+            byte[] pdf = h.ReturnPdf(cnpj);
+
+            //TALVEZ EU TENHA QUE CONVERTER O BYTE[] EM ARQUIVO "FILE"
+            Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AddHeader("content-disposition", string.Format("attachment; filename=\"{0}\"", "pdf.pdf"));
+            Response.Flush();
+            Response.BinaryWrite(pdf);
+            Response.Flush();
+            Response.End();
+        }
+
 
         public ActionResult Perfil(string cnpj)
         {
             HomeLogada h = new HomeLogada();
-            ViewBag.Comentarios = h.Comentarios(cnpj);
-            return View("Perfil", HomeLogada.Perfil(cnpj));
+            if (Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.ListaFotos = h.GaleriaFotos(cnpj);
+                ViewBag.Comentarios = h.Comentarios(cnpj);
+                
+                return View("Perfil", HomeLogada.Perfil(cnpj));
+            }
         }
 
 
         public ActionResult RankingGeral()
         {
-            return View("RankingGeral", HomeLogada.RankingGeral());
+            if(Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+                return RedirectToAction("Index","Home");
+            else
+                return View("RankingGeral", HomeLogada.RankingGeral());
         }
 
 
         public ActionResult RankingPremium()
         {
-            return View("RankingPremium", HomeLogada.RankingPremium());
+            if (Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+                return RedirectToAction("Index", "Home");
+            else
+                return View("RankingPremium", HomeLogada.RankingPremium());
+        }
+
+        public ActionResult RankingInteresses()
+        {
+            if (Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null)
+                return RedirectToAction("Index", "Home");
+            else
+
+                return View("RankingInteresses", HomeLogada.RankingInteresses(int.Parse(Session["CodigoUsuario"].ToString())));
         }
 
         public ActionResult Suporte()
         {
-            return View();
+            if (Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+                return RedirectToAction("Index", "Home");
+            else
+                return View();
         }
 
         public string CarregaFoto()

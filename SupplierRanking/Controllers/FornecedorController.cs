@@ -157,15 +157,17 @@ namespace SupplierRanking.Controllers
                 }
             }
 
-            
 
-            
 
-            TempData["Msg"] = f.CadastroFornecedor();
-            if(listGaleriaFotos != null)
-                f.CadastrarGaleriaFotos(cnpj, listGaleriaFotos);
 
-            return RedirectToAction("CadastroFornecedor");
+
+            if (f.CadastroFornecedor())
+            {
+                if (listGaleriaFotos != null)
+                    f.CadastrarGaleriaFotos(cnpj, listGaleriaFotos);
+                return RedirectToAction("Login", "Login");
+            }
+            else { return RedirectToAction("CadastroFornecedor"); }
         }
 
         /*================================================================================================================================================================================*/
@@ -186,14 +188,21 @@ namespace SupplierRanking.Controllers
         }
         /*================================================================================================================================================================================*/
 
-        public ActionResult ExcluirContaFornecedor(string cnpj)/*45.997.418/0001-53*/
+        public ActionResult ExcluirContaFornecedor()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ExcluirContaFornecedor(string confirmaSenha)
         {          
-            Fornecedor excluir = new Fornecedor();  //TRAVADO PELA HOME LOGADA
+            Fornecedor excluir = new Fornecedor();  
 
-            excluir.Cnpj = cnpj;
-            excluir.ExcluirContaFornecedor(cnpj);
+            excluir.Cnpj = Session["UserFornecedor"].ToString();
+            excluir.ExcluirContaFornecedor(confirmaSenha);
 
-            return RedirectToAction("listaFornecedor");
+            return RedirectToAction("Index", "Home");
         }
 
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/
@@ -256,8 +265,9 @@ namespace SupplierRanking.Controllers
             Fornecedor senhaUp = new Fornecedor();
 
             senhaUp.Senha = senha;
-            
 
+            string cnpj=Session["UserFornecedor"].ToString();
+            senhaUp.Cnpj=cnpj;
             
                 bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaConfirma);
 
@@ -281,6 +291,9 @@ namespace SupplierRanking.Controllers
             Fornecedor f = new Fornecedor();
             f.Senha = senhaAtual;
 
+            string cnpj = Session["UserFornecedor"].ToString();
+            f.Cnpj = cnpj;
+
             if (f.UpdateSenha(senhaAtual, novaSenha, senhaConfirma))
             {
                 ViewBag.Message = "Nova Senha alterada com sucesso!";
@@ -302,12 +315,12 @@ namespace SupplierRanking.Controllers
         public ActionResult UpdateFornecedor(string cnpj) //FEITO
         {
             
-            Fornecedor c = Fornecedor.Perfil(/*cnpj*/"45.997.418/0001-53");
+            Fornecedor c = Fornecedor.Perfil(cnpj);
 
             if (c == null)
             {
                 TempData["Msg"] = "Erro ao encontrar dados";
-                return RedirectToAction("UpdateSenha");//ver se o redrect esta certo!!
+                return RedirectToAction("RankingGeral", "HomeLogada");//ver se o redrect esta certo!!
             }
             return View(c);
         }
@@ -315,7 +328,7 @@ namespace SupplierRanking.Controllers
 
         [HttpPost]
         public ActionResult UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro,string cidade, string endereco, string uf,
-            string celular, string descricao, string cep, string slogan, string nome_categoria /*string confirmaSenha*/)
+            string celular, string descricao, string cep, string slogan, string nome_categoria)
         {
 
             Fornecedor f = new Fornecedor();
@@ -366,7 +379,7 @@ namespace SupplierRanking.Controllers
                 TempData["Msg"] = "Informações Incorretas";
 
 
-                return RedirectToAction("UpdateFornecedor");
+                return RedirectToAction("RankingGeral", "HomeLogada");
 
 
         }

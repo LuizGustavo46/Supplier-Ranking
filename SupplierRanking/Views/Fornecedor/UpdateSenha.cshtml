@@ -12,7 +12,7 @@
     <!--- Formulario de Nova Senha --->
 
     <form class="row nova-senha-comprador-form justify-content-center pt-5 mt-4"
-          method="post" action="../Fornecedor/UpdateSenha">
+          method="post" action="/Fornecedor/UpdateSenha">
 
         <div class="row col-12 d-flex justify-content-center mb-5">
             Segue abaixo nossas recomendações para a criação de uma senha:
@@ -33,19 +33,24 @@
 
                 <!--- Senha --->
                 <div class="wrap-input mb-4">
-                    <input class="input input-senha required-field" type="password" name="senhaNova" placeholder="* Senha">
+                    <input class="input input-senha required-field" type="password" name="senha" placeholder="* Senha Atual">
+                </div>
+
+                <!--- Nova Senha --->
+                <div class="wrap-input mb-4">
+                    <input class="input input-senha required-field" type="password" name="novaSenha" placeholder="* Nova Senha">
                 </div>
 
                 <!--- Confirmar Senha --->
                 <div class="wrap-input">
-                    <input class="input input-senha required-field" type="password" name="confirmaSenhaNova" placeholder="* Confirmar Senha">
+                    <input class="input input-senha required-field" type="password" name="senhaConfirma" placeholder="* Confirmar Senha">
                 </div>
             </div>
 
             <!--- Visualizar Senha --->
             <div class="col-2 d-flex justify-content-center pr-5">
                 <button id="btnSenha">
-                    <img src="/Content/images/comprador.png" />
+                    <img src="~/Content/images/olhoFechado.png" />
                 </button>
             </div>
         </div>

@@ -1,35 +1,272 @@
 ﻿@model SupplierRanking.Models.Avaliacao
 @{
     ViewBag.Title = "UpdateComentario";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
 
-<div class="container-login100">
+<div class="m-5">
+    <div class="row" style="width: 1705px;">
 
-    <div class="wrap-login100" style="background-color: white;">
+        <h2 style="color: #D0A748;font-weight: bold;text-shadow: 1px 2px 0px #6c6c6c;margin-top: 1rem;margin-left: 35rem;margin-bottom: -136px;">
+            Você já avaliou esta empresa/fornecedor, poderá avaliar novamente <br />depois de 7 dias da sua última avaliação. Deseja alterar seu comentário? 
+        </h2>
 
-        <h2>UpdateComentario</h2>
+            <!-- Modal content -->
+            <div style="width: 835px;height: 600px;top:-15rem;" class="modal-content">
+                <h2 style="margin-left: 43rem;position: relative;letter-spacing: -2px;">1 ✩ 2 ✩ 3 ✩ 4 ✩ 5</h2>
+                <h2 style="margin-top: -4rem;">Sua última avaliação:</h2>
 
-        <form action="../Avaliacao/UpdateComentario" method="post" class="login100-form validate-form">
-            <p>@ViewBag.Message</p>
-            <!--- Campos Para Editar COMENTARIO -->
-            <div>
-                <input type="text" value="@Model.Qualidade" name="qualidade" style="border: 1px solid black" placeholder="Qualidade">
-                <input type="text" value="@Model.Atendimento" name="atendimento" style="border: 1px solid black" placeholder="Atendimento">
-                <input type="text" value="@Model.Entrega" name="entrega" style="border: 1px solid black" placeholder="Entrega">
-                <input type="text" value="@Model.Preco" name="preco" style="border: 1px solid black" placeholder="Preço">
-                <input type="text" value="@Model.Satisfacao" name="satisfacao" style="border: 1px solid black" placeholder="Satisfação">
-                <br /> <br />
-                <input type="text" value="@Model.Comentario" name="comentario" style="border: 1px solid black" placeholder="Comentário">
-                <br /> <br />
-                @*<input type="text" value="09/11/2018" name="data_avaliacao" placeholder="Dia / Mês / Ano" style="border: 1px solid black">*@
-                <input type="text" value="@Model.Cnpj_fornecedor" name="cnpj_fornecedor" placeholder="cnpj fornecedor" style="border: 1px solid black">
-                <input type="text" value="@Model.Codigo_comprador" name="codigo_comprador" placeholder="codigo comprador" style="border: 1px solid black">
-                <br /> <br />
+                <h3>Entrega</h3>
+                <h3>Qualidade</h3>
+                <h3>Atendimento</h3>
+                <h3>Preço</h3>
+                <h3>Satisfação</h3>
+
+                <form method="post" action="../Avaliacao/UpdateComentario" class="rating">
+
+                    <!-- Qualidade -->
+                    <div style="position: relative;top: -27.5rem;left: 21%;">
+                        @if (Model.Entrega <= 1)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Entrega > 1 && Model.Entrega <= 2)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Entrega > 2 && Model.Entrega <= 3)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Entrega > 3 && Model.Entrega <= 4)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Entrega > 4 && Model.Entrega <= 5)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                        }
+
+
+                    </div>
+
+                    <!-- Qualidade -->
+                    <div style="position:relative;top: -26.8rem;left: 21%;">
+                        @if (Model.Qualidade <= 1)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Qualidade > 1 && Model.Qualidade <= 2)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Qualidade > 2 && Model.Qualidade <= 3)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Qualidade > 3 && Model.Qualidade <= 4)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Qualidade > 4 && Model.Qualidade <= 5)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                        }
+                    </div>
+
+                    <!-- Atendimento -->
+                    <div style="position: relative;top: -26.8rem;left: 21%;">
+
+                        @if (Model.Atendimento <= 1)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Atendimento > 1 && Model.Atendimento <= 2)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Atendimento > 2 && Model.Atendimento <= 3)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Atendimento > 3 && Model.Atendimento <= 4)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Atendimento > 4 && Model.Atendimento <= 5)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                        }
+                    </div>
+
+                    <!-- Preço -->
+                    <div style="position: relative;top: -25.8rem;left: 21%;">
+                        @if (Model.Preco <= 1)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Preco > 1 && Model.Preco <= 2)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Preco > 2 && Model.Preco <= 3)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Preco > 3 && Model.Preco <= 4)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Preco > 4 && Model.Preco <= 5)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                        }
+                    </div>
+
+                    <!-- Satisfacao -->
+                    <div style="position: relative;top: -24.8rem;left: 21%;">
+                        @if (Model.Satisfacao <= 1)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Satisfacao > 1 && Model.Satisfacao <= 2)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Satisfacao > 2 && Model.Satisfacao <= 3)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Satisfacao > 3 && Model.Satisfacao <= 4)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Satisfacao > 4 && Model.Satisfacao <= 5)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                        }
+                    </div>
+
+                    <div style="position: relative;top: -245px;left: -316px;">
+                        <a style="font-size: 24px;">Data da avaliação: @Model.Data_avaliacao</a>
+                        <h1 style="margin-bottom: -17px;margin-left: 344px;font-size: 23px;">Comentário</h1>
+                        <input name="comentario" value="@Model.Comentario" style="margin-left: 161px;width: 463px;height: 30px;font-size: 20px;font-family: inherit;margin-top: 40px;border-radius: 100px;border: 1px solid gray;padding-left: 13px;box-shadow: 1px 1px 13px;" />
+
+                        <button type="submit" class="btn btn-info btn-lg ">Salvar</button>
+                    </div>
+
+                </form>
+
             </div>
 
-            <br /> <br />
-            <button id="btnSalvar">Salvar</button>
-        </form>
+        
+
+
+
+
+
+
+
+
+        </div>
     </div>
-</div>

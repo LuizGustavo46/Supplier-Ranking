@@ -14,7 +14,7 @@ namespace SupplierRanking.Models
     {
         //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-            new SqlConnection(ConfigurationManager.ConnectionStrings["MARCELO"].ConnectionString);
+            new SqlConnection(ConfigurationManager.ConnectionStrings["VALMIR"].ConnectionString);
 
         //---* DECLARAÇÃO DE VARIAVEIS *-
         private string cnpj;
@@ -205,9 +205,9 @@ namespace SupplierRanking.Models
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ CADASTRO FORNECEDOR ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public string CadastroFornecedor() //FEITO
+        public bool CadastroFornecedor() //FEITO
         {
-            string res = "Cadastro realizado.";
+            bool res = true;
             try
             {   
                 // abre conexão
@@ -252,12 +252,12 @@ namespace SupplierRanking.Models
                 else
                 {
                     //Mensagem de erro
-                    res = "Preencha os campos corretamente";
+                    res = false;
                 }
             }
             catch (Exception ex)
             {
-                res = ex.Message; // Caso der erro na inserção
+                res = false; // Caso der erro na inserção
             }
 
             if (con.State == ConnectionState.Open)
@@ -294,17 +294,31 @@ namespace SupplierRanking.Models
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ EXCLUIR CONTA - FORNECEDOR ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public bool ExcluirContaFornecedor(string cnpj) 
+        public bool ExcluirContaFornecedor(string confirmaSenha)
         {
+            string senha = "";
             try
             {
-                con.Open();
-                SqlCommand query =
-                        new SqlCommand("DELETE FROM fornecedor WHERE cnpj = @cnpj", con);
-                query.Parameters.AddWithValue("@cnpj", cnpj);
-                query.ExecuteNonQuery();
+                con.Open(); // abre conexão
+                SqlCommand query1 =
+                    new SqlCommand("SELECT senha FROM fornecedor WHERE cnpj = @cnpj", con);
+                query1.Parameters.AddWithValue("@cnpj", cnpj);//seleciona o perfil do fornecedor no banco através do cnpj
+                SqlDataReader leitor = query1.ExecuteReader(); //executa a leitura
 
+                //prepara o leitor
+                if (leitor.Read())
+                  senha = leitor["senha"].ToString();//guarda a senha que veio do banco
 
+                leitor.Close();//fecha o leitor
+
+                //
+                if (senha == confirmaSenha)
+                {
+                    SqlCommand query =
+                                new SqlCommand("DELETE from fornecedor WHERE cnpj = @cnpj", con);
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    query.ExecuteNonQuery();//executa o update
+                } 
             }//tratamento de erro
             catch (Exception ex)
             {
@@ -528,19 +542,29 @@ namespace SupplierRanking.Models
             try        
             {
                 //ABRE CONEXÃO
-                con.Open(); 
-
+                con.Open();
+                SqlCommand query;
                 //comando para update na tabela de FORNECEDOR
-                SqlCommand query =
-                    new SqlCommand("UPDATE fornecedor SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
-                    "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone," +
-                    "celular = @celular, descricao = @descricao, slogan = @slogan WHERE cnpj = @cnpj", con);
+                if (imagem != null)
+                {
+                    query =
+                        new SqlCommand("UPDATE fornecedor SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
+                        "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone," +
+                        "celular = @celular, descricao = @descricao, slogan = @slogan, imagem = @imagem WHERE cnpj = @cnpj", con);
+                }
+                else
+                {
+                    query =
+                        new SqlCommand("UPDATE fornecedor SET nome_empresa = @nome_empresa, email = @email, endereco = @endereco," +
+                        "bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone," +
+                        "celular = @celular, descricao = @descricao, slogan = @slogan WHERE cnpj = @cnpj", con);
+                }
 
                 string confirmaSenha ="";
 
-                if (nome_empresa.Length >= 1 && email.Length >= 8 && (telefone.Length == 14 || telefone.Length == 0) &&
-                    (celular.Length == 15 || celular.Length == 0) && endereco.Length > 1 && bairro.Length > 1 &&
-                    cidade.Length > 1 && uf.Length == 2 && cep.Length == 9 && senha == confirmaSenha)
+                if (nome_empresa.Length >= 1 && email.Length >= 8 && telefone.Length >= 14 &&
+                    celular.Length >= 15 && endereco.Length > 1 && bairro.Length > 1 &&
+                    cidade.Length > 1 && uf.Length == 2 && cep.Length == 9)
                 {
                     query.Parameters.AddWithValue("@cnpj",            cnpj);
                     query.Parameters.AddWithValue("@nome_empresa",    nome_empresa);
@@ -554,8 +578,13 @@ namespace SupplierRanking.Models
                     query.Parameters.AddWithValue("@celular",         celular);
                     query.Parameters.AddWithValue("@descricao",       descricao);
                     query.Parameters.AddWithValue("@slogan",          slogan);
-                    //query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
-                    query.ExecuteNonQuery();
+                    if (imagem != null)
+                    {
+                        query.Parameters.AddWithValue("@imagem", imagem);
+                    }
+                        //query.Parameters.AddWithValue("@nome_categoria", nome_categoria);
+                        query.ExecuteNonQuery();
+                    
                 }
 
                 else
@@ -698,7 +727,7 @@ namespace SupplierRanking.Models
 
                 for (int i = 0; i < galeriaFotos.Count; i++) {
                     //CRIAÇÃO DE COMANDO
-                    SqlCommand query = new SqlCommand("INSER INTO arquivos VALUES (@imagem,@cnpj_fornecedor", con);
+                    SqlCommand query = new SqlCommand("INSERT INTO arquivos VALUES (@imagem,@cnpj_fornecedor)", con);
                     query.Parameters.AddWithValue("@imagem", galeriaFotos[i]);
                     query.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
                     query.ExecuteNonQuery();

@@ -106,57 +106,113 @@
                 <div class="sidebar-header" style="height: 104px;">
                     <h3>Supplier Ranking</h3>
                 </div>
+
+                <!-- Perfil do login -->
                 <ul class="list-unstyled components">
-                    <li class="active">
-                        <a href="/HomeLogada/RankingGeral"  aria-expanded="false">Home</a>
-                    </li>
-                    @*<li>
-                        <a href="/HomeLogada/Pesquisa"  aria-expanded="false">Pesquisar</a>
-                    </li>*@
-                    
+                    <a style="display:flex; justify-content:center;">Bem-vindo!</a>
+                    @if (Session["UserFornecedor"] != null)
+                    {
+                        <a href="/HomeLogada/Perfil/?Cnpj=@Session["UserFornecedor"].ToString()">
+                            <img src="/Content/images/iconecor.png" id="perfil" style="width: 100px; height: 100px; border-radius: 50px; border: 1px solid white; margin: 10px auto auto 25px;" />
+                        </a>
+                        <a style="font-family:inherit; font-size: 20px; display:flex; justify-content:center;">@Session["NomeUsuario"].ToString()</a>
+                    }
+                    else if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                    {
+                        <a style="font-family:inherit; font-size: 20px; display:flex; justify-content:center;">@Session["NomeUsuario"].ToString()</a>
+                        <img src="~/Content/images/user.png" id="perfil" style="width: 100px; height: 100px; border-radius: 50px; border: 1px solid white; margin: 10px auto auto 25px;" />
+                    }
+                    <br />
+                    <ul class="list-unstyled components"></ul>
+
                     <li>
-                        <a href="/HomeLogada/RankingPremium"  aria-expanded="false">Ranking Premium</a>
+                        @if (Session["UserPessoaFisica"] != null)
+                        {
+                            <a style="text-decoration: none;font-family: inherit;"
+                            href="/Comprador/UpdatePessoaFisica/?Codigo=@Session["CodigoUsuario"].ToString()" aria-expanded="false">Editar Perfil</a>
+                        }
+                        else if (Session["UserPessoaJuridica"] != null)
+                        {
+                            <a style="text-decoration: none;font-family: inherit;"
+                            href="/Comprador/UpdatePessoaJuridica/?Codigo=@Session["CodigoUsuario"].ToString()" aria-expanded="false">Editar Perfil</a>
+                        }
+                        else if (Session["UserFornecedor"] != null)
+                        {
+                            <a style="text-decoration: none;font-family: inherit;" 
+                            href="/Fornecedor/UpdateFornecedor/?Cnpj=@Session["UserFornecedor"].ToString()" aria-expanded="false">Editar Perfil</a>
+                        }
+                       
                     </li>
 
-                    <li >
+                    <li>
+                        
+                           @if (Session["UserFornecedor"] != null)
+                           {
+                            <a style="text-decoration: none; font-family: inherit;"
+                               href="/Fornecedor/UpdateSenha/" aria - expanded="false">
+                                Alterar Senha </a>
+
+                           }
+                           else if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                           {
+                            <a style="text-decoration: none; font-family: inherit;"
+                               href="/Comprador/UpdateSenha/" aria - expanded="false">
+                                Alterar Senha </a>
+
+                           }
+                    </li>
+
+                           <li>
+                               <a style="text-decoration: none; font-family: inherit;"
+                        href="/Home/Sair/" aria-expanded="false">Encerrar Sessão</a>
+                    </li>
+                </ul>
+
+
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="/HomeLogada/RankingGeral" aria-expanded="false">Ranking Geral</a>
+                    </li>
+                    @*<li>
+            <a href="/HomeLogada/Pesquisa"  aria-expanded="false">Pesquisar</a>
+        </li>*@
+
+                    <li>
+                        <a href="/HomeLogada/RankingPremium" aria-expanded="false">Ranking Premium</a>
+                    </li>
+
+                    @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                    {
+                        <li>
+                            <a href="/HomeLogada/RankingInteresses" aria-expanded="false">Ranking Interesses</a>
+                        </li>
+                    }
+
+                    <li>
                         <a href="/HomeLogada/Suporte" aria-expanded="false">Suporte</a>
                     </li>
 
                     <li>
-                        @*<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Sair</a>*@ 
-                        @Html.ActionLink("Sair", "Sair", "Home", new { area = "" }, new { @class = "" })
-
-                        @if (Session["UserPessoaFisica"] != null)
+                        @if (Session["UserFornecedor"] != null)
                         {
-                        <a href="/Comprador/UpdatePessoaFisica/?Codigo=@Session["CodigoUsuario"].ToString()">UpdatePessoaFisica</a>
-                        }
-                        else if (Session["UserPessoaJuridica"] != null)
-                        {
-                        <a href="/Comprador/UpdatePessoaJuridica/?Codigo=@Session["CodigoUsuario"].ToString()">UpdatePessoaJuridica</a>
+                            <a style="text-decoration: none;font-family: inherit;"
+                               href="/Fornecedor/ExcluirContaFornecedor/?Cnpj=@Session["UserFornecedor"].ToString()" aria-expanded="false">Excluir sua conta</a>
                         }
 
-                        @*@Html.ActionLink("Editar informações", "UpdatePessoaFisica", "Comprador", new { area = "" }, new { @class = "" })*@
+
+                        @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                        {
+                            <a style="text-decoration: none;font-family: inherit;"
+                               href="/Comprador/ExcluirConta/" aria-expanded="false">Excluir sua conta</a>
+                        }
 
                     </li>
-                </ul>
+
                 
-                    @if (Session["UserFornecedor"] != null)
-                    {
-                    <a href="/HomeLogada/Perfil/?Cnpj=@Session["UserFornecedor"].ToString()">
-                        <img src="/Content/images/iconecor.png" id="perfil" style="width: 100px; height: 100px; border-radius: 50px; border: 1px solid white; margin: 167px auto auto 20px;"/>
-                    </a>
-                    <a style="font-family:inherit; font-size: 20px; margin-left: 23px;">@Session["NomeUsuario"].ToString()</a>  
-                    }
-                    else
-                    {
-                        <img src="/Content/images/iconecor.png" id="perfil" style="width: 100px; height: 100px; border-radius: 50px; border: 1px solid white; margin: 167px auto auto 20px;"/>
-                        <a style="font-family:inherit; font-size: 20px; display:flex; justify-content:center;">@Session["NomeUsuario"].ToString()</a>
-                    }
-                    <br />
-                    <a style="text-decoration: none;color: white;font-family: inherit;
-                    margin-left: 25px;" href="/Comprador/UpdateSenha/" >Alterar senha</a>
-                   
-                    
+                </ul>
+
+
+
             </nav>
             <!---- Modal ---->
             <div class="modal fade" id="myModal" role="dialog">
@@ -221,9 +277,12 @@
             </div>
                         </div>
 
+
         <div class="conteudo-logada row pl-5 pr-5 col-11" style="top: 105px;">
             @RenderBody()
         </div>
+
+
 
         <!-- jQuery CDN - Slim version (=without AJAX) -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
