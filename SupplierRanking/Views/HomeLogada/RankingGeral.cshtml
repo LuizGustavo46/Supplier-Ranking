@@ -17,9 +17,8 @@
         <ul class="row list-unstyled m-3">
             @foreach (var item in Model)
             {
-                if (item.Plano.Equals("P"))
-                {
-                    <div id="myModal2" class="modal">
+                <!-- Modal Avaliação -->
+                <div id="myModal2" class="modal">
 
                         <!-- Modal content -->
                         <div style="width: 835px;height: 600px;" class="modal-content">
@@ -216,6 +215,10 @@
                         </div>
 
                     </div>
+
+                if (item.Plano.Equals("P"))
+                {
+                    
 
 
 

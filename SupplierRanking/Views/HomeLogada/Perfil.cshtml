@@ -17,21 +17,23 @@
             left: 31%;"></div>
        
         
-            <div style="width:1500px;height: 680px;background-color: #2c8cb6;
-            top: 13%;position: absolute;left: 138px; box-shadow: 1px 0px 20px black;border: 1px solid white;">
+            <div style="width:1500px;height: 680px;background: linear-gradient(-135deg, #0e81b6, #222426);
+            top: 3%;position: absolute;left: 138px; box-shadow: 1px 0px 20px black;">
                 <section>
                     
-                    <div style="width:210px;height:210px;position: absolute;left: 10%;top:26px;">                                          
+                    <div style="width:210px;height:210px;position: absolute;left: 10%;top:26px;">
                         @if (Model.Imagem64 == "")
                         {
                             if (Model.Plano.Equals("P"))
                             {
-                                <img src="~/Content/images/iconecor.png" height="210" width="210" style="border: 4px solid #d0a748;
-                                  box-shadow: 0px 0px 29px black;"/>
-                        }
-                        else
-                        {
-                                <img src="~/Content/images/iconecor.png" height="210" width="210" style="border: 4px solid #d0a748;
+                                <img src="~/Content/images/iconecor.png" height="210" width="210" style="border-radius: 50%;border: 4px solid #d0a748;
+                                  box-shadow: 0px 0px 29px black;" />
+                                <img src="~/Content/images/premium2.png" height="200" width="160" style="position:absolute; margin-left:122rem; margin-top:-244px;" />
+
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/iconecor.png" height="210" width="210" style="border-radius: 50%;border: 4px solid #d0a748;
                                 box-shadow: 0px 0px 29px black;" />
                             }
                         }
@@ -41,23 +43,24 @@
                             if (Model.Plano.Equals("P"))
                             {
                                 <img src="@imagem64" height="210" width="210" style="border-radius: 50%; border: 4px solid #d0a748;
-                                box-shadow: 0px 0px 29px black;"/>
-                        }                                                                     
+                                box-shadow: 0px 0px 29px black;" />
+                                <img src="~/Content/images/premium2.png" height="200" width="160" style="position:absolute; margin-left:122rem; margin-top:-244px;" />
+                            }
                             else
                             {
                                 <img src="@imagem64" height="210" width="210" style="border-radius: 50%; border: 4px solid #d0a748;
-                                box-shadow: 0px 0px 29px black;"/>
+                                box-shadow: 0px 0px 29px black;" />
                             }
                         }
 
-                        
+
                     </div>
                    
                     <h1 style="position: absolute;left: 41%;"></h1>
 
                     <div style="width: 413px;height: 226px;background-color: #fff0;position: absolute;left: 40%;top: 28%;">
                         
-                        <h1 style="position: absolute;left: -34%;top: -120px;color:white">@Model.Nome_empresa</h1>
+                        <h1 style="position: absolute;left: -50%;top: -120px;color:white">@Model.Nome_empresa</h1>
                         <h1 style="position: absolute;left: 32%;top: 27px;color:white">Descrição</h1>
 
                         <div style="position: absolute;width: 643px;height: 200px;border: 2px solid #d0a748;;top: 104px;right: -28%;
@@ -67,40 +70,79 @@
 
 
                     <div style="position: absolute;left: 50%;margin-top: 103px; color:white">
-                        <span style="color:#ffb31a;" class ="fa fa-star "></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                        @if (Model.Media <= 1)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Media > 1 && Model.Media <= 2)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Media > 2 && Model.Media <= 3)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Media > 3 && Model.Media <= 4)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Media > 4 && Model.Media <= 5)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                        }
+                            <h4 style="color:white;">
+                                Média: </h4style>
+                                <h2 style="font-family:inherit;color:#ffb31a;text-shadow:0px 0px 5px black;margin-top: -4rem;margin-left: 8rem;">@Model.Media</h2>
 
-                        <!----Botao avaliar-->
-                       @if (Session["UserPessoaFisica"] != null && Session["UserPessoaJuridica"] != null)
-                       {
+                                <!----Botao avaliar-->
+                                @if (Session["UserPessoaFisica"] != null && Session["UserPessoaJuridica"] != null)
+                                {
 
-                         <button  style="background: url('../../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
-                     position: absolute;margin-left: 240px;margin-top: -59px;" id="#myModal2" class="btn btn-info btn-lg" ></button>
+                                    <button style="background: url('../../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
+                     position: absolute;margin-left: 240px;margin-top: -59px;" id="#myModal2" class="btn btn-info btn-lg"></button>
 
 
-                       }
-                         <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco - @Model.Bairro, @Model.Cidade / @Model.Uf</h1>
-                        <img style="position: absolute;right: 790px;top: 190px;width: 40px;" src="~/Content/images/mapa.png" />
+                                }
+                                <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco - @Model.Bairro, @Model.Cidade / @Model.Uf</h1>
+                                <img style="position: absolute;right: 790px;top: 190px;width: 40px;" src="~/Content/images/mapa.png" />
 
-                        <h1 style="position: absolute;right: 600px;top: 270px;font-size: 22px;width: 151px;">@Model.Telefone</h1>
-                        <img style="position: absolute;right: 785px;top: 280px;width: 40px;" src="~/Content/images/phone.png" />
-                        
-                        <h1 style="position: absolute;right: 504px;top: 361px;font-size: 22px;">@Model.Email</h1>
-                        <img style="position: absolute;right: 787px;top: 374px;width: 40px;" src="~/Content/images/email.png" />
+                                <h2 style="position: absolute;right: 600px;top: 270px;font-size: 22px;width: 151px;">@Model.Telefone</h2>
+                                <h2 style="position: absolute;right: 600px;top: 300px;font-size: 22px;width: 151px;">@Model.Celular</h2>
+                                <img style="position: absolute;right: 785px;top: 280px;width: 40px;" src="~/Content/images/phone.png" />
 
-                    </div>
+                                <h1 style="position: absolute;right: 504px;top: 361px;font-size: 22px;">@Model.Email</h1>
+                                <img style="position: absolute;right: 787px;top: 374px;width: 40px;" src="~/Content/images/email.png" />
+
+</div>
 
                 </section>
             </div>
-            <div style=" width: 1500px;height: 1471px;background-color: #2c8cb6;position: absolute;left: 138px;top: 83%;
-            box-shadow: 1px 13px 20px black;border: 1px solid white;">
+            <div style=" width: 1500px;height: 1108px;background:linear-gradient(-135deg, #222426, #0e81b6);position: absolute;left: 138px;top: 72%;
+            box-shadow: 1px 13px 20px black;">
 
                  @if (Model.Pdf64 != "")
                  {
-                <h2 style="position: absolute;left: 39%;">
+                <h2 style="position: absolute;left: 39%; color:white;">
                     Arquivo PDF:
                     @*<a href="~/HomeLogada/pdf/15222222222222/" target="_blank"><img src="~/Content/images/about.jpg" /></a>*@
                     <a href="/HomeLogada/Pdf/?Id=@Model.Cnpj" target="_blank">
@@ -114,7 +156,7 @@
 
 
                         
-                <h2 style="margin-top: 194px;margin-left: -120px;" class="w3-center">Galeria de fotos</h2>
+                <h2 style="margin-top: 194px;color:white;margin-left: -120px;" class="w3-center">Galeria de fotos</h2>
               
                 
                   <div class="w3-content" style="max-width:1200px">
@@ -136,13 +178,13 @@
                    {
                        String foto64 = string.Format("data:image/jpeg;base64,{0}", f);
                         <div class="carousel" style="position: relative;top: 15px;left: 5%;">
-                        <img src="@foto64" alt="Image1" />
+                        <img style="border: 1px solid white;" src="@foto64" alt="Image1" />
                         </div>
                        cont++;
                    }
                }
                 
-                <h2 style="margin-top: 246px;margin-left: 171px;color: white;">Comentários</h2>
+                <h2 style="margin-top: 92px;margin-left: 171px;color: white;">Comentários</h2>
                 <ul>
                     @if (ViewBag.Comentarios.Count != 0)
                     {
@@ -150,7 +192,7 @@
                         {
                             //LARESSA POR FAVOR ARRUMA ISSO ? ESSA LISTA DE COMENTARIOS TA TODA ZUADA E EU NAO SEI ARRUMAR - OBG 'val if'
 
-                        <li class="col-12 p-4 mb-5" style="background: #fff;box-shadow: 0px 0px 9px black; height: 169px;">
+                        <li class="col-12 p-4 mb-5" style="    background: #ffffff;box-shadow: 1px 1px 10px black;height: 169px;margin-left: 135px; border-radius: 111px; width: 1170px;">
                             @*<div style="width: 1275px;height: 400px;top: 69%;left: 8%;overflow: hidden;box-shadow: 1px 1px 9px black;">*@
                                 <div class="comentario" style="idth: 1312px;height: 134px;position: absolute;border: 2px #d0a748;
                                  top: 10%;left: 5%;">
@@ -161,13 +203,10 @@
                                     <h5 style="margin-left: 168px;margin-top: 36px;">@(h.Data_avaliacao)</h5>
 
                                 </div>
-                                <div style="position: absolute;width: 649px;height: 86px;border: 1px solid black;top: 38px;
-                                left: 47%;overflow: hidden;">@(h.Comentario)</div>
+                                <div style="position: absolute;border-radius: 10px;width: 649px;height: 86px;border: 1px solid black;top: 38px;left: 40%;overflow: hidden;background-color: #d6d3d3;box-shadow: 2px 2px 10px;font-size: 25px;padding: 8px;">@(h.Comentario)</div>
 
-                                <div id="icone" style="width: 85px;height: 85px;background-color: #a19c97;border-radius: 70px;margin: 167px auto auto 20px;
-                                margin-top: 167px;margin-left: 20px;margin-left: 92px;margin-top: 28px;">
-
-                                </div>
+                                <img src="~/Content/images/user.png" id="icone" style="width: 85px;height: 85px;background-color: #a19c97;border-radius: 70px;margin: 167px auto auto 20px;
+                                margin-top: 167px;margin-left: 20px;margin-left: 92px;margin-top: 28px;" />
 
                             @*</div>*@
                         </li>
