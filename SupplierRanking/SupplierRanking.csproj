@@ -420,6 +420,7 @@
     <Content Include="Views\Comprador\UpdateSenha.cshtml" />
     <Content Include="Views\HomeLogada\RankingInteresses.cshtml" />
     <Content Include="Views\Fornecedor\ExcluirContaFornecedor.cshtml" />
+    <Content Include="Views\Comprador\ExcluirConta.cshtml" />
     <None Include="Views\Shared\Layout_logada.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>

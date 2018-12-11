@@ -300,16 +300,19 @@ namespace SupplierRanking.Controllers
         }
 
         [HttpPost]
-        public ActionResult ExcluirConta(int codigo, string senha)
+        public ActionResult ExcluirConta(string confirmaSenha)
         {
             Comprador c = new Comprador();
 
-            if(c.ExcluirConta(codigo, senha))
-                TempData["Msg"] = "Sua conta foi excluída";
-            else
-                TempData["Msg"] = "Senha incorreta";
+            int codigo = 0;
 
-            return RedirectToAction("Index","Home");
+
+               codigo = int.Parse(Session["CodigoUsuario"].ToString());
+            
+                c.ExcluirConta(codigo, confirmaSenha);
+            
+
+            return RedirectToAction("Index", "Home");
         }
 
 

@@ -5,7 +5,7 @@
 }
 <script>
     function mensagem() {
-        
+
         alert("Obrigado por usar o nosso sistema :)");
     }
 </script>
@@ -24,7 +24,7 @@
         <br /><br />
 
 
-        <form action="/Fornecedor/ExcluirContaFornecedor" method="post" class="login100-form validate-form">
+        <form action="/Comprador/ExcluirConta" method="post" class="login100-form validate-form">
 
             <!--- Excluir a conta do fornecedor -->
             <input class="input" type="password" name="confirmaSenha" placeholder="confirme sua senha">
@@ -32,7 +32,7 @@
 
 
             <br /> <br />
-            <button type="submit" style="margin-top: -62px;background: #166083;" onclick="mensagem" class="btn btn-info btn-lg" id="btnExcluir">Excluir !</button>
+            <button type="submit" style="margin-top: -62px;background: #166083;" onclick="mensagem()" class="btn btn-info btn-lg" id="btnExcluir">Excluir !</button>
         </form>
     </div>
 </div>

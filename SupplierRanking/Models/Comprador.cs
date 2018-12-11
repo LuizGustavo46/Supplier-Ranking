@@ -13,7 +13,7 @@ namespace SupplierRanking.Models
     {
         //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
+            new SqlConnection(ConfigurationManager.ConnectionStrings["MARCELO"].ConnectionString);
 
         //CAMPOS DO BANCO DE DADOS (TODOS OS DADOS DE CADASTRO)
         private int     codigo;
@@ -334,20 +334,32 @@ namespace SupplierRanking.Models
 
         /******************************************************** EXCLUIR CONTA **************************************************/    
         
-        public bool ExcluirConta(int codigo, string senha) //(COMPRADOR EXCLUIR SUA PRÓPRIA CONTA) - FALTA TESTAR
+        public bool ExcluirConta(int codigo, string confirmaSenha) //(COMPRADOR EXCLUIR SUA PRÓPRIA CONTA) - FALTA TESTAR
         {
             try
             {
-                con.Open(); //ABRE CONEXÃO
-                //CRIAÇÃO DE COMANDO
-                SqlCommand query =
-                    new SqlCommand("DELETE FROM comprador WHERE codigo = @codigo AND senha = @senha",
-                        con);
-                query.Parameters.AddWithValue("@codigo", codigo);
-                query.Parameters.AddWithValue("@senha", senha);
-                query.ExecuteNonQuery();
+                con.Open(); // abre conexão
+                SqlCommand query1 =
+                    new SqlCommand("SELECT senha FROM comprador WHERE codigo = @codigo", con);
+                query1.Parameters.AddWithValue("@codigo", codigo);//seleciona o perfil do fornecedor no banco através do cnpj
+                SqlDataReader leitor = query1.ExecuteReader(); //executa a leitura
 
-            }catch (Exception ex) { return false; }
+                //prepara o leitor
+                if (leitor.Read())
+                    senha = leitor["senha"].ToString();//guarda a senha que veio do banco
+
+                leitor.Close();//fecha o leitor
+
+                //
+                if (senha == confirmaSenha)
+                {
+                    SqlCommand query =
+                                new SqlCommand("DELETE from comprador WHERE codigo = @codigo", con);
+                    query.Parameters.AddWithValue("@codigo", codigo);
+                    query.ExecuteNonQuery();//executa o update
+                }
+            }
+            catch (Exception ex) { return false; }
 
             if (con.State == ConnectionState.Open)
                 con.Close();

@@ -14,7 +14,7 @@ namespace SupplierRanking.Models
     {
         //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
+            new SqlConnection(ConfigurationManager.ConnectionStrings["MARCELO"].ConnectionString);
 
         //---* DECLARAÇÃO DE VARIAVEIS *-
         private string cnpj;
