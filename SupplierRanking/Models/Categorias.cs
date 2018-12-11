@@ -12,7 +12,8 @@ namespace SupplierRanking.Models
     {
         //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
+            new SqlConnection
+            (ConfigurationManager.ConnectionStrings["MARCELO"].ConnectionString);
 
         //CAMPOS DO BANCO DE DADOS
         private string categoria;
@@ -34,8 +35,10 @@ namespace SupplierRanking.Models
 
                 while (leitor.Read())
                 {
-                    Categorias c = new Categorias();
-                    c.categoria= leitor["nome"].ToString();
+                    Categorias c = new Categorias
+                    {
+                        categoria = leitor["nome"].ToString()
+                    };
                     lista.Add(c); //ADICIONA O QUE VEIO DO BANCO NA LISTA              
                 }
 

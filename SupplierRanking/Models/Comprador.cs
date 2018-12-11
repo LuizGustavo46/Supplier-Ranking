@@ -13,7 +13,7 @@ namespace SupplierRanking.Models
     {
         //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
+            new SqlConnection(ConfigurationManager.ConnectionStrings["MARCELO"].ConnectionString);
 
         //CAMPOS DO BANCO DE DADOS (TODOS OS DADOS DE CADASTRO)
         private int     codigo;
@@ -62,7 +62,7 @@ namespace SupplierRanking.Models
                 SqlDataReader leitor = query.ExecuteReader();
                 res = leitor.HasRows;
 
-            }catch (Exception e) { res = false; }
+            }catch (Exception ex) { res = false; }
 
             if (con.State == ConnectionState.Open)
                 con.Close();
