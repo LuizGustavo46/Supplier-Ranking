@@ -269,8 +269,9 @@ namespace SupplierRanking.Controllers
             Fornecedor senhaUp = new Fornecedor();
 
             senhaUp.Senha = senha;
-            
 
+            string cnpj=Session["UserFornecedor"].ToString();
+            senhaUp.Cnpj=cnpj;
             
                 bool res = senhaUp.UpdateSenha(senha, novaSenha, senhaConfirma);
 
@@ -293,6 +294,9 @@ namespace SupplierRanking.Controllers
         {
             Fornecedor f = new Fornecedor();
             f.Senha = senhaAtual;
+
+            string cnpj = Session["UserFornecedor"].ToString();
+            f.Cnpj = cnpj;
 
             if (f.UpdateSenha(senhaAtual, novaSenha, senhaConfirma))
             {
@@ -320,7 +324,7 @@ namespace SupplierRanking.Controllers
             if (c == null)
             {
                 TempData["Msg"] = "Erro ao encontrar dados";
-                return RedirectToAction("UpdateSenha");//ver se o redrect esta certo!!
+                return RedirectToAction("RankingGeral", "HomeLogada");//ver se o redrect esta certo!!
             }
             return View(c);
         }
@@ -328,7 +332,7 @@ namespace SupplierRanking.Controllers
 
         [HttpPost]
         public ActionResult UpdateFornecedor(string cnpj, string nome_empresa, string email, string telefone, string bairro,string cidade, string endereco, string uf,
-            string celular, string descricao, string cep, string slogan, string nome_categoria /*string confirmaSenha*/)
+            string celular, string descricao, string cep, string slogan, string nome_categoria)
         {
 
             Fornecedor f = new Fornecedor();
@@ -379,7 +383,7 @@ namespace SupplierRanking.Controllers
                 TempData["Msg"] = "Informações Incorretas";
 
 
-                return RedirectToAction("UpdateFornecedor");
+                return RedirectToAction("RankingGeral", "HomeLogada");
 
 
         }

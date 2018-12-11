@@ -78,7 +78,7 @@ namespace SupplierRanking.Models
             {
                 con.Open(); //ABRE CONEXÃO
                             //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS JÁ FORMANDO O RANKING DAS TOP 10 EMPRESAS
-                SqlCommand query = new SqlCommand("SELECT TOP 10 * FROM fornecedor ORDER BY plano DESC, media DESC", con);
+                SqlCommand query = new SqlCommand("SELECT TOP 10 * FROM fornecedor ORDER BY media DESC", con);
                 SqlDataReader leitor = query.ExecuteReader();
                 while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
                 {
@@ -395,6 +395,8 @@ namespace SupplierRanking.Models
                         f.Media_preco = float.Parse(leitor["Media_preco"].ToString());
                         f.Media_satisfacao = float.Parse(leitor["Media_satisfacao"].ToString());
                     }
+                    f.Pdf = (byte[])leitor["Pdf"];
+                    f.Pdf64 = Convert.ToBase64String(f.Pdf);
                 }
             }
             //tratamento de erro
@@ -404,6 +406,93 @@ namespace SupplierRanking.Models
                 con.Close(); //FECHA CONEXÃO
 
             return f;
+        }
+
+        /***************************************************** PERFIL DO FORNECEDOR ********************************************************/
+
+        public List<String> GaleriaFotos(string cnpj) //FEITO
+        {
+            List<String> galeriaFotos = new List<string>();
+            byte[] foto;
+            string foto64;
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+
+                //comando para selecionar o fornecedor apartir do cnpj
+                SqlCommand query = new SqlCommand("SELECT imagem FROM arquivos WHERE cnpj_fornecedor = @cnpj", con);
+                query.Parameters.AddWithValue("@cnpj", cnpj);
+                SqlDataReader leitor = query.ExecuteReader();
+
+                //prepara o leitor para pegar as informações a serem exibidas
+                while(leitor.Read())
+                {
+                    foto = (byte[])leitor["Imagem"];
+                    foto64 = Convert.ToBase64String(foto);
+                    galeriaFotos.Add(foto64);
+                }
+            }
+            //tratamento de erro
+            catch (Exception e) { galeriaFotos = null; }
+
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+
+            return galeriaFotos;
+        }
+
+        /***************************************************** LISTAR RANKING PREMUIUM **********************************************************/
+
+        public static List<Fornecedor> RankingInteresses(int codigo)
+        {
+            List<Fornecedor> rankingInteresses = new List<Fornecedor>();
+
+
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+                            //CRIAÇÃO DE COMANDO PARA FAZER O SELECT DAS EMPRESAS PREMIUM EM ORDEM DESCRESCENTE
+                SqlCommand query = new SqlCommand("SELECT * FROM fornecedor F, categorias_comprador C WHERE F.nome_categorias = C.nome_categorias AND C.codigo_comprador = @codigo_comprador ORDER BY F.plano DESC, F.media DESC", con);
+                query.Parameters.AddWithValue("@codigo_comprador", codigo);
+                SqlDataReader leitor = query.ExecuteReader();
+                while (leitor.Read()) //ENQUANTO O LEITOR LER AS MEDIAS
+                {
+                    Fornecedor f = new Fornecedor();
+
+                    f.Cnpj = leitor["Cnpj"].ToString();
+                    f.Nome_empresa = leitor["Nome_empresa"].ToString();
+                    f.Email = leitor["Email"].ToString();
+                    f.Telefone = leitor["Telefone"].ToString();
+                    f.Celular = leitor["Celular"].ToString();
+                    f.Endereco = leitor["Endereco"].ToString();
+                    f.Bairro = leitor["Bairro"].ToString();
+                    f.Cidade = leitor["Cidade"].ToString();
+                    f.Uf = leitor["Uf"].ToString();
+                    f.Cep = leitor["Cep"].ToString();
+                    f.Slogan = leitor["Slogan"].ToString();
+                    f.Descricao = leitor["Descricao"].ToString();
+                    f.Media = float.Parse(leitor["Media"].ToString());
+                    f.Plano = leitor["Plano"].ToString();
+                    f.Imagem = (byte[])leitor["Imagem"];
+                    f.Imagem64 = Convert.ToBase64String(f.Imagem);
+                    f.Nome_categoria = leitor["Nome_categorias"].ToString();
+                    if (f.Plano.Equals("P")) //SE O FORNECEDOR FOR PREMIUM MOSTRA AS MÉDIAS DOS CRITÉRIOS DE AVALIAÇÃO
+                    {
+                        f.Media_qualidade = float.Parse(leitor["Media_qualidade"].ToString());
+                        f.Media_atendimento = float.Parse(leitor["Media_atendimento"].ToString());
+                        f.Media_entrega = float.Parse(leitor["Media_entrega"].ToString());
+                        f.Media_preco = float.Parse(leitor["Media_preco"].ToString());
+                        f.Media_satisfacao = float.Parse(leitor["Media_satisfacao"].ToString());
+                    }
+
+                    rankingInteresses.Add(f);
+                }
+            }
+            catch (Exception ex) { rankingInteresses = null; }
+
+            if (con.State == ConnectionState.Open)
+                con.Close();
+            return rankingInteresses;
         }
 
     }//FINAL DA CLASSE

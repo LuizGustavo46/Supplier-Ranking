@@ -41,8 +41,16 @@ namespace SupplierRanking.Controllers
         public ActionResult Perfil(string cnpj)
         {
             HomeLogada h = new HomeLogada();
-            ViewBag.Comentarios = h.Comentarios(cnpj);
-            return View("Perfil", HomeLogada.Perfil(cnpj));
+            if (Session["UserFornecedor"] == null && Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null && Session["UserFuncionario"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.ListaFotos = h.GaleriaFotos(cnpj);
+                ViewBag.Comentarios = h.Comentarios(cnpj);
+                return View("Perfil", HomeLogada.Perfil(cnpj));
+            }
         }
 
 
@@ -61,6 +69,15 @@ namespace SupplierRanking.Controllers
                 return RedirectToAction("Index", "Home");
             else
                 return View("RankingPremium", HomeLogada.RankingPremium());
+        }
+
+        public ActionResult RankingInteresses()
+        {
+            if (Session["UserPessoaFisica"] == null && Session["UserPessoaJuridica"] == null)
+                return RedirectToAction("Index", "Home");
+            else
+
+                return View("RankingInteresses", HomeLogada.RankingInteresses(int.Parse(Session["CodigoUsuario"].ToString())));
         }
 
         public ActionResult Suporte()

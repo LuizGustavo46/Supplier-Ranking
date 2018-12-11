@@ -149,6 +149,7 @@
     <Content Include="Content\images\about.jpg" />
     <Content Include="Content\images\add-imagem-pequeno.png" />
     <Content Include="Content\images\add-imagem.png" />
+    <Content Include="Content\images\atendimento.png" />
     <Content Include="Content\images\avaliar.png" />
     <Content Include="Content\images\compradorIcon.png" />
     <Content Include="Content\images\contato.jpg" />
@@ -156,6 +157,7 @@
     <Content Include="Content\images\email.png" />
     <Content Include="Content\images\email1.png" />
     <Content Include="Content\images\endereco.png" />
+    <Content Include="Content\images\entrega.png" />
     <Content Include="Content\images\ExperimenteAgora.jpg" />
     <Content Include="Content\images\fechar.png" />
     <Content Include="Content\images\filtro.png" />
@@ -167,6 +169,8 @@
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
+    <Content Include="Content\images\icones.html" />
+    <Content Include="Content\images\laressasite2.png" />
     <Content Include="Content\images\luizao.png" />
     <Content Include="Content\images\luizao2.png" />
     <Content Include="Content\images\luizao3.png" />
@@ -179,15 +183,22 @@
     <Content Include="Content\images\plano-free.png" />
     <Content Include="Content\images\plano-premium.png" />
     <Content Include="Content\images\plano.png" />
+    <Content Include="Content\images\premium.png" />
+    <Content Include="Content\images\premium2.png" />
+    <Content Include="Content\images\preço.png" />
+    <Content Include="Content\images\qualidade.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\remove-pdf.png" />
+    <Content Include="Content\images\satisfacao.png" />
     <Content Include="Content\images\search.png" />
+    <Content Include="Content\images\selo.png" />
     <Content Include="Content\images\servicos.png" />
     <Content Include="Content\images\Slide1.jpg" />
     <Content Include="Content\images\Slide2.jpg" />
     <Content Include="Content\images\team.jpg" />
     <Content Include="Content\images\telefone.jpg" />
     <Content Include="Content\images\user.png" />
+    <Content Include="Content\images\valmir2.png" />
     <Content Include="Content\images\valmir255.png" />
     <Content Include="Content\images\video.mp4" />
     <Content Include="Content\js\bloqueia-input.js" />
@@ -406,6 +417,7 @@
     <Content Include="Views\Fornecedor\UpdateFuncionarioFornecedor.cshtml" />
     <Content Include="Views\HomeLogada\Suporte.cshtml" />
     <Content Include="Views\Comprador\UpdateSenha.cshtml" />
+    <Content Include="Views\HomeLogada\RankingInteresses.cshtml" />
     <None Include="Views\Shared\_LayoutLogado.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -567,7 +579,6 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Fornecedor\listaFuncionario.cshtml" />
     <Content Include="Views\Fornecedor\EsqueceuSenhaFornecedor.cshtml" />
-    <Content Include="Views\Fornecedor\listaFornecedor.cshtml" />
     <Content Include="Views\Avaliacao\UpdateComentario.cshtml" />
     <Content Include="Views\HomeLogada\RankingPremium.cshtml" />
     <Content Include="Views\HomeLogada\Pesquisa.cshtml" />
