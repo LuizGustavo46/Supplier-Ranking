@@ -25,15 +25,17 @@
                         <div style="width: 835px;height: 600px;" class="modal-content">
                             <span class="close-avaliacao">&times;</span>
 
-                            <h3>Entrega</h3>
-                            <h3>Qualidade</h3>
-                            <h3>Atendimento</h3>
-                            <h3>Preço</h3>
-                            <h3>Satisfação</h3>
 
-                            <form method="post" action="../Avaliacao/CadastrarAvaliacao" class="rating">
 
-                                <div style="position: relative;top: -27.5rem;left: 21%;">
+
+                            
+                            
+
+                            <form method="post" action="/Avaliacao/CadastrarAvaliacao" >
+
+                             <h3 style="margin-top: -10px;margin-bottom: -5px;">Entrega</h3>
+
+                                 <div class="rating" style="width: 30px;margin-top: -31px;margin-bottom: -49px;" >
 
                                     <label>
                                         <input type="radio" name="entrega" value="1" />
@@ -61,11 +63,11 @@
                                         <input type="radio" name="entrega" value="5" />
                                         <span class="icon">★★★★★</span>
                                     </label>
-
-
                                 </div>
 
-                                <div style="position:relative;top: -27.8rem;left: 21%;">
+                             <h3>Qualidade</h3>
+
+                                <div class="rating" style="width: 30px;margin-bottom: -49px;">
 
 
                                     <label>
@@ -98,7 +100,9 @@
 
                                 </div>
 
-                                <div style="position: relative;top: -28.8rem;left: 21%;">
+                              <h3>Atendimento</h3>
+
+                                 <div class="rating" style="width: 30px;margin-bottom: -49px;" >
 
                                     <label>
                                         <input type="radio" name="atendimento" value="1" />
@@ -130,7 +134,9 @@
 
                                 </div>
 
-                                <div style="position: relative;top: -29.8rem;left: 21%;">
+                              <h3>Preço</h3>
+
+                                  <div class="rating" style="width: 30px;margin-bottom: -49px;">
 
                                     <label>
                                         <input type="radio" name="preco" value="1" />
@@ -162,7 +168,8 @@
 
                                 </div>
 
-                                <div style="position: relative;top: -29.8rem;left: 21%;">
+                              <h3>Satisfação</h3>
+                                <div class="rating" style="width: 30px;margin-bottom: -49px;">
 
                                     <label>
                                         <input type="radio" name="satisfacao" value="1" />
@@ -194,13 +201,14 @@
 
                                 </div>
 
-                                <div style="position: relative;top: -312px;">
-                                    <h1 style="margin-bottom: -48px;margin-left: 344px;font-size: 23px;">Comentário</h1>
+                                <div style="position: relative;top: -239px;">
+                                    <h1 style="margin-left: 344px;font-size: 23px;margin-bottom: -403px;margin-top: 341px;">Comentário</h1>
                                     <br />
+                                    <input id="cnpj" name="cnpj_fornecedor" value="@item.Cnpj" style="font-size: 10px;visibility: hidden;" />
                                     <textarea name="comentario" style="margin-left: 161px;width:463px;height:77px;font-size:18px; resize:none; line-height:20px" ></textarea>
                                     <input name="cnpj_fornecedor" value="@item.Cnpj" style="font-size: 10px; visibility:hidden"/>
 
-                                    <button type="submit" class="btn btn-info btn-lg ">Salvar</button>
+                                    <button style="margin-left: 656px;margin-top: -46px;" type="submit" class="btn btn-info btn-lg ">Salvar</button>
                                 </div>
 
                             </form>
@@ -208,6 +216,7 @@
                         </div>
 
                     </div>
+
 
 
                     <li class="col-12 p-4 mb-5" style="background: white;box-shadow: 0px 0px 9px black;background: #2c8cb6;
@@ -293,7 +302,8 @@
                                 @if (Session["UserFornecedor"] == null)
                                 {
                                     @*<button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>*@
-                                    <button id="@item.Cnpj" name="cnpj_fornecedor" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>
+                                    <button id="@item.Cnpj" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>
+          
                                 }
                                 <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
                             </div>
@@ -358,7 +368,6 @@
                                     @*<button data-target="#myModal2" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>*@
                                     <button id="@item.Cnpj" name="cnpj_fornecedor" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>
                                     
-
 
 
                                 }
