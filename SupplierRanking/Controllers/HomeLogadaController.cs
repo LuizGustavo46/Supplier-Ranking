@@ -37,6 +37,24 @@ namespace SupplierRanking.Controllers
             return View(lista);
         }
 
+        public void Pdf(string id)
+        {
+            string cnpj = id;
+            //cnpj = cnpj.Substring(0, 2) + "." + cnpj.Substring(2, 3) + "." + cnpj.Substring(5, 3) + "/" +
+            //    cnpj.Substring(8, 4) + "-" + cnpj.Substring(12, 2);
+            HomeLogada h = new HomeLogada();
+            byte[] pdf = h.ReturnPdf(cnpj);
+
+            //TALVEZ EU TENHA QUE CONVERTER O BYTE[] EM ARQUIVO "FILE"
+            Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AddHeader("content-disposition", string.Format("attachment; filename=\"{0}\"", "pdf.pdf"));
+            Response.Flush();
+            Response.BinaryWrite(pdf);
+            Response.Flush();
+            Response.End();
+        }
+
 
         public ActionResult Perfil(string cnpj)
         {
@@ -49,6 +67,7 @@ namespace SupplierRanking.Controllers
             {
                 ViewBag.ListaFotos = h.GaleriaFotos(cnpj);
                 ViewBag.Comentarios = h.Comentarios(cnpj);
+                
                 return View("Perfil", HomeLogada.Perfil(cnpj));
             }
         }

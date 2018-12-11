@@ -50,10 +50,7 @@
                             }
                         }
 
-                        @if(Model.Pdf64 != "")
-                        {
-                            <a href="@Model.Pdf64"></a>
-                        }
+                        
                     </div>
                    
                     <h1 style="position: absolute;left: 41%;"></h1>
@@ -101,13 +98,23 @@
             <div style=" width: 1500px;height: 1471px;background-color: #2c8cb6;position: absolute;left: 138px;top: 83%;
             box-shadow: 1px 13px 20px black;border: 1px solid white;">
 
-                <section>
+                 @if (Model.Pdf64 != "")
+                 {
+                <h2 style="position: absolute;left: 39%;">
+                    Arquivo PDF:
+                    @*<a href="~/HomeLogada/pdf/15222222222222/" target="_blank"><img src="~/Content/images/about.jpg" /></a>*@
+                    <a href="/HomeLogada/Pdf/?Id=@Model.Cnpj" target="_blank">
+                        <img src="~/Content/images/add-pdf.png" style="height:60px;width:60px" />
+                    </a>
+                </h2>
+                 }
 
-                        <h2 style="position: absolute;left: 39%;color:white">Arquivo PDF</h2>
-                    @*@Model.Pdf*@
+
+
+
+
                         
-                </section>
-                <h2 style="color:white;margin-top: 194px;margin-left: -120px;" class="w3-center">Galeria de fotos</h2>
+                <h2 style="margin-top: 194px;margin-left: -120px;" class="w3-center">Galeria de fotos</h2>
               
                 
                   <div class="w3-content" style="max-width:1200px">
@@ -122,7 +129,7 @@
                 </div>
                 
                 
-               @if (ViewBag.ListaFotos != null)
+               @if (ViewBag.ListaFotos.Count != 0)
                {
                    int cont = 0;
                    foreach (var f in ViewBag.ListaFotos)
@@ -137,7 +144,7 @@
                 
                 <h2 style="margin-top: 246px;margin-left: 171px;color: white;">Comentários</h2>
                 <ul>
-                    @if (ViewBag.Comentarios != null)
+                    @if (ViewBag.Comentarios.Count != 0)
                     {
                         foreach (var h in ViewBag.Comentarios)
                         {

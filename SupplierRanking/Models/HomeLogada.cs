@@ -408,6 +408,28 @@ namespace SupplierRanking.Models
             return f;
         }
 
+        public Byte[] ReturnPdf(string cnpj)
+        {
+            byte[] pdf = null;
+            try
+            {
+                con.Open(); //ABRE CONEXÃO
+                //comando para selecionar o fornecedor apartir do cnpj
+                SqlCommand query = new SqlCommand("SELECT pdf FROM fornecedor WHERE cnpj = @cnpj", con);
+                query.Parameters.AddWithValue("@cnpj", cnpj);
+                SqlDataReader leitor = query.ExecuteReader();
+                if (leitor.Read())
+                {
+                    pdf = (byte[])leitor["Pdf"];
+                }
+            }catch(Exception e) { string msg = e.Message; }
+
+            if (con.State == ConnectionState.Open)
+                con.Close(); //FECHA CONEXÃO
+            return pdf;
+        }
+
+
         /***************************************************** PERFIL DO FORNECEDOR ********************************************************/
 
         public List<String> GaleriaFotos(string cnpj) //FEITO
