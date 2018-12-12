@@ -179,7 +179,7 @@ a:focus {
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 15px;
+    font-size: 14px;
     display: block;
     text-decoration: none;
     color: white;
@@ -228,11 +228,12 @@ a.article:hover {
     CONTENT STYLE
 ----------------------------------------------------- */
 
-#content {
+.conteudo-perfil {
     width: 100%;
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+    background: #e0e0e0;
 }
 
 /* ---------------------------------------------------
