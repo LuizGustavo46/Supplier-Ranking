@@ -36,6 +36,8 @@
         <link rel="stylesheet" href="~/Content/css/modal.css" />
         <link rel="stylesheet" href="~/Content/css/style_login.css" />
         <link rel="stylesheet" href="~/Content/css/style_logada.css" />
+        <link rel="stylesheet" href="~/Content/css/login.css" />
+        <link rel="stylesheet" href="~/Content/css/cadastro.css" />
 
         <!-- Logo da Aba -->
         <link rel="icon" href="~/Content/images/logo.png" type="image/x-icon" />
@@ -224,11 +226,15 @@
 
         <!-- INÍCIO - CONTEÚDO -->
         <div class="row col-11 conteudo-logada pt-2 pl-4 pb-2">
-             @RenderBody()
+            <section>
+                @RenderBody()
+            </section>
+            
+            
 
-            <section class="row col-12" style="height: 100px;">
+            @*<section class="row col-12" style="height: 100px;">
                 <!-- INÍCIO - RODAPÉ -->
-                <footer class="row col-12 ftco-footer footer-logado p-3">
+                <footer  class="row col-12 ftco-footer footer-logado p-3">
 
                     <div class="row col-12 mb-4">
                         <h4>Informações de Contato:</h4>
@@ -265,7 +271,7 @@
                     </div>
                 </footer>
                 <!-- FIM - RODAPÉ -->
-            </section>
+            </section>*@
         </div>
         <!-- FIM - CONTEÚDO -->
 
