@@ -303,18 +303,18 @@ namespace SupplierRanking.Controllers
         public ActionResult ExcluirConta(string confirmaSenha)
         {
             Comprador c = new Comprador();
-
             int codigo = 0;
+            codigo = int.Parse(Session["CodigoUsuario"].ToString());
+       
 
-            //AATT
-
-
-               codigo = int.Parse(Session["CodigoUsuario"].ToString());
-            
-                c.ExcluirConta(codigo, confirmaSenha);
-            
-
-            return RedirectToAction("Index", "Home");
+            if(c.ExcluirConta(codigo, confirmaSenha))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("ExcluirConta");
+            }        
         }
 
 
