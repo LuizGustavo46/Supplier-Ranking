@@ -9,7 +9,33 @@
    
     <!-- Page Content  -->
     <div id="content" style="background:#eefbfa00">
-        
+
+        <h2 style="color: #D0A748;font-weight: bold; text-shadow: 1px 2px 0px #6c6c6c;margin-left: 56rem;
+     margin-bottom: -136px;">
+            @if (ViewBag.Pesquisa == "media_qualidade")
+            {
+                ViewBag.Pesquisa = "Qualidade";
+            }
+            else if (ViewBag.Pesquisa == "media_atendimento")
+            {
+                ViewBag.Pesquisa = "Atendimento";
+            }
+            else if (ViewBag.Pesquisa == "media_preco")
+            {
+                ViewBag.Pesquisa = "Preço";
+            }
+            else if (ViewBag.Pesquisa == "media_entrega")
+            {
+                ViewBag.Pesquisa = "Entrega";
+            }
+            else if (ViewBag.Pesquisa == "media_satisfacao")
+            {
+                ViewBag.Pesquisa = "Satisfação";
+            }
+
+            Você pesquisou por: "@ViewBag.Pesquisa"
+        </h2>
+
         <div id="divFiltro" style="width:600px;height:450px;background-color:white;border: 30px;border-color: black;visibility:hidden;position: absolute;
             left: 31%;"></div>
 
@@ -32,49 +58,53 @@
                                     @if (item.Imagem64 == "")
                                     {
                                         <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                            <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;"/>
+                                            <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;" />
                                         </a>
                                     }
                                     else
                                     {
                                         String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
                                         <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                            <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;"/>
+                                            <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;" />
                                         </a>
                                     }
                                     @*</div>*@
                                 </div>
                                 <div class="col-5">
                                     <div class="d-flex align-items-baseline pl-3">
-                                        <h4>
-                                            @item.Media
-                                        </h4>
+
                                         <div class="d-flex col-10 justify-content-around pl-5">
                                             <div>
-                                                <img />
+                                                <img src="~/Content/images/qualidade.png" height="40" width="40" style="background-color: white; border-radius:50%" />
                                                 @item.Media_qualidade
                                             </div>
 
                                             <div>
-                                                <img />
+                                                <img src="~/Content/images/atendimento.png" height="40" width="40" style="background-color: white; border-radius:50%" />
                                                 @item.Media_atendimento
                                             </div>
 
                                             <div>
-                                                <img />
+                                                <img src="~/Content/images/entrega.png" height="40" width="40" style="background-color: white; border-radius:50%" />
                                                 @item.Media_entrega
                                             </div>
 
                                             <div>
-                                                <img />
+                                                <img src="~/Content/images/preço.png" height="40" width="40" style="background-color: white; border-radius:50%" />
                                                 @item.Media_preco
                                             </div>
 
                                             <div>
-                                                <img />
+                                                <img src="~/Content/images/satisfacao.png" height="40" width="40" style="background-color: white; border-radius:50%" />
                                                 @item.Media_satisfacao
                                             </div>
                                         </div>
+
+                                        <img src="~/Content/images/selo.png" height="120" width="150" style="position:absolute; margin-left:525px;margin-top:23px;" />
+                                        <h3 style="position:absolute;margin-left:595px;margin-top:59px;color:black;text-shadow:0px 0px 10px black">
+                                            @item.Media
+                                        </h3>
+
                                     </div>
                                     <div>
                                         <h2 style="font-weight: bold;">
@@ -84,6 +114,7 @@
                                     <div>
                                         @item.Nome_categoria
                                     </div>
+                                    <img src="~/Content/images/premium2.png" height="90" width="70" style="margin-left:-236px; margin-top:-222px;" />
                                 </div>
                                 <div class="col-4 d-flex justify-content-between mr-5" style="flex-direction:column; border-left: 2px solid;padding-left: 5rem;">
 
@@ -93,11 +124,19 @@
                                     </p>
                                 </div>
                                 <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
-                                    @if (Session["UserFornecedor"] == null)
+                                    @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
                                     {
-                                        <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+                                        <h5><a>Entre no </a><a style="text-decoration:underline; color:#d0a747" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">perfil </a><a>para avaliar</a> </h5>
+                                        <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                            <img src="~/Content/images/avaliar.png" height="60" width="60" style="margin-top: -3rem;" />
+                                        </a>
                                     }
-                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
+                                    else
+                                    {
+                                        <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                            <img src="~/Content/images/iconecor.png" height="60" width="60" style="margin-top: -3rem;" />
+                                        </a>
+                                    }
                                 </div>
                             </div>
 
@@ -118,14 +157,14 @@
                                     @if (item.Imagem64 == "")
                                     {
                                         <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                            <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px black;"/>
+                                            <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px black;" />
                                         </a>
                                     }
                                     else
                                     {
                                         String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
                                         <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                            <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px black;"/>
+                                            <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px black;" />
                                         </a>
                                     }
                                     @*</div>*@
@@ -154,11 +193,19 @@
                                     </p>
                                 </div>
                                 <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
-                                    @if (Session["UserFornecedor"] == null)
+                                    @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
                                     {
-                                        <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+                                        <h5><a>Entre no </a><a style="text-decoration:underline; color:#d0a747" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">perfil </a><a>para avaliar</a> </h5>
+                                        <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                            <img src="~/Content/images/avaliar.png" height="60" width="60" style="margin-top: -3rem;" />
+                                        </a>
                                     }
-                                    <a style="text-decoration: none;color: #2c8cb6;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
+                                    else
+                                    {
+                                        <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                            <img src="~/Content/images/iconecor.png" height="60" width="60" style="margin-top: -3rem;" />
+                                        </a>
+                                    }
                                 </div>
                             </div>
 
@@ -167,7 +214,7 @@
 
                 }
             </ul>
-                
+
 
         </div>
 

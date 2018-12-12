@@ -9,7 +9,7 @@
 <div class="row">
     <h2 style="color: #D0A748;font-weight: bold; text-shadow: 1px 2px 0px #6c6c6c;margin-bottom: 4rem;margin-top: 8rem;margin-left: 56rem;
      margin-bottom: -136px;">
-        Esses são nossos Destaques da Semana!
+        Esses são os Destaques Premium da Semana!
     </h2>
     <ul class="row list-unstyled m-3" style="margin-top: 18rem !important;">
         @foreach (var item in Model)
@@ -95,11 +95,19 @@
                                 </p>
                             </div>
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
-                                @if (Session["UserFornecedor"] == null)
+                                @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
                                 {
-                                    <button data-target="#myModal" class="btn btn-info btn-lg" data-toggle="modal">Avaliar</button>
+                                    <h5><a>Entre no </a><a style="text-decoration:underline; color:#d0a747" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">perfil </a><a>para avaliar</a> </h5>
+                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="~/Content/images/avaliar.png" height="60" width="60" />
+                                    </a>
                                 }
-                                <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
+                                else
+                                {
+                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="~/Content/images/iconecor.png" height="60" width="60" />
+                                    </a>
+                                }
                             </div>
                         </div>
                    </div>
