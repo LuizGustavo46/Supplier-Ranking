@@ -117,6 +117,22 @@
                         <li>
                             <a href="/Home/Sair/" aria-expanded="false">Sair</a>
                         </li>
+
+                        <li>
+                            @if (Session["UserFornecedor"] != null)
+                            {
+                                <a style="text-decoration: none;font-family: inherit;"
+                                   href="/Fornecedor/ExcluirContaFornecedor/?Cnpj=@Session["UserFornecedor"].ToString()" aria-expanded="false">Excluir Conta</a>
+                            }
+
+
+                            @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                            {
+                                <a style="text-decoration: none;font-family: inherit;"
+                                   href="/Comprador/ExcluirConta/" aria-expanded="false">Excluir Conta</a>
+                            }
+
+                        </li>
                     </ul>
 
                     <ul class="list-unstyled nav-menu pt-4 pb-4">
@@ -127,6 +143,13 @@
                         <li>
                             <a href="/HomeLogada/RankingPremium" aria-expanded="false">Ranking Premium</a>
                         </li>
+
+                        @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                        {
+                            <li>
+                                <a href="/HomeLogada/RankingInteresses" aria-expanded="false">Ranking Interesses</a>
+                            </li>
+                        }
                     </ul>
 
                 </div>
