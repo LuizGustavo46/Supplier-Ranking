@@ -1,10 +1,10 @@
 ﻿
 @{
     ViewBag.Title = "CadastrarAvaliacao";
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
 
-<div class="container-login100">
+@*<div class="container-login100">
 
     <div class="wrap-login100" style="background-color: white;">
 
@@ -12,7 +12,6 @@
 
         <form action="../Avaliacao/CadastrarAvaliacao" method="post" class="login100-form validate-form">
             <p>@ViewBag.Message</p>
-            <!--- Campos do Comprador Fisico -->
             <div>
                 <input type="text" value="5" name="qualidade" style="border: 1px solid black" placeholder="Qualidade">
                 <input type="text" value="4" name="atendimento" style="border: 1px solid black" placeholder="Atendimento">
@@ -22,7 +21,7 @@
                 <br /> <br />
                 <input type="text" value="Muito Bom!!! Amei" name="comentario" style="border: 1px solid black" placeholder="Comentário">
                 <br /> <br />
-                @*<input type="text" value="09/11/2018" name="data_avaliacao" placeholder="Dia / Mês / Ano" style="border: 1px solid black">*@
+                <input type="text" value="09/11/2018" name="data_avaliacao" placeholder="Dia / Mês / Ano" style="border: 1px solid black">
                 <input type="text" value="91.183.484/0001-26" name="cnpj_fornecedor" placeholder="cnpj fornecedor" style="border: 1px solid black">
                 <input type="text" value="1" name="codigo_comprador" placeholder="codigo comprador" style="border: 1px solid black">
                 <br /> <br />
@@ -32,5 +31,5 @@
             <button id="btnSalvar">Salvar</button>
         </form>
     </div>
-</div>
+</div>*@
 
