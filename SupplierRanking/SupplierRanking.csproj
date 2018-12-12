@@ -151,6 +151,9 @@
     <Content Include="Content\images\add-imagem.png" />
     <Content Include="Content\images\atendimento.png" />
     <Content Include="Content\images\avaliar.png" />
+    <Content Include="Content\images\avaliarAzul.png" />
+    <Content Include="Content\images\avaliarBranco.png" />
+    <Content Include="Content\images\avaliarDourado.png" />
     <Content Include="Content\images\compradorIcon.png" />
     <Content Include="Content\images\contato.jpg" />
     <Content Include="Content\images\edit.png" />

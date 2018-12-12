@@ -338,16 +338,56 @@ namespace SupplierRanking.Models
         {
             try
             {
+                string senhaBanco = "";
                 con.Open(); //ABRE CONEXÃO
-                //CRIAÇÃO DE COMANDO
-                SqlCommand query =
-                    new SqlCommand("DELETE FROM comprador WHERE codigo = @codigo AND senha = @senha",
-                        con);
-                query.Parameters.AddWithValue("@codigo", codigo);
-                query.Parameters.AddWithValue("@senha", senha);
-                query.ExecuteNonQuery();
+                    //CRIAÇÃO DE COMANDO
+                    SqlCommand query = new SqlCommand("SELECT senha FROM comprador WHERE codigo = @codigo AND senha = @senha", con);
+                    query.Parameters.AddWithValue("@codigo", codigo);
+                    query.Parameters.AddWithValue("@senha", senha);
+                    SqlDataReader leitor = query.ExecuteReader();
+                if (leitor.Read())
+                {
+                    senhaBanco = leitor["senha"].ToString();
+                }
+                leitor.Close();
+                if (senhaBanco == senha)
+                {
+                    try
+                    {
+                        //CRIAÇÃO DE COMANDO
+                        SqlCommand query1 = new SqlCommand("DELETE FROM categorias_comprador WHERE codigo_comprador = @codigo_comprador", con);
+                        query1.Parameters.AddWithValue("@codigo_comprador", codigo);
+                        query1.ExecuteNonQuery();
+                    }
+                    catch (Exception ex) { string msg = ex.Message; }
 
-            }catch (Exception ex) { return false; }
+                    try
+                    {
+                        //CRIAÇÃO DE COMANDO
+                        SqlCommand query2 =
+                            new SqlCommand("DELETE FROM avaliacao WHERE codigo_comprador = @codigo_comprador", con);
+                        query2.Parameters.AddWithValue("@codigo_comprador", codigo);
+                        query2.ExecuteNonQuery();
+                    }
+                    catch (Exception ex) { string msg = ex.Message; }
+
+                    //CRIAÇÃO DE COMANDO
+                    SqlCommand query3 =
+                        new SqlCommand("DELETE FROM comprador WHERE codigo = @codigo AND senha = @senha", con);
+                    query3.Parameters.AddWithValue("@codigo", codigo);
+                    query3.Parameters.AddWithValue("@senha", senha);
+                    query3.ExecuteNonQuery();
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+                return false;
+            }
 
             if (con.State == ConnectionState.Open)
                 con.Close();

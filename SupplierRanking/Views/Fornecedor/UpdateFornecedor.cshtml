@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
 
-    <div class="container-login100" style="width: 946px;height: 882px;background: #fff;position: absolute;left:435px;margin-top: 163px; box-shadow: 1px 1px 27px;">
+    <div class="container-login100" style="width: 946px;height: 1597px;background: #fff;position: absolute;left:435px;margin-top: 163px; box-shadow: 1px 1px 27px;">
 
         <div class="wrap-login100" style="background-color: white;position: absolute;left: 41%;">
 
@@ -12,7 +12,7 @@
             <form action="/Fornecedor/UpdateFornecedor" method="post" class="login100-form validate-form" enctype="multipart/form-data">
 
                 <!--- Campos do Fornecedor -->
-                <div id="">
+                <div class="col-10 wrap-input pl-2">
                     @*<label for="imagem" style="border: 1px solid; background-color: gainsboro; padding: .5em; font-size: 12px; cursor: pointer;">Imagem de Perfil</label>
                         <input type="file" accept="image/*" id="imagem" name="imagem" style="display: none">*@
 
@@ -62,13 +62,25 @@
                     <br /> <br />
                     <input class="input" type="text" value="@Model.Nome_categoria" name="nome_categoria" placeholder="categoria">
                     <br /> <br />
-                    <input class="button" type="file" name="imagem" />
+                    @*<input type="file" name="imagem" />*@
+                  
+                    <div class='input-wrapper'>
+                       
+                         <label style="width: 212px;background-color:#245b7a;margin-left:margin-left: 4px;" for='input-file'>
+                            Selecionar um arquivo                  
+                        </label>
+                        @*<input id='input-file' type='file' value='' />*@
+                        <input style="visibility: hidden;" id="input-file" type="file" name="imagem" />
+                       
+                        <span id='file-name'></span>
+                    </div>
+
                     <br /> <br />
 
                 </div>
 
                 <br /> <br />
-                <button type="submit" style="margin-top: -62px;background: #166083;" class="btn btn-info btn-lg" id="btnAtualizar">Atualizar</button>
+                <button type="submit" style="margin-top: -62px;margin-left: 67px;background: #166083;" class="btn btn-info btn-lg" id="btnAtualizar">Atualizar</button>
             </form>
         </div>
     </div>
