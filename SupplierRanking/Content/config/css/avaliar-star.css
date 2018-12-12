@@ -1,10 +1,10 @@
 ﻿.rating {
-  display: block;
+  /*display: block;*/
   position: relative;
-  height: 50px;
-  line-height: 50px;
+  /*height: 50px;
+  line-height: 50px;*/
   font-size: 36px;
-  margin-left: 318px;
+  /*margin-left: 318px;*/
 }
 
 .rating label {
@@ -63,4 +63,14 @@
 .rating label input:focus:not(:checked) ~ .icon:last-child {
   color: #000;
   text-shadow: 0 0 5px #09f;
+}
+
+#myModal2 textarea,
+#myModal2 textarea:focus  {
+    width:100%; 
+    height:77px; 
+    border: 1px solid rgba(0,0,0,0.2) !important; 
+    border-radius: 4px; 
+    font-size:18px; 
+    resize:none;
 }

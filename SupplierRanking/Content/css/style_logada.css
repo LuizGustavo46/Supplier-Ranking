@@ -48,6 +48,25 @@ a:focus {
     margin: 40px 0;
 }
 
+.btn-concluir {
+    width: 15.6em;
+    height: 50px;
+    background: #0C496Bc9;
+    border-radius: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.btn-concluir:hover {
+	color: #DAA520;
+    border: 1px solid #DAA520;
+    box-shadow: 1px 2px 4px 2px #CCC;
+}
+
 .footer-logado h4 {
     font-weight: bold;
     color: #FFF;

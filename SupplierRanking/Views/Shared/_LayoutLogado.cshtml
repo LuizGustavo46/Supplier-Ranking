@@ -31,10 +31,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700">
         <link rel="stylesheet" href="~/Content/config/css/style.css" />
         <link rel="stylesheet" href="~/Content/css/style.css">
-        <link rel="stylesheet" href="~/Content/css/style_login.css" />
         <link rel="stylesheet" href="~/Content/css/checkbox-home-logada.css" />
         <link rel="stylesheet" href="~/Content/config/css/avaliar-star.css" />
         <link rel="stylesheet" href="~/Content/css/modal.css" />
+        <link rel="stylesheet" href="~/Content/css/style_login.css" />
         <link rel="stylesheet" href="~/Content/css/style_logada.css" />
 
         <!-- Logo da Aba -->
@@ -164,8 +164,13 @@
                             color: white;
                             border-bottom: 3px solid #bbad00; ">
 
-                            <h4 style="margin-left: 380px;" class="modal-title">Filtro </h4>
-                            <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
+                            <div class="col-11 p-0 d-flex justify-content-center">
+                                <h4 class="modal-title">Filtro </h4>
+                            </div>
+                            
+                            <div class="col-1">
+                                <button class="close m-0 p-0" data-dismiss="modal" style="color:white;">×</button>
+                            </div>
 
                         </div>
 
@@ -175,7 +180,6 @@
 
                                 <label style="margin-left: 4px;" class="container">
                                     Entrega
-
                                     <input value="media_entrega" id="entrega" type="radio" checked="checked" name="pesquisa" style="visibility:hidden">
                                     <span style="margin-left: -15px;" class="checkmark"></span>
                                 </label>
@@ -202,8 +206,8 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-default">Concluir</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-default" style="width: 150px; height: 40px; background: #0C496Bc9; color: #fff;">Concluir</button>
+                                <button type="button" class="btn btn-default" style="width: 150px; height: 40px;" data-dismiss="modal">Fechar</button>
                             </div>
                         </form>
                     </div>
