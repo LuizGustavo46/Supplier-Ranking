@@ -269,11 +269,19 @@
                             </div>
 
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
-                                @if (Session["UserFornecedor"] == null)
+                                @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
                                 {
-                                    <button id="@item.Cnpj" name="cnpj_fornecedor" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>
+                                    <h5><a>Entre no </a><a style="text-decoration:underline; color:#d0a747" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">perfil </a><a>para avaliar</a> </h5>
+                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="~/Content/images/avaliar.png" height="60" width="60" style="margin-top: -3rem;" />
+                                    </a>
                                 }
-                                <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
+                                else
+                                {
+                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="~/Content/images/iconecor.png" height="60" width="60" style="margin-top: -3rem;" />
+                                    </a>
+                                }
                             </div>
                         </div>
                         <!-- FIM - Ranking -->
@@ -492,11 +500,19 @@
                             </div>
 
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
-                                @if (Session["UserFornecedor"] == null)
+                                @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
                                 {
-                                    <button id="@item.Cnpj" name="cnpj_fornecedor" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>
+                                    <h5><a>Entre no </a><a style="text-decoration:underline; color:#d0a747" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">perfil </a><a>para avaliar</a> </h5>
+                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="~/Content/images/avaliar.png" height="60" width="60" style="margin-top: -3rem;" />
+                                    </a>
                                 }
-                                <a style="text-decoration: none;color: #2c8cb6;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
+                                else
+                                {
+                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="~/Content/images/iconecor.png" height="60" width="60" style="margin-top: -3rem;" />
+                                    </a>
+                                }
                             </div>
                         </div>
                         <!-- FIM - Ranking -->

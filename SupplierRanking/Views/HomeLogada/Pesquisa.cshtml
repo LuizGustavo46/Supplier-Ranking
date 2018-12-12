@@ -4,16 +4,44 @@
     Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
 
-
-<div class="row col-12 m-4 mt-5 pt-5 p-0" style="min-height: 55vh;">
-
+   
+<div class="row col-12 m-4 p-0" style="min-height: 55vh;">
+   
     <div class="row col-12 resultado-pesquisa">
+
+        <div class="row col-12 d-flex justify-content-center mb-5">
+            <h2 style="color: #D0A748;font-weight: bold; text-shadow: 1px 2px 0px #6c6c6c;">
+                @if (ViewBag.Pesquisa == "media_qualidade")
+                {
+                    ViewBag.Pesquisa = "Qualidade";
+                }
+                else if (ViewBag.Pesquisa == "media_atendimento")
+                {
+                    ViewBag.Pesquisa = "Atendimento";
+                }
+                else if (ViewBag.Pesquisa == "media_preco")
+                {
+                    ViewBag.Pesquisa = "Preço";
+                }
+                else if (ViewBag.Pesquisa == "media_entrega")
+                {
+                    ViewBag.Pesquisa = "Entrega";
+                }
+                else if (ViewBag.Pesquisa == "media_satisfacao")
+                {
+                    ViewBag.Pesquisa = "Satisfação";
+                }
+
+                Pesquisa por: "@ViewBag.Pesquisa"
+            </h2>
+        </div>
+
         <ul class="row col-12 list-unstyled m-3 p-0">
 
-            @foreach (var item in Model)
-            {
-                if (item.Plano.Equals("P"))
+                @foreach (var item in Model)
                 {
+                    if (item.Plano.Equals("P"))
+                    {
                     <li class="col-12 p-4 mb-5"
                         style="background: #2c8cb6;box-shadow: 0px 0px 23px black;color: white;border: solid 1px #00000045;max-height: 18rem;">
 
@@ -178,93 +206,100 @@
                         </div>
                         <!-- FIM - Modal -->
                         <!-- INICIO - Ranking -->
-                        <div class="row">
-                            <div class="d-flex justify-content-center align-items-center mr-5" style="padding-left: 4rem;">
+                            <div class="row">
+                                <div class="d-flex justify-content-center align-items-center mr-5" style="padding-left: 4rem;">
 
-                                <div class="pr-5">
-                                    <h2>@(Model.IndexOf(item) + 1)º </h2>
+                                    <div class="pr-5">
+                                        <h2>@(Model.IndexOf(item) + 1)º </h2>
+                                    </div>
+
+                                    @if (item.Imagem64 == "")
+                                    {
+                                        <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                            <img src="~/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;"/>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                                        <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                            <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;" />
+                                        </a>
+                                    }
                                 </div>
+                                <div class="col-5">
+                                    <div class="d-flex align-items-baseline pl-3">
 
-                                @if (item.Imagem64 == "")
-                                {
-                                    <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="/Content/images/iconecor.png" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;" />
-                                    </a>
-                                }
-                                else
-                                {
-                                    String imagem64 = string.Format("data:image/jpeg;base64,{0}", item.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                                    <a href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="@imagem64" height="100" width="100" style="border-radius: 50%; box-shadow: 0px 0px 9px white; border: 4px dotted white;" />
-                                    </a>
-                                }
-                            </div>
-                            <div class="col-5">
-                                <div class="d-flex align-items-baseline pl-3">
+                                        <div class="d-flex col-10 justify-content-around align-items-center pl-5 pr-5">
+                                            <div class="d-flex align-items-baseline pl-3 pr-5">
+                                                <h2 class="m-0" style="font-weight: bold;">
+                                                    @item.Media
+                                                </h2>
+                                            </div>
+                                            <div>
+                                                <img src="~/Content/images/qualidade.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_qualidade
+                                            </div>
 
-                                    <div class="d-flex col-10 justify-content-around pl-5" style="margin-left:60px">
-                                        <div class="d-flex align-items-baseline pl-3">
-                                            <h4 style="font-weight: bold;">
-                                                @item.Media
-                                            </h4>
-                                        </div>
-                                        <div>
-                                            <img src="~/Content/images/qualidade.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                                            @item.Media_qualidade
-                                        </div>
+                                            <div>
+                                                <img src="~/Content/images/atendimento.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_atendimento
+                                            </div>
 
-                                        <div>
-                                            <img src="~/Content/images/atendimento.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                                            @item.Media_atendimento
-                                        </div>
+                                            <div>
+                                                <img src="~/Content/images/entrega.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_entrega
+                                            </div>
 
-                                        <div>
-                                            <img src="~/Content/images/entrega.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                                            @item.Media_entrega
-                                        </div>
+                                            <div>
+                                                <img src="~/Content/images/preço.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_preco
+                                            </div>
 
-                                        <div>
-                                            <img src="~/Content/images/preço.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                                            @item.Media_preco
-                                        </div>
-
-                                        <div>
-                                            <img src="~/Content/images/satisfacao.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                                            @item.Media_satisfacao
+                                            <div>
+                                                <img src="~/Content/images/satisfacao.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                                @item.Media_satisfacao
+                                            </div>
                                         </div>
                                     </div>
+                                    <div>
+                                        <h2 style="font-weight: bold;">
+                                            @item.Nome_empresa
+                                        </h2>
+                                    </div>
+                                    <div>
+                                        @item.Nome_categoria
+                                    </div>
+                                    <img src="~/Content/images/premium2.png" height="90" width="70" style="margin-left:-236px; margin-top:-222px;" />
                                 </div>
-                                <div>
-                                    <h2 style="font-weight: bold;">
-                                        @item.Nome_empresa
-                                    </h2>
-                                </div>
-                                <div>
-                                    @item.Nome_categoria
-                                </div>
-                                <img src="~/Content/images/premium2.png" height="90" width="70" style="margin-left:-236px; margin-top:-222px;" />
-                            </div>
-                            <div class="col-4 d-flex justify-content-between mr-5" style="flex-direction:column; border-left: 2px solid;padding-left: 5rem;">
+                                <div class="col-4 d-flex justify-content-between mr-5" style="flex-direction:column; border-left: 2px solid;padding-left: 5rem;">
 
-                                <h3>"@item.Slogan"</h3>
-                                <p style="color: white;">
-                                    @item.Endereco, @item.Bairro - @item.Cidade / @item.Uf
-                                </p>
+                                    <h3>"@item.Slogan"</h3>
+                                    <p style="color: white;">
+                                        @item.Endereco, @item.Bairro - @item.Cidade / @item.Uf
+                                    </p>
+                                </div>
+                                <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
+                                    @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                                    {
+                                        <h5><a>Entre no </a><a style="text-decoration:underline; color:#d0a747" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">perfil </a><a>para avaliar</a> </h5>
+                                        <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                            <img src="~/Content/images/avaliar.png" height="60" width="60" style="margin-top: -3rem;" />
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                            <img src="~/Content/images/iconecor.png" height="60" width="60" style="margin-top: -3rem;" />
+                                        </a>
+                                    }
+                                </div>
                             </div>
-
-                            <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
-                                @if (Session["UserFornecedor"] == null)
-                                {
-                                    <button id="@item.Cnpj" name="cnpj_fornecedor" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>
-                                }
-                                <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
-                            </div>
-                        </div>
                         <!-- FIM - Ranking -->
-                    </li>
-                }
-                else
-                {
+                        </li>
+                    }
+                    else
+                    {
                     <li class="col-12 p-4 mb-5" 
                         style="background: white;box-shadow: 0px 0px 9px black;max-height: 18rem;">
 
@@ -450,11 +485,12 @@
                                     </a>
                                 }
                             </div>
+
                             <div class="col-5">
-                                <div class="d-flex align-items-baseline pl-3">
-                                    <h4 style="font-weight: bold;">
+                                <div class="d-flex align-items-baseline pl-5 ml-5">
+                                    <h2 class="m-0" style="font-weight: bold;">
                                         @item.Media
-                                    </h4>
+                                    </h2>
                                 </div>
                                 <div>
                                     <h2>
@@ -475,260 +511,26 @@
                             </div>
 
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
-                                @if (Session["UserFornecedor"] == null)
+                                @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
                                 {
-                                    <button id="@item.Cnpj" name="cnpj_fornecedor" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>
+                                    <h5><a>Entre no </a><a style="text-decoration:underline; color:#d0a747" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">perfil </a><a>para avaliar</a> </h5>
+                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="~/Content/images/avaliar.png" height="60" width="60" style="margin-top: -3rem;" />
+                                    </a>
                                 }
-                                <a style="text-decoration: none;color: #2c8cb6;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">Perfil</a>
+                                else
+                                {
+                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img src="~/Content/images/iconecor.png" height="60" width="60" style="margin-top: -3rem;" />
+                                    </a>
+                                }
                             </div>
                         </div>
                         <!-- FIM - Ranking -->
                     </li>
+                    }
                 }
-            }
         </ul>
     </div>
-
-
-    <!-- Modal -->
-    @*<div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header" style="
-                            background-color: #0C496BE6;
-                            color: white;
-                            border-bottom: 3px solid #bbad00; ">
-
-                    <h4 style="margin-left: 241px;" class="modal-title">Nós ajude a melhorar nosso serviço!</h4>
-                    <button type="button" class="close" data-dismiss="modal" style="color:white;">×</button>
-
-                </div>
-
-
-
-
-                <div class="modal-avaliacao-body">
-                    <p>Avalie por :</p>
-
-                    <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                        Entrega
-                    </h1>
-                    <form style="margin-left: 269px;" class="rating">
-
-                        <label>
-
-
-                            <input type="radio" name="stars" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-
-                    </form>
-
-                    <br />
-
-                    <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                        Qualidade
-                    </h1>
-                    <form style="margin-left: 269px;" class="rating">
-                        <label>
-                            <input type="radio" name="stars" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-
-                    </form>
-
-                    <br />
-
-                    <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                        Preço
-                    </h1>
-
-                    <form style="margin-left: 269px;" class="rating">
-                        <label>
-                            <input type="radio" name="stars" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-
-                    </form>
-
-
-                    <br />
-
-                    <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                        Satisfação
-                    </h1>
-
-                    <form style="margin-left: 269px;" class="rating">
-                        <label>
-                            <input type="radio" name="stars" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-
-                    </form>
-
-                    <br />
-
-                    <h1 style="font-size: 23px;margin-left: 134px;margin-bottom: -36px;">
-                        Atendimento
-                    </h1>
-                    <form style="margin-left: 269px;" class="rating">
-                        <label>
-                            <input type="radio" name="stars" value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="stars" value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-
-                    </form>
-
-                    <br />
-
-
-                    <form>
-                        <h1 style="margin-bottom: -17px;margin-left: 161px;font-size: 23px;">Comentário</h1>
-                        <br />
-                        <input style="margin-left: 161px;width:463px;height:30px" />
-
-                    </form>
-
-
-                </div>
-                <div class="modal-avaliacao-footer">
-                    <button type="button" class="btn btn-default">Concluir</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-
-                </div>
-            </div>
-        </div>
-    </div>*@
-
 </div>
 

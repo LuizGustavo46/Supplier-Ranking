@@ -419,6 +419,9 @@
     <Content Include="Views\HomeLogada\Suporte.cshtml" />
     <Content Include="Views\Comprador\UpdateSenha.cshtml" />
     <Content Include="Views\HomeLogada\RankingInteresses.cshtml" />
+    <Content Include="Views\Fornecedor\ExcluirContaFornecedor.cshtml" />
+    <Content Include="Views\Comprador\ExcluirConta.cshtml" />
+    <None Include="Views\Shared\Layout_logada.cshtml" />
     <None Include="Views\Shared\_LayoutLogado.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>

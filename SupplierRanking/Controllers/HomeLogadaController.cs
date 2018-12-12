@@ -34,6 +34,14 @@ namespace SupplierRanking.Controllers
             if (lista.Count == 0)
                 lista = HomeLogada.RankingFiltro(pesquisa);
 
+            ViewBag.Pesquisa = pesquisa;
+
+            if(lista.Count == 0)
+            {
+                ViewBag.Pesquisa = ViewBag.Pesquisa + "- nada foi encontrado. :(";
+                return View("Pesquisa", HomeLogada.RankingGeral());
+            }
+
             return View(lista);
         }
 
