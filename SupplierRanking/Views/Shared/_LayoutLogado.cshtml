@@ -113,7 +113,14 @@
                         </li>
 
                         <li>
+                            @if (Session["UserPessoaFisica"] != null || Session["UserPessoaFisica"] != null)
+                            {
                             <a href="/Comprador/UpdateSenha/" aria-expanded="false">Alterar Senha</a>
+                            }
+                            else if (Session["UserFornecedor"] != null)
+                            {
+                                <a href="/Fornecedor/UpdateSenha/" aria-expanded="false">Alterar Senha</a>
+                            }
                         </li>
 
                         <li>
@@ -183,34 +190,34 @@
                                 <!-- Entrega -->
                                 <div class="row col-7 mb-3">
                                     <label class="container">
-                                        Entrega
+                                    Entrega
                                         <input value="media_entrega" id="entrega" type="radio" name="pesquisa" checked="checked" hidden>
                                         <span style="margin: 5px 0 0 -15px;" class="checkmark"></span>
-                                    </label>
+                                </label>
                                 </div>
 
                                 <!-- Qualidade -->
                                 <div class="row col-7 mb-3">
                                     <label class="container">
-                                        Qualidade
+                                    Qualidade
                                         <input value="media_qualidade" id="qualidade" type="radio" name="pesquisa" hidden>
                                         <span style="margin: 5px 0 0 -15px;" class="checkmark"></span>
-                                    </label>
+                                </label>
                                 </div>
 
                                 <!-- Preço -->
                                 <div class="row col-7 mb-3">
                                     <label class="container">
-                                        Preço
+                                    Preço
                                         <input value="media_preco" id="preco" type="radio" name="pesquisa" hidden>
                                         <span style="margin: 5px 0 0 -15px;" class="checkmark"></span>
-                                    </label>
+                                </label>
                                 </div>
 
                                 <!-- Atendimento -->
                                 <div class="row col-7 mb-3">
                                     <label class="container">
-                                        Atendimento
+                                    Atendimento
                                         <input value="media_atendimento" id="atendimento" type="radio" name="pesquisa" hidden>
                                         <span style="margin: 5px 0 0 -15px;" class="checkmark"></span>
                                     </label>
@@ -222,7 +229,7 @@
                                         Satisfação Geral
                                         <input value="media_satisfacao" id="satisfacao" type="radio" name="pesquisa" hidden>
                                         <span style="margin: 5px 0 0 -15px;" class="checkmark"></span>
-                                    </label>
+                                </label>
                                 </div>
 
                             </div>
@@ -239,9 +246,13 @@
 
         <!-- INÍCIO - CONTEÚDO -->
         <div class="row col-11 conteudo-logada pt-2 pl-4 pb-2">
+            <section>
              @RenderBody()
+            </section>
+            
+            
 
-            <!-- INÍCIO - RODAPÉ -->
+                <!-- INÍCIO - RODAPÉ -->
             @*<section class="row col-12" style="height: 100px;">
                 <footer class="row col-12 ftco-footer footer-logado p-3">
 
@@ -280,7 +291,7 @@
                     </div>
                 </footer>
             </section>*@
-            <!-- FIM - RODAPÉ -->
+                <!-- FIM - RODAPÉ -->
         </div>
         <!-- FIM - CONTEÚDO -->
 
