@@ -4,9 +4,7 @@
     Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
 
-<section style=" width: 2000px;height: 104px;background: #0C496BE6;position: absolute;top: 0px;left:0px;">
-</section>
-    <div class="container-login100" style="width: 946px;height: 634px;background: #fff;position: absolute;left:435px;margin-top: 172px; box-shadow: 1px 1px 27px;">
+    <div class="container-login100" style="width: 946px;height: 900px;background: #fff;position: absolute;left:435px;margin-top: 172px; box-shadow: 1px 1px 27px;">
 
         <div class="wrap-login100" style="background-color: white;position: absolute;left: 41%;">
 
@@ -14,27 +12,34 @@
                 Editar informações
             </h2>
 
-            <form action="/Comprador/UpdatePessoaFisica" method="post" class="login100-form validate-form">
+            <form action="/Comprador/UpdatePessoaFisica" method="post" class="login100-form validate-form ">
                 <p>@ViewBag.Message</p>
                 <!--- Campos do Comprador Fisico -->
-                <div>
-                    <input class="input" type="text" value="@Model.Codigo" name="codigo" readonly="readonly" style="visibility:hidden">
-                    <a name="codigo" style="margin-left:-110px;">@Model.Codigo</a>
+                <div class="col-10 wrap-input pl-2">
+                    <input class="input " type="text" value="@Model.Codigo" name="codigo" readonly="readonly" style="visibility:hidden;margin-top: -85px;">
+                    <a name="codigo" style="margin-bottom: -31px;margin-left: 66px;visibility: hidden;">@Model.Codigo</a>
+               
                     <br /> <br />
-                    <input class="input" type="text" value="@Model.Cpf" name="cpf" readonly="readonly" style="visibility:hidden">
-                    <a name="cpf" style="margin-left:-160px;">CPF: @Model.Cpf</a>
+               
+                    <input class="input" type="text" value="@Model.Cpf" name="cpf" readonly="readonly" style="visibility:hidden;margin-top: -8rem;">
+                    <a name="cpf" >CPF: @Model.Cpf</a>
+                
+                
                     <br /> <br />
-                    <input class="input" type="text" value="@Model.Nome" name="nome">
+               
+                    <input class="input" type="text" value="@Model.Nome" name="nome" style="margin-left: -29px;">
+               
                     <br /> <br />
-                    <input class="input" type="text" value="@Model.Sobrenome" name="sobrenome">
+                
+                    <input class=" input" type="text" value="@Model.Sobrenome" name="sobrenome" style="margin-left: -29px;">
                     <br /> <br />
-                    <input class="input" type="text" value="@Model.Email" name="email">
+                    <input class="input" type="text" value="@Model.Email" name="email" style="margin-left: -29px;">
                     <br /> <br />
-                    <input class="input" type="text" value="@Model.Uf" name="uf">
+                    <input class="input" type="text" value="@Model.Uf" name="uf" style="margin-left: -29px;">
                     <br /> <br />
-                    <input class="input" type="text" value="@Model.Telefone" name="telefone" placeholder="(00) 0000-0000">
+                    <input class="input" type="text" value="@Model.Telefone" name="telefone" placeholder="(00) 0000-0000" style="margin-left: -29px;">
                     <br /> <br />
-                    <input class="input" type="text" value="@Model.Celular" name="celular" placeholder="(00) 00000-0000">
+                    <input class="input" type="text" value="@Model.Celular" name="celular" placeholder="(00) 00000-0000" style="margin-left: -29px;">
                     <br /> <br />
                 </div>
 

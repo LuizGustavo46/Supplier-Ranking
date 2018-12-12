@@ -3,10 +3,9 @@
     ViewBag.Title = "UpdatePessoaJuridica";
     Layout = "~/Views/Shared/Layout_logada.cshtml";
 }
-<section style=" width: 2000px;height: 104px;background: #0C496BE6;position: absolute;top: 0px;left:0px;">
-</section>
 
-<div class="container-login100" style="width: 946px;height: 634px;background: #fff;position: absolute;left:435px;margin-top: 172px; box-shadow: 1px 1px 27px;">
+
+<div class="container-login100" style="width: 946px;height: 840px;background: #fff;position: absolute;left:435px;margin-top: 172px; box-shadow: 1px 1px 27px;">
 
     <div class="wrap-login100" style="background-color: white;position: absolute;left: 41%;">
 
@@ -15,22 +14,22 @@
         <form action="/Comprador/UpdatePessoaJuridica" method="post" class="login100-form validate-form">
             <p>@ViewBag.Message</p>
             <!--- Campos do Comprador Fisico -->
-            <div>
+            <div class="col-10 wrap-input pl-2">
                 <input class="input" type="text" value="@Model.Codigo" name="codigo" readonly="readonly" style="visibility:hidden">
-                <a name="codigo" style="margin-left:-110px;">@Model.Codigo</a>
+                <a name="codigo" style="margin-left:-110px;visibility:hidden;">@Model.Codigo</a>
                 <br /> <br />
-                <input class="input" type="text" value="@Model.Cnpj" name="cnpj" readonly="readonly" style="visibility:hidden">
-                <a name="cpf" style="margin-left:-160px;">CPF: @Model.Cnpj</a>
+                <input class="input" type="text" value="@Model.Cnpj" name="cnpj" readonly="readonly" style="visibility:hidden;margin-top: -16rem;">
+                <a name="cpf" >CPF: @Model.Cnpj</a>
                 <br /> <br />
-                <input class="input" type="text" value="@Model.Nome_empresa" name="nome_empresa">
+                <input class="input" type="text" value="@Model.Nome_empresa" name="nome_empresa"   style="margin-left: -29px;">
                 <br /> <br />
-                <input class="input" type="text" value="@Model.Email" name="email">
+                <input class="input" type="text" value="@Model.Email" name="email"  style="margin-left: -29px;">
                 <br /> <br />
-                <input class="input" type="text" value="@Model.Uf" name="uf">
+                <input class="input" type="text" value="@Model.Uf" name="uf"  style="margin-left: -29px;">
                 <br /> <br />
-                <input class="input" type="text" value="@Model.Telefone" name="telefone" placeholder="(00) 0000-0000">
+                <input class="input" type="text" value="@Model.Telefone" name="telefone" placeholder="(00) 0000-0000"  style="margin-left: -29px;">
                 <br /> <br />
-                <input class="input" type="text" value="@Model.Celular" name="celular" placeholder="(00) 00000-0000">
+                <input class="input" type="text" value="@Model.Celular" name="celular" placeholder="(00) 00000-0000"  style="margin-left: -29px;">
                 <br /> <br />
             </div>
 

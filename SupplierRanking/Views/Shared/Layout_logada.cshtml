@@ -30,7 +30,14 @@
         <link href="~/Content/css/style_logada.css" rel="stylesheet" />
         <link href="~/Content/config/css/avaliar-star.css" rel="stylesheet" />
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700">
+        <link rel="stylesheet" href="~/Content/config/css/style.css" />
+        <link rel="stylesheet" href="~/Content/css/style_login.css" />
+        <link rel="stylesheet" href="~/Content/css/login.css" />
+        <link rel="stylesheet" href="~/Content/css/cadastro.css" />
        
+
+        <link href="~/Content/css/login.css" rel="stylesheet" />
 
 
         <script src="~/Content/js/carousel-perfil.js"></script>
@@ -166,31 +173,6 @@
                                <a style="text-decoration: none; font-family: inherit;"
                         href="/Home/Sair/" aria-expanded="false">Encerrar Sessão</a>
                     </li>
-                </ul>
-
-
-                <ul class="list-unstyled components">
-                    <li class="active">
-                        <a href="/HomeLogada/RankingGeral" aria-expanded="false">Ranking Geral</a>
-                    </li>
-                    @*<li>
-            <a href="/HomeLogada/Pesquisa"  aria-expanded="false">Pesquisar</a>
-        </li>*@
-
-                    <li>
-                        <a href="/HomeLogada/RankingPremium" aria-expanded="false">Ranking Premium</a>
-                    </li>
-
-                    @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
-                    {
-                        <li>
-                            <a href="/HomeLogada/RankingInteresses" aria-expanded="false">Ranking Interesses</a>
-                        </li>
-                    }
-
-                    @*<li>
-                        <a href="/HomeLogada/Suporte" aria-expanded="false">Suporte</a>
-                    </li>*@
 
                     <li>
                         @if (Session["UserFornecedor"] != null)
@@ -207,6 +189,35 @@
                         }
 
                     </li>
+
+
+                </ul>
+
+
+                <ul class="list-unstyled components">
+                    <li >
+                        <a href="/HomeLogada/RankingGeral" aria-expanded="false">Ranking Geral</a>
+                    </li>
+                    @*<li>
+            <a href="/HomeLogada/Pesquisa"  aria-expanded="false">Pesquisar</a>
+        </li>*@
+
+                    <li class="active">
+                        <a href="/HomeLogada/RankingPremium" aria-expanded="false">Ranking Premium</a>
+                    </li>
+
+                    @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                    {
+                        <li>
+                            <a href="/HomeLogada/RankingInteresses" aria-expanded="false">Ranking Interesses</a>
+                        </li>
+                    }
+
+                    @*<li>
+                        <a href="/HomeLogada/Suporte" aria-expanded="false">Suporte</a>
+                    </li>*@
+
+                  
 
                 
                 </ul>
