@@ -84,9 +84,6 @@ namespace SupplierRanking.Models
 
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
-
-        //███████████████████████████████████████████████████████████████████████▓▒░INICIO DOS MÉTODOS░▒▓████████████████████████████████████████████████████████████████████████████
-
         /*RESPONSÁVEL PELA CLASSE: MARCELO LEMOS 4INF- A TURMA - B*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ LOGIN ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
@@ -298,13 +295,35 @@ namespace SupplierRanking.Models
 
                 leitor.Close();//fecha o leitor
 
-                //
                 if (senha == confirmaSenha)
                 {
+                    try
+                    {
+                        SqlCommand query2 =
+                            new SqlCommand("DELETE from avaliacao WHERE cnpj_fornecedor = @cnpj_fornecedor", con);
+                        query2.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
+                        query2.ExecuteNonQuery();//executa o update
+                    }
+                    catch (Exception ex) { string msg = ex.Message; }
+
+                    try
+                    {
+                        SqlCommand query3 =
+                            new SqlCommand("DELETE from arquivos WHERE cnpj_fornecedor = @cnpj_fornecedor", con);
+                        query3.Parameters.AddWithValue("@cnpj_fornecedor", cnpj);
+                        query3.ExecuteNonQuery();//executa o update
+                    }
+                    catch (Exception ex) { string msg = ex.Message; }
+
+                 
                     SqlCommand query =
-                                new SqlCommand("DELETE from fornecedor WHERE cnpj = @cnpj", con);
+                        new SqlCommand("DELETE from fornecedor WHERE cnpj = @cnpj", con);
                     query.Parameters.AddWithValue("@cnpj", cnpj);
                     query.ExecuteNonQuery();//executa o update
+                }
+                else
+                {
+                    return false;
                 } 
             }//tratamento de erro
             catch (Exception ex)

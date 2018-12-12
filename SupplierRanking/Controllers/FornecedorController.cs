@@ -211,9 +211,17 @@ namespace SupplierRanking.Controllers
             Fornecedor excluir = new Fornecedor();  
 
             excluir.Cnpj = Session["UserFornecedor"].ToString();
-            excluir.ExcluirContaFornecedor(confirmaSenha);
 
-            return RedirectToAction("Index", "Home");
+            if (excluir.ExcluirContaFornecedor(confirmaSenha))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View("ExcluirContaFornecedor");
+            }
+
+            
         }
 
         /*==============================================================================ENVIO DE EMAIL====================================================================================*/

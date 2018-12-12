@@ -109,9 +109,16 @@
                                 <a href="/Fornecedor/UpdateFornecedor/?Cnpj=@Session["UserFornecedor"].ToString()" aria-expanded="false">Editar Perfil</a>
                             }
                         </li>
-
+                         
                         <li>
-                            <a href="/Comprador/UpdateSenha/" aria-expanded="false">Alterar Senha</a>
+                            @if (Session["UserPessoaFisica"] != null || Session["UserPessoaFisica"] != null)
+                            {
+                                <a href="/Comprador/UpdateSenha/" aria-expanded="false">Alterar Senha</a>
+                            }
+                            else if (Session["UserFornecedor"] != null)
+                            {
+                                <a href="/Fornecedor/UpdateSenha/" aria-expanded="false">Alterar Senha</a>
+                            }
                         </li>
 
                         <li>
