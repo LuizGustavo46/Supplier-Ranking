@@ -88,7 +88,7 @@ namespace SupplierRanking.Controllers
             else
                 return View("RankingGeral", HomeLogada.RankingGeral());
         }
-
+    
 
         public ActionResult RankingPremium()
         {

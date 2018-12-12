@@ -166,7 +166,6 @@
     <Content Include="Content\images\fotoMarcelo2.png" />
     <Content Include="Content\images\fotopadrao.jpg" />
     <Content Include="Content\images\fotoValmir.png" />
-    <Content Include="Content\images\give-money.png" />
     <Content Include="Content\images\icone sem foto.png" />
     <Content Include="Content\images\icone-empresa.png" />
     <Content Include="Content\images\iconecor.png" />
@@ -204,6 +203,7 @@
     <Content Include="Content\images\valmir255.png" />
     <Content Include="Content\images\video.mp4" />
     <Content Include="Content\js\bloqueia-input.js" />
+    <Content Include="Content\js\cadastro-funcionario.js" />
     <Content Include="Content\js\cadastro-pessoas.js" />
     <Content Include="Content\js\cadastro.js" />
     <Content Include="Content\js\carousel-perfil.js" />
@@ -422,6 +422,7 @@
     <Content Include="Views\Fornecedor\ExcluirContaFornecedor.cshtml" />
     <Content Include="Views\Comprador\ExcluirConta.cshtml" />
     <None Include="Views\Shared\Layout_logada.cshtml" />
+    <None Include="Views\Shared\_LayoutLogado.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

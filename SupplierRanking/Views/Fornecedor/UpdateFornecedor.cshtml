@@ -1,8 +1,7 @@
 ﻿@model SupplierRanking.Models.Fornecedor
 @{
-    ViewBag.Title = "UpdateFornecedor";
-   
-    Layout = "~/Views/Shared/Layout_logada.cshtml";
+    ViewBag.Title = "Update Fornecedor";
+    Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
 
     <div class="container-login100" style="width: 946px;height: 882px;background: #fff;position: absolute;left:435px;margin-top: 163px; box-shadow: 1px 1px 27px;">
@@ -17,15 +16,31 @@
                     @*<label for="imagem" style="border: 1px solid; background-color: gainsboro; padding: .5em; font-size: 12px; cursor: pointer;">Imagem de Perfil</label>
                         <input type="file" accept="image/*" id="imagem" name="imagem" style="display: none">*@
 
-
                     <br /> <br />
                     @*<input type="text" name="confirmaSenha" placeholder="Digite sua senha">*@
                     <br /> <br />
-                    <input class="input " type="text" value="@Model.Cnpj" name="cnpj" placeholder="CNPJ">
+
+                    <!--- CNPJ --->
+                    <div class="col-11 wrap-input p-0">
+                        <input class="input required-field" type="text" maxlength="19" name="cnpj" placeholder="* CNPJ" data-mask="00.000.000/0000-00" data-mask-sectionFocus="true" value="@Model.Cnpj" />
+                    </div>
+
+                    <!--- Nome da Empresa --->
+                    <div class="col-11 wrap-input p-0">
+                        <input class="input required-field" type="text" name="nome_empresa" placeholder="* Nome da Empresa" value="@Model.Nome_empresa">
+                    </div>
+
+                    <!--- Email --->
+                    <div class="col-11 wrap-input p-0">
+                        <input class="input required-field" type="email" name="email" placeholder="* Email"  value="@Model.Email">
+                    </div>
+
+
+                    @*<input class="input " type="text" name="cnpj" placeholder="CNPJ">
                     <br /> <br />
-                    <input class="input" type="text" value="@Model.Nome_empresa" name="nome_empresa" placeholder="Nome da Empresa">
+                    <input class="input" type="text" name="nome_empresa" placeholder="Nome da Empresa">
                     <br /> <br />
-                    <input class="input" type="text" value="@Model.Email" name="email" placeholder="Email">
+                    <input class="input" type="text" name="email" placeholder="Email">*@
                     <br /> <br />
                     <input class="input" type="text" value="@Model.Cep" name="cep" placeholder="CEP">
                     <br /> <br />
