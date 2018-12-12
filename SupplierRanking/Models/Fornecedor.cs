@@ -119,9 +119,8 @@ namespace SupplierRanking.Models
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ CADASTRO DE FUNCIONARIO ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public string CadastroFuncionario(string cnpj, string senha, string nome) //FEITO
+        public bool CadastroFuncionario(string cnpj, string senha, string nome) //FEITO
         {
-            string res = "Inserido com sucesso!";
             try
             {
                 //ABRE A CONEXÃO
@@ -148,28 +147,16 @@ namespace SupplierRanking.Models
                         query2.Parameters.AddWithValue("@senha", senha);
                         query2.ExecuteNonQuery();
                     }
-                    else
-                    {
-                        res = "Preencha os campos corretamente";
-                    }
-                }
-                else
-                {
-
-                    res = "Funcionario com o mesmo nome encotrado";
-
-                }
+                    else { return false; }
+                } else { return false; }
             }
-            catch (Exception ex)
-            {
-                res = ex.Message; // Caso der erro na inserção
-            }
+            catch (Exception ex) { return false; }
 
             if (con.State == ConnectionState.Open)
                 con.Close(); // fecha conexão
 
             // retorna resposta de confirmação
-            return res; 
+            return true; 
         }
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
@@ -294,17 +281,31 @@ namespace SupplierRanking.Models
         /*╚▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╝*/
 
         /*╔►▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ♦ EXCLUIR CONTA - FORNECEDOR ♦ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬◄╗*/
-        public bool ExcluirContaFornecedor(string cnpj) 
+        public bool ExcluirContaFornecedor(string confirmaSenha)
         {
+            string senha = "";
             try
             {
-                con.Open();
-                SqlCommand query =
-                        new SqlCommand("DELETE FROM fornecedor WHERE cnpj = @cnpj", con);
-                query.Parameters.AddWithValue("@cnpj", cnpj);
-                query.ExecuteNonQuery();
+                con.Open(); // abre conexão
+                SqlCommand query1 =
+                    new SqlCommand("SELECT senha FROM fornecedor WHERE cnpj = @cnpj", con);
+                query1.Parameters.AddWithValue("@cnpj", cnpj);//seleciona o perfil do fornecedor no banco através do cnpj
+                SqlDataReader leitor = query1.ExecuteReader(); //executa a leitura
 
+                //prepara o leitor
+                if (leitor.Read())
+                  senha = leitor["senha"].ToString();//guarda a senha que veio do banco
 
+                leitor.Close();//fecha o leitor
+
+                //
+                if (senha == confirmaSenha)
+                {
+                    SqlCommand query =
+                                new SqlCommand("DELETE from fornecedor WHERE cnpj = @cnpj", con);
+                    query.Parameters.AddWithValue("@cnpj", cnpj);
+                    query.ExecuteNonQuery();//executa o update
+                } 
             }//tratamento de erro
             catch (Exception ex)
             {

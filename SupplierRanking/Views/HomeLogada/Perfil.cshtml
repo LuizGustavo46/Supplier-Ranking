@@ -1,416 +1,504 @@
 ﻿@model SupplierRanking.Models.Fornecedor
 @{
     ViewBag.Title = "Perfil";
-    Layout = "~/Views/Shared/Layout_logada.cshtml";
+    Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
+
+<!-- Modal Avaliação -->
+
+<div id="myModal2" class="modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header" 
+                 style="background-color: #0C496BE6; color: white; border-bottom: 3px solid #bbad00; ">
+
+                <div class="col-11 p-0 d-flex justify-content-center">
+                    <h4 class="modal-title">Avaliação </h4>
+                </div>
+
+                <div class="col-1">
+                    <button class="close close-avaliacao m-0 p-0" data-dismiss="modal" style="color:white;">×</button>
+                </div>
+
+            </div>
+
+        <form method="post" action="/Avaliacao/CadastrarAvaliacao">
+                <div class="row modal-body">
+                    <!-- Entrega -->
+                    <div class="row col-12">
+
+                        <div class="col-6 d-flex align-items-center justify-content-end pr-5">
+                            <h3 class="m-0">Entrega</h3>
+                        </div>
+
+                        <div class="col-6 pl-5">
+                            <div class="rating d-flex align-items-center">
+
+                <label>
+                    <input type="radio" name="entrega" value="1" />
+                    <span class="icon">★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="entrega" value="2" />
+                    <span class="icon">★★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="entrega" value="3" />
+                    <span class="icon">★★★</span>
+                </label>
+
+
+                <label>
+                    <input type="radio" name="entrega" value="4" />
+                    <span class="icon">★★★★</span>
+                </label>
+
+
+                <label>
+                    <input type="radio" name="entrega" value="5" />
+                    <span class="icon">★★★★★</span>
+                </label>
+
+            </div>
+                        </div>
+                    </div>
+
+                    <!-- Qualidade -->
+                    <div class="row col-12">
+
+                        <div class="col-6 d-flex align-items-center justify-content-end pr-5">
+                            <h3 class="m-0">Qualidade</h3>
+                        </div>
+
+                        <div class="col-6 pl-5">
+                            <div class="rating d-flex align-items-center">
+
+                <label>
+                                    <input type="radio" name="qualidade" value="1" checked />
+                    <span class="icon">★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="qualidade" value="2" />
+                    <span class="icon">★★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="qualidade" value="3" />
+                    <span class="icon">★★★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="qualidade" value="4" />
+                    <span class="icon">★★★★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="qualidade" value="5" />
+                    <span class="icon">★★★★★</span>
+                </label>
+
+            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preço -->
+                    <div class="row col-12">
+
+                        <div class="col-6 d-flex align-items-center justify-content-end pr-5">
+                            <h3 class="m-0">Preço</h3>
+                        </div>
+
+                        <div class="col-6 pl-5">
+                            <div class="rating d-flex align-items-center">
+
+                <label>
+                                    <input type="radio" name="preco" value="1" checked />
+                    <span class="icon">★</span>
+                </label>
+
+                <label>
+                                    <input type="radio" name="preco" value="2" />
+                    <span class="icon">★★</span>
+                </label>
+
+                <label>
+                                    <input type="radio" name="preco" value="3" />
+                    <span class="icon">★★★</span>
+                </label>
+
+
+                <label>
+                                    <input type="radio" name="preco" value="4" />
+                    <span class="icon">★★★★</span>
+                </label>
+
+
+                <label>
+                                    <input type="radio" name="preco" value="5" />
+                    <span class="icon">★★★★★</span>
+                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atendimento -->
+                    <div class="row col-12">
+
+                        <div class="col-6 d-flex align-items-center justify-content-end pr-5">
+                            <h3 class="m-0">Atendimento</h3>
+            </div>
+
+                        <div class="col-6 pl-5">
+                            <div class="rating d-flex align-items-center">
+
+                <label>
+                                    <input type="radio" name="atendimento" value="1" checked />
+                    <span class="icon">★</span>
+                </label>
+
+                <label>
+                                    <input type="radio" name="atendimento" value="2" />
+                    <span class="icon">★★</span>
+                </label>
+
+                <label>
+                                    <input type="radio" name="atendimento" value="3" />
+                    <span class="icon">★★★</span>
+                </label>
+
+                <label>
+                                    <input type="radio" name="atendimento" value="4" />
+                    <span class="icon">★★★★</span>
+                </label>
+
+                <label>
+                                    <input type="radio" name="atendimento" value="5" />
+                    <span class="icon">★★★★★</span>
+                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Satisfação Geral -->
+                    <div class="row col-12">
+
+                        <div class="col-6 d-flex align-items-center justify-content-end pr-5">
+                            <h3 class="m-0">Satisfação Geral</h3>
+            </div>
+
+                        <div class="col-6 pl-5">
+                            <div class="rating d-flex align-items-center">
+
+                <label>
+                                    <input type="radio" name="satisfacao" value="1" checked />
+                    <span class="icon">★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="satisfacao" value="2" />
+                    <span class="icon">★★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="satisfacao" value="3" />
+                    <span class="icon">★★★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="satisfacao" value="4" />
+                    <span class="icon">★★★★</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="satisfacao" value="5" />
+                    <span class="icon">★★★★★</span>
+                </label>
+
+            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comentário -->
+                    <div class="row col-12 mt-4 mb-5">
+                        <h3>Comentário</h3>
+
+                        <textarea name="comentario"></textarea>
+                        <input id="cnpj" name="cnpj_fornecedor" value="@Model.Cnpj" style="font-size: 10px;" hidden />
+                    </div>
+            </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" style="width: 150px; height: 40px; background: #0C496Bc9; color: #fff;">Salvar</button>
+                </div>
+        </form>
+        </div>
+    </div>
+</div>
 
 
 <div class="wrapper">
     <!-- Sidebar  -->
-   
     <!-- Page Content  -->
     <div id="content" style="background: #eefbfa00;">
-        
-        
-        
+
+
+
         <div id="divFiltro" style="width:600px;height:450px;background-color:white;border: 30px;border-color: black;visibility:hidden;position: absolute;
             left: 31%;"></div>
-       
-        
-            <div style="width:1500px;height: 680px;background-color: #2c8cb6;
-            top: 13%;position: absolute;left: 138px; box-shadow: 1px 0px 20px black;border: 1px solid white;">
-                <section>
-                    
-                    <div style="width:210px;height:210px;position: absolute;left: 10%;top:26px;">                                          
-                        @if (Model.Imagem64 == "")
+
+
+        <div style="width:1500px;height: 680px;background-color:#338da8;
+            top: 3%;position: absolute;left: 138px; box-shadow: 1px 0px 20px black;">
+            <section>
+
+                <div style="width:210px;height:210px;position: absolute;left: 10%;top:26px;">
+                    @if (Model.Imagem64 == "")
+                    {
+                        if (Model.Plano.Equals("P"))
                         {
-                            if (Model.Plano.Equals("P"))
-                            {
-                                <img src="~/Content/images/iconecor.png" height="210" width="210" style="border: 4px solid #d0a748;
-                                  box-shadow: 0px 0px 29px black;"/>
+                            <img src="~/Content/images/iconecor.png" height="210" width="210" style="border-radius: 50%;border: 4px solid #d0a748;
+                                  box-shadow: 0px 0px 29px black;" />
+                            <img src="~/Content/images/premium2.png" height="200" width="160" style="position:absolute; margin-left:122rem; margin-top:-244px;" />
+
                         }
                         else
                         {
-                                <img src="~/Content/images/iconecor.png" height="210" width="210" style="border: 4px solid #d0a748;
+                            <img src="~/Content/images/iconecor.png" height="210" width="210" style="border-radius: 50%;border: 4px solid #d0a748;
                                 box-shadow: 0px 0px 29px black;" />
-                            }
+                        }
+                    }
+                    else
+                    {
+                        String imagem64 = string.Format("data:image/jpeg;base64,{0}", Model.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                        if (Model.Plano.Equals("P"))
+                        {
+                            <img src="@imagem64" height="210" width="210" style="border-radius: 50%; border: 4px solid #d0a748;
+                                box-shadow: 0px 0px 29px black;" />
+                            <img src="~/Content/images/premium2.png" height="200" width="160" style="position:absolute;margin-left: 104rem;margin-top: -28px;" />
                         }
                         else
                         {
-                            String imagem64 = string.Format("data:image/jpeg;base64,{0}", Model.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                            if (Model.Plano.Equals("P"))
-                            {
-                                <img src="@imagem64" height="210" width="210" style="border-radius: 50%; border: 4px solid #d0a748;
-                                box-shadow: 0px 0px 29px black;"/>
-                        }                                                                     
-                            else
-                            {
-                                <img src="@imagem64" height="210" width="210" style="border-radius: 50%; border: 4px solid #d0a748;
-                                box-shadow: 0px 0px 29px black;"/>
-                            }
+                            <img src="@imagem64" height="210" width="210" style="border-radius: 50%; border: 4px solid #d0a748;
+                                box-shadow: 0px 0px 29px black;" />
                         }
+                    }
 
-                        @if(Model.Pdf64 != "")
-                        {
-                            <a href="@Model.Pdf64"></a>
-                        }
+
+                </div>
+
+                <h1 style="position: absolute;left: 41%;"></h1>
+
+                <div style="width: 413px;height: 226px;background-color: #fff0;position: absolute;left: 40%;top: 28%;">
+
+                    <h1 style="position: absolute;left: -50%;top: -120px;color:white">@Model.Nome_empresa</h1>
+                    <h1 style="position: absolute;left: 32%;top: 27px;color:white">Descrição</h1>
+
+                    <div style="position: absolute;width: 643px;height: 200px;border: 2px solid #d0a748;;top: 104px;right: -28%;
+                         box-shadow: 0px 0px 13px black;overflow: auto;padding: 1rem;
+                         font-size: 20px;text-align: center;color: white;">@Model.Descricao</div>
                     </div>
-                   
-                    <h1 style="position: absolute;left: 41%;"></h1>
 
-                    <div style="width: 413px;height: 226px;background-color: #fff0;position: absolute;left: 40%;top: 28%;">
-                        
-                        <h1 style="position: absolute;left: -34%;top: -120px;color:white">@Model.Nome_empresa</h1>
-                        <h1 style="position: absolute;left: 32%;top: 27px;color:white">Descrição</h1>
-
-                        <div style="position: absolute;width: 643px;height: 200px;border: 2px solid #d0a748;;top: 104px;right: -28%;
-                         overflow: hidden;color: #000;background-color: #fff;box-shadow: 0px 0px 13px black;overflow: auto;">@Model.Descricao</div>
-                    </div>
-                    
-
-
+                    @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                    {
+                        <h3 style="color:white;position:absolute; margin-top:6rem;margin-left:103rem;">Avalie</h3>
+                        @*<button id="@Model.Cnpj" style="margin-top: 9rem;margin-left: 104rem;position: absolute;" class="btn btn-info btn-lg" onclick="linkaCaixaContexto(this.id)">Avaliar</button>*@
+                        <img src="~/Content/images/avaliarDourado.png" id="@Model.Cnpj" style="margin-top: 9rem;margin-left: 104rem;position: absolute;" onclick="linkaCaixaContexto(this.id)" />
+                    }
                     <div style="position: absolute;left: 50%;margin-top: 103px; color:white">
-                        <span style="color:#ffb31a;" class ="fa fa-star "></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                        @if (Model.Media <= 1)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Media > 1 && Model.Media <= 2)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Media > 2 && Model.Media <= 3)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Media > 3 && Model.Media <= 4)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                        }
+                        else if (Model.Media > 4 && Model.Media <= 5)
+                        {
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                            <span style="color:#ffb31a;" class="fa fa-star "></span>
+                        }
+                        <h4 style="color:white;">Média: </h4>
+                            <h2 style="font-family:inherit;color:#ffb31a;text-shadow:0px 0px 5px black;margin-top: -4rem;margin-left: 8rem;">@Model.Media</h2>
 
-                        <!----Botao avaliar-->
-                       @if (Session["UserPessoaFisica"] != null && Session["UserPessoaJuridica"] != null)
-                       {
+                            <!----Botao avaliar-->
+                            @if (Session["UserPessoaFisica"] != null && Session["UserPessoaJuridica"] != null)
+                            {
 
-                         <button  style="background: url('../../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
-                     position: absolute;margin-left: 240px;margin-top: -59px;" id="#myModal2" class="btn btn-info btn-lg" ></button>
+                                <button style="background: url('../../Content/images/avaliar.png') no-repeat;width: 50px;height:50px;
+                     position: absolute;margin-left: 240px;margin-top: -59px;" id="#myModal2" class="btn btn-info btn-lg"></button>
 
 
-                       }
-                         <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco - @Model.Bairro, @Model.Cidade / @Model.Uf</h1>
-                        <img style="position: absolute;right: 790px;top: 190px;width: 40px;" src="~/Content/images/mapa.png" />
+                            }
+                            <h1 style="position: absolute;right: 397px;top: 182px;font-size: 22px;width: 345px;">@Model.Endereco - @Model.Bairro, @Model.Cidade / @Model.Uf</h1>
+                            <img style="position: absolute;right: 790px;top: 190px;width: 40px;" src="~/Content/images/mapa.png" />
 
-                        <h1 style="position: absolute;right: 600px;top: 270px;font-size: 22px;width: 151px;">@Model.Telefone</h1>
-                        <img style="position: absolute;right: 785px;top: 280px;width: 40px;" src="~/Content/images/phone.png" />
-                        
-                        <h1 style="position: absolute;right: 504px;top: 361px;font-size: 22px;">@Model.Email</h1>
-                        <img style="position: absolute;right: 787px;top: 374px;width: 40px;" src="~/Content/images/email.png" />
+                            <h2 style="position: absolute;right: 600px;top: 270px;font-size: 22px;width: 151px;">@Model.Telefone</h2>
+                            <h2 style="position: absolute;right: 600px;top: 300px;font-size: 22px;width: 152px;">@Model.Celular</h2>
+                            <img style="position: absolute;right: 785px;top: 280px;width: 40px;" src="~/Content/images/phone.png" />
+
+                            <h1 style="position: absolute;right: 504px;top: 361px;font-size: 22px;">@Model.Email</h1>
+                            <img style="position: absolute;right: 787px;top: 374px;width: 40px;" src="~/Content/images/email.png" />
 
                     </div>
 
                 </section>
             </div>
-            <div style=" width: 1500px;height: 1471px;background-color: #2c8cb6;position: absolute;left: 138px;top: 83%;
-            box-shadow: 1px 13px 20px black;border: 1px solid white;">
+        <div style=" width: 1500px;height: auto;background-color:#338da8;position: absolute;left: 138px;top: 72%;
+            box-shadow: 1px 13px 20px black;">
 
-                <section>
+            @if (Model.Pdf64 != "")
+            {
+                <h4 style="position: absolute;left: 39%; color:white;">
+                    Faça o download do pdf clicando aqui:
+                    <a href="/HomeLogada/Pdf/?Id=@Model.Cnpj" target="_blank">
+                        <img src="~/Content/images/add-pdf.png" style="height:60px;width:60px" />
+                    </a>
+                </h4>
+            }
+            else
+            {
+                <h4 style="position:absolute;left:43%;top:10%;color:white">Não possui um PDF disponível</h4>
+            }
 
-                        <h2 style="position: absolute;left: 39%;color:white">Arquivo PDF</h2>
-                    @*@Model.Pdf*@
-                        
-                </section>
-                <h2 style="color:white;margin-top: 194px;margin-left: -120px;" class="w3-center">Galeria de fotos</h2>
-              
-                
-                  <div class="w3-content" style="max-width:1200px">
-                   
-                    <div class="w3-row-padding w3-section">
-                        <div class="w3-col s4">
-                            @*<img class="demo w3-opacity w3-hover-opacity-off" src="~/Content/images/image_5.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)">*@
-                            
-                        </div>
-                       
+
+
+
+
+            @if (ViewBag.ListaFotos.Count != 0)
+            {
+                <h2 style="margin-top: 194px;color:white;margin-left: -120px;" class="w3-center">Galeria de fotos</h2>
+
+                int cont = 0;
+                foreach (var f in ViewBag.ListaFotos)
+                {
+                    String foto64 = string.Format("data:image/jpeg;base64,{0}", f);
+                    <div class="carousel" style="position: relative;top: 15px;left: 5%;">
+                        <img style="border: 1px solid white;" src="@foto64" alt="Image1" />
                     </div>
-                </div>
-                
-                
-               @if (ViewBag.ListaFotos != null)
-               {
-                   int cont = 0;
-                   foreach (var f in ViewBag.ListaFotos)
-                   {
-                       String foto64 = string.Format("data:image/jpeg;base64,{0}", f);
-                        <div class="carousel" style="position: relative;top: 15px;left: 5%;">
-                        <img src="@foto64" alt="Image1" />
-                        </div>
-                       cont++;
-                   }
-               }
-                
-                <h2 style="margin-top: 246px;margin-left: 171px;color: white;">Comentários</h2>
+                    cont++;
+                }
+            }
+            else
+            {
+                <h4 style="margin-top: 194px;color:white;margin-left: 40px;" class="w3-center">Este perfil não possui fotos.</h4>
+            }
+
+
+
+            @if (ViewBag.Comentarios.Count != 0)
+            {
+                <h2 style="margin-top: 92px;margin-left: 171px;color: white;">Comentários</h2>
                 <ul>
-                    @if (ViewBag.Comentarios != null)
+                    @foreach (var h in ViewBag.Comentarios)
                     {
-                        foreach (var h in ViewBag.Comentarios)
-                        {
-                            //LARESSA POR FAVOR ARRUMA ISSO ? ESSA LISTA DE COMENTARIOS TA TODA ZUADA E EU NAO SEI ARRUMAR - OBG 'val if'
+                        //LARESSA POR FAVOR ARRUMA ISSO ? ESSA LISTA DE COMENTARIOS TA TODA ZUADA E EU NAO SEI ARRUMAR - OBG 'val if'
 
-                        <li class="col-12 p-4 mb-5" style="background: #fff;box-shadow: 0px 0px 9px black; height: 169px;">
+                        <li class="col-12 p-4 mb-5" style="list-style: none;background: #ffffff;box-shadow: 1px 1px 10px black;height: 169px;margin-left: 135px; border-radius: 111px; width: 1170px;">
                             @*<div style="width: 1275px;height: 400px;top: 69%;left: 8%;overflow: hidden;box-shadow: 1px 1px 9px black;">*@
-                                <div class="comentario" style="idth: 1312px;height: 134px;position: absolute;border: 2px #d0a748;
+                            <div class="comentario" style="idth: 1312px;height: 134px;position: absolute;border: 2px #d0a748;
                                  top: 10%;left: 5%;">
-                                    <h3 style="margin-left: 168px;margin-top: 32px;">
-                                        @(h.C.Nome)
-                                        @(h.C.Nome_empresa)
-                                    </h3>
-                                    <h5 style="margin-left: 168px;margin-top: 36px;">@(h.Data_avaliacao)</h5>
+                                <h3 style="margin-left: 168px;margin-top: 32px;">
+                                    @(h.C.Nome)
+                                    @(h.C.Nome_empresa)
+                                </h3>
+                                <h5 style="margin-left: 168px;margin-top: 36px;">@(h.Data_avaliacao)</h5>
 
-                                </div>
-                                <div style="position: absolute;width: 649px;height: 86px;border: 1px solid black;top: 38px;
-                                left: 47%;overflow: hidden;">@(h.Comentario)</div>
+                            </div>
+                            <div style="position: absolute;border-radius: 10px;width: 649px;height: 86px;border: 1px solid black;top: 38px;left: 40%;overflow: hidden;background-color: #d6d3d3;box-shadow: 2px 2px 10px;font-size: 25px;padding: 8px;">@(h.Comentario)</div>
 
-                                <div id="icone" style="width: 85px;height: 85px;background-color: #a19c97;border-radius: 70px;margin: 167px auto auto 20px;
-                                margin-top: 167px;margin-left: 20px;margin-left: 92px;margin-top: 28px;">
-
-                                </div>
+                            <img src="~/Content/images/user.png" id="icone" style="width: 85px;height: 85px;background-color: #a19c97;border-radius: 70px;margin: 167px auto auto 20px;
+                                margin-top: 167px;margin-left: 20px;margin-left: 92px;margin-top: 28px;" />
 
                             @*</div>*@
                         </li>
-                        }
                     }
+
+
+
+
                 </ul>
+            }
+            else
+            {
+                <h4 style="position: absolute;left: 39%; color:white;">Ainda não possui comentários e/ou avaliações.</h4>
+            }
 
 
 
 
 
-</div>
 
 
-                 
+        </div>
 
-       
-         <!-- Modal Avaliar-->
-        @if (Session["UserPessoaFisica"] != null && Session["UserPessoaJuridica"] != null)
-        {
-            <div id="myModal2" class="modal">
 
-                <!-- Modal content -->
-                <div style="width: 835px;height: 600px;" class="modal-content">
-                    <span class="close-avaliacao">&times;</span>
 
-                    <h3>Entrega</h3>
-                    <h3>Qualidade</h3>
-                    <h3>Atendimento</h3>
-                    <h3>Preço</h3>
-                    <h3>Satisfação</h3>
 
-                    <form method="post" action="../Avaliacao/CadastrarAvaliacao" class="rating">
 
-                        <div style="position: relative;top: -27.5rem;left: 21%;">
+            
+            
 
-                            <label>
-                                <input type="radio" name="entrega" value="1" />
-                                <span class="icon">★</span>
-                            </label>
 
-                            <label>
-                                <input type="radio" name="entrega" value="2" />
-                                <span class="icon">★★</span>
-                            </label>
 
-                            <label>
-                                <input type="radio" name="entrega" value="3" />
-                                <span class="icon">★★★</span>
-                            </label>
 
 
-                            <label>
-                                <input type="radio" name="entrega" value="4" />
-                                <span class="icon">★★★★</span>
-                            </label>
 
 
-                            <label>
-                                <input type="radio" name="entrega" value="5" />
-                                <span class="icon">★★★★★</span>
-                            </label>
 
-
-                        </div>
-
-
-
-                        <div style="position:relative;top: -27.8rem;left: 21%;">
-
-
-                            <label>
-                                <input type="radio" name="qualidade" value="1" />
-                                <span class="icon">★</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="qualidade" value="2" />
-                                <span class="icon">★★</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="qualidade" value="3" />
-                                <span class="icon">★★★</span>
-                            </label>
-
-
-                            <label>
-                                <input type="radio" name="qualidade" value="4" />
-                                <span class="icon">★★★★</span>
-                            </label>
-
-
-                            <label>
-                                <input type="radio" name="qualidade" value="5" />
-                                <span class="icon">★★★★★</span>
-                            </label>
-
-
-                        </div>
-
-
-
-
-                        <div style="position: relative;top: -28.8rem;left: 21%;">
-
-                            <label>
-                                <input type="radio" name="atendimento" value="1" />
-                                <span class="icon">★</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="atendimento" value="2" />
-                                <span class="icon">★★</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="atendimento" value="3" />
-                                <span class="icon">★★★</span>
-                            </label>
-
-
-                            <label>
-                                <input type="radio" name="atendimento" value="4" />
-                                <span class="icon">★★★★</span>
-                            </label>
-
-
-                            <label>
-                                <input type="radio" name="atendimento" value="5" />
-                                <span class="icon">★★★★★</span>
-                            </label>
-
-
-                        </div>
-
-
-
-
-                        <div style="position: relative;top: -29.8rem;left: 21%;">
-
-                            <label>
-                                <input type="radio" name="preco" value="1" />
-                                <span class="icon">★</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="preco" value="2" />
-                                <span class="icon">★★</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="preco" value="3" />
-                                <span class="icon">★★★</span>
-                            </label>
-
-
-                            <label>
-                                <input type="radio" name="preco" value="4" />
-                                <span class="icon">★★★★</span>
-                            </label>
-
-
-                            <label>
-                                <input type="radio" name="preco" value="5" />
-                                <span class="icon">★★★★★</span>
-                            </label>
-
-
-                        </div>
-
-
-
-
-                        <div style="position: relative;top: -29.8rem;left: 21%;">
-
-                            <label>
-                                <input type="radio" name="satisfacao" value="1" />
-                                <span class="icon">★</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="satisfacao" value="2" />
-                                <span class="icon">★★</span>
-                            </label>
-
-                            <label>
-                                <input type="radio" name="satisfacao" value="3" />
-                                <span class="icon">★★★</span>
-                            </label>
-
-
-                            <label>
-                                <input type="radio" name="satisfacao" value="4" />
-                                <span class="icon">★★★★</span>
-                            </label>
-
-
-                            <label>
-                                <input type="radio" name="satisfacao" value="5" />
-                                <span class="icon">★★★★★</span>
-                            </label>
-
-
-                        </div>
-
-                        <div style="position: relative;top: -239px;">
-                            <h1 style="margin-bottom: -17px;margin-left: 344px;font-size: 23px;">Comentário</h1>
-                            <br />
-                            <input name="comentario" style="margin-left: 161px;width:463px;height:30px" />
-
-                            <button type="submit" class="btn btn-info btn-lg ">Salvar</button>
-                        </div>
-
-                    </form>
-
-
-
-                </div>
-
-
-            </div>
-        }
-        
-
-       
-
-
-        
-
-
+        </div>
     </div>
-</div>
 
-<script>
-    var slideIndex = 1;
-    showDivs(slideIndex);
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
 
-    function plusDivs(n) {
-        showDivs(slideIndex += n);
-    }
-
-    function showDivs(n) {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        if (n > x.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = x.length }
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
         }
-        x[slideIndex - 1].style.display = "block";
-    }</script>
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+    </script>
 

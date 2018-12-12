@@ -145,6 +145,11 @@ namespace SupplierRanking.Models
                 //MÉDIA TOTAL
                 media = (mediaQualidade + mediaAtendimento + mediaEntrega + mediaPreco + mediaSatisfacao) / 5;
                 media = Math.Round(media, 1); //LIMITA A CASA DECIMAL "0.0"
+                mediaQualidade = Math.Round(mediaQualidade, 1);
+                mediaAtendimento = Math.Round(mediaAtendimento, 1);
+                mediaEntrega = Math.Round(mediaEntrega, 1);
+                mediaPreco = Math.Round(mediaPreco, 1);
+                mediaSatisfacao = Math.Round(mediaSatisfacao, 1);
                 //COMANDO PARA INSERIR A MÉDIA PARA O FORNECEDOR
                 leitor.Close();
                 SqlCommand queryMedia2 = new SqlCommand("UPDATE fornecedor SET media = @media, media_qualidade = @media_qualidade, "+

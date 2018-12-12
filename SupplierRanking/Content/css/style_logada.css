@@ -1,18 +1,14 @@
-/*
-    DEMO STYLE
-*/
 
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
-    /*font-family: 'Poppins', sans-serif;
-    background: #fafafa;*/
     position: relative;
-    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
 }
 
 .conteudo-logada {
+    min-height: 84vh;
     position: absolute;
-    left: 150px;
+    top: 105px;
+    left: 170px;
 }
 
 p {
@@ -52,8 +48,82 @@ a:focus {
     margin: 40px 0;
 }
 
+.btn-concluir {
+    width: 15.6em;
+    height: 50px;
+    background: #0C496Bc9;
+    border-radius: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.btn-concluir:hover {
+	color: #DAA520;
+    border: 1px solid #DAA520;
+    box-shadow: 1px 2px 4px 2px #CCC;
+}
+
+.footer-logado h4 {
+    font-weight: bold;
+    color: #FFF;
+}
+
+.footer-logado a {
+    font-size: 16px;
+    color: #D0A748;
+}
+
+.footer-logado p,
+.footer-logado p>a {
+    font-size: 15px;
+}
+
+
 /* ---------------------------------------------------
-    SIDEBAR STYLE
+    BARRA DE PESQUISA
+----------------------------------------------------- */
+
+.section-pesquisa {
+    height: 104px;
+    background: #0C496BE6;
+}
+
+.section-pesquisa nav {
+    border-radius: 4px;
+}
+
+.section-pesquisa .input-pesquisa {
+    width: 100%; 
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.section-pesquisa .btn-pesquisa,
+.section-pesquisa .btn-filtro {
+    width: 30px;
+    height:30px;
+}
+
+.section-pesquisa .wrap-btns {
+    width: 85px;
+}
+
+.section-pesquisa .btn-pesquisa {
+    background: url('../images/pesquisa.png') no-repeat;
+}
+
+.section-pesquisa .btn-filtro {
+    background: url('../images/filtro.png') no-repeat;
+}
+
+
+/* ---------------------------------------------------
+    MENU LATERAL
 ----------------------------------------------------- */
 
 .wrapper {
@@ -65,28 +135,37 @@ a:focus {
 #sidebar {
    width: 150px;
     height: 100vh;
-    /*position: absolute;*/
+    position: fixed;
     top: 0px;
-    left: 0px;
    background: #0C496BE6;
    color: #fff;
-   transition: all 0.3s; 
-   position: fixed;
+}
    
-}
-
-/*#sidebar.active {
-    margin-left: -250px;
-}*/
-
 #sidebar .sidebar-header {
-    padding: 20px;
-    background: #0C496BE6;
+    height: 104px;
 }
 
-#sidebar ul.components {
+#sidebar .sidebar-header h4 {
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+}
+
+#sidebar ul.nav-menu {
+    width: 100%;
     padding: 20px 0;
     border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul.nav-menu li {
+    flex-direction: column;
+}
+
+#sidebar ul.nav-menu #perfil {
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50px; 
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3); 
 }
 
 #sidebar ul p {
@@ -94,9 +173,13 @@ a:focus {
     padding: 10px;
 }
 
+#sidebar ul h5 {
+    color: #fff;
+}
+
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 15px;
     display: block;
     text-decoration: none;
     color: white;
@@ -107,22 +190,10 @@ a:focus {
     background: #fff;
 }
 
-#sidebar ul li.active>a {
+#sidebar ul li.active > a {
     color: #fff;
     background: #D0A748;
 }
-
-/*a[data-toggle="collapse"] {
-    position: relative;
-}
-
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-}*/
 
 ul ul a {
     font-size: 0.9em !important;
@@ -188,20 +259,11 @@ a.perfil {
     text-decoration: none;
 }
 
-/*.mySlides {
-    display:none;
-}
-
-.w3-content{
-    max-width: 502px;
-}*/
-
 .modal-open {
 	overflow: visible !important;
 }
 
-
-  .comentario{
+.comentario {
    width: 1197px;
    height: 120px;
    position: absolute;
@@ -210,4 +272,18 @@ a.perfil {
    left: 5%;
     }
 
-  
+ .input[type='file'] {
+  display: none
+}
+
+.input-wrapper label {
+  background-color: #3498db;
+  border-radius: 5px;
+  color: #fff;
+  margin: 10px;
+  padding: 6px 20px
+}
+
+.input-wrapper label:hover {
+  background-color: #2980b9
+}

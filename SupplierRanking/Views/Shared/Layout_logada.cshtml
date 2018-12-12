@@ -30,7 +30,14 @@
         <link href="~/Content/css/style_logada.css" rel="stylesheet" />
         <link href="~/Content/config/css/avaliar-star.css" rel="stylesheet" />
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700">
+        <link rel="stylesheet" href="~/Content/config/css/style.css" />
+        <link rel="stylesheet" href="~/Content/css/style_login.css" />
+        <link rel="stylesheet" href="~/Content/css/login.css" />
+        <link rel="stylesheet" href="~/Content/css/cadastro.css" />
        
+
+        <link href="~/Content/css/login.css" rel="stylesheet" />
 
 
         <script src="~/Content/js/carousel-perfil.js"></script>
@@ -45,7 +52,7 @@
             <section style=" width: 2000px;height: 104px;background: #0C496BE6;position: absolute;top: 0px;left:0px;">
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 1000px;position:absolute;left: 19%;top:10px;">
-                    <form style="height: 52px;" action="../HomeLogada/Pesquisa" method="post">
+                    <form style="height: 52px;" action="/HomeLogada/Pesquisa" method="post">
                         <div class="container-fluid">
                             <!-- <button type="button" id="sidebarCollapse" onmouse="menu()"class="btn btn-info">
                         <i class="fas fa-align-left"></i>
@@ -141,6 +148,7 @@
                             <a style="text-decoration: none;font-family: inherit;" 
                             href="/Fornecedor/UpdateFornecedor/?Cnpj=@Session["UserFornecedor"].ToString()" aria-expanded="false">Editar Perfil</a>
                         }
+                       
                     </li>
 
                     <li>
@@ -165,18 +173,36 @@
                                <a style="text-decoration: none; font-family: inherit;"
                         href="/Home/Sair/" aria-expanded="false">Encerrar Sessão</a>
                     </li>
+
+                    <li>
+                        @if (Session["UserFornecedor"] != null)
+                        {
+                            <a style="text-decoration: none;font-family: inherit;"
+                               href="/Fornecedor/ExcluirContaFornecedor/?Cnpj=@Session["UserFornecedor"].ToString()" aria-expanded="false">Excluir sua conta</a>
+                        }
+
+
+                        @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                        {
+                            <a style="text-decoration: none;font-family: inherit;"
+                               href="/Comprador/ExcluirConta/" aria-expanded="false">Excluir sua conta</a>
+                        }
+
+                    </li>
+
+
                 </ul>
 
 
                 <ul class="list-unstyled components">
-                    <li class="active">
+                    <li >
                         <a href="/HomeLogada/RankingGeral" aria-expanded="false">Ranking Geral</a>
                     </li>
                     @*<li>
             <a href="/HomeLogada/Pesquisa"  aria-expanded="false">Pesquisar</a>
         </li>*@
 
-                    <li>
+                    <li class="active">
                         <a href="/HomeLogada/RankingPremium" aria-expanded="false">Ranking Premium</a>
                     </li>
 
@@ -187,17 +213,13 @@
                         </li>
                     }
 
-                    <li>
+                    @*<li>
                         <a href="/HomeLogada/Suporte" aria-expanded="false">Suporte</a>
-                    </li>
+                    </li>*@
 
-                    <li>
-                        @*<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" >Sair</a>*@
+                  
 
-
-                        @*@Html.ActionLink("Editar informações", "UpdatePessoaFisica", "Comprador", new { area = "" }, new { @class = "" })*@
-
-                    </li>
+                
                 </ul>
 
 

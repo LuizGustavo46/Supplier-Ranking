@@ -26,15 +26,38 @@ namespace SupplierRanking.Controllers
         public ActionResult Pesquisa(string pesquisa)
         {
             List<Fornecedor> lista = new List<Fornecedor>();
-
+            ViewBag.Pesquisa = pesquisa;
             if (lista.Count == 0)
                 lista = HomeLogada.PesquisaFornecedor(pesquisa);
             if (lista.Count == 0)
                 lista = HomeLogada.RankingCategoria(pesquisa);
             if (lista.Count == 0)
                 lista = HomeLogada.RankingFiltro(pesquisa);
+            if (lista == null)
+            {
+                ViewBag.Pesquisa = ViewBag.Pesquisa + " ;  nada foi encontrado";
+                return View("Pesquisa", HomeLogada.RankingGeral());
+            }
 
             return View(lista);
+        }
+
+        public void Pdf(string id)
+        {
+            string cnpj = id;
+            //cnpj = cnpj.Substring(0, 2) + "." + cnpj.Substring(2, 3) + "." + cnpj.Substring(5, 3) + "/" +
+            //    cnpj.Substring(8, 4) + "-" + cnpj.Substring(12, 2);
+            HomeLogada h = new HomeLogada();
+            byte[] pdf = h.ReturnPdf(cnpj);
+
+            //TALVEZ EU TENHA QUE CONVERTER O BYTE[] EM ARQUIVO "FILE"
+            Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AddHeader("content-disposition", string.Format("attachment; filename=\"{0}\"", "pdf.pdf"));
+            Response.Flush();
+            Response.BinaryWrite(pdf);
+            Response.Flush();
+            Response.End();
         }
 
 
@@ -49,6 +72,7 @@ namespace SupplierRanking.Controllers
             {
                 ViewBag.ListaFotos = h.GaleriaFotos(cnpj);
                 ViewBag.Comentarios = h.Comentarios(cnpj);
+                
                 return View("Perfil", HomeLogada.Perfil(cnpj));
             }
         }
@@ -61,7 +85,7 @@ namespace SupplierRanking.Controllers
             else
                 return View("RankingGeral", HomeLogada.RankingGeral());
         }
-
+    
 
         public ActionResult RankingPremium()
         {
