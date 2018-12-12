@@ -306,6 +306,8 @@ namespace SupplierRanking.Controllers
 
             int codigo = 0;
 
+            //AATT
+
 
                codigo = int.Parse(Session["CodigoUsuario"].ToString());
             
