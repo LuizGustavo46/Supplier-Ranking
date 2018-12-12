@@ -114,14 +114,14 @@ a:focus {
 }
 
 #sidebar {
-    width: 150px;
+   width: 150px;
     height: 100vh;
     position: fixed;
     top: 0px;
-    background: #0C496BE6;
-    color: #fff;
+   background: #0C496BE6;
+   color: #fff;
 }
-
+   
 #sidebar .sidebar-header {
     height: 104px;
 }
@@ -245,11 +245,26 @@ a.perfil {
 }
 
 .comentario {
-    width: 1197px;
-    height: 120px;
-    position: absolute;
-    border: solid 3px;
-    top: 3%;
-    left: 5%;
+   width: 1197px;
+   height: 120px;
+   position: absolute;
+   border: solid 3px;
+   top: 3%;
+   left: 5%;
+    }
+
+ .input[type='file'] {
+  display: none
 }
 
+.input-wrapper label {
+  background-color: #3498db;
+  border-radius: 5px;
+  color: #fff;
+  margin: 10px;
+  padding: 6px 20px
+}
+
+.input-wrapper label:hover {
+  background-color: #2980b9
+}
