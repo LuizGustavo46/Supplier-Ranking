@@ -239,6 +239,10 @@ namespace SupplierRanking.Models
                     }
                     ranking.Add(f);
                 }
+                if(ranking.Count == 0)
+                {
+                    ranking = null;
+                }
             }
             catch (Exception ex) { ranking = null; }
 

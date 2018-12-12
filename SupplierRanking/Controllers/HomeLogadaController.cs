@@ -26,19 +26,16 @@ namespace SupplierRanking.Controllers
         public ActionResult Pesquisa(string pesquisa)
         {
             List<Fornecedor> lista = new List<Fornecedor>();
-
+            ViewBag.Pesquisa = pesquisa;
             if (lista.Count == 0)
                 lista = HomeLogada.PesquisaFornecedor(pesquisa);
             if (lista.Count == 0)
                 lista = HomeLogada.RankingCategoria(pesquisa);
             if (lista.Count == 0)
                 lista = HomeLogada.RankingFiltro(pesquisa);
-
-            ViewBag.Pesquisa = pesquisa;
-
-            if(lista.Count == 0)
+            if (lista == null)
             {
-                ViewBag.Pesquisa = ViewBag.Pesquisa + "- nada foi encontrado. :(";
+                ViewBag.Pesquisa = ViewBag.Pesquisa + " ;  nada foi encontrado";
                 return View("Pesquisa", HomeLogada.RankingGeral());
             }
 
@@ -88,7 +85,7 @@ namespace SupplierRanking.Controllers
             else
                 return View("RankingGeral", HomeLogada.RankingGeral());
         }
-
+    
 
         public ActionResult RankingPremium()
         {
