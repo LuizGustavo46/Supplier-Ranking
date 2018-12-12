@@ -13,7 +13,7 @@ namespace SupplierRanking.Models
     {
         //CONEXÃO COM O BANCO DE DADOS - SE FOR USAR EM CASA É SÓ TROCAR "SENAI" PARA O SEU NOME
         private static SqlConnection con =
-            new SqlConnection(ConfigurationManager.ConnectionStrings["VALMIR"].ConnectionString);
+            new SqlConnection(ConfigurationManager.ConnectionStrings["SENAI"].ConnectionString);
 
         //CAMPOS DO BANCO DE DADOS
         private int qualidade;
@@ -145,6 +145,11 @@ namespace SupplierRanking.Models
                 //MÉDIA TOTAL
                 media = (mediaQualidade + mediaAtendimento + mediaEntrega + mediaPreco + mediaSatisfacao) / 5;
                 media = Math.Round(media, 1); //LIMITA A CASA DECIMAL "0.0"
+                mediaQualidade = Math.Round(mediaQualidade, 1);
+                mediaAtendimento = Math.Round(mediaAtendimento, 1);
+                mediaEntrega = Math.Round(mediaEntrega, 1);
+                mediaPreco = Math.Round(mediaPreco, 1);
+                mediaSatisfacao = Math.Round(mediaSatisfacao, 1);
                 //COMANDO PARA INSERIR A MÉDIA PARA O FORNECEDOR
                 leitor.Close();
                 SqlCommand queryMedia2 = new SqlCommand("UPDATE fornecedor SET media = @media, media_qualidade = @media_qualidade, "+
