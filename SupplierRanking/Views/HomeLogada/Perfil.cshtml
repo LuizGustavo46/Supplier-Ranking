@@ -300,10 +300,10 @@
                 <div class="row">
 
                     <!-- Media Geral -->
-                    <div class="col-3 justify-content-start">
+                    <div class="col-3 mt-5">
 
                         <div class="row col-12 d-flex justify-content-center">
-                            <h1 style="font-family:inherit; color:#ffb31a; text-shadow:0px 0px 5px black;">
+                            <h1 class="m-0 ml-2" style="font-family:inherit; color:#ffb31a; text-shadow:0px 0px 5px black;">
                                 @Model.Media
                             </h1>
                         </div>
@@ -361,34 +361,35 @@
                     @if (Model.Plano.Equals("P"))
                     {
                         <div class="col-6 d-flex align-items-center mt-4">
-                            <div class="mr-5">
-                                <img src="~/Content/images/qualidade.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                                @Model.Media_qualidade
+
+                            <div class="d-flex align-items-center mr-5" style="flex-direction: column;">
+                                <img src="/Content/images/velocidade-entrega.png" height="40" width="40" alt="Velocidade de Entrega"
+                                     style="background-color:  transparent; border-radius:50%" />
+                                <h3 class="m-0">@Model.Media_entrega</h3>
                             </div>
 
-                            <div class="mr-5">
-                                <img src="/Content/images/qualidade-produto.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
-                                @Model.Media_qualidade
+                            <div class="d-flex align-items-center mr-5" style="flex-direction: column;">
+                                <img src="/Content/images/qualidade-produto.png" height="40" width="40" alt="Qualidade do Produto"
+                                     style="background-color:  transparent; border-radius:50%" />
+                                <h3 class="m-0">@Model.Media_qualidade</h3>
                             </div>
 
-                            <div class="mr-5">
-                                <img src="/Content/images/atendimento.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
-                                @Model.Media_atendimento
+                            <div class="d-flex align-items-center mr-5" style="flex-direction: column;">
+                                <img src="/Content/images/preco.png" height="40" width="40" alt="Preço"
+                                     style="background-color:  transparent; border-radius:50%" />
+                                <h3 class="m-0">@Model.Media_preco</h3>
                             </div>
 
-                            <div class="mr-5">
-                                <img src="/Content/images/velocidade-entrega.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
-                                @Model.Media_entrega
+                            <div class="d-flex align-items-center mr-5" style="flex-direction: column;">
+                                <img src="/Content/images/atendimento.png" height="40" width="40" alt="Atendimento"
+                                     style="background-color:  transparent; border-radius:50%" />
+                                <h3 class="m-0">@Model.Media_atendimento</h3>
                             </div>
 
-                            <div class="mr-5">
-                                <img src="/Content/images/preco.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
-                                @Model.Media_preco
-                            </div>
-
-                            <div class="mr-5">
-                                <img src="/Content/images/satisfacao.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
-                                @Model.Media_satisfacao
+                            <div class="d-flex align-items-center mr-5" style="flex-direction: column;">
+                                <img src="/Content/images/satisfacao.png" height="40" width="40" alt="Satisfação Geral"
+                                     style="background-color:  transparent; border-radius:50%" />
+                                <h3 class="m-0">@Model.Media_satisfacao</h3>
                             </div>
                         </div>
                     }
@@ -398,7 +399,7 @@
                     {
                         <div class="col-3 d-flex align-items-center" style="flex-direction: column;">
                             <h3 class="m-0 mb-4">Avalie</h3>
-                            <img src="~/Content/images/avaliarDourado.png" id="@Model.Cnpj" onclick="linkaCaixaContexto(this.id)" />
+                            <img src="/Content/images/avaliacao-premium.png" height="60" width="60" id="@Model.Cnpj" onclick="linkaCaixaContexto(this.id)" />
                         </div>
                     }
 
@@ -438,7 +439,7 @@
         <!-- Descrição -->
         <div class="row col-12 d-flex justify-content-center align-items-center mt-5 pt-5">
             <div class="row col-12">
-                <h1 class="mb-4">Descrição</h1>
+                <h1 class="mb-4"><strong>Descrição</strong></h1>
             </div>
 
             <div class="row col-8 d-flex justify-content-center">
@@ -459,13 +460,13 @@
         }
 
         <!-- Galeria de Fotos -->
-        <div class="row col-12">
+        <div class="row col-12 mb-5">
+            <div class="row col-12 mt-5 pt-5">
+                <h1 class="w3-center"><strong>Galeria de Fotos</strong></h1>
+            </div>
+
             @if (ViewBag.ListaFotos.Count != 0)
             {
-                <div class="row col-12 mb-5 mt-5 pt-5">
-                    <h1 class="w3-center">Galeria de fotos</h1>
-                </div>
-
                 <div class="row">
                     @foreach (var f in ViewBag.ListaFotos)
                     {
@@ -477,7 +478,7 @@
             else
             {
                 <div class="row">
-                    <h4 style="margin-top: 194px;color:white;margin-left: 40px;" class="w3-center">Este perfil não possui fotos.</h4>
+                    <h4 style="color:black;" class="mt-5">Este perfil não possui fotos.</h4>
                 </div>
             }
         </div>
@@ -485,7 +486,7 @@
         <!-- Comentários -->
         <div class="row col-12 mt-5 pt-5">
             <div class="row col-12 justify-content-center align-items-center mb-5 pb-5">
-                <h1>Comentários</h1>
+                <h1><strong>Comentários</strong></h1>
             </div>
 
             <div class="row col-12 d-flex justify-content-center align-items-center">
@@ -517,7 +518,7 @@
                 }
                 else
                 {
-                    <h4 style="position: absolute;left: 39%; color:white;">Ainda não possui comentários e/ou avaliações.</h4>
+                    <h4 style="position: absolute;left: 39%; color:black;">Ainda não possui comentários e/ou avaliações.</h4>
                 }
             </div>
         </div>

@@ -49,33 +49,40 @@
                                 <div class="d-flex align-items-baseline pl-3">
 
                                     <div class="d-flex col-10 justify-content-around align-items-center pl-5 pr-5">
-                                        <div class="d-flex align-items-baseline pl-3 pr-5">
-                                            <h2 class="m-0" style="font-weight: bold;">
+                                        <div class="d-flex pl-3 pr-5">
+                                            <img src="/Content/images/media.png" height="30" width="30" style="background-color:  transparent;" />
+                                            <h2 class="m-0 ml-2" style="font-weight: bold;">
                                                 @item.Media
                                             </h2>
                                         </div>
-                                        <div>
-                                            <img src="/Content/images/qualidade-produto.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
-                                            @item.Media_qualidade
-                                        </div>
 
                                         <div>
-                                            <img src="/Content/images/atendimento.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
-                                            @item.Media_atendimento
-                                        </div>
-
-                                        <div>
-                                            <img src="/Content/images/velocidade-entrega.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
+                                            <img src="/Content/images/velocidade-entrega.png" height="40" width="40" alt="Velocidade de Entrega"
+                                                 style="background-color:  transparent; border-radius:50%" />
                                             @item.Media_entrega
                                         </div>
 
                                         <div>
-                                            <img src="/Content/images/preco.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
+                                            <img src="/Content/images/qualidade-produto.png" height="40" width="40" alt="Qualidade do Produto"
+                                                 style="background-color:  transparent; border-radius:50%" />
+                                            @item.Media_qualidade
+                                        </div>
+
+                                        <div>
+                                            <img src="/Content/images/preco.png" height="40" width="40" alt="Preço"
+                                                 style="background-color:  transparent; border-radius:50%" />
                                             @item.Media_preco
                                         </div>
 
                                         <div>
-                                            <img src="/Content/images/satisfacao.png" height="40" width="40" style="background-color:  transparent; border-radius:50%" />
+                                            <img src="/Content/images/atendimento.png" height="40" width="40" alt="Atendimento"
+                                                 style="background-color:  transparent; border-radius:50%" />
+                                            @item.Media_atendimento
+                                        </div>
+
+                                        <div>
+                                            <img src="/Content/images/satisfacao.png" height="40" width="40" alt="Satisfação Geral"
+                                                 style="background-color:  transparent; border-radius:50%" />
                                             @item.Media_satisfacao
                                         </div>
                                     </div>
@@ -100,15 +107,15 @@
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
                                 @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
                                 {
-                                    <h5><a>Entre no </a><a style="text-decoration:underline; color:#d0a747" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">perfil </a><a>para avaliar</a> </h5>
-                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="~/Content/images/avaliarDourado.png" height="60" width="60" />
+                                    <a style="text-decoration: none;color: white;" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <h5>Entre no perfil para avaliar </h5>
+                                        <img class="ml-4 " src="~/Content/images/avaliacao-premium.png" height="60" width="60" />
                                     </a>
                                 }
                                 else
                                 {
                                     <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="~/Content/images/iconecor.png" height="60" width="60" style="margin-top: -3rem;" />
+                                        <img class="ml-4 " src="/Content/images/iconecor.png" height="60" width="60" />
                                     </a>
                                 }
                             </div>
@@ -171,15 +178,15 @@
                             <div class="col-1 d-flex flex-wrap justify-content-center align-items-center">
                                 @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
                                 {
-                                    <h5><a>Entre no </a><a style="text-decoration:underline; color:#d0a747" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">perfil </a><a>para avaliar</a> </h5>
-                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="~/Content/images/avaliarAzul.png" height="60" width="60" />
+                                    <a style="text-decoration: none;color: black;" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <h5>Entre no perfil para avaliar </h5>
+                                        <img class="ml-4 " src="~/Content/images/avaliacao-free.png" height="60" width="60" />
                                     </a>
                                 }
                                 else
                                 {
-                                    <a style="text-decoration: none;color: white;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
-                                        <img src="~/Content/images/iconecor.png" height="60" width="60" style="margin-top: -3rem;" />
+                                    <a style="text-decoration: none;color: black;" id="" href="/HomeLogada/Perfil/?Cnpj=@item.Cnpj">
+                                        <img class="ml-4 " src="~/Content/images/iconecor.png" height="60" width="60" />
                                     </a>
                                 }
                             </div>
