@@ -82,18 +82,6 @@ namespace SupplierRanking.Controllers
             Fornecedor f = new Fornecedor();
             List<byte[]> listGaleriaFotos = new List<byte[]>();
 
-            //int cont = 0;
-            //foreach (string item in Request.Form.AllKeys) //FOREACH PARA PEGAR A CATEGORIA SELECIONADA
-            //{
-            //    if (cont == 13)
-            //    {
-            //        Categorias cat = new Categorias();
-            //        cat.Categoria = item;
-            //        f.Nome_categoria = cat.Categoria;
-            //    }
-            //    cont++;
-            //}
-
             f.Cnpj = cnpj;
             f.Nome_empresa = nome_empresa;
             f.Email = email;
@@ -214,6 +202,7 @@ namespace SupplierRanking.Controllers
 
             if (excluir.ExcluirContaFornecedor(confirmaSenha))
             {
+                Session["UserFornecedor"] = null;
                 return RedirectToAction("Index", "Home");
             }
             else

@@ -309,6 +309,8 @@ namespace SupplierRanking.Controllers
 
             if(c.ExcluirConta(codigo, confirmaSenha))
             {
+                Session["UserPessoaFisica"] = null;
+                Session["UserPessoaJuridica"] = null;
                 return RedirectToAction("Index", "Home");
             }
             else
