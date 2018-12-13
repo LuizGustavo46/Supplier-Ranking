@@ -14,6 +14,7 @@
         btnCadastrar = $('.wrap-cadastro-fornecedor #btnCadastrar'),
 
         inputSenhas = $('.wrap-cadastro-fornecedor .input-senha'),
+        imgSenhas = $('.wrap-cadastro-fornecedor #btnSenha img'),
 
         divOptions = $('.wrap-cadastro-fornecedor .wrap-options'),
         divFirstPart = $('.wrap-cadastro-fornecedor .form-forn-first-part'),
@@ -116,10 +117,12 @@
 
         if (inputSenhas.hasClass('show-pass')) {
             inputSenhas.removeClass('show-pass').attr('type', 'password');
+            imgSenhas.attr('src', '/Content/images/ver-senha.png');
             return;
         }
 
         inputSenhas.addClass('show-pass').attr('type', 'text');
+        imgSenhas.attr('src', '/Content/images/esconder-senha.png');
     }
 
     /** Verifica todos os inputs visíveis **/

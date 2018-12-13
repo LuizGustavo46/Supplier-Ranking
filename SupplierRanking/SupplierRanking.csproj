@@ -150,6 +150,8 @@
     <Content Include="Content\images\add-imagem-pequeno.png" />
     <Content Include="Content\images\add-imagem.png" />
     <Content Include="Content\images\atendimento.png" />
+    <Content Include="Content\images\avaliacao-free.png" />
+    <Content Include="Content\images\avaliacao-premium.png" />
     <Content Include="Content\images\avaliar.png" />
     <Content Include="Content\images\avaliarAzul.png" />
     <Content Include="Content\images\avaliarBranco.png" />
@@ -161,6 +163,7 @@
     <Content Include="Content\images\email1.png" />
     <Content Include="Content\images\endereco.png" />
     <Content Include="Content\images\entrega.png" />
+    <Content Include="Content\images\esconder-senha.png" />
     <Content Include="Content\images\ExperimenteAgora.jpg" />
     <Content Include="Content\images\fechar.png" />
     <Content Include="Content\images\filtro.png" />
@@ -180,6 +183,7 @@
     <Content Include="Content\images\luizao3.png" />
     <Content Include="Content\images\mapa.png" />
     <Content Include="Content\images\marcelo255.png" />
+    <Content Include="Content\images\media.png" />
     <Content Include="Content\images\olhoAberto.png" />
     <Content Include="Content\images\olhoFechado.png" />
     <Content Include="Content\images\pesquisa.png" />
@@ -188,9 +192,11 @@
     <Content Include="Content\images\plano-free.png" />
     <Content Include="Content\images\plano-premium.png" />
     <Content Include="Content\images\plano.png" />
+    <Content Include="Content\images\preco.png" />
     <Content Include="Content\images\premium.png" />
     <Content Include="Content\images\premium2.png" />
     <Content Include="Content\images\preço.png" />
+    <Content Include="Content\images\qualidade-produto.png" />
     <Content Include="Content\images\qualidade.png" />
     <Content Include="Content\images\ranking.png" />
     <Content Include="Content\images\remove-pdf.png" />
@@ -205,6 +211,8 @@
     <Content Include="Content\images\user.png" />
     <Content Include="Content\images\valmir2.png" />
     <Content Include="Content\images\valmir255.png" />
+    <Content Include="Content\images\velocidade-entrega.png" />
+    <Content Include="Content\images\ver-senha.png" />
     <Content Include="Content\images\video.mp4" />
     <Content Include="Content\js\bloqueia-input.js" />
     <Content Include="Content\js\cadastro-funcionario.js" />

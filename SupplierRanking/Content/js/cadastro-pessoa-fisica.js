@@ -8,6 +8,7 @@ $(document).ready(function () {
         btnCadastrar = $('.wrap-cadastro-pf #btnCadastrar'),
 
         inputSenhas = $('.wrap-cadastro-pf .input-senha'),
+        imgSenhas = $('.wrap-cadastro-pf #btnSenha img'),
 
         divOptions = $('.wrap-cadastro-pf .wrap-options'),
         divFirstPart = $('.wrap-cadastro-pf .form-pf-first-part'),
@@ -52,10 +53,12 @@ $(document).ready(function () {
 
         if (inputSenhas.hasClass('show-pass')) {
             inputSenhas.removeClass('show-pass').attr('type', 'password');
+            imgSenhas.attr('src', '/Content/images/ver-senha.png');
             return;
         }
 
         inputSenhas.addClass('show-pass').attr('type', 'text');
+        imgSenhas.attr('src', '/Content/images/esconder-senha.png');
     }
 
     /** Verifica todos os inputs visíveis **/
