@@ -99,6 +99,7 @@ namespace SupplierRanking.Controllers
             f.Media = 0;
             f.Plano = plano;
             f.Nome_categoria = nome_categoria;
+            //f.Nome_categoria = "Informática";
             f.Media_qualidade = 0;
             f.Media_atendimento = 0;
             f.Media_entrega = 0;

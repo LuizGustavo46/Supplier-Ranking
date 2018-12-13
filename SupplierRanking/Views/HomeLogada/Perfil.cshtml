@@ -248,7 +248,7 @@
 <div class="row col-12 conteudo-perfil col-12 m-5 p-5">
 
     <!-- Imagem Premium -->
-    <div style="position:absolute; margin-left:152rem; margin-top:-3rem;">
+    <div style="position:absolute; margin-left:54rem; margin-top:-3rem;">
         @if (Model.Plano.Equals("P"))
             {
             <img src="~/Content/images/premium2.png" height="200" width="160" />
@@ -256,160 +256,267 @@
     </div>
 
     <section class="row col-12 mt-5 pt-5 m-0 p-0">
+        <div class="row col-12 mb-5 pb-5">
 
-        <!-- Imagem de Perfil -->
-        <div class=" col-4 d-flex justify-content-end">
-                    @if (Model.Imagem64 == "")
+            <!-- Imagem de Perfil -->
+            <div class=" col-4 d-flex justify-content-end">
+                @if (Model.Imagem64 == "")
+                {
+                    if (Model.Plano.Equals("P"))
                     {
-                        if (Model.Plano.Equals("P"))
-                        {
-                    <img class="mr-5" style="border-radius: 50%;border: 4px solid #d0a748; box-shadow: 0px 0px 29px black;"
-                            src="~/Content/images/iconecor.png" height="210" width="210" />
-                        }
-                        else
-                        {
-                    <img class="mr-5" style="border-radius: 50%;border: 4px solid #d0a748; box-shadow: 0px 0px 29px black;"
-                            src="~/Content/images/iconecor.png" height="210" width="210" />
-                        }
+                        <img class="mr-5" style="border-radius: 50%;border: 4px solid #d0a748; box-shadow: 0px 0px 29px black;"
+                             src="~/Content/images/iconecor.png" height="210" width="210" />
                     }
-
                     else
                     {
-                        String imagem64 = string.Format("data:image/jpeg;base64,{0}", Model.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
-                        if (Model.Plano.Equals("P"))
-                        {
-                    <img class="mr-5" style="border-radius: 50%; border: 4px solid #d0a748; box-shadow: 0px 0px 29px black;"
-                            src="@imagem64" height="210" width="210" />
-                        }
-                        else
-                        {
-                    <img class="mr-5" style="border-radius: 50%; border: 4px solid #d0a748; box-shadow: 0px 0px 29px black;"
-                            src="@imagem64" height="210" width="210" />
-                        }
+                        <img class="mr-5" style="border-radius: 50%;border: 4px solid #d0a748; box-shadow: 0px 0px 29px black;"
+                             src="~/Content/images/iconecor.png" height="210" width="210" />
                     }
-        </div>
+                }
 
+                else
+                {
+                    String imagem64 = string.Format("data:image/jpeg;base64,{0}", Model.Imagem64); //PRECISA DISSO PRA FUNCIONAR A IMAGEM
+                    if (Model.Plano.Equals("P"))
+                    {
+                        <img class="mr-5" style="border-radius: 50%; border: 4px solid #d0a748; box-shadow: 0px 0px 29px black;"
+                             src="@imagem64" height="210" width="210" />
+                    }
+                    else
+                    {
+                        <img class="mr-5" style="border-radius: 50%; border: 4px solid #d0a748; box-shadow: 0px 0px 29px black;"
+                             src="@imagem64" height="210" width="210" />
+                    }
+                }
+            </div>
 
-        <div class="col-8">
+            <div class="col-8">
 
-            <!-- Nome da Empresa -->
-            <div class="row col-12 justify-content-start">
-                <h1 class="ml-5 pl-5" style="font-size:50px;">@Model.Nome_empresa</h1>
+                <!-- Nome da Empresa -->
+                <div class="row col-12 justify-content-start">
+                    <h1 class="ml-5 pl-5" style="font-size:50px;">@Model.Nome_empresa</h1>
                 </div>
 
-            <div class="row">
+                <div class="row">
 
-                <!-- Media Geral -->
-                <div class="col-3 justify-content-start">
+                    <!-- Media Geral -->
+                    <div class="col-3 justify-content-start">
 
-                    <div class="row col-12 d-flex justify-content-center">
-                        <h1 style="font-family:inherit; color:#ffb31a; text-shadow:0px 0px 5px black;">
-                            @Model.Media
-                        </h1>
+                        <div class="row col-12 d-flex justify-content-center">
+                            <h1 style="font-family:inherit; color:#ffb31a; text-shadow:0px 0px 5px black;">
+                                @Model.Media
+                            </h1>
+                        </div>
+
+                        <div class="row col-12 d-flex justify-content-center">
+                            @if (Model.Media <= 1)
+                            {
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            }
+
+                            else if (Model.Media > 1 && Model.Media <= 2)
+                            {
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star "></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            }
+
+                            else if (Model.Media > 2 && Model.Media <= 3)
+                            {
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            }
+
+                            else if (Model.Media > 3 && Model.Media <= 4)
+                            {
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star"></span>
+                            }
+
+                            else if (Model.Media > 4 && Model.Media <= 5)
+                            {
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                                <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
+                            }
+                        </div>
+
                     </div>
 
-                    <div class="row col-12 d-flex justify-content-center">
-                        @if (Model.Media <= 1)
-                        {
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        }
-
-                        else if (Model.Media > 1 && Model.Media <= 2)
-                        {
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        }
-
-                        else if (Model.Media > 2 && Model.Media <= 3)
-                        {
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        }
-
-                        else if (Model.Media > 3 && Model.Media <= 4)
-                        {
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star"></span>
-                        }
-
-                        else if (Model.Media > 4 && Model.Media <= 5)
-                        {
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                            <span class="fa fa-star" style="color:#ffb31a; text-shadow:0px 0px 5px black;"></span>
-                        }
-                    </div>
-
-            </div>
-
-                <!-- Medias das Avaliações -->
-                @if (Model.Plano.Equals("P"))
-            {
-                    <div class="col-6 d-flex align-items-center mt-4">
-                        <div class="mr-5">
-                            <img src="~/Content/images/qualidade.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                            @Model.Media_qualidade
-                        </div>
-
-                        <div class="mr-5">
-                            <img src="~/Content/images/atendimento.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                            @Model.Media_atendimento
-                        </div>
-
-                        <div class="mr-5">
-                            <img src="~/Content/images/entrega.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                            @Model.Media_entrega
-                        </div>
-
-                        <div class="mr-5">
-                            <img src="~/Content/images/preço.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                            @Model.Media_preco
-                        </div>
-
-                        <div>
-                            <img src="~/Content/images/satisfacao.png" height="40" width="40" style="background-color: white; border-radius:50%" />
-                            @Model.Media_satisfacao
-                        </div>
-                    </div>
-            }
-
-                <!-- Botão Avaliar -->
-                @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
-            {
-                    <div class="col-3 d-flex align-items-center" style="flex-direction: column;">
-                        <h3 class="m-0 mb-4">Avalie</h3>
-                        <img src="~/Content/images/avaliarDourado.png" id="@Model.Cnpj" onclick="linkaCaixaContexto(this.id)" />
+                    <!-- Medias das Avaliações -->
+                    @if (Model.Plano.Equals("P"))
+                    {
+                        <div class="col-6 d-flex align-items-center mt-4">
+                            <div class="mr-5">
+                                <img src="~/Content/images/qualidade.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                @Model.Media_qualidade
                             </div>
+
+                            <div class="mr-5">
+                                <img src="~/Content/images/atendimento.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                @Model.Media_atendimento
+                            </div>
+
+                            <div class="mr-5">
+                                <img src="~/Content/images/entrega.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                @Model.Media_entrega
+                            </div>
+
+                            <div class="mr-5">
+                                <img src="~/Content/images/preço.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                @Model.Media_preco
+                            </div>
+
+                            <div>
+                                <img src="~/Content/images/satisfacao.png" height="40" width="40" style="background-color: white; border-radius:50%" />
+                                @Model.Media_satisfacao
+                            </div>
+                        </div>
                     }
 
+                    <!-- Botão Avaliar -->
+                    @if (Session["UserPessoaFisica"] != null || Session["UserPessoaJuridica"] != null)
+                    {
+                        <div class="col-3 d-flex align-items-center" style="flex-direction: column;">
+                            <h3 class="m-0 mb-4">Avalie</h3>
+                            <img src="~/Content/images/avaliarDourado.png" id="@Model.Cnpj" onclick="linkaCaixaContexto(this.id)" />
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- End / email / tel -->
+        <div class="row col-12 mt-5 pt-5">
+            <!-- Endereço -->
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <img style="width: 40px;" src="~/Content/images/mapa.png" />
+                <h2 class="m-0 ml-5">@Model.Endereco - @Model.Bairro, @Model.Cidade / @Model.Uf</h2>
             </div>
 
-        </div>
-        @*<div style="width: 413px;height: 226px;background-color: #fff0;position: absolute;left: 40%;top: 28%;">
+            <div class="row col-12 mt-5">
+                <!-- Telefones -->
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <div class="col-7 d-flex justify-content-end align-items-center mr-3" style="height:100%;">
+                        <img style="width: 40px;" src="~/Content/images/phone.png" />
+                    </div>
+                    <div class="col-5 d-flex justify-content-center" style="flex-direction:column;">
+                        <h2>@Model.Telefone</h2>
+                        <h2>@Model.Celular</h2>
+                    </div>
+                </div>
 
-            <h1 style="position: absolute;left: 32%;top: 27px;color:white">Descrição</h1>
-
-            <div style="position: absolute;width: 643px;height: 200px;border: 2px solid #d0a748;;top: 104px;right: -28%;
-                            box-shadow: 0px 0px 13px black;overflow: auto;padding: 1rem;
-                            font-size: 20px;text-align: center;color: white;">
-                @Model.Descricao
+                <!-- Email -->
+                <div class="col-6 d-flex justify-content-center align-items-center">
+                    <img style="width: 40px;" src="~/Content/images/email.png" />
+                    <h2 class="m-0 ml-5">@Model.Email</h2>
+                </div>
+            </div>
         </div>
-        </div>*@
+
+        <!-- Descrição -->
+        <div class="row col-12 d-flex justify-content-center align-items-center mt-5 pt-5">
+            <div class="row col-12">
+                <h1 class="mb-4">Descrição</h1>
+            </div>
+
+            <div class="row col-8 d-flex justify-content-center">
+                <h3>@Model.Descricao</h3>
+            </div>
+        </div>
+
+        <!-- PDF -->
+        @if (Model.Pdf64 != "")
+        {
+            <div class="row col-12 d-flex justify-content-center align-items-center mt-5 pt-5" style="flex-direction:column;">
+                <h3>Faça o download do PDF</h3>
+
+                <a href="/HomeLogada/Pdf/?Id=@Model.Cnpj" target="_blank">
+                    <img src="~/Content/images/add-pdf.png" style="height:60px;width:60px" />
+                </a>
+            </div>
+        }
+
+        <!-- Galeria de Fotos -->
+        <div class="row col-12">
+            @if (ViewBag.ListaFotos.Count != 0)
+            {
+                <div class="row col-12 mb-5 mt-5 pt-5">
+                    <h1 class="w3-center">Galeria de fotos</h1>
+                </div>
+
+                <div class="row">
+                    @foreach (var f in ViewBag.ListaFotos)
+                    {
+                        String foto64 = string.Format("data:image/jpeg;base64,{0}", f);
+                        <img style="width:400px; height: 300px;" src="@foto64" alt="Image1" />
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <h4 style="margin-top: 194px;color:white;margin-left: 40px;" class="w3-center">Este perfil não possui fotos.</h4>
+                </div>
+            }
+        </div>
+
+        <!-- Comentários -->
+        <div class="row col-12 mt-5 pt-5">
+            <div class="row col-12 justify-content-center align-items-center mb-5 pb-5">
+                <h1>Comentários</h1>
+            </div>
+
+            <div class="row col-12 d-flex justify-content-center align-items-center">
+                @if (ViewBag.Comentarios.Count != 0)
+                {
+                    <ul>
+                        @foreach (var h in ViewBag.Comentarios)
+                        {
+                            <li class="col-12 p-4 mb-5" style="list-style: none;background: #ffffff;box-shadow: 1px 1px 10px black;height: 169px; border-radius: 5px; width: 1170px;">
+                                @*<div style="width: 1275px;height: 400px;top: 69%;left: 8%;overflow: hidden;box-shadow: 1px 1px 9px black;">*@
+                                <div class="comentario" style="width: 1312px;height: 134px;position: absolute;border: 2px #d0a748;
+                                 top: 10%;left: 5%;">
+                                    <h3 style="margin-left: 168px;margin-top: 32px;">
+                                        @(h.C.Nome)
+                                        @(h.C.Nome_empresa)
+                                    </h3>
+                                    <h5 style="margin-left: 168px;margin-top: 36px;">@(h.Data_avaliacao)</h5>
+
+                                </div>
+                                <div style="position: absolute;border-radius: 6px;width: 649px;height: 86px;border: 1px solid black;top: 38px;left: 40%;overflow: hidden;background-color: #e6e6e6;box-shadow: 1px 1px 5px;font-size: 25px;padding: 8px;">@(h.Comentario)</div>
+
+                                <img src="~/Content/images/user.png" id="icone" style="width: 85px;height: 85px;background-color: #a19c97;border-radius: 70px;margin: 167px auto auto 20px;
+                                margin-top: 167px;margin-left: 20px;margin-left: 92px;margin-top: 28px;" />
+
+                                @*</div>*@
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <h4 style="position: absolute;left: 39%; color:white;">Ainda não possui comentários e/ou avaliações.</h4>
+                }
+            </div>
+        </div>
+            
 
 
 </section>

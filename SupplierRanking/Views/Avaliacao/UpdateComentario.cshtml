@@ -1,7 +1,7 @@
 ﻿@model SupplierRanking.Models.Avaliacao
 @{
     ViewBag.Title = "UpdateComentario";
-    Layout = "~/Views/Shared/Layout_logada.cshtml";
+    Layout = "~/Views/Shared/_LayoutLogado.cshtml";
 }
 
 <div class="m-5">
@@ -247,7 +247,7 @@
                         }
                     </div>
 
-                    <div style="position: relative;top: -245px;left: -316px;">
+                    <div style="position: relative;top: -245px;">
                         <a style="font-size: 24px;">Data da avaliação: @Model.Data_avaliacao</a>
                         <h1 style="margin-bottom: -17px;margin-left: 344px;font-size: 23px;">Comentário</h1>
                         <input name="comentario" value="@Model.Comentario" style="margin-left: 161px;width: 463px;height: 30px;font-size: 20px;font-family: inherit;margin-top: 40px;border-radius: 100px;border: 1px solid gray;padding-left: 13px;box-shadow: 1px 1px 13px;" />
